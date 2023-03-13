@@ -10,6 +10,7 @@ class Ninio {
         int edad;
         string direccion;
         string telefono;
+        Objeto *prestadoa;
     public:
         set<std::string> ListarObjetosPrestados();
         Ninio(); //constructor
