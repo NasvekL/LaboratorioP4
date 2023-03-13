@@ -10,6 +10,13 @@ class Libro: public Objeto{
         int CantPaginas;
     public:
         string toString();
+        //Getters y Setters
+        string getAutor();
+        void setAutor(string Autor);
+        string getCantPaginas();
+        void setCantPaginas(int CantPaginas);
 };
+
+
 
 #endif
