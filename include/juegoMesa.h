@@ -1,3 +1,5 @@
+#ifndef JUEGOMESA
+#define JUEGOMESA
 #include "Objeto.h"
 #include <string>
 using namespace std;
@@ -8,6 +10,7 @@ class JuegoMesa{
         int CantJugadores;
     public:
         JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
+        JuegoMesa();
         ~JuegoMesa();           
         string toString();
 };                   
