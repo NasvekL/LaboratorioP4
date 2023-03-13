@@ -1,10 +1,10 @@
-#ifndef Objeto
-#define Objeto
+#ifndef OBJETO
+#define OBJETO
 
 #include <string>
 using namespace std;
 
-#include "estado.h"
+#include "Utils.h"
 
 class Objeto
 {
@@ -20,3 +20,4 @@ public:
 };
 
 
+#endif
