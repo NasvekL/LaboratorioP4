@@ -11,6 +11,8 @@ class Ninio {
         string telefono;
     public:
         string *ListarObjetosPrestados();
+        Ninio(); //constructor
+        ~Ninio(); //destructor
         //Getters / Setters
         string getnombre();
         void setnombre(string nombre);
@@ -20,7 +22,7 @@ class Ninio {
         void settelefono(string telefono);
         string getedad();
         void setedad(int edad);
-        
+
 };
 
 

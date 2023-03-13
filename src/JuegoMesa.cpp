@@ -1,5 +1,7 @@
 #include "JuegoMesa.h"
 
+//CONS Y DES
+
 JuegoMesa::JuegoMesa(){
     this->CantJugadores = 0;
     this->EdadRecomendada = 0;
@@ -13,6 +15,11 @@ JuegoMesa::JuegoMesa(int edad, int cantidad){
 JuegoMesa::~JuegoMesa(){
 }
 
+
+
+
+//GETTERS Y SETTERS
+
 void JuegoMesa::setEdadRecomendada(int edad){
     this->EdadRecomendada = edad;
 }
@@ -22,13 +29,19 @@ void JuegoMesa::setCantJugadores(int cant){
 }
 
 int JuegoMesa::getEdadRecomendada(){
-    return this->EdadRecomendada;
+    return EdadRecomendada;
 }
 
 int JuegoMesa::getCantJugadores(){
-    return this->CantJugadores;
+    return CantJugadores;
 }
 
+
+
+
+//TOSTRING
+
 string JuegoMesa::toString(){
-    
+    return return "Libro: " + getNombre() + ", "+getAnioComprado()+", "+getEstado().toString() + ", "+getEdadRecomendada()+", "+getCantJugadores();
+
 }

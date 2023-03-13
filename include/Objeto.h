@@ -1,5 +1,5 @@
-#ifndef Objeto
-#define Objeto
+#ifndef OBJETO
+#define OBJETO
 
 #include <string>
 using namespace std;
@@ -22,3 +22,4 @@ public:
 };
 
 
+#endif
