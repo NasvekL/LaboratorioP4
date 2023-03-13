@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-class JuegoMesa::public Objeto{
+class JuegoMesa: public Objeto{
     private:
         int EdadRecomendada;
         int CantJugadores;
