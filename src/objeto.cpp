@@ -1,13 +1,16 @@
 #include <string> 
 using namespace std;     
 
-class objeto
+class Objeto
 {
 private:
-    string nombre;
-
+    string Nombre;
+    int AnioComprado;
+    Estado{
+        nuevo,bienConservado,roto
+    }
 public:
-    objeto(/* args */);
+    objeto();
     ~objeto();
 };
 
