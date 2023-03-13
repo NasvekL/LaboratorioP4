@@ -9,9 +9,15 @@ class JuegoMesa{
         int EdadRecomendada;
         int CantJugadores;
     public:
+        //Getters, Setters, Cons y Des
+        JuegoMesa();            //Constructor Por Defecto
         JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
-        JuegoMesa();
         ~JuegoMesa();           
+        void setEdadRecomendada(int);
+        void setCantJugadores(int);
+        int getEdadRecomendada();
+        int getCantJugadores();
+        
         string toString();
 };                   
 
