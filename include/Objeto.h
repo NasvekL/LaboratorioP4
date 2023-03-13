@@ -1,16 +1,22 @@
-#include <string> 
-using namespace std;     
+#ifndef Objeto
+#define Objeto
+
+#include <string>
+using namespace std;
+
+#include "estado.h"
 
 class Objeto
 {
 private:
     string Nombre;
     int AnioComprado;
-    Estado{
-        nuevo,bienConservado,roto
-    }
+    estado;
 public:
-    toString();
+    Objeto setObjeto(string, int, estado); //Constructor(nombre, anioCreacion, estado|nuevo, bienConservado, roto|)
+    ~Objeto(); //Destructor
+    getNombre
+    string toString();
 };
 
-string::toString();
+
