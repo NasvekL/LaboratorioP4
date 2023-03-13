@@ -1,4 +1,4 @@
-#include "Objeto.h";
+#include "Objeto.h"
 
 Objeto Objeto::setObjeto(string nombre, int anio, estado estado){
     this -> Nombre = nombre;
