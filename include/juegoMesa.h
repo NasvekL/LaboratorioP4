@@ -10,7 +10,7 @@ class JuegoMesa{
         JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
         ~JuegoMesa();           
         string toString();
-}                   
+};                   
 
 
 #endif
