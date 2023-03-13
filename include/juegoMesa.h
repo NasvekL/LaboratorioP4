@@ -1,4 +1,4 @@
-
+#include "objeto.h"
 #include <string>
 using namespace std;
 
@@ -9,7 +9,7 @@ class JuegoMesa{
     public:
         JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
         ~JuegoMesa();           //Destructor
-        toString();
+        string toString();
 }                   
 
 
@@ -17,4 +17,6 @@ class JuegoMesa{
 JuegoMesa::JuegoMesa(int Edad, int Cant);
 
 JuegoMesa::~JuegoMesa();
+
+string JuegoMesa::toString();
 

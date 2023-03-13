@@ -1,8 +1,11 @@
 #include <string>
-#include "objeto.h"
+#include "Objeto.h"
 using namespace std;
 
-class Libro: public objeto{
+class Libro: public Objeto{
     private:
         string Autor;
+        int CantPaginas;
+    public:
+        string toString();
 };
