@@ -1,3 +1,5 @@
+#ifndef DTOBJETOROTO
+#define DTOBJETOROTO
 #include<string>
 using namespace std;
 class DtObjetoRoto{
@@ -10,4 +12,6 @@ class DtObjetoRoto{
         string getNombreNinio();
         bool esprestado();
         DtObjetoRoto(string,bool,string);
+        ~DtObjetoRoto();
 };
+#endif
