@@ -15,13 +15,13 @@ class Ninio {
         ~Ninio(); //destructor
         //Getters / Setters
         string getnombre();
-        void setnombre(string nombre);
+        void setnombre(string);
         string getdireccion();
-        void setdireccion(string direccion);
+        void setdireccion(string);
         string gettelefono();
-        void settelefono(string telefono);
+        void settelefono(string);
         string getedad();
-        void setedad(int edad);
+        void setedad(int);
 
 };
 
