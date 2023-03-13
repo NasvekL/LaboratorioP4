@@ -8,7 +8,7 @@ class JuegoMesa{
         int CantJugadores;
     public:
         JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
-        ~JuegoMesa();           //Destructor
+        ~JuegoMesa();           
         string toString();
 }                   
 
