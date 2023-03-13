@@ -1,23 +1,23 @@
-#include <string> 
-using namespace std;     
+#include "Objeto.h";
 
-class Objeto
-{
-private:
-    string Nombre;
-    int AnioComprado;
-    Estado{
-        nuevo,bienConservado,roto
-    }
-public:
-    objeto();
-    ~objeto();
+Objeto Objeto::setObjeto(string nombre, int anio, estado estado){
+    this -> nombre = nombre;
+    this -> anio = anio;
+    this -> estado = estado;
+}
+
+string Objeto::getNombre(){
+    return nombre;
+}
+
+int Objeto::getAnioComprado(){
+    return anioComprado;
+}
+
+estado Objeto::getEstado(){
+    return estado;
+}
+
+string::toString(){
+
 };
-
-objeto::objeto(/* args */)
-{
-}
-
-objeto::~objeto()
-{
-}
