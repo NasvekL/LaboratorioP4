@@ -12,4 +12,6 @@ class AA{
 
 };
 
+enum estado {nuevo, bienConservado, roto};
+
 #endif

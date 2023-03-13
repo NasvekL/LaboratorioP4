@@ -1,1 +1,0 @@
-enum estado {nuevo, bienConservado, roto};
