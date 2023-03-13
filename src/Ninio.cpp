@@ -47,6 +47,3 @@ string Ninio::getedad() {
 void Ninio::setedad(int edad) {
     this->edad=edad;
 }
-
-string *Ninio::ListarObjetosPrestados() {
-}
