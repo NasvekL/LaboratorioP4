@@ -15,8 +15,10 @@ private:
 public:
     Objeto setObjeto(string, int, estado); //Constructor(nombre, anioCreacion, estado|nuevo, bienConservado, roto|)
     ~Objeto(); //Destructor
-    getNombre
-    string toString();
+    string getNombre();
+    int getAnioComprado();
+    estado getEstado();
+    string toString() = 0;
 };
 
 
