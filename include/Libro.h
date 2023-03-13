@@ -1,5 +1,5 @@
 #include <string>
-#include "objeto.h"
+#include "Objeto.h"
 using namespace std;
 
 class Libro: public Objeto{
@@ -7,5 +7,5 @@ class Libro: public Objeto{
         string Autor;
         int CantPaginas;
     public:
-        
+        string toString();
 };
