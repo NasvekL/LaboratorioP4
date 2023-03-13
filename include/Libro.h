@@ -1,8 +1,7 @@
 #ifndef LIBRO
 #define LIBRO
 #include "Objeto.h"
-#include <string>
-using namespace std;
+#include "Utils.h"
 
 class Libro: public Objeto{
     private:
