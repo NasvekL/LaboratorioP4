@@ -1,11 +1,7 @@
 #include "Libro.h"
 //Constructores
-Libro::Libro(/* args */)
-{
-}
-Libro::~Libro()
-{
-}
+Libro::Libro(/* args */){}
+Libro::~Libro(){}
 //Getters y Setters
 string Libro::getAutor(){
     return Autor;

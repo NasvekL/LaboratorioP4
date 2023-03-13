@@ -1,4 +1,4 @@
-#include "Objeto.h";
+#include "Objeto.h"
 
 Objeto Objeto::setObjeto(string nombre, int anio, estado estado){
     this -> Nombre = nombre;
@@ -6,13 +6,16 @@ Objeto Objeto::setObjeto(string nombre, int anio, estado estado){
     this -> estado = estado;
 }
 
+Objeto::~Objeto(){
+};
+
 string Objeto::getNombre(){
     return nombre;
-}
+};
 
 int Objeto::getAnioComprado(){
     return anioComprado;
-}
+};
 
 estado Objeto::getEstado(){
     return estado;
