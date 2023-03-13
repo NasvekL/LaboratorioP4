@@ -1,5 +1,5 @@
-#ifndef LIBRO
-#define LIBRO
+#ifndef NINIO
+#define NINIO
 #include <string>
 using namespace std;
 
@@ -10,11 +10,10 @@ class Ninio {
         string direccion;
         string telefono;
     public:
-        string setListarObjetosPrestados();
+        string *ListarObjetosPrestados();
 
 
 };
 
-string ninio::setListarObjetosPrestados();
 
 #endif
