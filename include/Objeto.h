@@ -1,16 +1,19 @@
-#include <string> 
-using namespace std;     
+#ifndef Objeto
+#define Objeto
+
+#include <string>
+using namespace std;
+
+#include "estado.h"
 
 class Objeto
 {
 private:
     string Nombre;
     int AnioComprado;
-    Estado{
-        nuevo,bienConservado,roto
-    }
+
 public:
-    toString();
+    string toString();
 };
 
-string::toString();
+
