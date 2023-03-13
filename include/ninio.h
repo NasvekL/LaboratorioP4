@@ -10,7 +10,7 @@ class Ninio {
         string direccion;
         string telefono;
     public:
-        string setListarObjetosPrestados();
+        string *ListarObjetosPrestados();
 
 
 };
