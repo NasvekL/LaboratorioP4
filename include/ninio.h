@@ -15,6 +15,5 @@ class Ninio {
 
 };
 
-string ninio::setListarObjetosPrestados();
 
 #endif
