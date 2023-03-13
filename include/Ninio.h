@@ -1,5 +1,6 @@
 #ifndef NINIO
 #define NINIO
+#include <set>
 #include <string>
 using namespace std;
 
@@ -10,18 +11,18 @@ class Ninio {
         string direccion;
         string telefono;
     public:
-        string *ListarObjetosPrestados();
+        set<std::string> ListarObjetosPrestados();
         Ninio(); //constructor
         ~Ninio(); //destructor
         //Getters / Setters
         string getnombre();
-        void setnombre(string nombre);
+        void setnombre(string);
         string getdireccion();
-        void setdireccion(string direccion);
+        void setdireccion(string);
         string gettelefono();
-        void settelefono(string telefono);
+        void settelefono(string);
         string getedad();
-        void setedad(int edad);
+        void setedad(int);
 
 };
 
