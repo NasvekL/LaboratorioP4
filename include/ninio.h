@@ -1,6 +1,7 @@
+#include <string>
+using namespace std;
 
-
-class ninio {
+class Ninio {
     private:
         string nombre;
         int edad;
