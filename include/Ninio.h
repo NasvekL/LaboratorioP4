@@ -2,6 +2,7 @@
 #define NINIO
 #include <set>
 #include <string>
+#include "Objeto.h"
 using namespace std;
 
 class Ninio {
