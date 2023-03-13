@@ -9,7 +9,7 @@ class JuegoMesa{
     public:
         JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
         ~JuegoMesa();           //Destructor
-        toString();
+        string toString();
 }                   
 
 
