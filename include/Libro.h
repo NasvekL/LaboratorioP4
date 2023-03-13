@@ -1,5 +1,7 @@
-#include <string>
+#ifndef LIBRO
+#define LIBRO
 #include "Objeto.h"
+#include <string>
 using namespace std;
 
 class Libro: public Objeto{
@@ -9,3 +11,5 @@ class Libro: public Objeto{
     public:
         string toString();
 };
+
+#endif
