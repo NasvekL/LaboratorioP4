@@ -15,6 +15,7 @@ class Libro: public Objeto{
         void setAutor(string Autor);
         int getCantPaginas();
         void setCantPaginas(int CantPaginas);
+        //Constructor y destructor
         ~Libro();
         Libro();
 };
