@@ -11,8 +11,11 @@ class Objeto
 private:
     string Nombre;
     int AnioComprado;
-
+    estado;
 public:
+    Objeto setObjeto(string, int, estado); //Constructor(nombre, anioCreacion, estado|nuevo, bienConservado, roto|)
+    ~Objeto(); //Destructor
+    getNombre
     string toString();
 };
 
