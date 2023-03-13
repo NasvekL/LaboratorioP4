@@ -13,8 +13,10 @@ class Libro: public Objeto{
         //Getters y Setters
         string getAutor();
         void setAutor(string Autor);
-        string getCantPaginas();
+        int getCantPaginas();
         void setCantPaginas(int CantPaginas);
+        ~Libro();
+        Libro();
 };
 
 
