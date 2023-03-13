@@ -1,3 +1,5 @@
+#ifndef LIBRO
+#define LIBRO
 #include <string>
 using namespace std;
 
@@ -13,4 +15,5 @@ class Ninio {
 
 };
 
-string ninio::setListarObjetosPrestados();
+
+#endif
