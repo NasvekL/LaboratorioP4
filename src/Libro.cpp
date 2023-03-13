@@ -23,6 +23,6 @@ void Libro::setCantPaginas(int CantPaginas){
 
 //toString
 string Libro::toString(){
-    return "Libro: "+this.getNombre()+" Autor: "+getAutor()+" Cantidad de Paginas: "+getCantPaginas();
+    return "Libro: " + getNombre() + ", "+getAnioComprado()+", "+getEstado().toString() + ", "+getAutor()+", "+getCantPaginas();
 }
 
