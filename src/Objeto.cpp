@@ -1,13 +1,17 @@
 #include "Objeto.h"
 
-Objeto Objeto::setObjeto(string nombre, int anio, estado estado){
+void Objeto::setNombre(string nombre){
     this -> Nombre = nombre;
-    this -> anioComprado = anio;
+}
+
+void Objeto::setAnioComprado(int anio){
+    this -> AnioComprado = anio;
+}
+
+void Objeto::setEstado(estado estado){
     this -> estado = estado;
 }
 
-Objeto::~Objeto(){
-};
 
 string Objeto::getNombre(){
     return nombre;
