@@ -21,6 +21,6 @@ int Objeto::getAnioComprado(){
     return AnioComprado;
 };
 
-estado Objeto::getEstado(){
+state Objeto::getEstado(){
     return estado;
 };
