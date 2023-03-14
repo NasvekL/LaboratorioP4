@@ -3,7 +3,6 @@
 #include "Utils.h"
 #include "Ninio.h"
 
-
 class Objeto
 {
 private:
