@@ -13,5 +13,6 @@ class DtObjetoRoto{
         bool esprestado();
         DtObjetoRoto(string,bool,string);
         ~DtObjetoRoto();
+        friend ostream& operator<<(ostream& os, const DtObjetoRoto& dt);
 };
 #endif
