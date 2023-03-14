@@ -42,6 +42,6 @@ int JuegoMesa::getCantJugadores(){
 //TOSTRING
 
 string JuegoMesa::toString(){
-    return return "Libro: " + getNombre() + ", "+getAnioComprado()+", "+getEstado().toString() + ", "+getEdadRecomendada()+", "+getCantJugadores();
+    return "Libro: " + getNombre() + ", "+getAnioComprado()+", "+getEstado().toString() + ", "+getEdadRecomendada()+", "+getCantJugadores();
 
 }
