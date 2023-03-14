@@ -19,7 +19,7 @@ public:
     void setEstado(state);
     string getNombre();
     int getAnioComprado();
-    Estado getEstado();
+    state getEstado();
 };
 
 
