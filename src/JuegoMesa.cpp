@@ -42,6 +42,20 @@ int JuegoMesa::getCantJugadores(){
 //TOSTRING
 
 string JuegoMesa::toString(){
-    return "Libro: " + getNombre() + ", "+getAnioComprado()+", "+getEstado().toString() + ", "+getEdadRecomendada()+", "+getCantJugadores();
+    string estadito;
+        switch(getEstado()){
+            case nuevo:
+                estadito = "Nuevo";
+                break;
+            case bienConservado:
+                estadito = "BienConservado";
+                break;
+            case roto:
+                estadito = "Roto";
+                break;
+        }
+
+
+    return "Libro: " + getNombre() + ", "+std::to_string(getAnioComprado())+", "+estadito + ", "+std::to_string(getEdadRecomendada())+", "+std::to_string(getCantJugadores());
 
 }
