@@ -19,6 +19,18 @@ void Libro::setCantPaginas(int CantPaginas){
 
 //toString
 string Libro::toString(){
-    return "Libro: " + getNombre() + ", "+getAnioComprado()+", "+getEstado().toString() + ", "+getAutor()+", "+getCantPaginas();
+    string estadito;
+    switch(getEstado()){
+        case nuevo:
+            estadito = "Nuevo";
+            break;
+        case bienConservado:
+            estadito = "BienConservado";
+            break;
+        case roto:
+            estadito = "Roto";
+            break;
+    }
+    return "Libro: " + getNombre() + ", " + std::to_string(getAnioComprado())+", "+estadito+ ", "+getAutor()+", "+ std::to_string(getCantPaginas());
 }
 
