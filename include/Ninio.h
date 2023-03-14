@@ -2,6 +2,7 @@
 #define NINIO
 #include <set>
 #include <string>
+#include "Objeto.h"
 using namespace std;
 
 class Ninio {
@@ -10,6 +11,7 @@ class Ninio {
         int edad;
         string direccion;
         string telefono;
+        Objeto *prestadoa;
     public:
         set<std::string> ListarObjetosPrestados();
         Ninio(); //constructor

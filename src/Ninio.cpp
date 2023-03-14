@@ -1,6 +1,13 @@
 #include "Ninio.h"
 
-string *Ninio::ListarObjetosPrestados() {
+std<std::string> Ninio::ListarObjetosPrestados() {
+    std<std::string> objetosPrestados;//lista de objetos prestados
+    for (int i = 0; i < objetos.size(); i++) {
+        if (objetos[i].getEstado() == prestado) {
+            objetosPrestados.push_back(objetos[i].getNombre());
+        }
+    }
+    return objetosPrestados;
 }
 
 Ninio::Ninio() {  //constructor
@@ -39,7 +46,4 @@ string Ninio::getedad() {
 
 void Ninio::setedad(int edad) {
     this->edad=edad;
-}
-
-string *Ninio::ListarObjetosPrestados() {
 }
