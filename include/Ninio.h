@@ -23,7 +23,7 @@ class Ninio {
         void setdireccion(string);
         string gettelefono();
         void settelefono(string);
-        string getedad();
+        int getedad();
         void setedad(int);
 
 };
