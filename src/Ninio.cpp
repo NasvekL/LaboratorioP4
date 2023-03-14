@@ -36,7 +36,7 @@ void Ninio::settelefono(string telefono) {
     this->telefono=telefono;
 }
 
-string Ninio::getedad() { 
+int Ninio::getedad() { 
     return edad;
 }
 
