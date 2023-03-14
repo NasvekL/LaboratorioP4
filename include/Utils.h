@@ -12,6 +12,6 @@ class AA{
 
 };
 
-enum Estado {nuevo, bienConservado, roto};
+enum state {nuevo, bienConservado, roto};
 
 #endif

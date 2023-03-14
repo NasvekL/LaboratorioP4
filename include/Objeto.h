@@ -9,14 +9,14 @@ class Objeto
 private:
     string Nombre;
     int AnioComprado;
-    Estado estado;
+    state estado;
     Ninio *prestadoA;
 public:
     virtual string toString() = 0;
     //getters y setters 
     void setNombre(string);
     void setAnioComprado(int);
-    void setEstado(Estado);
+    void setEstado(state);
     string getNombre();
     int getAnioComprado();
     Estado getEstado();
