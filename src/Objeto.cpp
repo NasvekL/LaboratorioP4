@@ -14,11 +14,11 @@ void Objeto::setEstado(state estado){
 
 
 string Objeto::getNombre(){
-    return nombre;
+    return Nombre;
 };
 
 int Objeto::getAnioComprado(){
-    return anioComprado;
+    return AnioComprado;
 };
 
 estado Objeto::getEstado(){
