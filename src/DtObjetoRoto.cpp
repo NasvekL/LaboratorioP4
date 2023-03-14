@@ -1,4 +1,5 @@
 #include "DtObjetoRoto.h"
+#include <iostream>
 string DtObjetoRoto::getNombre(){
     return nombreObjeto;
 }
@@ -13,4 +14,13 @@ DtObjetoRoto::DtObjetoRoto(string nombreO,bool pr,string nombreN){
  this->NombreNinio=nombreN;
  this->prestado=pr;
 }
-DtObjetoRoto::~DtObjetoRoto(){}
+DtObjetoRoto::~DtObjetoRoto(){
+}
+ostream& operator<<(ostream& os, const DtObjetoRoto& dt)
+{
+    if(dt.prestado)
+    os << dt.nombreObjeto << ',' << 'PRESTADO SI' << ',' << dt.NombreNinio;
+    else
+    os << dt.nombreObjeto << ',' << 'PRESTADO NO';
+    return os;
+}
