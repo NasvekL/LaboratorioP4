@@ -8,7 +8,7 @@ void Objeto::setAnioComprado(int anio){
     this -> AnioComprado = anio;
 }
 
-void Objeto::setEstado(estado estado){
+void Objeto::setEstado(state estado){
     this -> estado = estado;
 }
 
