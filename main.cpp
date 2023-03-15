@@ -7,23 +7,28 @@
 
 int main(){
     //Parte a)   (sin salida por consola)
-    Libro libro1("Beandon Sanderson", 688, "Nacidos de la bruma: El imperio final", 2022, roto);
-    Libro libro2("Camila Sosa Villada", 240, "Las Malas", 2022, nuevo);
-    Libro libro3("Gemma Merino", 32, "El cocodrilo al que no le gustaba el agua", 2016, roto);
+
+
+
     //Parte b)   (sin salida por consola)
 
 
 
     cout << "Parte c)" << endl;
-
-
+    
+    l1 -> toString();
+    l2 -> toString();
+    l3 -> toString();
+    j1 -> toString();
+    j2 -> toString();
+    j3 -> toString();
 
     cout << "Parte d)" << endl;
-        Ninio *n1 = new  Ninio(María Laura, 10, Nueva Palmira 1521, 099298190);
-        Ninio *n2 = new  Ninio(Alex, 5, Humberto Primo 1501,  29094141);
+
+
 
     cout << "Parte e)" << endl;
-    
+
 
 
     cout << "Parte f)" << endl;
