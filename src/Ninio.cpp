@@ -59,3 +59,7 @@ void Ninio:: agregar_objeto(Objeto* objeto){
 list<Objeto*>& Ninio:: objetos(){
     return objetos_;
 }
+
+void Ninio::eliminar_Robjeto(Objeto ob){
+    objetos_.remove(const Objeto& ob);
+}
