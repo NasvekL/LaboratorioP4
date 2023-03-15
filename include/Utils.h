@@ -1,6 +1,6 @@
 #ifndef UTILS
 #define UTILS
-#include <vector>
+#include <list>
 #include <set>
 #include <string>
 using namespace std;
