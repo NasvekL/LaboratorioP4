@@ -12,6 +12,12 @@ int main(){
 
     //Parte b)   (sin salida por consola)
 
+    Objeto* j1 = new JuegoMesa(7, 10, "Juego Uno", 2022, roto);
+
+    Objeto* j2 = new JuegoMesa(7, 4, "Mazo de Cartas", 2019, nuevo);
+
+    Objeto* j3 = new JuegoMesa(2, 6, "Dados", 2020, roto);
+
 
 
     cout << "Parte c)" << endl;
