@@ -1,9 +1,7 @@
 #ifndef NINIO
 #define NINIO
-#include <set>
-#include <string>
 #include "Objeto.h"
-using namespace std;
+#include "Utils.h"
 
 class Ninio {
     private:
