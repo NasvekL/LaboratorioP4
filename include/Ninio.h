@@ -9,7 +9,7 @@ class Ninio {
         int edad;
         string direccion;
         string telefono;
-        Objeto *prestadoA;
+        Vector<Objeto> objetosPrestados;
     public:
         set<std::string> ListarObjetosPrestados();
         Ninio(); //constructor
