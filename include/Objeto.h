@@ -21,7 +21,7 @@ public:
     int getAnioComprado();
     state getEstado();
     void setPrestadoA(Ninio*);
-    Ninio getPrestadoA();
+    Ninio* getPrestadoA();
 };
 
 
