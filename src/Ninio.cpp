@@ -1,8 +1,10 @@
 #include "Ninio.h"
 
-set<std::string> Ninio::ListarObjetosPrestados() {
-    set<std::string> objetosPrestados;//lista de objetos prestados
-    
+set<string> Ninio::ListarObjetosPrestados() {
+    set<string> objetosPrestados;//lista de objetos prestados
+    for (Objeto* x : this->objetos){
+        objetosPrestados.insert(x->toString());
+    }
     return objetosPrestados;
 }
 
