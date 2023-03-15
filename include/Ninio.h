@@ -11,8 +11,9 @@ class Ninio {
         string telefono;
         list<Objeto*> objetos_;
     public:
+        
         set<string> ListarObjetosPrestados();
-        Ninio(); //constructor
+        Ninio(string nom,int edad,string dir,string tel); //constructor
         ~Ninio(); //destructor
         //Getters / Setters
         string getnombre();
