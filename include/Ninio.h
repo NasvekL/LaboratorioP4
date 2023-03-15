@@ -24,6 +24,7 @@ class Ninio {
         int    getedad();
         void   setedad(int);
         void agregar_objeto(Objeto* objeto);
+        void eliminar_Robjeto(Objeto ob);
         list<Objeto*>& objetos() ;
 };
 
