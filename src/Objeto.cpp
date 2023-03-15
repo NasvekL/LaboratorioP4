@@ -12,6 +12,9 @@ void Objeto::setEstado(state estado){
     this -> estado = estado;
 }
 
+void Objeto::setPrestado(bool prestado){
+    this -> prestado = prestado;
+}
 
 string Objeto::getNombre(){
     return Nombre;
@@ -25,6 +28,10 @@ state Objeto::getEstado(){
     return estado;
 };
 
-Ninio* Objeto::getNinio(){
-    return prestadoA;
+void Objeto::setPrestadA(Ninio* nene){
+    this -> prestadoA = nene; 
+}
+
+Ninio* Objeto::getPrestadA(){
+    return prestadoA; 
 }
