@@ -24,7 +24,7 @@ class Ninio {
         int    getedad();
         void   setedad(int);
         void agregar_objeto(Objeto* objeto);
-        list<Objeto*>& objetos() const;
+        list<Objeto*>& objetos() ;
 };
 
 
