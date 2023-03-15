@@ -18,9 +18,9 @@ int main(){
 
     cout << "Parte c)" << endl;
     
-    l1 -> toString();
-    l2 -> toString();
-    l3 -> toString();
+    libro1 -> toString();
+    libro2 -> toString();
+    libro3 -> toString();
     j1 -> toString();
     j2 -> toString();
     j3 -> toString();
