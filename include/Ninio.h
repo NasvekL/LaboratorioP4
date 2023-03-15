@@ -9,8 +9,7 @@ class Ninio {
         int edad;
         string direccion;
         string telefono;
-        Objeto* objeto_;
-        list<Objeto*> objetos;
+        list<Objeto*> objetos_;
     public:
         set<string> ListarObjetosPrestados();
         Ninio(); //constructor
@@ -24,9 +23,8 @@ class Ninio {
         void   settelefono(string);
         int    getedad();
         void   setedad(int);
-        void asignar_objeto(Objeto* objeto);
         void agregar_objeto(Objeto* objeto);
-        Objeto* objeto() const;
+        list<Objeto*>& objetos() const;
 };
 
 
