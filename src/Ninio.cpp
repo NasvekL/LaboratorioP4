@@ -16,6 +16,7 @@ Ninio::Ninio(string nom,int edad,string dir,string tel){
 }
 
 Ninio::~Ninio() {   //destructor
+objetos_.clear();
 }
 
 string Ninio::getnombre() {
