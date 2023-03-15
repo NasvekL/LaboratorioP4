@@ -11,7 +11,7 @@ class Ninio {
         string telefono;
         list<Objeto*> objetos;
     public:
-        set<std::string> ListarObjetosPrestados();
+        set<string> ListarObjetosPrestados();
         Ninio(); //constructor
         ~Ninio(); //destructor
         //Getters / Setters
