@@ -35,8 +35,8 @@ int main(){
 
 
     cout << "Parte f)" << endl;
-    n1.ListarObjetosPrestados();
-    n2.ListarObjetosPrestados();
+    n1->ListarObjetosPrestados();
+    n2->ListarObjetosPrestados();
 
 
     cout << "Parte g)" << endl;
