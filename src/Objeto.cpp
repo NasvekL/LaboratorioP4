@@ -32,6 +32,6 @@ void Objeto::setPrestadoA(Ninio* nene){
     this -> prestadoA = nene; 
 }
 
-Ninio* Objeto::getPrestadA(){
+Ninio* Objeto::getPrestadoA(){
     return prestadoA; 
 }
