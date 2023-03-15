@@ -9,7 +9,7 @@ private:
     string Nombre;
     int AnioComprado;
     state estado;
-    Ninio *prestadoA;
+    Ninio* prestadoA;
 public:
     virtual string toString() = 0;
     //getters y setters 
@@ -19,6 +19,7 @@ public:
     string getNombre();
     int getAnioComprado();
     state getEstado();
+    Ninio* getNinio();
 };
 
 
