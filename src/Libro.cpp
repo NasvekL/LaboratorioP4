@@ -1,6 +1,12 @@
 #include "Libro.h"
 //Constructores
-Libro::Libro(/* args */){}
+Libro::Libro(string Autor, int CantPaginas, string Nombre, int AnioComprado, state estado){
+    setNombre(Nombre);
+    setAnioComprado(AnioComprado);
+    setEstado(estado);
+    this->Autor=Autor;
+    this->CantPaginas=CantPaginas;
+}
 Libro::~Libro(){}
 //Getters y Setters
 string Libro::getAutor(){
