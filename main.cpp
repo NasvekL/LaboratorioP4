@@ -23,7 +23,7 @@ int main(){
 
 
     cout << "Parte e)" << endl;
-
+    
 
 
     cout << "Parte f)" << endl;
