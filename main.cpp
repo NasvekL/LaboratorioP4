@@ -27,7 +27,8 @@ Ninio *n2 = new  Ninio(Alex, 5, Humberto Primo 1501,  29094141);
 
 
     cout << "Parte f)" << endl;
-
+    n1->ListarObjetosPrestados();
+    n2->ListarObjetosPrestados();
 
 
     cout << "Parte g)" << endl;
