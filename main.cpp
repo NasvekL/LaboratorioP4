@@ -45,10 +45,9 @@ int main(){
 
 
     cout << "Parte h)" << endl;
-   
-    Ninio* n_prestado = j1->getPrestadoA();         //n_prestado tiene que ser un puntero?
-    n_prestado->eliminar_Robjeto(j1); 
-    j1->~JuegoMesa();          
+        Ninio* n_prestado = j1->getPrestadoA();         //n_prestado tiene que ser un puntero?
+        n_prestado->eliminar_Robjeto(j1); 
+        j1->~JuegoMesa();          
 
 
 
