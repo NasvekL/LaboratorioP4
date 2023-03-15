@@ -29,11 +29,11 @@ int main(){
             Ninio *n2 = new  Ninio("Alex", 5, "Humberto Primo 1501",  "29094141");
 
     cout << "Parte e)" << endl;
-    n1->agregar_objeto(&j1);
+    n1->agregar_objeto(j2);
     n1->agregar_objeto(&libro1);
-    n1->agregar_objeto(&j1);
-    n2->agregar_objeto(&libro1);
-    n2->agregar_objeto(&libro1);
+    n1->agregar_objeto(j3);
+    n2->agregar_objeto(j1);
+    n2->agregar_objeto(&libro3);
 
 
     cout << "Parte f)" << endl;
