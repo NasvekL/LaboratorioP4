@@ -11,7 +11,7 @@ class JuegoMesa: public Objeto{
     public:
         //Getters, Setters, Cons y Des
         JuegoMesa();            //Constructor Por Defecto
-        JuegoMesa(int, int);    //Constructor -> EdadRecomendada, CantJugadores
+        JuegoMesa(int edad, int cantidad, string Nombre, int AnioComprado, state estado);    //Constructor -> EdadRecomendada, CantJugadores
         ~JuegoMesa();           
         void setEdadRecomendada(int);
         void setCantJugadores(int);
