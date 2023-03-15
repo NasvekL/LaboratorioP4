@@ -17,8 +17,9 @@ int main(){
         Objeto* j3 = new JuegoMesa(2, 6, "Dados", 2020, roto);
 
     cout << "Parte c)" << endl;
+
     
-    l1 -> toString();
+    libro1 -> toString();
     l2 -> toString();
     l3 -> toString();
     j1 -> toString();
@@ -41,7 +42,19 @@ int main(){
         n2->ListarObjetosPrestados();
 
     cout << "Parte g)" << endl;
-
+        //Crear conjunto de objetos
+        set<Objeto*> conjuntoObjetos;
+        conjuntoObjetos.insert(j1);
+        conjuntoObjetos.insert(j2);
+        conjuntoObjetos.insert(j3);
+        conjuntoObjetos.insert(libro1);
+        conjuntoObjetos.insert(libro2);
+        conjuntoObjetos.insert(libro3);
+        for(Objeto* o : conjuntoObjetos){
+            string nombreObj = o->getNombre();
+            string nombreNinio = o->getPrestadoA()->getnombre();
+            DtObjetoRoto oRoto(o->getNombre(), true, o->getPrestadoA()->getnombre);
+        }
 
 
     cout << "Parte h)" << endl;
