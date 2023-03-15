@@ -1,17 +1,21 @@
 #include "Ninio.h"
-
+#include "Objeto.h"
 set<string> Ninio::ListarObjetosPrestados() {
     set<string> objetosPrestados;//lista de objetos prestados
-    for (Objeto* x : this->objetos){
+    for (Objeto* x : this->objetos_){
         objetosPrestados.insert(x->toString());
     }
     return objetosPrestados;
 }
 
-Ninio::Ninio() {  //constructor
+Ninio::Ninio(string nom,int edad,string dir,string tel){
+    nombre = nom;
+    direccion=dir;
+    this->edad = edad;
+    telefono=tel;
 }
 
-Ninio::~Ninio() {   //desructor
+Ninio::~Ninio() {   //destructor
 }
 
 string Ninio::getnombre() {
@@ -44,4 +48,11 @@ int Ninio::getedad() {
 
 void Ninio::setedad(int edad) {
     this->edad=edad;
+}
+void Ninio:: agregar_objeto(Objeto* objeto){
+    objetos_.push_back(objeto);
+    objeto->setPrestadoA(this);
+    }
+list<Objeto*>& Ninio:: objetos(){
+    return objetos_;
 }
