@@ -19,6 +19,7 @@ public:
     string getNombre();
     int getAnioComprado();
     state getEstado();
+    Ninio* getNinio();
 };
 
 

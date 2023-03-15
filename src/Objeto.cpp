@@ -24,3 +24,7 @@ int Objeto::getAnioComprado(){
 state Objeto::getEstado(){
     return estado;
 };
+
+Ninio* Objeto::getNinio(){
+    return prestadoA;
+}
