@@ -16,6 +16,7 @@ Ninio::Ninio(string nom,int edad,string dir,string tel){
 }
 
 Ninio::~Ninio() {   //destructor
+objetos_.clear();
 }
 
 string Ninio::getnombre() {
@@ -49,10 +50,12 @@ int Ninio::getedad() {
 void Ninio::setedad(int edad) {
     this->edad=edad;
 }
+
 void Ninio:: agregar_objeto(Objeto* objeto){
     objetos_.push_back(objeto);
     objeto->setPrestadoA(this);
-    }
+}
+
 list<Objeto*>& Ninio:: objetos(){
     return objetos_;
 }
