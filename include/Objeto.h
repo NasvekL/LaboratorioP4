@@ -16,10 +16,12 @@ public:
     void setNombre(string);
     void setAnioComprado(int);
     void setEstado(state);
+    void setPrestado(bool);
     string getNombre();
     int getAnioComprado();
     state getEstado();
-    Ninio* getNinio();
+    void setPrestadoA(Ninio*);
+    Ninio* getPrestadoA();
 };
 
 
