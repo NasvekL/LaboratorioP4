@@ -10,9 +10,9 @@ class Ninio {
         string direccion;
         string telefono;
         Objeto* objeto_;
-        list<Objeto*> prestadoA;
+        list<Objeto*> objetos;
     public:
-        set<std::string> ListarObjetosPrestados();
+        set<string> ListarObjetosPrestados();
         Ninio(); //constructor
         ~Ninio(); //destructor
         //Getters / Setters
