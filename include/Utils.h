@@ -12,7 +12,7 @@ class AA{
 
 };
 
-enum class state {nuevo, bienConservado, roto};
+enum state {nuevo, bienConservado, roto};
 
 
 
