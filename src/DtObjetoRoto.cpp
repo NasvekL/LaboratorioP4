@@ -1,12 +1,12 @@
 #include "DtObjetoRoto.h"
 #include <iostream>
-string DtObjetoRoto::getNombre(){
+string DtObjetoRoto::getNombreObjeto(){
     return nombreObjeto;
 }
 string DtObjetoRoto::getNombreNinio(){
     return NombreNinio;
 }
-bool DtObjetoRoto::esprestado(){
+bool DtObjetoRoto::esPrestado(){
     return prestado;
 }
 DtObjetoRoto::DtObjetoRoto(string nombreO,bool pr,string nombreN){

@@ -8,9 +8,9 @@ class DtObjetoRoto{
         bool prestado;
         string NombreNinio;
     public:
-        string getNombre(); 
+        string getNombreObjeto(); 
         string getNombreNinio();
-        bool esprestado();
+        bool esPrestado();
         DtObjetoRoto(string,bool,string);
         ~DtObjetoRoto();
         friend ostream& operator<<(ostream& os, const DtObjetoRoto& dt);
