@@ -19,11 +19,15 @@ int main(){
 
 
     cout << "Parte d)" << endl;
-Ninio *n1 = new  Ninio(María Laura, 10, Nueva Palmira 1521, 099298190);
-Ninio *n2 = new  Ninio(Alex, 5, Humberto Primo 1501,  29094141);
+    Ninio *n1 = new  Ninio(María Laura, 10, Nueva Palmira 1521, 099298190);
+    Ninio *n2 = new  Ninio(Alex, 5, Humberto Primo 1501,  29094141);
 
     cout << "Parte e)" << endl;
-    
+    n1->agregar_objeto(&j1);
+    n1->agregar_objeto(&libro1);
+    n1->agregar_objeto(&j1);
+    n2->agregar_objeto(&libro1);
+    n2->agregar_objeto(&libro1);
 
 
     cout << "Parte f)" << endl;
