@@ -2,7 +2,7 @@
 #include "Objeto.h"
 set<string> Ninio::ListarObjetosPrestados() {
     set<string> objetosPrestados;//lista de objetos prestados
-    for (Objeto* x : this->objetos){
+    for (Objeto* x : this->objetos_){
         objetosPrestados.insert(x->toString());
     }
     return objetosPrestados;
@@ -45,8 +45,10 @@ int Ninio::getedad() {
 void Ninio::setedad(int edad) {
     this->edad=edad;
 }
-void agregar_objeto(Objeto* objeto){
+void Ninio:: agregar_objeto(Objeto* objeto){
     objetos_.push_back(objeto);
-        objeto->(this);
+    objeto->setPrestadoA(this);
     }
+list<Objeto*>& Ninio:: objetos(){
+    return objetos_;
 }
