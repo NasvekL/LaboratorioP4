@@ -12,10 +12,6 @@ void Objeto::setEstado(state estado){
     this -> estado = estado;
 }
 
-void Objeto::setPrestado(bool prestadoA){
-    this -> prestadoA = prestadoA;
-}
-
 string Objeto::getNombre(){
     return Nombre;
 };
