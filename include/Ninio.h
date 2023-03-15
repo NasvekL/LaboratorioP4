@@ -16,7 +16,7 @@ class Ninio {
         set<std::string> ListarObjetosPrestados();
         Ninio(); //constructor
         ~Ninio(); //destructor
-        //Getters / Setters
+        //Getters / SettersS
         string getnombre();
         void setnombre(string);
         string getdireccion();
