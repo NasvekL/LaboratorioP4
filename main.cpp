@@ -12,6 +12,10 @@ int main(){
 
     //Parte b)   (sin salida por consola)
 
+    Objeto* j1 = new JuegoMesa(7, 10, "Juego Uno", 2022, roto);
+    Objeto* j2 = new JuegoMesa(7, 4, "Mazo de Cartas", 2019, nuevo);
+    Objeto* j3 = new JuegoMesa(2, 6, "Dados", 2020, roto);
+
 
 
     cout << "Parte c)" << endl;
@@ -24,15 +28,20 @@ int main(){
     j3 -> toString();
 
     cout << "Parte d)" << endl;
-
-
+            Ninio *n1 = new  Ninio("María Laura", 10, "Nueva Palmira 1521", "099298190");
+            Ninio *n2 = new  Ninio("Alex", 5, "Humberto Primo 1501",  "29094141");
 
     cout << "Parte e)" << endl;
-
+    n1->agregar_objeto(j2);
+    n1->agregar_objeto(&libro1);
+    n1->agregar_objeto(j3);
+    n2->agregar_objeto(j1);
+    n2->agregar_objeto(&libro3);
 
 
     cout << "Parte f)" << endl;
-
+    n1->ListarObjetosPrestados();
+    n2->ListarObjetosPrestados();
 
 
     cout << "Parte g)" << endl;

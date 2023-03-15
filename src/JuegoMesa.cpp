@@ -7,9 +7,12 @@ JuegoMesa::JuegoMesa(){
     this->EdadRecomendada = 0;
 }
 
-JuegoMesa::JuegoMesa(int edad, int cantidad){
+JuegoMesa::JuegoMesa(int edad, int cantidad, string Nombre, int AnioComprado, state estado){
     this->CantJugadores = cantidad;
     this->EdadRecomendada = edad;
+    this->Nombre = Nombre;
+    this->AnioComprado = AnioComprado;
+    this->estado = estado;
 }
 
 JuegoMesa::~JuegoMesa(){
