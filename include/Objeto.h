@@ -20,7 +20,7 @@ public:
     string getNombre();
     int getAnioComprado();
     state getEstado();
-    void setPrestadA(Ninio*);
+    void setPrestadoA(Ninio*);
     Ninio getPrestadoA();
 };
 

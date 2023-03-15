@@ -28,7 +28,7 @@ state Objeto::getEstado(){
     return estado;
 };
 
-void Objeto::setPrestadA(Ninio* nene){
+void Objeto::setPrestadoA(Ninio* nene){
     this -> prestadoA = nene; 
 }
 
