@@ -8,10 +8,14 @@ set<string> Ninio::ListarObjetosPrestados() {
     return objetosPrestados;
 }
 
-Ninio::Ninio() {  //constructor
+Ninio::Ninio(string nom,int edad,string dir,string tel){
+    nombre = nom;
+    direccion=dir;
+    this->edad = edad;
+    telefono=tel;
 }
 
-Ninio::~Ninio() {   //desructor
+Ninio::~Ninio() {   //destructor
 }
 
 string Ninio::getnombre() {
