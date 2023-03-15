@@ -10,17 +10,17 @@ bool DtObjetoRoto::esPrestado(){
     return prestado;
 }
 DtObjetoRoto::DtObjetoRoto(string nombreO,bool pr,string nombreN){
- this->nombreObjeto=nombreO;
- this->NombreNinio=nombreN;
- this->prestado=pr;
+    this->nombreObjeto=nombreO;
+    this->NombreNinio=nombreN;
+    this->prestado=pr;
 }
 DtObjetoRoto::~DtObjetoRoto(){
 }
 ostream& operator<<(ostream& os, const DtObjetoRoto& dt)
 {
     if(dt.prestado)
-    os << dt.nombreObjeto << ',' << 'PRESTADO SI' << ',' << dt.NombreNinio;
+        os << dt.nombreObjeto << ',' << 'PRESTADO SI' << ',' << dt.NombreNinio;
     else
-    os << dt.nombreObjeto << ',' << 'PRESTADO NO';
+        os << dt.nombreObjeto << ',' << 'PRESTADO NO';
     return os;
 }
