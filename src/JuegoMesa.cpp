@@ -13,7 +13,7 @@ JuegoMesa::JuegoMesa(int edad, int cantidad, string Nombre, int AnioComprado, st
     this->setNombre(Nombre);
     this->setAnioComprado(AnioComprado);
     this->setEstado(estado);
-    this->setPrestadoA(NULL);
+    this->setPrestadoA(nullptr);
 }
 
 JuegoMesa::~JuegoMesa(){
