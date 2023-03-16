@@ -6,6 +6,11 @@
 
 
 int main(){
+        set<Objeto*> conjuntoObjetos;
+        set<Ninio*> conjuntoNinios;
+
+
+
     //Parte a)   (sin salida por consola)
         Libro libro1("Beandon Sanderson", 688, "Nacidos de la bruma: El imperio final", 2022, roto);
         Libro libro2("Camila Sosa Villada", 240, "Las Malas", 2022, nuevo);
@@ -30,6 +35,17 @@ int main(){
         Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
         Ninio n2("Alex", 5, "Humberto Primo 1501",  "29094141");
 
+
+
+    //INSERTO OBJETOS Y NINIOS EN LOS CONJUNTOS
+        conjuntoObjetos.insert(&j1);
+        conjuntoObjetos.insert(&j2);
+        conjuntoObjetos.insert(&j3);
+        conjuntoObjetos.insert(&libro1);
+        conjuntoObjetos.insert(&libro2);
+        conjuntoObjetos.insert(&libro3);
+        conjuntoNinios.insert(&n1);
+        conjuntoNinios.insert(&n2);
     cout << "Parte e)" << endl;
         n1.agregar_objeto(&j1);
         n1.agregar_objeto(&libro1);
@@ -45,14 +61,7 @@ int main(){
 
     cout << "Parte g)" << endl;
         //Crear conjunto de objetos
-        set<Objeto*> conjuntoObjetos;
         set<DtObjetoRoto*> conjuntoObjetosRotos;
-        conjuntoObjetos.insert(&j1);
-        conjuntoObjetos.insert(&j2);
-        conjuntoObjetos.insert(&j3);
-        conjuntoObjetos.insert(&libro1);
-        conjuntoObjetos.insert(&libro2);
-        conjuntoObjetos.insert(&libro3);
         for(Objeto* o: conjuntoObjetos){
             if(o->getEstado() == roto){
                 Ninio* n_prestado;
