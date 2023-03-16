@@ -20,7 +20,13 @@ int main(){
 
     cout << "Parte c)" << endl;
 
-
+    
+    libro1 -> toString();
+    libro2 -> toString();
+    libro3 -> toString();
+    j1 -> toString();
+    j2 -> toString();
+    j3 -> toString();
 
     cout << "Parte d)" << endl;
             Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
@@ -40,7 +46,19 @@ int main(){
 
 
     cout << "Parte g)" << endl;
-
+        //Crear conjunto de objetos
+        set<Objeto*> conjuntoObjetos;
+        conjuntoObjetos.insert(j1);
+        conjuntoObjetos.insert(j2);
+        conjuntoObjetos.insert(j3);
+        conjuntoObjetos.insert(libro1);
+        conjuntoObjetos.insert(libro2);
+        conjuntoObjetos.insert(libro3);
+        for(Objeto* o : conjuntoObjetos){
+            string nombreObj = o->getNombre();
+            string nombreNinio = o->getPrestadoA()->getnombre();
+            DtObjetoRoto oRoto(o->getNombre(), true, o->getPrestadoA()->getnombre);
+        }
 
 
     cout << "Parte h)" << endl;
