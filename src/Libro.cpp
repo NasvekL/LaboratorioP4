@@ -7,6 +7,7 @@ Libro::Libro(string Autor, int CantPaginas, string Nombre, int AnioComprado, sta
     this->Autor=Autor;
     this->CantPaginas=CantPaginas;
     setPrestadoA(nene);
+    this->setPrestadoA(nullptr);
 }
 Libro::~Libro(){}
 //Getters y Setters
