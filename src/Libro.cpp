@@ -1,4 +1,4 @@
-#include "Libro.h"
+#include "../include/Libro.h"
 //Constructores
 Libro::Libro(string Autor, int CantPaginas, string Nombre, int AnioComprado, state estado, Ninio* nene = nullptr){
     setNombre(Nombre);
