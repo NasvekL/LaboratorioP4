@@ -7,7 +7,7 @@ JuegoMesa::JuegoMesa(){
     this->EdadRecomendada = 0;
 }
 
-JuegoMesa::JuegoMesa(int edad, int cantidad, string Nombre, int AnioComprado, state estado,  Ninio* nene = nullptr){
+JuegoMesa::JuegoMesa(int edad, int cantidad, string Nombre, int AnioComprado, state estado){
     this->CantJugadores = cantidad;
     this->EdadRecomendada = edad;
     this->setNombre(Nombre);
