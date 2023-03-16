@@ -60,6 +60,6 @@ string JuegoMesa::toString(){
         }
 
 
-    return "Libro: " + getNombre() + ", "+std::to_string(getAnioComprado())+", "+estadito + ", "+std::to_string(getEdadRecomendada())+", "+std::to_string(getCantJugadores());
+    return "Juego: " + getNombre() + ", "+std::to_string(getAnioComprado())+", "+estadito + ", "+std::to_string(getEdadRecomendada())+", "+std::to_string(getCantJugadores());
 
 }
