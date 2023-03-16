@@ -1,8 +1,8 @@
-#include "include/DtObjetoRoto.h"
-#include "include/JuegoMesa.h"
-#include "include/Ninio.h"
-#include "include/Libro.h"
-#include "include/Utils.h"
+#include "/include/DtObjetoRoto.h"
+#include "/include/JuegoMesa.h"
+#include "/include/Ninio.h"
+#include "/include/Libro.h"
+#include "/include/Utils.h"
 
 
 int main(){
@@ -84,8 +84,6 @@ int main(){
         Ninio* n_prestado = j1.getPrestadoA();         //n_prestado tiene que ser un puntero?
         n_prestado->eliminar_Robjeto(&j1); 
         j1.~JuegoMesa();          
-
-
 
 
 
