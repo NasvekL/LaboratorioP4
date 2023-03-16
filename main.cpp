@@ -19,9 +19,9 @@ int main(){
     cout << "Parte c)" << endl;
 
     
-    libro1 -> toString();
-    l2 -> toString();
-    l3 -> toString();
+    libroibro1 -> toString();
+    libro2 -> toString();
+    libro3 -> toString();
     j1 -> toString();
     j2 -> toString();
     j3 -> toString();
@@ -58,6 +58,12 @@ int main(){
 
 
     cout << "Parte h)" << endl;
+   
+    Ninio* n_prestado = j1->getPrestadoA();         //n_prestado tiene que ser un puntero?
+    n_prestado->eliminar_Robjeto(j1); 
+    j1->~JuegoMesa();          
+
+
 
 
 
