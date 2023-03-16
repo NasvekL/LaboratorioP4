@@ -7,19 +7,21 @@
 
 int main(){
     //Parte a)   (sin salida por consola)
-        Libro* libro1 = new Libro("Beandon Sanderson", 688, "Nacidos de la bruma: El imperio final", 2022, roto);
-        Libro* libro2 = new Libro("Camila Sosa Villada", 240, "Las Malas", 2022, nuevo);
-        Libro* libro3 = new Libro("Gemma Merino", 32, "El cocodrilo al que no le gustaba el agua", 2016, roto);
-
+    Libro libro1("Beandon Sanderson", 688, "Nacidos de la bruma: El imperio final", 2022, roto);
+    Libro libro2("Camila Sosa Villada", 240, "Las Malas", 2022, nuevo);
+    Libro libro3("Gemma Merino", 32, "El cocodrilo al que no le gustaba el agua", 2016, roto);
     //Parte b)   (sin salida por consola)
-        Objeto* j1 = new JuegoMesa(7, 10, "Juego Uno", 2022, roto);
-        Objeto* j2 = new JuegoMesa(7, 4, "Mazo de Cartas", 2019, nuevo);
-        Objeto* j3 = new JuegoMesa(2, 6, "Dados", 2020, roto);
+
+    JuegoMesa j1(7, 10, "Juego Uno", 2022, roto);
+    JuegoMesa j2(7, 4, "Mazo de Cartas", 2019, nuevo);
+    JuegoMesa j3(2, 6, "Dados", 2020, roto);
+
+
 
     cout << "Parte c)" << endl;
 
     
-    libroibro1 -> toString();
+    libro1 -> toString();
     libro2 -> toString();
     libro3 -> toString();
     j1 -> toString();
@@ -27,19 +29,21 @@ int main(){
     j3 -> toString();
 
     cout << "Parte d)" << endl;
-        Ninio *n1 = new  Ninio("María Laura", 10, "Nueva Palmira 1521", "099298190");
-        Ninio *n2 = new  Ninio("Alex", 5, "Humberto Primo 1501",  "29094141");
+            Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
+            Ninio n2("Alex", 5, "Humberto Primo 1501",  "29094141");
 
     cout << "Parte e)" << endl;
-        n1->agregar_objeto(j2);
-        n1->agregar_objeto(libro1);
-        n1->agregar_objeto(j3);
-        n2->agregar_objeto(j1);
-        n2->agregar_objeto(libro3);
+    n1.agregar_objeto(&j1);
+    n1.agregar_objeto(&libro1);
+    n1.agregar_objeto(&j1);
+    n2.agregar_objeto(&libro1);
+    n2.agregar_objeto(&libro1);
+
 
     cout << "Parte f)" << endl;
-        n1->ListarObjetosPrestados();
-        n2->ListarObjetosPrestados();
+    n1->ListarObjetosPrestados();
+    n2->ListarObjetosPrestados();
+
 
     cout << "Parte g)" << endl;
         //Crear conjunto de objetos
@@ -58,10 +62,9 @@ int main(){
 
 
     cout << "Parte h)" << endl;
-   
-    Ninio* n_prestado = j1->getPrestadoA();         //n_prestado tiene que ser un puntero?
-    n_prestado->eliminar_Robjeto(j1); 
-    j1->~JuegoMesa();          
+        Ninio* n_prestado = j1->getPrestadoA();         //n_prestado tiene que ser un puntero?
+        n_prestado->eliminar_Robjeto(j1); 
+        j1->~JuegoMesa();          
 
 
 
