@@ -1,4 +1,4 @@
-#include "DtObjetoRoto.h"
+#include "../include/DtObjetoRoto.h"
 #include <iostream>
 string DtObjetoRoto::getNombreObjeto(){
     return nombreObjeto;

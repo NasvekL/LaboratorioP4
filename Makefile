@@ -1,19 +1,22 @@
+
+all: output
+
 output: main.o DtObjetoRoto.o JuegoMesa.o Libro.o Ninio.o Objeto.o Utils.o
 	g++ main.o DtObjetoRoto.o JuegoMesa.o Libro.o Ninio.o Objeto.o Utils.o -o output
 
-main.o: main.cpp JuegoMesa.h Ninio.h Objeto.h Libro.h DtObjetoRoto.h Utils.h
+main.o: main.cpp include/JuegoMesa.h include/Ninio.h include/Objeto.h include/Libro.h include/DtObjetoRoto.h include/Utils.h
 	g++ -c main.cpp
-DtObjetoRoto.o: DtObjetoRoto.cpp
-	g++ -c DtObjetoRoto.cpp
-JuegoMesa.o: JuegoMesa.cpp Objeto.h
-	g++ -c JuegoMesa.cpp
-Libro.o: Libro.cpp Objeto.h Utils.h
-	g++ -c Libro.cpp
-Ninio.o: Ninio.cpp Objeto.h Utils.h
-	g++ -c Ninio.cpp
-Objeto.o: Objeto.cpp Utils.h Ninio.h
-	g++ -c Objeto.cpp
-Utils.o: Utils.cpp
-	g++ -c Utils.cpp
+DtObjetoRoto.o: src/DtObjetoRoto.cpp include/DtObjetoRoto.h
+	g++ -c src/DtObjetoRoto.cpp
+JuegoMesa.o: src/JuegoMesa.cpp include/JuegoMesa.h include/Objeto.h
+	g++ -c src/JuegoMesa.cpp
+Libro.o: src/Libro.cpp include/Libro.h include/Objeto.h include/Utils.h
+	g++ -c src/Libro.cpp
+Ninio.o: src/Ninio.cpp include/Ninio.h include/Objeto.h include/Utils.h
+	g++ -c src/Ninio.cpp
+Objeto.o: src/Objeto.cpp include/Objeto.h include/Utils.h include/Ninio.h
+	g++ -c src/Objeto.cpp
+Utils.o: src/Utils.cpp include/Utils.h
+	g++ -c src/Utils.cpp
 clean:
 	rm *.o output

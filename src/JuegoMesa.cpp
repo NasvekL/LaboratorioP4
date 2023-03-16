@@ -1,4 +1,4 @@
-#include "JuegoMesa.h"
+#include "../include/JuegoMesa.h"
 
 //CONS Y DES
 
