@@ -3,6 +3,8 @@
 #include "Objeto.h"
 #include "Utils.h"
 
+class Objeto;
+
 class Ninio {
     private:
         string nombre;
