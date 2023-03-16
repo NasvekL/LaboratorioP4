@@ -5,8 +5,8 @@ LFLAGS = -Wall
 EXECUTABLE = programa
 
 # Definición de dependencias
-SOURCES = main.cpp file1.cpp file2.cpp file3.cpp file4.cpp file5.cpp
-HEADERS = file1.h file2.h file3.h file4.h file5.h utils.h
+SOURCES = main.cpp DtObjetoRoto.cpp JuegoMesa.cpp Libro.cpp Ninio.cpp Objeto.cpp Utils.cpp
+HEADERS = DtObjetoRoto.h JuegoMesa.h Libro.cpp.h Ninio.h Objeto.cpp.h Utils.h
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Reglas de compilación
