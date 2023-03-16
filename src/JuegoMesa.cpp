@@ -10,10 +10,10 @@ JuegoMesa::JuegoMesa(){
 JuegoMesa::JuegoMesa(int edad, int cantidad, string Nombre, int AnioComprado, state estado,  Ninio* nene = nullptr){
     this->CantJugadores = cantidad;
     this->EdadRecomendada = edad;
-    this->Nombre = Nombre;
-    this->AnioComprado = AnioComprado;
-    this->estado = estado;
-    this->prestadoA = nene;
+    this->setNombre(Nombre);
+    this->setAnioComprado(AnioComprado);
+    this->setEstado(estado);
+    this->setPrestadoA(NULL);
 }
 
 JuegoMesa::~JuegoMesa(){
