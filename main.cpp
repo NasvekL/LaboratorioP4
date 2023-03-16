@@ -24,12 +24,12 @@ int main(){
 
 
     cout << "Parte c)" << endl;
-    libro1.toString();
-    libro2.toString();
-    libro3.toString();
-    j1.toString();
-    j2.toString();
-    j3.toString();
+    cout << libro1.toString();
+    cout << libro2.toString();
+    cout << libro3.toString();
+    cout << j1.toString();
+    cout << j2.toString();
+    cout << j3.toString();
 
     cout << "Parte d)" << endl;
         Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
@@ -47,18 +47,20 @@ int main(){
         conjuntoNinios.insert(&n1);
         conjuntoNinios.insert(&n2);
     cout << "Parte e)" << endl;
-        n1.agregar_objeto(&j1);
+        n1.agregar_objeto(&j2);
         n1.agregar_objeto(&libro1);
-        n1.agregar_objeto(&j1);
-        n2.agregar_objeto(&libro1);
-        n2.agregar_objeto(&libro1);
+        n1.agregar_objeto(&j3);
+        n2.agregar_objeto(&j1);
+        n2.agregar_objeto(&libro3);
 
 
     cout << "Parte f)" << endl;
-        n1.ListarObjetosPrestados();
-        n2.ListarObjetosPrestados();
-
-
+    for(string s:n1.ListarObjetosPrestados()){
+        cout << s + "\n";
+    }
+    for(string s:n2.ListarObjetosPrestados()){
+        cout << s + "\n";
+    }
     cout << "Parte g)" << endl;
         //Crear conjunto de objetos
         set<DtObjetoRoto*> conjuntoObjetosRotos;
@@ -76,6 +78,8 @@ int main(){
                     nombreNinio = "";
                 }
                 conjuntoObjetosRotos.insert(new DtObjetoRoto(nombreObj, n_prestado,nombreNinio));
+                DtObjetoRoto f(nombreObj,n_prestado,nombreNinio);
+                cout << f << endl;
             }
         }
 
@@ -83,8 +87,30 @@ int main(){
     cout << "Parte h)" << endl;
         Ninio* n_prestado = j1.getPrestadoA();         //n_prestado tiene que ser un puntero?
         n_prestado->eliminar_Robjeto(&j1); 
+        
         j1.~JuegoMesa();          
-
+    set<DtObjetoRoto*> conjuntoObjetosRotos1;
+    for(Objeto* o: conjuntoObjetos){
+        if(o->getEstado() == roto){
+            Ninio* n_prestado;
+            string nombreNinio;
+            string nombreObj = o->getNombre();
+            if(o->getPrestadoA() != nullptr){
+                n_prestado = o->getPrestadoA();
+                nombreNinio = o->getPrestadoA()->getnombre();
+            }
+            else{
+                n_prestado = nullptr;
+                nombreNinio = "";
+            }
+            conjuntoObjetosRotos.insert(new DtObjetoRoto(nombreObj, n_prestado,nombreNinio));
+            DtObjetoRoto f(nombreObj,n_prestado,nombreNinio);
+            cout << f << endl;
+        }
+    }
+    for(string s:n2.ListarObjetosPrestados()){
+        cout << s + "\n";
+    }
 
 
     return 0;

@@ -19,8 +19,8 @@ DtObjetoRoto::~DtObjetoRoto(){
 ostream& operator<<(ostream& os, const DtObjetoRoto& dt)
 {
     if(dt.prestado)
-        os << dt.nombreObjeto << ',' << 'PRESTADO SI' << ',' << dt.NombreNinio;
+        os << dt.nombreObjeto << "," << "PRESTADO SI" << "," << dt.NombreNinio;
     else
-        os << dt.nombreObjeto << ',' << 'PRESTADO NO';
+        os << dt.nombreObjeto << "," << "PRESTADO NO";
     return os;
 }
