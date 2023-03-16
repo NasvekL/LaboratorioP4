@@ -6,7 +6,7 @@ EXECUTABLE = programa
 
 # Definición de dependencias
 SOURCES = main.cpp DtObjetoRoto.cpp JuegoMesa.cpp Libro.cpp Ninio.cpp Objeto.cpp Utils.cpp
-HEADERS = DtObjetoRoto.h JuegoMesa.h Libro.cpp.h Ninio.h Objeto.cpp.h Utils.h
+HEADERS = DtObjetoRoto.h JuegoMesa.h Libro.h Ninio.h Objeto.cpp.h Utils.h
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Reglas de compilación
