@@ -24,8 +24,9 @@ clean:
 
 # Dependencias
 main.o: main.cpp $(HEADERS)
-file1.o: file1.cpp file1.h
-file2.o: file2.cpp file2.h
-file3.o: file3.cpp file3.h
-file4.o: file4.cpp file4.h
-file5.o: file5.cpp file5.h
+DtObjetoRoto.o: DtObjetoRoto.cpp DtObjetoRoto.h
+JuegoMesa.o: JuegoMesa.cpp JuegoMesa.h
+Libro.o: Libro.cpp Libro.h
+Ninio.o: Ninio.cpp Ninio.h
+Objeto.o: Objeto.cpp Objeto.h
+Utils.o: Utils.cpp Utils.h
