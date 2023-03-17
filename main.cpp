@@ -5,7 +5,7 @@
 #include "include/JuegoMesa.h"
 
         void imprimirObjetos(conjuntoObjetos c){
-            for(Objeto o: conjuntoObjetos){
+            for(Objeto o:c){
                 cout << o.toString() << endl;
             }
     }
