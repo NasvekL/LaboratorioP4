@@ -4,6 +4,11 @@
 #include "include/Libro.h"
 #include "include/JuegoMesa.h"
 
+        void imprimirObjetos(conjuntoObjetos c){
+        c.foreach(Objeto){
+            Objeto.toString();
+        }
+    }
 
 int main(){
     //Creacion de sets
@@ -40,11 +45,6 @@ int main(){
         cout << j1.toString() << endl;
         cout << j2.toString() << endl;
         cout << j3.toString() << endl;
-
-            for(Objeto:conjuntoObjetos){
-        cout << Objeto.toString() + "\n" << endl; //Listar Objetos prestados de un conjunto (no se si anda)
-    }
-
 
     cout << "\nParte d)" << endl;
         Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
