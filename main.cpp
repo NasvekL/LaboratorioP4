@@ -11,12 +11,13 @@ void imprimirObjetos(set<Objeto*> c){
 }
 
 void eliminar_Objeto(set<Objeto*> &c, set<DtObjetoRoto*> &r, JuegoMesa &j){
+    string s = j.getNombre();
     Ninio* n_prestado = j.getPrestadoA();        
     n_prestado->eliminar_Robjeto(&j);
 
     //Eliminar de los sets Objeto y DtObjetoRoto
     for(DtObjetoRoto* o: r){
-        if(j.getNombre() == o->getNombreObjeto()){
+        if(s == o->getNombreObjeto()){
             r.erase(o);
         }
     }
@@ -132,7 +133,7 @@ int main(){
     for(string s:n2.ListarObjetosPrestados()){
         cout << s + "\n";
     }
-
+    imprimirObjetos(conjuntoObjetos);
 
 
     //Limpio memoria
