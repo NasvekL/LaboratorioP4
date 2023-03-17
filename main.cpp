@@ -39,12 +39,7 @@ int main(){
         cout << "Juegos de mesa creados y agregados al conjunto de objetos" << endl;
 
     cout << "\nParte c)" << endl;
-        cout << libro1.toString() << endl;
-        cout << libro2.toString() << endl;
-        cout << libro3.toString() << endl;
-        cout << j1.toString() << endl;
-        cout << j2.toString() << endl;
-        cout << j3.toString() << endl;
+        imprimirObjetos(conjuntoObjetos);
 
     cout << "\nParte d)" << endl;
         Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
