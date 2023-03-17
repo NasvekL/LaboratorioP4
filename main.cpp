@@ -18,11 +18,12 @@ void eliminar_Objeto(set<Objeto*> &c, set<DtObjetoRoto*> &r, JuegoMesa &j){
     //Eliminar de los sets Objeto y DtObjetoRoto
     for(DtObjetoRoto* o: r){
         if(s == o->getNombreObjeto()){
+            delete o;
             r.erase(o);
         }
     }
-
     c.erase(&j);
+    j.~JuegoMesa();
 
 }
 
