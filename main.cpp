@@ -97,35 +97,24 @@ int main(){
 
 
     cout << "\nParte h)" << endl;
+        
+        //Eliminamos el objeto
         Ninio* n_prestado = j1.getPrestadoA();         //n_prestado tiene que ser un puntero?
         n_prestado->eliminar_Robjeto(&j1);
         
-        j1.~JuegoMesa();          
+        
 
 
-        //HAY QUE HACERLO BIEN, TA RARO. NO HABRIA QUE CREAR UN NUEVO SET  DE OBJETOS ROTOS SINO MODIFICAR EL QUE YA ESTA CREADO ANTES
+        //Eliminar de los sets conjuntoObjetos y conjuntoObjetosRotos
+        conjuntoObjetos.erase(j1);
+        conjuntoObjetosRotos.erase(j1);
+        imprimirObjetos(conjuntoObjetos);
+        imprimirObjetos(conjuntoObjetosRotos);
 
+        
+        j1.~JuegoMesa();   
 
-    set<DtObjetoRoto*> conjuntoObjetosRotos1;
-    for(Objeto* o: conjuntoObjetos){
-        if(o->getEstado() == roto){
-            Ninio* n_prestado;
-            string nombreNinio;
-            string nombreObj = o->getNombre();
-            if(o->getPrestadoA() != nullptr){
-                n_prestado = o->getPrestadoA();
-                nombreNinio = o->getPrestadoA()->getnombre();
-            }
-            else{
-                n_prestado = nullptr;
-                nombreNinio = "";
-            }
-            conjuntoObjetosRotos.insert(new DtObjetoRoto(nombreObj, n_prestado,nombreNinio));
-            DtObjetoRoto f(nombreObj,n_prestado,nombreNinio);
-            cout << f << endl;
-        }
-    }
-
+   
     for(string s:n2.ListarObjetosPrestados()){
         cout << s + "\n";
     }
