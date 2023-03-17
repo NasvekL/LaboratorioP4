@@ -14,12 +14,10 @@ void eliminar_Objeto(set<Objeto*> &c, set<DtObjetoRoto*> &r, JuegoMesa &j){
     Ninio* n_prestado = j.getPrestadoA();        
     n_prestado->eliminar_Robjeto(&j);
 
-
-
     //Eliminar de los sets Objeto y DtObjetoRoto
     for(DtObjetoRoto* o: r){
-        if(j.getNombre() == o.getNombreObjeto()){
-            r.erase(&o);
+        if(j.getNombre() == o->getNombreObjeto()){
+            r.erase(o);
         }
     }
 
