@@ -4,11 +4,11 @@
 #include "include/Libro.h"
 #include "include/JuegoMesa.h"
 
-    void imprimirObjetos(set<Objeto*> c){
-        for(Objeto* o:c){
-            cout << o->toString() << endl;
-        }
+void imprimirObjetos(set<Objeto*> c){
+    for(Objeto* o:c){
+        cout << o->toString() << endl;
     }
+}
 
 int main(){
     //Creacion de sets
