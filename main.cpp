@@ -101,30 +101,17 @@ int main(){
         //HAY QUE HACERLO BIEN, TA RARO. NO HABRIA QUE CREAR UN NUEVO SET  DE OBJETOS ROTOS SINO MODIFICAR EL QUE YA ESTA CREADO ANTES
 
 
-    set<DtObjetoRoto*> conjuntoObjetosRotos1;
-    for(Objeto* o: conjuntoObjetos){
-        if(o->getEstado() == roto){
-            Ninio* n_prestado;
-            string nombreNinio;
-            string nombreObj = o->getNombre();
-            if(o->getPrestadoA() != nullptr){
-                n_prestado = o->getPrestadoA();
-                nombreNinio = o->getPrestadoA()->getnombre();
-            }
-            else{
-                n_prestado = nullptr;
-                nombreNinio = "";
-            }
-            conjuntoObjetosRotos.insert(new DtObjetoRoto(nombreObj, n_prestado,nombreNinio));
-            DtObjetoRoto f(nombreObj,n_prestado,nombreNinio);
-            cout << f << endl;
-        }
-    }
+    //PARTE DE OBJETO ROTO ELEIMINAR DE SET
 
     for(string s:n2.ListarObjetosPrestados()){
         cout << s + "\n";
     }
 
 
+
+    //Limpio memoria
+        for(DtObjetoRoto* o: conjuntoObjetosRotos){
+            delete o;
+        }
     return 0;
 }
