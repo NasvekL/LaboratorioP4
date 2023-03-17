@@ -12,7 +12,7 @@ void imprimirObjetos(set<Objeto*> c){
 
 void eliminar_Objeto(set<Objeto*> &c, set<DtObjetoRoto*> &r, JuegoMesa &j){
     Ninio* n_prestado = j.getPrestadoA();        
-    n_prestado->eliminar_Robjeto(j);
+    n_prestado->eliminar_Robjeto(&j);
 
 
 
