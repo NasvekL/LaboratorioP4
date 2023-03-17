@@ -10,6 +10,24 @@ void imprimirObjetos(set<Objeto*> c){
     }
 }
 
+void eliminar_Objeto(set<Objeto*> &c, set<DtObjetoRoto*> &r, JuegoMesa &j){
+    Ninio* n_prestado = j.getPrestadoA();        
+    n_prestado->eliminar_Robjeto(j);
+
+
+
+    //Eliminar de los sets Objeto y DtObjetoRoto
+    for(DtObjetoRoto* o: r){
+        if(j.getNombre() == o.getNombreObjeto()){
+            r.erase(&o);
+        }
+    }
+
+    c.erase(&j);
+
+
+}
+
 int main(){
     //Creacion de sets
         set<Objeto*> conjuntoObjetos;
@@ -92,9 +110,10 @@ int main(){
 
 
     cout << "\nParte h)" << endl;
-        
+        eliminar_Objeto(conjuntoObjetos, conjuntoObjetosRotos, j1);
+        /*
         //Eliminamos el objeto
-        Ninio* n_prestado = j1.getPrestadoA();         //n_prestado tiene que ser un puntero?
+        Ninio* n_prestado = j1.getPrestadoA();        
         n_prestado->eliminar_Robjeto(&j1);
         
         
@@ -108,7 +127,7 @@ int main(){
 
         
         j1.~JuegoMesa();   
-
+    */
    
     for(string s:n2.ListarObjetosPrestados()){
         cout << s + "\n";
