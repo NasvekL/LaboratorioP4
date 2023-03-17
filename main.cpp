@@ -41,6 +41,11 @@ int main(){
         cout << j2.toString() << endl;
         cout << j3.toString() << endl;
 
+            for(Objeto:conjuntoObjetos){
+        cout << Objeto.toString() + "\n" << endl; //Listar Objetos prestados de un conjunto (no se si anda)
+    }
+
+
     cout << "\nParte d)" << endl;
         Ninio n1("María Laura", 10, "Nueva Palmira 1521", "099298190");
         Ninio n2("Alex", 5, "Humberto Primo 1501",  "29094141");
