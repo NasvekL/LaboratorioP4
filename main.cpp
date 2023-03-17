@@ -24,7 +24,6 @@ void eliminar_Objeto(set<Objeto*> &c, set<DtObjetoRoto*> &r, JuegoMesa &j){
 
     c.erase(&j);
 
-
 }
 
 int main(){
@@ -128,7 +127,7 @@ int main(){
         j1.~JuegoMesa();   
     */
    for(DtObjetoRoto* o:conjuntoObjetosRotos){
-        cout << o << "\n";
+        cout << *o << "\n";
     }
     for(string s:n2.ListarObjetosPrestados()){
         cout << s + "\n";
