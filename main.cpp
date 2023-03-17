@@ -126,7 +126,9 @@ int main(){
         
         j1.~JuegoMesa();   
     */
-   
+   for(DtObjetoRoto* o:conjuntoObjetosRotos){
+        cout << o << "\n";
+    }
     for(string s:n2.ListarObjetosPrestados()){
         cout << s + "\n";
     }
