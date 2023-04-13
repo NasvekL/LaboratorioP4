@@ -1,1 +1,1 @@
-<built-in method groups of re.Match object at 0x7fe2a3818e30>
+greeting

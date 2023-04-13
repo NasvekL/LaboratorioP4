@@ -3,9 +3,10 @@ import re
 import sys
 
 def prog(texto):
-    #
-    
-    return ""
+    match = re.search(r'"tag": "(.*)",', texto)
+
+    ret = f"{match.groups()}"
+    return ret
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
