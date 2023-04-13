@@ -3,13 +3,13 @@ import re
 import sys
 
 def prog(texto):
-
+    #
     
-    return 0
+    return ""
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
-    salida = sys.argv[2]   # archivo salida (param)
+    salida = sys.argv[2]   # archivo salida (param)  jkhkjhjk
     
     f = open(entrada, 'r') # abrir archivo entrada
     datos = f.read()       # leer archivo entrada
