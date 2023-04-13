@@ -9,11 +9,11 @@ def prog(texto):
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
-    salida = sys.argv[2]   # archivo salida (param)  jkhkjhjk
+    salida = sys.argv[2]   # archivo salida (param)  jk hkjhjk
     
     f = open(entrada, 'r') # abrir archivo entrada
     datos = f.read()       # leer archivo entrada
-    f.close()              # cerrar archivo entrada
+    f.close()              # cerrar archivo e  ntrada
     
     ret = prog(datos)      # ejecutar er
     
