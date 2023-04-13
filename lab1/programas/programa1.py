@@ -3,9 +3,11 @@ import re
 import sys
 
 def prog(texto):
+    match = re.findall(r'"tag": "(.*)",', texto)
 
+    ret = ' '.join(match)
+    return ret
     
-    return 0
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
