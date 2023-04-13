@@ -5,7 +5,8 @@ import sys
 def prog(texto):
     match = re.search(r'"tag": "(.*)",', texto)
 
-    ret = f"{match[1]}"
+    ret = f"{match.groups}"
+    print(ret)
     return ret
 
 if __name__ == '__main__':

@@ -5,7 +5,7 @@ import sys
 def prog(texto):
     #
     
-    return 0
+    return ""
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
