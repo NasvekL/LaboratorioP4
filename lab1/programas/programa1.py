@@ -5,7 +5,7 @@ import sys
 def prog(texto):
     match = re.findall(r'"tag": "(.*)",', texto)
 
-    return "".join(match)
+    return " ".join(match)
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
