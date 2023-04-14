@@ -3,9 +3,14 @@ import re
 import sys
 
 def prog(texto):
-    #
     
-    return ""
+    ret = len(re.findall(r'".*?"', texto))
+    #ret = len(re.findall(r'"patterns": [ "(.*)"],', texto))
+    #match = re.findall(r'"tag": "(.*)",', texto)
+    #ret = " ".join(match)
+    
+   
+    return f"{ret}"
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
