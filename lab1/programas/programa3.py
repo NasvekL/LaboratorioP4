@@ -4,7 +4,7 @@ import sys
 
 def prog(texto):
     match = re.findall(r'(?:\n| )*"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:(?:\n| )*)".*")', texto, re.MULTILINE)
-    #                    0                 1                            2(             3    )                 4                                 
+    #                                    0(  )                        1(                                    )                                 
     diccionario = {}
     for m in match:
         patterns = re.findall(r'"(.*)",', m[1], re.MULTILINE)
