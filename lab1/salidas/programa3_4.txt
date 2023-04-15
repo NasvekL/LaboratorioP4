@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 hostel 22
 event 11
 document 13
 floors 7
+=======
+88
+>>>>>>> 0efc050c02729eb4ef4ccc9cde1d6136f05a10ac

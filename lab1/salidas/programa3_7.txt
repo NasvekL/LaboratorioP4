@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 random 3
 swear 9
 vacation 12
@@ -6,3 +7,6 @@ salutaion 13
 task 6
 ragging 10
 hod 3
+=======
+125
+>>>>>>> 0efc050c02729eb4ef4ccc9cde1d6136f05a10ac

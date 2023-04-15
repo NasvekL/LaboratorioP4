@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 sem 11
 admission 6
 scholarship 26
@@ -5,3 +6,6 @@ facilities 5
 college intake 9
 uniform 9
 committee 6
+=======
+128
+>>>>>>> 0efc050c02729eb4ef4ccc9cde1d6136f05a10ac
