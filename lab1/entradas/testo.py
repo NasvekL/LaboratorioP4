@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*- hola
 import re
 import sys
+import os
+import glob
 
 def prog(texto):
     match = re.findall(r'(?:\n| )*"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:(?:\n| )*)".*")', texto, re.MULTILINE)
@@ -14,16 +16,11 @@ def prog(texto):
     
     return resultado
 
-if __name__ == '__main__':
-    entrada = sys.argv[1]  # archivo entrada (param)
-    salida = sys.argv[2]   # archivo salida (param)  jkhkjhjk
-    
-    f = open(entrada, 'r') # abrir archivo entrada
+
+if __name__ == "__main__":
+    jeison = 1
+    f = open("/home/nahuel/Programacion/p4/LaboratorioP4/lab1/entradas/"+str(jeison)+".json", 'r') # abrir archivo entrada
     datos = f.read()       # leer archivo entrada
-    f.close()              # cerrar archivo entrada
-    
-    ret = prog(datos)      # ejecutar er
-    
-    f = open(salida, 'w')  # abrir archivo salida
-    f.write(ret)           # escribir archivo salida
-    f.close()              # cerrar archivo salida
+    f.close()
+    prog(datos)
+    print(datos)
