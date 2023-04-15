@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-hours 17
-number 15
-course 27
-fees 23
-location 14
-=======
-136
->>>>>>> 0efc050c02729eb4ef4ccc9cde1d6136f05a10ac
