@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 greeting 10
 goodbye 12
-=======
-42
->>>>>>> 0efc050c02729eb4ef4ccc9cde1d6136f05a10ac
