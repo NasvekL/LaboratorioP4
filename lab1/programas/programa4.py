@@ -3,7 +3,7 @@ import re
 import sys
 
 def prog(texto):
-    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
+    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*\],(?:\n| )*"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
     #                                    0(  )                        1(                                    )                                 
     diccionario1 = {}
     dic2 = {}
@@ -12,7 +12,7 @@ def prog(texto):
         responses = re.findall(r'"(.*)"',m[2],re.MULTILINE)
         diccionario1[m[0]] = len(patterns)
         dic2[m[0]]= len(responses)
-    resultado = "\n".join([clave + " " + str(diccionario1[clave] + " " + str(dic2[clave])) for clave in diccionario1])
+    resultado = "\n".join([clave + " " + str(diccionario1[clave]) + " " + str(dic2[clave]) for clave in diccionario1])
     return resultado
 
 if __name__ == '__main__':
