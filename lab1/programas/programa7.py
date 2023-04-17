@@ -3,7 +3,15 @@ import re
 import sys
 
 def prog(texto):
-    #
+    pattern = r'"patterns": \[[^\]]*?\]' 
+    string = texto  
+    repl = '"patterns": [\n\t"P"\n\t]'
+
+    text = re.sub(pattern, repl, string)
+
+    print(text)
+    
+    return ''
     
     return ""
 
