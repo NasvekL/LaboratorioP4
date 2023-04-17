@@ -7,9 +7,10 @@ import glob
 def prog(texto):
     #Partes fijas del json
     inicio = '{\n   "intents":[\n {\n   '
+    final = ''
 
 
-    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )\],(?:\n| )"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
+    match = re.findall(r'("tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*\],(?:\n| )*"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*"))', texto, re.MULTILINE)
     #                           0(  )                        1(                                )                                   2(                                )
     resultado = ""
     return resultado
