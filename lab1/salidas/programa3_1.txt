@@ -1,1 +1,2 @@
-42
+greeting 10
+goodbye 12

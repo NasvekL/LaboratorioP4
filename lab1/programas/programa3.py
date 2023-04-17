@@ -3,14 +3,16 @@ import re
 import sys
 
 def prog(texto):
+    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
+    #                                    0(  )                        1(                                    )                                 
+    diccionario = {}
+    for m in match:
+        patterns = re.findall(r'"(.*)"', m[1], re.MULTILINE)
+        diccionario[m[0]] = len(patterns)
+
+    resultado = "\n".join([clave + " " + str(diccionario[clave]) for clave in diccionario])
     
-    ret = len(re.findall(r'".*?"', texto))
-    #ret = len(re.findall(r'"patterns": [ "(.*)"],', texto))
-    #match = re.findall(r'"tag": "(.*)",', texto)
-    #ret = " ".join(match)
-    
-   
-    return f"{ret}"
+    return resultado
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
