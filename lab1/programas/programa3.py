@@ -7,8 +7,8 @@ def prog(texto):
     #                                    0(  )                        1(                                    )                                 
     diccionario = {}
     for m in match:
-        patterns = re.findall(r'"(.*)",', m[1], re.MULTILINE)
-        diccionario[m[0]] = len(patterns) + 1 #agregar el que no tiene , del final
+        patterns = re.findall(r'"(.*)"', m[1], re.MULTILINE)
+        diccionario[m[0]] = len(patterns)
 
     resultado = "\n".join([clave + " " + str(diccionario[clave]) for clave in diccionario])
     
