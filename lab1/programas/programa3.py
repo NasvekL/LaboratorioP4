@@ -3,7 +3,7 @@ import re
 import sys
 
 def prog(texto):
-    match = re.findall(r'(?:\n| )*"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:(?:\n| )*)".*")', texto, re.MULTILINE)
+    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
     #                                    0(  )                        1(                                    )                                 
     diccionario = {}
     for m in match:
