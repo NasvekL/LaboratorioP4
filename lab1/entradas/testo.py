@@ -9,8 +9,8 @@ def prog(texto):
     inicio = '{\n   "intents":[\n {\n   '
 
 
-    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
-    
+    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )\],(?:\n| )"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
+    #                           0(  )                        1(                                )                                   2(                                )
     resultado = ""
     return resultado
 
