@@ -5,8 +5,13 @@ import os
 import glob
 
 def prog(texto):
-    match = re.findall(r'(?:\n| )*"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:(?:\n| )*)".*")', texto, re.MULTILINE)
+    #Partes fijas del json
+    inicio = '{\n   "intents":[\n {\n   '
+
+
+    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
     
+    resultado = ""
     return resultado
 
 
