@@ -1,0 +1,23 @@
+{
+   "intents":[
+ {
+   "tag": "T",
+   "patterns": ["P"], "responses": [
+      "Hello!",
+      "Good to see you again!",
+      "Hi there, how can I help?"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "T",
+   "patterns": ["P"], "responses": [
+      "Sad to see you go :(",
+      "Talk to you later",
+      "Goodbye!",
+      "Come back soon"
+   ],
+   "context_set": ""
+}
+]
+}

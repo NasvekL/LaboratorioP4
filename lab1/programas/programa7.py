@@ -3,17 +3,31 @@ import re
 import sys
 
 def prog(texto):
-    pattern = r'"patterns": \[[^\]]*?\]' 
+    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*\],(?:\n| )*"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
+    #                                    0(  )                        1(                                    )                                 
+    
+    
+    #Cambiamos tag
+    pattern = r'("tag": )"(.*)"'
     string = texto  
-    repl = '"patterns": [\n\t"P"\n\t]'
-
+    repl = r'\1"T"'
     text = re.sub(pattern, repl, string)
+    
 
-    print(text)
+    #Cambiamos patterns
     
-    return ''
+    pattern = r'("patterns": \[)((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*(\],)(\n| )*'
+    repl = r'\1"P"\3\4'
+    text = re.sub(pattern, repl, text)
+
+
+
+
+
     
-    return ""
+    
+      
+    return text
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
