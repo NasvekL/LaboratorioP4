@@ -18,7 +18,7 @@ def prog(texto):
     
     pattern = r'("patterns": \[)((\n| )*)(?:(?:\n| )*".*",)*(?:\n| )*".*"((\n| )*)(\],)((\n| )*)'
     repl = r'\1\2"P"\4\6\7'
-    text = re.sub(pattern, repl, text)
+    text = re.sub(pattern, repl, string)
 
 
     #Cambiamos responses
