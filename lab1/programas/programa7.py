@@ -26,14 +26,6 @@ def prog(texto):
     pattern = r'("responses": \[)((\n| )*)((?:(?:\n| )*".*",)*(?:\n| )*".*")'
     repl = r'\1\2"R"'
     text = re.sub(pattern, repl, text)
-
-
-
-
-
-    
-    
-      
     return text
 
 if __name__ == '__main__':

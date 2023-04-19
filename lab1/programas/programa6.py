@@ -3,8 +3,19 @@ import re
 import sys
 
 def prog(texto):
-    
-    return ''
+    #Cambiamos patterns
+        
+    string = texto
+    pattern = r'("patterns": \[)((\n| )*)(".*"),(?:(?:\n| )*".*",)*(?:\n| )*".*"((\n| )*)(\],)((\n| )*)'
+    repl = r'\1\2\4\5\7\8'
+    text = re.sub(pattern, repl, string)
+
+    #Cambiamos responses
+
+    pattern = r'("responses": \[)((\n| )*)(".*"),((?:(?:\n| )*".*",)*(?:\n| )*".*")'
+    repl = r'\1\2\4'
+    text = re.sub(pattern, repl, text)
+    return text
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)
