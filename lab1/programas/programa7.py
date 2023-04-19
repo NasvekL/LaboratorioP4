@@ -2,11 +2,7 @@
 import re
 import sys
 
-def prog(texto):
-    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*\],(?:\n| )*"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
-    #                                    0(  )                        1(                                    )                                 
-    
-    
+def prog(texto):    
     #Cambiamos tag
     pattern = r'("tag": )"(.*)"'
     string = texto  
@@ -26,14 +22,6 @@ def prog(texto):
     pattern = r'("responses": \[)((\n| )*)((?:(?:\n| )*".*",)*(?:\n| )*".*")'
     repl = r'\1\2"R"'
     text = re.sub(pattern, repl, text)
-
-
-
-
-
-    
-    
-      
     return text
 
 if __name__ == '__main__':
