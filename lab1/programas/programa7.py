@@ -2,11 +2,7 @@
 import re
 import sys
 
-def prog(texto):
-    match = re.findall(r'"tag": "(.*)",(?:\n| )*"patterns": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")(?:\n| )*\],(?:\n| )*"responses": \[((?:(?:\n| )*".*",)*(?:\n| )*".*")', texto, re.MULTILINE)
-    #                                    0(  )                        1(                                    )                                 
-    
-    
+def prog(texto):    
     #Cambiamos tag
     pattern = r'("tag": )"(.*)"'
     string = texto  
