@@ -2,60 +2,81 @@
    "intents":[
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "I am not program for this, please ask appropriate query"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "please use appropriate language",
-      "Maintaining decency would be appreciated"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Academic calender is given to you by your class-soordinators after you join your respective classes"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Our university encourages all-round development of students and hence provides sports facilities in the campus. For more details visit<a target=\"_blank\" href=/\"(LINK IF HAVE)\">here</a>"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "I am glad I helped you",
-      "welcome, anything else i can assist you with?"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "I can answer to low-intermediate questions regarding college",
-      "You can ask me questions regarding college, and i will try to answer them"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "We are Proud to tell you that our college provides ragging free environment, and we have strict rules against ragging"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "HODs differ for each branch, please be more specific like: (HOD it)"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 }

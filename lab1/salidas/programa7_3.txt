@@ -2,36 +2,51 @@
    "intents":[
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "College is open 8am-5pm Monday-Saturday!"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "You can contact at: NUMBER"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Our university offers Information Technology, computer Engineering, Mechanical engineering,Chemical engineering, Civil engineering and extc Engineering."
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "For Fee detail visit <a target=\"_blank\" href=\"LINK\"> here</a>"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "<a target=\"_blank\" href=\"ADD YOU GOOGLE MAP LINK HERE\"> here</a>"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 }

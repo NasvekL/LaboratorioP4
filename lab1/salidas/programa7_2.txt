@@ -2,18 +2,21 @@
    "intents":[
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "College students"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "You can call me Mind Reader.",
-      "I'm Mind Reader",
-      "I am a Chatbot.",
-      "I am your helper"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 }

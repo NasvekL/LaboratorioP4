@@ -2,50 +2,71 @@
    "intents":[
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Here is the Academic Calendar  <a target=\"_blank\" href=\"YOUR ACADEMIC CALENDER\">website</a>"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Application can also be submitted online through the Unversity's  <a target=\"_blank\" href=\"LINK OF ADMISSION DOCUMENT\">website</a>"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Many government scholarships are supported by our university. For details and updates visit <a target=\"_blank\" href=\"(SCHOLARSHIP DETAILS LINK)\">here</a>"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Our university's Engineering department provides fully AC Lab with internet connection, smart classroom, Auditorium, library,canteen"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "For IT, Computer and extc 60 per branch and seat may be differ for different department."
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "ENTER YOUR OWN UNIVERSITY UNIFORM CIRCULER"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 },
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "For the various committe in college contact this number: ADD NUMBER"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 }

@@ -2,10 +2,11 @@
    "intents":[
  {
    "tag": "T",
-   "patterns": ["P"], "responses": [
-      "Hello!",
-      "Good to see you again!",
-      "Hi there, how can I help?"
+   "patterns": [
+      "P"
+   ],
+   "responses": [
+      "R"
    ],
    "context_set": ""
 }
