@@ -20,12 +20,12 @@ class Estudiante: public Usuario{
         ~Estudiante();
         Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, Fecha nacimiento);
         //Otras operaciones
-        Set(DTNotificación) verNotificaciones();
+        set<DTNotificación> verNotificaciones();
         DTEstudiante getDTEstudiante();
-        Set(string) getCursosInscriptosSA();
-        Set(DTCurso) obtenDTCurso();
-        Set(int) obtenerProgreso();
-        Set<Inscripcion*>& Inscripciones();  //PseudoAtributo
+        set<string> getCursosInscriptosSA();
+        set<DTCurso> obtenDTCurso();
+        set<int> obtenerProgreso();
+        set<Inscripcion*>& Inscripciones();  //PseudoAtributo
         //Faltan los casos de uso que me permiten agregar y eliminar inscripciones
 };
 

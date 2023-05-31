@@ -16,7 +16,7 @@ class Curso{
         string descripcion;
         nivelDeDificutlad nivelDeDif;
         bool Habilitado;
-        Set(DTCurso) previas; 
+        set(DTCurso) previas; 
         //Pseudoatributos
         Idioma* seDictaEn;
         Profesor* loDicta;
@@ -39,8 +39,8 @@ class Curso{
         //Obtener Pseudoatributos
         Idioma* idiomas();
         Profesor* profesores();
-        Set<Leccion*>& lecciones(); 
-        Set<Inscripcion*>& inscripciones();
+        set<Leccion*>& lecciones(); 
+        set<Inscripcion*>& inscripciones();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
 

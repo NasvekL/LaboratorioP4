@@ -5,7 +5,7 @@
 
 class RellenarPalabras:public Ejercicio{
     private:
-        list<string> ListadePalabras;
+        list<string> listaDePalabras;
     public:
         list<string> getlista();
         bool esCorrecto(list<string>);

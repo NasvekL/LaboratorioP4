@@ -20,13 +20,13 @@ class Profesor: public Usuario{
         ~Profesor();
         Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto);
         //Otras operaciones
-        Set(DTNotificacion) verNotificaciones()
+        set<DTNotificacion> verNotificaciones()
         DTProfesor getDTProfesor()
-        Set(DTCurso) obtenerDTCurso()
+        set<DTCurso> obtenerDTCurso()
         int obtenerPromedio()
         //Obtener Pseudoatributos
-        Set<Idioma*>& Idiomas();
-        Set<Curso*>& Cursos();
+        set<Idioma*>& Idiomas();
+        set<Curso*>& Cursos();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
 
