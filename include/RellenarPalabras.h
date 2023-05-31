@@ -1,5 +1,8 @@
-using namespace std;
-#include <string>
+#ifndef RELLENARPALABRAS
+#define RELLENARPALABRAS
+#include "Utils.h"
+#include "Ejercicio.h"
+
 class RellenarPalabras:public Ejercicio{
     private:
         list<string> ListadePalabras;
@@ -7,5 +10,8 @@ class RellenarPalabras:public Ejercicio{
         list<string> getlista();
         bool esCorrecto(list<string>);
         void aumentarProgreso(string estudiante);
-        RellenarPalabras(solucion list<string>,letra string,idEjercicio int, Descripcion string);
+        RellenarPalabras(list<string> solucion,string letra,int idEjercicio, string descripcion);
 };
+
+
+#endif

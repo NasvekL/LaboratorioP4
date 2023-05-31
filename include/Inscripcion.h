@@ -1,14 +1,17 @@
-
+#ifndef INSCRIPCION
+#define INSCRIPCION
+#include "Utils.h"
+#include "Curso.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Inscripcion{
     private:
-        Fecha Fecha;
-        bool Aprobado;
-        int LeccionActual;
+        Fecha fecha;
+        bool aprobado;
+        int leccionActual;
         //Pseudoatributos
         Progreso* prog;
-        Curso* inscripto_a;
+        Curso* inscriptoA;
     public:
         //Getters
         Fecha getFecha();
@@ -16,9 +19,8 @@ class Inscripcion{
         int getLeccionActual();
         //Create y destroy
         ~Inscripcion();
-        
+    
+};
 
 
-
-
-}
+#endif

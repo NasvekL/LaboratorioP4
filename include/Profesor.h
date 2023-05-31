@@ -1,4 +1,7 @@
-
+#ifndef PROFESOR
+#define PROFESOR
+#include "Utils.h"
+#include "Usuario.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Curso;
@@ -6,10 +9,10 @@ class Idioma;
 
 class Profesor: public Usuario{
     private:
-        string Instituto;
+        string instituto;
         //Pseudoatributos
-        set<Idioma*> idiomas_;  
-        set<Curso*> cursos_;
+        set<Idioma*> idiomas;  
+        set<Curso*> cursos;
     public:
         //Getters
         string getInstituto();
@@ -26,3 +29,6 @@ class Profesor: public Usuario{
         Set<Curso*>& Cursos();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
+
+
+#endif
