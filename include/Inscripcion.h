@@ -4,6 +4,8 @@
 #include "Curso.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
+class Progreso;
+
 class Inscripcion{
     private:
         Fecha fecha;
