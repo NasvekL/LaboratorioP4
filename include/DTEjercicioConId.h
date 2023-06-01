@@ -7,7 +7,12 @@ class DTEjercicioConId {
         string descripcion;
 
     private:
+        int getIdEjercicio();
+        string getDescripcion();
+        string getLetra();
 
+        ~DTEjercicioConId();
+        
 
 
 
