@@ -2,6 +2,8 @@
 #define PROFESOR
 #include "Utils.h"
 #include "Usuario.h"
+#include "DTNotificacion.h"
+#include "DTProfesor.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Curso;
@@ -20,10 +22,10 @@ class Profesor: public Usuario{
         ~Profesor();
         Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto);
         //Otras operaciones
-        set<DTNotificacion> verNotificaciones()
-        DTProfesor getDTProfesor()
-        set<DTCurso> obtenerDTCurso()
-        int obtenerPromedio()
+        set<DTNotificacion> verNotificaciones();
+        DTProfesor getDTProfesor();
+        set<DTCurso> obtenerDTCurso();
+        int obtenerPromedio();
         //Obtener Pseudoatributos
         set<Idioma*>& Idiomas();
         set<Curso*>& Cursos();

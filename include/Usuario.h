@@ -11,6 +11,7 @@ class Usuario:public IObserver{
         string descripcion;
         set<DTNotificacion> notificaciones;
     public:
+        //getters
         string getContrasenia();
         string getDescripcion();
         string getNick();

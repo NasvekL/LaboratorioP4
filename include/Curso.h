@@ -1,7 +1,7 @@
 #ifndef CURSO
 #define CURSO
 #include "Utils.h"
-
+#include "DTCurso.h"
 class Idioma;
 class Inscripcion;
 class Leccion;
@@ -14,9 +14,9 @@ class Curso{
     private:
         string nombre;
         string descripcion;
-        nivelDeDificutlad nivelDeDif;
+        nivelDeDificultad nivelDeDif;
         bool Habilitado;
-        set(DTCurso) previas; 
+        set<DTCurso> previas; 
         //Pseudoatributos
         Idioma* seDictaEn;
         Profesor* loDicta;
@@ -26,11 +26,11 @@ class Curso{
         //Getters
         string getNombreCurso();
         string getDescripcion();
-        nivelDeDificutlad getNivelDeDificultad();
+        nivelDeDificultad getNivelDeDificultad();
         bool getHabilitado();
         //Create y destroy
         ~Curso();
-        Curso(string nombre, string descripcion, nivelDeDificutlad nivel, bool habilitado, Set(DTCurso) previas);
+        Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, Set(DTCurso) previas);
         //Otras operaciones
         Ejercicio seleccionar(int idEjercicio);
         int getPromedio(Profesor p);

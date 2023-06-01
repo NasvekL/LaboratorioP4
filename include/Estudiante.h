@@ -20,7 +20,7 @@ class Estudiante: public Usuario{
         ~Estudiante();
         Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, Fecha nacimiento);
         //Otras operaciones
-        set<DTNotificación> verNotificaciones();
+        set<DTNotificacion> verNotificaciones();
         DTEstudiante getDTEstudiante();
         set<string> getCursosInscriptosSA();
         set<DTCurso> obtenDTCurso();
