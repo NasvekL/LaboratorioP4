@@ -1,3 +1,5 @@
+#ifndef DTPROFESORSC
+#define DTPROFESORSC
 #include "Utils.h"
 
 class DTProfesorSC {
@@ -16,7 +18,7 @@ class DTProfesorSC {
         DTProfesorSC(string nickname, string nombre, string descripcion, string instituto);
 
 };
-
+#endif;
 
 
 
