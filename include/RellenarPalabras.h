@@ -10,7 +10,9 @@ class RellenarPalabras:public Ejercicio{
         list<string> getlista();
         bool esCorrecto(list<string>);
         void aumentarProgreso(string estudiante);
-        RellenarPalabras(list<string> solucion,string letra,int idEjercicio, string descripcion);
+        //constructor destructor
+        RellenarPalabras(list<string> listaDePalabras,int idEjercicio,string descripcion,string letra,Leccion* Lec);
+        ~RellenarPalabras();
 };
 
 
