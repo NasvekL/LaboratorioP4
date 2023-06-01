@@ -11,7 +11,11 @@ class DTProfesorSC {
         string getDescripcion();
         string getNickname();
         string getNombre();
-}
+
+        ~DTProfesorSC();
+        DTProfesorSC(string nickname, string nombre, string descripcion, string instituto);
+
+};
 
 
 
