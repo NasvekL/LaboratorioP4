@@ -1,3 +1,5 @@
+#ifndef DTERCICIOCONID
+#define DTEJERCICIOCONID
 #include "Utils.h"
 
 class DTEjercicioConId { 
@@ -12,11 +14,8 @@ class DTEjercicioConId {
         string getLetra();
 
         ~DTEjercicioConId();
-        
-
-
-
-
+        DTProfesor(int IdEjercicio, string letra, string descripcion);
 
 
 };
+#endif;
