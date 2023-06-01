@@ -2,6 +2,9 @@
 #define ESTUDIANTE
 #include "Utils.h"
 #include "Usuario.h"
+#include "DTEstudiante.h"
+#include "DTNotificacion.h"
+#include "DTCurso.h"
 
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 class Inscripcion;
