@@ -2,11 +2,12 @@
 #define IDIOMA
 #include "Utils.h"
 #include "Usuario.h"
-
+#include "IObserver.h"
 class Idioma{
     private:
         string nombreIdioma;
         void addIdioma(); //notificar observadores
+        set<IObserver> observers;
     public:
        //setters
        void setNombreIdioma(string nombreIdioma);
