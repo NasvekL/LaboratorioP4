@@ -2,8 +2,9 @@
 
 class DTEjercicioConId { 
     public:
-
-
+        int IdEjercicio;
+        string letra;
+        string descripcion;
 
     private:
 
@@ -13,4 +14,4 @@ class DTEjercicioConId {
 
 
 
-}
+};
