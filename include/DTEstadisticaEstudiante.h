@@ -7,17 +7,16 @@ class DTEstadisticasEstudiante {
     public:
         
 
-
         Dictionary(cursoClave: String,valorProgreso: int);
 
 
+        ~DTEstadisticaEstudiante();
 
 
 
 
 
-
-}
+};
 
 
 

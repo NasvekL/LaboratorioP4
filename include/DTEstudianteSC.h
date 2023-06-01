@@ -15,7 +15,7 @@ class DTEstudianteSC {
         Fecha getNacimineto();
 
         ~DTEstudianteSC();
-        DTEstudiante(string nickname, string nombre, string descripcion, string pais, Fecha nacimiento);
+        DTEstudianteSC(string nickname, string nombre, string descripcion, string pais, Fecha nacimiento);
 
 };
 

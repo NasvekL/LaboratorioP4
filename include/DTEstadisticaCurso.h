@@ -1,16 +1,23 @@
 #include "Utils.h"
 
-class DTEstadisticasEstudiante { 
+class DTEstadisticaCurso { 
+    private:
+        ArrayList<String> CursosPropuestos; 
+        ArrayList<Integer> promedioCurso;
+
     public:
 
 
-
-    private:
-
-
-
-
+    
+        
+        DTCurso infoCurso();
+        int gradoAvance();
 
 
+        ~DTEstadisticaCurso();
 
-}
+
+
+
+
+};
