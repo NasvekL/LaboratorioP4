@@ -8,11 +8,18 @@ class Idioma{
         string nombreIdioma;
         void addIdioma(); //notificar observadores
     public:
-        string suscribir(nick string);
+       //setters
+       void setNombreIdioma(string nombreIdioma);
+       //getters
+        string getNombreIdioma();
+       //operaciones 
+        string suscribir(string nick);
         void agregar(Usuario u); //agregar sucriptor
         void eliminar(Usuario u); //eliminar suscriptor
-        set<string> suscripciones(nick string);
-        idioma(string nombreIdioma);
+        set<string> suscripciones(string nick);
+        //constructor y destructor
+        ~Idioma();
+        Idioma(string nombreIdioma);
         //falta set de suscriptores
         // falta set de profesores
         //falta set de cursos
