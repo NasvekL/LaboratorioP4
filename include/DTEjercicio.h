@@ -1,6 +1,7 @@
 #ifndef DTERCICIO
 #define DTEJERCICIO
 #include "Utils.h"
+#include "DTProfesor.h"//???????????????
 
 class DTEjercicio { 
     public:
