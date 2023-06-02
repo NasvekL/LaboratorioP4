@@ -1,23 +1,25 @@
+#ifndef DTESTADISTICAPROFESOR
+#define DTESTADISTICAPROFESOR
 #include "Utils.h"
 
 class DTEstadisticasEstudiante { 
     private:
         ArrayList<Integer> porcetajesCursos;
-        ArrayList<String> Cursos;
+        ArrayList<String> cursos;
     public:
-        
+        ArrayList<Integer> getPorcentajes();
+        ArrayList<String> getCursos();
 
-        Dictionary(cursoClave: String,valorProgreso: int);
-
+        map<string, int> estadoEstudiante(); //curso clave y valor progreso
 
         ~DTEstadisticaEstudiante();
-
+        DTEstadisticasEstudiante(ArrayList<Integer> porcetajesCursos, ArrayList<String> cursos);
 
 
 
 
 };
-
+#endif;
 
 
 

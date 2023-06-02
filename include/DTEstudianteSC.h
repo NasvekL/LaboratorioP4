@@ -1,3 +1,5 @@
+#ifndef DTESTUDIANTESC
+#define DTESTUDIANTESC
 #include "Utils.h"
 
 class DTEstudianteSC {
@@ -18,6 +20,6 @@ class DTEstudianteSC {
         DTEstudianteSC(string nickname, string nombre, string descripcion, string pais, Fecha nacimiento);
 
 };
-
+#endif;
 
 
