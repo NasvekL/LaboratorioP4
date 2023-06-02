@@ -4,11 +4,10 @@
 #include "Curso.h"
 #include "DTCurso.h"
 #include "DTLeccion.h"
-#include "DTEjercicioConId.h"
+#include "DTEjercicio.h"
 #include "DTEstadisticaCurso.h"
 #include "DTProfesor.h"
 //#include "DTIdioma.h"??
-#include "DTEjercicio.h"
 
 
 
@@ -37,7 +36,7 @@ class IControladorCurso{
     public:
         // Método estático para obtener la instancia única del controlador
         static IControladorCurso* getInstancia();
-        static void deleteInstancia();
+        ~IControladorCurso();
 
         //Getters
         DTCurso getDatosDeCurso();
