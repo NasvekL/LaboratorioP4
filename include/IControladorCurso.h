@@ -6,15 +6,23 @@
 #include "DTLeccion.h"
 #include "DTEjercicioConId.h"
 #include "DTEstadisticaCurso.h"
-
+#include "DTProfesor.h"
+//#include "DTIdioma.h"??
 
 
 
 class IControladorCurso{
     private:
         set<Curso> cursos;
+        set<Idioma> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
+
+        //Atributos auxiliares
         DTCurso datosDeCurso;
         DTLeccion datosDeLeccion;
+        DTProfesor datosDeProfesor;
+        string datoIdioma;
+        set<DTCurso*> datosPrevias;
+
 
         // Variable estática para almacenar la instancia única del controlador
         static IControladorCurso* instancia;
@@ -29,9 +37,16 @@ class IControladorCurso{
         //Getters
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
+        DTProfesor getDatosDeProfesor();
+        string getDatoIdioma();
+        set<DTCurso*> getDatosPrevias();
         //Setters
-        void setDatosDeCurso(DTCurso datos);    //void DatosCurso(DTCurso data)
-        void setDatosDeLeccion(DTLeccion datos);//void IngresaLeccion(DTLeccion lec);
+        void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
+        void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
+        void setDatosDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
+        void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
+        void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
+
 
 
         //Operaciones para modificar el set de cursos
@@ -44,18 +59,14 @@ class IControladorCurso{
         DTEstadisticaCurso estadisticasCurso(string curso);
         set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();
+        set<string> listarIdiomasProfesor();
+        set<string> listarIdiomas();
 
 
         //Operaciones sin clasificar
-        void seleccionProfesor(string nick);
-        set<string> ListarIdiomasProfesor();
-        void seleccionIdioma(string idioma);
-        void SeleccionPrevias(set<string> previas);
         void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
         void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
-        set<string> ListarIdiomas();
         set<string> CursosInscriptoSinAprobar(string nick);
-        set<DTEjercicioConId> seleccionarCurso(string curso);//por que seleccionar curso devuelve un set de ejercicios con id?
         void seleccionarEjercicio(int idEjercicio);//hay montones de cosas como esta. es mas facil usar getters y setters
         bool completarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
         bool traducir(string solucion, string estudiante, int IdEjercicio);
@@ -63,6 +74,11 @@ class IControladorCurso{
         void suscribirUsuario(set<string> idiomas);
         set<string> ListarIdiomasSuscrito(string nick);
         void eliminarSuscripciones(set<string> idiomas);
+
+        //Operaciones que creo que estan mal
+
+        //Operaciones que no entiendo
+        set<DTEjercicioConId> seleccionarCurso(string curso);//por que seleccionar curso devuelve un set de ejercicios con id?
 
 
 

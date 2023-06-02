@@ -7,6 +7,10 @@ class DTEjercicioConId {
         int IdEjercicio;
         string letra;
         string descripcion;
+        //si es traduccion
+        string solucionTraduccion;
+        //si es completarPalabras
+        set<string> solucionCompletarPalabras;
 
     private:
         int getIdEjercicio();
@@ -14,7 +18,7 @@ class DTEjercicioConId {
         string getLetra();
 
         ~DTEjercicioConId();
-        DTProfesor(int IdEjercicio, string letra, string descripcion);
+        DTProfesor noSeQueHaceEstaOperacionNoTeniaNombre(int IdEjercicio, string letra, string descripcion);//?????
 
 
 };
