@@ -1,8 +1,8 @@
-#ifndef DTERCICIOCONID
-#define DTEJERCICIOCONID
+#ifndef DTERCICIO
+#define DTEJERCICIO
 #include "Utils.h"
 
-class DTEjercicioConId { 
+class DTEjercicio { 
     public:
         int IdEjercicio;
         string letra;
@@ -17,7 +17,7 @@ class DTEjercicioConId {
         string getDescripcion();
         string getLetra();
 
-        ~DTEjercicioConId();
+        ~DTEjercicio();
         DTProfesor noSeQueHaceEstaOperacionNoTeniaNombre(int IdEjercicio, string letra, string descripcion);//?????
 
 
