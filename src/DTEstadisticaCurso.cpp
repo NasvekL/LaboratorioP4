@@ -1,23 +1,27 @@
 #include "../include/DTEstadisticaCurso.h"
 
-        
-        DTCurso infoCurso();
-        int gradoAvance();
 
-        ~DTEstadisticaCurso();
-        DTEstadisticaCurso(ArrayList<Integer> promedioCurso, ArrayList<String> CursosPropuestos);
-
-ArrayList<String> DTEstadisticaCurso :: getCursosPropuestos(){
-    return CursosPropuestos;
+String DTEstadisticaCurso :: getCurso(){
+    return curso;
 }
 
-ArrayList<int> DTEstadisticaCurso :: getpromedioCurso(){
+int DTEstadisticaCurso :: getpromedioCurso(){
     return promedioCurso;
 }
 
-         DTCurso infoCurso();
-        int gradoAvance();
+DTEstadisticaCurso :: ~DTEstadisticaCurso(){
 
-        ~DTEstadisticaCurso();
-        DTEstadisticaCurso(ArrayList<Integer> promedioCurso, ArrayList<String> CursosPropuestos);
+}
+ 
+DTEstadisticaCurso :: DTEstadisticaCurso(ArrayList<Integer> promedioCurso, ArrayList<String> CursosPropuestos){
+    this->promedioCurso = promedioCurso
+    this->cursosProppuestos = CursosPropuestos;
+}
 
+DTCurso infoCurso(){
+    return curso;
+}
+
+int DTEstadisticaCurso:: gradoAvance(){
+    return promedioCurso;
+}

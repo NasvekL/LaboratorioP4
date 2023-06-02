@@ -1,17 +1,17 @@
 #ifndef DTESTADISTICACURSO
 #define DTESTADISTICACURSO
 #include "Utils.h"
+class DTCurso;
 
 class DTEstadisticaCurso { 
     private:
-        //Falta arreglar el tipo de dato de los atributos
-        ArrayList<String> CursosPropuestos; 
-        ArrayList<int> promedioCurso;
+        DTCurso curso; 
+        int promedioCurso;
 
     public:
 
-        ArrayList<String> getCursosPropuestos();
-        ArrayList<int> getpromedioCurso;
+        String getCurso();
+        int getpromedioCurso;
         
         DTCurso infoCurso();
         int gradoAvance();
