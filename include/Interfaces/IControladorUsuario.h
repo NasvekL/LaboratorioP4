@@ -1,6 +1,6 @@
 #ifndef ICONTROLADORUSUARIO
 #define ICONTROLADORUSUARIO
-#include "Utils.h"
+#include "../Utils.h"
 
 
 class IControladorUsuario{
@@ -15,7 +15,7 @@ class IControladorUsuario{
         virtual void seleccionPrevias(set<string> previas);
         virtual void ingresaLeccion(DTLeccion lec);
         virtual void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
-        virtual void agregarTradu(string descripcion,string fraseATraducir, strig traduccion);
+        virtual void agregarTradu(string descripcion,string fraseATraducir, string traduccion);
         virtual set<string> listarIdiomas();
         virtual set<string> listarCursos();
         virtual bool altaCurso()
@@ -35,3 +35,4 @@ class IControladorUsuario{
 
 
 
+#endif
