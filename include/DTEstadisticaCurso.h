@@ -2,6 +2,7 @@
 
 class DTEstadisticaCurso { 
     private:
+        //Falta arreglar el tipo de dato de los atributos
         ArrayList<String> CursosPropuestos; 
         ArrayList<Integer> promedioCurso;
 

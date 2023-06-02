@@ -30,7 +30,7 @@ class Curso{
         bool getHabilitado();
         //Create y destroy
         ~Curso();
-        Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, Set(DTCurso) previas);
+        Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, set<DTCurso> previas);
         //Otras operaciones
         Ejercicio seleccionar(int idEjercicio);
         int getPromedio(Profesor p);
