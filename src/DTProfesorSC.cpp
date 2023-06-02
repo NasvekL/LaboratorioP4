@@ -1,23 +1,23 @@
 #include "../include/DTProfesorSC.h"
 
 
-string DTProfesorSC:: getInstituto {
+string DTProfesorSC:: getInstituto() {
     return instituto;
 }
 
-string DTProfesorSC :: getDescripcion {
+string DTProfesorSC :: getDescripcion() {
     return descripcion;
 }
 
-string DTProfesorSC :: getNickname {
+string DTProfesorSC :: getNickname() {
     return Nickname;
 }
 
-string DTProfesorSC :: getNombre {
+string DTProfesorSC :: getNombre() {
     return nombre;
 }
 
-DTProfesorSC :: ~DTProfesorSC{
+DTProfesorSC :: ~DTProfesorSC() {
 
 }
 

@@ -8,19 +8,19 @@ DTFecha :: DTFecha(int dia, int mes, int anio) {
 
 }
 
-DTFecha::~DTFecha{
+DTFecha::~DTFecha(){
 }
 
       
-int DTFecha:: getDia {
+int DTFecha:: getDia() {
     return dia;
 }
 
-int DTFecha:: getMes {
+int DTFecha:: getMes() {
     return mes;
 }
 
-int DTFecha:: getAnio {
+int DTFecha:: getAnio() {
     return anio;
 }
 

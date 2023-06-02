@@ -6,19 +6,17 @@ class DTCurso;
 
 class DTEstadisticasProfesor { 
     private:
-    
-        DTCurso Curso;
-        int PromedioCurso; 
-
+        ArrayList<Integer> promPorcetajesCursos;
+        ArrayList<String> cursos;
     public:
 
         DTCurso getCurso();
-        int getPromedioCurso; //Este es un atributo calculado
+        int getPromPorcetajesCursos(); //Este es un atributo calculado
 
-        Dictionary(cursoClave: String,valorProgresoPromedio: int)
+        map<string, int> estadoCurso(); //CursoClave y valor progreso promedio
 
         ~DTEstadisticaProfesor();
-        DTEstadisticaProfesor(DTCurso Curso, int PromedioCurso);
+        DTEstadisticaProfesor(DTCurso Curso, int promPorcetajesCursos);
 
 };
 
