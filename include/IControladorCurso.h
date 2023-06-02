@@ -8,6 +8,7 @@
 #include "DTEstadisticaCurso.h"
 #include "DTProfesor.h"
 //#include "DTIdioma.h"??
+#include "DTEjercicio.h"
 
 
 
@@ -22,6 +23,7 @@ class IControladorCurso{
         DTProfesor datosDeProfesor;
         string datoIdioma;
         set<DTCurso*> datosPrevias;
+        DTEjercicio datosEjercicio;
 
 
         // Variable estática para almacenar la instancia única del controlador
