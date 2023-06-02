@@ -5,12 +5,12 @@
 class DTEstadisticaCurso { 
     private:
         ArrayList<String> CursosPropuestos; 
-        ArrayList<Integer> promedioCurso;
+        ArrayList<int> promedioCurso;
 
     public:
 
         ArrayList<String> getCursosPropuestos();
-        ArrayList<Integer> getpromedioCurso;
+        ArrayList<int> getpromedioCurso;
         
         DTCurso infoCurso();
         int gradoAvance();
