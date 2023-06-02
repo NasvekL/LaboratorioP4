@@ -16,6 +16,9 @@ class IControladorCurso{
     private:
         set<Curso> cursos;
         set<Idioma> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
+        
+        //Pseudoatributos...?
+        map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
 
         //Atributos auxiliares
         DTCurso datosDeCurso;
@@ -42,19 +45,28 @@ class IControladorCurso{
         DTProfesor getDatosDeProfesor();
         string getDatoIdioma();
         set<DTCurso*> getDatosPrevias();
+        DTEjercicio getDatosEjercicio();
         //Setters
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         void setDatosDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
+        void setDatosEjercicioComletarpPalabras(DTEjercicio datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
+        void setDatosEjercicioTraduccion(DTEjercicio datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
 
 
 
         //Operaciones para modificar el set de cursos
         bool altaCurso();
         void eliminarCurso(string curso);
+        void habilitarCurso(string curso);
 
+        //Operaciones para modificar el set de idiomas
+        bool altaIdioma();
+
+        //Operaciones para modificar el set de ejercicios
+        void agregarEjercicio(DTEjercicio datos);
 
         //Operaciones para obtener informacion
         set<string> listarProfe();
@@ -63,29 +75,28 @@ class IControladorCurso{
         set<DTCurso> listarDTCursos();
         set<string> listarIdiomasProfesor();
         set<string> listarIdiomas();
+        bool solucionCorrectacompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
+        bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
+        void seleccionarEjercicio(int idEjercicio);
+        set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso);//set<DTEjercicio> seleccionarCurso(string curso);
 
-
-        //Operaciones sin clasificar
-        void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
-        void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
-        set<string> CursosInscriptoSinAprobar(string nick);
-        void seleccionarEjercicio(int idEjercicio);//hay montones de cosas como esta. es mas facil usar getters y setters
-        bool completarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
-        bool traducir(string solucion, string estudiante, int IdEjercicio);
+        //Operaciones de suscripciones
         set<string> consultarSuscripciones(string nick);
         void suscribirUsuario(set<string> idiomas);
-        set<string> ListarIdiomasSuscrito(string nick);
-        void eliminarSuscripciones(set<string> idiomas);
+        set<string> listarIdiomasSuscrito(string nick);//no iria en controlador usuario??
+        void eliminarSuscripciones(set<string> idiomas, string nick);//en el diagrama de clases falta el nick
+
+        //Otras operaciones
+        void limpiarDatos(); //borra todos los datos de los atributos auxiliares
+
+
+
+
+
 
         //Operaciones que creo que estan mal
+        set<string> CursosInscriptoSinAprobar(string nick);// esto no va en controlador usuario??
 
-        //Operaciones que no entiendo
-        set<DTEjercicioConId> seleccionarCurso(string curso);//por que seleccionar curso devuelve un set de ejercicios con id?
-
-
-
-
-        
 };
 
 
