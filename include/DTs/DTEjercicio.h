@@ -19,7 +19,7 @@ class DTEjercicio {
         string getLetra();
 
         ~DTEjercicio();
-        DTProfesor noSeQueHaceEstaOperacionNoTeniaNombre(int IdEjercicio, string letra, string descripcion);//?????
+        DTEjercicio(int IdEjercicio, string letra, string descripcion);
 
 
 };

@@ -28,13 +28,13 @@ class IControladorCurso{
         DTEjercicio datosEjercicio;
 
 
-        // Variable estática para almacenar la instancia única del controlador
+        //Variable estática para almacenar la instancia única del controlador
         static IControladorCurso* instancia;
-        // Constructor privado para evitar la creación de instancias desde fuera de la clase
+        //Constructor privado para evitar la creación de instancias desde fuera de la clase
         IControladorCurso();
 
     public:
-        // Método estático para obtener la instancia única del controlador
+        //Método estático para obtener la instancia única del controlador
         static IControladorCurso* getInstancia();
         ~IControladorCurso();
 
