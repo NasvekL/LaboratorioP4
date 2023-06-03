@@ -9,9 +9,9 @@ class Progreso{
     private:
         int porcentaje;
         //Pseudoatributos
-        Inscripcion* curso
-        Leccion* leccion
-        ejercicios set<ejercicio>
+        Inscripcion* curso;
+        Leccion* leccion;
+        set<Ejercicio*> ejerciciosResueltos;
     public:
         virtual bool esCorrecto(string solucion);
         void aumentarProgreso(string estudiante);
