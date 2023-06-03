@@ -1,7 +1,7 @@
 #ifndef EJERCICIO
 #define EJERCICIO
 #include "../Utils.h"
-
+#include "Progreso.h"
 class Leccion;
 
 class Ejercicio{
@@ -24,7 +24,7 @@ class Ejercicio{
         //constructor y destructor
         ~Ejercicio();
         //operaciones
-        virtual bool esCorrecto(string solucion);
+        virtual bool esCorrecto(string solucion)=0;
         void aumentarProgreso(string estudiante);
 };
 

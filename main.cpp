@@ -47,6 +47,7 @@ int main(){
     //pero en el main se esta trabajando de forma directa con el controlador porque
     //la interfaz es abstracta, entonces no se puede crear una instancia de la interfaz
     //Ergo utilidadInterfaz = 0?
+    //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
     IControladorCurso* interfazCurso = ControladorCurso::getInstancia();
     IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
 
