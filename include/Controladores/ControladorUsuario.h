@@ -19,7 +19,7 @@ class ControladorUsuario : public IControladorUsuario{
         ControladorUsuario * getInstance();
         void guardarDatosEstudiante(DTEstudiante data);
         DTEstadisticaCurso estadisticaCurso(string curso);
-        set<DTCurso> listarCursos();
+        list<DTCurso> listarCursos();
         Usuario obtenerSuscriptor(string user);
         void eliminarNotificaciones();
         set<DTNotificacion> consultarNotificaciones(string nick);

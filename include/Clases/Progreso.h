@@ -20,7 +20,7 @@ class Progreso{
         //getters
         int getPorcentaje();
         //constructor destructor
-        Progreso(int Porcentaje);
+        Progreso(int Porcentaje,Leccion* lec);
         ~Progreso();
 };
 
