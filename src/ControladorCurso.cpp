@@ -7,7 +7,7 @@ ControladorCurso::ControladorCurso() {
     //Poner todas las variables en null
     this->datosDeCurso = nullptr;
     this->datosDeLeccion = nullptr;
-    this->datosDeProfesor = nullptr;
+    this->datoNombreDeProfesor = nullptr;
     this->datoIdioma = nullptr;
     this->datosPrevias = nullptr;
     this->datosEjercicio = nullptr;
@@ -31,8 +31,8 @@ DTCurso ControladorCurso::getDatosDeCurso() {
 DTLeccion ControladorCurso::getDatosDeLeccion() {
     return *datosDeLeccion;
 }
-DTProfesor ControladorCurso::getDatosDeProfesor() {
-    return *datosDeProfesor;
+string ControladorCurso::getDatoNombreDeProfesor() {
+    return *datoNombreDeProfesor;
 }
 string ControladorCurso::getDatoIdioma() {
     return *datoIdioma;
@@ -45,124 +45,132 @@ DTEjercicio ControladorCurso::getDatosEjercicio() {
 }
 
 //Setters
+//no se si funcionaran bien, pasa todo por referencia
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
-    // Implementación pendiente
+    datosDeCurso = &datos;
 }
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
-    // Implementación pendiente
+    datosDeLeccion = &datos;
 }
-void ControladorCurso::setDatosDeProfesor(string nombreProfesor) {
-    // Implementación pendiente
+void ControladorCurso::setDatoNombreDeProfesor(string nombreProfesor) {
+    datoNombreDeProfesor = &nombreProfesor;
 }
 void ControladorCurso::setDatoIdioma(string idioma) {
-    // Implementación pendiente
+    this->datoIdioma = &idioma;
 }
 void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
-    // Implementación pendiente
+    datosPrevias = &previas;
 }
+//Precondicion: solucion de traduccion viene como null
 void ControladorCurso::setDatosEjercicioComletarpPalabras(DTEjercicio datos) {
-    // Implementación pendiente
+    datosEjercicio = &datos;
 }
+//Precondicion: solucion de compPal viene como null
 void ControladorCurso::setDatosEjercicioTraduccion(DTEjercicio datos) {
-    // Implementación pendiente
+    datosEjercicio = &datos;
 }
 
 
 
-
+//Operaciones para modificar el set de cursos
 bool ControladorCurso::altaCurso() {
     // Implementación pendiente
     return false;
 }
-
 void ControladorCurso::eliminarCurso(string curso) {
     // Implementación pendiente
 }
-
 void ControladorCurso::habilitarCurso(string curso) {
     // Implementación pendiente
 }
 
+
+
+//Operaciones para modificar el set de idiomas
 bool ControladorCurso::altaIdioma() {
     // Implementación pendiente
     return false;
 }
 
+
+
+//Operaciones para modificar el set de ejercicios
 void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
     // Implementación pendiente
 }
+
+
+
+//Operaciones para obtener informacion
 
 set<string> ControladorCurso::listarProfe() {
     // Implementación pendiente
     return set<string>();
 }
-
 DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     // Implementación pendiente
     return DTEstadisticaCurso();
 }
-
 set<string> ControladorCurso::listarNombresDeCursos() {
     // Implementación pendiente
     return set<string>();
 }
-
 set<DTCurso> ControladorCurso::listarDTCursos() {
     // Implementación pendiente
     return set<DTCurso>();
 }
-
 set<string> ControladorCurso::listarIdiomasProfesor() {
     // Implementación pendiente
     return set<string>();
 }
-
 set<string> ControladorCurso::listarIdiomas() {
     // Implementación pendiente
     return set<string>();
 }
-
 bool ControladorCurso::solucionCorrectacompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente
     return false;
 }
-
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente
     return false;
 }
-
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
     // Implementación pendiente
 }
-
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     // Implementación pendiente
     return set<DTEjercicio>();
 }
 
+
+
+//Operaciones de suscripciones
 set<string> ControladorCurso::consultarSuscripciones(string nick) {
     // Implementación pendiente
     return set<string>();
 }
-
 void ControladorCurso::suscribirUsuario(set<string> idiomas) {
     // Implementación pendiente
 }
-
 set<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
     // Implementación pendiente
     return set<string>();
 }
-
 void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
     // Implementación pendiente
 }
 
+
+
+//Otras operaciones
 void ControladorCurso::limpiarDatos() {
     // Implementación pendiente
 }
 
+
+
+//Operacion rara
 set<string> ControladorCurso::CursosInscriptoSinAprobar(string nick) {
     // Implementación pendiente
     return set<string>();

@@ -23,7 +23,7 @@ class ControladorCurso: public IControladorCurso{
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
         DTLeccion* datosDeLeccion;
-        DTProfesor* datosDeProfesor;
+        string* datoNombreDeProfesor;
         string* datoIdioma;
         set<DTCurso*>* datosPrevias;
         DTEjercicio* datosEjercicio;
@@ -42,14 +42,14 @@ class ControladorCurso: public IControladorCurso{
         //Getters
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
-        DTProfesor getDatosDeProfesor();
+        string getDatoNombreDeProfesor();
         string getDatoIdioma();
         set<DTCurso*> getDatosPrevias();
         DTEjercicio getDatosEjercicio();
         //Setters
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
-        void setDatosDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
+        void setDatoNombreDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioComletarpPalabras(DTEjercicio datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
