@@ -37,8 +37,8 @@ class IControladorCurso{
 
         //Operaciones virtuales para modificar el set de cursos
         virtual bool altaCurso();
-        virtual void eliminarCurso(string curso);
-        virtual void habilitarCurso(string curso);
+        virtual void eliminarCurso(string nombreCurso);
+        virtual void habilitarCurso(string nombreCurso);
 
         //Operaciones virtuales para modificar el set de idiomas
         virtual bool altaIdioma();

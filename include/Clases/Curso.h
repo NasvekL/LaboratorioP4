@@ -28,7 +28,7 @@ class Curso{
         Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, set<DTCurso> previas);
 
         //GETTERS
-        string getNombreCurso();
+        string getNombreCurso() const; //se puede poner const para indicar que la funcion no modifica el objeto. Si no c++ se queja despues al buscar curso por nombre
         string getDescripcion();
         nivelDeDificultad getNivelDeDificultad();
         bool getHabilitado();

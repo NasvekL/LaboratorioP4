@@ -59,8 +59,8 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones para modificar el set de cursos
         bool altaCurso();
-        void eliminarCurso(string curso);
-        void habilitarCurso(string curso);
+        void eliminarCurso(string nombreCurso);
+        void habilitarCurso(string nombreCurso);
 
         //Operaciones para modificar el set de idiomas
         bool altaIdioma();
