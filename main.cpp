@@ -49,7 +49,7 @@ int main(){
     //Ergo utilidadInterfaz = 0?
     //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
     IControladorCurso* interfazCurso = ControladorCurso::getInstancia();
-    IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
+    IControladorUsuario* interfazUsuario = ControladorUsuario::getInstance();
 
     int opcion = menuPrincipal();
     while(opcion != 0){
