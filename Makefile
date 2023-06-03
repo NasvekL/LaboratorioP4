@@ -2,7 +2,7 @@ CC=g++
 CC-=g++ -c
 
 INC=include/Curso.h include/Ejercicio.h include/Estudiante.h include/Idioma.h include/Inscripcion.h include/Utils.h include/Leccion.h include/Profesor.h include/Progreso.h include/RellenarPalabras.h include/Traduccion.h include/Usuario.h include/ControladorCurso.h include/ControladorUsuario.h include/DTCurso.h include/DTEjercicio.h include/DTEstadisticaCurso.h include/DTEstadisticaEstudiante.h include/DTEstadisticaProfesor.h include/DTEstudiante.h include/DTEstudianteSC.h include/DTFECHA.h include/DTLeccion.h include/DTNotificacion.h include/DTProfesor.h include/DTProfesorSC.h include/IControladorCurso.h include/IControladorUsuario.h include/FactoryController.h include/IObserver.h 
-O=main.o DtObjetoRoto.o JuegoMesa.o Libro.o Ninio.o Objeto.o
+O=main.o Curso.o Ejercicio.o Estudiante.o Idioma.o Inscripcion.o Leccion.o Profesor.o Progreso.o RellenarPalabras.o Traduccion.o Usuario.O ControladorCurso.o ControladorUsuario.o DTCurso.o DTEjercicio.o DTEstadisticaCurso.o DTEstadisticaEstudiante.o DTEstadisticaProfesor.o DTEstudiante.o DTEstudianteSC.o DTLeccion.o DTNotificacion.o DTProfesor.o DTProfesorSC.o IControladorCurso.o IControladorUsuario.o IObserver.o FactoryController.o 
 
 all: ejecutable
 
