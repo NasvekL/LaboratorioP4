@@ -16,16 +16,16 @@ class Curso{
         string descripcion;
         nivelDeDificultad nivelDeDif;
         bool habilitado;
-        set<DTCurso> previas; 
+        list<Curso*> previas; 
         //Pseudoatributos
         Idioma* idiomaDelCurso;
         Profesor* profesorQueLoDicta;
-        set<Leccion*> lecciones;
-        set<Inscripcion*> inscripciones;
+        list<Leccion*> lecciones;
+        list<Inscripcion*> inscripciones;
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
-        Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, set<DTCurso> previas);
+        Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado,Idioma* idioma);
 
         //GETTERS
         string getNombreCurso() const; //se puede poner const para indicar que la funcion no modifica el objeto. Si no c++ se queja despues al buscar curso por nombre

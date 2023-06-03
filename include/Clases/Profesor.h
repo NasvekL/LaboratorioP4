@@ -13,14 +13,14 @@ class Profesor: public Usuario{
     private:
         string instituto;
         //Pseudoatributos
-        set<Idioma*> idiomas;  
-        set<Curso*> cursos;
+        list<Idioma*> idiomas;  
+        list<Curso*> cursos;
     public:
         //Getters
         string getInstituto();
         //Create y destroy
         ~Profesor();
-        Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto);
+        Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,list<Idioma*> idiomas);
         //Otras operaciones
         set<DTNotificacion> verNotificaciones();
         DTProfesor getDTProfesor();
