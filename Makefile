@@ -37,5 +37,7 @@ ControladorCurso.o: src/ControladorCurso.cpp $(INC)
 	$(CC-) src/ControladorCurso.cpp
 ControladorUsuario.o: src/ControladorUsuario.cpp $(INC)
 	$(CC-) src/ControladorUsuario.cpp
+DTCurso.o: src/DTCurso.cpp $(INC)
+	$(CC-) src/DTCurso.cpp
 clean:
 	rm *.o ejecutable
