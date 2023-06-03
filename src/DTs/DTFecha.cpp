@@ -1,4 +1,4 @@
-#include "../include/DtFecha.h"
+#include "../../include/DTs/DTFecha.h"
 
 
 DTFecha :: DTFecha(int dia, int mes, int anio) {

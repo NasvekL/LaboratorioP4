@@ -1,4 +1,4 @@
-#include "../include/DTEjercicio.h"
+#include "../../include/DTs/DTEjercicio.h"
 
 
 int DTEjercicio :: getIdEjercicio(){

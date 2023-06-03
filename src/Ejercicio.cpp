@@ -1,4 +1,4 @@
-#include "../include/Ejercicio.h"
+#include "../include/Clases/Ejercicio.h"
 
 void Ejercicio:: setIdEjercicio(int idEjercicio){
     this->idEjercicio= idEjercicio;

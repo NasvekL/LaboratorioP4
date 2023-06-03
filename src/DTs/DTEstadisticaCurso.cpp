@@ -1,4 +1,4 @@
-#include "../include/DTEstadisticaCurso.h"
+#include "../../include/DTs/DTEstadisticaCurso.h"
 
 
 String DTEstadisticaCurso :: getCurso(){

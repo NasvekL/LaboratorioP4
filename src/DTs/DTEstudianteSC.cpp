@@ -1,4 +1,4 @@
-#include "../include/DTEstudianteSC.h"
+#include "../../include/DTs/DTEstudianteSC.h"
 
 
 string DTEstudianteSC :: getPais(){

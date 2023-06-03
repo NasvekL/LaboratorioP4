@@ -1,4 +1,4 @@
-#include "../include/DTEstadisticaProfesor.h"
+#include "../../include/DTs/DTEstadisticaProfesor.h"
 
 
 DTCurso DTEstadisticaProfesor :: getCurso() {

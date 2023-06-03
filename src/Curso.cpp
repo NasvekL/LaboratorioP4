@@ -1,4 +1,4 @@
-#include "../include/Curso.h"
+#include "../include/Clases/Curso.h"
 
 // CONSTRUCTOR Y DESTRUCTOR
 Curso::~Curso() {

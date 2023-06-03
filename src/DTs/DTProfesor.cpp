@@ -1,4 +1,4 @@
-#include "../include/DTProfesor.h"
+#include "../../include/DTs/DTProfesor.h"
 
 
 string DTProfesor:: getInstituto(){

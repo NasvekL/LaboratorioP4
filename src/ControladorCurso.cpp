@@ -1,4 +1,4 @@
-#include "../../include/Controladores/ControladorCurso.h"
+#include "../include/Controladores/ControladorCurso.h"
 
 ControladorCurso* ControladorCurso::instancia = nullptr;
 

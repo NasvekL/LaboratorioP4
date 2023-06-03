@@ -1,4 +1,4 @@
-#include "../include/DTBotificacion.h"
+#include "../../include/DTs/DTNotificacion.h"
 
 
 DTCurso DTNotificacion:: getCurso(){

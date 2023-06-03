@@ -1,4 +1,4 @@
-#include "../include/DTCurso.h"
+#include "../../include/DTs/DTCurso.h"
 
 
 

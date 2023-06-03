@@ -1,4 +1,4 @@
-#include "../include/DTEstadisticaEstudiante.h"
+#include "../../include/DTs/DTEstadisticaEstudiante.h"
 
 ArrayList<Integer> DTEstadisticasEstudiante :: getPorcentajes(){
     return porcentajesCursos;

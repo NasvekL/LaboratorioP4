@@ -1,4 +1,4 @@
-#include "../include/DTProfesorSC.h"
+#include "../../include/DTs/DTProfesorSC.h"
 
 
 string DTProfesorSC:: getInstituto() {
@@ -10,7 +10,7 @@ string DTProfesorSC :: getDescripcion() {
 }
 
 string DTProfesorSC :: getNickname() {
-    return Nickname;
+    return nickname;
 }
 
 string DTProfesorSC :: getNombre() {

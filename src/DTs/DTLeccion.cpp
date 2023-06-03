@@ -1,4 +1,4 @@
-#include "../include/DTLeccion.h"
+#include "../../include/DTs/DTLeccion.h"
 
 int getNumero();
         int getCantidadDe1Ejercicios();
