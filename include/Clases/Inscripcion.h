@@ -1,6 +1,6 @@
 #ifndef INSCRIPCION
 #define INSCRIPCION
-#include "Utils.h"
+#include "../Utils.h"
 #include "Curso.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 

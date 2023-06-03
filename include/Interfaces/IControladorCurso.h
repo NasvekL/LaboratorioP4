@@ -1,12 +1,12 @@
 #ifndef ICONTROLADORCURSO
 #define ICONTROLADORCURSO
-#include "Utils.h"
-#include "Curso.h"
-#include "DTCurso.h"
-#include "DTLeccion.h"
-#include "DTEjercicio.h"
-#include "DTEstadisticaCurso.h"
-#include "DTProfesor.h"
+#include "../Utils.h"
+#include "../Clases/Curso.h"
+#include "../DTs/DTCurso.h"
+#include "../DTs/DTLeccion.h"
+#include "../DTs/DTEjercicio.h"
+#include "../DTs/DTEstadisticaCurso.h"
+#include "../DTs/DTProfesor.h"
 //#include "DTIdioma.h"??
 
 

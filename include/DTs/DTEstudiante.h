@@ -1,7 +1,7 @@
 #ifndef DTESTUDIANTE
 #define DTESTUDIANTE
-#include "Utils.h"
-#include "Usuario.h"
+#include "../Utils.h"
+#include "../Clases/Usuario.h"
 class DTEstudiante{
     private:
         string nickname;

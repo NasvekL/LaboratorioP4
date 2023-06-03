@@ -1,6 +1,6 @@
 #ifndef LECCION
 #define LECCION
-#include "Utils.h"
+#include "../Utils.h"
 #include "Ejercicio.h"
 #include "Estudiante.h"
 class Leccion{

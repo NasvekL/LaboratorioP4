@@ -1,6 +1,6 @@
 #ifndef PROGRESO
 #define PROGRESO
-#include "Utils.h"
+#include "../Utils.h"
 #include "Ejercicio.h"
 #include "Leccion.h"
 #include "Inscripcion.h"

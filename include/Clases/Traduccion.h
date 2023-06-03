@@ -1,6 +1,6 @@
 #ifndef TRADUCCION
 #define TRADUCCION
-#include "Utils.h"
+#include "../Utils.h"
 #include "Ejercicio.h"
 class Traduccion:public Ejercicio{
     private:

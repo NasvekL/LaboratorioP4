@@ -1,9 +1,9 @@
 #ifndef PROFESOR
 #define PROFESOR
-#include "Utils.h"
+#include "../Utils.h"
 #include "Usuario.h"
-#include "DTNotificacion.h"
-#include "DTProfesor.h"
+#include "../DTs/DTNotificacion.h"
+#include "../DTs/DTProfesor.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Curso;

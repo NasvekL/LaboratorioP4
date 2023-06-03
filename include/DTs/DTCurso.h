@@ -1,6 +1,6 @@
 #ifndef DTCURSO
 #define DTCURSO
-#include "Utils.h"
+#include "../Utils.h"
 class DTCurso{
     private:
         string nombre;

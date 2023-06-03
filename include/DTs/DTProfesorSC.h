@@ -1,6 +1,6 @@
 #ifndef DTPROFESORSC
 #define DTPROFESORSC
-#include "Utils.h"
+#include "../Utils.h"
 
 class DTProfesorSC {
     private:

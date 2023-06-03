@@ -1,7 +1,7 @@
 #ifndef CURSO
 #define CURSO
-#include "Utils.h"
-#include "DTCurso.h"
+#include "../Utils.h"
+#include "../DTs/DTCurso.h"
 class Idioma;
 class Inscripcion;
 class Leccion;

@@ -1,8 +1,8 @@
 #ifndef FACTORYCONTROLLER
 #define FACTORYCONTROLLER
 #include "Utils.h"
-#include "IControladorCurso.h"
-#include "IControladorUsuario.h"
+#include "Interfaces/IControladorCurso.h"
+#include "Interfaces/IControladorUsuario.h"
 
 factoryController{
     private:

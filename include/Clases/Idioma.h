@@ -1,8 +1,8 @@
 #ifndef IDIOMA
 #define IDIOMA
-#include "Utils.h"
+#include "../Utils.h"
 #include "Usuario.h"
-#include "IObserver.h"
+#include "../IObserver.h"
 class Idioma{
     private:
         string nombreIdioma;

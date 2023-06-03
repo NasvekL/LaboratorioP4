@@ -1,6 +1,6 @@
 #ifndef DTESTADISTICAPROFESOR
 #define DTESTADISTICAPROFESOR
-#include "Utils.h"
+#include "../Utils.h"
 
 class DTCurso;
 

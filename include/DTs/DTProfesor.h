@@ -1,7 +1,7 @@
 #ifndef DTPROFESOR
 #define DTPROFESOR
-#include "Utils.h"
-#include "Usuario.h"
+#include "../Utils.h"
+#include "../Clases/Usuario.h"
 class DTProfesor{
     private:
         string instituto;

@@ -1,6 +1,6 @@
 #ifndef DTLECCION
 #define DTLECCION
-#include "Utils.h"
+#include "../Utils.h"
 class DTLeccion{
     private:
         int numero;

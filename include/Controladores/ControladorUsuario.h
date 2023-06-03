@@ -1,13 +1,13 @@
 #ifndef CONTROLADORUSUARIO
 #define CONTROLADORUSUARIO
-#include "Utils.h"
-#include "IControladorUsuario.h"
-#include "DTEstudiante.h"
-#include "DTEstadisticaCurso.h"
-#include "DTEstadisticaProfesor.h"
-#include "DTEstadisticaEstudiante.h"
-#include "Usuario.h"
-#include "DTNotificacion.h"
+#include "../Utils.h"
+#include "../Interfaces/IControladorUsuario.h"
+#include "../DTs/DTEstudiante.h"
+#include "../DTs/DTEstadisticaCurso.h"
+#include "../DTs/DTEstadisticaProfesor.h"
+#include "../DTs/DTEstadisticaEstudiante.h"
+#include "../Clases/Usuario.h"
+#include "../DTs/DTNotificacion.h"
 
 
 
@@ -25,4 +25,6 @@ class ControladorUsuario : public IControladorUsuario{
         set<DTNotificacion> consultarNotificaciones(string nick);
         DTEstadisticasProfesor estadisticasProfesor(string profesor);
         //me faltaron algunas
-}
+};
+
+#endif

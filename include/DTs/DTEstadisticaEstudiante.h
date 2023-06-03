@@ -1,6 +1,6 @@
-#ifndef DTESTADISTICAPROFESOR
-#define DTESTADISTICAPROFESOR
-#include "Utils.h"
+#ifndef DTESTADISTICAESTUDIANTE
+#define DTESTADISTICESTUDIANTE
+#include "../Utils.h"
 
 class DTEstadisticasEstudiante { 
     private:

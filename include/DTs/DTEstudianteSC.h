@@ -1,6 +1,6 @@
 #ifndef DTESTUDIANTESC
 #define DTESTUDIANTESC
-#include "Utils.h"
+#include "../Utils.h"
 
 class DTEstudianteSC {
     private:

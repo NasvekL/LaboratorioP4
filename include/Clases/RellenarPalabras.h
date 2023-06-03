@@ -1,6 +1,6 @@
 #ifndef RELLENARPALABRAS
 #define RELLENARPALABRAS
-#include "Utils.h"
+#include "../Utils.h"
 #include "Ejercicio.h"
 
 class RellenarPalabras:public Ejercicio{

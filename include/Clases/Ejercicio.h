@@ -1,6 +1,6 @@
 #ifndef EJERCICIO
 #define EJERCICIO
-#include "Utils.h"
+#include "../Utils.h"
 
 class Leccion;
 

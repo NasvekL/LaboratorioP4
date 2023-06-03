@@ -1,8 +1,8 @@
 #ifndef NOTIFICACION
 #define NOTIFICACION
-#include "Utils.h"
+#include "../Utils.h"
 #include "DTCurso.h"
-#include "Idioma.h"
+#include "../Clases/Idioma.h"
 class DTNotificacion{
     public:
         DTCurso cursoCreado;
