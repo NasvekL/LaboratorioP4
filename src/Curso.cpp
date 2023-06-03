@@ -18,7 +18,7 @@ Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool ha
 }
 
 // GETTERS
-string Curso::getNombreCurso() {
+string Curso::getNombreCurso() const{
     return nombre;
 }
 

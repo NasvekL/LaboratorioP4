@@ -20,8 +20,14 @@ ControladorCurso* ControladorCurso::getInstancia() {
     return instancia;
 }
 
+//Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
-    // Destructor
+    //Borra todos los DTs temporales
+    limpiarDatos();
+    //Elimina la instancia
+    if(instancia != nullptr){
+        delete instancia;
+    }
 }
 
 //Getters
@@ -77,11 +83,30 @@ bool ControladorCurso::altaCurso() {
     // Implementación pendiente
     return false;
 }
-void ControladorCurso::eliminarCurso(string curso) {
+void ControladorCurso::eliminarCurso(string nombreCurso) {
     // Implementación pendiente
 }
-void ControladorCurso::habilitarCurso(string curso) {
-    // Implementación pendiente
+void ControladorCurso::habilitarCurso(string nombreCurso) {
+     // Buscar el objeto con el nombre buscado
+    auto cursoBuscado = std::find_if(cursos.begin(), cursos.end(), [&](const Curso& curso) {
+        return curso.getNombreCurso() == nombreCurso;
+    });
+
+    //verificar que el curso tenga al menos una leccion
+    if(cursoBuscado->getLecciones().empty()){
+        throw std::invalid_argument("El curso no tiene lecciones");
+    }
+    
+
+
+    //Esta todo bastante dudoso este codigo. No se si funcionara
+    // Crear un nuevo curso identico pero con habilitado true
+    Curso nuevoCurso = *cursoBuscado; //aca se copia o se pasa la referencia? no c
+    nuevoCurso.setHabilitado(true);
+    // Eliminar el objeto anterior del conjunto
+    cursos.erase(cursoBuscado);
+    // Insertar el nuevo objeto en el conjunto
+    cursos.insert(nuevoCurso);
 }
 
 
@@ -165,7 +190,24 @@ void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
 
 //Otras operaciones
 void ControladorCurso::limpiarDatos() {
-    // Implementación pendiente
+    if(datosDeCurso != nullptr){
+        delete datosDeCurso;
+    }
+    if(datosDeLeccion != nullptr){
+        delete datosDeLeccion;
+    }
+    if(datoNombreDeProfesor != nullptr){
+        delete datoNombreDeProfesor;
+    }
+    if(datoIdioma != nullptr){
+        delete datoIdioma;
+    }
+    if(datosPrevias != nullptr){
+        delete datosPrevias;
+    }
+    if(datosEjercicio != nullptr){
+        delete datosEjercicio;
+    }
 }
 
 
