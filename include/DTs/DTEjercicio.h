@@ -4,7 +4,7 @@
 #include "DTProfesor.h"//???????????????
 
 class DTEjercicio { 
-    public:
+    private:
         int IdEjercicio;
         string letra;
         string descripcion;
@@ -13,7 +13,7 @@ class DTEjercicio {
         //si es completarPalabras
         set<string> solucionCompletarPalabras;
 
-    private:
+    public:
         int getIdEjercicio();
         string getDescripcion();
         string getLetra();

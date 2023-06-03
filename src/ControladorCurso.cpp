@@ -4,6 +4,13 @@ ControladorCurso* ControladorCurso::instancia = nullptr;
 
 ControladorCurso::ControladorCurso() {
     // Constructor privado
+    //Poner todas las variables en null
+    this->datosDeCurso = nullptr;
+    this->datosDeLeccion = nullptr;
+    this->datosDeProfesor = nullptr;
+    this->datoIdioma = nullptr;
+    this->datosPrevias = nullptr;
+    this->datosEjercicio = nullptr;
 }
 
 ControladorCurso* ControladorCurso::getInstancia() {
@@ -17,63 +24,51 @@ ControladorCurso::~ControladorCurso() {
     // Destructor
 }
 
+//Getters
 DTCurso ControladorCurso::getDatosDeCurso() {
-    // Implementación pendiente
-    return DTCurso();
+    return *datosDeCurso;
 }
-
 DTLeccion ControladorCurso::getDatosDeLeccion() {
-    // Implementación pendiente
-    return DTLeccion();
+    return *datosDeLeccion;
 }
-
 DTProfesor ControladorCurso::getDatosDeProfesor() {
-    // Implementación pendiente
-    return DTProfesor();
+    return *datosDeProfesor;
 }
-
 string ControladorCurso::getDatoIdioma() {
-    // Implementación pendiente
-    return "";
+    return *datoIdioma;
 }
-
 set<DTCurso*> ControladorCurso::getDatosPrevias() {
-    // Implementación pendiente
-    return set<DTCurso*>();
+    return *datosPrevias;
 }
-
 DTEjercicio ControladorCurso::getDatosEjercicio() {
-    // Implementación pendiente
-    return DTEjercicio();
+    return *datosEjercicio;
 }
 
+//Setters
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     // Implementación pendiente
 }
-
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
     // Implementación pendiente
 }
-
 void ControladorCurso::setDatosDeProfesor(string nombreProfesor) {
     // Implementación pendiente
 }
-
 void ControladorCurso::setDatoIdioma(string idioma) {
     // Implementación pendiente
 }
-
 void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
     // Implementación pendiente
 }
-
 void ControladorCurso::setDatosEjercicioComletarpPalabras(DTEjercicio datos) {
     // Implementación pendiente
 }
-
 void ControladorCurso::setDatosEjercicioTraduccion(DTEjercicio datos) {
     // Implementación pendiente
 }
+
+
+
 
 bool ControladorCurso::altaCurso() {
     // Implementación pendiente

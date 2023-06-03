@@ -20,13 +20,13 @@ class ControladorCurso: public IControladorCurso{
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
 
-        //Atributos auxiliares
-        DTCurso datosDeCurso;
-        DTLeccion datosDeLeccion;
-        DTProfesor datosDeProfesor;
-        string datoIdioma;
-        set<DTCurso*> datosPrevias;
-        DTEjercicio datosEjercicio;
+        //Atributos auxiliares con punteros
+        DTCurso* datosDeCurso;
+        DTLeccion* datosDeLeccion;
+        DTProfesor* datosDeProfesor;
+        string* datoIdioma;
+        set<DTCurso*>* datosPrevias;
+        DTEjercicio* datosEjercicio;
 
 
         //Variable estática para almacenar la instancia única del controlador
