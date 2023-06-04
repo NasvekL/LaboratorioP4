@@ -35,3 +35,7 @@ Leccion Ejercicio:: getLeccion(){
 Ejercicio:: ~Ejercicio(){
 
 }
+
+Ejercicio:: Ejercicio(){
+
+}
