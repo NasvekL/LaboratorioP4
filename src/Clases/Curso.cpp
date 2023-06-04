@@ -5,7 +5,7 @@ Curso::~Curso() {
     // Implementación del destructor
 }
 
-Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, set<DTCurso> previas) {
+Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, Idioma* idioma) {
     // Implementación del constructor
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -48,11 +48,11 @@ Profesor* Curso::getProfesorQueLoDicta() {
     return profesorQueLoDicta;
 }
 
-set<Leccion*>& Curso::getLecciones() {
+list<Leccion*>& Curso::getLecciones() {
     return lecciones;
 }
 
-set<Inscripcion*>& Curso::getInscripciones() {
+list<Inscripcion*>& Curso::getInscripciones() {
     return inscripciones;
 }
 
@@ -65,16 +65,16 @@ void Curso::setProfesorQueLoDicta(Profesor* p) {
     profesorQueLoDicta = p;
 }
 
-void Curso::setLecciones(set<Leccion*> lecciones) {
+void Curso::setLecciones(list<Leccion*> lecciones) {
     this->lecciones = lecciones;
 }
 
-void Curso::setInscripciones(set<Inscripcion*> inscripciones) {
+void Curso::setInscripciones(list<Inscripcion*> inscripciones) {
     this->inscripciones = inscripciones;
 }
 
 // OPERACIONES
-Ejercicio Curso::seleccionarEjercicio(int idEjercicio) {
+DTEjercicio Curso::seleccionarEjercicio(int idEjercicio) {
     // Implementación de la operación
 }
 
@@ -82,10 +82,10 @@ int Curso::progresoPromedio() {
     // Implementación de la operación
 }
 
-int Curso::progresoDeEstudiante(Estudiante e) {
+int Curso::progresoDeEstudiante(Estudiante e){
     // Implementación de la operación
 }
 
-DTestadisticaCurso Curso::estadisticasCurso() {
+DTEstadisticaCurso Curso::estadisticasCurso() {
     // Implementación de la operación
 }
