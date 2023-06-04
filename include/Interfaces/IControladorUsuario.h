@@ -1,7 +1,10 @@
 #ifndef ICONTROLADORUSUARIO
 #define ICONTROLADORUSUARIO
 #include "../Utils.h"
-
+#include "../DTs/DTCurso.h"
+#include "../DTs/DTLeccion.h"
+#include "../DTs/DTEjercicio.h"
+#include "../DTs/DTEstadisticaCurso.h"
 
 class IControladorUsuario{
     public:
