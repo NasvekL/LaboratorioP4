@@ -3,6 +3,8 @@
 #include "../Utils.h"
 #include "Usuario.h"
 #include "../Interfaces/IObserver.h"
+
+class Usuario;
 class Idioma{
     private:
         string nombreIdioma;
