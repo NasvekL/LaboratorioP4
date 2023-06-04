@@ -1,8 +1,8 @@
 CC=g++
 CC-=g++ -c
 
-INC=include/Curso.h include/Ejercicio.h include/Estudiante.h include/Idioma.h include/Inscripcion.h include/Utils.h include/Leccion.h include/Profesor.h include/Progreso.h include/RellenarPalabras.h include/Traduccion.h include/Usuario.h include/ControladorCurso.h include/ControladorUsuario.h include/DTCurso.h include/DTEjercicio.h include/DTEstadisticaCurso.h include/DTEstadisticaEstudiante.h include/DTEstadisticaProfesor.h include/DTEstudiante.h include/DTEstudianteSC.h include/DTFECHA.h include/DTLeccion.h include/DTNotificacion.h include/DTProfesor.h include/DTProfesorSC.h include/IControladorCurso.h include/IControladorUsuario.h include/FactoryController.h include/IObserver.h 
-O=main.o Curso.o Ejercicio.o Estudiante.o Idioma.o Inscripcion.o Leccion.o Profesor.o Progreso.o RellenarPalabras.o Traduccion.o Usuario.O ControladorCurso.o ControladorUsuario.o DTCurso.o DTEjercicio.o DTEstadisticaCurso.o DTEstadisticaEstudiante.o DTEstadisticaProfesor.o DTEstudiante.o DTEstudianteSC.o DTLeccion.o DTNotificacion.o DTProfesor.o DTProfesorSC.o IControladorCurso.o IControladorUsuario.o IObserver.o FactoryController.o 
+INC=include/Clases/Curso.h include/Clases/Ejercicio.h include/Clases/Estudiante.h include/Clases/Idioma.h include/Clases/Inscripcion.h include/Utils.h include/Clases/Leccion.h include/Clases/Profesor.h include/Clases/Progreso.h include/Clases/RellenarPalabras.h include/Clases/Traduccion.h include/Clases/Usuario.h include/Controlador/ControladorCurso.h include/Controlador/ControladorUsuario.h include/DTs/DTCurso.h include/DTs/DTEjercicio.h include/DTs/DTEstadisticaCurso.h include/DTs/DTEstadisticaEstudiante.h include/DTs/DTEstadisticaProfesor.h include/DTs/DTEstudiante.h include/DTs/DTEstudianteSC.h include/DTs/DTLeccion.h include/DTs/DTNotificacion.h include/DTs/DTProfesor.h include/DTs/DTProfesorSC.h include/Interfaces/IControladorCurso.h include/Interfaces/IControladorUsuario.h include/Utils.h include/Interfaces/FactoryController.h include/Interfaces/IObserver.h
+O=main.o Curso.o Ejercicio.o Estudiante.o Idioma.o Inscripcion.o Leccion.o Profesor.o Progreso.o RellenarPalabras.o Traduccion.o Usuario.o ControladorCurso.o ControladorUsuario.o DTCurso.o DTEjercicio.o DTEstadisticaCurso.o DTEstadisticaEstudiante.o DTEstadisticaProfesor.o DTEstudiante.o DTEstudianteSC.o DTLeccion.o DTNotificacion.o DTProfesor.o DTProfesorSC.o IControladorCurso.o IControladorUsuario.o IObserver.o FactoryController.o 
 
 all: ejecutable
 
@@ -11,61 +11,61 @@ ejecutable: $(O)
 
 main.o: main.cpp $(INC)
 	$(CC-) main.cpp
-Curso.o: src/Curso.cpp $(INC)
-	$(CC-) src/Curso.cpp
-Ejercicio.o: src/Ejercicio.cpp $(INC)
-	$(CC-) src/Ejercicio.cpp
-Estudiante.o: src/Estudiante.cpp $(INC)
-	$(CC-) src/Estudiante.cpp
-Idioma.o: src/Idioma.cpp $(INC)
-	$(CC-) src/Idioma.cpp
-Inscripcion.o: src/Inscripcion.cpp $(INC)
-	$(CC-) src/Inscripcion.cpp
-Leccion.o: src/Leccion.cpp $(INC)
-	$(CC-) src/Leccion.cpp
-Profesor.o: src/Profesor.cpp $(INC)
-	$(CC-) src/Profesor.cpp
-Progreso.o: src/Progreso.cpp $(INC)
-	$(CC-) src/Progreso.cpp
-RellenarPalabras.o: src/RellenarPalabras.cpp $(INC)
-	$(CC-) src/RellenarPalabras.cpp
-Traduccion.o: src/Traduccion.cpp $(INC)
-	$(CC-) src/Traduccion.cpp
-Usuario.o: src/Usuario.cpp $(INC)
-	$(CC-) src/Usuario.cpp
-ControladorCurso.o: src/ControladorCurso.cpp $(INC)
-	$(CC-) src/ControladorCurso.cpp
-ControladorUsuario.o: src/ControladorUsuario.cpp $(INC)
-	$(CC-) src/ControladorUsuario.cpp
-DTCurso.o: src/DTCurso.cpp $(INC)
-	$(CC-) src/DTCurso.cpp
-DTEjercicio.o: src/DTEjercicio.cpp $(INC)
-	$(CC-) src/DTEjercicio.cpp
-DTEstadisticaCurso.o: src/DTEstadisticaCurso.cpp $(INC)
-	$(CC-) src/DTEstadisticaCurso.cpp
-DTEstadisticaEstudiante.o: src/DTEstadisticaEstudiante.cpp $(INC)
-	$(CC-) src/DTEstadisticaEstudiante.cpp\
-DTEstadisticaProfesor.o: src/DTEstadisticaProfesor.cpp $(INC)
-	$(CC-) src/DTEstadisticaProfesor.cpp
-DTEstudiante.o: src/DTEstudiante.cpp $(INC)
-	$(CC-) src/DTEstudiante.cpp
-DTEstudianteSC.o: src/DTEstudianteSC.cpp $(INC)
-	$(CC-) src/DTEstudianteSC.cpp
-DTLeccion.o: src/DTLeccion.cpp $(INC)
-	$(CC-) src/DTLeccion.cpp
-DTNotificacion.o: src/DTNotificacion.cpp $(INC)
-	$(CC-) src/DTNotificacion.cpp
-DTProfesor.o: src/DTProfesor.cpp $(INC)
-	$(CC-) src/DTProfesor.cpp
-DTProfesorSC.o: src/DTProfesorSC.cpp $(INC)
-	$(CC-) src/DTProfesorSC.cpp
-IControladorCurso.o: src/IControladorCurso.cpp $(INC)
-	$(CC-) src/IControladorCurso.cpp
-IControladorUsuario.o: src/IControladorUsuario.cpp $(INC)
-	$(CC-) src/IControladorUsuario.cpp
-FactoryController.o: src/FactoryController.cpp $(INC)
-	$(CC-) src/FactoryController.cpp
-IObserver.o: src/IObserver.cpp $(INC)
-	$(CC-) src/IObserver.cpp
+Curso.o: src/Clases/Curso.cpp $(INC)
+	$(CC-) src/Clases/Curso.cpp
+Ejercicio.o: src/Clases/Ejercicio.cpp $(INC)
+	$(CC-) src/Clases/Ejercicio.cpp
+Estudiante.o: src/Clases/Estudiante.cpp $(INC)
+	$(CC-) src/Clases/Estudiante.cpp
+Idioma.o: src/Clases/Idioma.cpp $(INC)
+	$(CC-) src/Clases/Idioma.cpp
+Inscripcion.o: src/Clases/Inscripcion.cpp $(INC)
+	$(CC-) src/Clases/Inscripcion.cpp
+Leccion.o: src/Clases/Leccion.cpp $(INC)
+	$(CC-) src/Clases/Leccion.cpp
+Profesor.o: src/Clases/Profesor.cpp $(INC)
+	$(CC-) src/Clases/Profesor.cpp
+Progreso.o: src/Clases/Progreso.cpp $(INC)
+	$(CC-) src/Clases/Progreso.cpp
+RellenarPalabras.o: src/Clases/RellenarPalabras.cpp $(INC)
+	$(CC-) src/Clases/RellenarPalabras.cpp
+Traduccion.o: src/Clases/Traduccion.cpp $(INC)
+	$(CC-) src/Clases/Traduccion.cpp
+Usuario.o: src/Clases/Usuario.cpp $(INC)
+	$(CC-) src/Clases/Usuario.cpp
+ControladorCurso.o: src/Controlador/ControladorCurso.cpp $(INC)
+	$(CC-) src/Controlador/ControladorCurso.cpp
+ControladorUsuario.o: src/Controlador/ControladorUsuario.cpp $(INC)
+	$(CC-) src/Controlador/ControladorUsuario.cpp
+DTCurso.o: src/DTs/DTCurso.cpp $(INC)
+	$(CC-) src/DTs/DTCurso.cpp
+DTEjercicio.o: src/DTs/DTEjercicio.cpp $(INC)
+	$(CC-) src/DTs/DTEjercicio.cpp
+DTEstadisticaCurso.o: src/DTs/DTEstadisticaCurso.cpp $(INC)
+	$(CC-) src/DTs/DTEstadisticaCurso.cpp
+DTEstadisticaEstudiante.o: src/DTs/DTEstadisticaEstudiante.cpp $(INC)
+	$(CC-) src/DTs/DTEstadisticaEstudiante.cpp\
+DTEstadisticaProfesor.o: src/DTs/DTEstadisticaProfesor.cpp $(INC)
+	$(CC-) src/DTs/DTEstadisticaProfesor.cpp
+DTEstudiante.o: src/DTs/DTEstudiante.cpp $(INC)
+	$(CC-) src/DTs/DTEstudiante.cpp
+DTEstudianteSC.o: src/DTs/DTEstudianteSC.cpp $(INC)
+	$(CC-) src/DTs/DTEstudianteSC.cpp
+DTLeccion.o: src/DTs/DTLeccion.cpp $(INC)
+	$(CC-) src/DTs/DTLeccion.cpp
+DTNotificacion.o: src/DTs/DTNotificacion.cpp $(INC)
+	$(CC-) src/DTs/DTNotificacion.cpp
+DTProfesor.o: src/DTs/DTProfesor.cpp $(INC)
+	$(CC-) src/DTs/DTProfesor.cpp
+DTProfesorSC.o: src/DTs/DTProfesorSC.cpp $(INC)
+	$(CC-) src/DTs/DTProfesorSC.cpp
+IControladorCurso.o: src/Interfaces/IControladorCurso.cpp $(INC)
+	$(CC-) src/Interfaces/IControladorCurso.cpp
+IControladorUsuario.o: src/Interfaces/IControladorUsuario.cpp $(INC)
+	$(CC-) src/Interfaces/IControladorUsuario.cpp
+FactoryController.o: src/Interfaces/FactoryController.cpp $(INC)
+	$(CC-) src/Interfaces/FactoryController.cpp
+IObserver.o: src/Interfaces/IObserver.cpp $(INC)
+	$(CC-) src/Interfaces/IObserver.cpp
 clean:
 	rm *.o ejecutable
