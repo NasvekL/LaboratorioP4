@@ -23,6 +23,7 @@ class Ejercicio{
         Leccion getLeccion();
         //constructor y destructor
         ~Ejercicio();
+        Ejercicio();
         //operaciones
         virtual bool esCorrecto(string solucion)=0;
         void aumentarProgreso(string estudiante);

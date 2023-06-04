@@ -24,6 +24,7 @@ class Usuario:public IObserver{
         string getNombre();
         //destructor
         virtual ~Usuario();
+        Usuario();
         //observer
         void notificar();
 };
