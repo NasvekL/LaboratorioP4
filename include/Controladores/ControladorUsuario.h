@@ -45,8 +45,8 @@ class ControladorUsuario : public IControladorUsuario{
 
         //Operaciones para obtener informacion
         list<string> listarCursos();
-        DTEstadisticasProfesor estadisticasProfesor(string profesor);
-        DTEstadisticasEstudiante estadisticasEstudiante(string estudiante);
+        DTEstadisticaProfesor estadisticasProfesor(string profesor);
+        DTEstadisticaEstudiante estadisticasEstudiante(string estudiante);
         list<DTProfesorSC> listarProfesoresSinContra();
         list<DTEstudianteSC> listarEstudiantes();
 
