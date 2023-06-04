@@ -30,4 +30,4 @@ class Leccion{
         void aumentarProgreso(Estudiante e);
         set<DTEjercicio> ejerciciosNoAprobados(string nick);
 };
-#endif;
+#endif

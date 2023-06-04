@@ -17,4 +17,4 @@ class DTLeccion{
         ~DTLeccion();
         DTLeccion(int numero,int cantidadDeEjercicios,string objetivoAprendizaje,string tema);
 };
-#endif;
+#endif

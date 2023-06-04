@@ -21,4 +21,4 @@ class DTCurso{
         DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion);
 
 };
-#endif;
+#endif

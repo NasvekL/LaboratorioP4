@@ -15,4 +15,4 @@ class DTNotificacion{
         ~DTNotificacion();
         DTNotificacion(DTCurso cursoCreado,Idioma idiomaDelCurso);
 };
-#endif;
+#endif

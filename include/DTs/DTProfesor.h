@@ -21,4 +21,4 @@ class DTProfesor{
         DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto);
 
 };
-#endif;
+#endif

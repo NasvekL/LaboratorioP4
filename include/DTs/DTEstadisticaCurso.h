@@ -21,4 +21,4 @@ class DTEstadisticaCurso {
         DTEstadisticaCurso(list<int> promedioCurso, list<string> cursosPropuestos);
 
 };
-#endif:
+#endif

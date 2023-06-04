@@ -12,7 +12,7 @@ class DTEstadisticaEstudiante {
         DTEstadisticaEstudiante();
         DTEstadisticaEstudiante(string estudiante);
 };
-#endif;
+#endif
 
 
 
