@@ -39,6 +39,9 @@ string Usuario:: getDescripcion(){
 Usuario:: ~Usuario(){
 
 };
+Usuario:: Usuario(){
+
+};
 
 void Usuario:: notificar(){
     

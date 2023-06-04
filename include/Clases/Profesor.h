@@ -24,11 +24,11 @@ class Profesor: public Usuario{
         //Otras operaciones
         list<DTNotificacion> verNotificaciones();
         DTProfesor getDTProfesor();
-        set<DTCurso> obtenerDTCurso();
+        list<DTCurso> obtenerDTCurso();
         int obtenerPromedio();
         //Obtener Pseudoatributos
-        set<Idioma*>& Idiomas();
-        set<Curso*>& Cursos();
+        list<Idioma*> Idiomas();
+        list<Curso*> Cursos();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
 

@@ -1,4 +1,4 @@
-#include "../../Clases/Progreso.h"
+#include "../../include/Clases/Progreso.h"
 
 bool Progreso::esCorrecto(string solucion) {
     // Implementar la lógica para verificar si la solución es correcta
