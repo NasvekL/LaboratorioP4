@@ -1,5 +1,4 @@
 #include "../include/Clases/Usuario.h"
-#include "../include/Clases/Usuario.h"
 
 void Usuario:: setNick(string nick){
     this->nickname = nick;  
@@ -18,14 +17,11 @@ void Usuario:: setDescripcion(string desripcion){
 };
 
 list<DTNotificacion> Usuario:: verNotificaciones(){
-        for (auto i : this->notifiaciones) {
-		cout << i << ' ';
-	}
-	return 0;
+
 };
 
 string Usuario:: getNick(){
-    return this->nick;
+    return this->nickname;
 };
 
 string Usuario:: getNombre(){
@@ -40,7 +36,7 @@ string Usuario:: getDescripcion(){
     return this->descripcion;
 };
 
-void Usuario:: ~Usuario(){
+Usuario:: ~Usuario(){
 
 };
 
