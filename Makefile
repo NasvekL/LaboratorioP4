@@ -44,7 +44,7 @@ DTEjercicio.o: src/DTs/DTEjercicio.cpp $(INC)
 DTEstadisticaCurso.o: src/DTs/DTEstadisticaCurso.cpp $(INC)
 	$(CC-) src/DTs/DTEstadisticaCurso.cpp
 DTEstadisticaEstudiante.o: src/DTs/DTEstadisticaEstudiante.cpp $(INC)
-	$(CC-) src/DTs/DTEstadisticaEstudiante.cpp\
+	$(CC-) src/DTs/DTEstadisticaEstudiante.cpp
 DTEstadisticaProfesor.o: src/DTs/DTEstadisticaProfesor.cpp $(INC)
 	$(CC-) src/DTs/DTEstadisticaProfesor.cpp
 DTEstudiante.o: src/DTs/DTEstudiante.cpp $(INC)
