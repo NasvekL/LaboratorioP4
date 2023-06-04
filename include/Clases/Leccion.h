@@ -4,6 +4,7 @@
 #include "Ejercicio.h"
 #include "Estudiante.h"
 #include "../DTs/DTEjercicio.h"
+#include "DTs/DTEjercicio.h"
 class Leccion{
     private:
         string tema;
@@ -25,7 +26,7 @@ class Leccion{
         ~Leccion();
         Leccion(string tema,string objetivoAprendizaje,int cantidadDeEjercicios,int numero);
         //operaciones
-        Ejercicio seleccionarEj(int idEjercicio);
+        DTEjercicio seleccionarEj(int idEjercicio);
         void aumentarProgreso(Estudiante e);
         set<DTEjercicio> ejerciciosNoAprobados(string nick);
 };

@@ -9,15 +9,22 @@ class Usuario:public IObserver{
         string contrasenia;
         string nombre;
         string descripcion;
-        set<DTNotificacion> notificaciones;
+        list<DTNotificacion> notificaciones;
     public:
+        //setters
+        void setNick(string nick);
+        void setNombre(string nombre);
+        void setContrasenia(string contra);
+        void setDescripcion(strin descripcion);
+        virtual list<DTNotificacion> verNotificaciones();
         //getters
         string getContrasenia();
         string getDescripcion();
         string getNick();
         string getNombre();
-        virtual set<DTNotificacion> verNotificaciones();
-        virtual ~Usuario(); //destructor
+        //destrucotor
+        virtual ~Usuario();
+        //observer
         void notificar();
 };
 

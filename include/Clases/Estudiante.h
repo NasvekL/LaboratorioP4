@@ -14,11 +14,11 @@ class Estudiante: public Usuario{
         string pais;
         DTFecha nacimiento;
         //Pseudoatributos
-        set<Inscripcion*> inscripciones;
+        list<Inscripcion*> inscripciones;
     public:
         //Getters y Setters
         string getPais();
-        DTFecha getNacimineto();
+        DTFecha getNacimiento();
         //Create destroy
         ~Estudiante();
         Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
@@ -28,7 +28,7 @@ class Estudiante: public Usuario{
         set<string> getCursosInscriptosSA();
         set<DTCurso> obtenDTCurso();
         set<int> obtenerProgreso();
-        set<Inscripcion*>& Inscripciones();  //PseudoAtributo
+        list<Inscripcion*>& Inscripciones();  //PseudoAtributo
         //Faltan los casos de uso que me permiten agregar y eliminar inscripciones
 };
 

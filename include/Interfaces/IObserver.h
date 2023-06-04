@@ -1,8 +1,10 @@
 #ifndef IOBSERVER
 #define IOBSERVER
+
+
 class IObserver{
     public:
-        virtual void notificar();
+        virtual void notificar() = 0;
 };
 
 

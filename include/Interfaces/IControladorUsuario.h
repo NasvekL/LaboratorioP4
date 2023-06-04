@@ -17,7 +17,7 @@ class IControladorUsuario{
         virtual void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
         virtual void agregarTradu(string descripcion,string fraseATraducir, string traduccion);
         virtual set<string> listarIdiomas();
-        virtual set<string> listarCursos();
+        virtual list<string> listarCursos();
         virtual bool altaCurso()
         virtual void eliminarCurso(string curso);
         virtual set<string> cursosInscriptosSinAprobar(string nick);
