@@ -8,8 +8,8 @@ class factoryController{
         static factoryController instancia;
         factoryController();
     public:
-        IControladorUsuario getIControladorUsuario();
-        IControladorCurso getIControladorCurso();
+        IControladorUsuario* getIControladorUsuario();
+        IControladorCurso* getIControladorCurso();
         factoryController getFactoryInstance();
 };
 

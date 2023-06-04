@@ -15,6 +15,7 @@ class DTEstadisticaProfesor {
         map<string, int> estadoCurso(); //CursoClave y valor progreso promedio
 
         ~DTEstadisticaProfesor();
+        DTEstadisticaProfesor();
         DTEstadisticaProfesor(string profesor);
 
 };

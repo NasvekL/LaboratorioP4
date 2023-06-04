@@ -9,6 +9,7 @@ class DTEstadisticaEstudiante {
         map<string,int> getPorcentajesCursos();
         map<string, int> estadoEstudiante(); //curso clave y valor progreso
         ~DTEstadisticaEstudiante();
+        DTEstadisticaEstudiante();
         DTEstadisticaEstudiante(string estudiante);
 };
 #endif;

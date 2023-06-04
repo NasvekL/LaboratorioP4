@@ -20,6 +20,10 @@ DTEstadisticaCurso::~DTEstadisticaCurso() {
     // Implementación del destructor
     // Puedes realizar cualquier limpieza necesaria
 }
+DTEstadisticaCurso::DTEstadisticaCurso() {
+    // Implementación del destructor
+    // Puedes realizar cualquier limpieza necesaria
+}
 
 // Getter de curso
 string DTEstadisticaCurso::getCurso() {

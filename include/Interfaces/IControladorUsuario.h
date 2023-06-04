@@ -5,7 +5,7 @@
 
 class IControladorUsuario{
     public:
-        virtual ControladorUsuario * getInstance() = 0;
+        //virtual ControladorUsuario * getInstancia() = 0;
         virtual list<string> listarProfes();
         virtual void seleccionarProfesor(string nick);
         virtual void datosCurso(DTCurso data);

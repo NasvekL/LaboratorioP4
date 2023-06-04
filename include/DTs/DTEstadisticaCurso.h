@@ -17,6 +17,7 @@ class DTEstadisticaCurso {
         int gradoAvance();
 
         ~DTEstadisticaCurso();
+        DTEstadisticaCurso();
         DTEstadisticaCurso(list<int> promedioCurso, list<string> cursosPropuestos);
 
 };
