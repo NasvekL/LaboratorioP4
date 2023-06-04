@@ -1,4 +1,4 @@
-#include "../include/Clases/Traduccion.h"
+#include "../../include/Clases/Traduccion.h"
 
 Traduccion::Traduccion(string solucion, int idEjercicio, string descripcion, string letra) : Ejercicio(), solucion(solucion) {
     // Constructor de la clase Traduccion
