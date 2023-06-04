@@ -1,7 +1,7 @@
 #include "../../include/DTs/DTNotificacion.h"
 
 // Constructor
-DTNotificacion::DTNotificacion(DTCurso cursoCreado, Idioma idiomaDelCurso) {
+DTNotificacion::DTNotificacion(DTCurso cursoCreado, Idioma* idiomaDelCurso) {
     // Implementación del constructor
     // Puedes asignar los valores de los parámetros a los atributos correspondientes
     this->cursoCreado = cursoCreado;
@@ -20,7 +20,7 @@ DTCurso DTNotificacion::getCurso() {
     // Puedes devolver el valor del atributo cursoCreado
 }
 
-Idioma DTNotificacion::getIdioma() {
+Idioma* DTNotificacion::getIdioma() {
     // Implementación del getter
     // Puedes devolver el valor del atributo idiomaDelCurso
 }

@@ -8,13 +8,13 @@ class Idioma;
 class DTNotificacion{
     public:
         DTCurso cursoCreado;
-        Idioma idiomaDelCurso;
+        Idioma* idiomaDelCurso;
     private:
         //getters
         DTCurso getCurso();
-        Idioma getIdioma();
+        Idioma* getIdioma();
         //constructor destructor
         ~DTNotificacion();
-        DTNotificacion(DTCurso cursoCreado,Idioma idiomaDelCurso);
+        DTNotificacion(DTCurso cursoCreado,Idioma* idiomaDelCurso);
 };
 #endif
