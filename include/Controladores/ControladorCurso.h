@@ -14,8 +14,8 @@
 
 class ControladorCurso: public IControladorCurso{
     private:
-        set<Curso> cursos;
-        set<Idioma> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
+        map<string, Curso> cursos;
+        map<string, Idioma> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
         
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
@@ -39,6 +39,8 @@ class ControladorCurso: public IControladorCurso{
         static ControladorCurso* getInstancia();
         ~ControladorCurso();
 
+
+    
         //Getters
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
@@ -46,6 +48,7 @@ class ControladorCurso: public IControladorCurso{
         string getDatoIdioma();
         set<DTCurso*> getDatosPrevias();
         DTEjercicio getDatosEjercicio();
+        Curso getCurso(string nombreCurso);
         //Setters
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
@@ -91,11 +94,8 @@ class ControladorCurso: public IControladorCurso{
 
 
 
-
-
-
-        //Operaciones que creo que estan mal
-        set<string> CursosInscriptoSinAprobar(string nick);// esto no va en controlador usuario??
+        //Operacion que solo llama a otra opperacion en controladorUsuario
+        set<string> cursosInscriptoSinAprobar(string nick);
 
 };
 
