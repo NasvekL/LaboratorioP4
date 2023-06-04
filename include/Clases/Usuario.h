@@ -3,6 +3,7 @@
 #include "../Utils.h"
 #include "../Interfaces/IObserver.h"
 #include "../DTs/DTNotificacion.h"
+class DTNotificacion;
 class Usuario:public IObserver{
     private:
         string nickname;
