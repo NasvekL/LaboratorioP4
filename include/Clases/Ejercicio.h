@@ -9,7 +9,7 @@ class Ejercicio{
         int idEjercicio;
         string descripcion;
         string letra;
-        Leccion * leccion;
+        Leccion* leccion;
     public:
         //setters
         void setIdEjercicio(int idEjercicio);
