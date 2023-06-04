@@ -20,7 +20,7 @@ class Inscripcion{
         bool getAprobado();
         int getLeccionActual();
         //Create y destroy
-        Inscripcion(Fecha fecha,bool aprobado,int leccionActual,Progreso* prog);
+        Inscripcion(DTFecha fecha,bool aprobado,int leccionActual,Progreso* prog);
         ~Inscripcion();
     
 };
