@@ -2,7 +2,7 @@
 #define USUARIO
 #include "../Utils.h"
 #include "../Interfaces/IObserver.h"
-
+#include "../DTs/DTNotificacion.h"
 class Usuario:public IObserver{
     private:
         string nickname;
@@ -22,7 +22,7 @@ class Usuario:public IObserver{
         string getDescripcion();
         string getNick();
         string getNombre();
-        //destrucotor
+        //destructor
         virtual ~Usuario();
         //observer
         void notificar();
