@@ -22,6 +22,10 @@ DTCurso :: ~DTCurso(){
 
 }
 
+DTCurso :: DTCurso(){
+
+}
+
 DTCurso :: DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion){
     this->nombre = nombre;
     this->habilitado = habilitado;

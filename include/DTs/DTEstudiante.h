@@ -9,18 +9,18 @@ class DTEstudiante{
         string descripcion;
         string nombre;
         string pais;
-        Fecha nacimiento;
+        DTFecha nacimiento;
         
     public:
         //Getters
         string getPais();
-        Fecha getNacimineto();
+        DTFecha getNacimineto();
         string getNickname();
         string getContrasenia();
         string getDescripcion();
         string getNombre();
         //Create destroy
         ~DTEstudiante();
-        DTEstudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, Fecha nacimiento);
+        DTEstudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
 };
 #endif

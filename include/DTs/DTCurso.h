@@ -17,6 +17,7 @@ class DTCurso{
         string getDescripcion();
         //constructor destructor
         ~DTCurso();
+        DTCurso();
         DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion);
 
 };

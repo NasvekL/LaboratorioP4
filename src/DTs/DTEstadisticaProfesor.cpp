@@ -1,32 +1,32 @@
 #include "../../include/DTs/DTEstadisticaProfesor.h"
+#include "../../include/DTs/DTCurso.h" // Asegúrate de incluir el archivo de encabezado correspondiente
 
-
-DTCurso DTEstadisticaProfesor :: getCurso() {
-    return Curso;
+// Constructor
+DTEstadisticaProfesor::DTEstadisticaProfesor(string profesor) {
+    // Implementación del constructor
+    // Puedes inicializar el objeto según tus necesidades
 }
 
-int DTEstadisticaProfesor :: getPromPorcetajesCursos(){
-    return promPorcetajesCursos;
+// Destructor
+DTEstadisticaProfesor::~DTEstadisticaProfesor() {
+    // Implementación del destructor
+    // Puedes liberar recursos si es necesario
 }
 
-map<string, int> DTEstadisticaProfesor :: estadoCurso(){
-        map<string, int> estadoCur;
-
-        for (i=0; i<this->cursos.size(); i++ ) {
-            estado [this->cursos[i]] = this->promPorcetajesCursos[i];
-
-        }
-
-    return estadoCur;
+// Getter para obtener el curso
+DTCurso DTEstadisticaProfesor::getCurso() {
+    // Implementación del getter
+    // Puedes devolver el curso correspondiente
 }
 
-DTEstadisticaProfesor :: ~DTEstadisticaProfesor(){
-
-}
-       
-       
-DTEstadisticaProfesor :: DTEstadisticaProfesor(DTCurso Curso, int promPorcetajesCursos){
-    this->promPorcetajesCursos = promPorcetajesCursos;
-    this->Cursos = cursos;    
+// Getter para obtener el promedio de porcentajes de cursos
+int DTEstadisticaProfesor::getPromPorcetajesCursos() {
+    // Implementación del getter
+    // Puedes calcular y devolver el promedio de los porcentajes de cursos
 }
 
+// Función para obtener el estado del curso
+map<string, int> DTEstadisticaProfesor::estadoCurso() {
+    // Implementación de la función
+    // Puedes calcular y devolver el estado del curso
+}

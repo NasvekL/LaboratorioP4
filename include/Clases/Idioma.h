@@ -2,7 +2,7 @@
 #define IDIOMA
 #include "../Utils.h"
 #include "Usuario.h"
-#include "../IObserver.h"
+#include "../Interfaces/IObserver.h"
 class Idioma{
     private:
         string nombreIdioma;
@@ -20,6 +20,7 @@ class Idioma{
         set<string> suscripciones(string nick);
         //constructor y destructor
         ~Idioma();
+        Idioma();
         Idioma(string nombreIdioma);
         //falta set de suscriptores
         // falta set de profesores

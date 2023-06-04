@@ -17,6 +17,7 @@ class DTFecha{
         string toString();
 
         ~DTFecha();
+        DTFecha();
         DTFecha(int dia, int mes, int anio);
 };
 #endif;

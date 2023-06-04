@@ -1,8 +1,8 @@
 #ifndef USUARIO
 #define USUARIO
 #include "../Utils.h"
-#include "../IObserver.h"
-
+#include "../Interfaces/IObserver.h"
+#include "../DTs/DTNotificacion.h"
 class Usuario:public IObserver{
     private:
         string nickname;
@@ -15,15 +15,16 @@ class Usuario:public IObserver{
         void setNick(string nick);
         void setNombre(string nombre);
         void setContrasenia(string contra);
-        void setDescripcion(strin descripcion);
+        void setDescripcion(string descripcion);
         virtual list<DTNotificacion> verNotificaciones();
         //getters
         string getContrasenia();
         string getDescripcion();
         string getNick();
         string getNombre();
-        //destrucotor
+        //destructor
         virtual ~Usuario();
+        Usuario();
         //observer
         void notificar();
 };

@@ -1,0 +1,100 @@
+#include "../../include/Controladores/ControladorUsuario.h"
+
+ControladorUsuario* ControladorUsuario::instancia = nullptr;
+
+ControladorUsuario::ControladorUsuario() {
+    // Constructor privado para evitar la creación de instancias desde fuera de la clase
+    //Poner todas las variables en null
+    this->datoEstudiante = nullptr;
+    
+}
+
+ControladorUsuario *ControladorUsuario::getInstancia() {
+    if (instancia == nullptr) {
+        instancia = new ControladorUsuario();
+    }
+    return instancia;
+}
+
+ControladorUsuario::~ControladorUsuario() {
+    // Destructor
+}
+
+DTEstudiante ControladorUsuario::getDatoEstudiante() {
+    return *datoEstudiante;
+}
+
+void ControladorUsuario::setDatoEstudiante(DTEstudiante dato) {
+    datoEstudiante = new DTEstudiante(dato);
+}
+
+list<string> ControladorUsuario::listarCursos() {
+    // Implementar la lógica para listar los cursos
+    // Retorna una lista de nombres de cursos
+    list<string> cursos;
+    // ...
+    return cursos;
+}
+
+DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) {
+    // Implementar la lógica para obtener las estadísticas del profesor
+    DTEstadisticaProfesor estadisticas;
+    // ...
+    return estadisticas;
+}
+
+DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudiante) {
+    // Implementar la lógica para obtener las estadísticas del estudiante
+    DTEstadisticaEstudiante estadisticas;
+    // ...
+    return estadisticas;
+}
+
+list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
+    // Implementar la lógica para listar los profesores sin contraseña
+    list<DTProfesorSC> profesores;
+    // ...
+    return profesores;
+}
+
+list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
+    // Implementar la lógica para listar los estudiantes
+    list<DTEstudianteSC> estudiantes;
+    // ...
+    return estudiantes;
+}
+
+Usuario ControladorUsuario::obtenerSuscriptor(string user) {
+    // Implementar la lógica para obtener el suscriptor
+    Usuario suscriptor;
+    // ...
+    return suscriptor;
+}
+
+void ControladorUsuario::eliminarNotificaciones() {
+    // Implementar la lógica para eliminar las notificaciones
+    // ...
+}
+
+list<DTNotificacion> ControladorUsuario::consultarNotificaciones(string nick) {
+    // Implementar la lógica para consultar las notificaciones de un usuario
+    list<DTNotificacion> notificaciones;
+    // ...
+    return notificaciones;
+}
+
+// Implementa el resto de las funciones de la clase ControladorUsuario según sea necesario
+
+DTEstadisticaCurso ControladorUsuario::estadisticaCurso(string curso) {
+    // Implementar la lógica para obtener las estadísticas del curso
+    DTEstadisticaCurso estadisticas;
+    // ...
+    return estadisticas;
+}
+
+Curso ControladorUsuario::obtenerCurso(string curso) {
+    // Implementar la lógica para obtener el curso
+    Curso cursoObtenido;
+    // ...
+    return cursoObtenido;
+}

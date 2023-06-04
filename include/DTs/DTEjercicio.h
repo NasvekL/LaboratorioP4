@@ -1,11 +1,10 @@
 #ifndef DTERCICIO
 #define DTEJERCICIO
 #include "../Utils.h"
-#include "DTProfesor.h"//???????????????
 
 class DTEjercicio { 
     private:
-        int IdEjercicio;
+        int idEjercicio;
         string letra;
         string descripcion;
         //si es traduccion
@@ -19,7 +18,7 @@ class DTEjercicio {
         string getLetra();
 
         ~DTEjercicio();
-        DTEjercicio(int IdEjercicio, string letra, string descripcion);
+        DTEjercicio(int idEjercicio, string letra, string descripcion);
 
 
 };

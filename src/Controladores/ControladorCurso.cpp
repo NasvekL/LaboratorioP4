@@ -88,25 +88,9 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
      // Buscar el objeto con el nombre buscado
-    auto cursoBuscado = std::find_if(cursos.begin(), cursos.end(), [&](const Curso& curso) {
-        return curso.getNombreCurso() == nombreCurso;
-    });
 
-    //verificar que el curso tenga al menos una leccion
-    if(cursoBuscado->getLecciones().empty()){
-        throw std::invalid_argument("El curso no tiene lecciones");
-    }
     
 
-
-    //Esta todo bastante dudoso este codigo. No se si funcionara
-    // Crear un nuevo curso identico pero con habilitado true
-    Curso nuevoCurso = *cursoBuscado; //aca se copia o se pasa la referencia? no c
-    nuevoCurso.setHabilitado(true);
-    // Eliminar el objeto anterior del conjunto
-    cursos.erase(cursoBuscado);
-    // Insertar el nuevo objeto en el conjunto
-    cursos.insert(nuevoCurso);
 }
 
 
@@ -213,7 +197,7 @@ void ControladorCurso::limpiarDatos() {
 
 
 //Operacion rara
-set<string> ControladorCurso::CursosInscriptoSinAprobar(string nick) {
+set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     // Implementación pendiente
     return set<string>();
 }

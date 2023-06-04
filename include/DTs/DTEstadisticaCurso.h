@@ -1,7 +1,7 @@
 #ifndef DTESTADISTICACURSO
 #define DTESTADISTICACURSO
 #include "../Utils.h"
-class DTCurso;
+#include "DTCurso.h"
 
 class DTEstadisticaCurso { 
     private:
@@ -10,14 +10,15 @@ class DTEstadisticaCurso {
 
     public:
 
-        String getCurso();
-        int getpromedioCurso;
+        string getCurso();
+        int getpromedioCurso();
         
         DTCurso infoCurso();
         int gradoAvance();
 
         ~DTEstadisticaCurso();
-        DTEstadisticaCurso(ArrayList<Integer> promedioCurso, ArrayList<String> CursosPropuestos);
+        DTEstadisticaCurso();
+        DTEstadisticaCurso(list<int> promedioCurso, list<string> cursosPropuestos);
 
 };
 #endif:

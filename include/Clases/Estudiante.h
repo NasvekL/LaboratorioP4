@@ -19,11 +19,12 @@ class Estudiante: public Usuario{
         //Getters y Setters
         string getPais();
         DTFecha getNacimiento();
+        list<Inscripcion*> getInscripciones();
         //Create destroy
         ~Estudiante();
-        Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, Fecha nacimiento);
+        Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
         //Otras operaciones
-        set<DTNotificacion> verNotificaciones();
+        list<DTNotificacion> verNotificaciones();
         DTEstudiante getDTEstudiante();
         set<string> getCursosInscriptosSA();
         set<DTCurso> obtenDTCurso();

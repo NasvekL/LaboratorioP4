@@ -1,27 +1,43 @@
 #include "../../include/DTs/DTProfesor.h"
-
-
-string DTProfesor:: getInstituto(){
-    return instituto;
-}
-
-DTProfesor:: ~Profesor(){
-
-}
-
-DTProfesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto){
-    this->nickname=nickname;
+// Constructor
+DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto) {
+    // Implementación del constructor
+    // Puedes asignar los valores de los parámetros a los atributos correspondientes
+    this->nickname = nickname;
     this->contrasenia = contrasenia;
     this->nombre = nombre;
     this->descripcion = descripcion;
     this->instituto = instituto;
 }
 
-// faltan :
-        //set<DTNotificacion> verNotificaciones();
-        //DTProfesor getDTProfesor();
-        //set<DTCurso> obtenerDTCurso();
-        //int obtenerPromedio();
-        //set<Curso*>& Cursos();
-        //set<Idioma*>& Idiomas();
+// Destructor
+DTProfesor::~DTProfesor() {
+    // Implementación del destructor
+    // Puedes realizar cualquier limpieza necesaria
+}
 
+// Getters
+string DTProfesor::getInstituto() {
+    // Implementación del getter
+    // Puedes devolver el valor del atributo instituto
+}
+
+string DTProfesor::getDescripcion() {
+    // Implementación del getter
+    // Puedes devolver el valor del atributo descripcion
+}
+
+string DTProfesor::getNombre() {
+    // Implementación del getter
+    // Puedes devolver el valor del atributo nombre
+}
+
+string DTProfesor::getContrasenia() {
+    // Implementación del getter
+    // Puedes devolver el valor del atributo contrasenia
+}
+
+string DTProfesor::getNickname() {
+    // Implementación del getter
+    // Puedes devolver el valor del atributo nickname
+}

@@ -8,16 +8,16 @@ class DTEstudianteSC {
         string nickname;
         string nombre;
         string pais;
-        Fecha nacimiento;
+        DTFecha nacimiento;
     public:
         string getDescripcion();
         string getNickname();
         string getNombre();
         string getPais();
-        Fecha getNacimineto();
+        DTFecha getNacimineto();
 
         ~DTEstudianteSC();
-        DTEstudianteSC(string nickname, string nombre, string descripcion, string pais, Fecha nacimiento);
+        DTEstudianteSC(string nickname, string nombre, string descripcion, string pais, DTFecha nacimiento);
 
 };
 #endif;

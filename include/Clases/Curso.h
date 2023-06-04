@@ -2,6 +2,9 @@
 #define CURSO
 #include "../Utils.h"
 #include "../DTs/DTCurso.h"
+#include "../DTs/DTEjercicio.h"
+#include "../DTs/DTEstadisticaCurso.h"
+#include "Estudiante.h"
 class Idioma;
 class Inscripcion;
 class Leccion;
@@ -25,6 +28,7 @@ class Curso{
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
+        Curso();
         Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado,Idioma* idioma);
 
         //GETTERS
@@ -38,19 +42,19 @@ class Curso{
         //GETTERS DE PSEUDOATRIBUTOS
         Idioma* getIdiomaDelCurso();
         Profesor* getProfesorQueLoDicta();
-        set<Leccion*>& getLecciones(); 
-        set<Inscripcion*>& getInscripciones();
+        list<Leccion*>& getLecciones(); 
+        list<Inscripcion*>& getInscripciones();
         //SETTERS DE PSEUDOATRIBUTOS
         void setIdiomaDelCurso(Idioma* i);
         void setProfesorQueLoDicta(Profesor* p);
-        void setLecciones(set<Leccion*> lecciones);
-        void setInscripciones(set<Inscripcion*> inscripciones);
+        void setLecciones(list<Leccion*> lecciones);
+        void setInscripciones(list<Inscripcion*> inscripciones);
 
         //OPERACIONES
-        Ejercicio seleccionarEjercicio(int idEjercicio); //Esto iria en controladorCurso me parece
+        DTEjercicio seleccionarEjercicio(int idEjercicio); //Esto iria en controladorCurso me parece
         int progresoPromedio();
         int progresoDeEstudiante(Estudiante e);
-        DTestadisticaCurso estadisticasCurso();
+        DTEstadisticaCurso estadisticasCurso();
 
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos

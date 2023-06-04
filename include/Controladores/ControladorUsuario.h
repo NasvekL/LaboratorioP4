@@ -11,26 +11,53 @@
 #include "../Clases/Profesor.h"
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTProfesorSC.h"
+#include "../DTs/DTEstudianteSC.h"
 
 
 class ControladorUsuario : public IControladorUsuario{
     private:
+        map<string,Usuario> usuarios;
+        
+        //Pseudoatributos...?
+
+
+        //Atributos auxiliares con punteros
+        DTEstudiante* datoEstudiante;
+
+
+         //Variable estática para almacenar la instancia única del controlador
         static ControladorUsuario * instancia;
+        //Constructor privado para evitar la creación de instancias desde fuera de la clase
         ControladorUsuario();
+
     public:
-        static ControladorUsuario * getInstance();
-        void guardarDatosEstudiante(DTEstudiante data);
-        DTEstadisticaCurso estadisticaCurso(string curso);
-        list<DTCurso> listarCursos();
+        //Método estático para obtener la instancia única del controlador
+        static ControladorUsuario* getInstancia();
+        ~ControladorUsuario();
+
+        //Getters
+        DTEstudiante getDatoEstudiante();
+        //Setters
+        void setDatoEstudiante(DTEstudiante dato); //void guardarDatosEstudiante(DTEstudiante data);
+
+        //Operaciones para modificar el set de usuarios
+
+
+        //Operaciones para obtener informacion
+        list<string> listarCursos();
+        DTEstadisticaProfesor estadisticasProfesor(string profesor);
+        DTEstadisticaEstudiante estadisticasEstudiante(string estudiante);
+        list<DTProfesorSC> listarProfesoresSinContra();
+        list<DTEstudianteSC> listarEstudiantes();
+
+        //Operaciones de suscripciones
         Usuario obtenerSuscriptor(string user);
         void eliminarNotificaciones();
         list<DTNotificacion> consultarNotificaciones(string nick);
-        DTEstadisticasProfesor estadisticasProfesor(string profesor);
-        list<DTProfesorSC> listarProfesoresSinContra();
-        DTEstadisticasEstudiante estadisticasEstudiante(string estudiante);
-        set(DTEstudianteSC) listarEstudiantes();
-        Curso obtenerCurso(string curso);
-        list(DTEjercicioConId) ejerciciosNoAprobados(string curso);
+
+        
+        //FALTA CLASIFICAR. DESPUES. EN ALGUN MOMENTO. A MEDIDA QUE LO VAYAMOS USANDO
+        list<DTEjercicio> ejerciciosNoAprobados(string curso);
         list<string> cursosInscriptosSinAprobar(string nick);
         list<string> listarProfesores();
         list<string> listarIdiomasProfesor(DTProfesor p);
@@ -39,6 +66,14 @@ class ControladorUsuario : public IControladorUsuario{
         void deleteDataIngresado();
         void guardarDatosProfesor(DTProfesor data);
         list<string> listarIdiomas();
+
+
+        //Operacion que no tiene sentido que este aca (iria en controladorCurso)
+        DTEstadisticaCurso estadisticaCurso(string curso);
+        //Operacion dudosa
+        Curso obtenerCurso(string curso);
 };      
+
+
 
 #endif

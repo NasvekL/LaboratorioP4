@@ -2,6 +2,8 @@
 #define EJERCICIO
 #include "../Utils.h"
 #include "Progreso.h"
+#include "Leccion.h"
+#include "../DTs/DTEjercicio.h"
 class Leccion;
 
 class Ejercicio{
@@ -9,7 +11,7 @@ class Ejercicio{
         int idEjercicio;
         string descripcion;
         string letra;
-        Leccion * leccion;
+        Leccion* leccion;
     public:
         //setters
         void setIdEjercicio(int idEjercicio);
@@ -23,6 +25,7 @@ class Ejercicio{
         Leccion getLeccion();
         //constructor y destructor
         ~Ejercicio();
+        Ejercicio();
         //operaciones
         virtual bool esCorrecto(string solucion)=0;
         void aumentarProgreso(string estudiante);

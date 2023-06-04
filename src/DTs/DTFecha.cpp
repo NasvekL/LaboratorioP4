@@ -10,6 +10,8 @@ DTFecha :: DTFecha(int dia, int mes, int anio) {
 
 DTFecha::~DTFecha(){
 }
+DTFecha::DTFecha(){
+}
 
       
 int DTFecha:: getDia() {
