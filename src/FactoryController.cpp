@@ -13,14 +13,9 @@ factoryController factoryController::getFactoryInstance() {
 
 // Obtener el controlador de usuario
 IControladorUsuario* factoryController::getIControladorUsuario() {
-    // Implementación de la función
-    // Puedes retornar un puntero a una instancia del controlador de usuario
-    return ControladorUsuario::getInstance();
+
 }
 
 // Obtener el controlador de curso
 IControladorCurso* factoryController::getIControladorCurso() {
-    // Implementación de la función
-    // Puedes retornar un puntero a una instancia del controlador de curso
-    return ControladorCurso::getInstance();
 }
