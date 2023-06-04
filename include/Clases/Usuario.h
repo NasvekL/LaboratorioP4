@@ -15,7 +15,7 @@ class Usuario:public IObserver{
         void setNick(string nick);
         void setNombre(string nombre);
         void setContrasenia(string contra);
-        void setDescripcion(strin descripcion);
+        void setDescripcion(string descripcion);
         virtual list<DTNotificacion> verNotificaciones();
         //getters
         string getContrasenia();
