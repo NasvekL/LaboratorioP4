@@ -9,7 +9,7 @@ class Idioma{
     private:
         string nombreIdioma;
         void addIdioma(); //notificar observadores
-        set<IObserver> observers;
+        set<IObserver*> observers;
     public:
        //setters
        void setNombreIdioma(string nombreIdioma);
