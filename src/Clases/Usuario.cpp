@@ -1,4 +1,4 @@
-#include "../include/Clases/Usuario.h"
+#include "../../include/Clases/Usuario.h"
 
 void Usuario:: setNick(string nick){
     this->nickname = nick;  
