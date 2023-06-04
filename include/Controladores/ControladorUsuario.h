@@ -12,6 +12,11 @@
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTProfesorSC.h"
 #include "../DTs/DTEstudianteSC.h"
+#include "../DTs/DTCurso.h"
+#include "../DTs/DTLeccion.h"
+#include "../DTs/DTEjercicio.h"
+#include "../DTs/DTEstadisticaCurso.h"
+
 
 
 class ControladorUsuario : public IControladorUsuario{
