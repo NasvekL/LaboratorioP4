@@ -21,7 +21,7 @@ class Estudiante: public Usuario{
         DTFecha getNacimineto();
         //Create destroy
         ~Estudiante();
-        Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, Fecha nacimiento);
+        Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
         //Otras operaciones
         set<DTNotificacion> verNotificaciones();
         DTEstudiante getDTEstudiante();

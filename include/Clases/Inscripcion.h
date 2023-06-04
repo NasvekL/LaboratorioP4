@@ -8,7 +8,7 @@ class Progreso;
 
 class Inscripcion{
     private:
-        Fecha fecha;
+        DTFecha fecha;
         bool aprobado;
         int leccionActual;
         //Pseudoatributos
@@ -16,7 +16,7 @@ class Inscripcion{
         Curso* inscriptoA;
     public:
         //Getters
-        Fecha getFecha();
+        DTFecha getFecha();
         bool getAprobado();
         int getLeccionActual();
         //Create y destroy

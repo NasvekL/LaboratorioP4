@@ -3,6 +3,7 @@
 #include "../Utils.h"
 #include "Ejercicio.h"
 #include "Estudiante.h"
+#include "../DTs/DTEjercicio.h"
 class Leccion{
     private:
         string tema;
@@ -26,6 +27,6 @@ class Leccion{
         //operaciones
         Ejercicio seleccionarEj(int idEjercicio);
         void aumentarProgreso(Estudiante e);
-        set<DTEjercicioConId> ejerciciosNoAprobados(string nick);
+        set<DTEjercicio> ejerciciosNoAprobados(string nick);
 };
 #endif;
