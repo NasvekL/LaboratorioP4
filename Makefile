@@ -63,5 +63,11 @@ FactoryController.o: src/FactoryController.cpp $(INC)
 	$(CC-) src/FactoryController.cpp
 DTFecha.o: src/DTs/DTFecha.cpp $(INC)
 	$(CC-) src/DTs/DTFecha.cpp
+IControladorCurso.o: src/Interfaces/IControladorCurso.cpp $(INC)
+	$(CC-) src/Interfaces/IControladorCurso.cpp
+IControladorUsuario.o: src/Interfaces/IControladorUsuario.cpp $(INC)
+	$(CC-) src/Interfaces/IControladorUsuario.cpp
+IObsrver.o: src/Interfaces/IControladorObserver.cpp $(INC)
+	$(CC-) src/Interfaces/IControladorObserver.cpp
 clean:
 	rm *.o ejecutable
