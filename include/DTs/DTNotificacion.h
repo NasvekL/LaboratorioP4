@@ -6,10 +6,10 @@
 
 class Idioma;
 class DTNotificacion{
-    public:
+    private:
         DTCurso cursoCreado;
         Idioma* idiomaDelCurso;
-    private:
+    public:
         //getters
         DTCurso getCurso();
         Idioma* getIdioma();
