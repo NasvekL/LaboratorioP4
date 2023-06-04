@@ -2,7 +2,7 @@
 
 
 int DTEjercicio :: getIdEjercicio(){
-    return IdEjercicio;
+    return idEjercicio;
 }
 
 string DTEjercicio :: getDescripcion(){
@@ -16,8 +16,8 @@ string DTEjercicio :: getLetra(){
 DTEjercicio :: ~DTEjercicio(){
 }
 
-DTEjercicio :: DTEjercicio(int IdEjercicio, string letra, string descripcion){
-    this->IdEjercicio = IdEjercicio;
+DTEjercicio :: DTEjercicio(int idEjercicio, string letra, string descripcion){
+    this->idEjercicio = idEjercicio;
     this->letra = letra;
     this->descripcion = descripcion;
 }
