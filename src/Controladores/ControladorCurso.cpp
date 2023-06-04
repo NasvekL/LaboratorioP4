@@ -31,6 +31,10 @@ ControladorCurso::~ControladorCurso() {
 }
 
 //Getters
+Curso ControladorCurso::getCurso() {
+    // Implementación pendiente
+    return Curso();
+}
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
