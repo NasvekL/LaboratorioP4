@@ -1,6 +1,7 @@
 #ifndef DTFECHA
 #define DTFECHA
-#include "../Utils.h"
+#include <string>
+using namespace std;
 
 class DTFecha{
 

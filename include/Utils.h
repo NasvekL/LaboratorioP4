@@ -7,8 +7,8 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include "DTs/DTFecha.h"
 using namespace std;
+#include "DTs/DTFecha.h"
 
 
 enum nivelDeDificultad {PRINCIPIANTE, AVANZADO};

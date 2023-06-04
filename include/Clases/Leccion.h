@@ -4,7 +4,7 @@
 #include "Ejercicio.h"
 #include "Estudiante.h"
 #include "../DTs/DTEjercicio.h"
-#include "DTs/DTEjercicio.h"
+#include "../DTs/DTEjercicio.h"
 class Leccion{
     private:
         string tema;
