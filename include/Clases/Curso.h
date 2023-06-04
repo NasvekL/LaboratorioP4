@@ -47,7 +47,7 @@ class Curso{
         void setInscripciones(set<Inscripcion*> inscripciones);
 
         //OPERACIONES
-        Ejercicio seleccionarEjercicio(int idEjercicio); //Esto iria en controladorCurso me parece
+        DTEjercicio seleccionarEjercicio(int idEjercicio); //Esto iria en controladorCurso me parece
         int progresoPromedio();
         int progresoDeEstudiante(Estudiante e);
         DTestadisticaCurso estadisticasCurso();

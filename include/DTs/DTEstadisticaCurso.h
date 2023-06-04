@@ -10,14 +10,14 @@ class DTEstadisticaCurso {
 
     public:
 
-        String getCurso();
+        string getCurso();
         int getpromedioCurso;
         
         DTCurso infoCurso();
         int gradoAvance();
 
         ~DTEstadisticaCurso();
-        DTEstadisticaCurso(ArrayList<Integer> promedioCurso, ArrayList<String> CursosPropuestos);
+        DTEstadisticaCurso(ArrayList<int> promedioCurso, ArrayList<string> CursosPropuestos);
 
 };
 #endif:

@@ -20,6 +20,7 @@ class Idioma{
         set<string> suscripciones(string nick);
         //constructor y destructor
         ~Idioma();
+        Idioma();
         Idioma(string nombreIdioma);
         //falta set de suscriptores
         // falta set de profesores
