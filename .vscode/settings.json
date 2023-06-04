@@ -7,5 +7,6 @@
         "ostream": "cpp",
         "iosfwd": "cpp",
         "icontroladorusuario": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
