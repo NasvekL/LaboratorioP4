@@ -1,4 +1,4 @@
-#ifndef DTERCICIO
+#ifndef DTEJERCICIO
 #define DTEJERCICIO
 #include "../Utils.h"
 
