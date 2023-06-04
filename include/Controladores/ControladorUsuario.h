@@ -18,7 +18,7 @@ class ControladorUsuario : public IControladorUsuario{
         static ControladorUsuario * instancia;
         ControladorUsuario();
     public:
-        static ControladorUsuario * getInstance();
+        static ControladorUsuario * getInstancia();
         void guardarDatosEstudiante(DTEstudiante data);
         DTEstadisticaCurso estadisticaCurso(string curso);
         list<DTCurso> listarCursos();
