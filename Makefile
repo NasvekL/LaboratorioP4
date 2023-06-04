@@ -61,5 +61,7 @@ DTProfesorSC.o: src/DTs/DTProfesorSC.cpp $(INC)
 	$(CC-) src/DTs/DTProfesorSC.cpp
 FactoryController.o: src/FactoryController.cpp $(INC)
 	$(CC-) src/FactoryController.cpp
+DTFecha.o: src/DTs/DTFecha.cpp $(INC)
+	$(CC-) src/DTs/DTFecha.cpp
 clean:
 	rm *.o ejecutable
