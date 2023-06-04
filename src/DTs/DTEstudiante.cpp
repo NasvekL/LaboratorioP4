@@ -9,7 +9,7 @@ string DTEstudiante ::getContrasenia(){
     return contrasenia;
 }
 
-Fecha DTEstudiante:: getNacimineto(){
+DTFecha DTEstudiante:: getNacimineto(){
     return nacimiento;
 }
 
