@@ -2,6 +2,7 @@
 #define TRADUCCION
 #include "../Utils.h"
 #include "Ejercicio.h"
+
 class Traduccion:public Ejercicio{
     private:
         string solucion;
@@ -11,6 +12,7 @@ class Traduccion:public Ejercicio{
     bool esCorrecto(string solucion);
     void aumentarProgreso(string estudiante);
     Traduccion(string solucion,int idEjercicio,string descripcion,string letra);
+    ~Traduccion();
 };
 
 

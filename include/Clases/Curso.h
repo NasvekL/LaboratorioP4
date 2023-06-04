@@ -28,6 +28,7 @@ class Curso{
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
+        Curso();
         Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado,Idioma* idioma);
 
         //GETTERS
