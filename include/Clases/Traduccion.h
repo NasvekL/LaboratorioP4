@@ -8,11 +8,11 @@ class Traduccion:public Ejercicio{
         string solucion;
 
     public:
-    string getSolucion();
-    bool esCorrecto(string solucion);
-    void aumentarProgreso(string estudiante);
-    Traduccion(string solucion,int idEjercicio,string descripcion,string letra);
-    ~Traduccion();
+        string getSolucion();
+        bool esCorrecto(string solucion);
+        void aumentarProgreso(string estudiante);
+        Traduccion(string solucion,int idEjercicio,string descripcion,string letra);
+        ~Traduccion();
 };
 
 
