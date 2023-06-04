@@ -1,13 +1,18 @@
 #include "../../include/DTs/DTEstadisticaCurso.h"
 
 
-
 // Constructor
-DTEstadisticaCurso::DTEstadisticaCurso(DTCurso curso, int promedioCurso) {
+DTEstadisticaCurso::DTEstadisticaCurso(list<int> promedioCurso, list<string> cursosPropuestos) {
     // Implementación del constructor
     // Puedes asignar los valores de los parámetros a los atributos correspondientes
-    this->curso = curso;
-    this->promedioCurso = promedioCurso;
+    // Aquí solo se muestra cómo iterar sobre las listas proporcionadas
+    for (auto it = promedioCurso.begin(); it != promedioCurso.end(); ++it) {
+        // Hacer algo con cada valor en la lista promedioCurso
+    }
+
+    for (auto it = cursosPropuestos.begin(); it != cursosPropuestos.end(); ++it) {
+        // Hacer algo con cada valor en la lista cursosPropuestos
+    }
 }
 
 // Destructor
@@ -17,21 +22,24 @@ DTEstadisticaCurso::~DTEstadisticaCurso() {
 }
 
 // Getter de curso
-DTCurso DTEstadisticaCurso::getCurso() {
+string DTEstadisticaCurso::getCurso() {
     // Implementación del getter
-    // Puedes devolver el valor del atributo curso
+    // Puedes devolver el nombre del curso, por ejemplo
+    return curso.getNombre();
 }
 
 // Getter de promedioCurso
 int DTEstadisticaCurso::getpromedioCurso() {
     // Implementación del getter
     // Puedes devolver el valor del atributo promedioCurso
+    return promedioCurso;
 }
 
 // Función para obtener la información del curso
 DTCurso DTEstadisticaCurso::infoCurso() {
     // Implementación de la función
-    // Puedes devolver la información del curso
+    // Puedes devolver el objeto DTCurso completo
+    return curso;
 }
 
 // Función para obtener el grado de avance del curso
