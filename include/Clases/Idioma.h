@@ -2,7 +2,7 @@
 #define IDIOMA
 #include "../Utils.h"
 #include "Usuario.h"
-#include "../IObserver.h"
+#include "../Interfaces/IObserver.h"
 class Idioma{
     private:
         string nombreIdioma;
