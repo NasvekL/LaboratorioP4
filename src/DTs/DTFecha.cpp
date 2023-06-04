@@ -1,4 +1,5 @@
 #include "../../include/DTs/DTFecha.h"
+#include "DTFecha.h"
 
 
 DTFecha :: DTFecha(int dia, int mes, int anio) {
@@ -25,4 +26,7 @@ int DTFecha:: getMes() {
 int DTFecha:: getAnio() {
     return anio;
 }
-
+string DTFecha::toString()
+{
+    return "string()";
+}
