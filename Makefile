@@ -67,7 +67,7 @@ IControladorCurso.o: src/Interfaces/IControladorCurso.cpp $(INC)
 	$(CC-) src/Interfaces/IControladorCurso.cpp
 IControladorUsuario.o: src/Interfaces/IControladorUsuario.cpp $(INC)
 	$(CC-) src/Interfaces/IControladorUsuario.cpp
-IObsrver.o: src/Interfaces/IObserver.cpp $(INC)
+IObserver.o: src/Interfaces/IObserver.cpp $(INC)
 	$(CC-) src/Interfaces/IObserver.cpp
 clean:
 	rm *.o ejecutable
