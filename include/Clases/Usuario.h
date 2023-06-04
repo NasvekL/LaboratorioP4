@@ -1,7 +1,7 @@
 #ifndef USUARIO
 #define USUARIO
 #include "../Utils.h"
-#include "../IObserver.h"
+#include "../Interfaces/IObserver.h"
 
 class Usuario:public IObserver{
     private:
