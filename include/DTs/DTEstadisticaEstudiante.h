@@ -2,22 +2,14 @@
 #define DTESTADISTICESTUDIANTE
 #include "../Utils.h"
 
-class DTEstadisticasEstudiante { 
+class DTEstadisticaEstudiante { 
     private:
-        ArrayList<Integer> porcetajesCursos;
-        ArrayList<String> cursos;
+        map<string,int> porcentajesCursos;
     public:
-        ArrayList<Integer> getPorcentajes();
-        ArrayList<String> getCursos();
-
+        map<string,int> getPorcentajesCursos();
         map<string, int> estadoEstudiante(); //curso clave y valor progreso
-
         ~DTEstadisticaEstudiante();
-        DTEstadisticasEstudiante(ArrayList<Integer> porcetajesCursos, ArrayList<String> cursos);
-
-
-
-
+        DTEstadisticaEstudiante(string estudiante);
 };
 #endif;
 

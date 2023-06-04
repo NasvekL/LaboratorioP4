@@ -18,13 +18,13 @@ class IControladorUsuario{
         virtual void agregarTradu(string descripcion,string fraseATraducir, string traduccion);
         virtual set<string> listarIdiomas();
         virtual list<string> listarCursos();
-        virtual bool altaCurso()
+        virtual bool altaCurso();
         virtual void eliminarCurso(string curso);
         virtual set<string> cursosInscriptosSinAprobar(string nick);
-        virtual set<DTEjercicioConId> seleccionarCurso(string curso);
-        virtual seleccionarEjercicio(integer id);
-        virtual bool completarPalabras(set<string> solucion, string estudiante, integer idEjercicio);
-        virtual bool traducir(string solucion, string estudiante, integer idEjercicio);
+        virtual set<DTEjercicio> seleccionarCurso(string curso);
+        virtual void seleccionarEjercicio(int id);
+        virtual bool completarPalabras(set<string> solucion, string estudiante, int idEjercicio);
+        virtual bool traducir(string solucion, string estudiante, int idEjercicio);
         virtual void eliminarSuscripcion(set<string> idiomas);
         virtual set<string> listarIdiomasSuscrito(string nick);
         virtual void suscribirUsuario(set<string> idiomas);
