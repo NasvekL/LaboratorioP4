@@ -33,10 +33,10 @@ Traduccion.o: src/Clases/Traduccion.cpp $(INC)
 	$(CC-) src/Clases/Traduccion.cpp
 Usuario.o: src/Clases/Usuario.cpp $(INC)
 	$(CC-) src/Clases/Usuario.cpp
-ControladorCurso.o: src/Controlador/ControladorCurso.cpp $(INC)
-	$(CC-) src/Controlador/ControladorCurso.cpp
-ControladorUsuario.o: src/Controlador/ControladorUsuario.cpp $(INC)
-	$(CC-) src/Controlador/ControladorUsuario.cpp
+ControladorCurso.o: src/Controladores/ControladorCurso.cpp $(INC)
+	$(CC-) src/Controladores/ControladorCurso.cpp
+ControladorUsuario.o: src/Controladores/ControladorUsuario.cpp $(INC)
+	$(CC-) src/Controladores/ControladorUsuario.cpp
 DTCurso.o: src/DTs/DTCurso.cpp $(INC)
 	$(CC-) src/DTs/DTCurso.cpp
 DTEjercicio.o: src/DTs/DTEjercicio.cpp $(INC)
@@ -59,13 +59,7 @@ DTProfesor.o: src/DTs/DTProfesor.cpp $(INC)
 	$(CC-) src/DTs/DTProfesor.cpp
 DTProfesorSC.o: src/DTs/DTProfesorSC.cpp $(INC)
 	$(CC-) src/DTs/DTProfesorSC.cpp
-IControladorCurso.o: src/Interfaces/IControladorCurso.cpp $(INC)
-	$(CC-) src/Interfaces/IControladorCurso.cpp
-IControladorUsuario.o: src/Interfaces/IControladorUsuario.cpp $(INC)
-	$(CC-) src/Interfaces/IControladorUsuario.cpp
-FactoryController.o: src/Interfaces/FactoryController.cpp $(INC)
-	$(CC-) src/Interfaces/FactoryController.cpp
-IObserver.o: src/Interfaces/IObserver.cpp $(INC)
-	$(CC-) src/Interfaces/IObserver.cpp
+FactoryController.o: src/FactoryController.cpp $(INC)
+	$(CC-) src/FactoryController.cpp
 clean:
 	rm *.o ejecutable
