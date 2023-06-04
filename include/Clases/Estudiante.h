@@ -19,6 +19,7 @@ class Estudiante: public Usuario{
         //Getters y Setters
         string getPais();
         DTFecha getNacimiento();
+        list<Inscripcion*> getInscripciones();
         //Create destroy
         ~Estudiante();
         Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
