@@ -4,10 +4,9 @@
 
 class DTCurso;
 
-class DTEstadisticasProfesor { 
+class DTEstadisticaProfesor { 
     private:
-        ArrayList<Integer> promPorcetajesCursos;
-        ArrayList<String> cursos;
+        map<string,int> promPorcetajesCursos;
     public:
 
         DTCurso getCurso();
@@ -16,7 +15,7 @@ class DTEstadisticasProfesor {
         map<string, int> estadoCurso(); //CursoClave y valor progreso promedio
 
         ~DTEstadisticaProfesor();
-        DTEstadisticaProfesor(DTCurso Curso, int promPorcetajesCursos);
+        DTEstadisticaProfesor(string profesor);
 
 };
 

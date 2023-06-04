@@ -42,6 +42,7 @@ class ControladorCurso: public IControladorCurso{
 
     
         //Getters
+        Curso getCurso();
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
         string getDatoNombreDeProfesor();
