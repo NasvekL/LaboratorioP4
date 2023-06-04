@@ -22,7 +22,7 @@ class Profesor: public Usuario{
         ~Profesor();
         Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,list<Idioma*> idiomas);
         //Otras operaciones
-        set<DTNotificacion> verNotificaciones();
+        list<DTNotificacion> verNotificaciones();
         DTProfesor getDTProfesor();
         set<DTCurso> obtenerDTCurso();
         int obtenerPromedio();
