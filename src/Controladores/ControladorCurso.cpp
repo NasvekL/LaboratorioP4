@@ -19,9 +19,6 @@ ControladorCurso* ControladorCurso::getInstancia() {
     }
     return instancia;
 }
-bool ControladorCurso::altaCurso(){
-        return false;
-}
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
     //Borra todos los DTs temporales

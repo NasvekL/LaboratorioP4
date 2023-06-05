@@ -5,6 +5,10 @@ DTEstadisticaEstudiante::DTEstadisticaEstudiante(string estudiante) {
     // Implementación del constructor
     // Puedes inicializar el objeto según tus necesidades
 }
+DTEstadisticaEstudiante::DTEstadisticaEstudiante() {
+    // Implementación del constructor
+    // Puedes inicializar el objeto según tus necesidades
+}
 
 // Destructor
 DTEstadisticaEstudiante::~DTEstadisticaEstudiante() {

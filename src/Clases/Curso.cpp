@@ -4,6 +4,9 @@
 Curso::~Curso() {
     // Implementación del destructor
 }
+Curso::Curso() {
+    // Implementación del constructor vacio
+}
 
 Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, Idioma* idioma) {
     // Implementación del constructor

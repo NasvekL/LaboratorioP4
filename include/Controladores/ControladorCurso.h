@@ -37,7 +37,7 @@ class ControladorCurso: public IControladorCurso{
     public:
         //Método estático para obtener la instancia única del controlador
         static ControladorCurso* getInstancia();
-        //~ControladorCurso();
+        ~ControladorCurso();
 
 
     

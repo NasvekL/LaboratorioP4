@@ -6,6 +6,10 @@ DTEstadisticaProfesor::DTEstadisticaProfesor(string profesor) {
     // Implementación del constructor
     // Puedes inicializar el objeto según tus necesidades
 }
+DTEstadisticaProfesor::DTEstadisticaProfesor() {
+    // Implementación del constructor
+    // Puedes inicializar el objeto según tus necesidades
+}
 
 // Destructor
 DTEstadisticaProfesor::~DTEstadisticaProfesor() {

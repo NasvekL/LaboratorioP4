@@ -1,5 +1,5 @@
 #ifndef DTESTADISTICAESTUDIANTE
-#define DTESTADISTICESTUDIANTE
+#define DTESTADISTICAESTUDIANTE
 #include "../Utils.h"
 
 class DTEstadisticaEstudiante { 
