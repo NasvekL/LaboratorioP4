@@ -239,7 +239,7 @@ string entradaString(){
     cin >> entrada;
     while(!esAlfanumerico(entrada)){
         cout << endl << AMARILLO << "La entrada debe ser alfanumerica." << RESET << endl;
-        cout << "Ingrese el nuevamente: ";
+        cout << "Ingrese nuevamente: ";
         cin >> entrada;
     }
     return entrada;
