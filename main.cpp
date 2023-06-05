@@ -15,7 +15,7 @@
 #define AMARILLO "\033[33m"
 
 int seleccionEstudianteOProfesor();
-void crearDTEstudiante();
+DTEstudiante crearDTEstudiante();
 void esperar(double time);
 int entradaInt();
 bool esAlfanumerico(string entrada);
