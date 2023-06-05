@@ -67,7 +67,7 @@ int main(){
         opcion = menuPrincipal();
         switch (opcion){
             case 0:{
-                    cout << "chau" << endl;
+                    cout << "chau bo" << endl;
                 break;
             }
             case 1:{
