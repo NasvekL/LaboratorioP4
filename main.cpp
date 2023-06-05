@@ -16,6 +16,7 @@
 
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
+DTProfesor crearDTProfesor();
 void esperar(double time);
 int entradaInt();
 bool esAlfanumerico(string entrada);
@@ -73,11 +74,14 @@ int main(){
                 int opcion;
                 opcion = seleccionEstudianteOProfesor();
                 switch (opcion){
-                    case 1:{
-                    DTEstudiante est = crearDTEstudiante();
                     factoryController Fabrica = factoryController::getFactoryInstance();
                     IControladorUsuario* Iuser = Fabrica.getIControladorUsuario();
+                    case 1:{
+                    DTEstudiante est = crearDTEstudiante();
                     Iuser->guardarDatosEstudiante(est);
+                    }
+                    case 2:{
+                    DTProfesor prof = crearDTProfesor();
                     }
                 }
                 break;
@@ -196,19 +200,44 @@ DTEstudiante crearDTEstudiante(){
     cout << "Ingrese pais de estudiante:" << endl;
     string pais;
     cin >> pais;
-    cout << "Ingrese dia de nacimiento" << endl;
+    cout << "Ingrese dia de nacimiento de estudiante" << endl;
     int dia;
     cin >> dia;
-    cout << "Ingrese mes de nacimiento" << endl;
+    cout << "Ingrese mes de nacimiento de estudiante" << endl;
     int mes;
     cin >> mes;
-    cout << "Ingrese anio de nacimiento" << endl;
+    cout << "Ingrese anio de nacimiento de estudiante" << endl;
     int anio;
     cin >> anio;
     DTFecha fecha = DTFecha(dia,mes,anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
     return est;
 };
+
+DTProfesor crearDTProfesor(){
+    cout << "Ingrese nickname de profesor:" << endl;
+    string nick;
+    cin >> nick;
+    cout << "Ingrese nombre de profesor:" << endl;
+    string nombre;
+    cin >> nombre;
+    cout << "Ingrese contrasenia de profesor:" << endl;
+    string contrasenia;
+    cin >> contrasenia;
+    cout << "Ingrese descripcion de profesor:" << endl;
+    string descripcion;
+    cin >> descripcion;
+    cout << "Ingrese instituto de profesor:" << endl;
+    string instituto;
+    cin >> instituto;
+    factoryController Fabrica = factoryController::getFactoryInstance();
+    IControladorUsuario* Iuser = Fabrica.getIControladorUsuario();
+    list<string> idiomas = Iuser->listarIdiomas();
+    for(int i=0; i<idiomas.size(); i++){
+    
+    }
+    //TO BE CONTINUED
+}
 
 //verificar que entrada sea un int
 int entradaInt(){
