@@ -15,7 +15,7 @@
 int seleccionEstudianteOProfesor();
 void crearDTEstudiante();
 void esperar(double time);
-
+int entradaInt();
 
 //Desplegar menu por consola
 int menuPrincipal(){
