@@ -16,6 +16,8 @@ int seleccionEstudianteOProfesor();
 void crearDTEstudiante();
 void esperar(double time);
 int entradaInt();
+bool esAlfanumerico(string entrada);
+string entradaString();
 
 //Desplegar menu por consola
 int menuPrincipal(){
@@ -207,7 +209,6 @@ void crearDTEstudiante(){
 };
 
 //verificar que entrada sea un int
-
 int entradaInt(){
     int entrada = -1;
     while(entrada < 0){
@@ -218,6 +219,28 @@ int entradaInt(){
             cout << "Ingrese un entero: ";
         }
     }
-        
+    return entrada;
+}
+
+//Funcion para verificar que el string no contenga simbolos, solo letras y numeros
+bool esAlfanumerico(string entrada){
+    for(int i = 0; i < entrada.length(); i++){
+        if(!isalnum(entrada[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+string entradaString(){
+    bool alfanumerico = false;
+    string entrada;
+    cin >> entrada;
+    while(!esAlfanumerico(entrada)){
+        cout << endl << AMARILLO << "La entrada debe ser alfanumerica." << RESET << endl;
+        cout << "Ingrese el nuevamente: ";
+        cin >> entrada;
+    }
     return entrada;
 }
