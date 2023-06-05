@@ -5,6 +5,7 @@
 #include "include/Controladores/ControladorCurso.h"
 #include "include/Controladores/ControladorUsuario.h"
 
+
 // Macros para definir los códigos de escape ANSI para colores
 #define RESET    "\033[0m"
 #define ROJO     "\033[31m"
@@ -40,6 +41,9 @@ int menuPrincipal(){
     return opcion;
 }
 
+int seleccionEstudianteOProfesor();
+void crearDTEstudiante();
+void esperar(double time);
 
 
 int main(){
@@ -53,10 +57,24 @@ int main(){
     IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
 
 
-    int opcion = menuPrincipal();
+    int opcion = 1;
     while(opcion != 0){
+        opcion = menuPrincipal();
         switch (opcion){
+            case 0:{
+                    cout << "chau" << endl;
+                break;
+            }
             case 1:{
+                int opcion;
+                opcion = seleccionEstudianteOProfesor();
+                switch (opcion){
+                    case 1:{
+                    crearDTEstudiante();
+                        break;
+                    }
+                }
+
                 //Alta de usuario
                 //interfazUsuario->altaUsuario();
                 break;
@@ -138,6 +156,7 @@ int main(){
             }
             default:{
                 cout << ROJO << "Opcion invalida" << RESET << endl;
+                esperar(1.5);
                 break;
             }
         }
@@ -145,3 +164,44 @@ int main(){
 
     return 0;
 }
+
+void esperar(double time){
+this_thread::sleep_for(chrono::duration<double>(time));
+}
+
+int seleccionEstudianteOProfesor(){
+    cout << "1. Ingresar Estudiante" << endl;
+    cout << "2. Ingresar Profesor" << endl;
+    int opcion;
+    cin >> opcion;
+    return opcion;
+};
+
+void crearDTEstudiante(){
+    cout << "Ingrese nickname de estudiante:" << endl;
+    string nick;
+    cin >> nick;
+    cout << "Ingrese nombre de estudiante:" << endl;
+    string nombre;
+    cin >> nombre;
+    cout << "Ingrese contrasenia de estudiante:" << endl;
+    string contrasenia;
+    cin >> contrasenia;
+    cout << "Ingrese descripcion de estudiante:" << endl;
+    string descripcion;
+    cin >> descripcion;
+    cout << "Ingrese pais de estudiante:" << endl;
+    string pais;
+    cin >> pais;
+    cout << "Ingrese dia de nacimiento" << endl;
+    int dia;
+    cin >> dia;
+    cout << "Ingrese mes de nacimiento" << endl;
+    int mes;
+    cin >> mes;
+    cout << "Ingrese anio de nacimiento" << endl;
+    int anio;
+    cin >> anio;
+    DTFecha fecha = DTFecha(dia,mes,anio);
+    DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
+};
