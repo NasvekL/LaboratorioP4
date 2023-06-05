@@ -12,6 +12,9 @@
 #define VERDE    "\033[32m"
 #define AMARILLO "\033[33m"
 
+int seleccionEstudianteOProfesor();
+void crearDTEstudiante();
+void esperar(double time);
 
 
 //Desplegar menu por consola
@@ -41,9 +44,6 @@ int menuPrincipal(){
     return opcion;
 }
 
-int seleccionEstudianteOProfesor();
-void crearDTEstudiante();
-void esperar(double time);
 
 
 int main(){
@@ -205,3 +205,19 @@ void crearDTEstudiante(){
     DTFecha fecha = DTFecha(dia,mes,anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
 };
+
+//verificar que entrada sea un int
+
+int entradaInt(){
+    int entrada = -1;
+    while(entrada < 0){
+        try{
+            cin >> entrada;
+        }catch(...){
+            cout << endl << AMARILLO << "La entrada debe ser un entero positivo." << RESET << endl;
+            cout << "Ingrese un entero: ";
+        }
+    }
+        
+    return entrada;
+}
