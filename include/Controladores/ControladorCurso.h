@@ -55,7 +55,7 @@ class ControladorCurso: public IControladorCurso{
         void setDatoNombreDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
-        void setDatosEjercicioComletarpPalabras(DTEjercicio datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
+        void setDatosEjercicioCompletarPalabras(DTEjercicio datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
         void setDatosEjercicioTraduccion(DTEjercicio datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
 
 
@@ -78,7 +78,7 @@ class ControladorCurso: public IControladorCurso{
         set<DTCurso> listarDTCursos();
         set<string> listarIdiomasProfesor();
         set<string> listarIdiomas();
-        bool solucionCorrectacompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
+        bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
         bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
         void seleccionarEjercicio(int idEjercicio);
         set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso);//set<DTEjercicio> seleccionarCurso(string curso);

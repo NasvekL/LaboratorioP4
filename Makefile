@@ -8,7 +8,7 @@ O= $(BIN_DIR)/main.o $(BIN_DIR)/IControladorCurso.o $(BIN_DIR)/IControladorUsuar
 
 all: create_bin_dir $(BIN_DIR)/ejecutable
 
-ejecutable: $(O)
+$(BIN_DIR)/ejecutable: $(O)
 	$(CC) $(O) -o $(BIN_DIR)/ejecutable
 
 $(BIN_DIR)/main.o: main.cpp $(INC)

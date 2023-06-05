@@ -53,6 +53,7 @@ DTEjercicio ControladorCurso::getDatosEjercicio() {
     return *datosEjercicio;
 }
 
+
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
@@ -71,7 +72,7 @@ void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
     datosPrevias = &previas;
 }
 //Precondicion: solucion de traduccion viene como null
-void ControladorCurso::setDatosEjercicioComletarpPalabras(DTEjercicio datos) {
+void ControladorCurso::setDatosEjercicioCompletarPalabras(DTEjercicio datos) {
     datosEjercicio = &datos;
 }
 //Precondicion: solucion de compPal viene como null
@@ -139,7 +140,7 @@ set<string> ControladorCurso::listarIdiomas() {
     // Implementación pendiente
     return set<string>();
 }
-bool ControladorCurso::solucionCorrectacompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
+bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente
     return false;
 }

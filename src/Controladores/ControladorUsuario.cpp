@@ -98,3 +98,39 @@ Curso ControladorUsuario::obtenerCurso(string curso) {
     // ...
     return cursoObtenido;
 }
+void ControladorUsuario::deleteDataIngresado()
+{
+}
+list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
+    // Implementación de la función ejerciciosNoAprobados
+}
+
+list<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
+    // Implementación de la función cursosInscriptosSinAprobar
+}
+
+list<string> ControladorUsuario::listarProfesores() {
+    // Implementación de la función listarProfesores
+}
+
+list<string> ControladorUsuario::listarIdiomasProfesor(DTProfesor p) {
+    // Implementación de la función listarIdiomasProfesor
+}
+
+Profesor ControladorUsuario::encontrarProfesor(string nick) {
+    // Implementación de la función encontrarProfesor
+}
+
+void ControladorUsuario::confirmarAltaUsuario() {
+    // Implementación de la función confirmarAltaUsuario
+}
+
+
+void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
+    // Implementación de la función guardarDatosProfesor
+}
+
+list<string> ControladorUsuario::listarIdiomas() {
+    // Implementación de la función listarIdiomas
+}
+
