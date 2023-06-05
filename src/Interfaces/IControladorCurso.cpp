@@ -1,1 +1,7 @@
-#include "../../include/Interfaces/IControladorUsuario.h"
+#include "../../include/Interfaces/IControladorCurso.h"
+
+
+//destructor 
+IControladorCurso::~IControladorCurso(){
+
+};
