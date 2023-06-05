@@ -65,6 +65,7 @@ class ControladorUsuario : public IControladorUsuario{
         void confirmarAltaUsuario();
         void deleteDataIngresado();
         void guardarDatosProfesor(DTProfesor data);
+        void guardarDatosEstudiante(DTEstudiante data);
         list<string> listarIdiomas();
 
 

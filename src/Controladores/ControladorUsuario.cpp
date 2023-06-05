@@ -130,6 +130,10 @@ void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
     // Implementación de la función guardarDatosProfesor
 }
 
+void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
+    // Implementación de la función guardarDatosProfesor
+}
+
 list<string> ControladorUsuario::listarIdiomas() {
     // Implementación de la función listarIdiomas
 }

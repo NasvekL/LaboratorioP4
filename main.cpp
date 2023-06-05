@@ -4,6 +4,8 @@
 #include "include/Interfaces/IControladorUsuario.h"
 #include "include/Controladores/ControladorCurso.h"
 #include "include/Controladores/ControladorUsuario.h"
+#include "include/FactoryController.h"
+
 
 
 // Macros para definir los códigos de escape ANSI para colores
@@ -42,7 +44,7 @@ int menuPrincipal(){
 }
 
 int seleccionEstudianteOProfesor();
-void crearDTEstudiante();
+DTEstudiante crearDTEstudiante();
 void esperar(double time);
 
 
@@ -70,13 +72,12 @@ int main(){
                 opcion = seleccionEstudianteOProfesor();
                 switch (opcion){
                     case 1:{
-                    crearDTEstudiante();
-                        break;
+                    DTEstudiante est = crearDTEstudiante();
+                    factoryController Fabrica = factoryController::getFactoryInstance();
+                    IControladorUsuario* Iuser = Fabrica.getIControladorUsuario();
+                    Iuser->guardarDatosEstudiante(est);
                     }
                 }
-
-                //Alta de usuario
-                //interfazUsuario->altaUsuario();
                 break;
             }
             case 2:{
@@ -177,7 +178,7 @@ int seleccionEstudianteOProfesor(){
     return opcion;
 };
 
-void crearDTEstudiante(){
+DTEstudiante crearDTEstudiante(){
     cout << "Ingrese nickname de estudiante:" << endl;
     string nick;
     cin >> nick;
@@ -204,4 +205,5 @@ void crearDTEstudiante(){
     cin >> anio;
     DTFecha fecha = DTFecha(dia,mes,anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
+    return est;
 };

@@ -10,7 +10,7 @@ class factoryController{
     public:
         IControladorUsuario* getIControladorUsuario();
         IControladorCurso* getIControladorCurso();
-        factoryController getFactoryInstance();
+        static factoryController getFactoryInstance();
 };
 
 
