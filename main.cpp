@@ -41,6 +41,7 @@ int menuPrincipal(){
 }
 
 
+
 int main(){
     //Tiene alguna clase de sentido la interfaz? En teoria es para que si el dia de mañana
     //se quiere agregar o cambiar el controlador, no haya que cambiar nada en el main
@@ -50,6 +51,7 @@ int main(){
     //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
     IControladorCurso* interfazCurso = ControladorCurso::getInstancia();
     IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
+
 
     int opcion = menuPrincipal();
     while(opcion != 0){
