@@ -17,19 +17,21 @@ class IControladorCurso{
     public:
         public:
         // Métodos públicos virtuales
-        virtual ~IControladorCurso()= 0;
+        //virtual ~IControladorCurso()= 0;
+        //virtual IControladorCurso * getInstancia()= 0;
 
         //Getters virtuales
         virtual DTCurso getDatosDeCurso()= 0;
         virtual DTLeccion getDatosDeLeccion()= 0;
-        virtual DTProfesor getDatosDeProfesor()= 0;
+        virtual string getDatoNombreDeProfesor()= 0;
         virtual string getDatoIdioma()= 0;
         virtual set<DTCurso*> getDatosPrevias()= 0;
         virtual DTEjercicio getDatosEjercicio()= 0;
+        virtual Curso getCurso(string nombreCurso) = 0;
         //Setters virtuales
         virtual void setDatosDeCurso(DTCurso datos)= 0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
-        virtual void setDatosDeProfesor(string nombreProfesor)= 0;
+        virtual void setDatoNombreDeProfesor(string nombreProfesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
         virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
         virtual void setDatosEjercicioComletarpPalabras(DTEjercicio datos)= 0;
@@ -68,7 +70,7 @@ class IControladorCurso{
         virtual void limpiarDatos()= 0;
 
         //Operaciones que creo que están mal
-        virtual set<string> CursosInscriptoSinAprobar(string nick)= 0;
+        virtual set<string> cursosInscriptoSinAprobar(string nick)= 0;
 };
 
 
