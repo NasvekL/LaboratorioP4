@@ -58,9 +58,15 @@ int main(){
     //la interfaz es abstracta, entonces no se puede crear una instancia de la interfaz
     //Ergo utilidadInterfaz = 0?
     //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
+    
+    /*
+                    ------PARA UTILIZAR DENTRO DE CADA CASO------
     factoryController& Fabrica = factoryController::getInstancia();
     IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
     IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+                    copiar siempre la fabrica y luego el controlaror
+                            que vayamos a usar.
+    */
     int opcion = 1;
 while(opcion != 0){
     opcion = menuPrincipal();
@@ -73,6 +79,8 @@ while(opcion != 0){
             int seleccion = seleccionEstudianteOProfesor();
             switch (seleccion){
                 case 1:{
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     DTEstudiante est = crearDTEstudiante();
                     ContUsuario.guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
