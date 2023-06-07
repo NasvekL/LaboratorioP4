@@ -102,8 +102,9 @@ while(opcion != 0){
                 break;
             }
             case 3:{
-                //Alta idioma
-                //interfazCurso->altaIdioma();
+                cout<<'Ingrese idioma a ingresar:'<< endl;
+                string idioma;
+                cin>>idioma;
                 break;
             }
             case 4:{

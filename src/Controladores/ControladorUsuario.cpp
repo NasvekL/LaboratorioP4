@@ -9,6 +9,11 @@ ControladorUsuario& ControladorUsuario::getInstancia() {
     return *instancia;
 }
 
+ControladorUsuario::ControladorUsuario(){
+    this->datoEstudiante = NULL;
+    this->usuarios = NULL;
+}
+
 ControladorUsuario::~ControladorUsuario() {
     // Destructor
 }
@@ -124,7 +129,7 @@ void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
 }
 
 void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
-    // Implementación de la función guardarDatosProfesor
+    
 }
 
 list<string> ControladorUsuario::listarIdiomas() {
