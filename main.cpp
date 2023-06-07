@@ -58,6 +58,9 @@ int main(){
     //la interfaz es abstracta, entonces no se puede crear una instancia de la interfaz
     //Ergo utilidadInterfaz = 0?
     //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
+    factoryController* Fabrica = factoryController::getFactoryInstance();
+    IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
+    IControladorCurso* Icurso = Fabrica->getIControladorCurso();
     
     IControladorCurso* interfazCurso = ControladorCurso::getInstancia();
     IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
@@ -75,11 +78,11 @@ int main(){
                 int opcion;
                 opcion = seleccionEstudianteOProfesor();
                 switch (opcion){
-                    //factoryController Fabrica = factoryController::getFactoryInstance();
-                    //IControladorUsuario* Iuser = Fabrica.getIControladorUsuario();
+                    factoryController* Fabrica = factoryController::getFactoryInstance();
+                    IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
                     case 1:{
                     DTEstudiante est = crearDTEstudiante();
-                    //Iuser->guardarDatosEstudiante(est);
+                    Iuser->guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
                     break;
