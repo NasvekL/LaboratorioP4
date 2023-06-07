@@ -5,7 +5,7 @@
 #include "include/Controladores/ControladorCurso.h"
 #include "include/Controladores/ControladorUsuario.h"
 #include "include/FactoryController.h"
-/*
+
 
 
 // Macros para definir los códigos de escape ANSI para colores
@@ -74,11 +74,11 @@ int main(){
                 int opcion;
                 opcion = seleccionEstudianteOProfesor();
                 switch (opcion){
-                    factoryController Fabrica = factoryController::getFactoryInstance();
-                    IControladorUsuario* Iuser = Fabrica.getIControladorUsuario();
+                    //factoryController Fabrica = factoryController::getFactoryInstance();
+                    //IControladorUsuario* Iuser = Fabrica.getIControladorUsuario();
                     case 1:{
                     DTEstudiante est = crearDTEstudiante();
-                    Iuser->guardarDatosEstudiante(est);
+                    //Iuser->guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
                     break;
@@ -278,7 +278,5 @@ string entradaString(){
     }
     return entrada;
 }
-*/
 
-factoryController* Fabrica = factoryController::getFactoryInstance();
-IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
+
