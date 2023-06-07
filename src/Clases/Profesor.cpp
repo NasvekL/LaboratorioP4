@@ -8,14 +8,16 @@ string Profesor::getInstituto() {
 }
 
 Profesor::~Profesor() {
-    // Destructor de la clase Profesor
-    // Realizar cualquier limpieza de memoria u otras tareas necesarias
-    // ...
 }
 
-Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, list<Idioma*> idiomas) : Usuario(), instituto(instituto), idiomas(idiomas) {
+Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, list<Curso*> cursos, list<Idioma*> idiomas){
+    setNick(nickname);
+    setNombre(nombre);
+    setContrasenia(contrasenia);
+    setDescripcion(descripcion);
     this->instituto = instituto;
-    
+    this->idiomas = idiomas;
+    this->cursos = nullptr;
 }
 
 list<DTNotificacion> Profesor::verNotificaciones() {

@@ -4,7 +4,6 @@
 #include "Usuario.h"
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTProfesor.h"
-    //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Curso;
 class Idioma;
@@ -20,7 +19,7 @@ class Profesor: public Usuario{
         string getInstituto();
         //Create y destroy
         ~Profesor();
-        Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,list<Idioma*> idiomas);
+        Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, list<Curso*> cursos, list<Idioma*> idiomas);
         //Otras operaciones
         list<DTNotificacion> verNotificaciones();
         DTProfesor getDTProfesor();

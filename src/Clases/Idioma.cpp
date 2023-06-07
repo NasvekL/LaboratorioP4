@@ -34,7 +34,6 @@ set<string> Idioma::suscripciones(string nick) {
 }
 
 Idioma::~Idioma() {
-    // Implementación del destructor si es necesario
 }
 
 Idioma::Idioma() {

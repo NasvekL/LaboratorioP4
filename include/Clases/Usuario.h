@@ -23,11 +23,9 @@ class Usuario:public IObserver{
         string getDescripcion();
         string getNick();
         string getNombre();
-        //destructor
-        virtual ~Usuario();
-        Usuario();
         //observer
         void notificar();
+        //NO ESTAMOS PONIENDO DESTRUCTOR EN VIRTUAL DE USUARIO, CAPAZ ESTA MAL
 };
 
 
