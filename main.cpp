@@ -59,13 +59,8 @@ int main(){
     //Ergo utilidadInterfaz = 0?
     //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
     factoryController* Fabrica = factoryController::getFactoryInstance();
-    IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
-    IControladorCurso* Icurso = Fabrica->getIControladorCurso();
-    
-    IControladorCurso* interfazCurso = ControladorCurso::getInstancia();
-    IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
-
-
+    IControladorCurso& ContCurso = Fabrica->getIControladorCurso();
+    IControladorUsuario& ContUsuario = Fabrica->getIControladorUsuario();
     int opcion = 1;
     while(opcion != 0){
         opcion = menuPrincipal();
@@ -79,10 +74,10 @@ int main(){
                 opcion = seleccionEstudianteOProfesor();
                 switch (opcion){
                     factoryController* Fabrica = factoryController::getFactoryInstance();
-                    IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
+                    IControladorUsuario& Iuser = Fabrica->getIControladorUsuario();
                     case 1:{
                     DTEstudiante est = crearDTEstudiante();
-                    Iuser->guardarDatosEstudiante(est);
+                    Iuser.guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
                     break;
@@ -238,8 +233,8 @@ DTProfesor crearDTProfesor(){
     string instituto;
     cin >> instituto;
     factoryController* Fabrica = factoryController::getFactoryInstance();
-    IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
-    list<string> idiomas = Iuser->listarIdiomas();
+    IControladorUsuario& Iuser = Fabrica->getIControladorUsuario();
+    list<string> idiomas = Iuser.listarIdiomas();
     for(int i=0; i<idiomas.size(); i++){
     
     }
