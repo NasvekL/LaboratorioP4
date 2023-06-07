@@ -48,7 +48,7 @@ int menuPrincipal(){
     cin >> opcion;
     return opcion;
 }
-
+//HOLA
 
 
 int main(){
@@ -62,32 +62,34 @@ int main(){
     IControladorCurso& ContCurso = Fabrica->getIControladorCurso();
     IControladorUsuario& ContUsuario = Fabrica->getIControladorUsuario();
     int opcion = 1;
-    while(opcion != 0){
-        opcion = menuPrincipal();
-        switch (opcion){
-            case 0:{
-                    cout << "chau bo" << endl;
-                break;
-            }
-            case 1:{
-                int opcion;
-                opcion = seleccionEstudianteOProfesor();
-                switch (opcion){
+while(opcion != 0){
+    opcion = menuPrincipal();
+    switch (opcion){
+        case 0:{
+            cout << "chau bo" << endl;
+            break;
+        }
+        case 1:{
+            int seleccion = seleccionEstudianteOProfesor();
+            switch (seleccion){
+                case 1:{
                     factoryController* Fabrica = factoryController::getFactoryInstance();
                     IControladorUsuario& Iuser = Fabrica->getIControladorUsuario();
-                    case 1:{
                     DTEstudiante est = crearDTEstudiante();
                     Iuser.guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
                     break;
-                    }
-                    case 2:{
-                    DTProfesor prof = crearDTProfesor();
-                    }
                 }
-                break;
+                case 2:{
+                    DTProfesor prof = crearDTProfesor();
+                    // TO DO: realizar acciones para el profesor
+                    break;
+                }
             }
+            break;
+        }
+
             case 2:{
                 //Consulta de usuario
                 //interfazUsuario->consultaUsuario();

@@ -2,16 +2,7 @@
 
 ControladorCurso* ControladorCurso::instancia = nullptr;
 
-ControladorCurso::ControladorCurso() {
-    // Constructor privado
-    //Poner todas las variables en null
-    this->datosDeCurso = nullptr;
-    this->datosDeLeccion = nullptr;
-    this->datoNombreDeProfesor = nullptr;
-    this->datoIdioma = nullptr;
-    this->datosPrevias = nullptr;
-    this->datosEjercicio = nullptr;
-}
+
 
 ControladorCurso& ControladorCurso::getInstancia() {
     if (instancia == nullptr) {
