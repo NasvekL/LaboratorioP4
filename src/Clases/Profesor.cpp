@@ -14,7 +14,8 @@ Profesor::~Profesor() {
 }
 
 Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, list<Idioma*> idiomas) : Usuario(), instituto(instituto), idiomas(idiomas) {
-    // Constructor de la clase Profesor
+    this->instituto = instituto;
+    
 }
 
 list<DTNotificacion> Profesor::verNotificaciones() {
