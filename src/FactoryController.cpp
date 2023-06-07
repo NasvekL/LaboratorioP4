@@ -1,13 +1,16 @@
 #include "../include/FactoryController.h"
 
 // Inicialización de la instancia estática
-factoryController factoryController::instancia;
+factoryController* factoryController::instancia = NULL;
 
 // Constructor privado
 factoryController::factoryController() {}
 
 // Obtener la instancia de la fábrica
-factoryController factoryController::getFactoryInstance() {
+factoryController* factoryController::getFactoryInstance() {
+    if(instancia == NULL){
+        instancia = new factoryController();
+    }
     return instancia;
 }
 
