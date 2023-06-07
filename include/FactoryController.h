@@ -4,6 +4,7 @@
 #include "Interfaces/IControladorCurso.h"
 #include "Interfaces/IControladorUsuario.h"
 #include "Controladores/ControladorUsuario.h"
+#include "Controladores/ControladorCurso.h"
 class factoryController{
     private:
         factoryController(){};

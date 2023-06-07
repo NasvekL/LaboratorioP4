@@ -15,9 +15,12 @@ factoryController& factoryController::getInstancia(){
 
 // Obtener el controlador de usuario
 IControladorUsuario& factoryController::getIControladorUsuario() {
-return ControladorUsuario.getInstance();
+ControladorUsuario c = ControladorUsuario::getInstancia();
+return c;
 }
 
 // Obtener el controlador de curso
-IControladorCurso factoryController::getIControladorCurso() {
+IControladorCurso& factoryController::getIControladorCurso(){
+ControladorCurso c = ControladorCurso::getInstancia();
+return c;
 }
