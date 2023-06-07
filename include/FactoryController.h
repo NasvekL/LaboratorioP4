@@ -5,8 +5,8 @@
 #include "Interfaces/IControladorUsuario.h"
 class factoryController{
     private:
-        static factoryController* instancia;
         factoryController() = default;
+        static factoryController* instancia;
     public:
         IControladorUsuario* getIControladorUsuario();
         IControladorCurso* getIControladorCurso();
