@@ -13,7 +13,7 @@ ControladorCurso::ControladorCurso() {
     this->datosEjercicio = nullptr;
 }
 
-ControladorCurso* ControladorCurso::getInstancia() {
+ControladorCurso& ControladorCurso::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorCurso();
     }
