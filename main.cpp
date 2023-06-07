@@ -102,9 +102,14 @@ while(opcion != 0){
                 break;
             }
             case 3:{
-                cout<<'Ingrese idioma a ingresar:'<< endl;
+                cout<<'Ingrese idioma:'<< endl;
                 string idioma;
-                cin>>idioma;
+                cin>> idioma;
+                factoryController& Fabrica = factoryController::getInstancia();
+                IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
+                if(ContCurso.confirmarAltaIdioma(idioma)==false)
+                cout << ROJO << "Ya existe Idioma" << RESET << endl;
+                esperar(1.5);
                 break;
             }
             case 4:{
