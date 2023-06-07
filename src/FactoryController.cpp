@@ -3,8 +3,7 @@
 // Inicialización de la instancia estática
 factoryController* factoryController::instancia = NULL;
 
-// Constructor privado
-factoryController::factoryController() {}
+
 
 // Obtener la instancia de la fábrica
 factoryController* factoryController::getFactoryInstance() {
