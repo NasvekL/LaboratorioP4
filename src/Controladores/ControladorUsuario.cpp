@@ -9,7 +9,7 @@ ControladorUsuario::ControladorUsuario() {
     
 }
 
-ControladorUsuario *ControladorUsuario::getInstancia() {
+ControladorUsuario& ControladorUsuario::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorUsuario();
     }

@@ -61,6 +61,10 @@ int main(){
     factoryController* Fabrica = factoryController::getFactoryInstance();
     IControladorUsuario* Iuser = Fabrica->getIControladorUsuario();
     IControladorCurso* Icurso = Fabrica->getIControladorCurso();
+    
+    IControladorCurso* interfazCurso = ControladorCurso::getInstancia();
+    IControladorUsuario* interfazUsuario = ControladorUsuario::getInstancia();
+
 
     int opcion = 1;
     while(opcion != 0){

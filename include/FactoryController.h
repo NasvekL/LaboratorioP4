@@ -3,13 +3,15 @@
 #include "Utils.h"
 #include "Interfaces/IControladorCurso.h"
 #include "Interfaces/IControladorUsuario.h"
+#include "Controladores/ControladorUsuario.h"
 class factoryController{
     private:
-        factoryController() = default;
+        factoryController(){};
         static factoryController* instancia;
     public:
-        IControladorUsuario* getIControladorUsuario();
-        IControladorCurso* getIControladorCurso();
+        static factoryController& getInstancia();
+        IControladorUsuario& getIControladorUsuario();
+        IControladorCurso& getIControladorCurso();
         static factoryController* getFactoryInstance();
 };
 

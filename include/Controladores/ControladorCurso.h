@@ -30,13 +30,13 @@ class ControladorCurso: public IControladorCurso{
 
 
         //Variable estática para almacenar la instancia única del controlador
-        static ControladorCurso* instancia;
+        static ControladorCurso instancia;
         //Constructor privado para evitar la creación de instancias desde fuera de la clase
-        ControladorCurso();
+        ControladorCurso()=default;
 
     public:
         //Método estático para obtener la instancia única del controlador
-        static ControladorCurso* getInstancia();
+        static ControladorCurso& getInstancia();
         ~ControladorCurso();
 
 

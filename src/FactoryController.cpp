@@ -6,18 +6,18 @@ factoryController* factoryController::instancia = NULL;
 
 
 // Obtener la instancia de la fábrica
-factoryController* factoryController::getFactoryInstance() {
-    if(instancia == NULL){
-        instancia = new factoryController();
+factoryController& factoryController::getInstancia(){
+    if (instancia == nullptr) {
+        instancia = new factoryController(); // Crear una nueva instancia solo si no existe una
     }
-    return instancia;
+    return *instancia;
 }
 
 // Obtener el controlador de usuario
-IControladorUsuario* factoryController::getIControladorUsuario() {
-
+IControladorUsuario& factoryController::getIControladorUsuario() {
+return ControladorUsuario.getInstance();
 }
 
 // Obtener el controlador de curso
-IControladorCurso* factoryController::getIControladorCurso() {
+IControladorCurso& factoryController::getIControladorCurso() {
 }
