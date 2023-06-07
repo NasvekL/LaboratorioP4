@@ -79,6 +79,7 @@ while(opcion != 0){
                     Iuser.guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
+                    Iuser.
                     break;
                 }
                 case 2:{

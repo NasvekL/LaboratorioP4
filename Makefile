@@ -8,8 +8,6 @@ all: ejecutable
 
 ejecutable: $(O)
 	$(CC) $(O) -o ejecutable
-
-
 Curso.o: src/Clases/Curso.cpp $(INC)
 	$(CC-) src/Clases/Curso.cpp
 Ejercicio.o: src/Clases/Ejercicio.cpp $(INC)

@@ -31,6 +31,7 @@ class ControladorUsuario : public IControladorUsuario{
         ControladorUsuario() = default;
 
     public:
+
         //Método estático para obtener la instancia única del controlador
         static ControladorUsuario& getInstancia();
         ~ControladorUsuario();
