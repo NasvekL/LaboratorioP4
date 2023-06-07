@@ -66,8 +66,7 @@ class ControladorCurso: public IControladorCurso{
         void habilitarCurso(string nombreCurso);
 
         //Operaciones para modificar el set de idiomas
-        bool altaIdioma();
-
+        bool confirmarAltaIdioma(string idioma);
         //Operaciones para modificar el set de ejercicios
         void agregarEjercicio(DTEjercicio datos);
 

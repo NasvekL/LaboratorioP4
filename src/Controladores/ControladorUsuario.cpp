@@ -128,5 +128,4 @@ void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
 }
 
 list<string> ControladorUsuario::listarIdiomas() {
-    // Implementación de la función listarIdiomas
 }
