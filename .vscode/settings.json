@@ -8,7 +8,8 @@
         "iosfwd": "cpp",
         "icontroladorusuario": "cpp",
         "algorithm": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
