@@ -43,7 +43,7 @@ class IControladorCurso{
         virtual void habilitarCurso(string nombreCurso)= 0;
 
         //Operaciones virtuales para modificar el set de idiomas
-        virtual bool altaIdioma()= 0;
+        virtual bool confirmarAltaIdioma(string idioma)= 0;
 
         //Operaciones virtuales para modificar el set de ejercicios
         virtual void agregarEjercicio(DTEjercicio datos)= 0;

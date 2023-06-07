@@ -91,9 +91,19 @@ void ControladorCurso::habilitarCurso(string nombreCurso) {
 
 
 //Operaciones para modificar el set de idiomas
-bool ControladorCurso::altaIdioma() {
-    // Implementación pendiente
-    return false;
+bool ControladorCurso::confirmarAltaIdioma(string idioma) {
+    // Agregar elementos al mapa
+
+    // Buscar un elemento en el mapa por clave
+    string claveBuscada = idioma;
+    auto iterador = idiomas.find(claveBuscada);
+    if (iterador != idiomas.end()) {
+        return false;
+    } else {
+        Idioma id=Idioma(idioma);
+        idiomas.insert(std::make_pair(idioma, id));
+        return true;
+    }
 }
 
 
@@ -128,8 +138,8 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     return set<string>();
 }
 set<string> ControladorCurso::listarIdiomas() {
-    // Implementación pendiente
-    return set<string>();
+
+return set<string>();
 }
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente

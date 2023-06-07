@@ -2,18 +2,16 @@
 
 ControladorUsuario* ControladorUsuario::instancia = nullptr;
 
-ControladorUsuario::ControladorUsuario() {
-    // Constructor privado para evitar la creación de instancias desde fuera de la clase
-    //Poner todas las variables en null
-    this->datoEstudiante = nullptr;
-    
-}
-
 ControladorUsuario& ControladorUsuario::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorUsuario();
     }
     return *instancia;
+}
+
+ControladorUsuario::ControladorUsuario(){
+    this->datoEstudiante = NULL;
+    this->usuarios = NULL;
 }
 
 ControladorUsuario::~ControladorUsuario() {
@@ -131,10 +129,8 @@ void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
 }
 
 void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
-    // Implementación de la función guardarDatosProfesor
+    
 }
 
 list<string> ControladorUsuario::listarIdiomas() {
-    // Implementación de la función listarIdiomas
 }
-

@@ -58,9 +58,15 @@ int main(){
     //la interfaz es abstracta, entonces no se puede crear una instancia de la interfaz
     //Ergo utilidadInterfaz = 0?
     //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
-    factoryController* Fabrica = factoryController::getFactoryInstance();
-    IControladorCurso& ContCurso = Fabrica->getIControladorCurso();
-    IControladorUsuario& ContUsuario = Fabrica->getIControladorUsuario();
+    
+    /*
+                    ------PARA UTILIZAR DENTRO DE CADA CASO------
+    factoryController& Fabrica = factoryController::getInstancia();
+    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
+    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+                    copiar siempre la fabrica y luego el controlaror
+                            que vayamos a usar.
+    */
     int opcion = 1;
 while(opcion != 0){
     opcion = menuPrincipal();
@@ -73,10 +79,10 @@ while(opcion != 0){
             int seleccion = seleccionEstudianteOProfesor();
             switch (seleccion){
                 case 1:{
-                    factoryController* Fabrica = factoryController::getFactoryInstance();
-                    IControladorUsuario& Iuser = Fabrica->getIControladorUsuario();
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     DTEstudiante est = crearDTEstudiante();
-                    Iuser.guardarDatosEstudiante(est);
+                    ContUsuario.guardarDatosEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
                     break;
@@ -96,8 +102,9 @@ while(opcion != 0){
                 break;
             }
             case 3:{
-                //Alta idioma
-                //interfazCurso->altaIdioma();
+                cout<<'Ingrese idioma a ingresar:'<< endl;
+                string idioma;
+                cin>>idioma;
                 break;
             }
             case 4:{
@@ -234,13 +241,6 @@ DTProfesor crearDTProfesor(){
     cout << "Ingrese instituto de profesor:" << endl;
     string instituto;
     cin >> instituto;
-    factoryController* Fabrica = factoryController::getFactoryInstance();
-    IControladorUsuario& Iuser = Fabrica->getIControladorUsuario();
-    list<string> idiomas = Iuser.listarIdiomas();
-    for(int i=0; i<idiomas.size(); i++){
-    
-    }
-    //TO BE CONTINUED
 }
 
 //verificar que entrada sea un int
