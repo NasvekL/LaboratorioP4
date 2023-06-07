@@ -67,6 +67,10 @@ int main(){
                     copiar siempre la fabrica y luego el controlaror
                             que vayamos a usar.
     */
+    factoryController& Fabrica = factoryController::getInstancia();
+    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+
+
     int opcion = 1;
 while(opcion != 0){
     opcion = menuPrincipal();
@@ -96,13 +100,14 @@ while(opcion != 0){
             break;
         }
 
-            case 2:{
+        case 2:{
                 //Consulta de usuario
                 //interfazUsuario->consultaUsuario();
                 break;
-            }
-            case 3:{
-                cout<<'Ingrese idioma:'<< endl;
+        }
+        case 3:{
+                cout<<"Ingrese idioma:"<< endl;
+                esperar(1.5);
                 string idioma;
                 cin>> idioma;
                 factoryController& Fabrica = factoryController::getInstancia();
@@ -111,79 +116,79 @@ while(opcion != 0){
                 cout << ROJO << "Ya existe Idioma" << RESET << endl;
                 esperar(1.5);
                 break;
-            }
-            case 4:{
+        }
+        case 4:{
                 //Consultar idiomas
                 //interfazCurso->consultarIdiomas();
                 break;
-            }
-            case 5:{
+        }
+        case 5:{
                 //Alta de curso
                 //interfazCurso->altaCurso();
                 break;
-            }
-            case 6:{
+        }
+        case 6:{
                 //Agregar leccion
                 //interfazCurso->agregarLeccion();
-                break;
-            }
-            case 7:{
-                //Agregar ejercicio
-                //interfazCurso->agregarEjercicio();
-                break;
-            }
-            case 8:{
-                //Habilitar curso
-                //interfazCurso->habilitarCurso();
-                break;
-            }
-            case 9:{
-                //Eliminar curso
-                //interfazCurso->eliminarCurso();
-                break;
-            }
-            case 10:{
-                //Consultar curso
-                //interfazCurso->consultarCurso();
-                break;
-            }
-            case 11:{
-                //Inscribirse a curso
-                //interfazCurso->inscribirseACurso();
-                break;
-            }
-            case 12:{
-                //Realizar ejercicio
-                //interfazCurso->realizarEjercicio();
-                break;
-            }
-            case 13:{
-                //Consultar estadisticas
-                //interfazCurso->consultarEstadisticas();
-                break;
-            }
-            case 14:{
-                //Suscribirse a notificaciones
-                //interfazCurso->suscribirseANotificaciones();
-                break;
-            }
-            case 15:{
-                //Consulta de notificaciones
-                //interfazCurso->consultaNotificaciones();
-                break;
-            }
-            case 16:{
-                //Eliminar suscripciones
-                //interfazCurso->eliminarSuscripciones();
-                break;
-            }
-            default:{
-                cout << ROJO << "Opcion invalida" << RESET << endl;
-                esperar(1.5);
-                break;
-            }
+            break;
+        }
+        case 7:{
+            //Agregar ejercicio
+            //interfazCurso->agregarEjercicio();
+            break;
+        }
+        case 8:{
+            //Habilitar curso
+            //interfazCurso->habilitarCurso();
+            break;
+        }
+        case 9:{
+            //Eliminar curso
+            //interfazCurso->eliminarCurso();
+            break;
+        }
+        case 10:{
+            //Consultar curso
+            //interfazCurso->consultarCurso();
+            break;
+        }
+        case 11:{
+            //Inscribirse a curso
+            //interfazCurso->inscribirseACurso();
+            break;
+        }
+        case 12:{
+            //Realizar ejercicio
+            //interfazCurso->realizarEjercicio();
+            break;
+        }
+        case 13:{
+            //Consultar estadisticas
+            //interfazCurso->consultarEstadisticas();
+            break;
+        }
+        case 14:{
+            //Suscribirse a notificaciones
+            //interfazCurso->suscribirseANotificaciones();
+            break;
+        }
+        case 15:{
+            //Consulta de notificaciones
+            //interfazCurso->consultaNotificaciones();
+            break;
+        }
+        case 16:{
+            //Eliminar suscripciones
+            //interfazCurso->eliminarSuscripciones();
+            break;
+        }
+        default:{
+            cout << ROJO << "Opcion invalida" << RESET << endl;
+            esperar(1.5);
+            break;
         }
     }
+}
 
     return 0;
 }

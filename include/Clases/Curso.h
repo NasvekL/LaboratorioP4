@@ -29,7 +29,7 @@ class Curso{
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
         Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, list<Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta);
-
+        Curso();
         //GETTERS
         string getNombreCurso() const; //se puede poner const para indicar que la funcion no modifica el objeto. Si no c++ se queja despues al buscar curso por nombre
         string getDescripcion();
