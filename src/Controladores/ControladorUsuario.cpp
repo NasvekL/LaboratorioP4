@@ -13,7 +13,7 @@ ControladorUsuario& ControladorUsuario::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorUsuario();
     }
-    return instancia;
+    return *instancia;
 }
 
 ControladorUsuario::~ControladorUsuario() {

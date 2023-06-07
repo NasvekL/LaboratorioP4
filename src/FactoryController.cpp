@@ -19,5 +19,5 @@ return ControladorUsuario.getInstance();
 }
 
 // Obtener el controlador de curso
-IControladorCurso& factoryController::getIControladorCurso() {
+IControladorCurso factoryController::getIControladorCurso() {
 }

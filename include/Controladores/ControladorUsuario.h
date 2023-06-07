@@ -26,7 +26,7 @@ class ControladorUsuario : public IControladorUsuario{
 
 
          //Variable estática para almacenar la instancia única del controlador
-        static ControladorUsuario& instancia;
+        static ControladorUsuario* instancia;
         //Constructor privado para evitar la creación de instancias desde fuera de la clase
         ControladorUsuario();
 

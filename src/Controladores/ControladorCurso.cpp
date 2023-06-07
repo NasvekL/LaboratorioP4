@@ -17,7 +17,7 @@ ControladorCurso& ControladorCurso::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorCurso();
     }
-    return instancia;
+    return *instancia;
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
