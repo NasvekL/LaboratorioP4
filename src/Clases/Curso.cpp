@@ -7,17 +7,10 @@ Curso::~Curso() {
 Curso::Curso() {
     // Implementación del constructor vacio
 }
-
-Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, Idioma* idioma) {
+//Hay que hacer un constructor para los casos en los que hay lecciones y otro para los que no?
+Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, list<Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta){
     // Implementación del constructor
-    this->nombre = nombre;
-    this->descripcion = descripcion;
-    this->nivelDeDif = nivel;
-    this->habilitado = habilitado;
-    this->previas = previas;
     // Inicializar los pseudoatributos
-    this->idiomaDelCurso = nullptr;
-    this->profesorQueLoDicta = nullptr;
 }
 
 // GETTERS

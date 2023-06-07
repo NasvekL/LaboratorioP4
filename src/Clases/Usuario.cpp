@@ -36,13 +36,6 @@ string Usuario:: getDescripcion(){
     return this->descripcion;
 };
 
-Usuario:: ~Usuario(){
-
-};
-Usuario:: Usuario(){
-
-};
-
 void Usuario:: notificar(){
     
 };
