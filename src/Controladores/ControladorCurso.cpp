@@ -143,9 +143,16 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     return set<string>();
 }
 set<string> ControladorCurso::listarIdiomas() {
+    setIdiomas = set<string>;
 
-return set<string>();
+    for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
+        string nombre = it->fist;
+        cout << nombre <<'\n';
+        setIdiomas.insert(it->firts);
+    }
+    return setIdiomas;
 }
+
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente
     return false;
