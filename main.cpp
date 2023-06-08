@@ -68,7 +68,7 @@ int main(){
                             que vayamos a usar.
     */
     factoryController& Fabrica = factoryController::getInstancia();
-    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
 
 
     int opcion = 1;
@@ -116,7 +116,7 @@ while(opcion != 0){
                     cout << AMARILLO << "Ya existe el idioma" << RESET << endl;
                 else
                     cout << VERDE << "Idioma creado" << RESET << endl;
-                esperar(1.5);
+                esperar(5);
                 break;
         }
         case 4:{
