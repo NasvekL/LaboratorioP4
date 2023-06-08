@@ -113,7 +113,9 @@ while(opcion != 0){
                 factoryController& Fabrica = factoryController::getInstancia();
                 IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
                 if(ContCurso.confirmarAltaIdioma(idioma)==false)
-                cout << ROJO << "Ya existe Idioma" << RESET << endl;
+                    cout << AMARILLO << "Ya existe el idioma" << RESET << endl;
+                else
+                    cout << VERDE << "Idioma creado" << RESET << endl;
                 esperar(1.5);
                 break;
         }
