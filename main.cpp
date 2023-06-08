@@ -93,8 +93,13 @@ while(opcion != 0){
                     break;
                 }
                 case 2:{
+                    //factoryController& Fabrica = factoryController::getInstancia();
+                    //IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+
                     DTProfesor prof = crearDTProfesor();
-                    //ContUsuario.guardarDatosProfesor();
+
+                    //set<string> idiomasDisponibles = ContUsuario.listarIdiomas();
+                    //ContUsuario.guardarDatosProfesor(prof);
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
