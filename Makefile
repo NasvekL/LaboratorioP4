@@ -1,5 +1,5 @@
-CC=g++
-CC-=g++ -c
+CC=g++ -g
+CC-=g++ -g -c
 BIN_DIR = build
 
 INC=include/Clases/Curso.h include/Clases/Ejercicio.h include/Clases/Estudiante.h include/Clases/Idioma.h include/DTs/DTFecha.h include/Clases/Inscripcion.h include/Utils.h include/Clases/Leccion.h include/Clases/Profesor.h include/Clases/Progreso.h include/Clases/RellenarPalabras.h include/Clases/Traduccion.h include/Clases/Usuario.h include/Controladores/ControladorCurso.h include/Controladores/ControladorUsuario.h include/DTs/DTCurso.h include/DTs/DTEjercicio.h include/DTs/DTEstadisticaCurso.h include/DTs/DTEstadisticaEstudiante.h include/DTs/DTEstadisticaProfesor.h include/DTs/DTEstudiante.h include/DTs/DTEstudianteSC.h include/DTs/DTLeccion.h include/DTs/DTNotificacion.h include/DTs/DTProfesor.h include/DTs/DTProfesorSC.h include/Interfaces/IControladorCurso.h include/Interfaces/IControladorUsuario.h include/Utils.h include/FactoryController.h include/Interfaces/IObserver.h

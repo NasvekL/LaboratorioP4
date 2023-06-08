@@ -118,7 +118,7 @@ while(opcion != 0){
                     cout << AMARILLO << "Ya existe el idioma" << RESET << endl;
                 else
                     cout << VERDE << "Idioma creado" << RESET << endl;
-                esperar(5);
+                esperar(2);
                 break;
         }
         case 4:{

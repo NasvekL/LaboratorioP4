@@ -45,6 +45,10 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
     return estadisticas;
 }
 
+void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
+    cout << "No anda esta porqueria :)";
+}
+
 list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // Implementar la lógica para listar los profesores sin contraseña
     list<DTProfesorSC> profesores;
