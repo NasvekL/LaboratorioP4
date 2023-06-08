@@ -94,7 +94,7 @@ while(opcion != 0){
                 }
                 case 2:{
                     DTProfesor prof = crearDTProfesor();
-                    ContUsuario.guardarDatosProfesor();
+                    //ContUsuario.guardarDatosProfesor();
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
