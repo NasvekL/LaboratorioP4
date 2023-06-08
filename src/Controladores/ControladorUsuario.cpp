@@ -22,9 +22,6 @@ DTEstudiante ControladorUsuario::getDatoEstudiante() {
     return *datoEstudiante;
 }
 
-void ControladorUsuario::setDatoEstudiante(DTEstudiante dato) {
-    datoEstudiante = new DTEstudiante(dato);
-}
 
 list<string> ControladorUsuario::listarCursos() {
     // Implementar la lógica para listar los cursos
@@ -125,12 +122,13 @@ void ControladorUsuario::confirmarAltaUsuario() {
 
 
 void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
-    // Implementación de la función guardarDatosProfesor
+    datoProfesor = &data;
 }
 
 void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
-    
+  datoEstudiante = &data;  
 }
 
 list<string> ControladorUsuario::listarIdiomas() {
+    
 }

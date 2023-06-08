@@ -87,12 +87,14 @@ while(opcion != 0){
                     IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     DTEstudiante est = crearDTEstudiante();
                     ContUsuario.guardarDatosEstudiante(est);
+
                     cout << VERDE << "Estudiante creado" << RESET << endl;
                     esperar(3);
                     break;
                 }
                 case 2:{
                     DTProfesor prof = crearDTProfesor();
+                    ContUsuario.guardarDatosProfesor();
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
