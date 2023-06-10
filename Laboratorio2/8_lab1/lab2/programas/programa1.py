@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 import sys
@@ -9,18 +8,6 @@ import nltk
 # grammar definition
 grammar = """
 """
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
