@@ -110,6 +110,32 @@ while(opcion != 0){
         case 2:{
                 factoryController& Fabrica = factoryController::getInstancia();
                 IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+                
+                int seleccion = seleccionEstudianteOProfesor();
+
+                if (seleccion == 1) {
+                    list<DTEstudianteSC> estudiantes = ContUsuario.listarEstudiantes();
+                    cout << "Estudiantes:" << endl;
+                    for (const DTEstudianteSC& estudiante : estudiantes) {
+                        cout << "- Nombre: " << estudiante.nombre << endl;
+                        cout << "  Descripción: " << estudiante.descripcion << endl;
+                        cout << "  País: " << estudiante.pais << endl;
+                    }
+                } else  (seleccion == 2) {
+                    list<DTProfesorSC> profesores = ContUsuario.listarProfesoresSinContra();
+                    cout << "Profesores:" << endl;
+                    for (const DTProfesorSC& profesor : profesores) {
+                        cout << "- Nombre: " << profesor.nombre << endl;
+                        cout << "  Descripción: " << profesor.descripcion << endl;
+                        cout << "  Instituto: " << profesor.instituto << endl;
+                        cout << "  Idiomas especializados: ";
+                        for (const string& idioma : profesor.idiomasEspecializados) {
+                            cout << idioma << ", ";
+                        }
+                        cout << endl;
+                    }
+                }
+                esperar(3);
                 break;
         }
         case 3:{
