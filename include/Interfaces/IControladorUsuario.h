@@ -46,12 +46,13 @@ class IControladorUsuario{
     virtual void guardarDatosProfesor(DTProfesor data) = 0;
     virtual void guardarDatosEstudiante(DTEstudiante data) = 0;
     virtual void listarIdiomas() = 0;
+    virtual bool existeUsuario(const std::string& nickname) const = 0;
 
     // Operaciones que no tienen sentido estar aquí
     virtual DTEstadisticaCurso estadisticaCurso(std::string curso) = 0;
     virtual Curso obtenerCurso(std::string curso) = 0;
 };
-
+    
 
 
 
