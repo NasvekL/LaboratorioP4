@@ -133,11 +133,10 @@ void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
   datoEstudiante = &data;  
 }
 
-set<string> ControladorUsuario::listarIdiomas() {
+void ControladorUsuario::listarIdiomas() {
  set<string> res;
  ControladorCurso cc = ControladorCurso::getInstancia();
- res = cc.listarIdiomas();
- return res;
+ cc.listarIdiomas();
 }
 
 set<string> consultarUsuario(){
