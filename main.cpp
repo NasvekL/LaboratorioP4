@@ -22,6 +22,8 @@ int entradaInt();
 bool esAlfanumerico(string entrada);
 string entradaString();
 bool quiereContinuar();
+string entradaStr();
+set<string> separar(idiomasEspecializadosStr, ',');
 
 //Desplegar menu por consola
 int menuPrincipal(){
@@ -88,18 +90,16 @@ while(opcion != 0){
                     IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     DTEstudiante est = crearDTEstudiante();
                     ContUsuario.guardarDatosEstudiante(est);
-                    cout << VERDE << "Estudiante creado" << RESET << endl;
+                    cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe?
                     esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
                     break;
                 }
                 case 2:{
-                    //factoryController& Fabrica = factoryController::getInstancia();
-                    //IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
-
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();F
                     DTProfesor prof = crearDTProfesor();
-
-                    //set<string> idiomasDisponibles = ContUsuario.listarIdiomas();
-                    //ContUsuario.guardarDatosProfesor(prof);
+                    ContUsuario.guardarDatosProfesor(prof);
+        
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
@@ -218,6 +218,14 @@ DTEstudiante crearDTEstudiante(){
     cout << "Ingrese nickname de estudiante:" << endl;
     string nick;
     cin >> nick;
+
+    factoryController& Fabrica = factoryController::getInstancia();
+    IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
+    if (ContUser.existeUsuario(nick)) {
+        cout << ROJO <<"El nickname  ya está en uso, ingrese otro" << RESET << endl;
+        return DTEstudiante();
+    }
+
     cout << "Ingrese nombre de estudiante:" << endl;
     string nombre;
     cin >> nombre;
@@ -248,6 +256,14 @@ DTProfesor crearDTProfesor(){
     cout << "Ingrese nickname de profesor:" << endl;
     string nick;
     cin >> nick;
+
+    factoryController& Fabrica = factoryController::getInstancia();
+    IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
+    if (ContUser.existeUsuario(nick)) {
+        cout << ROJO << "El nickname  ya está en uso, ingrese otro" << RESET << endl;
+        return DTProfesor(); 
+    }
+
     cout << "Ingrese nombre de profesor:" << endl;
     string nombre;
     cin >> nombre;
@@ -319,5 +335,4 @@ string entradaString(){
     }
     return entrada;
 }
-
 
