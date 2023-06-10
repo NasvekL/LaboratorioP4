@@ -1,5 +1,5 @@
 #include "../../include/Controladores/ControladorUsuario.h"
-
+#include "../../include/Controladores/ControladorCurso.h"
 ControladorUsuario* ControladorUsuario::instancia = nullptr;
 
 ControladorUsuario& ControladorUsuario::getInstancia() {
@@ -133,8 +133,11 @@ void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
   datoEstudiante = &data;  
 }
 
-list<string> ControladorUsuario::listarIdiomas() {
-    
+set<string> ControladorUsuario::listarIdiomas() {
+ set<string> res;
+ ControladorCurso cc = ControladorCurso::getInstancia();
+ res = cc.listarIdiomas();
+ return res;
 }
 
 set<string> consultarUsuario(){

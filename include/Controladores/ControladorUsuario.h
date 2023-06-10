@@ -67,7 +67,7 @@ class ControladorUsuario : public IControladorUsuario{
         void deleteDataIngresado();
         void guardarDatosProfesor(DTProfesor data);
         void guardarDatosEstudiante(DTEstudiante data);
-        list<string> listarIdiomas();
+        set<string> listarIdiomas();
 
 
         //Operacion que no tiene sentido que este aca (iria en controladorCurso)

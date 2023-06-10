@@ -144,7 +144,6 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
 }
 set<string> ControladorCurso::listarIdiomas(){
     set<string> setIdiomas;
-    cout<<'perrrron'<<endl;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
         cout << nombre <<'\n';
