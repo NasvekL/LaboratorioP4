@@ -23,7 +23,7 @@ class ControladorUsuario : public IControladorUsuario{
 
         //Atributos auxiliares con punteros
         DTEstudiante* datoEstudiante;
-
+        DTProfesor* datoProfesor;
 
          //Variable estática para almacenar la instancia única del controlador
         static ControladorUsuario* instancia;

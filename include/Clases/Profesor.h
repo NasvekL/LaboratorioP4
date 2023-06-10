@@ -13,7 +13,7 @@ class Profesor: public Usuario{
         string instituto;
         //Pseudoatributos
         list<Idioma*> idiomas;  
-        list<Curso*> cursos;
+        list<Curso*>* cursos;
     public:
         //Getters
         string getInstituto();
@@ -27,7 +27,7 @@ class Profesor: public Usuario{
         int obtenerPromedio();
         //Obtener Pseudoatributos
         list<Idioma*> Idiomas();
-        list<Curso*> Cursos();
+        list<Curso*>* Cursos();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
 

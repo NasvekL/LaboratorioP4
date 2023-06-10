@@ -2,13 +2,19 @@
 
 ControladorCurso* ControladorCurso::instancia = nullptr;
 
-
-
 ControladorCurso& ControladorCurso::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorCurso();
     }
     return *instancia;
+}
+ControladorCurso::ControladorCurso(){
+    datosDeCurso=NULL;
+    datosDeLeccion=NULL;
+    datoNombreDeProfesor=NULL;
+    datoIdioma=NULL;
+    datosPrevias=NULL;
+    datosEjercicio=NULL;
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
@@ -19,7 +25,6 @@ ControladorCurso::~ControladorCurso() {
         delete instancia;
     }
 }
-
 //Getters
 Curso ControladorCurso::getCurso(string nick) {
 
@@ -138,9 +143,15 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     return set<string>();
 }
 set<string> ControladorCurso::listarIdiomas() {
-
-return set<string>();
+    set<string> setIdiomas;
+    for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
+        string nombre = it->first;
+        cout << nombre <<'\n';
+        setIdiomas.insert(it->first);
+    }
+    return setIdiomas;
 }
+
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente
     return false;

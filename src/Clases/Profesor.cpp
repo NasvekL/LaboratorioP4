@@ -44,8 +44,8 @@ list<Idioma*> Profesor::Idiomas() {
     return idiomas;
 }
 
-list<Curso*> Profesor::Cursos() {
-    return cursos;
+list<Curso*>* Profesor::Cursos() {
+    return this->cursos;
 }
 
 // Implementar los métodos adicionales y las operaciones para agregar idiomas y cursos
