@@ -74,6 +74,8 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstadisticaCurso estadisticaCurso(string curso);
         //Operacion dudosa
         Curso obtenerCurso(string curso);
+
+        set<string> consultarUsuario();
 };      
 
 

@@ -9,6 +9,7 @@ class DTProfesor{
         string nombre;
         string contrasenia;
         string nickname;
+        set<string> idiomas;
     public:
         //Getters
         string getInstituto();
@@ -18,7 +19,6 @@ class DTProfesor{
         string getNickname();
         //Create y destroy
         ~DTProfesor();
-        DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto);
-
+        DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, set<string> idiomas);
 };
 #endif

@@ -142,8 +142,9 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     // Implementación pendiente
     return set<string>();
 }
-set<string> ControladorCurso::listarIdiomas() {
+set<string> ControladorCurso::listarIdiomas(){
     set<string> setIdiomas;
+    cout<<'perrrron'<<endl;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
         cout << nombre <<'\n';

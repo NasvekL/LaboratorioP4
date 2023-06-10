@@ -1,6 +1,6 @@
 #include "../../include/DTs/DTProfesor.h"
 // Constructor
-DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto) {
+DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, set<string> idiomas) {
     // Implementación del constructor
     // Puedes asignar los valores de los parámetros a los atributos correspondientes
     this->nickname = nickname;
@@ -8,6 +8,7 @@ DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, strin
     this->nombre = nombre;
     this->descripcion = descripcion;
     this->instituto = instituto;
+    this->idiomas = idiomas;
 }
 
 // Destructor

@@ -21,6 +21,7 @@ void esperar(double time);
 int entradaInt();
 bool esAlfanumerico(string entrada);
 string entradaString();
+bool quiereContinuar();
 
 //Desplegar menu por consola
 int menuPrincipal(){
@@ -87,9 +88,8 @@ while(opcion != 0){
                     IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     DTEstudiante est = crearDTEstudiante();
                     ContUsuario.guardarDatosEstudiante(est);
-
                     cout << VERDE << "Estudiante creado" << RESET << endl;
-                    esperar(3);
+                    esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
                     break;
                 }
                 case 2:{
@@ -108,8 +108,9 @@ while(opcion != 0){
         }
 
         case 2:{
-                //Consulta de usuario
-                //interfazUsuario->consultaUsuario();
+                factoryController& Fabrica = factoryController::getInstancia();
+                IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+                ContUsuario.
                 break;
         }
         case 3:{
@@ -260,6 +261,27 @@ DTProfesor crearDTProfesor(){
     cout << "Ingrese instituto de profesor:" << endl;
     string instituto;
     cin >> instituto;
+    bool seguir = true;
+    set<string> idiomas;
+    while(seguir){
+        factoryController& Fabrica = factoryController::getInstancia();
+        IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
+        cout << "Ingrese idioma de profesor:" << endl;
+        idiomas = ContUser.listarIdiomas();
+        seguir = quiereContinuar();
+    }
+    DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);
+}
+
+bool quiereContinuar(){
+    cout << "1: Agregar nuevo idioma" << endl;
+    cout << "2: Continuar" << endl;
+    int seguir;
+    cin >> seguir;
+    if (seguir == 1){
+        return true;
+    }
+    else return false;
 }
 
 //verificar que entrada sea un int

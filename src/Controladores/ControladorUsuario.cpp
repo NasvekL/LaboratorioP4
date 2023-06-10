@@ -136,3 +136,7 @@ void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
 list<string> ControladorUsuario::listarIdiomas() {
     
 }
+
+set<string> consultarUsuario(){
+    
+}
