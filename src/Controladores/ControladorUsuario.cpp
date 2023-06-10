@@ -135,7 +135,7 @@ void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
 
 void ControladorUsuario::listarIdiomas() {
  set<string> res;
- ControladorCurso cc = ControladorCurso::getInstancia();
+ ControladorCurso& cc = ControladorCurso::getInstancia();
  cc.listarIdiomas();
 }
 
