@@ -143,10 +143,11 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     return set<string>();
 }
 void ControladorCurso::listarIdiomas(){
+    int a=1;
     set<string> setIdiomas;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
-        cout << nombre <<'\n';
+        cout <<nombre <<'\n';
         setIdiomas.insert(nombre);
     }
 }
