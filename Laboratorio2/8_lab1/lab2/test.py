@@ -47,7 +47,6 @@ if __name__ == '__main__':
 			if x != 0:
 			   print ("ERROR: al ejecutar "+programa+" para la entrada "+entrada)
 			   errores += 1
-      
 			else:
 			    # COMPARAR LAS SALIDAS
 				diferencias = "diff --strip-trailing-cr " + archSalida + " " + archSalidaOficial 
