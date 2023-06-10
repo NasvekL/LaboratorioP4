@@ -142,14 +142,13 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     // Implementación pendiente
     return set<string>();
 }
-set<string> ControladorCurso::listarIdiomas(){
+void ControladorCurso::listarIdiomas(){
     set<string> setIdiomas;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
         cout << nombre <<'\n';
-        setIdiomas.insert(it->first);
+        setIdiomas.insert(nombre);
     }
-    return setIdiomas;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
