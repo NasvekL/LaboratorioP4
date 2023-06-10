@@ -278,14 +278,20 @@ DTProfesor crearDTProfesor(){
     cin >> instituto;
     bool seguir = true;
     set<string> *idiomas=NULL;
-        while(seguir){
+    int i = 1;
+    while(seguir){
         factoryController& Fabrica = factoryController::getInstancia();
         IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
-        cout << "Ingrese idioma de profesor:" << endl;
-        ContUser.listarIdiomas();
+        cout << "Idiomas disponibles:" << endl;
+        set<string> idiomasDisp = ContUser.listarIdiomas();
+        for (const string& idioma : idiomasDisp) {
+            cout << i << "- " << idioma << endl;
+            i++;
+    }
         seguir = quiereContinuar();
     }
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);
+    return prof;
 }
 
 bool quiereContinuar(){
