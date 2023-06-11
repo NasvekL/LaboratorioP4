@@ -211,8 +211,8 @@ while(opcion != 0){
             break;
         }
         default:{
-            cout << ROJO << "Opcion invalida" << RESET << endl;
-            esperar(1.5);
+            cout << AMARILLO << "Opcion invalida" << RESET << endl;
+            presionaParaContinuar();
             break;
         }
     }
