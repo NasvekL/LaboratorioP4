@@ -21,7 +21,7 @@ void esperar(double time);
 int entradaInt();
 string entradaString();
 bool quiereContinuar();
-set<string> separar(string idiomasEspecializadosStr);//y esta funcion?????
+
 
 //Desplegar menu por consola
 int menuPrincipal(){
@@ -147,6 +147,9 @@ while(opcion != 0){
         }
         case 4:{
                 //Consultar idiomas
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                contCurso.listarIdiomas;
                 //interfazCurso->consultarIdiomas();
                 break;
         }
@@ -178,6 +181,15 @@ while(opcion != 0){
         case 10:{
             //Consultar curso
             //interfazCurso->consultarCurso();
+
+            /*factoryController& fabrica = factoryController::getInstancia();
+            IControladorCurso& contCurso = fabrica.getIControladorCurso();
+            contCurso.listarNombresDeCursos();
+            cout << "Ingrese un curso" << endl;
+            string curs;
+            cin >> curs;*/
+
+
             break;
         }
         case 11:{

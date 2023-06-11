@@ -147,8 +147,9 @@ void ControladorCurso::listarIdiomas(){
     set<string> setIdiomas;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
-        cout <<nombre <<'\n';
+        cout << a <<  "- " << nombre <<'\n';
         setIdiomas.insert(nombre);
+        a++;
     }
 }
 
