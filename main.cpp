@@ -298,18 +298,21 @@ DTProfesor crearDTProfesor(){
     cin >> instituto;
     bool seguir = true;
     set<string> *idiomas=NULL;
-    int i = 1;
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    cout << "Idiomas disponibles:" << endl;
+    contCurso.listarIdiomas();
+    string idiom;
+    cout << "Ingrese idioma en el que se especializa:" << endl;
     while(seguir){
-        factoryController& fabrica = factoryController::getInstancia();
-        IControladorCurso& contCurso = fabrica.getIControladorCurso();
-        cout << "Idiomas disponibles:" << endl;
-        /*set<string> idiomasDisp = contCurso.listarIdiomas();
-        for (const string& idioma : idiomasDisp) {
-            cout << i << "- " << idioma << endl;
-            i++;
-        }*/
+        cin >> idiom;
+        if (idiomas.find(idiom) == false)
+            idiomas.insert(idiom);
+        else
+            cout << "Idioma ya ingresado:" << endl;
         seguir = quiereContinuar();
     }
+
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);
     return prof;
 }
