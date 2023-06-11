@@ -110,20 +110,20 @@ while(opcion != 0){
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
                     cout << "Estudiantes:" << endl;
                     /*for (const DTEstudianteSC& estudiante : estudiantes) {
-                        cout << "- Nombre: " << estudiante.nombre << endl;
-                        cout << "  Descripción: " << estudiante.descripcion << endl;
-                        cout << "  País: " << estudiante.pais << endl;
+                        cout << "- Nombre: " << estudiante.getNombre << endl;
+                        cout << "  Descripción: " << estudiante.getDescripcion << endl;
+                        cout << "  País: " << estudiante.getPais << endl;
                     }*/
                 } else{
                     if(seleccion == 2){
                             list<DTProfesorSC> profesores = contUsuario.listarProfesoresSinContra();
                         cout << "Profesores:" << endl;
                         for (const DTProfesorSC& profesor : profesores) {
-                            //cout << "- Nombre: " << profesor.nombre << endl;
-                            //cout << "  Descripción: " << profesor.descripcion << endl;
-                            //cout << "  Instituto: " << profesor.instituto << endl;
+                            //cout << "- Nombre: " << profesor.getNombre << endl;
+                            //cout << "  Descripción: " << profesor.getDescripcion << endl;
+                            //cout << "  Instituto: " << profesor.getInstituto << endl;
                             cout << "  Idiomas especializados: ";
-                            //for (const string& idioma : profesor.idiomasEspecializados) {
+                            //for (const string& idioma : profesor.getidiomasEspecializados) {
                             //    cout << idioma << ", ";
                             //}
                             cout << endl;
