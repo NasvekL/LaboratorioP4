@@ -18,6 +18,13 @@ ControladorUsuario::~ControladorUsuario() {
     // Destructor
 }
 
+//existeUsuario
+bool ControladorUsuario::existeUsuario(string nick) {
+    // Implementar la lógica para verificar si existe un usuario con el nickname recibido
+    // ...
+    return false;
+}
+
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
     return *datoEstudiante;
 }

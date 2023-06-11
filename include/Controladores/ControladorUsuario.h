@@ -50,6 +50,7 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstadisticaEstudiante estadisticasEstudiante(string estudiante);
         list<DTProfesorSC> listarProfesoresSinContra();
         list<DTEstudianteSC> listarEstudiantes();
+        bool existeUsuario(string nick);
 
         //Operaciones de suscripciones
         Usuario obtenerSuscriptor(string user);

@@ -31,8 +31,7 @@ DTProfesor Profesor::getDTProfesor() {
 }
 
 list<DTCurso> Profesor::obtenerDTCurso() {
-    // Implementar la lógica para obtener los objetos DTCurso asociados al profesor
-    // ...
+    // Esto esta. raro. deberia obtener strings, y despues controlador curso ver los dts
 }
 
 int Profesor::obtenerPromedio() {
