@@ -43,8 +43,6 @@ class IControladorUsuario{
     virtual Profesor encontrarProfesor(std::string nick) = 0;
     virtual void confirmarAltaUsuario() = 0;
     virtual void deleteDataIngresado() = 0;
-    virtual void guardarDatosProfesor(DTProfesor data) = 0;
-    virtual void guardarDatosEstudiante(DTEstudiante data) = 0;
     virtual void listarIdiomas() = 0;
     virtual bool existeUsuario(string nickname) = 0;
 
