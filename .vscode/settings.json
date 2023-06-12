@@ -9,7 +9,8 @@
     "icontroladorusuario": "cpp",
     "algorithm": "cpp",
     "new": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "stdexcept": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabled",
   "C_Cpp_Runner.msvcBatchPath": "",

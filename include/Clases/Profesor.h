@@ -12,21 +12,21 @@ class Profesor: public Usuario{
     private:
         string instituto;
         //Pseudoatributos
-        list<Idioma*> idiomas;  
+        set<Idioma*> idiomas;  
         list<Curso*>* cursos;
     public:
         //Getters
         string getInstituto();
         //Create y destroy
         ~Profesor();
-        Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,list<Idioma*> idiomas);
+        Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,set<Idioma*> idiomas);
         //Otras operaciones
         list<DTNotificacion> verNotificaciones();
         DTProfesor getDTProfesor();
         list<DTCurso> obtenerDTCurso();
         int obtenerPromedio();
         //Obtener Pseudoatributos
-        list<Idioma*> Idiomas();
+        set<Idioma*> Idiomas();
         list<Curso*>* Cursos();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };

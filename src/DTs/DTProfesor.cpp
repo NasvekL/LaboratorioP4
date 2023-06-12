@@ -12,37 +12,37 @@ DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, strin
 }
 
 // Destructor
-DTProfesor::~DTProfesor() {
-    // Implementación del destructor
-    // Puedes realizar cualquier limpieza necesaria
-}
+DTProfesor::~DTProfesor(){};
+
 
 // Getters
 string DTProfesor::getInstituto() {
-    // Implementación del getter
+    return instituto; // Implementación del getter
     // Puedes devolver el valor del atributo instituto
 }
-
 string DTProfesor::getDescripcion() {
-    // Implementación del getter
-    // Puedes devolver el valor del atributo descripcion
+    return descripcion;
+
 }
 
 string DTProfesor::getNombre() {
+return nombre;
     // Implementación del getter
     // Puedes devolver el valor del atributo nombre
 }
 
 string DTProfesor::getContrasenia() {
+    return contrasenia;
     // Implementación del getter
     // Puedes devolver el valor del atributo contrasenia
 }
 
 string DTProfesor::getNickname() {
-    // Implementación del getter
+    return nickname;// Implementación del getter
     // Puedes devolver el valor del atributo nickname
 }
 set<string>* DTProfesor::getIdiomas() {
+    return idiomas;
     // Implementación del getter
     // Puedes devolver el valor del atributo idiomas
 }

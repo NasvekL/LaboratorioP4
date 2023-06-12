@@ -14,7 +14,7 @@ class DTEstudiante{
     public:
         //Getters
         string getPais();
-        DTFecha getNacimineto();
+        DTFecha getNacimiento();
         string getNickname();
         string getContrasenia();
         string getDescripcion();

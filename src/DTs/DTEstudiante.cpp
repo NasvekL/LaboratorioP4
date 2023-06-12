@@ -24,7 +24,7 @@ string DTEstudiante::getPais() {
     // Puedes devolver el valor del atributo pais
 }
 
-DTFecha DTEstudiante::getNacimineto() {
+DTFecha DTEstudiante::getNacimiento() {
     // Implementación del getter
     // Puedes devolver el valor del atributo nacimiento
 }

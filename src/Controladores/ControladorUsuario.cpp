@@ -141,6 +141,27 @@ Profesor ControladorUsuario::encontrarProfesor(string nick) {
 
 void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
+    ControladorCurso& cc = ControladorCurso::getInstancia();
+    if (datoEstudiante!=NULL){
+        Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
+        usuarios->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
+    }
+    else if (datoProfesor!=NULL){
+        set<Idioma*> Idiomas;
+        set<string>* Sidiomas = datoProfesor->getIdiomas();
+        set<string>::iterator it;
+        for (it=Sidiomas->begin(); it!=Sidiomas->end(); ++it){
+            string current = *it;
+            Idioma idiom = cc.getIdioma(current);
+            Idiomas.insert(&idiom);
+        }
+        Profesor p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
+        usuarios->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
+    }
+    else{
+        throw invalid_argument("No se ha ingresado un usuario");
+    }
+    
 }
 
 

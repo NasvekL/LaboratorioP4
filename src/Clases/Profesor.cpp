@@ -10,7 +10,7 @@ string Profesor::getInstituto() {
 Profesor::~Profesor() {
 }
 
-Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,list<Idioma*> idiomas){
+Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,set<Idioma*> idiomas){
     setNick(nickname);
     setNombre(nombre);
     setContrasenia(contrasenia);
@@ -39,7 +39,7 @@ int Profesor::obtenerPromedio() {
     // ...
 }
 
-list<Idioma*> Profesor::Idiomas() {
+set<Idioma*> Profesor::Idiomas() {
     return idiomas;
 }
 
