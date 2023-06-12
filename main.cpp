@@ -297,7 +297,6 @@ DTProfesor crearDTProfesor(){
         seguir = quiereContinuar();
     }
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, setIdi);
-    delete setIdi;
     return prof;
 }
 
