@@ -29,6 +29,9 @@ ControladorCurso::~ControladorCurso() {
 Curso ControladorCurso::getCurso(string nick) {
 
 }
+Idioma ControladorCurso::getIdioma(string nombre){
+    return idiomas[nombre];
+}
 
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
@@ -144,11 +147,9 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
 }
 void ControladorCurso::listarIdiomas(){
     int a=1;
-    set<string> setIdiomas;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
         cout << a <<  "- " << nombre <<'\n';
-        setIdiomas.insert(nombre);
         a++;
     }
 }
