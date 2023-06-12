@@ -12,7 +12,7 @@ BOOL -> TRUEFALSE | COMP | S
 OPLOG -> 'and' | 'or'  
 NOT -> 'not'
 COMP -> EXP OP EXP
-OP -> '==' | '<=' | '>=' | '!=' | '>' | '<'
+OP -> '==' | '<''=' | '>''=' | '!''=' | '>' | '<'
 TRUEFALSE -> 'True' | 'False' | V
 EXP -> '('EXP')'|'('EXP')' O EXP | V O V | V O EXP | V
 V -> N | K | X
