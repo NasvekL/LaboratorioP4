@@ -21,7 +21,7 @@ void esperar(double time);
 int entradaInt();
 string entradaString();
 bool quiereContinuar();
-set<string> separar(string idiomasEspecializadosStr);//y esta funcion?????
+
 
 //Desplegar menu por consola
 int menuPrincipal(){
@@ -110,20 +110,20 @@ while(opcion != 0){
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
                     cout << "Estudiantes:" << endl;
                     /*for (const DTEstudianteSC& estudiante : estudiantes) {
-                        cout << "- Nombre: " << estudiante.nombre << endl;
-                        cout << "  Descripción: " << estudiante.descripcion << endl;
-                        cout << "  País: " << estudiante.pais << endl;
+                        cout << "- Nombre: " << estudiante.getNombre << endl;
+                        cout << "  Descripción: " << estudiante.getDescripcion << endl;
+                        cout << "  País: " << estudiante.getPais << endl;
                     }*/
                 } else{
                     if(seleccion == 2){
                             list<DTProfesorSC> profesores = contUsuario.listarProfesoresSinContra();
                         cout << "Profesores:" << endl;
                         for (const DTProfesorSC& profesor : profesores) {
-                            //cout << "- Nombre: " << profesor.nombre << endl;
-                            //cout << "  Descripción: " << profesor.descripcion << endl;
-                            //cout << "  Instituto: " << profesor.instituto << endl;
+                            //cout << "- Nombre: " << profesor.getNombre << endl;
+                            //cout << "  Descripción: " << profesor.getDescripcion << endl;
+                            //cout << "  Instituto: " << profesor.getInstituto << endl;
                             cout << "  Idiomas especializados: ";
-                            //for (const string& idioma : profesor.idiomasEspecializados) {
+                            //for (const string& idioma : profesor.getidiomasEspecializados) {
                             //    cout << idioma << ", ";
                             //}
                             cout << endl;
@@ -147,6 +147,9 @@ while(opcion != 0){
         }
         case 4:{
                 //Consultar idiomas
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                contCurso.listarIdiomas;
                 //interfazCurso->consultarIdiomas();
                 break;
         }
@@ -178,6 +181,15 @@ while(opcion != 0){
         case 10:{
             //Consultar curso
             //interfazCurso->consultarCurso();
+
+            /*factoryController& fabrica = factoryController::getInstancia();
+            IControladorCurso& contCurso = fabrica.getIControladorCurso();
+            contCurso.listarNombresDeCursos();
+            cout << "Ingrese un curso" << endl;
+            string curs;
+            cin >> curs;*/
+
+
             break;
         }
         case 11:{
@@ -298,18 +310,21 @@ DTProfesor crearDTProfesor(){
     cin >> instituto;
     bool seguir = true;
     set<string> *idiomas=NULL;
-    int i = 1;
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    cout << "Idiomas disponibles:" << endl;
+    contCurso.listarIdiomas();
+    string idiom;
+    cout << "Ingrese idioma en el que se especializa:" << endl;
     while(seguir){
-        factoryController& fabrica = factoryController::getInstancia();
-        IControladorCurso& contCurso = fabrica.getIControladorCurso();
-        cout << "Idiomas disponibles:" << endl;
-        /*set<string> idiomasDisp = contCurso.listarIdiomas();
-        for (const string& idioma : idiomasDisp) {
-            cout << i << "- " << idioma << endl;
-            i++;
-        }*/
+        cin >> idiom;
+        if (idiomas.find(idiom) == false)
+            idiomas.insert(idiom);
+        else
+            cout << "Idioma ya ingresado:" << endl;
         seguir = quiereContinuar();
     }
+
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);
     return prof;
 }
