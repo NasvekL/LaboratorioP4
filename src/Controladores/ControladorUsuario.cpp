@@ -152,8 +152,9 @@ void ControladorUsuario::confirmarAltaUsuario() {
     else if (datoProfesor!=NULL){
         set<Idioma*> Idiomas;
         set<string>* Sidiomas = datoProfesor->getIdiomas();
-        set<string>::iterator it;
-        for (it=Sidiomas->begin(); it!=Sidiomas->end(); ++it){
+        auto it = Sidiomas->begin();
+        cout << *it << endl;
+        for (it; it!=Sidiomas->end(); ++it){
             string current = *it;
             Idioma idiom = cc.getIdioma(current);
             Idiomas.insert(&idiom);
