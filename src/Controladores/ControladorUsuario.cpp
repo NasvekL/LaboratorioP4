@@ -10,6 +10,7 @@ ControladorUsuario& ControladorUsuario::getInstancia() {
 }
 
 ControladorUsuario::ControladorUsuario(){
+    this->datoProfesor = NULL;
     this->datoEstudiante = NULL;
     this->usuarios = NULL;
 }
@@ -63,10 +64,10 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
 }
 
 void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
-dato=*datoEstudiante;
+    *datoEstudiante=dato;
 }
 void ControladorUsuario::setDatoProfesor(DTProfesor dato){
-    dato=*datoProfesor;
+    *datoProfesor=dato;
 }
 list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // Implementar la lógica para listar los profesores sin contraseña

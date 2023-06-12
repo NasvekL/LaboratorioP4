@@ -273,8 +273,6 @@ DTProfesor crearDTProfesor(){
         cout << endl << AMARILLO << "El nickname  ya está en uso, ingrese otro: " << RESET << endl;
         nick = entradaString();
     }
-    set<string> setIdioms;
-    set<string>* setIdi = &setIdioms;
     cout << "Ingrese nombre de profesor:" << endl;
     string nombre;
     cin >> nombre;
@@ -291,13 +289,15 @@ DTProfesor crearDTProfesor(){
     cout << "Idiomas disponibles:" << endl;
     contCurso.listarIdiomas();
     string idiom;
+    set<string>* setIdi = new set<string>();
     cout << "Ingrese el nombre del idioma en el que se especializa:" << endl;
     while(seguir){
         cin >> idiom;
-        setIdioms.insert(idiom);
+        setIdi->insert(idiom);
         seguir = quiereContinuar();
     }
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, setIdi);
+    delete setIdi;
     return prof;
 }
 
