@@ -54,9 +54,11 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
 }
 
 void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
-    cout << "No anda esta porqueria :)";
+dato=*datoEstudiante;
 }
-
+void ControladorUsuario::setDatoProfesor(DTProfesor dato){
+    dato=*datoProfesor;
+}
 list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // Implementar la lógica para listar los profesores sin contraseña
     list<DTProfesorSC> profesores;
@@ -132,14 +134,6 @@ void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
 }
 
-
-void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
-
-}
-
-void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
-
-}
 
 void ControladorUsuario::listarIdiomas() {
  set<string> res;

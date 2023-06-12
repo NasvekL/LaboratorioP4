@@ -40,9 +40,9 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstudiante getDatoEstudiante();
         //Setters
         void setDatoEstudiante(DTEstudiante dato); //void guardarDatosEstudiante(DTEstudiante data);
-
+        void setDatoProfesor(DTProfesor dato);
         //Operaciones para modificar el set de usuarios
-
+        
 
         //Operaciones para obtener informacion
         list<string> listarCursos();

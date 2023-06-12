@@ -19,7 +19,7 @@ class IControladorUsuario{
     
     // Setters
     virtual void setDatoEstudiante(DTEstudiante dato) = 0;
-
+    virtual void setDatoProfesor(DTProfesor dato) = 0;
     // Operaciones para modificar el set de usuarios
 
     // Operaciones para obtener información

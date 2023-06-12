@@ -15,8 +15,8 @@
 #define AMARILLO "\033[33m"
 
 int seleccionEstudianteOProfesor();
-DTEstudiante setDTEstudiante();
-DTProfesor setDTProfesor();
+DTEstudiante crearDTEstudiante();
+DTProfesor crearDTProfesor();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -86,8 +86,8 @@ while(opcion != 0){
             int seleccion = seleccionEstudianteOProfesor();
             switch (seleccion){
                 case 1:{
-                    DTEstudiante est = setDTEstudiante();
-                    contUsuario.guardarDatosEstudiante(est);
+                    DTEstudiante est = crearDTEstudiante();
+                    contUsuario.setDatoEstudiante(est);
                     cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
                     esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
                 
@@ -95,7 +95,7 @@ while(opcion != 0){
                 }
                 case 2:{
                     DTProfesor prof = crearDTProfesor();
-                    contUsuario.guardarDatosProfesor(prof);
+                    contUsuario.setDatoProfesor(prof);
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
@@ -220,7 +220,7 @@ int seleccionEstudianteOProfesor(){
     return opcion;
 };
 
-DTEstudiante setDTEstudiante(){
+DTEstudiante crearDTEstudiante(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
@@ -259,7 +259,7 @@ DTEstudiante setDTEstudiante(){
     return est;
 };
 
-DTProfesor setDTProfesor(){
+DTProfesor crearDTProfesor(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
