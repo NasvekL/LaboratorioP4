@@ -45,7 +45,8 @@ class IControladorUsuario{
     virtual void deleteDataIngresado() = 0;
     virtual void guardarDatosProfesor(DTProfesor data) = 0;
     virtual void guardarDatosEstudiante(DTEstudiante data) = 0;
-    virtual std::list<std::string> listarIdiomas() = 0;
+    virtual void listarIdiomas() = 0;
+    virtual bool existeUsuario(string nickname) = 0;
 
     // Operaciones que no tienen sentido estar aquí
     virtual DTEstadisticaCurso estadisticaCurso(std::string curso) = 0;
@@ -53,7 +54,7 @@ class IControladorUsuario{
 
     virtual void consultarUsuario() = 0;
 };
-
+    
 
 
 

@@ -142,15 +142,15 @@ set<string> ControladorCurso::listarIdiomasProfesor() {
     // Implementación pendiente
     return set<string>();
 }
-set<string> ControladorCurso::listarIdiomas(){
+void ControladorCurso::listarIdiomas(){
+    int a=1;
     set<string> setIdiomas;
-    cout<<'perrrron'<<endl;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
         string nombre = it->first;
-        cout << nombre <<'\n';
-        setIdiomas.insert(it->first);
+        cout << a <<  "- " << nombre <<'\n';
+        setIdiomas.insert(nombre);
+        a++;
     }
-    return setIdiomas;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {

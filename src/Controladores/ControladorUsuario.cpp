@@ -1,5 +1,5 @@
 #include "../../include/Controladores/ControladorUsuario.h"
-
+#include "../../include/Controladores/ControladorCurso.h"
 ControladorUsuario* ControladorUsuario::instancia = nullptr;
 
 ControladorUsuario& ControladorUsuario::getInstancia() {
@@ -16,6 +16,13 @@ ControladorUsuario::ControladorUsuario(){
 
 ControladorUsuario::~ControladorUsuario() {
     // Destructor
+}
+
+//existeUsuario
+bool ControladorUsuario::existeUsuario(string nick) {
+    // Implementar la lógica para verificar si existe un usuario con el nickname recibido
+    // ...
+    return false;
 }
 
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
@@ -134,8 +141,10 @@ void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
     usuarios->insert(std::make_pair(data.getNickname(), e));
 }
 
-list<string> ControladorUsuario::listarIdiomas() {
-    
+void ControladorUsuario::listarIdiomas() {
+ set<string> res;
+ ControladorCurso& cc = ControladorCurso::getInstancia();
+ cc.listarIdiomas();
 }
 
 void ControladorUsuario::consultarUsuario(){

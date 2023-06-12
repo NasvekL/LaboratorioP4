@@ -54,7 +54,7 @@ class IControladorCurso{
         virtual set<string> listarNombresDeCursos()= 0;
         virtual set<DTCurso> listarDTCursos()= 0;
         virtual set<string> listarIdiomasProfesor()= 0;
-        virtual set<string> listarIdiomas()= 0;
+        virtual void listarIdiomas()= 0;
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;
         virtual bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio)= 0;
         virtual void seleccionarEjercicio(int idEjercicio)= 0;

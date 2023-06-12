@@ -19,9 +19,9 @@ DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 void esperar(double time);
 int entradaInt();
-bool esAlfanumerico(string entrada);
 string entradaString();
 bool quiereContinuar();
+
 
 //Desplegar menu por consola
 int menuPrincipal(){
@@ -68,8 +68,9 @@ int main(){
                     copiar siempre la fabrica y luego el controlaror
                             que vayamos a usar.
     */
-    factoryController& Fabrica = factoryController::getInstancia();
-    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
 
 
     int opcion = 1;
@@ -84,22 +85,16 @@ while(opcion != 0){
             int seleccion = seleccionEstudianteOProfesor();
             switch (seleccion){
                 case 1:{
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     DTEstudiante est = crearDTEstudiante();
-                    ContUsuario.guardarDatosEstudiante(est);
-                    cout << VERDE << "Estudiante creado" << RESET << endl;
+                    contUsuario.guardarDatosEstudiante(est);
+                    cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe?
                     esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
                     break;
                 }
                 case 2:{
-                    //factoryController& Fabrica = factoryController::getInstancia();
-                    //IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
-
                     DTProfesor prof = crearDTProfesor();
-
-                    //set<string> idiomasDisponibles = ContUsuario.listarIdiomas();
-                    //ContUsuario.guardarDatosProfesor(prof);
+                    contUsuario.guardarDatosProfesor(prof);
+        
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
@@ -110,7 +105,7 @@ while(opcion != 0){
         case 2:{
                 factoryController& Fabrica = factoryController::getInstancia();
                 IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
-                ContUsuario.consultarUsuario();
+                ContUsuario.
                 break;
         }
         case 3:{
@@ -118,9 +113,7 @@ while(opcion != 0){
                 esperar(1.5);
                 string idioma;
                 cin>> idioma;
-                factoryController& Fabrica = factoryController::getInstancia();
-                IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
-                if(ContCurso.confirmarAltaIdioma(idioma)==false)
+                if(contCurso.confirmarAltaIdioma(idioma)==false)
                     cout << AMARILLO << "Ya existe el idioma" << RESET << endl;
                 else
                     cout << VERDE << "Idioma creado" << RESET << endl;
@@ -129,6 +122,9 @@ while(opcion != 0){
         }
         case 4:{
                 //Consultar idiomas
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                contCurso.listarIdiomas();
                 //interfazCurso->consultarIdiomas();
                 break;
         }
@@ -160,6 +156,15 @@ while(opcion != 0){
         case 10:{
             //Consultar curso
             //interfazCurso->consultarCurso();
+
+            /*factoryController& fabrica = factoryController::getInstancia();
+            IControladorCurso& contCurso = fabrica.getIControladorCurso();
+            contCurso.listarNombresDeCursos();
+            cout << "Ingrese un curso" << endl;
+            string curs;
+            cin >> curs;*/
+
+
             break;
         }
         case 11:{
@@ -193,8 +198,8 @@ while(opcion != 0){
             break;
         }
         default:{
-            cout << ROJO << "Opcion invalida" << RESET << endl;
-            esperar(1.5);
+            cout << AMARILLO << "Opcion invalida" << RESET << endl;
+            presionaParaContinuar();
             break;
         }
     }
@@ -216,9 +221,18 @@ int seleccionEstudianteOProfesor(){
 };
 
 DTEstudiante crearDTEstudiante(){
-    cout << "Ingrese nickname de estudiante:" << endl;
-    string nick;
-    cin >> nick;
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+
+    cout << "Ingrese nickname de estudiante:";
+    string nick = entradaString();
+
+    while (contUsuario.existeUsuario(nick)) {
+        cout << endl << AMARILLO <<"El nickname  ya está en uso, ingrese otro :" << RESET;
+        nick = entradaString();
+    }
+
     cout << "Ingrese nombre de estudiante:" << endl;
     string nombre;
     cin >> nombre;
@@ -246,9 +260,17 @@ DTEstudiante crearDTEstudiante(){
 };
 
 DTProfesor crearDTProfesor(){
-    cout << "Ingrese nickname de profesor:" << endl;
-    string nick;
-    cin >> nick;
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+
+    cout << "Ingrese nickname de profesor:";
+    string nick = entradaString();
+
+    while (contUsuario.existeUsuario(nick)) {
+        cout << endl << AMARILLO << "El nickname  ya está en uso, ingrese otro: " << RESET << endl;
+        nick = entradaString();
+    }
+
     cout << "Ingrese nombre de profesor:" << endl;
     string nombre;
     cin >> nombre;
@@ -262,14 +284,23 @@ DTProfesor crearDTProfesor(){
     string instituto;
     cin >> instituto;
     bool seguir = true;
-    set<string> idiomas;
+    set<string> *idiomas=NULL;
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    cout << "Idiomas disponibles:" << endl;
+    contCurso.listarIdiomas();
+    string idiom;
+    cout << "Ingrese idioma en el que se especializa:" << endl;
     while(seguir){
         factoryController& Fabrica = factoryController::getInstancia();
         IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
         cout << "Ingrese idioma de profesor:" << endl;
+        idiomas = ContUser.listarIdiomas();
         seguir = quiereContinuar();
     }
+
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);
+    return prof;
 }
 
 bool quiereContinuar(){
@@ -320,4 +351,8 @@ string entradaString(){
     return entrada;
 }
 
-
+void presionaParaContinuar(){
+    cout << endl << "Presiona cualquier tecla para continuar...";
+    cin.ignore();
+    cin.get();
+}

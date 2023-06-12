@@ -11,7 +11,7 @@ using namespace std;
 #include "DTs/DTFecha.h"
 #include <thread>
 #include <chrono>
-
+#include <sstream>
 
 enum nivelDeDificultad {PRINCIPIANTE, AVANZADO};
 

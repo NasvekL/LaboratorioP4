@@ -50,6 +50,7 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstadisticaEstudiante estadisticasEstudiante(string estudiante);
         list<DTProfesorSC> listarProfesoresSinContra();
         list<DTEstudianteSC> listarEstudiantes();
+        bool existeUsuario(string nick);
 
         //Operaciones de suscripciones
         Usuario obtenerSuscriptor(string user);
@@ -67,7 +68,7 @@ class ControladorUsuario : public IControladorUsuario{
         void deleteDataIngresado();
         void guardarDatosProfesor(DTProfesor data);
         void guardarDatosEstudiante(DTEstudiante data);
-        list<string> listarIdiomas();
+        void listarIdiomas();
 
 
         //Operacion que no tiene sentido que este aca (iria en controladorCurso)
