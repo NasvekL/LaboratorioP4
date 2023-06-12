@@ -110,7 +110,7 @@ while(opcion != 0){
         case 2:{
                 factoryController& Fabrica = factoryController::getInstancia();
                 IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
-                ContUsuario.
+                ContUsuario.consultarUsuario();
                 break;
         }
         case 3:{
@@ -267,7 +267,6 @@ DTProfesor crearDTProfesor(){
         factoryController& Fabrica = factoryController::getInstancia();
         IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
         cout << "Ingrese idioma de profesor:" << endl;
-        idiomas = ContUser.listarIdiomas();
         seguir = quiereContinuar();
     }
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);

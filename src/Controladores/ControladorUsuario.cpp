@@ -130,13 +130,18 @@ void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
 }
 
 void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
-  datoEstudiante = &data;  
+    Estudiante e = Estudiante(data.getNickname(),data.getContrasenia(),data.getNombre(),data.getDescripcion(),data.getPais(),data.getNacimineto());
+    usuarios->insert(std::make_pair(data.getNickname(), e));
 }
 
 list<string> ControladorUsuario::listarIdiomas() {
     
 }
 
-set<string> consultarUsuario(){
-    
+void ControladorUsuario::consultarUsuario(){
+    auto it = usuarios->begin();
+    int i=1;
+    while (it != usuarios->end()){
+        cout<< to_string(i) + to_string(': ') + it->first <<endl;
+    }
 }

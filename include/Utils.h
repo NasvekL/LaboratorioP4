@@ -16,5 +16,4 @@ using namespace std;
 enum nivelDeDificultad {PRINCIPIANTE, AVANZADO};
 
 
-
 #endif
