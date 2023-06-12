@@ -42,3 +42,7 @@ string DTProfesor::getNickname() {
     // Implementación del getter
     // Puedes devolver el valor del atributo nickname
 }
+set<string>* DTProfesor::getIdiomas() {
+    // Implementación del getter
+    // Puedes devolver el valor del atributo idiomas
+}

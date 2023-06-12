@@ -10,7 +10,7 @@ string Profesor::getInstituto() {
 Profesor::~Profesor() {
 }
 
-Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, list<Curso*> cursos, list<Idioma*> idiomas){
+Profesor::Profesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto,list<Idioma*> idiomas){
     setNick(nickname);
     setNombre(nombre);
     setContrasenia(contrasenia);
