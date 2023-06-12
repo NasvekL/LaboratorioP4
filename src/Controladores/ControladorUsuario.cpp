@@ -135,7 +135,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
 
 
 void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
-    datoProfesor = &data;
+    Profesor p = Profesor(data.getNickname(),data.getContrasenia(),data.getNombre(),data.getDescripcion(),data.getInstituto(),data.getCursos());
+    usuarios->insert(std::make_pair(data.getNickname(), e));
 }
 
 void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
