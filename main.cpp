@@ -88,6 +88,7 @@ while(opcion != 0){
                 case 1:{
                     DTEstudiante est = crearDTEstudiante();
                     contUsuario.setDatoEstudiante(est);
+                    contUsuario.confirmarAltaUsuario();
                     cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
                     esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
                 
@@ -96,6 +97,7 @@ while(opcion != 0){
                 case 2:{
                     DTProfesor prof = crearDTProfesor();
                     contUsuario.setDatoProfesor(prof);
+                    contUsuario.confirmarAltaUsuario();
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
@@ -271,7 +273,8 @@ DTProfesor crearDTProfesor(){
         cout << endl << AMARILLO << "El nickname  ya está en uso, ingrese otro: " << RESET << endl;
         nick = entradaString();
     }
-    set<string> *setIdi;
+    set<string> setIdioms;
+    set<string>* setIdi = &setIdioms;
     cout << "Ingrese nombre de profesor:" << endl;
     string nombre;
     cin >> nombre;
@@ -288,13 +291,12 @@ DTProfesor crearDTProfesor(){
     cout << "Idiomas disponibles:" << endl;
     contCurso.listarIdiomas();
     string idiom;
-    cout << "Ingrese el identificador del idioma en el que se especializa:" << endl;
+    cout << "Ingrese el nombre del idioma en el que se especializa:" << endl;
     while(seguir){
         cin >> idiom;
-        setIdi->insert(idiom);
+        setIdioms.insert(idiom);
         seguir = quiereContinuar();
     }
-
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, setIdi);
     return prof;
 }
