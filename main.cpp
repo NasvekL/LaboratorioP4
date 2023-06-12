@@ -292,14 +292,6 @@ DTProfesor crearDTProfesor(){
     contCurso.listarIdiomas();
     string idiom;
     cout << "Ingrese idioma en el que se especializa:" << endl;
-    while(seguir){
-        factoryController& Fabrica = factoryController::getInstancia();
-        IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
-        cout << "Ingrese idioma de profesor:" << endl;
-        idiomas = ContUser.listarIdiomas();
-        seguir = quiereContinuar();
-    }
-
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, idiomas);
     return prof;
 }
