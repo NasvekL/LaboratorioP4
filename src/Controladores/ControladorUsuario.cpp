@@ -21,11 +21,12 @@ ControladorUsuario::~ControladorUsuario() {
 //existeUsuario
 bool ControladorUsuario::existeUsuario(string nick) {
     // Implementar la lógica para verificar si existe un usuario con el nickname recibido
-    return usuarios->find(nick) != usuarios->end();
-    // ...
-    //return false;
+    auto iterador = usuarios->find(nick);
+    if (iterador != usuarios->end()) {
+        return false;
+    }
+    else return true;
 }
-
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
     return *datoEstudiante;
 }
