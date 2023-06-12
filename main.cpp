@@ -257,7 +257,7 @@ DTEstudiante crearDTEstudiante(){
     cin >> anio;
     DTFecha fecha = DTFecha(dia,mes,anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
-    usuarios->insert({est.getNickname(), Usuario(est.getNickname(), est.getContrasenia())});
+
     return est;
 };
 
