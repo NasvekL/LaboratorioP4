@@ -104,34 +104,9 @@ while(opcion != 0){
         }
 
         case 2:{
-                
-                int seleccion = seleccionEstudianteOProfesor();
-
-                if (seleccion == 1) {
-                    list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    cout << "Estudiantes:" << endl;
-                    /*for (const DTEstudianteSC& estudiante : estudiantes) {
-                        cout << "- Nombre: " << estudiante.getNombre << endl;
-                        cout << "  Descripción: " << estudiante.getDescripcion << endl;
-                        cout << "  País: " << estudiante.getPais << endl;
-                    }*/
-                } else{
-                    if(seleccion == 2){
-                            list<DTProfesorSC> profesores = contUsuario.listarProfesoresSinContra();
-                        cout << "Profesores:" << endl;
-                        for (const DTProfesorSC& profesor : profesores) {
-                            //cout << "- Nombre: " << profesor.getNombre << endl;
-                            //cout << "  Descripción: " << profesor.getDescripcion << endl;
-                            //cout << "  Instituto: " << profesor.getInstituto << endl;
-                            cout << "  Idiomas especializados: ";
-                            //for (const string& idioma : profesor.getidiomasEspecializados) {
-                            //    cout << idioma << ", ";
-                            //}
-                            cout << endl;
-                        }
-                    }
-                }
-                esperar(3);
+                factoryController& Fabrica = factoryController::getInstancia();
+                IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+                ContUsuario.
                 break;
         }
         case 3:{
@@ -319,11 +294,10 @@ DTProfesor crearDTProfesor(){
     string idiom;
     cout << "Ingrese idioma en el que se especializa:" << endl;
     while(seguir){
-        cin >> idiom;
-        //if (idiomas.find(idiom) == false)
-        //    idiomas.insert(idiom);
-        //else
-        //    cout << "Idioma ya ingresado:" << endl;
+        factoryController& Fabrica = factoryController::getInstancia();
+        IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
+        cout << "Ingrese idioma de profesor:" << endl;
+        idiomas = ContUser.listarIdiomas();
         seguir = quiereContinuar();
     }
 
