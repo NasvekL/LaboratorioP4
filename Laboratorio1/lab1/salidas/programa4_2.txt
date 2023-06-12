@@ -1,2 +1,0 @@
-creator 16 1
-name 13 4
