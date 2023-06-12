@@ -22,13 +22,13 @@ ControladorUsuario::~ControladorUsuario() {
 bool ControladorUsuario::existeUsuario(string nick) {
     // Implementar la lógica para verificar si existe un usuario con el nickname recibido
     if(usuarios!=NULL){
-    string claveBuscada = nick;
-    auto iterador = usuarios->find(claveBuscada);
-    if (iterador != usuarios->end()) {
-        return true;
-    } else {
-        return false;
-    }
+        string claveBuscada = nick;
+        auto iterador = usuarios->find(claveBuscada);
+        if (iterador != usuarios->end()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     return false;
 
