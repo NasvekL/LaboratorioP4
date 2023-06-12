@@ -21,8 +21,9 @@ ControladorUsuario::~ControladorUsuario() {
 //existeUsuario
 bool ControladorUsuario::existeUsuario(string nick) {
     // Implementar la lógica para verificar si existe un usuario con el nickname recibido
+    return usuarios->find(nick) != usuarios->end();
     // ...
-    return false;
+    //return false;
 }
 
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
@@ -137,7 +138,8 @@ void ControladorUsuario::guardarDatosProfesor(DTProfesor data) {
 }
 
 void ControladorUsuario::guardarDatosEstudiante(DTEstudiante data) {
-  datoEstudiante = &data;  
+    Estudiante e = Estudiante(data.getNickname(),data.getContrasenia(),data.getNombre(),data.getDescripcion(),data.getPais(),data.getNacimineto());
+    usuarios->insert(std::make_pair(data.getNickname(), e));
 }
 
 void ControladorUsuario::listarIdiomas() {
@@ -146,6 +148,10 @@ void ControladorUsuario::listarIdiomas() {
  cc.listarIdiomas();
 }
 
-set<string> consultarUsuario(){
-    
+void ControladorUsuario::consultarUsuario(){
+    auto it = usuarios->begin();
+    int i=1;
+    while (it != usuarios->end()){
+        cout<< to_string(i) + to_string(': ') + it->first <<endl;
+    }
 }

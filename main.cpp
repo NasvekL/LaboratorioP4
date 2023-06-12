@@ -88,14 +88,23 @@ while(opcion != 0){
                 case 1:{
                     DTEstudiante est = crearDTEstudiante();
                     contUsuario.guardarDatosEstudiante(est);
+<<<<<<< HEAD
                     cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
+=======
+                    cout << VERDE << "Estudiante creado" << RESET << endl; 
+>>>>>>> d459eb296a1530ac1b6c4e7bf6938e8025180985
                     esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
+                
                     break;
                 }
                 case 2:{
                     DTProfesor prof = crearDTProfesor();
                     contUsuario.guardarDatosProfesor(prof);
+<<<<<<< HEAD
 
+=======
+                    cout << "Profesor creado correctamente." << endl;
+>>>>>>> d459eb296a1530ac1b6c4e7bf6938e8025180985
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
@@ -104,34 +113,9 @@ while(opcion != 0){
         }
 
         case 2:{
-                
-                int seleccion = seleccionEstudianteOProfesor();
-
-                if (seleccion == 1) {
-                    list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    cout << "Estudiantes:" << endl;
-                    /*for (const DTEstudianteSC& estudiante : estudiantes) {
-                        cout << "- Nombre: " << estudiante.getNombre << endl;
-                        cout << "  Descripción: " << estudiante.getDescripcion << endl;
-                        cout << "  País: " << estudiante.getPais << endl;
-                    }*/
-                } else{
-                    if(seleccion == 2){
-                            list<DTProfesorSC> profesores = contUsuario.listarProfesoresSinContra();
-                        cout << "Profesores:" << endl;
-                        for (const DTProfesorSC& profesor : profesores) {
-                            //cout << "- Nombre: " << profesor.getNombre << endl;
-                            //cout << "  Descripción: " << profesor.getDescripcion << endl;
-                            //cout << "  Instituto: " << profesor.getInstituto << endl;
-                            cout << "  Idiomas especializados: ";
-                            //for (const string& idioma : profesor.getidiomasEspecializados) {
-                            //    cout << idioma << ", ";
-                            //}
-                            cout << endl;
-                        }
-                    }
-                }
-                esperar(3);
+                factoryController& Fabrica = factoryController::getInstancia();
+                IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+                ContUsuario.
                 break;
         }
         case 3:{
@@ -282,6 +266,7 @@ DTEstudiante crearDTEstudiante(){
     cin >> anio;
     DTFecha fecha = DTFecha(dia,mes,anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
+    usuarios->insert({est.getNickname(), Usuario(est.getNickname(), est.getContrasenia())});
     return est;
 };
 
@@ -316,8 +301,15 @@ DTProfesor crearDTProfesor(){
     string idiom;
     cout << "Ingrese el identificador del idioma en el que se especializa:" << endl;
     while(seguir){
+<<<<<<< HEAD
         cin >> idiom;
         setIdi->insert(idiom);
+=======
+        factoryController& Fabrica = factoryController::getInstancia();
+        IControladorUsuario& ContUser = Fabrica.getIControladorUsuario();
+        cout << "Ingrese idioma de profesor:" << endl;
+        idiomas = ContUser.listarIdiomas();
+>>>>>>> d459eb296a1530ac1b6c4e7bf6938e8025180985
         seguir = quiereContinuar();
     }
 
