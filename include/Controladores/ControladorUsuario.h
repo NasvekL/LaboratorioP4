@@ -38,11 +38,13 @@ class ControladorUsuario : public IControladorUsuario{
 
         //Getters
         DTEstudiante getDatoEstudiante();
+        map<string,Usuario>* getUsuarios();
+        DTProfesor getDatoProfesor();
         //Setters
         void setDatoEstudiante(DTEstudiante dato); //void guardarDatosEstudiante(DTEstudiante data);
         void setDatoProfesor(DTProfesor dato);
         //Operaciones para modificar el set de usuarios
-        
+
 
         //Operaciones para obtener informacion
         list<string> listarCursos();
@@ -66,8 +68,7 @@ class ControladorUsuario : public IControladorUsuario{
         Profesor encontrarProfesor(string nick);
         void confirmarAltaUsuario();
         void deleteDataIngresado();
-        void guardarDatosProfesor(DTProfesor data);
-        void guardarDatosEstudiante(DTEstudiante data);
+
         void listarIdiomas();
 
 

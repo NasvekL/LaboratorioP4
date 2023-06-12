@@ -1,7 +1,7 @@
 #include "../../include/Controladores/ControladorUsuario.h"
 #include "../../include/Controladores/ControladorCurso.h"
 ControladorUsuario* ControladorUsuario::instancia = nullptr;
-
+map<string,Usuario>* usuarios = NULL;
 ControladorUsuario& ControladorUsuario::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorUsuario();
@@ -18,7 +18,14 @@ ControladorUsuario::ControladorUsuario(){
 ControladorUsuario::~ControladorUsuario() {
     // Destructor
 }
-
+map<string,Usuario>* ControladorUsuario::getUsuarios(){
+    if(usuarios!=NULL){
+        return usuarios;
+    }
+    else{
+        usuarios = new map<string,Usuario>();
+    }
+}
 //existeUsuario
 bool ControladorUsuario::existeUsuario(string nick) {
     // Implementar la lógica para verificar si existe un usuario con el nickname recibido
@@ -33,13 +40,14 @@ bool ControladorUsuario::existeUsuario(string nick) {
     }
     return false;
 
-    //return false;
 }
 
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
     return *datoEstudiante;
 }
-
+DTProfesor ControladorUsuario::getDatoProfesor() {
+    return *datoProfesor;
+}
 
 list<string> ControladorUsuario::listarCursos() {
     // Implementar la lógica para listar los cursos
@@ -64,10 +72,10 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
 }
 
 void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
-datoEstudiante = new DTEstudiante(dato); // Asignar una copia del objeto al puntero}
+    datoEstudiante = new DTEstudiante(dato); // Asignar una copia del objeto al puntero}
 }
 void ControladorUsuario::setDatoProfesor(DTProfesor dato){
-datoProfesor = new DTProfesor(dato); // Asignar una copia del objeto al puntero
+    datoProfesor = new DTProfesor(dato); // Asignar una copia del objeto al puntero
 }
 list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // Implementar la lógica para listar los profesores sin contraseña
@@ -144,8 +152,9 @@ void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
     ControladorCurso& cc = ControladorCurso::getInstancia();
     if (datoEstudiante!=NULL){
+        map<string,Usuario>* users = getUsuarios();
         Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
-        usuarios->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
+        users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
         delete datoEstudiante;
         datoEstudiante = NULL;
     }
@@ -159,8 +168,9 @@ void ControladorUsuario::confirmarAltaUsuario() {
             Idioma idiom = cc.getIdioma(current);
             Idiomas.insert(&idiom);
         }
+        map<string,Usuario>* users = getUsuarios();
         Profesor p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
-        usuarios->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
+        users->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
         delete datoProfesor;
         datoProfesor = NULL;
     }

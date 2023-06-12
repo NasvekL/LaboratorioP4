@@ -20,31 +20,30 @@ DTEstudiante::~DTEstudiante() {
 
 // Getters
 string DTEstudiante::getPais() {
-    // Implementación del getter
-    // Puedes devolver el valor del atributo pais
+return pais;
 }
 
 DTFecha DTEstudiante::getNacimiento() {
-    // Implementación del getter
+    return nacimiento;// Implementación del getter
     // Puedes devolver el valor del atributo nacimiento
 }
 
 string DTEstudiante::getNickname() {
-    // Implementación del getter
+    return nickname;// Implementación del getter
     // Puedes devolver el valor del atributo nickname
 }
 
 string DTEstudiante::getContrasenia() {
-    // Implementación del getter
+    return contrasenia;// Implementación del getter
     // Puedes devolver el valor del atributo contrasenia
 }
 
 string DTEstudiante::getDescripcion() {
-    // Implementación del getter
+    return descripcion;// Implementación del getter
     // Puedes devolver el valor del atributo descripcion
 }
 
 string DTEstudiante::getNombre() {
-    // Implementación del getter
+    return nombre;// Implementación del getter
     // Puedes devolver el valor del atributo nombre
 }
