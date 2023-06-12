@@ -17,6 +17,7 @@ class DTProfesor{
         string getNombre();
         string getContrasenia();
         string getNickname();
+        set<string>* getIdiomas();
         //Create y destroy
         ~DTProfesor();
         DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, set<string>* idiomas);
