@@ -106,7 +106,6 @@ while(opcion != 0){
         case 2:{
                 factoryController& Fabrica = factoryController::getInstancia();
                 IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
-                ContUsuario.
                 break;
         }
         case 3:{
