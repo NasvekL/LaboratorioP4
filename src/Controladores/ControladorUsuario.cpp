@@ -64,10 +64,10 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
 }
 
 void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
-    *datoEstudiante=dato;
+datoEstudiante = new DTEstudiante(dato); // Asignar una copia del objeto al puntero}
 }
 void ControladorUsuario::setDatoProfesor(DTProfesor dato){
-    *datoProfesor=dato;
+datoProfesor = new DTProfesor(dato); // Asignar una copia del objeto al puntero
 }
 list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // Implementar la lógica para listar los profesores sin contraseña
@@ -146,6 +146,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
     if (datoEstudiante!=NULL){
         Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         usuarios->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
+        delete datoEstudiante;
+        datoEstudiante = NULL;
     }
     else if (datoProfesor!=NULL){
         set<Idioma*> Idiomas;
@@ -158,6 +160,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
         }
         Profesor p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         usuarios->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
+        delete datoProfesor;
+        datoProfesor = NULL;
     }
     else{
         throw invalid_argument("No se ha ingresado un usuario");
