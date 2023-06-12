@@ -149,7 +149,7 @@ while(opcion != 0){
                 //Consultar idiomas
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                contCurso.listarIdiomas;
+                contCurso.listarIdiomas();
                 //interfazCurso->consultarIdiomas();
                 break;
         }
@@ -318,10 +318,10 @@ DTProfesor crearDTProfesor(){
     cout << "Ingrese idioma en el que se especializa:" << endl;
     while(seguir){
         cin >> idiom;
-        if (idiomas.find(idiom) == false)
-            idiomas.insert(idiom);
-        else
-            cout << "Idioma ya ingresado:" << endl;
+        //if (idiomas.find(idiom) == false)
+        //    idiomas.insert(idiom);
+        //else
+        //    cout << "Idioma ya ingresado:" << endl;
         seguir = quiereContinuar();
     }
 
