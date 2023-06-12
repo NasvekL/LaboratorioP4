@@ -87,14 +87,15 @@ while(opcion != 0){
                 case 1:{
                     DTEstudiante est = crearDTEstudiante();
                     contUsuario.guardarDatosEstudiante(est);
-                    cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe?
+                    cout << VERDE << "Estudiante creado" << RESET << endl; 
                     esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
+                
                     break;
                 }
                 case 2:{
                     DTProfesor prof = crearDTProfesor();
                     contUsuario.guardarDatosProfesor(prof);
-        
+                    cout << "Profesor creado correctamente." << endl;
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
@@ -281,6 +282,7 @@ DTEstudiante crearDTEstudiante(){
     cin >> anio;
     DTFecha fecha = DTFecha(dia,mes,anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
+    usuarios->insert({est.getNickname(), Usuario(est.getNickname(), est.getContrasenia())});
     return est;
 };
 
