@@ -123,11 +123,21 @@ int main(){
                         if(contUsuario.getTipoUsuario(nick)==1){
                             contUsuario.seleccionarUsuario(nick);
                             DTEstudiante dte = contUsuario.getDatoEstudiante();
+                            imprimir(dte.getNombre());
+                            imprimir(dte.getDescripcion());
+                            imprimir(dte.getPais());
                         } 
                         else{ 
-                            contUsuario.seleccionarUsuario(nick);\
+                            contUsuario.seleccionarUsuario(nick);
                             DTProfesor dtp = contUsuario.getDatoProfesor();
-                            
+                            imprimir(dtp.getNombre());
+                            imprimir(dtp.getDescripcion());
+                            imprimir(dtp.getInstituto());
+                            set<string>* idi = dtp.getIdiomas();
+                            set<string>::iterator it;
+                            for (it = idi->begin(); it != idi->end(); ++it) {
+                                imprimir(*it);
+                            }
                         }
                     break;
             }

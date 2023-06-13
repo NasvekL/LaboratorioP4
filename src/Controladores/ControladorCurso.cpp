@@ -236,7 +236,6 @@ set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     return set<string>();
 }
 
-set<DTLeccion> ListarLecciones(string cursoLec){
-    //implementar
+/*set<DTLeccion> ListarLecciones(string cursoLec){  //implementar
     return set<DTLeccion>
-}
+}*/
