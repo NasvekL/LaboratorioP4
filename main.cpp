@@ -111,7 +111,6 @@ int main(){
             }
 
             case 2:{
-                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
                     list<string> listaUsuarios = contUsuario.consultarUsuario();
                     std::list<string>::iterator it;
                     for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
