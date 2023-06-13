@@ -118,6 +118,7 @@ int main(){
                     }
                     cout << "Ingrese el nick deseado" << endl;
                         string nick;
+<<<<<<< HEAD
                         nick = entradaString();
                         if(contUsuario.getTipoUsuario(nick)==1){
                             contUsuario.seleccionarUsuario(nick);
@@ -130,6 +131,24 @@ int main(){
                         }
                     break;
             
+=======
+                        cin >> nick;
+                        contUsuario.seleccionarUsuario(nick);
+                        /*auto it = users->find(nick);
+                        if (it != users->end()) {
+                            Usuario& usuario = it->second;
+                            cout << "Nombre: " << usuario.getNombre() << endl;
+                            cout << "Descripción: " << usuario.getDescripcion() << endl;
+                        */
+
+                            //falta seguir, como veo si es un profe o un estudiante?
+                            //solo faltan los get dependiendo si es estu o profe
+                        }
+                    break;*/
+                        //}
+                    break;
+            }
+>>>>>>> d71acd2c9718e2455eb47eb475bdf733cf310bf9
             case 3:{
                     //Alta idioma
                     imprimir("Ingrese idioma:");
