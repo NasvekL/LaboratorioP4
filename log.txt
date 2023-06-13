@@ -71,23 +71,43 @@ U: 2
 
 S: Ingrese nickname de profesor:
 
+<<<<<<< HEAD
 U: fds
+=======
+U: saddsa
+>>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
 
 S: Ingrese nombre de profesor:
 
+<<<<<<< HEAD
 U: fds
+=======
+U: sdasd
+>>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
 
 S: Ingrese contrasenia de profesor:
 
+<<<<<<< HEAD
 U: dfs
+=======
+U: dasdsa
+>>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
 
 S: Ingrese descripcion de profesor:
 
+<<<<<<< HEAD
 U: fds
+=======
+U: asdads
+>>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
 
 S: Ingrese instituto de profesor:
 
+<<<<<<< HEAD
 U: fds
+=======
+U: dsasad
+>>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
 
 S: Idiomas disponibles:
 S: Ingrese el nombre del idioma en el que se especializa:
@@ -99,4 +119,8 @@ S: 2: Continuar
 
 U: 2
 
+<<<<<<< HEAD
 S: Profesor creado
+=======
+S: Estudiante creado
+>>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
