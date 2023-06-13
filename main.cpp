@@ -119,20 +119,6 @@ int main(){
                     }
                     cout << "Ingrese el nick deseado" << endl;
                         string nick;
-<<<<<<< HEAD
-                        nick = entradaString();
-                        if(contUsuario.getTipoUsuario(nick)==1){
-                            contUsuario.seleccionarUsuario(nick);
-                            DTEstudiante dte = contUsuario.getDatoEstudiante();
-                        } 
-                        else{ 
-                            contUsuario.seleccionarUsuario(nick);\
-                            DTProfesor dtp = contUsuario.getDatoProfesor();
-                            
-                        }
-                    break;
-            
-=======
                         cin >> nick;
                         contUsuario.seleccionarUsuario(nick);
                         /*auto it = users->find(nick);
@@ -149,7 +135,6 @@ int main(){
                         //}
                     break;
             }
->>>>>>> d71acd2c9718e2455eb47eb475bdf733cf310bf9
             case 3:{
                     imprimir("Ingrese idioma:");
                     string idioma = entradaString();
