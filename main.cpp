@@ -17,7 +17,7 @@
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
-DTLeccion crearDTLeccion();
+//DTLeccion crearDTLeccion();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -158,7 +158,7 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    imprimir("Cursos no habilitados disponibles:")
+                    /*imprimir("Cursos no habilitados disponibles:")
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
@@ -169,7 +169,7 @@ int main(){
                     
                     contCurso.altaLeccion();
 
-
+                */
                 break;
             }
             case 7:{
@@ -321,7 +321,7 @@ DTProfesor crearDTProfesor(){
     return prof;
 }
 
-DTLeccion crearDTLeccion(){
+/*DTLeccion crearDTLeccion(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
@@ -336,7 +336,7 @@ DTLeccion crearDTLeccion(){
 
 
 
-}
+}*/
 
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");
