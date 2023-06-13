@@ -110,31 +110,28 @@ int main(){
             }
 
             case 2:{
-                   /* IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
-                    contUsuario.consultarUsuario();
-                    cout << "IIngrese el nick deseado" << endl;
+                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+                    list<string> listaUsuarios = contUsuario.consultarUsuario();
+                    std::list<string>::iterator it;
+                    for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
+                        imprimir(*it);
+                    }
+                    cout << "Ingrese el nick deseado" << endl;
                         string nick;
-                        cin >> nick;
-                        contUsuario.seleccionarUsuario(nick);
-                        /*auto it = users->find(nick);
-                        if (it != users->end()) {
-                            Usuario& usuario = it->second;
-                            cout << "Nombre: " << usuario.getNombre() << endl;
-                            cout << "Descripción: " << usuario.getDescripcion() << endl;
-                        */
-
-                            //falta seguir, como veo si es un profe o un estudiante?
-                            //solo faltan los get dependiendo si es estu o profe
-<<<<<<< HEAD
+                        nick = entradaString();
+                        if(contUsuario.getTipoUsuario(nick)==1){
+                            contUsuario.seleccionarUsuario(nick);
+                            DTEstudiante dte = contUsuario.getDatoEstudiante();
+                        } 
+                        else{ 
+                            contUsuario.seleccionarUsuario(nick);\
+                            DTProfesor dtp = contUsuario.getDatoProfesor();
+                            
                         }
-                    break;*/
-=======
-                        //}
                     break;
->>>>>>> 69c82f43fbbb2ae840a2f73b3f8942178fd15e4c
-            }
+            
             case 3:{
-                                    //Alta idioma
+                    //Alta idioma
                     imprimir("Ingrese idioma:");
                     string idioma = entradaString();
                     if(contCurso.confirmarAltaIdioma(idioma)==false)
@@ -168,25 +165,6 @@ int main(){
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
-
-                factoryController& fabrica = factoryController::getInstancia();
-                IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                imprimir ( "Cursos:" );
-                set<string> cursosNoHabilitados = contCurso.listarCursosNoHabilitados();
-                
-                imprimir("Elija un curso:");
-                string cursoSelec = entradaString();
-
-
-                imprimir("Lecciones del curso:");
-                set<DTLeccion> lecciones = contCurso.ListarLecciones(cursoLec);
-                
-
-                imprimir("Elija una lección:");
-                int lecSelec = entradaInt();
-
-
-
                 break;
             }
             case 8:{
