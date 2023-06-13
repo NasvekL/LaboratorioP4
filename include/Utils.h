@@ -12,6 +12,7 @@ using namespace std;
 #include <thread>
 #include <chrono>
 #include <sstream>
+#include <fstream>
 
 enum nivelDeDificultad {PRINCIPIANTE, AVANZADO};
 

@@ -22,38 +22,41 @@ int entradaInt();
 string entradaString();
 bool quiereContinuar();
 void presionaParaContinuar();
+void limpiarLog();
+void imprimir(string texto);
+void imprimir(string texto, string color);
 
 
 //Desplegar menu por consola
 int menuPrincipal(){
     system("clear");
-    cout << "Menu" << endl;
-    cout << "0. Salir" << endl;
-    cout << "1. Alta de usuario" << endl;
-    cout << "2. Consulta de usuario" << endl;
-    cout << "3. Alta idioma" << endl;
-    cout << "4. Consultar idiomas" << endl;
-    cout << "5. Alta de curso" << endl;
-    cout << "6. Agregar leccion" << endl;
-    cout << "7. Agregar ejercicio" << endl;
-    cout << "8. Habilitar curso" << endl;
-    cout << "9. Eliminar curso" << endl;
-    cout << "10. Consultar curso" << endl;
-    cout << "11. Inscribirse a curso" << endl;
-    cout << "12. Realizar ejercicio" << endl;
-    cout << "13. Consultar estadisticas" << endl;
-    cout << "14. Suscribirse a notificaciones" << endl;
-    cout << "15. Consulta de notificaciones" << endl;
-    cout << "16. Eliminar suscripciones" << endl;
-    cout << "Ingrese una opcion: ";
-    int opcion;
-    cin >> opcion;
+    imprimir("Menu");
+    imprimir("0. Salir");
+    imprimir("1. Alta de usuario");
+    imprimir("2. Consulta de usuario");
+    imprimir("3. Alta idioma");
+    imprimir("4. Consultar idiomas");
+    imprimir("5. Alta de curso");
+    imprimir("6. Agregar leccion");
+    imprimir("7. Agregar ejercicio");
+    imprimir("8. Habilitar curso");
+    imprimir("9. Eliminar curso");
+    imprimir("10. Consultar curso");
+    imprimir("11. Inscribirse a curso");
+    imprimir("12. Realizar ejercicio");
+    imprimir("13. Consultar estadisticas");
+    imprimir("14. Suscribirse a notificaciones");
+    imprimir("15. Consulta de notificaciones");
+    imprimir("16. Eliminar suscripciones");
+    imprimir("Ingrese una opcion: ");
+    int opcion = entradaInt();
     return opcion;
 }
 //HOLA
 
 
 int main(){
+    limpiarLog();
     //Tiene alguna clase de sentido la interfaz? En teoria es para que si el dia de mañana
     //se quiere agregar o cambiar el controlador, no haya que cambiar nada en el main
     //pero en el main se esta trabajando de forma directa con el controlador porque
@@ -75,139 +78,158 @@ int main(){
 
 
     int opcion = 1;
-while(opcion != 0){
-    opcion = menuPrincipal();
-    switch (opcion){
-        case 0:{
-            cout << "chau bo" << endl;
-            break;
-        }
-        case 1:{
-            int seleccion = seleccionEstudianteOProfesor();
-            switch (seleccion){
-                case 1:{
-                    DTEstudiante est = crearDTEstudiante();
-                    contUsuario.setDatoEstudiante(est);
-                    contUsuario.confirmarAltaUsuario();
-                    cout << VERDE << "Estudiante creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
-                    esperar(3);//SE DEBEN CAMBIAR LOS ESPERAR POR OTRA COSA
-                
-                    break;
-                }
-                case 2:{
-                    DTProfesor prof = crearDTProfesor();
-                    contUsuario.setDatoProfesor(prof);
-                    contUsuario.confirmarAltaUsuario();
-                    cout << VERDE << "Profesor creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
-
-                    // TO DO: realizar acciones para el profesor
-                    break;
-                }
+    while(opcion != 0){
+        opcion = menuPrincipal();
+        switch (opcion){
+            case 0:{
+                imprimir("chau bo");
+                break;
             }
-            break;
-        }
+            case 1:{
+                int seleccion = seleccionEstudianteOProfesor();
+                switch (seleccion){
+                    case 1:{
+                        DTEstudiante est = crearDTEstudiante();
+                        contUsuario.setDatoEstudiante(est);
+                        contUsuario.confirmarAltaUsuario();
+                        imprimir("Estudiante creado", VERDE); //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
+                        presionaParaContinuar();
+                        break;
+                    }
+                    case 2:{
+                        DTProfesor prof = crearDTProfesor();
+                        contUsuario.setDatoProfesor(prof);
+                        contUsuario.confirmarAltaUsuario();
+                        imprimir("Profesor creado", VERDE);
+                        presionaParaContinuar();
+                        // TO DO: realizar acciones para el profesor
+                        break;
+                    }
+                }
+                break;
+            }
 
-        case 2:{
-                factoryController& Fabrica = factoryController::getInstancia();
-                IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
+            case 2:{
+                    /*
+                    map<string,Usuario>* users = contUsuario.getUsuarios();
+
+                    if (users->empty()) {
+                        cout << "No hay usuarios" << endl;
+                    } else {
+                        cout << "Nicks:" << endl;
+                        for (auto it = users->begin(); it != users->end(); ++it) {
+                            cout <<  users.first << endl;
+                        }
+
+                        cout << "IIngrese el nick deseado" << endl;
+                            string nick;
+                            cin >> nick;
+
+                            auto it = users->find(nick);
+                            if (it != users->end()) {
+                                Usuario& usuario = it->second;
+                                cout << "Nombre: " << usuario.getNombre() << endl;
+                                cout << "Descripción: " << usuario.getDescripcion() << endl;
+
+
+                            //falta seguir, como veo si es un profe o un estudiante?
+                            //solo faltan los get dependiendo si es estu o profe
+                            }
+                    */
+                    break;
+            }
+            case 3:{
+                    imprimir("Ingrese idioma:");
+                    string idioma = entradaString();
+                    if(contCurso.confirmarAltaIdioma(idioma)==false)
+                        imprimir("Ya existe el idioma", AMARILLO);
+                    else
+                        imprimir("Idioma creado", VERDE);
+                    presionaParaContinuar();
+                    break;
+            }
+            case 4:{
+                    //Consultar idiomas
+                    contCurso.listarIdiomas();
+                    //interfazCurso->consultarIdiomas();
+                    break;
+            }
+            case 5:{
+                    //Alta de curso
+                    //interfazCurso->altaCurso();
+                    break;
+            }
+            case 6:{
+                    //Agregar leccion
+                    //interfazCurso->agregarLeccion();
                 break;
-        }
-        case 3:{
-                cout<<"Ingrese idioma:"<< endl;
-                esperar(1.5);
-                string idioma;
-                cin>> idioma;
-                if(contCurso.confirmarAltaIdioma(idioma)==false)
-                    cout << AMARILLO << "Ya existe el idioma" << RESET << endl;
-                else
-                    cout << VERDE << "Idioma creado" << RESET << endl;
-                esperar(2);
+            }
+            case 7:{
+                //Agregar ejercicio
+                //interfazCurso->agregarEjercicio();
                 break;
-        }
-        case 4:{
-                //Consultar idiomas
-                factoryController& fabrica = factoryController::getInstancia();
+            }
+            case 8:{
+                //Habilitar curso
+                //interfazCurso->habilitarCurso();
+                break;
+            }
+            case 9:{
+                //Eliminar curso
+                //interfazCurso->eliminarCurso();
+                break;
+            }
+            case 10:{
+                //Consultar curso
+                //interfazCurso->consultarCurso();
+
+                /*factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                contCurso.listarIdiomas();
-                //interfazCurso->consultarIdiomas();
+                contCurso.listarNombresDeCursos();
+                cout << "Ingrese un curso" << endl;
+                string curs;
+                cin >> curs;*/
+
+
                 break;
-        }
-        case 5:{
-                //Alta de curso
-                //interfazCurso->altaCurso();
+            }
+            case 11:{
+                //Inscribirse a curso
+                //interfazCurso->inscribirseACurso();
                 break;
-        }
-        case 6:{
-                //Agregar leccion
-                //interfazCurso->agregarLeccion();
-            break;
-        }
-        case 7:{
-            //Agregar ejercicio
-            //interfazCurso->agregarEjercicio();
-            break;
-        }
-        case 8:{
-            //Habilitar curso
-            //interfazCurso->habilitarCurso();
-            break;
-        }
-        case 9:{
-            //Eliminar curso
-            //interfazCurso->eliminarCurso();
-            break;
-        }
-        case 10:{
-            //Consultar curso
-            //interfazCurso->consultarCurso();
-
-            /*factoryController& fabrica = factoryController::getInstancia();
-            IControladorCurso& contCurso = fabrica.getIControladorCurso();
-            contCurso.listarNombresDeCursos();
-            cout << "Ingrese un curso" << endl;
-            string curs;
-            cin >> curs;*/
-
-
-            break;
-        }
-        case 11:{
-            //Inscribirse a curso
-            //interfazCurso->inscribirseACurso();
-            break;
-        }
-        case 12:{
-            //Realizar ejercicio
-            //interfazCurso->realizarEjercicio();
-            break;
-        }
-        case 13:{
-            //Consultar estadisticas
-            //interfazCurso->consultarEstadisticas();
-            break;
-        }
-        case 14:{
-            //Suscribirse a notificaciones
-            //interfazCurso->suscribirseANotificaciones();
-            break;
-        }
-        case 15:{
-            //Consulta de notificaciones
-            //interfazCurso->consultaNotificaciones();
-            break;
-        }
-        case 16:{
-            //Eliminar suscripciones
-            //interfazCurso->eliminarSuscripciones();
-            break;
-        }
-        default:{
-            cout << AMARILLO << "Opcion invalida" << RESET << endl;
-            presionaParaContinuar();
-            break;
+            }
+            case 12:{
+                //Realizar ejercicio
+                //interfazCurso->realizarEjercicio();
+                break;
+            }
+            case 13:{
+                //Consultar estadisticas
+                //interfazCurso->consultarEstadisticas();
+                break;
+            }
+            case 14:{
+                //Suscribirse a notificaciones
+                //interfazCurso->suscribirseANotificaciones();
+                break;
+            }
+            case 15:{
+                //Consulta de notificaciones
+                //interfazCurso->consultaNotificaciones();
+                break;
+            }
+            case 16:{
+                //Eliminar suscripciones
+                //interfazCurso->eliminarSuscripciones();
+                break;
+            }
+            default:{
+                imprimir("Opcion invalida", AMARILLO);
+                presionaParaContinuar();
+                break;
+            }
         }
     }
-}
 
     return 0;
 }
@@ -217,100 +239,132 @@ this_thread::sleep_for(chrono::duration<double>(time));
 }
 
 int seleccionEstudianteOProfesor(){
-    cout << "1. Ingresar Estudiante" << endl;
-    cout << "2. Ingresar Profesor" << endl;
-    int opcion;
-    cin >> opcion;
+    imprimir("1. Ingresar Estudiante");
+    imprimir("2. Ingresar Profesor");
+    int opcion = entradaInt();
     return opcion;
 };
 
-DTEstudiante crearDTEstudiante(){
+DTEstudiante crearDTEstudiante() {
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorCurso& contCurso = fabrica.getIControladorCurso();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
 
-    cout << "Ingrese nickname de estudiante:";
+    imprimir("Ingrese nickname de estudiante:");
     string nick = entradaString();
 
     while (contUsuario.existeUsuario(nick)) {
-        cout << endl << AMARILLO <<"El nickname  ya está en uso, ingrese otro :" << RESET;
+        imprimir("El nickname ya está en uso, ingrese otro:", AMARILLO);
         nick = entradaString();
     }
 
-    cout << "Ingrese nombre de estudiante:" << endl;
-    string nombre;
-    cin >> nombre;
-    cout << "Ingrese contrasenia de estudiante:" << endl;
-    string contrasenia;
-    cin >> contrasenia;
-    cout << "Ingrese descripcion de estudiante:" << endl;
-    string descripcion;
-    cin >> descripcion;
-    cout << "Ingrese pais de estudiante:" << endl;
-    string pais;
-    cin >> pais;
-    cout << "Ingrese dia de nacimiento de estudiante" << endl;
-    int dia;
-    cin >> dia;
-    cout << "Ingrese mes de nacimiento de estudiante" << endl;
-    int mes;
-    cin >> mes;
-    cout << "Ingrese anio de nacimiento de estudiante" << endl;
-    int anio;
-    cin >> anio;
-    DTFecha fecha = DTFecha(dia,mes,anio);
+    imprimir("Ingrese nombre de estudiante:");
+    string nombre = entradaString();
+    imprimir("Ingrese contrasenia de estudiante:");
+    string contrasenia = entradaString();
+    imprimir("Ingrese descripcion de estudiante:");
+    string descripcion = entradaString();
+    imprimir("Ingrese pais de estudiante:");
+    string pais = entradaString();
+    imprimir("Ingrese dia de nacimiento de estudiante:");
+    int dia = entradaInt();
+    imprimir("Ingrese mes de nacimiento de estudiante:");
+    int mes = entradaInt();
+    imprimir("Ingrese anio de nacimiento de estudiante:");
+    int anio = entradaInt();
+    DTFecha fecha = DTFecha(dia, mes, anio);
     DTEstudiante est = DTEstudiante(nick, contrasenia, nombre, descripcion, pais, fecha);
     return est;
-};
+}
 
 DTProfesor crearDTProfesor(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
 
-    cout << "Ingrese nickname de profesor:";
+    imprimir("Ingrese nickname de profesor:");
     string nick = entradaString();
 
     while (contUsuario.existeUsuario(nick)) {
-        cout << endl << AMARILLO << "El nickname  ya está en uso, ingrese otro: " << RESET << endl;
+        imprimir("El nickname ya está en uso, ingrese otro:", AMARILLO);
         nick = entradaString();
     }
-    cout << "Ingrese nombre de profesor:" << endl;
-    string nombre;
-    cin >> nombre;
-    cout << "Ingrese contrasenia de profesor:" << endl;
-    string contrasenia;
-    cin >> contrasenia;
-    cout << "Ingrese descripcion de profesor:" << endl;
-    string descripcion;
-    cin >> descripcion;
-    cout << "Ingrese instituto de profesor:" << endl;
-    string instituto;
-    cin >> instituto;
+
+    imprimir("Ingrese nombre de profesor:");
+    string nombre = entradaString();
+    imprimir("Ingrese contrasenia de profesor:");
+    string contrasenia = entradaString();
+    imprimir("Ingrese descripcion de profesor:");
+    string descripcion = entradaString();
+    imprimir("Ingrese instituto de profesor:");
+    string instituto = entradaString();
     bool seguir = true;
-    cout << "Idiomas disponibles:" << endl;
+    imprimir("Idiomas disponibles:");
     contCurso.listarIdiomas();
     string idiom;
     set<string>* setIdi = new set<string>();
-    cout << "Ingrese el nombre del idioma en el que se especializa:" << endl;
-    while(seguir){
-        cin >> idiom;
+    imprimir("Ingrese el nombre del idioma en el que se especializa:");
+    while (seguir) {
+        idiom = entradaString();
         setIdi->insert(idiom);
         seguir = quiereContinuar();
     }
+
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, setIdi);
     return prof;
 }
 
 bool quiereContinuar(){
-    cout << "1: Agregar nuevo idioma" << endl;
-    cout << "2: Continuar" << endl;
-    int seguir;
-    cin >> seguir;
+    imprimir("1: Agregar otro idioma");
+    imprimir("2: Continuar");
+    int seguir = entradaInt();
     if (seguir == 1){
         return true;
     }
     else return false;
+}
+
+
+void presionaParaContinuar(){
+    cout << endl << "Presiona cualquier tecla para continuar...";
+    cin.ignore();
+    cin.get();
+}
+
+void limpiarLog(){
+    ofstream log("log.txt");
+    if (log.is_open()){
+        log << "";
+        log.close();
+    }else{
+        imprimir("Error: No se pudo abrir log.txt", ROJO);
+        presionaParaContinuar();
+    }
+}
+
+void escribirEnLog(string linea){
+    ofstream log("log.txt", ofstream::app);
+    if (log.is_open()){
+        if(linea[0] == 'U')//si es entrada del usuario, dejar linea arriba libre
+            log << endl;
+        log << linea;
+        log << endl;
+        if(linea[0] == 'U')//si es entrada del usuario, dejar linea abajo libre
+            log << endl;
+        log.close();
+    }else{
+        imprimir("Error: No se pudo abrir log.txt", ROJO);
+        presionaParaContinuar();
+    }
+}
+
+void imprimir(string texto){
+    cout << texto << endl;
+    escribirEnLog("S: " + texto);
+}
+
+void imprimir(string texto, string color){
+    cout << color << texto << RESET << endl;
+    escribirEnLog("S: " + texto);
 }
 
 //verificar que entrada sea un int
@@ -318,14 +372,18 @@ int entradaInt(){
     int entrada = -1;
     while(entrada < 0){
         try{
-            cin >> entrada;
+            string entradita;
+            cin >> entradita;
+            entrada = stoi(entradita);
         }catch(...){
-            cout << endl << AMARILLO << "La entrada debe ser un entero positivo." << RESET << endl;
-            cout << "Ingrese un entero: ";
+            cout << AMARILLO << "La entrada debe ser un entero positivo." << RESET;
+            cout << "Ingrese un entero positivo: ";
         }
     }
+    escribirEnLog("U: " + to_string(entrada));
     return entrada;
 }
+
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
 bool esAlfanumerico(string entrada){
@@ -343,15 +401,10 @@ string entradaString(){
     string entrada;
     cin >> entrada;
     while(!esAlfanumerico(entrada)){
-        cout << endl << AMARILLO << "La entrada debe ser alfanumerica." << RESET << endl;
+        cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET;
         cout << "Ingrese nuevamente: ";
         cin >> entrada;
     }
+    escribirEnLog("U: " + entrada);
     return entrada;
-}
-
-void presionaParaContinuar(){
-    cout << endl << "Presiona cualquier tecla para continuar...";
-    cin.ignore();
-    cin.get();
 }
