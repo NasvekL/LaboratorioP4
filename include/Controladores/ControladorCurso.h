@@ -63,6 +63,7 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones para modificar el set de cursos
         bool altaCurso();
+        void altaLeccion();
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
 
@@ -78,6 +79,7 @@ class ControladorCurso: public IControladorCurso{
         set<DTCurso> listarDTCursos();
         set<string> listarIdiomasProfesor();
         void listarIdiomas();
+        void listarCursosNoHabilitados();
         bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
         bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
         void seleccionarEjercicio(int idEjercicio);

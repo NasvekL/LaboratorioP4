@@ -115,6 +115,10 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
     }
 }
 
+void altaLeccion(){
+
+}
+
 
 
 //Operaciones para modificar el set de ejercicios
@@ -152,6 +156,18 @@ void ControladorCurso::listarIdiomas(){
         string nombre = it->first;
         cout << a <<  "- " << nombre <<'\n';
         a++;
+    }
+}
+
+void ControladorCurso::listarCursosNoHabilitados(){
+     int a=1;
+    for (auto it = cursos.begin(); it != cursos.end(); ++it){
+        if(it->second.getHabilitado()){
+            string nombre = it->first;
+            cout << a <<  "- " << nombre <<'\n';
+            a++;
+        }
+        
     }
 }
 
