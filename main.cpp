@@ -184,8 +184,20 @@ int main(){
                 break;
             }
             case 11:{
-                //Inscribirse a curso
-                //interfazCurso->inscribirseACurso();
+                imprimir("Ingrese nickname de estudiante:");
+                string nick = entradaString();
+                contUsuario.seleccionarUsuario(nick);
+                //verificar si el usuario es un estudiante
+                //en caso de que si:
+                    imprimir("Cursos disponibles para : " + nick);
+                    //CursosDisponibles(nick) :setString
+                    //for each curso in CursosDisponibles
+                        //imprimir(nombreCurso);
+                    imprimir("Ingrese nombre de curso:");
+                    string nombreCurso = entradaString();
+                    //inscribirEstudiante (nombrecurso)
+                //en caso de que no
+                    //imprimir("El usuario no es un estudiante, por lo cual no puede inscribirse a ningun curso");
                 break;
             }
             case 12:{
