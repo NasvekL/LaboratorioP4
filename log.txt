@@ -18,6 +18,7 @@ S: 15. Consulta de notificaciones
 S: 16. Eliminar suscripciones
 S: Ingrese una opcion: 
 
+<<<<<<< HEAD
 U: 2
 
 S: Menu
@@ -42,6 +43,15 @@ S: Ingrese una opcion:
 
 U: 2
 
+=======
+U: 3
+
+S: Ingrese idioma:
+
+U: porcelanato
+
+S: Idioma creado
+>>>>>>> aaf8c7aeeeb0b479682d28947bad54dc34f06e11
 S: Menu
 S: 0. Salir
 S: 1. Alta de usuario
@@ -68,6 +78,7 @@ S: 1. Ingresar Estudiante
 S: 2. Ingresar Profesor
 
 U: 2
+<<<<<<< HEAD
 
 S: Ingrese nickname de profesor:
 
@@ -117,6 +128,45 @@ U: f
 S: 1: Agregar otro idioma
 S: 2: Continuar
 
+=======
+
+S: Ingrese nickname de profesor:
+
+U: lo
+
+S: Ingrese nombre de profesor:
+
+U: do
+
+S: Ingrese contrasenia de profesor:
+
+U: do
+
+S: Ingrese descripcion de profesor:
+
+U: do
+
+S: Ingrese instituto de profesor:
+
+U: doo
+
+S: Idiomas disponibles:
+S: Ingrese el nombre del idioma en el que se especializa:
+
+U: 1
+
+S: 1: Agregar otro idioma
+S: 2: Continuar
+
+U: 1
+
+
+U: 2
+
+S: 1: Agregar otro idioma
+S: 2: Continuar
+
+>>>>>>> aaf8c7aeeeb0b479682d28947bad54dc34f06e11
 U: 2
 
 <<<<<<< HEAD
