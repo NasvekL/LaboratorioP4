@@ -24,6 +24,7 @@ map<string,Usuario>* ControladorUsuario::getUsuarios(){
     }
     else{
         usuarios = new map<string,Usuario>();
+        return usuarios;
     }
 }
 //existeUsuario
@@ -152,7 +153,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
     ControladorCurso& cc = ControladorCurso::getInstancia();
     if (datoEstudiante!=NULL){
-        map<string,Usuario> *users = getUsuarios();
+        map<string,Usuario>* users = getUsuarios();
         Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
         delete datoEstudiante;

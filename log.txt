@@ -23,35 +23,38 @@ U: 1
 S: 1. Ingresar Estudiante
 S: 2. Ingresar Profesor
 
-U: 2
+U: 1
 
-S: Ingrese nickname de profesor:
+S: Ingrese nickname de estudiante:
 
-U: sadds
+U: saddsa
 
-S: Ingrese nombre de profesor:
+S: Ingrese nombre de estudiante:
 
-U: sadsad
+U: sdasd
 
-S: Ingrese contrasenia de profesor:
+S: Ingrese contrasenia de estudiante:
 
-U: asdds
+U: dasdsa
 
-S: Ingrese descripcion de profesor:
+S: Ingrese descripcion de estudiante:
 
-U: sada
+U: asdads
 
-S: Ingrese instituto de profesor:
+S: Ingrese pais de estudiante:
 
-U: saddas
+U: dsasad
 
-S: Idiomas disponibles:
-S: Ingrese el nombre del idioma en el que se especializa:
+S: Ingrese dia de nacimiento de estudiante:
 
-U: ingles
+U: 12
 
-S: 1: Agregar otro idioma
-S: 2: Continuar
+S: Ingrese mes de nacimiento de estudiante:
 
-U: 2
+U: 12
 
+S: Ingrese anio de nacimiento de estudiante:
+
+U: 12
+
+S: Estudiante creado
