@@ -153,13 +153,17 @@ int main(){
             }
             case 4:{
                     //Consultar idiomas
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
                     contUsuario.listarIdiomas();
                     presionaParaContinuar();
                     break;
             }
             case 5:{
                     //Alta de curso
-                    contCurso.listarProfe();
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
+                    ContCurso.listarProfe();
                     esperar(7);
                     break;
             }
