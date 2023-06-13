@@ -1,7 +1,10 @@
 #include "../../include/Controladores/ControladorUsuario.h"
 #include "../../include/Controladores/ControladorCurso.h"
+
 ControladorUsuario* ControladorUsuario::instancia = nullptr;
 map<string,Usuario>* usuarios = NULL;
+
+
 ControladorUsuario& ControladorUsuario::getInstancia() {
     if (instancia == nullptr) {
         instancia = new ControladorUsuario();
