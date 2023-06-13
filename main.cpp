@@ -189,7 +189,7 @@ int main(){
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
                 imprimir ( "Cursos:" );
-                set<string> cursosNoHabilitados = contCurso.listarCursosNoHabilitados();
+                contCurso.listarCursosNoHabilitados();
                 
                 imprimir("Elija un curso:");
                 string cursoSelec = entradaString();
