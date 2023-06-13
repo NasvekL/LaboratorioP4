@@ -230,9 +230,13 @@ void ControladorCurso::limpiarDatos() {
 }
 
 
-
 //Operacion rara
 set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     // Implementación pendiente
     return set<string>();
+}
+
+set<DTLeccion> ListarLecciones(string cursoLec){
+    //implementar
+    return set<DTLeccion>
 }

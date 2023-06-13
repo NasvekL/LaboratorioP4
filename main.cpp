@@ -112,9 +112,27 @@ int main(){
 
             case 2:{
                     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
-                    contUsuario.consultarUsuario();
-                    cout << "IIngrese el nick deseado" << endl;
+                    list<string> listaUsuarios = contUsuario.consultarUsuario();
+                    std::list<string>::iterator it;
+                    for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
+                        imprimir(*it);
+                    }
+                    cout << "Ingrese el nick deseado" << endl;
                         string nick;
+<<<<<<< HEAD
+                        nick = entradaString();
+                        if(contUsuario.getTipoUsuario(nick)==1){
+                            contUsuario.seleccionarUsuario(nick);
+                            DTEstudiante dte = contUsuario.getDatoEstudiante();
+                        } 
+                        else{ 
+                            contUsuario.seleccionarUsuario(nick);\
+                            DTProfesor dtp = contUsuario.getDatoProfesor();
+                            
+                        }
+                    break;
+            
+=======
                         cin >> nick;
                         contUsuario.seleccionarUsuario(nick);
                         /*auto it = users->find(nick);
@@ -126,9 +144,12 @@ int main(){
 
                             //falta seguir, como veo si es un profe o un estudiante?
                             //solo faltan los get dependiendo si es estu o profe
+                        }
+                    break;*/
                         //}
                     break;
             }
+>>>>>>> d71acd2c9718e2455eb47eb475bdf733cf310bf9
             case 3:{
                     imprimir("Ingrese idioma:");
                     string idioma = entradaString();

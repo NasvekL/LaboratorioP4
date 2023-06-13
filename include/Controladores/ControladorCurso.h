@@ -99,6 +99,8 @@ class ControladorCurso: public IControladorCurso{
         //Operacion que solo llama a otra opperacion en controladorUsuario
         set<string> cursosInscriptoSinAprobar(string nick);
 
+        set<DTLeccion> ListarLecciones(string cursoLec);
+
 };
 
 
