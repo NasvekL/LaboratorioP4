@@ -125,13 +125,10 @@ int main(){
 
                             //falta seguir, como veo si es un profe o un estudiante?
                             //solo faltan los get dependiendo si es estu o profe
-<<<<<<< HEAD
                         }
                     break;*/
-=======
                         //}
                     break;
->>>>>>> 69c82f43fbbb2ae840a2f73b3f8942178fd15e4c
             }
             case 3:{
                                     //Alta idioma
