@@ -29,7 +29,7 @@ list<DTNotificacion> Estudiante::verNotificaciones() {
 }
 
 DTEstudiante Estudiante::getDTEstudiante() {
-    DTEstudiante dt = DTEstudiante(this->getNickname(), this->getContrasenia(), this->getNombre(), this->getDescripcion(), this->getPais(), this->getNacimiento());    
+    DTEstudiante dt = DTEstudiante(this->getNick(), this->getContrasenia(), this->getNombre(), this->getDescripcion(), this->getPais(), this->getNacimiento());    
     // Implementación de getDTEstudiante
     // Retorna un objeto DTEstudiante
 }
