@@ -40,6 +40,7 @@ class IControladorCurso{
 
         //Operaciones virtuales para modificar el set de cursos
         virtual bool altaCurso() = 0;
+        virtual void altaLeccion() = 0;
         virtual void eliminarCurso(string nombreCurso)= 0;
         virtual void habilitarCurso(string nombreCurso)= 0;
 
@@ -56,6 +57,7 @@ class IControladorCurso{
         virtual set<DTCurso> listarDTCursos()= 0;
         virtual set<string> listarIdiomasProfesor()= 0;
         virtual void listarIdiomas()= 0;
+        virtual void listarCursosNoHabilitados() = 0;
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;
         virtual bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio)= 0;
         virtual void seleccionarEjercicio(int idEjercicio)= 0;
@@ -71,6 +73,8 @@ class IControladorCurso{
         virtual void limpiarDatos()= 0;
 
         //Operaciones que creo que están mal
+        virtual set<DTLeccion> ListarLecciones(string cursoLec)=0;
+
         virtual set<string> cursosInscriptoSinAprobar(string nick)= 0;
 };
 

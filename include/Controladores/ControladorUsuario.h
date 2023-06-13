@@ -40,6 +40,7 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstudiante getDatoEstudiante();
         map<string,Usuario>* getUsuarios();
         DTProfesor getDatoProfesor();
+        int getTipoUsuario(string nick);
         //Setters
         void setDatoEstudiante(DTEstudiante dato); //void guardarDatosEstudiante(DTEstudiante data);
         void setDatoProfesor(DTProfesor dato);
@@ -64,7 +65,7 @@ class ControladorUsuario : public IControladorUsuario{
         //FALTA CLASIFICAR. DESPUES. EN ALGUN MOMENTO. A MEDIDA QUE LO VAYAMOS USANDO
         list<DTEjercicio> ejerciciosNoAprobados(string curso);
         list<string> cursosInscriptosSinAprobar(string nick);
-        list<string> listarProfesores();
+        set<string> listarProfe();
         list<string> listarIdiomasProfesor(DTProfesor p);
         Profesor encontrarProfesor(string nick);
         void confirmarAltaUsuario();
@@ -77,7 +78,7 @@ class ControladorUsuario : public IControladorUsuario{
         //Operacion dudosa
         Curso obtenerCurso(string curso);
 
-        void consultarUsuario();
+        list<string> consultarUsuario();
 };      
 
 

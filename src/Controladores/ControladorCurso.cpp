@@ -1,4 +1,5 @@
 #include "../../include/Controladores/ControladorCurso.h"
+#include "../../include/Controladores/ControladorUsuario.h"
 
 ControladorCurso* ControladorCurso::instancia = nullptr;
 
@@ -114,6 +115,10 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
     }
 }
 
+void altaLeccion(){
+
+}
+
 
 
 //Operaciones para modificar el set de ejercicios
@@ -126,8 +131,8 @@ void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
 //Operaciones para obtener informacion
 
 set<string> ControladorCurso::listarProfe() {
-    // Implementación pendiente
-    return set<string>();
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    cu.listarProfe();
 }
 DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     // Implementación pendiente
@@ -151,6 +156,18 @@ void ControladorCurso::listarIdiomas(){
         string nombre = it->first;
         cout << a <<  "- " << nombre <<'\n';
         a++;
+    }
+}
+
+void ControladorCurso::listarCursosNoHabilitados(){
+     int a=1;
+    for (auto it = cursos.begin(); it != cursos.end(); ++it){
+        if(it->second.getHabilitado()){
+            string nombre = it->first;
+            cout << a <<  "- " << nombre <<'\n';
+            a++;
+        }
+        
     }
 }
 
@@ -213,9 +230,12 @@ void ControladorCurso::limpiarDatos() {
 }
 
 
-
 //Operacion rara
 set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     // Implementación pendiente
     return set<string>();
 }
+
+/*set<DTLeccion> ListarLecciones(string cursoLec){  //implementar
+    return set<DTLeccion>
+}*/
