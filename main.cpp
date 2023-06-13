@@ -134,7 +134,7 @@ int main(){
 >>>>>>> 69c82f43fbbb2ae840a2f73b3f8942178fd15e4c
             }
             case 3:{
-                    //Alta idioma
+                                    //Alta idioma
                     imprimir("Ingrese idioma:");
                     string idioma = entradaString();
                     if(contCurso.confirmarAltaIdioma(idioma)==false)
@@ -168,6 +168,25 @@ int main(){
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
+
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                imprimir ( "Cursos:" );
+                set<string> cursosNoHabilitados = contCurso.listarCursosNoHabilitados();
+                
+                imprimir("Elija un curso:");
+                string cursoSelec = entradaString();
+
+
+                imprimir("Lecciones del curso:");
+                set<DTLeccion> lecciones = contCurso.ListarLecciones(cursoLec);
+                
+
+                imprimir("Elija una lección:");
+                int lecSelec = entradaInt();
+
+
+
                 break;
             }
             case 8:{
