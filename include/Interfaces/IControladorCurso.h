@@ -71,6 +71,8 @@ class IControladorCurso{
         virtual void limpiarDatos()= 0;
 
         //Operaciones que creo que están mal
+        virtual set<DTLeccion> ListarLecciones(string cursoLec)=0;
+
         virtual set<string> cursosInscriptoSinAprobar(string nick)= 0;
 };
 
