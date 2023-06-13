@@ -27,6 +27,7 @@ map<string,Usuario>* ControladorUsuario::getUsuarios(){
     }
     else{
         usuarios = new map<string,Usuario>();
+        return usuarios;
     }
 }
 //existeUsuario

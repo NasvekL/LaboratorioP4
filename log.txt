@@ -90,3 +90,4 @@ S: 2: Continuar
 
 U: 2
 
+S: Estudiante creado
