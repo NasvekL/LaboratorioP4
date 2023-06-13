@@ -20,7 +20,7 @@ class DTEstudiante{
         string getDescripcion();
         string getNombre();
         //Create destroy
-        ~DTEstudiante();
+        ~DTEstudiante()=default;
         DTEstudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
 };
 #endif

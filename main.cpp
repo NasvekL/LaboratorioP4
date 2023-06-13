@@ -110,32 +110,22 @@ int main(){
             }
 
             case 2:{
-                    /*
-                    map<string,Usuario>* users = contUsuario.getUsuarios();
-
-                    if (users->empty()) {
-                        cout << "No hay usuarios" << endl;
-                    } else {
-                        cout << "Nicks:" << endl;
-                        for (auto it = users->begin(); it != users->end(); ++it) {
-                            cout <<  users.first << endl;
-                        }
-
-                        cout << "IIngrese el nick deseado" << endl;
-                            string nick;
-                            cin >> nick;
-
-                            auto it = users->find(nick);
-                            if (it != users->end()) {
-                                Usuario& usuario = it->second;
-                                cout << "Nombre: " << usuario.getNombre() << endl;
-                                cout << "Descripción: " << usuario.getDescripcion() << endl;
+                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+                    contUsuario.consultarUsuario();
+                    cout << "IIngrese el nick deseado" << endl;
+                        string nick;
+                        cin >> nick;
+                        seleccionarUsuario(nick);
+                        auto it = users->find(nick);
+                        if (it != users->end()) {
+                            Usuario& usuario = it->second;
+                            cout << "Nombre: " << usuario.getNombre() << endl;
+                            cout << "Descripción: " << usuario.getDescripcion() << endl;
 
 
                             //falta seguir, como veo si es un profe o un estudiante?
                             //solo faltan los get dependiendo si es estu o profe
-                            }
-                    */
+                        }
                     break;
             }
             case 3:{

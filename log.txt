@@ -18,42 +18,85 @@ S: 15. Consulta de notificaciones
 S: 16. Eliminar suscripciones
 S: Ingrese una opcion: 
 
+U: 2
+
+S: Menu
+S: 0. Salir
+S: 1. Alta de usuario
+S: 2. Consulta de usuario
+S: 3. Alta idioma
+S: 4. Consultar idiomas
+S: 5. Alta de curso
+S: 6. Agregar leccion
+S: 7. Agregar ejercicio
+S: 8. Habilitar curso
+S: 9. Eliminar curso
+S: 10. Consultar curso
+S: 11. Inscribirse a curso
+S: 12. Realizar ejercicio
+S: 13. Consultar estadisticas
+S: 14. Suscribirse a notificaciones
+S: 15. Consulta de notificaciones
+S: 16. Eliminar suscripciones
+S: Ingrese una opcion: 
+
+U: 2
+
+S: Menu
+S: 0. Salir
+S: 1. Alta de usuario
+S: 2. Consulta de usuario
+S: 3. Alta idioma
+S: 4. Consultar idiomas
+S: 5. Alta de curso
+S: 6. Agregar leccion
+S: 7. Agregar ejercicio
+S: 8. Habilitar curso
+S: 9. Eliminar curso
+S: 10. Consultar curso
+S: 11. Inscribirse a curso
+S: 12. Realizar ejercicio
+S: 13. Consultar estadisticas
+S: 14. Suscribirse a notificaciones
+S: 15. Consulta de notificaciones
+S: 16. Eliminar suscripciones
+S: Ingrese una opcion: 
+
 U: 1
 
 S: 1. Ingresar Estudiante
 S: 2. Ingresar Profesor
 
-U: 1
+U: 2
 
-S: Ingrese nickname de estudiante:
+S: Ingrese nickname de profesor:
 
-U: pepe
+U: fds
 
-S: Ingrese nombre de estudiante:
+S: Ingrese nombre de profesor:
 
-U: pepe
+U: fds
 
-S: Ingrese contrasenia de estudiante:
+S: Ingrese contrasenia de profesor:
 
-U: pepe
+U: dfs
 
-S: Ingrese descripcion de estudiante:
+S: Ingrese descripcion de profesor:
 
-U: pepe
+U: fds
 
-S: Ingrese pais de estudiante:
+S: Ingrese instituto de profesor:
 
-U: pepe
+U: fds
 
-S: Ingrese dia de nacimiento de estudiante:
+S: Idiomas disponibles:
+S: Ingrese el nombre del idioma en el que se especializa:
 
-U: 12
+U: f
 
-S: Ingrese mes de nacimiento de estudiante:
+S: 1: Agregar otro idioma
+S: 2: Continuar
 
-U: 12
+U: 2
 
-S: Ingrese anio de nacimiento de estudiante:
-
-U: 12
-
+S: Profesor creado

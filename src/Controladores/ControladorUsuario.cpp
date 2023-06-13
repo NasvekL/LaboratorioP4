@@ -24,6 +24,7 @@ map<string,Usuario>* ControladorUsuario::getUsuarios(){
     }
     else{
         usuarios = new map<string,Usuario>();
+        return usuarios;
     }
 }
 //existeUsuario
@@ -152,6 +153,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
     ControladorCurso& cc = ControladorCurso::getInstancia();
     if (datoEstudiante!=NULL){
+        cout <<datoEstudiante->getNickname() << endl; 
         map<string,Usuario>* users = getUsuarios();
         Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
@@ -177,7 +179,6 @@ void ControladorUsuario::confirmarAltaUsuario() {
     else{
         throw invalid_argument("No se ha ingresado un usuario");
     }
-    
 }
 
 
@@ -188,9 +189,18 @@ void ControladorUsuario::listarIdiomas() {
 }
 
 void ControladorUsuario::consultarUsuario(){
-    auto it = usuarios->begin();
+    map<string,Usuario>* users= getUsuarios();
+    auto it = users->begin();
     int i=1;
-    while (it != usuarios->end()){
-        cout<< to_string(i) + to_string(': ') + it->first <<endl;
+    if (users->empty()){
+        cout << "No hay usuarios" << endl;
     }
+    else{
+        while (it != users->end()){
+        cout<< to_string(i) + to_string(': ') + it->first <<endl;
+        }
+    }
+}
+void ControladorUsuario::seleccionarUsuario(string nick){
+    
 }
