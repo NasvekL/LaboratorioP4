@@ -204,19 +204,18 @@ string ControladorUsuario:: getTipoUsuario(string nick){
     map<string,Usuario>* users= getUsuarios();
     auto it = users->find(nick);
     if (it != users->end()) {
-        Usuario& usuario = it->second;
-        if (dynamic_cast<Estudiante*>(&usuario)){
-            return "estudiante";
+        Usuario &usuario = it->second;
+        Estudiante* estudiante = dynamic_cast<Estudiante*>(&usuario);
+        if (estudiante!=NULL){
+            return 1;
         }
-        else if(dynamic_cast<Profesor*>(&usuario)){
-            return "profesor";
-        }else{
-            cout << "El dynamic cast no esta funcionando bien" << endl;
-            return "usuario";
+        else{
+            return 2;
         }
     }
     else{
         throw invalid_argument("No existe el usuario");
+        return 0;
     }
 }
 list<string> ControladorUsuario::consultarUsuario(){
