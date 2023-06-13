@@ -22,9 +22,9 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/nahuel/Programacion/p4/LaboratorioP4",
-      "program": "/home/nahuel/Programacion/p4/LaboratorioP4/build/ejecutable",
+      "program": "/home/nahuel/Programacion/p4/LaboratorioP4/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "/usr/bin/gdb",
+      "miDebuggerPath": "gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
