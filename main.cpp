@@ -182,6 +182,22 @@ int main(){
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                imprimir ( "Cursos:" );
+                set<string> cursosNoHabilitados = contCurso.listarCursosNoHabilitados();
+                
+                imprimir("Elija un curso:");
+                string cursoSelec = entradaString();
+
+
+                imprimir("Lecciones del curso:");
+                set<DTLeccion> lecciones = contCurso.ListarLecciones(cursoLec);
+                
+
+                imprimir("Elija una lección:");
+                int lecSelec = entradaInt();
+
                 break;
             }
             case 8:{
