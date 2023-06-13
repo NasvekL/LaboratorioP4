@@ -193,14 +193,35 @@ int main(){
                 
                 imprimir("Elija un curso:");
                 string cursoSelec = entradaString();
-
+                Curso cur = contCurso.getCurso(cursoSelec);
 
                 imprimir("Lecciones del curso:");
-                set<DTLeccion> lecciones = contCurso.ListarLecciones(cursoLec);
-                
+                list<Leccion> lecciones = cur.getLecciones();
 
-                imprimir("Elija una lección:");
-                int lecSelec = entradaInt();
+                if (!lecciones.empty()) {
+                    int i = 1;
+                    for (const auto& leccion : lecciones) {
+                        imprimir(to_string(i) , ". " , leccion.getTema()); 
+                        i++;
+                    }
+
+                    imprimir("Elija una lección:");
+                    int lecSelec = entradaInt();    
+                    Leccion leccionSeleccionada; 
+                    for (const auto& leccion : lecciones) {
+                        if (leccion.getNumero() == lecSelec) {
+                            leccionSeleccionada = leccion;
+                            break;
+                        }
+                    }
+
+                    imprimir("Ingrese el tipo de ejercicio (completar/traduccion):");
+                    string tipo = entradaString();
+
+
+
+
+                }
 
                 break;
             }
