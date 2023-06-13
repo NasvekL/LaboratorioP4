@@ -152,8 +152,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
     ControladorCurso& cc = ControladorCurso::getInstancia();
     if (datoEstudiante!=NULL){
-        map<string,Usuario>* users = getUsuarios();
-        Estudiante* e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
+        map<string,Usuario> *users = getUsuarios();
+        Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
         delete datoEstudiante;
         datoEstudiante = NULL;
