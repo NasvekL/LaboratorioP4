@@ -137,8 +137,18 @@ list<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
     // Implementación de la función cursosInscriptosSinAprobar
 }
 
-list<string> ControladorUsuario::listarProfesores() {
-    // Implementación de la función listarProfesores
+set<string> ControladorUsuario::listarProfe() {
+    map<string, Usuario>* users = getUsuarios(); // Mapa de nick a Usuario
+    auto it = users->begin();
+    Usuario* prof = new Usuario;
+    for (it; it != users->end(); it++){
+        *prof = it->second;
+        cout<<"gola"<<endl;
+        if (dynamic_cast<const Profesor*>(prof) != nullptr) {
+        cout<<it->first<<endl;
+        }
+    }
+    delete prof;
 }
 
 list<string> ControladorUsuario::listarIdiomasProfesor(DTProfesor p) {
@@ -183,7 +193,6 @@ void ControladorUsuario::confirmarAltaUsuario() {
 
 
 void ControladorUsuario::listarIdiomas() {
- set<string> res;
  ControladorCurso& cc = ControladorCurso::getInstancia();
  cc.listarIdiomas();
 }

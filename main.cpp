@@ -110,7 +110,7 @@ int main(){
             }
 
             case 2:{
-                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+                   /* IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
                     contUsuario.consultarUsuario();
                     cout << "IIngrese el nick deseado" << endl;
                         string nick;
@@ -125,10 +125,16 @@ int main(){
 
                             //falta seguir, como veo si es un profe o un estudiante?
                             //solo faltan los get dependiendo si es estu o profe
+<<<<<<< HEAD
+                        }
+                    break;*/
+=======
                         //}
                     break;
+>>>>>>> 69c82f43fbbb2ae840a2f73b3f8942178fd15e4c
             }
             case 3:{
+                    //Alta idioma
                     imprimir("Ingrese idioma:");
                     string idioma = entradaString();
                     if(contCurso.confirmarAltaIdioma(idioma)==false)
@@ -140,13 +146,18 @@ int main(){
             }
             case 4:{
                     //Consultar idiomas
-                    contCurso.listarIdiomas();
-                    //interfazCurso->consultarIdiomas();
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
+                    contUsuario.listarIdiomas();
+                    presionaParaContinuar();
                     break;
             }
             case 5:{
                     //Alta de curso
-                    //interfazCurso->altaCurso();
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
+                    ContCurso.listarProfe();
+                    esperar(7);
                     break;
             }
             case 6:{
@@ -184,8 +195,20 @@ int main(){
                 break;
             }
             case 11:{
-                //Inscribirse a curso
-                //interfazCurso->inscribirseACurso();
+                imprimir("Ingrese nickname de estudiante:");
+                string nick = entradaString();
+                contUsuario.seleccionarUsuario(nick);
+                //verificar si el usuario es un estudiante
+                //en caso de que si:
+                    imprimir("Cursos disponibles para : " + nick);
+                    //CursosDisponibles(nick) :setString
+                    //for each curso in CursosDisponibles
+                        //imprimir(nombreCurso);
+                    imprimir("Ingrese nombre de curso:");
+                    string nombreCurso = entradaString();
+                    //inscribirEstudiante (nombrecurso)
+                //en caso de que no
+                    //imprimir("El usuario no es un estudiante, por lo cual no puede inscribirse a ningun curso");
                 break;
             }
             case 12:{
