@@ -111,7 +111,6 @@ int main(){
             }
 
             case 2:{
-                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
                     list<string> listaUsuarios = contUsuario.consultarUsuario();
                     std::list<string>::iterator it;
                     for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
@@ -120,7 +119,7 @@ int main(){
                     cout << "Ingrese el nick deseado" << endl;
                         string nick;
                         nick = entradaString();
-                        if(contUsuario.getTipoUsuario(nick)==1){
+                        if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                             contUsuario.seleccionarUsuario(nick);
                             DTEstudiante dte = contUsuario.getDatoEstudiante();
                             imprimir(dte.getNombre());
@@ -154,17 +153,13 @@ int main(){
             }
             case 4:{
                     //Consultar idiomas
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
                     contUsuario.listarIdiomas();
                     presionaParaContinuar();
                     break;
             }
             case 5:{
                     //Alta de curso
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
-                    ContCurso.listarProfe();
+                    contCurso.listarProfe();
                     esperar(7);
                     break;
             }
@@ -217,15 +212,21 @@ int main(){
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
                 contUsuario.seleccionarUsuario(nick);
-                //verificar si el usuario es un estudiante
-                //en caso de que si:
-                    imprimir("Cursos disponibles para : " + nick);
+                if (contUsuario.getTipoUsuario(nick)=="estudiante"){
+                    imprimir("Cursos disponibles para " + nick + ": ");
+                    imprimir("No esta terminado. Aca se estan listando todos los cursos para que el usuario se inscriba.", ROJO);
+                    imprimir("Deberian mostrarse solo los cursos a los que no este ya inscrito, y no haya terminado, y tenga sus previas aprobadas.", ROJO);
                     //CursosDisponibles(nick) :setString
                     //for each curso in CursosDisponibles
                         //imprimir(nombreCurso);
-                    imprimir("Ingrese nombre de curso:");
+                    imprimir("Ingrese nombre del curso al cual desea inscribirse:");
                     string nombreCurso = entradaString();
                     //inscribirEstudiante (nombrecurso)
+                    imprimir("El usuario ha sido inscrito con exito", VERDE);
+                } else {
+                    imprimir("El usuario no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
+                    presionaParaContinuar();
+                }
                 //en caso de que no
                     //imprimir("El usuario no es un estudiante, por lo cual no puede inscribirse a ningun curso");
                 break;

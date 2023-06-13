@@ -200,16 +200,19 @@ void ControladorUsuario::listarIdiomas() {
  ControladorCurso& cc = ControladorCurso::getInstancia();
  cc.listarIdiomas();
 }
-int ControladorUsuario:: getTipoUsuario(string nick){
+string ControladorUsuario:: getTipoUsuario(string nick){
     map<string,Usuario>* users= getUsuarios();
     auto it = users->find(nick);
     if (it != users->end()) {
         Usuario& usuario = it->second;
         if (dynamic_cast<Estudiante*>(&usuario)){
-            return 1;
+            return "estudiante";
         }
         else if(dynamic_cast<Profesor*>(&usuario)){
-            return 2;
+            return "profesor";
+        }else{
+            cout << "El dynamic cast no esta funcionando bien" << endl;
+            return "usuario";
         }
     }
     else{
