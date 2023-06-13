@@ -139,6 +139,7 @@ int main(){
                     break;
             }
             case 3:{
+                    //Alta idioma
                     imprimir("Ingrese idioma:");
                     string idioma = entradaString();
                     if(contCurso.confirmarAltaIdioma(idioma)==false)
@@ -150,8 +151,9 @@ int main(){
             }
             case 4:{
                     //Consultar idiomas
-                    contCurso.listarIdiomas();
-                    //interfazCurso->consultarIdiomas();
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
+                    contUsuario.listarIdiomas();
                     break;
             }
             case 5:{

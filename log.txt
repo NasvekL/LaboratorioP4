@@ -18,43 +18,78 @@ S: 15. Consulta de notificaciones
 S: 16. Eliminar suscripciones
 S: Ingrese una opcion: 
 
-U: 1
+U: 3
 
-S: 1. Ingresar Estudiante
-S: 2. Ingresar Profesor
+S: Ingrese idioma:
 
-U: 1
+U: asdsad
 
-S: Ingrese nickname de estudiante:
+S: Idioma creado
+S: Menu
+S: 0. Salir
+S: 1. Alta de usuario
+S: 2. Consulta de usuario
+S: 3. Alta idioma
+S: 4. Consultar idiomas
+S: 5. Alta de curso
+S: 6. Agregar leccion
+S: 7. Agregar ejercicio
+S: 8. Habilitar curso
+S: 9. Eliminar curso
+S: 10. Consultar curso
+S: 11. Inscribirse a curso
+S: 12. Realizar ejercicio
+S: 13. Consultar estadisticas
+S: 14. Suscribirse a notificaciones
+S: 15. Consulta de notificaciones
+S: 16. Eliminar suscripciones
+S: Ingrese una opcion: 
 
-U: saddsa
+U: 3
 
-S: Ingrese nombre de estudiante:
+S: Ingrese idioma:
 
-U: sdasd
+U: dsadsa
 
-S: Ingrese contrasenia de estudiante:
+S: Idioma creado
+S: Menu
+S: 0. Salir
+S: 1. Alta de usuario
+S: 2. Consulta de usuario
+S: 3. Alta idioma
+S: 4. Consultar idiomas
+S: 5. Alta de curso
+S: 6. Agregar leccion
+S: 7. Agregar ejercicio
+S: 8. Habilitar curso
+S: 9. Eliminar curso
+S: 10. Consultar curso
+S: 11. Inscribirse a curso
+S: 12. Realizar ejercicio
+S: 13. Consultar estadisticas
+S: 14. Suscribirse a notificaciones
+S: 15. Consulta de notificaciones
+S: 16. Eliminar suscripciones
+S: Ingrese una opcion: 
 
-U: dasdsa
+U: 4
 
-S: Ingrese descripcion de estudiante:
-
-U: asdads
-
-S: Ingrese pais de estudiante:
-
-U: dsasad
-
-S: Ingrese dia de nacimiento de estudiante:
-
-U: 12
-
-S: Ingrese mes de nacimiento de estudiante:
-
-U: 12
-
-S: Ingrese anio de nacimiento de estudiante:
-
-U: 12
-
-S: Estudiante creado
+S: Menu
+S: 0. Salir
+S: 1. Alta de usuario
+S: 2. Consulta de usuario
+S: 3. Alta idioma
+S: 4. Consultar idiomas
+S: 5. Alta de curso
+S: 6. Agregar leccion
+S: 7. Agregar ejercicio
+S: 8. Habilitar curso
+S: 9. Eliminar curso
+S: 10. Consultar curso
+S: 11. Inscribirse a curso
+S: 12. Realizar ejercicio
+S: 13. Consultar estadisticas
+S: 14. Suscribirse a notificaciones
+S: 15. Consulta de notificaciones
+S: 16. Eliminar suscripciones
+S: Ingrese una opcion: 
