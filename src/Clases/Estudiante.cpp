@@ -30,7 +30,8 @@ list<DTNotificacion> Estudiante::verNotificaciones() {
 
 DTEstudiante Estudiante::getDTEstudiante() {
     DTEstudiante dt = DTEstudiante(this->getNick(), this->getContrasenia(), this->getNombre(), this->getDescripcion(), this->getPais(), this->getNacimiento());    
-    return dt;
+    // Implementación de getDTEstudiante
+    // Retorna un objeto DTEstudiante
 }
 
 set<string> Estudiante::getCursosInscriptosSA() {
