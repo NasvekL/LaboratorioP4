@@ -98,6 +98,8 @@ while(opcion != 0){
                     DTProfesor prof = crearDTProfesor();
                     contUsuario.setDatoProfesor(prof);
                     contUsuario.confirmarAltaUsuario();
+                    cout << VERDE << "Profesor creado" << RESET << endl; //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
+
                     // TO DO: realizar acciones para el profesor
                     break;
                 }
