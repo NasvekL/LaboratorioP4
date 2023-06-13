@@ -110,7 +110,7 @@ int main(){
             }
 
             case 2:{
-                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+                   /* IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
                     contUsuario.consultarUsuario();
                     cout << "IIngrese el nick deseado" << endl;
                         string nick;
@@ -126,7 +126,7 @@ int main(){
                             //falta seguir, como veo si es un profe o un estudiante?
                             //solo faltan los get dependiendo si es estu o profe
                         }
-                    break;
+                    break;*/
             }
             case 3:{
                     //Alta idioma
@@ -144,11 +144,15 @@ int main(){
                     factoryController& Fabrica = factoryController::getInstancia();
                     IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
                     contUsuario.listarIdiomas();
+                    presionaParaContinuar();
                     break;
             }
             case 5:{
                     //Alta de curso
-                    //interfazCurso->altaCurso();
+                    factoryController& Fabrica = factoryController::getInstancia();
+                    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
+                    ContCurso.listarProfe();
+                    esperar(7);
                     break;
             }
             case 6:{

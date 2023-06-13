@@ -18,233 +18,63 @@ S: 15. Consulta de notificaciones
 S: 16. Eliminar suscripciones
 S: Ingrese una opcion: 
 
-<<<<<<< HEAD
-U: 2
-
-S: Menu
-S: 0. Salir
-S: 1. Alta de usuario
-S: 2. Consulta de usuario
-S: 3. Alta idioma
-S: 4. Consultar idiomas
-S: 5. Alta de curso
-S: 6. Agregar leccion
-S: 7. Agregar ejercicio
-S: 8. Habilitar curso
-S: 9. Eliminar curso
-S: 10. Consultar curso
-S: 11. Inscribirse a curso
-S: 12. Realizar ejercicio
-S: 13. Consultar estadisticas
-S: 14. Suscribirse a notificaciones
-S: 15. Consulta de notificaciones
-S: 16. Eliminar suscripciones
-S: Ingrese una opcion: 
-
-U: 2
-
-=======
-U: 3
-<<<<<<< HEAD
-=======
-
-S: Ingrese idioma:
-
-U: porcelanato
-
-S: Idioma creado
->>>>>>> aaf8c7aeeeb0b479682d28947bad54dc34f06e11
-S: Menu
-S: 0. Salir
-S: 1. Alta de usuario
-S: 2. Consulta de usuario
-S: 3. Alta idioma
-S: 4. Consultar idiomas
-S: 5. Alta de curso
-S: 6. Agregar leccion
-S: 7. Agregar ejercicio
-S: 8. Habilitar curso
-S: 9. Eliminar curso
-S: 10. Consultar curso
-S: 11. Inscribirse a curso
-S: 12. Realizar ejercicio
-S: 13. Consultar estadisticas
-S: 14. Suscribirse a notificaciones
-S: 15. Consulta de notificaciones
-S: 16. Eliminar suscripciones
-S: Ingrese una opcion: 
-
 U: 1
->>>>>>> aaf8c7aeeeb0b479682d28947bad54dc34f06e11
 
-S: Ingrese idioma:
+S: 1. Ingresar Estudiante
+S: 2. Ingresar Profesor
 
-<<<<<<< HEAD
-U: asdsad
-
-S: Idioma creado
-S: Menu
-S: 0. Salir
-S: 1. Alta de usuario
-S: 2. Consulta de usuario
-S: 3. Alta idioma
-S: 4. Consultar idiomas
-S: 5. Alta de curso
-S: 6. Agregar leccion
-S: 7. Agregar ejercicio
-S: 8. Habilitar curso
-S: 9. Eliminar curso
-S: 10. Consultar curso
-S: 11. Inscribirse a curso
-S: 12. Realizar ejercicio
-S: 13. Consultar estadisticas
-S: 14. Suscribirse a notificaciones
-S: 15. Consulta de notificaciones
-S: 16. Eliminar suscripciones
-S: Ingrese una opcion: 
-
-U: 3
-
-S: Ingrese idioma:
-
-U: dsadsa
-
-S: Idioma creado
-S: Menu
-S: 0. Salir
-S: 1. Alta de usuario
-S: 2. Consulta de usuario
-S: 3. Alta idioma
-S: 4. Consultar idiomas
-S: 5. Alta de curso
-S: 6. Agregar leccion
-S: 7. Agregar ejercicio
-S: 8. Habilitar curso
-S: 9. Eliminar curso
-S: 10. Consultar curso
-S: 11. Inscribirse a curso
-S: 12. Realizar ejercicio
-S: 13. Consultar estadisticas
-S: 14. Suscribirse a notificaciones
-S: 15. Consulta de notificaciones
-S: 16. Eliminar suscripciones
-S: Ingrese una opcion: 
-
-U: 4
-
-S: Menu
-S: 0. Salir
-S: 1. Alta de usuario
-S: 2. Consulta de usuario
-S: 3. Alta idioma
-S: 4. Consultar idiomas
-S: 5. Alta de curso
-S: 6. Agregar leccion
-S: 7. Agregar ejercicio
-S: 8. Habilitar curso
-S: 9. Eliminar curso
-S: 10. Consultar curso
-S: 11. Inscribirse a curso
-S: 12. Realizar ejercicio
-S: 13. Consultar estadisticas
-S: 14. Suscribirse a notificaciones
-S: 15. Consulta de notificaciones
-S: 16. Eliminar suscripciones
-S: Ingrese una opcion: 
-=======
 U: 2
-<<<<<<< HEAD
 
 S: Ingrese nickname de profesor:
 
-<<<<<<< HEAD
-U: fds
-=======
-U: saddsa
->>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
+U: pepe
 
 S: Ingrese nombre de profesor:
 
-<<<<<<< HEAD
-U: fds
-=======
-U: sdasd
->>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
+U: asdas
 
 S: Ingrese contrasenia de profesor:
 
-<<<<<<< HEAD
-U: dfs
-=======
-U: dasdsa
->>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
+U: ddsa
 
 S: Ingrese descripcion de profesor:
 
-<<<<<<< HEAD
-U: fds
-=======
-U: asdads
->>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
+U: ds
 
 S: Ingrese instituto de profesor:
 
-<<<<<<< HEAD
-U: fds
-=======
-U: dsasad
->>>>>>> 19058dcf43e37d598d853d4a047971f610ec8155
+U: aas
 
 S: Idiomas disponibles:
 S: Ingrese el nombre del idioma en el que se especializa:
 
-U: f
+U: da
 
 S: 1: Agregar otro idioma
 S: 2: Continuar
-
-=======
-
-S: Ingrese nickname de profesor:
-
-U: lo
-
-S: Ingrese nombre de profesor:
-
-U: do
-
-S: Ingrese contrasenia de profesor:
-
-U: do
-
-S: Ingrese descripcion de profesor:
-
-U: do
-
-S: Ingrese instituto de profesor:
-
-U: doo
-
-S: Idiomas disponibles:
-S: Ingrese el nombre del idioma en el que se especializa:
-
-U: 1
-
-S: 1: Agregar otro idioma
-S: 2: Continuar
-
-U: 1
-
 
 U: 2
 
-S: 1: Agregar otro idioma
-S: 2: Continuar
-
->>>>>>> aaf8c7aeeeb0b479682d28947bad54dc34f06e11
-U: 2
-
-<<<<<<< HEAD
 S: Profesor creado
-=======
-S: Estudiante creado
+S: Menu
+S: 0. Salir
+S: 1. Alta de usuario
+S: 2. Consulta de usuario
+S: 3. Alta idioma
+S: 4. Consultar idiomas
+S: 5. Alta de curso
+S: 6. Agregar leccion
+S: 7. Agregar ejercicio
+S: 8. Habilitar curso
+S: 9. Eliminar curso
+S: 10. Consultar curso
+S: 11. Inscribirse a curso
+S: 12. Realizar ejercicio
+S: 13. Consultar estadisticas
+S: 14. Suscribirse a notificaciones
+S: 15. Consulta de notificaciones
+S: 16. Eliminar suscripciones
+S: Ingrese una opcion: 
+
+U: 5
+

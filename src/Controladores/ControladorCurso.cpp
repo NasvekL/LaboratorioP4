@@ -1,4 +1,5 @@
 #include "../../include/Controladores/ControladorCurso.h"
+#include "../../include/Controladores/ControladorUsuario.h"
 
 ControladorCurso* ControladorCurso::instancia = nullptr;
 
@@ -126,8 +127,8 @@ void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
 //Operaciones para obtener informacion
 
 set<string> ControladorCurso::listarProfe() {
-    // Implementación pendiente
-    return set<string>();
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    cu.listarProfe();
 }
 DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     // Implementación pendiente
