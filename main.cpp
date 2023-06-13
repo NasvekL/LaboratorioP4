@@ -339,6 +339,35 @@ bool quiereContinuar(){
     else return false;
 }
 
+
+void presionaParaContinuar(){
+    cout << endl << "Presiona cualquier tecla para continuar...";
+    cin.ignore();
+    cin.get();
+}
+
+
+void escribirEnLog(string linea){
+    ofstream log("log.txt");
+    if (log.is_open()){
+        log << linea;
+        log.close();
+    }else{
+        cout << ROJO << "Error: No se pudo abrir log.txt" << endl;
+        presionaParaContinuar();
+    }
+}
+
+void imprimir(string texto){
+    cout << texto << endl;
+    escribirEnLog("S: " + texto + "/n");
+}
+
+void imprimir(string texto, string color){
+    cout << color << texto << RESET << endl;
+    escribirEnLog("S: " + texto + "/n");
+}
+
 //verificar que entrada sea un int
 int entradaInt(){
     int entrada = -1;
@@ -350,8 +379,10 @@ int entradaInt(){
             cout << "Ingrese un entero: ";
         }
     }
+    escribirEnLog("\nU: " + to_string(entrada) + "/n/n");
     return entrada;
 }
+
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
 bool esAlfanumerico(string entrada){
@@ -373,11 +404,6 @@ string entradaString(){
         cout << "Ingrese nuevamente: ";
         cin >> entrada;
     }
+    escribirEnLog("U: " + entrada + "/n/n");
     return entrada;
-}
-
-void presionaParaContinuar(){
-    cout << endl << "Presiona cualquier tecla para continuar...";
-    cin.ignore();
-    cin.get();
 }
