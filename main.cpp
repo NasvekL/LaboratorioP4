@@ -112,7 +112,7 @@ int main(){
             case 2:{
                     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
                     contUsuario.consultarUsuario();
-                    cout << "IIngrese el nick deseado" << endl;
+                    cout << "Ingrese el nick deseado" << endl;
                         string nick;
                         cin >> nick;
                         contUsuario.seleccionarUsuario(nick);
