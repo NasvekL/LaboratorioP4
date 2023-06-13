@@ -154,9 +154,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
     if (datoEstudiante!=NULL){
         map<string,Usuario> *users = getUsuarios();
         Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
-        cout<<"puto"<<endl;
         users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
-        cout<<"hola"<<endl;
         delete datoEstudiante;
         datoEstudiante = NULL;
     }
