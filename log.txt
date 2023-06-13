@@ -27,33 +27,33 @@ U: 1
 
 S: Ingrese nickname de estudiante:
 
-U: d
+U: pepe
 
 S: Ingrese nombre de estudiante:
 
-U: d
+U: pepe
 
 S: Ingrese contrasenia de estudiante:
 
-U: d
+U: pepe
 
 S: Ingrese descripcion de estudiante:
 
-U: d
+U: pepe
 
 S: Ingrese pais de estudiante:
 
-U: d
+U: pepe
 
 S: Ingrese dia de nacimiento de estudiante:
 
-U: 4
+U: 12
 
 S: Ingrese mes de nacimiento de estudiante:
 
-U: 5
+U: 12
 
 S: Ingrese anio de nacimiento de estudiante:
 
-U: 6
+U: 12
 
