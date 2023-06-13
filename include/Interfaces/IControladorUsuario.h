@@ -35,7 +35,7 @@ class IControladorUsuario{
     virtual std::list<DTNotificacion> consultarNotificaciones(std::string nick) = 0;
 
     // Métodos adicionales que faltan clasificar
-
+    virtual void seleccionarUsuario(std::string nickname) = 0;
     virtual std::list<DTEjercicio> ejerciciosNoAprobados(std::string curso) = 0;
     virtual std::list<std::string> cursosInscriptosSinAprobar(std::string nick) = 0;
     virtual std::list<std::string> listarProfesores() = 0;

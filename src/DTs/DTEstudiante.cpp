@@ -11,12 +11,7 @@ DTEstudiante::DTEstudiante(string nickname, string contrasenia, string nombre, s
     this->pais = pais;
     this->nacimiento = nacimiento;
 }
-
-// Destructor
-DTEstudiante::~DTEstudiante() {
-    // Implementación del destructor
-    // Puedes realizar cualquier limpieza necesaria
-}
+//destructor
 
 // Getters
 string DTEstudiante::getPais() {
