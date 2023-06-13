@@ -70,8 +70,7 @@ class ControladorUsuario : public IControladorUsuario{
         void deleteDataIngresado();
 
         void listarIdiomas();
-
-
+        void seleccionarUsuario(string nick);
         //Operacion que no tiene sentido que este aca (iria en controladorCurso)
         DTEstadisticaCurso estadisticaCurso(string curso);
         //Operacion dudosa
