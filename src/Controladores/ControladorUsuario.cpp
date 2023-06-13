@@ -185,7 +185,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
             Idiomas.insert(&idiom);
         }
         map<string,Usuario>* users = getUsuarios();
-        Profesor p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
+        Profesor* p = new Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         users->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
         delete datoProfesor;
         datoProfesor = NULL;
