@@ -40,12 +40,13 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstudiante getDatoEstudiante();
         map<string,Usuario>* getUsuarios();
         DTProfesor getDatoProfesor();
-        int getTipoUsuario(string nick);
+        string getTipoUsuario(string nick);
         //Setters
         void setDatoEstudiante(DTEstudiante dato); //void guardarDatosEstudiante(DTEstudiante data);
         void setDatoProfesor(DTProfesor dato);
-        //Operaciones para modificar el set de usuarios
 
+        //Operaciones para modificar el set de usuarios
+        
 
         //Operaciones para obtener informacion
         list<string> listarCursos();
