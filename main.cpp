@@ -160,7 +160,7 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    /*imprimir("Cursos no habilitados disponibles:")
+                    imprimir("Cursos no habilitados disponibles:")
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
@@ -171,7 +171,7 @@ int main(){
                     
                     contCurso.altaLeccion();
 
-                */
+                
                 break;
             }
             case 7:{
@@ -335,7 +335,7 @@ DTProfesor crearDTProfesor(){
     return prof;
 }
 
-/*DTLeccion crearDTLeccion(){
+DTLeccion crearDTLeccion(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
@@ -345,12 +345,11 @@ DTProfesor crearDTProfesor(){
     string objetivo = entradaString();
     imprimir("Ingrese la cantidad de ejercicios que desea agregar:");
     int cantEjs = entradaInt();
-    
-
-
-
-
-}*/
+    imprimir("Ingrese el numero de la leccion:"); //Tenemos como precondicion que son ingresadas en orden correcto
+    int numLec = entradaInt();
+    DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
+    return lec;
+}
 
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");

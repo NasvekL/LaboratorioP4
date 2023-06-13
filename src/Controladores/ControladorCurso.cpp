@@ -115,8 +115,8 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
     }
 }
 
-void altaLeccion(){
-
+void ControladorCurso::altaLeccion(){
+    ||||||||||||
 }
 
 
