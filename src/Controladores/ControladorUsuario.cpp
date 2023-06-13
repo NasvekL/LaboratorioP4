@@ -153,7 +153,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
     ControladorCurso& cc = ControladorCurso::getInstancia();
     if (datoEstudiante!=NULL){
         map<string,Usuario>* users = getUsuarios();
-        Estudiante e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
+        Estudiante* e = Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), e));
         delete datoEstudiante;
         datoEstudiante = NULL;
@@ -169,7 +169,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
             Idiomas.insert(&idiom);
         }
         map<string,Usuario>* users = getUsuarios();
-        Profesor p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
+        Profesor* p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         users->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
         delete datoProfesor;
         datoProfesor = NULL;
