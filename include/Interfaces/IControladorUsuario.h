@@ -49,7 +49,7 @@ class IControladorUsuario{
     virtual DTEstadisticaCurso estadisticaCurso(std::string curso) = 0;
     virtual Curso obtenerCurso(std::string curso) = 0;
 
-    virtual void consultarUsuario() = 0;
+    virtual list<string> consultarUsuario() = 0;
 };
     
 

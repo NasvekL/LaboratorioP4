@@ -188,19 +188,20 @@ void ControladorUsuario::listarIdiomas() {
  cc.listarIdiomas();
 }
 
-void ControladorUsuario::consultarUsuario(){
+list<string> ControladorUsuario::consultarUsuario(){
     map<string,Usuario>* users= getUsuarios();
+    list<string> us;
+    if (!users->empty()){
     auto it = users->begin();
     int i=1;
-    if (users->empty()){
-        cout << "No hay usuarios" << endl;
+    while (it != users->end()){
+    us.push_back(it->first);
+    it++;
     }
-    else{
-        while (it != users->end()){
-        cout<< to_string(i) + to_string(': ') + it->first <<endl;
-        }
     }
+    return us;
 }
+
 void ControladorUsuario::seleccionarUsuario(string nick){
     map<string,Usuario>* users= getUsuarios();
     auto it = users->find(nick);

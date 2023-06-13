@@ -76,7 +76,7 @@ class ControladorUsuario : public IControladorUsuario{
         //Operacion dudosa
         Curso obtenerCurso(string curso);
 
-        void consultarUsuario();
+        list<string> consultarUsuario();
 };      
 
 
