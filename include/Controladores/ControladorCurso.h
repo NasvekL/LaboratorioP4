@@ -51,6 +51,8 @@ class ControladorCurso: public IControladorCurso{
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
+        list<DTRellenarPalabras> getDatosRellenarPalabras();
+        list<DTTraduccion> getDatosTraduccion();
         string getDatoNombreDeProfesor();
         string getDatoIdioma();
         set<DTCurso*> getDatosPrevias();

@@ -61,6 +61,14 @@ DTEjercicio ControladorCurso::getDatosEjercicio() {
     return *datosEjercicio;
 }
 
+list<DTRellenarPalabras> ControladorCurso::getDatosRellenarPalabras();{
+    return datosRellenarPalabras;
+}
+
+
+list<DTTraduccion> ControladorCurso::getDatosTraduccion();{
+    return datosTraduccion;
+}
 
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
@@ -125,6 +133,16 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(string curso){
+    Leccion *nuevaLec = new Leccion(datosDeLeccion->getTema(), datosDeLeccion->getObjetivoAprendizaje(), datosDeLeccion->getCantidadDeEjercicios(), datosDeLeccion->getNumero());
+    auto iterator = cursos.find(curso);
+    Curso *cur = *iterador;
+    cur->agregarLeccion(nuevaLec);
+    
+
+
+
+
+
     //Hacer un if list<DTCompPalabras> != NULL creo y asocio
     //Analogo para list<DTTraducir>
 }

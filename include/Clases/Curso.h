@@ -54,6 +54,7 @@ class Curso{
         int progresoPromedio();
         int progresoDeEstudiante(Estudiante e);
         DTEstadisticaCurso estadisticasCurso();
+        void agregarLeccion(Leccion* lec);
 
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos

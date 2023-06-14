@@ -20,7 +20,6 @@ DTProfesor crearDTProfesor();
 DTRellenarPalabras crearDTRellenarPalabras();
 DTTraduccion crearDTTraduccion();
 DTLeccion crearDTLeccion();
-DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -206,7 +205,7 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    /*imprimir("Cursos no habilitados disponibles:")
+                    imprimir("Cursos no habilitados disponibles:")
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
@@ -233,7 +232,7 @@ int main(){
                     contCurso.altaLeccion(cursoSeleccionado);
                     imprimir("Leccion creada", VERDE);
                     presionaParaContinuar();
-                */
+                
                 break;
             }
             case 7:{
@@ -556,7 +555,7 @@ DTTraduccion crearDTTraduccion(){
     imprimir("Ingrese la traducción");
     string traduccion = entradaString();
     int id = contCurso.getIdsEjercicio() +1;
-    DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
+    DTTraduccion ejer = DTTraduccion(descripcion, fraseATraducir, id, traduccion, tipo);
     contCurso.setIdsEjercicio( id) ;
     return ejer;
 

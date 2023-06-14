@@ -85,3 +85,7 @@ int Curso::progresoDeEstudiante(Estudiante e){
 DTEstadisticaCurso Curso::estadisticasCurso() {
     // Implementación de la operación
 }
+
+void Curso::agregarLeccion(Leccion *lec){
+    lecciones.push_back(lec);
+}

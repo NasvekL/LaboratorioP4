@@ -31,6 +31,8 @@ class IControladorCurso{
         virtual set<DTCurso*> getDatosPrevias()= 0;
         virtual DTEjercicio getDatosEjercicio()= 0;
         virtual Curso getCurso(string nombreCurso) = 0;
+        virtual list<DTRellenarPalabras> getDatosRellenarPalabras() = 0;
+        virtual list<DTTraduccion> getDatosTraduccion() = 0;
         //Setters virtuales
         virtual int setIdsEjercicio (int id)=0;
         virtual void setDatosDeCurso(DTCurso datos)= 0;
