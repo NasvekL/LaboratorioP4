@@ -32,6 +32,10 @@ int Leccion::getNumero() {
     return numero;
 }
 
+map<int, Ejercicio*> getEjercicios(){
+    return ejercicios;
+}
+
 Leccion::~Leccion() {
     // Implementación del destructor si es necesario
 }

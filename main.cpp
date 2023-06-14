@@ -207,19 +207,45 @@ int main(){
 
                     imprimir("Elija una lección:");
                     int lecSelec = entradaInt();    
-                    Leccion leccionSeleccionada; 
+                    Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
                         if (leccion.getNumero() == lecSelec) {
-                            leccionSeleccionada = leccion;
+                            leccionSeleccionada = &leccion;
                             break;
                         }
                     }
 
-                    imprimir("Ingrese el tipo de ejercicio (completar/traduccion):");
-                    string tipo = entradaString();
+                    if (leccionSeleccionada != nullptr) {
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+                        string tipo = entradaString();
+                        imprimir("Ingrese la descripción ");
+                        string descripcion = entradaString();
+                         
+                        if (tipo == "completar palabras") {
+                            imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+                            string frase = entradaString();                            
+                            imprimir("Ingrese las soluciones separadas por comas");
+                            string soluciones = entradaString();// esto esta mal, tengo que cortar el string cuando hayan comas y hacerlo eun set string                                                        
+                            RellenarPalabras* ejercicioCompleta = new RellenarPalabras(solucionesList, descripcion, tipo);                             
+                            ejercicioCompleta->setLeccion(*leccionSeleccionada);//mal
+                            contUsuario.altaEjercicio();// esta tendria que agregarla a la coleccion de ejercicion en leccion y hacer la de arriba
+                            
 
+                        else if (tipoEjercicio == "traduccion") {
+                            imprimir("Ingrese la frase");
+                            string fraseATraducir = entradaString();
+                            imprimir("Ingrese la traducción");
+                            string traduccion = entradaString();
+                            Traduccion* ejercicioTraduccion = new Traduccion(traduccion, descripcion, tipoEjercicio);
+                            ejercicioTraduccion->setLeccion(*leccionSeleccionada);
+                            contUsuario.altaEjercicio();
 
-
+                        } else {
+                            imprimir("Tipo de ejercicio no válido");
+     
+                        }
+                    
+                    }
 
                 }
 

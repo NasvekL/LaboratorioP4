@@ -64,6 +64,7 @@ class ControladorCurso: public IControladorCurso{
         //Operaciones para modificar el set de cursos
         bool altaCurso();
         void altaLeccion();
+        void altaEjercicio();
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
 
