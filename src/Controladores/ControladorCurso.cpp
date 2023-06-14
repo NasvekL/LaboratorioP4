@@ -115,17 +115,24 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
     }
 }
 
-void ControladorCurso::altaLeccion(){
+void ControladorCurso::altaLeccion(string curso){
+    //Hacer un if list<DTCompPalabras> != NULL creo y asocio
+    //Analogo para list<DTTraducir>
 }
 
 
 
 //Operaciones para modificar el set de ejercicios
 void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
-    // Implementación pendiente
+    
 }
 
-
+void ControladorCurso::agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal){
+    datosRellenarPalabras.push_back(ejRellPal);
+};
+void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
+    datosTraduccion.push_back(tradu);
+};
 
 //Operaciones para obtener informacion
 

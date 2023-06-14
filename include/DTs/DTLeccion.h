@@ -10,7 +10,7 @@ class DTLeccion{
     public:
         //getters
         int getNumero();
-        int getCantidadDe1Ejercicios();
+        int getCantidadDeEjercicios();
         string getObjetivoAprendizaje();
         string getTema();
         //constructor destructor

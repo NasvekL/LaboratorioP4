@@ -17,6 +17,8 @@
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
+DTRellenarPalabras crearDTRellenarPalabras();
+DTTraduccion crearDTTraduccion();
 //DTLeccion crearDTLeccion();
 void esperar(double time);
 int entradaInt();
@@ -169,19 +171,34 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    imprimir("Cursos no habilitados disponibles:")
+                    /*imprimir("Cursos no habilitados disponibles:")
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
                     DTLeccion leccion = crearDTLeccion();
                     contCurso.setDatosDeLeccion(leccion);
                     
-
                     //LOGICA PARA AGREGAR EJERCICIOS
-                    
-                    contCurso.altaLeccion();
-
-                
+                    int ejsPorAgregar = leccion.getCantidadDeEjercicios();
+                    for(int i = 1; i <= ejsPorAgregar; i++){
+                        int seleccion = seleccionTipoEjercicio();
+                        switch(seleccion){
+                            case 1:{
+                                DTTraduccion tradu = crearDTTraduccion();
+                                contCurso.agregarDatosTraduccion(tradu);
+                                break;
+                            }
+                            case 2:{
+                                DTRellenarPalabras rellpab = crearDTRellenarPalabras();
+                                contCurso.agregarDatosRellenarPalabras(rellpab);
+                                break;
+                            }
+                        }
+                    }
+                    contCurso.altaLeccion(cursoSeleccionado);
+                    imprimir("Leccion creada", VERDE);
+                    presionaParaContinuar();
+                */
                 break;
             }
             case 7:{
@@ -315,6 +332,11 @@ int seleccionEstudianteOProfesor(){
     return opcion;
 };
 
+int seleccionTipoEjercicio(){
+    imprimir("1. Ingresar ejercicio de traduccion");
+    imprimir("2. Ingresar ejercicio de rellenar palabras");
+}
+
 DTEstudiante crearDTEstudiante() {
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
@@ -397,6 +419,15 @@ DTLeccion crearDTLeccion(){
     int numLec = entradaInt();
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
+}
+
+DTRellenarPalabras crearDTRellenarPalabras(){
+    
+
+}
+
+DTTraduccion crearDTTraduccion(){
+
 }
 
 bool quiereContinuar(){
