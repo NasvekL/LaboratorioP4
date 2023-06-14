@@ -110,34 +110,34 @@ int main(){
                 break;
             }
 
-            case 2:{
+            case 2:{//Consulta de Usuario
                     list<string> listaUsuarios = contUsuario.consultarUsuario();
                     std::list<string>::iterator it;
                     for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
                         imprimir(*it);
                     }
                     cout << "Ingrese el nick deseado" << endl;
-                        string nick;
-                        nick = entradaString();
-                        if(contUsuario.getTipoUsuario(nick)==1){
-                            contUsuario.seleccionarUsuario(nick);
-                            DTEstudiante dte = contUsuario.getDatoEstudiante();
-                            imprimir(dte.getNombre());
-                            imprimir(dte.getDescripcion());
-                            imprimir(dte.getPais());
-                        } 
-                        else{ 
-                            contUsuario.seleccionarUsuario(nick);
-                            DTProfesor dtp = contUsuario.getDatoProfesor();
-                            imprimir(dtp.getNombre());
-                            imprimir(dtp.getDescripcion());
-                            imprimir(dtp.getInstituto());
-                            set<string>* idi = dtp.getIdiomas();
-                            set<string>::iterator it;
-                            for (it = idi->begin(); it != idi->end(); ++it) {
-                                imprimir(*it);
-                            }
+                    string nick;
+                    nick = entradaString();
+                    if(contUsuario.getTipoUsuario(nick)=="estudiante"){
+                        contUsuario.seleccionarUsuario(nick);
+                        DTEstudiante dte = contUsuario.getDatoEstudiante();
+                        imprimir(dte.getNombre());
+                        imprimir(dte.getDescripcion());
+                        imprimir(dte.getPais());
+                    } 
+                    else{ 
+                        contUsuario.seleccionarUsuario(nick);
+                        DTProfesor dtp = contUsuario.getDatoProfesor();
+                        imprimir(dtp.getNombre());
+                        imprimir(dtp.getDescripcion());
+                        imprimir(dtp.getInstituto());
+                        set<string>* idi = dtp.getIdiomas();
+                        set<string>::iterator it;
+                        for (it = idi->begin(); it != idi->end(); ++it) {
+                          imprimir(*it);
                         }
+                    }        
                     break;
             }
             case 3:{
@@ -169,22 +169,23 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    /*imprimir("Cursos no habilitados disponibles:")
+                    imprimir("Cursos no habilitados disponibles:")
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
                     DTLeccion leccion = crearDTLeccion();
                     contCurso.setDatosDeLeccion(leccion);
+                    
 
                     //LOGICA PARA AGREGAR EJERCICIOS
                     
                     contCurso.altaLeccion();
 
-                */
+                
                 break;
             }
             case 7:{
-                //Agregar ejercicio
+                /*//Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
@@ -250,6 +251,7 @@ int main(){
                 }
 
                 break;
+            */
             }
             case 8:{
                 //Habilitar curso
@@ -407,7 +409,7 @@ DTProfesor crearDTProfesor(){
     return prof;
 }
 
-/*DTLeccion crearDTLeccion(){
+DTLeccion crearDTLeccion(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
@@ -417,12 +419,11 @@ DTProfesor crearDTProfesor(){
     string objetivo = entradaString();
     imprimir("Ingrese la cantidad de ejercicios que desea agregar:");
     int cantEjs = entradaInt();
-    
-
-
-
-
-}*/
+    imprimir("Ingrese el numero de la leccion:"); //Tenemos como precondicion que son ingresadas en orden correcto
+    int numLec = entradaInt();
+    DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
+    return lec;
+}
 
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");
