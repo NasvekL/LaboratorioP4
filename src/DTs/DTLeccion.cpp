@@ -24,8 +24,7 @@ int DTLeccion::getNumero() {
 }
 
 int DTLeccion::getCantidadDeEjercicios() {
-    // Implementación del getter
-    // Puedes devolver el valor del atributo cantidadDeEjercicios
+    return this->cantidadDeEjercicios;
 }
 
 string DTLeccion::getObjetivoAprendizaje() {

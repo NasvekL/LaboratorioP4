@@ -36,10 +36,12 @@ class IControladorCurso{
         virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
         virtual void setDatosEjercicioCompletarPalabras(DTEjercicio datos)= 0;
         virtual void setDatosEjercicioTraduccion(DTEjercicio datos)= 0;
+        virtual void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal) = 0;
+        virtual void agregarDatosTraduccion(DTTraduccion tradu) = 0;
 
         //Operaciones virtuales para modificar el set de cursos
         virtual bool altaCurso() = 0;
-        virtual void altaLeccion() = 0;
+        virtual void altaLeccion(string curso) = 0;
         virtual void eliminarCurso(string nombreCurso)= 0;
         virtual void habilitarCurso(string nombreCurso)= 0;
 

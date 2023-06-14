@@ -17,7 +17,9 @@
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
-//DTLeccion crearDTLeccion();
+DTRellenarPalabras crearDTRellenarPalabras();
+DTTraduccion crearDTTraduccion();
+DTLeccion crearDTLeccion();
 //DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
@@ -27,6 +29,7 @@ void presionaParaContinuar();
 void limpiarLog();
 void imprimir(string texto);
 void imprimir(string texto, string color);
+list<string> separarString(const string& str, char delimiter) ;
 
 
 //Desplegar menu por consola
@@ -192,19 +195,34 @@ int main(){
                     break;
             }
             case 6:{
-                  /*  //Agregar leccion
-                    imprimir("Cursos no habilitados disponibles:");
+                    //Agregar leccion
+                    /*imprimir("Cursos no habilitados disponibles:")
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
                     DTLeccion leccion = crearDTLeccion();
                     contCurso.setDatosDeLeccion(leccion);
                     
-
                     //LOGICA PARA AGREGAR EJERCICIOS
-                    
-                    contCurso.altaLeccion();
-
+                    int ejsPorAgregar = leccion.getCantidadDeEjercicios();
+                    for(int i = 1; i <= ejsPorAgregar; i++){
+                        int seleccion = seleccionTipoEjercicio();
+                        switch(seleccion){
+                            case 1:{
+                                DTTraduccion tradu = crearDTTraduccion();
+                                contCurso.agregarDatosTraduccion(tradu);
+                                break;
+                            }
+                            case 2:{
+                                DTRellenarPalabras rellpab = crearDTRellenarPalabras();
+                                contCurso.agregarDatosRellenarPalabras(rellpab);
+                                break;
+                            }
+                        }
+                    }
+                    contCurso.altaLeccion(cursoSeleccionado);
+                    imprimir("Leccion creada", VERDE);
+                    presionaParaContinuar();
                 */
                 break;
             }
@@ -340,6 +358,11 @@ int seleccionEstudianteOProfesor(){
     return opcion;
 };
 
+int seleccionTipoEjercicio(){
+    imprimir("1. Ingresar ejercicio de traduccion");
+    imprimir("2. Ingresar ejercicio de rellenar palabras");
+}
+
 DTEstudiante crearDTEstudiante() {
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
@@ -437,8 +460,9 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
         string frase = entradaString();                            
         imprimir("Ingrese las soluciones separadas por comas");
-        string soluciones = entradaString();// esto esta mal, tengo que cortar el string cuando hayan comas y hacerlo eun set string                                                        
-        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo      
+        string solSinSep = entradaString();
+        list<string> soluciones = separarString(solSinSep, ',');                                                      
+        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, int idEjercicio, soluciones) ;     //el id me lo pasa? me aseguro que no exxista?
         return ejer;           
 
     else if (tipoEjercicio == "traduccion") {
@@ -446,16 +470,37 @@ DTEjercicio crearDTEjercicio(){
         string fraseATraducir = entradaString();
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
-        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo  
+        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, int idEjercicio, traduccion);
         return ejer;
 
     } else {
         imprimir("Tipo de ejercicio no válido");
-     
+        return 
     }
                     
 
 }*/
+list<string> separarString(const string& str, char delimiter) {
+    list<string> palabras;
+    stringstream ss(str);
+    string unionDePal;
+
+    while (getline(ss, unionDePal, delimiter)) {
+        palabras.push_back(unionDePal);
+    }
+
+    return palabras;
+}
+
+
+DTRellenarPalabras crearDTRellenarPalabras(){
+    
+
+}
+
+DTTraduccion crearDTTraduccion(){
+
+}
 
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");

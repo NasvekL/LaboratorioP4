@@ -7,6 +7,8 @@
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTEstadisticaCurso.h"
 #include "../DTs/DTProfesor.h"
+#include "../DTs/DTTraduccion.h"
+#include "../DTs/DTRellenarPalabras.h"
 //#include "DTIdioma.h"??
 #include "../Interfaces/IControladorCurso.h"
 
@@ -27,7 +29,8 @@ class ControladorCurso: public IControladorCurso{
         string* datoIdioma;
         set<DTCurso*>* datosPrevias;
         DTEjercicio* datosEjercicio;
-
+        list<DTRellenarPalabras> datosRellenarPalabras;
+        list<DTTraduccion> datosTraduccion;
 
         //Variable estática para almacenar la instancia única del controlador
         static ControladorCurso* instancia;
@@ -58,12 +61,13 @@ class ControladorCurso: public IControladorCurso{
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioCompletarPalabras(DTEjercicio datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
         void setDatosEjercicioTraduccion(DTEjercicio datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
-
+        void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal);
+        void agregarDatosTraduccion(DTTraduccion tradu);
 
 
         //Operaciones para modificar el set de cursos
         bool altaCurso();
-        void altaLeccion();
+        void altaLeccion(string curso);
         void altaEjercicio();
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
@@ -72,6 +76,7 @@ class ControladorCurso: public IControladorCurso{
         bool confirmarAltaIdioma(string idioma);
         //Operaciones para modificar el set de ejercicios
         void agregarEjercicio(DTEjercicio datos);
+        
 
         //Operaciones para obtener informacion
         set<string> listarProfe();
