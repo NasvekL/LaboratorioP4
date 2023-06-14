@@ -78,6 +78,7 @@ int main(){
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
 
 
+
     int opcion = 1;
     while(opcion != 0){
         opcion = menuPrincipal();
@@ -169,7 +170,7 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    imprimir("Cursos no habilitados disponibles:")
+                    imprimir("Cursos no habilitados disponibles:");
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();

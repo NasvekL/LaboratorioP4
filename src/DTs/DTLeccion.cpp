@@ -23,7 +23,7 @@ int DTLeccion::getNumero() {
     // Puedes devolver el valor del atributo numero
 }
 
-int DTLeccion::getCantidadDe1Ejercicios() {
+int DTLeccion::getCantidadDeEjercicios() {
     // Implementación del getter
     // Puedes devolver el valor del atributo cantidadDeEjercicios
 }

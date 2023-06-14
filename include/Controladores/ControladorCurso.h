@@ -39,7 +39,7 @@ class ControladorCurso: public IControladorCurso{
         static ControladorCurso& getInstancia();
         ~ControladorCurso();
 
-
+        
     
         //Getters
         Idioma getIdioma(string nombre);

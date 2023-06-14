@@ -28,7 +28,7 @@ ControladorCurso::~ControladorCurso() {
 }
 //Getters
 Curso ControladorCurso::getCurso(string nick) {
-    return cursos.find(nick);
+    //return cursos.find(nick);
 }
 Idioma ControladorCurso::getIdioma(string nombre){
     return idiomas[nombre];
@@ -96,6 +96,7 @@ void ControladorCurso::habilitarCurso(string nombreCurso) {
     
 
 }
+
 
 
 
