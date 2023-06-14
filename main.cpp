@@ -19,7 +19,7 @@ DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 DTRellenarPalabras crearDTRellenarPalabras();
 DTTraduccion crearDTTraduccion();
-//DTLeccion crearDTLeccion();
+DTLeccion crearDTLeccion();
 //DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
@@ -491,7 +491,7 @@ list<string> separarString(const string& str, char delimiter) {
 
     return palabras;
 }
-}
+
 
 DTRellenarPalabras crearDTRellenarPalabras(){
     
