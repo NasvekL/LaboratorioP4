@@ -53,6 +53,7 @@ int menuPrincipal(){
     imprimir("14. Suscribirse a notificaciones");
     imprimir("15. Consulta de notificaciones");
     imprimir("16. Eliminar suscripciones");
+    imprimir("i. Agregar datos");
     imprimir("Ingrese una opcion: ");
     int opcion = entradaInt();
     return opcion;
@@ -614,6 +615,7 @@ void ingresarIdiomas(){
 }
 
 void ingresarUsuarios(){
+    ingresarIdiomas();
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     //ESTUDIANTES
@@ -628,8 +630,13 @@ void ingresarUsuarios(){
     set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Ingles"); i1->insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
     contUsuario.confirmarAltaUsuario(); delete i1;
-    set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Ingles"); i1->insert("Portugues");
-    contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
-    contUsuario.confirmarAltaUsuario(); delete i1;
+    
+    set<string>* i2 = new set<string>; i2->insert("Ingles"); i2->insert("Ingles");i2->insert("Aleman") ;i2->insert("Portugues");
+    contUsuario.setDatoProfesor(DTProfesor("linguaPro","Pess23","Carlos Petro", "Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas","Centro Global", i2));
+    contUsuario.confirmarAltaUsuario(); delete i2;
 
+    set<string>* i3 = new set<string>; i3->insert("Aleman");
+    contUsuario.setDatoProfesor(DTProfesor("talkExpert","Secret1","Laura Perez", "Soy una profesora entusiasta del aprendizaje de idiomas","Instituto de Idiomas Vanguardia", i2));
+    contUsuario.confirmarAltaUsuario(); delete i3;
+    //Faltan mas...
 }
