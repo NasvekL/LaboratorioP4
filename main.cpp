@@ -493,7 +493,7 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
         DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
-        contCurso.idsEjercicio.insert(id);
+        contCurso.getIdsEjercicio().insert(id);
         return ejer;
 
     } else {
