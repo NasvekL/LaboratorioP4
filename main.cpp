@@ -189,7 +189,7 @@ int main(){
                     break;
             }
             case 6:{
-                    //Agregar leccion
+                  /*  //Agregar leccion
                     imprimir("Cursos no habilitados disponibles:");
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
@@ -202,7 +202,7 @@ int main(){
                     
                     contCurso.altaLeccion();
 
-                
+                */
                 break;
             }
             case 7:{
