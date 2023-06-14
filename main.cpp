@@ -126,6 +126,7 @@ int main(){
                         imprimir(dte.getNombre());
                         imprimir(dte.getDescripcion());
                         imprimir(dte.getPais());
+                        presionaParaContinuar();
                     } 
                     else{ 
                         contUsuario.seleccionarUsuario(nick);
@@ -138,6 +139,7 @@ int main(){
                         for (it = idi->begin(); it != idi->end(); ++it) {
                           imprimir(*it);
                         }
+                        presionaParaContinuar();
                     }        
                     break;
             }
