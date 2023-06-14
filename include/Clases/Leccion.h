@@ -20,6 +20,7 @@ class Leccion{
         void setObjetivoAprendizaje(string objetivoAprendizaje);
         void setCantidadEjercicios(int cantidadDeEjercicios);
         void setNumero(int numero);
+        void addEjercicio(Ejercicio* ej);
         //getters
         string getTema();
         string getObjetivoAprendizaje();

@@ -20,6 +20,12 @@ string Leccion::getTema() {
     return tema;
 }
 
+void Leccion::addEjercicio(Ejercicio* ej) {
+    ejercicios.insert(pair<int, Ejercicio*>(ej->getIdEjercicio(), ej));
+    setCantidadEjercicios(getCantidadDeEjercicios() + 1);
+    // Implementación de addEjercicio
+    // Agrega un ejercicio al mapa de ejercicios
+}
 string Leccion::getObjetivoAprendizaje() {
     return objetivoAprendizaje;
 }
