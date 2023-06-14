@@ -36,10 +36,6 @@ set<string> Idioma::suscripciones(string nick) {
 Idioma::~Idioma() {
 }
 
-Idioma::Idioma() {
-    // Implementación del constructor sin parámetros si es necesario
-}
-
 Idioma::Idioma(string nombreIdioma) {
     this->nombreIdioma = nombreIdioma;
 }
