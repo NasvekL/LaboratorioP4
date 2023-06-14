@@ -18,6 +18,7 @@ int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 //DTLeccion crearDTLeccion();
+//DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -240,34 +241,9 @@ int main(){
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
-                        string tipo = entradaString();
-                        imprimir("Ingrese la descripción ");
-                        string descripcion = entradaString();
-                         
-                        if (tipo == "completar palabras") {
-                            imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
-                            string frase = entradaString();                            
-                            imprimir("Ingrese las soluciones separadas por comas");
-                            string soluciones = entradaString();// esto esta mal, tengo que cortar el string cuando hayan comas y hacerlo eun set string                                                        
-                            RellenarPalabras* ejercicioCompleta = new RellenarPalabras(solucionesList, descripcion, tipo);                             
-                            ejercicioCompleta->setLeccion(*leccionSeleccionada);//mal
-                            contUsuario.altaEjercicio();// esta tendria que agregarla a la coleccion de ejercicion en leccion y hacer la de arriba
-                            
-
-                        else if (tipoEjercicio == "traduccion") {
-                            imprimir("Ingrese la frase");
-                            string fraseATraducir = entradaString();
-                            imprimir("Ingrese la traducción");
-                            string traduccion = entradaString();
-                            Traduccion* ejercicioTraduccion = new Traduccion(traduccion, descripcion, tipoEjercicio);
-                            ejercicioTraduccion->setLeccion(*leccionSeleccionada);
-                            contUsuario.altaEjercicio();
-
-                        } else {
-                            imprimir("Tipo de ejercicio no válido");
-     
-                        }
+                        DTEjercicio ejercicio = crearDTEjercicio();
+                        contCurso.altaEjercicio(ejercicio);
+                       
                     
                     }
 
@@ -447,6 +423,39 @@ DTLeccion crearDTLeccion(){
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
 }
+/*
+DTEjercicio crearDTEjercicio(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    
+    imprimir("Ingrese la descripción ");
+    string descripcion = entradaString();            
+    imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+    string tipo = entradaString();         
+                        
+    if (tipo == "completar palabras") {
+        imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+        string frase = entradaString();                            
+        imprimir("Ingrese las soluciones separadas por comas");
+        string soluciones = entradaString();// esto esta mal, tengo que cortar el string cuando hayan comas y hacerlo eun set string                                                        
+        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo      
+        return ejer;           
+
+    else if (tipoEjercicio == "traduccion") {
+        imprimir("Ingrese la frase");
+        string fraseATraducir = entradaString();
+        imprimir("Ingrese la traducción");
+        string traduccion = entradaString();
+        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo  
+        return ejer;
+
+    } else {
+        imprimir("Tipo de ejercicio no válido");
+     
+    }
+                    
+
+}*/
 
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");
