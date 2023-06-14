@@ -25,7 +25,6 @@ int DTFecha:: getMes() {
 int DTFecha:: getAnio() {
     return anio;
 }
-string DTFecha::toString()
-{
-    return "string()";
+string DTFecha::toString(){
+    return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
 }

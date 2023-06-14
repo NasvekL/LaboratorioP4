@@ -12,7 +12,7 @@ void Usuario:: setContrasenia(string contra){
     this->contrasenia = contra;
 };
 
-void Usuario:: setDescripcion(string desripcion){
+void Usuario:: setDescripcion(string descripcion){
     this->descripcion = descripcion;
 };
 
