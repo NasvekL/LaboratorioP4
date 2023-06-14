@@ -1,6 +1,6 @@
 #include "../../include/DTs/DTTraduccion.h"
 
-string DTTRADUCCION :: getTipo(){
+string DTTraduccion::getTipo(){
     return tipo;
 }
 int DTTraduccion :: getIdEjercicio(){

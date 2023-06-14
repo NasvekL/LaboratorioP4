@@ -22,17 +22,18 @@ class IControladorCurso{
         //virtual IControladorCurso * getInstancia()= 0;
 
         //Getters virtuales
-        virtual int getIdsEjercicio()=0;
+        virtual int getIdEjercicio()=0;
         virtual Idioma* getIdioma(string nombre)= 0;
         virtual DTCurso getDatosDeCurso()= 0;
         virtual DTLeccion getDatosDeLeccion()= 0;
         virtual string getDatoNombreDeProfesor()= 0;
         virtual string getDatoIdioma()= 0;
         virtual set<DTCurso*> getDatosPrevias()= 0;
-        virtual DTEjercicio getDatosEjercicio()= 0;
         virtual Curso getCurso(string nombreCurso) = 0;
+        virtual DTRellenarPalabras getDatosRellenar()= 0;
+        virtual DTTraduccion getDatosTraduccion()= 0;
         //Setters virtuales
-        virtual int setIdsEjercicio (int id)=0;
+        virtual void setIdEjercicio (int id)=0;
         virtual void setDatosDeCurso(DTCurso datos)= 0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
         virtual void setDatoNombreDeProfesor(string nombreProfesor)= 0;

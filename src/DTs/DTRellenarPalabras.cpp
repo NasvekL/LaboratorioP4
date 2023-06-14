@@ -1,8 +1,8 @@
 #include "../../include/DTs/DTRellenarPalabras.h"
 
-string DTRELLENARPALABRAS :: getTipo(
+string DTRellenarPalabras :: getTipo(){
     return tipo;
-)
+}
 int DTRellenarPalabras :: getIdEjercicio(){
     return idEjercicio;
 }
@@ -11,7 +11,7 @@ string DTRellenarPalabras :: getDescripcion(){
     return descripcion;
 }
 
-set<string> DTRellenarPalabras :: getListaDePalabras(){
+list<string> DTRellenarPalabras :: getListaDePalabras(){
     return listaDePalabras;
 }
 

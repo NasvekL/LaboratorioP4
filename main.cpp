@@ -20,7 +20,6 @@ DTProfesor crearDTProfesor();
 DTRellenarPalabras crearDTRellenarPalabras();
 DTTraduccion crearDTTraduccion();
 DTLeccion crearDTLeccion();
-DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -536,9 +535,9 @@ DTRellenarPalabras crearDTRellenarPalabras(){
     imprimir("Ingrese las soluciones separadas por comas");
     string solSinSep = entradaString();
     list<string> soluciones = separarString(solSinSep, ',');   
-    int id = contCurso.getIdsEjercicio() +1;
+    int id = contCurso.getIdEjercicio() +1;
     DTRellenarPalabras ejer =  DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
-    contCurso.setIdsEjercicio( id) ;
+    contCurso.setIdEjercicio( id) ;
     return ejer;           
 
 
@@ -555,9 +554,9 @@ DTTraduccion crearDTTraduccion(){
     string fraseATraducir = entradaString();
     imprimir("Ingrese la traducción");
     string traduccion = entradaString();
-    int id = contCurso.getIdsEjercicio() +1;
+    int id = contCurso.getIdEjercicio() +1;
     DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
-    contCurso.setIdsEjercicio( id) ;
+    contCurso.setIdEjercicio(id);
     return ejer;
 
 }

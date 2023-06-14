@@ -15,7 +15,8 @@ ControladorCurso::ControladorCurso(){
     datoNombreDeProfesor=NULL;
     datoIdioma=NULL;
     datosPrevias=NULL;
-    datosEjercicio=NULL;
+    datosRellenar=NULL;
+    datosTraducir=NULL;
     idEjercicio=0;
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
@@ -39,8 +40,8 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
-int ControladorCurso:: getIdsEjercicio (){
-    return idsEjercicio;
+int ControladorCurso:: getIdEjercicio (){
+    return idEjercicio;
 }
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
@@ -57,15 +58,18 @@ string ControladorCurso::getDatoIdioma() {
 set<DTCurso*> ControladorCurso::getDatosPrevias() {
     return *datosPrevias;
 }
-DTEjercicio ControladorCurso::getDatosEjercicio() {
-    return *datosEjercicio;
+DTRellenarPalabras ControladorCurso::getDatosRellenar() {
+    return *datosRellenar
+;
 }
-
+DTTraduccion ControladorCurso::getDatosTraduccion() {
+    return *datosTraducir;
+}
 
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
-void ControladorCurso:: setIdsEjercicio(int id){
-    idsEjercicio = id;
+void ControladorCurso:: setIdEjercicio(int id){
+    idEjercicio = id;
 }
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     datosDeCurso = &datos;
@@ -84,11 +88,11 @@ void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
 }
 //Precondicion: solucion de traduccion viene como null
 void ControladorCurso::setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos) {
-    datosEjercicio = &datos;
+    datosRellenar = &datos;
 }
 //Precondicion: solucion de compPal viene como null
 void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
-    datosEjercicio = &datos;
+    datosTraducir = &datos;
 }
 
 
@@ -128,7 +132,7 @@ void ControladorCurso::altaLeccion(string curso){
     //Hacer un if list<DTCompPalabras> != NULL creo y asocio
     //Analogo para list<DTTraducir>
 }
-void AltaEjercicio(){
+void ControladorCurso::altaEjercicio(){
 
 }
 
@@ -241,8 +245,11 @@ void ControladorCurso::limpiarDatos() {
     if(datosPrevias != nullptr){
         delete datosPrevias;
     }
-    if(datosEjercicio != nullptr){
-        delete datosEjercicio;
+    if(datosRellenar != nullptr){
+        delete datosRellenar;
+    }
+    if(datosTraducir!= nullptr){
+        delete datosTraducir;
     }
 }
 

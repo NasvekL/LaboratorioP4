@@ -21,7 +21,7 @@ class ControladorCurso: public IControladorCurso{
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
 
-        int idsEjercicio; // idEjercicioActual
+        int idEjercicio; // idEjercicioActual
 
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
@@ -29,7 +29,8 @@ class ControladorCurso: public IControladorCurso{
         string* datoNombreDeProfesor;
         string* datoIdioma;
         set<DTCurso*>* datosPrevias;
-        DTEjercicio* datosEjercicio;
+        DTRellenarPalabras* datosRellenar;
+        DTTraduccion* datosTraducir;
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
         
@@ -54,17 +55,18 @@ class ControladorCurso: public IControladorCurso{
         string getDatoNombreDeProfesor();
         string getDatoIdioma();
         set<DTCurso*> getDatosPrevias();
-        DTEjercicio getDatosEjercicio();
+        DTRellenarPalabras getDatosRellenar();
+        DTTraduccion getDatosTraduccion();
         Curso getCurso(string nombreCurso);
         //Setters
-        void setIdsEjercicio(int id);
+        void setIdEjercicio(int id);
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         void setDatoNombreDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
-        void setDatosEjercicioTraduccion(DTTRADUCCION datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
+        void setDatosEjercicioTraduccion(DTTraduccion datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
         void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal);
         void agregarDatosTraduccion(DTTraduccion tradu);
 
