@@ -195,7 +195,6 @@ void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
 };
 
 //Operaciones para obtener informacion
-
 void ControladorCurso::seleccionarProfesor(string nick){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     Profesor p = cu.encontrarProfesor(nick);

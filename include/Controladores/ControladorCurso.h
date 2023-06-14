@@ -50,7 +50,7 @@ class ControladorCurso: public IControladorCurso{
         
     
         //Getters
-        
+        //fdfd
         int getIdEjercicio ();
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();

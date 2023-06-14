@@ -60,7 +60,10 @@ class IControladorCurso{
         virtual void agregarEjercicio(DTEjercicio datos)= 0;
 
         //Operaciones virtuales para obtener información
-        //Hace setProfesor(p) con el find(nick)
+
+        //Primero, busca el profesor en la lista de usuarios, y devuelve una copia (o el profesor original, no se). Luego, ese Profesor se
+        //le pasa a setProfesor(p), que lo que hace es que el puntero profesor de contCurso apunte al objeto p Profesor que se le pasa.
+        //No esta claro si dicho objeto es una copia del profesor del contUsuario o si es el profesor original.
         virtual void seleccionarProfesor(string nick) = 0;
         virtual list<string> listarProfe()= 0;
         virtual DTEstadisticaCurso estadisticasCurso(string curso)= 0;
