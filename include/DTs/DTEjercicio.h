@@ -4,6 +4,7 @@
 
 class DTEjercicio { 
     private:
+        string tipo;
         int idEjercicio;
         string letra;
         string descripcion;
@@ -16,9 +17,9 @@ class DTEjercicio {
         int getIdEjercicio();
         string getDescripcion();
         string getLetra();
-
+        string getTipo();
         ~DTEjercicio();
-        DTEjercicio(int idEjercicio, string letra, string descripcion);
+        DTEjercicio(int idEjercicio, string letra, string descripcion,string tipo);
 
 
 };

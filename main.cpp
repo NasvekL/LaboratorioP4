@@ -5,6 +5,8 @@
 #include "include/Controladores/ControladorCurso.h"
 #include "include/Controladores/ControladorUsuario.h"
 #include "include/FactoryController.h"
+//#include "include/DTs/DTRellenarPalabras.h"
+//#include "include/DTs/DTTraduccion.h"
 
 
 
@@ -18,10 +20,7 @@ int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 DTCurso crearDTCurso(int i);
-DTRellenarPalabras crearDTRellenarPalabras();
-DTTraduccion crearDTTraduccion();
 DTLeccion crearDTLeccion();
-//DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -33,6 +32,8 @@ void imprimir(string texto, string color);
 list<string> separarString(const string& str, char delimiter);
 void ingresarUsuarios();
 void ingresarIdiomas();
+DTRellenarPalabras crearDTRellenarPalabras();
+DTTraduccion crearDTTraduccion();
 
 
 //Desplegar menu por consola
@@ -131,17 +132,24 @@ int main(){
                     if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                         contUsuario.seleccionarUsuario(nick);
                         DTEstudiante dte = contUsuario.getDatoEstudiante();
+                        imprimir("Nombre", AMARILLO);
                         imprimir(dte.getNombre());
+                        imprimir("Descripcion", AMARILLO);
                         imprimir(dte.getDescripcion());
+                        imprimir("Pais", AMARILLO);
                         imprimir(dte.getPais());
                         presionaParaContinuar();
                     } 
                     else{ 
                         contUsuario.seleccionarUsuario(nick);
                         DTProfesor dtp = contUsuario.getDatoProfesor();
+                        imprimir("Nombre", AMARILLO);
                         imprimir(dtp.getNombre());
+                        imprimir("Descripcion", AMARILLO);
                         imprimir(dtp.getDescripcion());
+                        imprimir("Instituto", AMARILLO);
                         imprimir(dtp.getInstituto());
+                        imprimir("Idiomas", AMARILLO);
                         set<string>* idi = dtp.getIdiomas();
                         set<string>::iterator it;
                         for (it = idi->begin(); it != idi->end(); ++it) {
@@ -250,7 +258,7 @@ int main(){
                 break;
             }
             case 7:{
-                /*//Agregar ejercicio
+                //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
@@ -262,12 +270,12 @@ int main(){
                 Curso cur = contCurso.getCurso(cursoSelec);
 
                 imprimir("Lecciones del curso:");
-                list<Leccion> lecciones = cur.getLecciones();
+                list<Leccion*> lecciones = cur.getLecciones();
 
                 if (!lecciones.empty()) {
                     int i = 1;
                     for (const auto& leccion : lecciones) {
-                        imprimir(to_string(i) , ". " , leccion.getTema()); 
+                        imprimir(to_string(i) + ". " + leccion->getTema()); 
                         i++;
                     }
 
@@ -275,25 +283,37 @@ int main(){
                     int lecSelec = entradaInt();    
                     Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
-                        if (leccion.getNumero() == lecSelec) {
-                            leccionSeleccionada = &leccion;
+                        if (leccion->getNumero() == lecSelec) {
+                            leccionSeleccionada = leccion;
                             break;
                         }
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        DTEjercicio ejercicio = crearDTEjercicio();
-                        contCurso.altaEjercicio(ejercicio);
-                       
-                    
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+                        string tipo = entradaString();
+                        if (tipo == "completar ") {
+                            DTRellenarPalabras rell = crearDTRellenarPalabras();
+                            contCurso.setDatosEjercicioCompletarPalabras(rell);
+                        }else if (tipo == "traduccion") {                            
+                            DTTraduccion tradu = crearDTTraduccion();
+                            contCurso.setDatosEjercicioTraduccion(tradu);
+                        } else {
+                            imprimir("Tipo de ejercicio no válido");
+                        }
+                        
+                        contCurso.altaEjercicio();
                     }
 
                 }
 
                 break;
-            */
             }
             case 8:{
+                contCurso.listarCursosNoHabilitados();
+                string curso = entradaString();
+                contCurso.habilitarCurso(curso);
+                imprimir("Curso habilitado", VERDE);
                 //Habilitar curso
                 //interfazCurso->habilitarCurso();
                 break;
@@ -526,31 +546,35 @@ DTEjercicio crearDTEjercicio(){
     imprimir("Ingrese la descripción ");
     string descripcion = entradaString();            
     imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
-    string tipo = entradaString();         
-                        
+    string tipo = entradaString(); 
+    while (contCurso.getIdsEjercicio().find(id) != contCurso.getIdsEjercicio().end()) {
+        imprimir("El ID ya existe. Por favor, ingrese otro");
+        id = entradaInt();
+    }             
     if (tipo == "completar palabras") {
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
         string frase = entradaString();                            
         imprimir("Ingrese las soluciones separadas por comas");
         string solSinSep = entradaString();
         list<string> soluciones = separarString(solSinSep, ',');                                                      
-        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, int idEjercicio, soluciones) ;     //el id me lo pasa? me aseguro que no exxista?
+        DTRellenarPalabras ejer =  DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
+        contCurso.idsEjercicio.insert(id);
         return ejer;           
 
-    else if (tipoEjercicio == "traduccion") {
+    else if (tipo == "traduccion") {
         imprimir("Ingrese la frase");
         string fraseATraducir = entradaString();
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
-        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, int idEjercicio, traduccion);
+        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
+        contCurso.getIdsEjercicio().insert(id);
         return ejer;
 
     } else {
         imprimir("Tipo de ejercicio no válido");
-        return 
-    }
-                    
-
+        DTEjercicio ejer = crearDTEjercicio();
+        return ejer;
+    }   
 }*/
 list<string> separarString(const string& str, char delimiter) {
     list<string> palabras;
@@ -566,12 +590,40 @@ list<string> separarString(const string& str, char delimiter) {
 
 
 DTRellenarPalabras crearDTRellenarPalabras(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
+    imprimir("Ingrese la descripción ");
+    string descripcion = entradaString();            
+    string tipo = "completar";   
+    imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+    string frase = entradaString();                            
+    imprimir("Ingrese las soluciones separadas por comas");
+    string solSinSep = entradaString();
+    list<string> soluciones = separarString(solSinSep, ',');   
+    int id = contCurso.getIdEjercicio() +1;
+    contCurso.setIdEjercicio(id);
+    DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo);     //el id me lo pasa? me aseguro que no exxista?
+    return ejer;
+
 
 }
 
 DTTraduccion crearDTTraduccion(){
-
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    
+    imprimir("Ingrese la descripción ");
+    string descripcion = entradaString();            
+    string tipo = "traduccion";                             
+    imprimir("Ingrese la frase");
+    string fraseATraducir = entradaString();
+    imprimir("Ingrese la traducción");
+    string traduccion = entradaString();
+    int id = contCurso.getIdEjercicio() +1;
+    contCurso.setIdEjercicio(id);
+    DTTraduccion ejer = DTTraduccion(descripcion, fraseATraducir, id, traduccion,tipo);
+    return ejer;
 }
 
 bool quiereContinuar(string p){

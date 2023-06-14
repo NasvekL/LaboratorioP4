@@ -14,7 +14,9 @@ ControladorCurso::ControladorCurso(){
     datosDeLeccion=NULL;
     profesor = NULL;
     datosPrevias=NULL;
-    datosEjercicio=NULL;
+    datosRellenar=NULL;
+    datosTraducir=NULL;
+    idEjercicio=0;
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
@@ -37,8 +39,9 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
-
-
+int ControladorCurso:: getIdEjercicio (){
+    return idEjercicio;
+}
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
@@ -54,13 +57,19 @@ string ControladorCurso::getDatoIdioma() {
 }
 map<string,DTCurso*>* ControladorCurso::getDatosPrevias() {
 }
-DTEjercicio ControladorCurso::getDatosEjercicio() {
-    return *datosEjercicio;
+DTRellenarPalabras ControladorCurso::getDatosRellenar() {
+    return *datosRellenar
+;
 }
-
+DTTraduccion ControladorCurso::getDatosTraduccion() {
+    return *datosTraducir;
+}
 
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
+void ControladorCurso:: setIdEjercicio(int id){
+    idEjercicio = id;
+}
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     datosDeCurso = &datos;
 }
@@ -78,12 +87,12 @@ void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
 
 }
 //Precondicion: solucion de traduccion viene como null
-void ControladorCurso::setDatosEjercicioCompletarPalabras(DTEjercicio datos) {
-    datosEjercicio = &datos;
+void ControladorCurso::setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos) {
+    datosRellenar = &datos;
 }
 //Precondicion: solucion de compPal viene como null
-void ControladorCurso::setDatosEjercicioTraduccion(DTEjercicio datos) {
-    datosEjercicio = &datos;
+void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
+    datosTraducir = &datos;
 }
 
 
@@ -97,10 +106,7 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
     // Implementación pendiente
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
-     // Buscar el objeto con el nombre buscado
-
-    
-
+    cursos.find(nombreCurso)->second->setHabilitado(true);
 }
 
 
@@ -126,7 +132,7 @@ void ControladorCurso::altaLeccion(string curso){
     //Hacer un if list<DTCompPalabras> != NULL creo y asocio
     //Analogo para list<DTTraducir>
 }
-void AltaEjercicio(){
+void ControladorCurso::altaEjercicio(){
 
 }
 
@@ -183,7 +189,7 @@ void ControladorCurso::listarIdiomas(){
 void ControladorCurso::listarCursosNoHabilitados(){
      int a=1;
     for (auto it = cursos.begin(); it != cursos.end(); ++it){
-        if(it->second.getHabilitado()){
+        if(it->second->getHabilitado()){
             string nombre = it->first;
             cout << a <<  "- " << nombre <<'\n';
             a++;
@@ -242,8 +248,11 @@ void ControladorCurso::limpiarDatos() {
     if(datosPrevias != nullptr){
         delete datosPrevias;
     }
-    if(datosEjercicio != nullptr){
-        delete datosEjercicio;
+    if(datosRellenar != nullptr){
+        delete datosRellenar;
+    }
+    if(datosTraducir!= nullptr){
+        delete datosTraducir;
     }
 }
 

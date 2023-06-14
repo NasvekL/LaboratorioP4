@@ -2,8 +2,8 @@ CC=g++ -g
 CC-=g++ -g -c
 BIN_DIR = build
 
-INC=include/Clases/Curso.h include/Clases/Ejercicio.h include/Clases/Estudiante.h include/Clases/Idioma.h include/DTs/DTFecha.h include/Clases/Inscripcion.h include/Utils.h include/Clases/Leccion.h include/Clases/Profesor.h include/Clases/Progreso.h include/Clases/RellenarPalabras.h include/Clases/Traduccion.h include/Clases/Usuario.h include/Controladores/ControladorCurso.h include/Controladores/ControladorUsuario.h include/DTs/DTCurso.h include/DTs/DTEjercicio.h include/DTs/DTEstadisticaCurso.h include/DTs/DTEstadisticaEstudiante.h include/DTs/DTEstadisticaProfesor.h include/DTs/DTEstudiante.h include/DTs/DTEstudianteSC.h include/DTs/DTLeccion.h include/DTs/DTNotificacion.h include/DTs/DTProfesor.h include/DTs/DTProfesorSC.h include/Interfaces/IControladorCurso.h include/Interfaces/IControladorUsuario.h include/Utils.h include/FactoryController.h include/Interfaces/IObserver.h
-O= $(BIN_DIR)/main.o $(BIN_DIR)/IControladorCurso.o $(BIN_DIR)/IControladorUsuario.o $(BIN_DIR)/IObserver.o $(BIN_DIR)/Curso.o $(BIN_DIR)/Ejercicio.o $(BIN_DIR)/Estudiante.o $(BIN_DIR)/Idioma.o $(BIN_DIR)/Inscripcion.o $(BIN_DIR)/Leccion.o $(BIN_DIR)/Profesor.o $(BIN_DIR)/Progreso.o $(BIN_DIR)/RellenarPalabras.o $(BIN_DIR)/Traduccion.o $(BIN_DIR)/Usuario.o $(BIN_DIR)/ControladorCurso.o $(BIN_DIR)/ControladorUsuario.o $(BIN_DIR)/DTCurso.o $(BIN_DIR)/DTEjercicio.o $(BIN_DIR)/DTEstadisticaCurso.o $(BIN_DIR)/DTEstadisticaEstudiante.o $(BIN_DIR)/DTEstadisticaProfesor.o $(BIN_DIR)/DTEstudiante.o $(BIN_DIR)/DTEstudianteSC.o $(BIN_DIR)/DTLeccion.o $(BIN_DIR)/DTNotificacion.o $(BIN_DIR)/DTProfesor.o $(BIN_DIR)/DTFecha.o $(BIN_DIR)/DTProfesorSC.o $(BIN_DIR)/FactoryController.o
+INC=include/Clases/Curso.h include/Clases/Ejercicio.h include/Clases/Estudiante.h include/Clases/Idioma.h include/DTs/DTFecha.h include/Clases/Inscripcion.h include/Utils.h include/Clases/Leccion.h include/Clases/Profesor.h include/Clases/Progreso.h include/Clases/RellenarPalabras.h include/Clases/Traduccion.h include/Clases/Usuario.h include/Controladores/ControladorCurso.h include/Controladores/ControladorUsuario.h include/DTs/DTCurso.h include/DTs/DTEjercicio.h include/DTs/DTEstadisticaCurso.h include/DTs/DTEstadisticaEstudiante.h include/DTs/DTEstadisticaProfesor.h include/DTs/DTEstudiante.h include/DTs/DTEstudianteSC.h include/DTs/DTTraduccion.h include/DTs/DTRellenarPalabras.h include/DTs/DTLeccion.h include/DTs/DTNotificacion.h include/DTs/DTProfesor.h include/DTs/DTProfesorSC.h include/Interfaces/IControladorCurso.h include/Interfaces/IControladorUsuario.h include/Utils.h include/FactoryController.h include/Interfaces/IObserver.h
+O= $(BIN_DIR)/main.o $(BIN_DIR)/DTRellenarPalabras.o $(BIN_DIR)/DTTraduccion.o $(BIN_DIR)/IControladorCurso.o $(BIN_DIR)/IControladorUsuario.o $(BIN_DIR)/IObserver.o $(BIN_DIR)/Curso.o $(BIN_DIR)/Ejercicio.o $(BIN_DIR)/Estudiante.o $(BIN_DIR)/Idioma.o $(BIN_DIR)/Inscripcion.o $(BIN_DIR)/Leccion.o $(BIN_DIR)/Profesor.o $(BIN_DIR)/Progreso.o $(BIN_DIR)/RellenarPalabras.o $(BIN_DIR)/Traduccion.o $(BIN_DIR)/Usuario.o $(BIN_DIR)/ControladorCurso.o $(BIN_DIR)/ControladorUsuario.o $(BIN_DIR)/DTCurso.o $(BIN_DIR)/DTEjercicio.o $(BIN_DIR)/DTEstadisticaCurso.o $(BIN_DIR)/DTEstadisticaEstudiante.o $(BIN_DIR)/DTEstadisticaProfesor.o $(BIN_DIR)/DTEstudiante.o $(BIN_DIR)/DTEstudianteSC.o $(BIN_DIR)/DTLeccion.o $(BIN_DIR)/DTNotificacion.o $(BIN_DIR)/DTProfesor.o $(BIN_DIR)/DTFecha.o $(BIN_DIR)/DTProfesorSC.o $(BIN_DIR)/FactoryController.o
 
 
 all: create_bin_dir $(BIN_DIR)/ejecutable
@@ -100,6 +100,12 @@ $(BIN_DIR)/IControladorUsuario.o: src/Interfaces/IControladorUsuario.cpp $(INC)
 
 $(BIN_DIR)/IObserver.o: src/Interfaces/IObserver.cpp $(INC)
 	$(CC-) src/Interfaces/IObserver.cpp -o $(BIN_DIR)/IObserver.o
+
+$(BIN_DIR)/DTTraduccion.o: src/DTs/DTTraduccion.cpp $(INC)
+	$(CC-) src/DTs/DTTraduccion.cpp -o $(BIN_DIR)/DTTraduccion.o
+
+$(BIN_DIR)/DTRellenarPalabras.o: src/DTs/DTRellenarPalabras.cpp $(INC)
+	$(CC-) src/DTs/DTRellenarPalabras.cpp -o $(BIN_DIR)/DTRellenarPalabras.o
 
 create_bin_dir:
 	mkdir -p $(BIN_DIR)
