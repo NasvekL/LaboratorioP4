@@ -438,8 +438,8 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
         string frase = entradaString();                            
         imprimir("Ingrese las soluciones separadas por comas");
-        string soluciones = entradaString();
-        list<string> solucionesList = separarString(soluciones, ',');                                                      
+        string solSinSep = entradaString();
+        list<string> soluciones = separarString(solSinSep, ',');                                                      
         DTEjercicio ejer // tengo que crear el DTejer pero no entiendo      
         return ejer;           
 
