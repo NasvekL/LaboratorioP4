@@ -182,19 +182,20 @@ int main(){
                     imprimir("Ingrese una profesor: ");
                     string nick = entradaString();
                     contCurso.seleccionarProfesor(nick);
+
                     imprimir("Tiene previas: ");
                     imprimir("1: Si");
                     imprimir("2: No");
                     int opcion = entradaInt();
                     DTCurso curso;
                     if (opcion = 1){
-                    curso = crearDTCurso(1);
+                        curso = crearDTCurso(1);
                     }
                     else if(opcion = 2){
-                    curso = crearDTCurso(2);
+                        curso = crearDTCurso(2);
                     }else{ 
-                    imprimir("Opcion invalida", AMARILLO);
-                    presionaParaContinuar();
+                        imprimir("Opcion invalida", AMARILLO);
+                        presionaParaContinuar();
                     }
                     contCurso.setDatosDeCurso(curso);
                     contCurso.listarIdiomasProfesor();
@@ -494,30 +495,30 @@ DTCurso crearDTCurso(int i){
         }else if(d = 2){
             dificultad = AVANZADO;
         }else{
-        imprimir("Opcion invalida", AMARILLO);
-        presionaParaContinuar();
+            imprimir("Opcion invalida", AMARILLO);
+            presionaParaContinuar();
         }
         imprimir("Ingrese descripcion del curso:");
         string descripcionC = entradaString();
         if(i = 1){
-        c = DTCurso(nombreC,false,dificultad,descripcionC, NULL);
+            c = DTCurso(nombreC,false,dificultad,descripcionC, NULL);
         }
         else{
             set<string>* previas;
             bool seguir = true;
             while(seguir){
-            imprimir("Ingrese nombre de previas del curso:");
-            string pre = entradaString();
-            factoryController& fabrica = factoryController::getInstancia();
-            IControladorCurso& contCurso = fabrica.getIControladorCurso();
-            map<string, DTCurso*>* p = contCurso.getDatosPrevias();
-            auto it = p->find(pre);
-            if (it != p->end()) {
-            previas->insert(pre);
-            } else {
-            imprimir("Curso no encontrado", ROJO);
-            }
-            seguir = quiereContinuar("Agregar otra previa");
+                imprimir("Ingrese nombre de previas del curso:");
+                string pre = entradaString();
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                map<string, DTCurso*>* p = contCurso.getDatosPrevias();
+                auto it = p->find(pre);
+                if (it != p->end()) {
+                    previas->insert(pre);
+                } else {
+                    imprimir("Curso no encontrado", ROJO);
+                }
+                seguir = quiereContinuar("Agregar otra previa");
             }
         c = DTCurso(nombreC,false,dificultad,descripcionC, previas);
         }
