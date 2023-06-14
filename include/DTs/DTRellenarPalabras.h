@@ -9,7 +9,7 @@ class DTRellenarPalabras{
         string descripcion;
         int idEjercicio;
         string letra;
-        set<string> listaDePalabras;
+        list<string> listaDePalabras;
     public:
         //Getters
         string getTipo();
@@ -19,6 +19,6 @@ class DTRellenarPalabras{
         set<string> getListaDePalabras();
         //Create y destroy
         ~DTRellenarPalabras() = default;
-        DTRellenarPalabras(string descripcion, string letra, int idEjercicio, set<string> listaDePalabras, string tipo);
+        DTRellenarPalabras(string descripcion, string letra, int idEjercicio, list<string> listaDePalabras, string tipo);
 };
 #endif

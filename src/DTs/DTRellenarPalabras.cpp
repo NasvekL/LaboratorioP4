@@ -19,7 +19,7 @@ string DTRellenarPalabras :: getLetra(){
     return letra;
 }
 
-DTRellenarPalabras :: DTRellenarPalabras(string descripcion, string letra, int idEjercicio, set<string> listaDePalabras, string tipo){
+DTRellenarPalabras :: DTRellenarPalabras(string descripcion, string letra, int idEjercicio, list<string> listaDePalabras, string tipo){
     this->tipo = tipo;
     this->idEjercicio = idEjercicio;
     this->letra = letra;
