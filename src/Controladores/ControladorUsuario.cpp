@@ -12,7 +12,6 @@ ControladorUsuario& ControladorUsuario::getInstancia() {
 ControladorUsuario::ControladorUsuario(){
     this->datoProfesor = NULL;
     this->datoEstudiante = NULL;
-    this->usuarios = NULL;
 }
 
 ControladorUsuario::~ControladorUsuario() {
@@ -22,29 +21,16 @@ ControladorUsuario::~ControladorUsuario() {
     datoEstudiante =NULL;
     // Destructor
 }
-map<string,Usuario>* ControladorUsuario::getUsuarios(){
-    if(usuarios!=NULL){
-        return usuarios;
-    }
-    else{
-        usuarios = new map<string,Usuario>();
-        return usuarios;
-    }
-}
 //existeUsuario
 bool ControladorUsuario::existeUsuario(string nick) {
     // Implementar la lógica para verificar si existe un usuario con el nickname recibido
-    if(usuarios!=NULL){
         string claveBuscada = nick;
-        auto iterador = usuarios->find(claveBuscada);
-        if (iterador != usuarios->end()) {
+        auto iterador = usuarios.find(claveBuscada);
+        if (iterador != usuarios.end()) {
             return true;
         } else {
             return false;
         }
-    }
-    return false;
-
 }
 
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
@@ -168,10 +154,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
     ControladorCurso& cc = ControladorCurso::getInstancia();
     if (datoEstudiante!=NULL){
         cout <<datoEstudiante->getNickname() << endl; 
-        map<string,Usuario>* users = getUsuarios();
         Estudiante *e = new Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
-        users->insert(pair<string, Usuario>(datoEstudiante->getNickname(), *e));
-        delete datoEstudiante;
+        usuarios.insert(std::make_pair(e->getNick(), e));
         datoEstudiante = NULL;
     }
     else if (datoProfesor!=NULL){
@@ -184,10 +168,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
             Idioma idiom = cc.getIdioma(current);
             Idiomas.insert(&idiom);
         }
-        map<string,Usuario>* users = getUsuarios();
         Profesor* p = new Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
-        users->insert(pair<string, Usuario>(datoProfesor->getNickname(), *p));
-        delete datoProfesor;
+        usuarios.insert(std::make_pair(p->getNick(), p));
         datoProfesor = NULL;
     }
     else{
@@ -200,30 +182,25 @@ void ControladorUsuario::listarIdiomas() {
  ControladorCurso& cc = ControladorCurso::getInstancia();
  cc.listarIdiomas();
 }
-string ControladorUsuario:: getTipoUsuario(string nick){
-    map<string,Usuario>* users= getUsuarios();
-    auto it = users->find(nick);
-    if (it != users->end()) {
-        Usuario &usuario = it->second;
-        Estudiante* estudiante = dynamic_cast<Estudiante*>(&usuario);
-        if (estudiante!=NULL){
+string ControladorUsuario::getTipoUsuario(string nick) {
+    auto it = usuarios.find(nick);
+    if (it != usuarios.end()) {
+        Usuario* usuario = it->second;
+        if (Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario)) {
             return "estudiante";
-        }
-        else{
+        } else {
             return "profesor";
         }
-    }
-    else{
-        throw invalid_argument("No existe el usuario");
+    } else {
+        throw std::invalid_argument("No existe el usuario");
     }
 }
 list<string> ControladorUsuario::consultarUsuario(){
-    map<string,Usuario>* users= getUsuarios();
     list<string> us;
-    if (!users->empty()){
-    auto it = users->begin();
+    if (!usuarios.empty()){
+    auto it = usuarios.begin();
     int i=1;
-    while (it != users->end()){
+    while (it != usuarios.end()){
     us.push_back(it->first);
     it++;
     }
@@ -232,20 +209,16 @@ list<string> ControladorUsuario::consultarUsuario(){
 }
 
 void ControladorUsuario::seleccionarUsuario(string nick){
-    map<string,Usuario>* users= getUsuarios();
-    auto it = users->find(nick);
-    if (it != users->end()) {
-        Usuario& usuario = it->second;
-        if (dynamic_cast<Estudiante*>(&usuario)!=NULL){
-            Estudiante& estudiante = dynamic_cast<Estudiante&>(usuario);
-            DTEstudiante dt = estudiante.getDTEstudiante();
-            setDatoEstudiante(dt);
-        }else if (dynamic_cast<Profesor*>(&usuario)!=NULL){
-            Profesor& profesor = dynamic_cast<Profesor&>(usuario);
-            DTProfesor dt = profesor.getDTProfesor();
-            setDatoProfesor(dt);
-        }
-    } else{
-        throw invalid_argument("No se ha encontrado el usuario");
+    auto it = usuarios.find(nick);
+    Usuario* usuario = it->second;
+    if (dynamic_cast<Estudiante*>(usuario)){
+        Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
+        DTEstudiante dt = estudiante->getDTEstudiante();
+        setDatoEstudiante(dt);
     }
+    else if (dynamic_cast<Profesor*>(usuario)!=NULL){
+        Profesor* profesor = dynamic_cast<Profesor*>(usuario);
+        DTProfesor dt = profesor->getDTProfesor();
+        setDatoProfesor(dt);
+        }
 }
