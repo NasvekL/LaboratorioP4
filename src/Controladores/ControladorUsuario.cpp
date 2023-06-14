@@ -63,7 +63,7 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
 }
 
 void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
-    datoEstudiante = new DTEstudiante(dato); // Asignar una copia del objeto al puntero}
+    datoEstudiante = new DTEstudiante(dato.getNickname(),dato.getContrasenia(),dato.getNombre(),dato.getDescripcion(),dato.getPais(),dato.getNacimiento()); // Asignar una copia del objeto al puntero}
 }
 void ControladorUsuario::setDatoProfesor(DTProfesor dato){
     datoProfesor = new DTProfesor(dato); // Asignar una copia del objeto al puntero
