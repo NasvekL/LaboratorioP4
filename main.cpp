@@ -27,6 +27,7 @@ void presionaParaContinuar();
 void limpiarLog();
 void imprimir(string texto);
 void imprimir(string texto, string color);
+list<string> separarString(const string& str, char delimiter) ;
 
 
 //Desplegar menu por consola
@@ -437,7 +438,8 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
         string frase = entradaString();                            
         imprimir("Ingrese las soluciones separadas por comas");
-        string soluciones = entradaString();// esto esta mal, tengo que cortar el string cuando hayan comas y hacerlo eun set string                                                        
+        string soluciones = entradaString();
+        list<string> solucionesList = separarString(soluciones, ',');                                                      
         DTEjercicio ejer // tengo que crear el DTejer pero no entiendo      
         return ejer;           
 
@@ -451,12 +453,22 @@ DTEjercicio crearDTEjercicio(){
 
     } else {
         imprimir("Tipo de ejercicio no válido");
-     
+        return 
     }
                     
 
 }*/
+list<string> separarString(const string& str, char delimiter) {
+    list<string> palabras;
+    stringstream ss(str);
+    string unionDePal;
 
+    while (getline(ss, unionDePal, delimiter)) {
+        palabras.push_back(unionDePal);
+    }
+
+    return palabras;
+}
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");
     imprimir("2: Continuar");
