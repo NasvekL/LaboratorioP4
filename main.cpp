@@ -471,7 +471,11 @@ DTEjercicio crearDTEjercicio(){
     imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
     string tipo = entradaString(); 
     imprimir("Ingrese el id de ejercicio :");
-    int id = entradaInt();              
+    int id = entradaInt();
+    while (contCurso.getIdsEjercicio().find(id) != contCurso.getIdsEjercicio().end()) {
+        imprimir("El ID ya existe. Por favor, ingrese otro");
+        id = entradaInt();
+    }             
                         
     if (tipo == "completar palabras") {
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
@@ -480,19 +484,22 @@ DTEjercicio crearDTEjercicio(){
         string solSinSep = entradaString();
         list<string> soluciones = separarString(solSinSep, ',');                                                      
         DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
+        contCurso.idsEjercicio.insert(id);
         return ejer;           
 
-    else if (tipoEjercicio == "traduccion") {
+    else if (tipo == "traduccion") {
         imprimir("Ingrese la frase");
         string fraseATraducir = entradaString();
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
         DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
+        contCurso.idsEjercicio.insert(id);
         return ejer;
 
     } else {
         imprimir("Tipo de ejercicio no válido");
-        return 
+        DTEjercicio ejer = crearDTEjercicio();
+        return ejer;
     }   
 }
 list<string> separarString(const string& str, char delimiter) {

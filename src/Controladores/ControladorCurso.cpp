@@ -38,7 +38,9 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
-
+set<int> getIdsEjercicio (){
+    return idsEjercicio;
+}
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
