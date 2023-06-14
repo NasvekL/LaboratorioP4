@@ -5,6 +5,8 @@
 #include "include/Controladores/ControladorCurso.h"
 #include "include/Controladores/ControladorUsuario.h"
 #include "include/FactoryController.h"
+//#include "include/DTs/DTRellenarPalabras.h"
+//#include "include/DTs/DTTraduccion.h"
 
 
 
@@ -17,8 +19,6 @@
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
-DTRellenarPalabras crearDTRellenarPalabras();
-DTTraduccion crearDTTraduccion();
 DTLeccion crearDTLeccion();
 void esperar(double time);
 int entradaInt();
@@ -31,6 +31,8 @@ void imprimir(string texto, string color);
 list<string> separarString(const string& str, char delimiter);
 void ingresarUsuarios();
 void ingresarIdiomas();
+DTRellenarPalabras crearDTRellenarPalabras();
+DTTraduccion crearDTTraduccion();
 
 
 //Desplegar menu por consola
@@ -536,9 +538,9 @@ DTRellenarPalabras crearDTRellenarPalabras(){
     string solSinSep = entradaString();
     list<string> soluciones = separarString(solSinSep, ',');   
     int id = contCurso.getIdEjercicio() +1;
-    DTRellenarPalabras ejer =  DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
-    contCurso.setIdEjercicio( id) ;
-    return ejer;           
+    contCurso.setIdEjercicio(id);
+    DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo);     //el id me lo pasa? me aseguro que no exxista?
+    return ejer;
 
 
 }
@@ -555,10 +557,9 @@ DTTraduccion crearDTTraduccion(){
     imprimir("Ingrese la traducción");
     string traduccion = entradaString();
     int id = contCurso.getIdEjercicio() +1;
-    DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
     contCurso.setIdEjercicio(id);
+    DTTraduccion ejer = DTTraduccion(descripcion, fraseATraducir, id, traduccion,tipo);
     return ejer;
-
 }
 
 bool quiereContinuar(){
