@@ -32,7 +32,7 @@ class ControladorCurso: public IControladorCurso{
         DTEjercicio* datosEjercicio;
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
-
+        
         //Variable estática para almacenar la instancia única del controlador
         static ControladorCurso* instancia;
         //Constructor privado para evitar la creación de instancias desde fuera de la clase
@@ -46,6 +46,7 @@ class ControladorCurso: public IControladorCurso{
         
     
         //Getters
+        
         set<int> getIdsEjercicio ();
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();

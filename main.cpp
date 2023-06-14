@@ -470,20 +470,17 @@ DTEjercicio crearDTEjercicio(){
     string descripcion = entradaString();            
     imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
     string tipo = entradaString(); 
-    imprimir("Ingrese el id de ejercicio :");
-    int id = entradaInt();
     while (contCurso.getIdsEjercicio().find(id) != contCurso.getIdsEjercicio().end()) {
         imprimir("El ID ya existe. Por favor, ingrese otro");
         id = entradaInt();
     }             
-                        
     if (tipo == "completar palabras") {
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
         string frase = entradaString();                            
         imprimir("Ingrese las soluciones separadas por comas");
         string solSinSep = entradaString();
         list<string> soluciones = separarString(solSinSep, ',');                                                      
-        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
+        DTRellenarPalabras ejer =  DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
         contCurso.idsEjercicio.insert(id);
         return ejer;           
 
