@@ -613,7 +613,7 @@ void ingresarIdiomas(){
     contCurso.confirmarAltaIdioma("Portugues");
 }
 
-void ingresarUsuarios(){
+/*void ingresarUsuarios(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     //ESTUDIANTES
@@ -632,4 +632,4 @@ void ingresarUsuarios(){
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
     contUsuario.confirmarAltaUsuario(); delete i1;
 
-}
+}*/

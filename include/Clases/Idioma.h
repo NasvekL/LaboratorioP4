@@ -21,9 +21,8 @@ class Idioma{
         void eliminar(Usuario u); //eliminar suscriptor
         set<string> suscripciones(string nick);
         //constructor y destructor
-        ~Idioma();
-        Idioma();
         Idioma(string nombreIdioma);
+        ~Idioma();
         //falta set de suscriptores
         // falta set de profesores
         //falta set de cursos
