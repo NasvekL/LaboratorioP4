@@ -14,7 +14,7 @@ using namespace std;
 #include <sstream>
 #include <fstream>
 
-enum nivelDeDificultad {PRINCIPIANTE, AVANZADO};
+enum nivelDeDificultad {PRINCIPIANTE, MEDIO, AVANZADO};
 
 
 #endif

@@ -26,7 +26,7 @@ class Profesor: public Usuario{
         list<DTCurso> obtenerDTCurso();
         int obtenerPromedio();
         //Obtener Pseudoatributos
-        set<Idioma*> Idiomas();
+        set<Idioma*> getIdiomas();
         list<Curso*>* Cursos();
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };

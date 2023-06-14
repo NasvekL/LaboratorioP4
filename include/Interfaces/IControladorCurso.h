@@ -60,8 +60,9 @@ class IControladorCurso{
         virtual void agregarEjercicio(DTEjercicio datos)= 0;
 
         //Operaciones virtuales para obtener información
+        //Hace setProfesor(p) con el find(nick)
         virtual void seleccionarProfesor(string nick) = 0;
-        virtual void listarProfe()= 0;
+        virtual list<string> listarProfe()= 0;
         virtual DTEstadisticaCurso estadisticasCurso(string curso)= 0;
         virtual set<string> listarNombresDeCursos()= 0;
         virtual set<DTCurso> listarDTCursos()= 0;

@@ -127,13 +127,14 @@ list<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
     // Implementación de la función cursosInscriptosSinAprobar
 }
 
-void ControladorUsuario::listarProfe() {
-    auto it = usuarios.begin();
-    for(it; it!=usuarios.end(); it++){
-    if(getTipoUsuario(it->first)=="profesor"){
-        cout<<it->first<<endl;
+list<string> ControladorUsuario::listarProfe() {
+    list<string> listaProfes;
+    for (auto it = usuarios.begin(); it != usuarios.end(); it++) {
+        if (getTipoUsuario(it->first) == "profesor") {
+            listaProfes.push_back(it->second->getNick());
         }
     }
+    return listaProfes;
 }
 
 void ControladorUsuario::listarIdiomasProfesor(Profesor p) {

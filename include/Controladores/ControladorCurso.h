@@ -68,6 +68,7 @@ class ControladorCurso: public IControladorCurso{
         void setIdEjercicio(int id);
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
+        //hace que el puntero profesor apunte al objeto profesor que se le pasa
         void setProfesor(Profesor profesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
@@ -92,7 +93,7 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones para obtener informacion
         void seleccionarProfesor(string nick);
-        void listarProfe();
+        list<string> listarProfe();
         DTEstadisticaCurso estadisticasCurso(string curso);
         set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();

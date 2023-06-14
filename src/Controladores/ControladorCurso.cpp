@@ -143,13 +143,13 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 void ControladorCurso::altaLeccion(string curso){
     Leccion *nuevaLec = new Leccion(datosDeLeccion->getTema(), datosDeLeccion->getObjetivoAprendizaje(), datosDeLeccion->getCantidadDeEjercicios(), datosDeLeccion->getNumero());
     auto iterator = cursos.find(curso);
-    Curso *cur = *iterador;
-    cur->agregarLeccion(nuevaLec);
+    //Curso *cur = *iterador;
+    //cur->agregarLeccion(nuevaLec);
     
 
     //Asocio a sus ejercicios
     for (int i = 1; i <= datosDeLeccion->getCantidadDeEjercicios(); i++){
-        if(datosRellenarPalabras != nullptr){
+        /*if(datosRellenarPalabras != nullptr){
             DTRellenarPalabras dt = datosRellenarPalabras.front();
             datosRellenarPalabras.pop_front();
             Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
@@ -162,7 +162,7 @@ void ControladorCurso::altaLeccion(string curso){
             Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
             nuevaLec->addEjercicio(ej);
             ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-        }    
+        }    */
     }
 }
 
@@ -202,9 +202,9 @@ void ControladorCurso::seleccionarProfesor(string nick){
     setProfesor(p);
 }
 
-void ControladorCurso::listarProfe() {
+list<string> ControladorCurso::listarProfe() {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    cu.listarProfe();
+    return cu.listarProfe();
 }
 DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     // Implementación pendiente
