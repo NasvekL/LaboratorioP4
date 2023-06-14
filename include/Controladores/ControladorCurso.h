@@ -9,7 +9,6 @@
 #include "../DTs/DTProfesor.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
-//#include "DTIdioma.h"??
 #include "../Interfaces/IControladorCurso.h"
 
 
@@ -17,7 +16,7 @@
 class ControladorCurso: public IControladorCurso{
     private:
         map<string, Curso> cursos;
-        map<string, Idioma> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
+        map<string, Idioma*> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
         
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
@@ -45,7 +44,7 @@ class ControladorCurso: public IControladorCurso{
         
     
         //Getters
-        Idioma getIdioma(string nombre);
+        Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
         string getDatoNombreDeProfesor();

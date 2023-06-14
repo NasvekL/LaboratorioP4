@@ -163,8 +163,8 @@ void ControladorUsuario::confirmarAltaUsuario() {
         auto it = Sidiomas->begin();
         for (it; it!=Sidiomas->end(); ++it){
             string current = *it;
-            Idioma idiom = cc.getIdioma(current);
-            Idiomas.insert(&idiom);
+            Idioma* idiom = cc.getIdioma(current);
+            Idiomas.insert(idiom);
         }
         Profesor* p = new Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         usuarios.insert(std::make_pair(p->getNick(), p));

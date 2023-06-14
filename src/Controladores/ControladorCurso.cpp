@@ -30,9 +30,15 @@ ControladorCurso::~ControladorCurso() {
 Curso ControladorCurso::getCurso(string nick) {
     //return cursos.find(nick);
 }
-Idioma ControladorCurso::getIdioma(string nombre){
-    return idiomas[nombre];
+Idioma* ControladorCurso::getIdioma(string nombre){
+    string claveBuscada = nombre;
+    auto iterador = idiomas.find(claveBuscada);
+    if (iterador != idiomas.end()) {
+        return iterador->second;
+    }
+    else return nullptr;
 }
+
 
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
@@ -110,7 +116,7 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
     if (iterador != idiomas.end()) {
         return false;
     } else {
-        Idioma id=Idioma(idioma);
+        Idioma* id=new Idioma(idioma);
         idiomas.insert(std::make_pair(idioma, id));
         return true;
     }
