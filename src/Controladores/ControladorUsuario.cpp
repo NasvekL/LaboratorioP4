@@ -185,7 +185,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
             Idiomas.insert(&idiom);
         }
         map<string,Usuario>* users = getUsuarios();
-        Profesor p = Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
+        Profesor* p = new Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         users->insert(pair<string, Usuario>(datoProfesor->getNickname(), p));
         delete datoProfesor;
         datoProfesor = NULL;
@@ -200,20 +200,22 @@ void ControladorUsuario::listarIdiomas() {
  ControladorCurso& cc = ControladorCurso::getInstancia();
  cc.listarIdiomas();
 }
-int ControladorUsuario:: getTipoUsuario(string nick){
+string ControladorUsuario:: getTipoUsuario(string nick){
     map<string,Usuario>* users= getUsuarios();
     auto it = users->find(nick);
     if (it != users->end()) {
-        Usuario& usuario = it->second;
-        if (dynamic_cast<Estudiante*>(&usuario)){
+        Usuario &usuario = it->second;
+        Estudiante* estudiante = dynamic_cast<Estudiante*>(&usuario);
+        if (estudiante!=NULL){
             return 1;
         }
-        else if(dynamic_cast<Profesor*>(&usuario)){
+        else{
             return 2;
         }
     }
     else{
         throw invalid_argument("No existe el usuario");
+        return 0;
     }
 }
 list<string> ControladorUsuario::consultarUsuario(){
@@ -234,19 +236,17 @@ void ControladorUsuario::seleccionarUsuario(string nick){
     map<string,Usuario>* users= getUsuarios();
     auto it = users->find(nick);
     if (it != users->end()) {
-    Usuario& usuario = it->second;
-    if (dynamic_cast<Estudiante*>(&usuario)){
-        Estudiante& estudiante = dynamic_cast<Estudiante&>(usuario);
-        DTEstudiante dt = estudiante.getDTEstudiante();
-        setDatoEstudiante(dt);
-    }
-    else if (dynamic_cast<Profesor*>(&usuario)){
-        Profesor& profesor = dynamic_cast<Profesor&>(usuario);
-        DTProfesor dt = profesor.getDTProfesor();
-        setDatoProfesor(dt);
-    }
-    }
-    else{
+        Usuario& usuario = it->second;
+        if (dynamic_cast<Estudiante*>(&usuario)){
+            Estudiante& estudiante = dynamic_cast<Estudiante&>(usuario);
+            DTEstudiante dt = estudiante.getDTEstudiante();
+            setDatoEstudiante(dt);
+        }else if (dynamic_cast<Profesor*>(&usuario)){
+            Profesor& profesor = dynamic_cast<Profesor&>(usuario);
+            DTProfesor dt = profesor.getDTProfesor();
+            setDatoProfesor(dt);
+        }
+    } else{
         throw invalid_argument("No se ha encontrado el usuario");
-}
+    }
 }

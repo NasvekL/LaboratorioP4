@@ -116,7 +116,6 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(){
-    ||||||||||||
 }
 
 
@@ -236,7 +235,6 @@ set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     return set<string>();
 }
 
-set<DTLeccion> ListarLecciones(string cursoLec){
-    //implementar
-    return set<DTLeccion>
+set<DTLeccion> ControladorCurso:: ListarLecciones(string cursoLec){  //implementar
+    //return set<DTLeccion>
 }

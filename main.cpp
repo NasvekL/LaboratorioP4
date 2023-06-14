@@ -111,7 +111,6 @@ int main(){
             }
 
             case 2:{
-                    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
                     list<string> listaUsuarios = contUsuario.consultarUsuario();
                     std::list<string>::iterator it;
                     for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
@@ -123,11 +122,21 @@ int main(){
                         if(contUsuario.getTipoUsuario(nick)==1){
                             contUsuario.seleccionarUsuario(nick);
                             DTEstudiante dte = contUsuario.getDatoEstudiante();
+                            imprimir(dte.getNombre());
+                            imprimir(dte.getDescripcion());
+                            imprimir(dte.getPais());
                         } 
                         else{ 
-                            contUsuario.seleccionarUsuario(nick);\
+                            contUsuario.seleccionarUsuario(nick);
                             DTProfesor dtp = contUsuario.getDatoProfesor();
-                            
+                            imprimir(dtp.getNombre());
+                            imprimir(dtp.getDescripcion());
+                            imprimir(dtp.getInstituto());
+                            set<string>* idi = dtp.getIdiomas();
+                            set<string>::iterator it;
+                            for (it = idi->begin(); it != idi->end(); ++it) {
+                                imprimir(*it);
+                            }
                         }
                     break;
             }
@@ -177,6 +186,43 @@ int main(){
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                imprimir ( "Cursos:" );
+                contCurso.listarCursosNoHabilitados();
+                
+                imprimir("Elija un curso:");
+                string cursoSelec = entradaString();
+                Curso cur = contCurso.getCurso(cursoSelec);
+
+                imprimir("Lecciones del curso:");
+                list<Leccion> lecciones = cur.getLecciones();
+
+                if (!lecciones.empty()) {
+                    int i = 1;
+                    for (const auto& leccion : lecciones) {
+                        imprimir(to_string(i) , ". " , leccion.getTema()); 
+                        i++;
+                    }
+
+                    imprimir("Elija una lección:");
+                    int lecSelec = entradaInt();    
+                    Leccion leccionSeleccionada; 
+                    for (const auto& leccion : lecciones) {
+                        if (leccion.getNumero() == lecSelec) {
+                            leccionSeleccionada = leccion;
+                            break;
+                        }
+                    }
+
+                    imprimir("Ingrese el tipo de ejercicio (completar/traduccion):");
+                    string tipo = entradaString();
+
+
+
+
+                }
+
                 break;
             }
             case 8:{
