@@ -322,11 +322,11 @@ int main(){
             }
             case 9:{
                 //Eliminar curso
-                imprimir("Cursos disponibles:", AMARILLO);
+               /* imprimir("Cursos disponibles:", AMARILLO);
                 contCurso.listarCursos();
                 imprimir("Seleccione el curso que desea eliminar:");
                 string cursoSeleccionado = entradaString();
-
+*/
 
                 //interfazCurso->eliminarCurso();
                 break;
