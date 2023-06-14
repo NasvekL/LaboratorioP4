@@ -136,8 +136,8 @@ void ControladorUsuario::listarProfe() {
     }
 }
 
-list<string> ControladorUsuario::listarIdiomasProfesor(DTProfesor p) {
-    // Implementación de la función listarIdiomasProfesor
+void ControladorUsuario::listarIdiomasProfesor(Profesor p) {
+    
 }
 
 Profesor ControladorUsuario::encontrarProfesor(string nick) {

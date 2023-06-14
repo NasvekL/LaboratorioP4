@@ -66,7 +66,7 @@ class ControladorUsuario : public IControladorUsuario{
         list<DTEjercicio> ejerciciosNoAprobados(string curso);
         list<string> cursosInscriptosSinAprobar(string nick);
         void listarProfe();
-        list<string> listarIdiomasProfesor(DTProfesor p);
+        void listarIdiomasProfesor(Profesor p);
         Profesor encontrarProfesor(string nick);
         void confirmarAltaUsuario();
         void deleteDataIngresado();

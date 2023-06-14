@@ -175,9 +175,11 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
     // Implementación pendiente
     return set<DTCurso>();
 }
+
 set<string> ControladorCurso::listarIdiomasProfesor() {
-    // Implementación pendiente
-    return set<string>();
+    Profesor* p = getProfesor();
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    cu.listarIdiomasProfesor(*p);
 }
 void ControladorCurso::listarIdiomas(){
     int a=1;

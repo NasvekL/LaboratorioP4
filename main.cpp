@@ -197,6 +197,7 @@ int main(){
                     presionaParaContinuar();
                     }
                     contCurso.setDatosDeCurso(curso);
+                    contCurso.listarIdiomasProfesor();
 
                     //list<string> profes= contCurso.listarProfe();
                     //for each profesor in profes
