@@ -65,7 +65,7 @@ class ControladorUsuario : public IControladorUsuario{
         //FALTA CLASIFICAR. DESPUES. EN ALGUN MOMENTO. A MEDIDA QUE LO VAYAMOS USANDO
         list<DTEjercicio> ejerciciosNoAprobados(string curso);
         list<string> cursosInscriptosSinAprobar(string nick);
-        set<string> listarProfe();
+        void listarProfe();
         list<string> listarIdiomasProfesor(DTProfesor p);
         Profesor encontrarProfesor(string nick);
         void confirmarAltaUsuario();

@@ -12,8 +12,7 @@ ControladorCurso& ControladorCurso::getInstancia() {
 ControladorCurso::ControladorCurso(){
     datosDeCurso=NULL;
     datosDeLeccion=NULL;
-    datoNombreDeProfesor=NULL;
-    datoIdioma=NULL;
+    profesor = NULL;
     datosPrevias=NULL;
     datosEjercicio=NULL;
 }
@@ -46,14 +45,14 @@ DTCurso ControladorCurso::getDatosDeCurso() {
 DTLeccion ControladorCurso::getDatosDeLeccion() {
     return *datosDeLeccion;
 }
-string ControladorCurso::getDatoNombreDeProfesor() {
-    return *datoNombreDeProfesor;
+Profesor* ControladorCurso::getProfesor(){
+    return profesor;
 }
+
 string ControladorCurso::getDatoIdioma() {
-    return *datoIdioma;
+    return datoIdioma;
 }
-set<DTCurso*> ControladorCurso::getDatosPrevias() {
-    return *datosPrevias;
+map<string,DTCurso*>* ControladorCurso::getDatosPrevias() {
 }
 DTEjercicio ControladorCurso::getDatosEjercicio() {
     return *datosEjercicio;
@@ -68,14 +67,15 @@ void ControladorCurso::setDatosDeCurso(DTCurso datos) {
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
     datosDeLeccion = &datos;
 }
-void ControladorCurso::setDatoNombreDeProfesor(string nombreProfesor) {
-    datoNombreDeProfesor = &nombreProfesor;
+void ControladorCurso::setProfesor(Profesor profesor) {
+    Profesor* p = &profesor;
+    this->profesor = p;
 }
 void ControladorCurso::setDatoIdioma(string idioma) {
-    this->datoIdioma = &idioma;
+    this->datoIdioma = idioma;
 }
 void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
-    datosPrevias = &previas;
+
 }
 //Precondicion: solucion de traduccion viene como null
 void ControladorCurso::setDatosEjercicioCompletarPalabras(DTEjercicio datos) {
@@ -145,7 +145,13 @@ void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
 
 //Operaciones para obtener informacion
 
-set<string> ControladorCurso::listarProfe() {
+void ControladorCurso::seleccionarProfesor(string nick){
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Profesor p = cu.encontrarProfesor(nick);
+    setProfesor(p);
+}
+
+void ControladorCurso::listarProfe() {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     cu.listarProfe();
 }
@@ -230,11 +236,8 @@ void ControladorCurso::limpiarDatos() {
     if(datosDeLeccion != nullptr){
         delete datosDeLeccion;
     }
-    if(datoNombreDeProfesor != nullptr){
-        delete datoNombreDeProfesor;
-    }
-    if(datoIdioma != nullptr){
-        delete datoIdioma;
+    if(profesor != nullptr){
+        delete profesor;
     }
     if(datosPrevias != nullptr){
         delete datosPrevias;

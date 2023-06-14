@@ -127,17 +127,13 @@ list<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
     // Implementación de la función cursosInscriptosSinAprobar
 }
 
-set<string> ControladorUsuario::listarProfe() {
+void ControladorUsuario::listarProfe() {
     auto it = usuarios.begin();
-    Usuario* prof = new Usuario;
-    for (it; it != usuarios.end(); it++){
-        prof = it->second;
-        cout<<"gola"<<endl;
-        if (dynamic_cast<const Profesor*>(prof) != nullptr) {
+    for(it; it!=usuarios.end(); it++){
+    if(getTipoUsuario(it->first)=="profesor"){
         cout<<it->first<<endl;
         }
     }
-    delete prof;
 }
 
 list<string> ControladorUsuario::listarIdiomasProfesor(DTProfesor p) {
@@ -145,7 +141,17 @@ list<string> ControladorUsuario::listarIdiomasProfesor(DTProfesor p) {
 }
 
 Profesor ControladorUsuario::encontrarProfesor(string nick) {
-    // Implementación de la función encontrarProfesor
+     auto it = usuarios.find(nick);
+    if (it != usuarios.end()) {
+        Usuario* usuario = it->second;
+        if (Profesor* profesor = dynamic_cast<Profesor*>(usuario)) {
+            return *profesor;
+        } else {
+            throw std::invalid_argument("El usuario ingresado es estudiante");
+        }
+    } else {
+        throw std::invalid_argument("No existe el usuario");
+    }
 }
 
 void ControladorUsuario::confirmarAltaUsuario() {

@@ -24,9 +24,9 @@ class ControladorCurso: public IControladorCurso{
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
         DTLeccion* datosDeLeccion;
-        string* datoNombreDeProfesor;
-        string* datoIdioma;
-        set<DTCurso*>* datosPrevias;
+        Profesor* profesor;
+        string datoIdioma;
+        map<string, DTCurso*>* datosPrevias;
         DTEjercicio* datosEjercicio;
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
@@ -47,15 +47,15 @@ class ControladorCurso: public IControladorCurso{
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
-        string getDatoNombreDeProfesor();
+        Profesor* getProfesor();
         string getDatoIdioma();
-        set<DTCurso*> getDatosPrevias();
+        map<string ,DTCurso*>* getDatosPrevias();
         DTEjercicio getDatosEjercicio();
         Curso getCurso(string nombreCurso);
         //Setters
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
-        void setDatoNombreDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
+        void setProfesor(Profesor profesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioCompletarPalabras(DTEjercicio datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
@@ -78,7 +78,8 @@ class ControladorCurso: public IControladorCurso{
         
 
         //Operaciones para obtener informacion
-        set<string> listarProfe();
+        void seleccionarProfesor(string nick);
+        void listarProfe();
         DTEstadisticaCurso estadisticasCurso(string curso);
         set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();
