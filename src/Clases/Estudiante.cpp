@@ -14,9 +14,9 @@ Estudiante::Estudiante(string nickname, string contrasenia, string nombre, strin
     this->pais = pais;
     this->nacimiento = nacimiento;
     this->setNick(nickname);
-    setContrasenia(contrasenia);
-    setNombre(nombre);
-    setDescripcion(descripcion);
+    this->setContrasenia(contrasenia);
+    this->setNombre(nombre);
+    this->setDescripcion(descripcion);
 }
 
 Estudiante::~Estudiante() {
