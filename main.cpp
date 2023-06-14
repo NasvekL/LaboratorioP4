@@ -284,6 +284,7 @@ int main(){
                 contCurso.listarCursosNoHabilitados();
                 string curso = entradaString();
                 contCurso.habilitarCurso(curso);
+                imprimir("Curso habilitado", VERDE);
                 //Habilitar curso
                 //interfazCurso->habilitarCurso();
                 break;
