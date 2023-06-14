@@ -28,7 +28,7 @@ class IControladorUsuario{
     virtual DTEstadisticaEstudiante estadisticasEstudiante(std::string estudiante) = 0;
     virtual std::list<DTProfesorSC> listarProfesoresSinContra() = 0;
     virtual std::list<DTEstudianteSC> listarEstudiantes() = 0;
-    virtual int getTipoUsuario(string nick) = 0;
+    virtual string getTipoUsuario(string nick) = 0;
     // Operaciones de suscripciones
     virtual Usuario obtenerSuscriptor(std::string user) = 0;
     virtual void eliminarNotificaciones() = 0;
