@@ -176,7 +176,7 @@ void ControladorCurso::listarIdiomas(){
 void ControladorCurso::listarCursosNoHabilitados(){
      int a=1;
     for (auto it = cursos.begin(); it != cursos.end(); ++it){
-        if(it->second.getHabilitado()){
+        if(it->second->getHabilitado()){
             string nombre = it->first;
             cout << a <<  "- " << nombre <<'\n';
             a++;
