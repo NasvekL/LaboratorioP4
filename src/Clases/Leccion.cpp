@@ -32,8 +32,8 @@ int Leccion::getNumero() {
     return numero;
 }
 
-map<int, Ejercicio*> getEjercicios(){
-    return ejercicios;
+map<int, Ejercicio*> Leccion::getEjercicios(){
+    //return ejercicios;
 }
 
 Leccion::~Leccion() {

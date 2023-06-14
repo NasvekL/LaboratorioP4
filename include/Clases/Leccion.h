@@ -5,13 +5,13 @@
 #include "Estudiante.h"
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTEjercicio.h"
+class Ejercicio;
 class Leccion{
     private:
         string tema;
         string objetivoAprendizaje;
         int cantidadDeEjercicios;
         int numero;
-
         map<int, Ejercicio*> ejercicios;
 
     public:

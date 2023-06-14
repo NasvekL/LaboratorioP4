@@ -128,11 +128,10 @@ list<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
 }
 
 set<string> ControladorUsuario::listarProfe() {
-    map<string, Usuario>* users = getUsuarios(); // Mapa de nick a Usuario
-    auto it = users->begin();
+    auto it = usuarios.begin();
     Usuario* prof = new Usuario;
-    for (it; it != users->end(); it++){
-        *prof = it->second;
+    for (it; it != usuarios.end(); it++){
+        prof = it->second;
         cout<<"gola"<<endl;
         if (dynamic_cast<const Profesor*>(prof) != nullptr) {
         cout<<it->first<<endl;
@@ -209,16 +208,16 @@ list<string> ControladorUsuario::consultarUsuario(){
 }
 
 void ControladorUsuario::seleccionarUsuario(string nick){
-    auto it = usuarios.find(nick);
-    Usuario* usuario = it->second;
-    if (dynamic_cast<Estudiante*>(usuario)){
-        Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
-        DTEstudiante dt = estudiante->getDTEstudiante();
-        setDatoEstudiante(dt);
-    }
-    else if (dynamic_cast<Profesor*>(usuario)!=NULL){
-        Profesor* profesor = dynamic_cast<Profesor*>(usuario);
-        DTProfesor dt = profesor->getDTProfesor();
-        setDatoProfesor(dt);
-        }
+   auto it = usuarios.find(nick);
+   Usuario* usuario = it->second;
+   if (dynamic_cast<Estudiante*>(usuario)){
+       Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
+       DTEstudiante dt = estudiante->getDTEstudiante();
+       setDatoEstudiante(dt);
+   }
+   else if (dynamic_cast<Profesor*>(usuario)!=NULL){
+       Profesor* profesor = dynamic_cast<Profesor*>(usuario);
+       DTProfesor dt = profesor->getDTProfesor();
+       setDatoProfesor(dt);
+       }
 }
