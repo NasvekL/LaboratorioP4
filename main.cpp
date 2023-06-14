@@ -20,7 +20,7 @@ DTProfesor crearDTProfesor();
 DTRellenarPalabras crearDTRellenarPalabras();
 DTTraduccion crearDTTraduccion();
 DTLeccion crearDTLeccion();
-//DTEjercicio crearDTEjercicio();
+DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -230,7 +230,7 @@ int main(){
                 break;
             }
             case 7:{
-                /*//Agregar ejercicio
+                //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
@@ -242,12 +242,12 @@ int main(){
                 Curso cur = contCurso.getCurso(cursoSelec);
 
                 imprimir("Lecciones del curso:");
-                list<Leccion> lecciones = cur.getLecciones();
+                list<Leccion*> lecciones = cur.getLecciones();
 
                 if (!lecciones.empty()) {
                     int i = 1;
                     for (const auto& leccion : lecciones) {
-                        imprimir(to_string(i) , ". " , leccion.getTema()); 
+                        imprimir(to_string(i) + ". " + leccion->getTema()); 
                         i++;
                     }
 
@@ -255,23 +255,23 @@ int main(){
                     int lecSelec = entradaInt();    
                     Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
-                        if (leccion.getNumero() == lecSelec) {
-                            leccionSeleccionada = &leccion;
+                        if (leccion->getNumero() == lecSelec) {
+                            leccionSeleccionada = leccion;
                             break;
                         }
                     }
 
                     if (leccionSeleccionada != nullptr) {
                         DTEjercicio ejercicio = crearDTEjercicio();
-                        contCurso.altaEjercicio(ejercicio);
-                       
-                    
+                        if(ejercicio.getTipo()=="traduccion")
+                        contCurso.setDatosEjercicioTraduccion(ejercicio);
+                        else contCurso.setDatosEjercicioCompletarPalabras(ejercicio);
+                        contCurso.altaEjercicio();
                     }
 
                 }
 
                 break;
-            */
             }
             case 8:{
                 //Habilitar curso
@@ -454,7 +454,7 @@ DTLeccion crearDTLeccion(){
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
 }
-/*
+
 DTEjercicio crearDTEjercicio(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
@@ -470,7 +470,7 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese las soluciones separadas por comas");
         string solSinSep = entradaString();
         list<string> soluciones = separarString(solSinSep, ',');                                                      
-        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, int idEjercicio, soluciones) ;     //el id me lo pasa? me aseguro que no exxista?
+        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, int, idEjercicio, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
         return ejer;           
 
     else if (tipoEjercicio == "traduccion") {
@@ -478,16 +478,14 @@ DTEjercicio crearDTEjercicio(){
         string fraseATraducir = entradaString();
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
-        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, int idEjercicio, traduccion);
+        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, int idEjercicio, traduccion,tipo);
         return ejer;
 
     } else {
         imprimir("Tipo de ejercicio no válido");
         return 
-    }
-                    
-
-}*/
+    }   
+}
 list<string> separarString(const string& str, char delimiter) {
     list<string> palabras;
     stringstream ss(str);

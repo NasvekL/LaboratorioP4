@@ -39,7 +39,6 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     else return nullptr;
 }
 
-
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
