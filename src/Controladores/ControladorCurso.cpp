@@ -132,10 +132,12 @@ void ControladorCurso::altaLeccion(string curso){
     //Hacer un if list<DTCompPalabras> != NULL creo y asocio
     //Analogo para list<DTTraducir>
 }
-void ControladorCurso::altaEjercicio(){
-
+void ControladorCurso::altaEjercicio(Leccion* lec){
+ if(datosRellenar!=NULL){
+    DTRellenarPalabras dt = getDatosRellenar();
+    Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
 }
-
+}
 
 //Operaciones para modificar el set de ejercicios
 void ControladorCurso::agregarEjercicio(DTEjercicio datos) {

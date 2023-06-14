@@ -2,6 +2,9 @@
 #define CONTROLADORCURSO
 #include "../Utils.h"
 #include "../Clases/Curso.h"
+#include "../Clases/RellenarPalabras.h"
+#include "../Clases/Traduccion.h"
+#include "../Clases/Ejercicio.h"
 #include "../DTs/DTCurso.h"
 #include "../DTs/DTLeccion.h"
 #include "../DTs/DTEjercicio.h"
@@ -74,7 +77,7 @@ class ControladorCurso: public IControladorCurso{
         //Operaciones para modificar el set de cursos
         bool altaCurso();
         void altaLeccion(string curso);
-        void altaEjercicio();
+        void altaEjercicio(Leccion* lec);
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
 

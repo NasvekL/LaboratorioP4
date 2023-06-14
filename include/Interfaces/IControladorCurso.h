@@ -45,7 +45,7 @@ class IControladorCurso{
         virtual void agregarDatosTraduccion(DTTraduccion tradu) = 0;
 
         //Operaciones virtuales para modificar el set de cursos
-        virtual void altaEjercicio()= 0;
+        virtual void altaEjercicio(Leccion* lec)= 0;
         virtual bool altaCurso() = 0;
         virtual void altaLeccion(string curso) = 0;
         virtual void eliminarCurso(string nombreCurso)= 0;
