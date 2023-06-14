@@ -130,17 +130,24 @@ int main(){
                     if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                         contUsuario.seleccionarUsuario(nick);
                         DTEstudiante dte = contUsuario.getDatoEstudiante();
+                        imprimir("Nombre", AMARILLO);
                         imprimir(dte.getNombre());
+                        imprimir("Descripcion", AMARILLO);
                         imprimir(dte.getDescripcion());
+                        imprimir("Pais", AMARILLO);
                         imprimir(dte.getPais());
                         presionaParaContinuar();
                     } 
                     else{ 
                         contUsuario.seleccionarUsuario(nick);
                         DTProfesor dtp = contUsuario.getDatoProfesor();
+                        imprimir("Nombre", AMARILLO);
                         imprimir(dtp.getNombre());
+                        imprimir("Descripcion", AMARILLO);
                         imprimir(dtp.getDescripcion());
+                        imprimir("Instituto", AMARILLO);
                         imprimir(dtp.getInstituto());
+                        imprimir("Idiomas", AMARILLO);
                         set<string>* idi = dtp.getIdiomas();
                         set<string>::iterator it;
                         for (it = idi->begin(); it != idi->end(); ++it) {
