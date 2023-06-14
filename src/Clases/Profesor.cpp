@@ -31,6 +31,7 @@ DTProfesor Profesor::getDTProfesor() {
         setIdi->insert((*it)->getNombreIdioma());
     }
     DTProfesor dt = DTProfesor(this->getNick(), this->getContrasenia(), this->getNombre(), this->getDescripcion(), this->getInstituto(),setIdi);
+    return dt;
     // Implementar la lógica para obtener un objeto DTProfesor con los datos del profesor
     // ...
 }
