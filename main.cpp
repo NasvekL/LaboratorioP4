@@ -302,7 +302,7 @@ int main(){
                             imprimir("Tipo de ejercicio no válido");
                         }
                         
-                        contCurso.altaEjercicio();
+                        contCurso.altaEjercicio(leccionSeleccionada);
                     }
 
                 }

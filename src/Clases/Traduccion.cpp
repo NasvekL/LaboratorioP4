@@ -8,7 +8,7 @@ string Traduccion::getSolucion() {
     return solucion;
 }
 
-bool Traduccion::esCorrecto(string solucion) {
+bool Traduccion::esCorrectoTraduccion(string solucion) {
     // Implementar la lógica para verificar si la solución es correcta
     return (this->solucion == solucion);
 }

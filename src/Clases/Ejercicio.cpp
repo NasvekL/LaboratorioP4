@@ -12,8 +12,8 @@ void Ejercicio:: setLetra(string letra){
     this->letra= letra;
 }
 
-void Ejercicio:: setLeccion(Leccion lec){
-    this->leccion = &lec;
+void Ejercicio:: setLeccion(Leccion* lec){
+    this->leccion = lec;
 }
 
 int Ejercicio:: getIdEjercicio(){
@@ -33,9 +33,5 @@ Leccion Ejercicio:: getLeccion(){
 }
 
 Ejercicio:: ~Ejercicio(){
-
-}
-
-Ejercicio:: Ejercicio(){
 
 }
