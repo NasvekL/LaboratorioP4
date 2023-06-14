@@ -175,6 +175,7 @@ int main(){
                     string cursoSeleccionado = entradaString();
                     DTLeccion leccion = crearDTLeccion();
                     contCurso.setDatosDeLeccion(leccion);
+                    
 
                     //LOGICA PARA AGREGAR EJERCICIOS
                     
