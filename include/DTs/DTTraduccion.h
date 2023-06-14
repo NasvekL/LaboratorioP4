@@ -1,5 +1,5 @@
 #ifndef DTTRADUCCION
-#define DTRADUCCION
+#define DTTRADUCCION
 #include "../Utils.h"
 #include "../Clases/Ejercicio.h"
 
@@ -16,7 +16,7 @@ class DTTraduccion{
         int getIdEjercicio();
         string getSolucion();
         //Create y destroy
-        ~DTTraduccion();
+        ~DTTraduccion() = default;
         DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion);
 };
 #endif

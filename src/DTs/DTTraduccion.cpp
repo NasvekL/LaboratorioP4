@@ -17,9 +17,6 @@ string DTTraduccion :: getLetra(){
     return letra;
 }
 
-DTTraduccion :: ~DTTraduccion(){
-}
-
 DTTraduccion :: DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion){
     this->idEjercicio = idEjercicio;
     this->letra = letra;

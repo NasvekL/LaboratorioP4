@@ -7,6 +7,8 @@
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTEstadisticaCurso.h"
 #include "../DTs/DTProfesor.h"
+#include "../DTs/DTTraduccion.h"
+#include "../DTs/DTRellenarPalabras.h"
 //#include "DTIdioma.h"??
 
 

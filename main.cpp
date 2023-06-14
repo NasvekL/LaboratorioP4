@@ -597,3 +597,39 @@ string entradaString(){
     escribirEnLog("U: " + entrada);
     return entrada;
 }
+
+
+
+
+
+
+//DATOS PRUEBA
+
+void ingresarIdiomas(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    contCurso.confirmarAltaIdioma("Ingles");
+    contCurso.confirmarAltaIdioma("Aleman");
+    contCurso.confirmarAltaIdioma("Portugues");
+}
+
+void ingresarUsuarios(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    //ESTUDIANTES
+    contUsuario.setDatoEstudiante(DTEstudiante("jpidiom","asdfg123","Juan Perez","Soy un apasionado del aprendizaje de idiomas","Argentina",DTFecha(15,7,1995)));
+    contUsuario.confirmarAltaUsuario();
+    contUsuario.setDatoEstudiante(DTEstudiante("marsilva","qwer456","Maria Silva","Como amante de los idiomas disfruto explorando nuevas formas de interactuar","Ecuador",DTFecha(28,2,1998)));
+    contUsuario.confirmarAltaUsuario();
+    contUsuario.setDatoEstudiante(DTEstudiante("pero12","789werty","Pedro Rodriguez","Soy un entuciaste del aprendizaje de idiomas","Peru",DTFecha(10,11,1994)));
+    contUsuario.confirmarAltaUsuario();
+    //Faltan mas...
+    //PROFESORES
+    set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Ingles"); i1->insert("Portugues");
+    contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
+    contUsuario.confirmarAltaUsuario(); delete i1;
+    set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Ingles"); i1->insert("Portugues");
+    contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
+    contUsuario.confirmarAltaUsuario(); delete i1;
+
+}
