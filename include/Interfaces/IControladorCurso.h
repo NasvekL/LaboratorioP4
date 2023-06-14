@@ -22,22 +22,23 @@ class IControladorCurso{
         //virtual IControladorCurso * getInstancia()= 0;
 
         //Getters virtuales
-        virtual int getIdsEjercicio()=0;
+        virtual int getIdEjercicio()=0;
         virtual Idioma* getIdioma(string nombre)= 0;
         virtual DTCurso getDatosDeCurso()= 0;
         virtual DTLeccion getDatosDeLeccion()= 0;
-        virtual string getDatoNombreDeProfesor()= 0;
+        virtual Profesor* getProfesor()= 0;
         virtual string getDatoIdioma()= 0;
-        virtual set<DTCurso*> getDatosPrevias()= 0;
-        virtual DTEjercicio getDatosEjercicio()= 0;
+        virtual map<string, DTCurso*>* getDatosPrevias()= 0;
         virtual Curso getCurso(string nombreCurso) = 0;
+        virtual DTRellenarPalabras getDatosRellenar()= 0;
+        virtual DTTraduccion getDatosTraduccion()= 0;
         virtual list<DTRellenarPalabras> getDatosRellenarPalabras() = 0;
         virtual list<DTTraduccion> getDatosTraduccion() = 0;
         //Setters virtuales
-        virtual int setIdsEjercicio (int id)=0;
+        virtual void setIdEjercicio (int id)=0;
         virtual void setDatosDeCurso(DTCurso datos)= 0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
-        virtual void setDatoNombreDeProfesor(string nombreProfesor)= 0;
+        virtual void setProfesor(Profesor profesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
         virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
         virtual void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos)= 0;
@@ -46,7 +47,7 @@ class IControladorCurso{
         virtual void agregarDatosTraduccion(DTTraduccion tradu) = 0;
 
         //Operaciones virtuales para modificar el set de cursos
-        virtual void altaEjercicio()= 0;
+        virtual void altaEjercicio(Leccion* lec)= 0;
         virtual bool altaCurso() = 0;
         virtual void altaLeccion(string curso) = 0;
         virtual void eliminarCurso(string nombreCurso)= 0;
@@ -59,7 +60,8 @@ class IControladorCurso{
         virtual void agregarEjercicio(DTEjercicio datos)= 0;
 
         //Operaciones virtuales para obtener información
-        virtual set<string> listarProfe()= 0;
+        virtual void seleccionarProfesor(string nick) = 0;
+        virtual void listarProfe()= 0;
         virtual DTEstadisticaCurso estadisticasCurso(string curso)= 0;
         virtual set<string> listarNombresDeCursos()= 0;
         virtual set<DTCurso> listarDTCursos()= 0;

@@ -4,7 +4,7 @@
 class DTCurso{
     private:
         string nombre;
-        set<DTCurso> previas;
+        set<string>* previas;
         bool habilitado;
         nivelDeDificultad nivel;
         string descripcion;
@@ -18,7 +18,7 @@ class DTCurso{
         //constructor destructor
         ~DTCurso();
         DTCurso();
-        DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion);
+        DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion, set<string>* previas);
 
 };
 #endif

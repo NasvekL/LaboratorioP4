@@ -12,10 +12,10 @@ ControladorCurso& ControladorCurso::getInstancia() {
 ControladorCurso::ControladorCurso(){
     datosDeCurso=NULL;
     datosDeLeccion=NULL;
-    datoNombreDeProfesor=NULL;
-    datoIdioma=NULL;
+    profesor = NULL;
     datosPrevias=NULL;
-    datosEjercicio=NULL;
+    datosRellenar=NULL;
+    datosTraducir=NULL;
     idEjercicio=0;
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
@@ -39,8 +39,8 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
-int ControladorCurso:: getIdsEjercicio (){
-    return idsEjercicio;
+int ControladorCurso:: getIdEjercicio (){
+    return idEjercicio;
 }
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
@@ -48,17 +48,21 @@ DTCurso ControladorCurso::getDatosDeCurso() {
 DTLeccion ControladorCurso::getDatosDeLeccion() {
     return *datosDeLeccion;
 }
-string ControladorCurso::getDatoNombreDeProfesor() {
-    return *datoNombreDeProfesor;
+Profesor* ControladorCurso::getProfesor(){
+    return profesor;
 }
+
 string ControladorCurso::getDatoIdioma() {
-    return *datoIdioma;
+    return datoIdioma;
 }
-set<DTCurso*> ControladorCurso::getDatosPrevias() {
-    return *datosPrevias;
+map<string,DTCurso*>* ControladorCurso::getDatosPrevias() {
 }
-DTEjercicio ControladorCurso::getDatosEjercicio() {
-    return *datosEjercicio;
+DTRellenarPalabras ControladorCurso::getDatosRellenar() {
+    return *datosRellenar
+;
+}
+DTTraduccion ControladorCurso::getDatosTraduccion() {
+    return *datosTraducir;
 }
 
 list<DTRellenarPalabras> ControladorCurso::getDatosRellenarPalabras();{
@@ -72,8 +76,8 @@ list<DTTraduccion> ControladorCurso::getDatosTraduccion();{
 
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
-void ControladorCurso:: setIdsEjercicio(int id){
-    idsEjercicio = id;
+void ControladorCurso:: setIdEjercicio(int id){
+    idEjercicio = id;
 }
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     datosDeCurso = &datos;
@@ -81,22 +85,23 @@ void ControladorCurso::setDatosDeCurso(DTCurso datos) {
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
     datosDeLeccion = &datos;
 }
-void ControladorCurso::setDatoNombreDeProfesor(string nombreProfesor) {
-    datoNombreDeProfesor = &nombreProfesor;
+void ControladorCurso::setProfesor(Profesor profesor) {
+    Profesor* p = &profesor;
+    this->profesor = p;
 }
 void ControladorCurso::setDatoIdioma(string idioma) {
-    this->datoIdioma = &idioma;
+    this->datoIdioma = idioma;
 }
 void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
-    datosPrevias = &previas;
+
 }
 //Precondicion: solucion de traduccion viene como null
 void ControladorCurso::setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos) {
-    datosEjercicio = &datos;
+    datosRellenar = &datos;
 }
 //Precondicion: solucion de compPal viene como null
 void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
-    datosEjercicio = &datos;
+    datosTraducir = &datos;
 }
 
 
@@ -146,10 +151,20 @@ void ControladorCurso::altaLeccion(string curso){
     //Hacer un if list<DTCompPalabras> != NULL creo y asocio
     //Analogo para list<DTTraducir>
 }
-void AltaEjercicio(){
-
+void ControladorCurso::altaEjercicio(Leccion* lec){
+ if(datosRellenar!=NULL){
+    DTRellenarPalabras dt = getDatosRellenar();
+    Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
+    lec->addEjercicio(ej);
+    ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
 }
-
+else{
+    DTTraduccion dt = getDatosTraduccion();
+    Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
+    lec->addEjercicio(ej);
+    ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+}
+}
 
 //Operaciones para modificar el set de ejercicios
 void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
@@ -165,7 +180,13 @@ void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
 
 //Operaciones para obtener informacion
 
-set<string> ControladorCurso::listarProfe() {
+void ControladorCurso::seleccionarProfesor(string nick){
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Profesor p = cu.encontrarProfesor(nick);
+    setProfesor(p);
+}
+
+void ControladorCurso::listarProfe() {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     cu.listarProfe();
 }
@@ -181,9 +202,11 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
     // Implementación pendiente
     return set<DTCurso>();
 }
+
 set<string> ControladorCurso::listarIdiomasProfesor() {
-    // Implementación pendiente
-    return set<string>();
+    Profesor* p = getProfesor();
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    cu.listarIdiomasProfesor(*p);
 }
 void ControladorCurso::listarIdiomas(){
     int a=1;
@@ -250,17 +273,17 @@ void ControladorCurso::limpiarDatos() {
     if(datosDeLeccion != nullptr){
         delete datosDeLeccion;
     }
-    if(datoNombreDeProfesor != nullptr){
-        delete datoNombreDeProfesor;
-    }
-    if(datoIdioma != nullptr){
-        delete datoIdioma;
+    if(profesor != nullptr){
+        delete profesor;
     }
     if(datosPrevias != nullptr){
         delete datosPrevias;
     }
-    if(datosEjercicio != nullptr){
-        delete datosEjercicio;
+    if(datosRellenar != nullptr){
+        delete datosRellenar;
+    }
+    if(datosTraducir!= nullptr){
+        delete datosTraducir;
     }
 }
 

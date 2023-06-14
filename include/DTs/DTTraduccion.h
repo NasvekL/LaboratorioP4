@@ -18,7 +18,7 @@ class DTTraduccion{
         int getIdEjercicio();
         string getSolucion();
         //Create y destroy
-        ~DTTraduccion() = default;
+        ~DTTraduccion();
         DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion, string tipo);
 };
 #endif

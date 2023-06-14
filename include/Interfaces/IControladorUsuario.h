@@ -38,8 +38,8 @@ class IControladorUsuario{
     virtual void seleccionarUsuario(std::string nickname) = 0;
     virtual std::list<DTEjercicio> ejerciciosNoAprobados(std::string curso) = 0;
     virtual std::list<std::string> cursosInscriptosSinAprobar(std::string nick) = 0;
-    virtual std::set<std::string> listarProfe() = 0;
-    virtual std::list<std::string> listarIdiomasProfesor(DTProfesor p) = 0;
+    virtual void listarProfe() = 0;
+    virtual void listarIdiomasProfesor(Profesor p) = 0;
     virtual Profesor encontrarProfesor(std::string nick) = 0;
     virtual void confirmarAltaUsuario() = 0;
     virtual void deleteDataIngresado() = 0;

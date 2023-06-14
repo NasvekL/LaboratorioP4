@@ -2,6 +2,9 @@
 #define CONTROLADORCURSO
 #include "../Utils.h"
 #include "../Clases/Curso.h"
+#include "../Clases/RellenarPalabras.h"
+#include "../Clases/Traduccion.h"
+#include "../Clases/Ejercicio.h"
 #include "../DTs/DTCurso.h"
 #include "../DTs/DTLeccion.h"
 #include "../DTs/DTEjercicio.h"
@@ -21,15 +24,16 @@ class ControladorCurso: public IControladorCurso{
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
 
-        int idsEjercicio; // idEjercicioActual
+        int idEjercicio; // idEjercicioActual
 
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
         DTLeccion* datosDeLeccion;
-        string* datoNombreDeProfesor;
-        string* datoIdioma;
-        set<DTCurso*>* datosPrevias;
-        DTEjercicio* datosEjercicio;
+        Profesor* profesor;
+        string datoIdioma;
+        map<string, DTCurso*>* datosPrevias;
+        DTRellenarPalabras* datosRellenar;
+        DTTraduccion* datosTraducir;
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
         
@@ -54,19 +58,21 @@ class ControladorCurso: public IControladorCurso{
         list<DTRellenarPalabras> getDatosRellenarPalabras();
         list<DTTraduccion> getDatosTraduccion();
         string getDatoNombreDeProfesor();
+        Profesor* getProfesor();
         string getDatoIdioma();
-        set<DTCurso*> getDatosPrevias();
-        DTEjercicio getDatosEjercicio();
+        map<string ,DTCurso*>* getDatosPrevias();
+        DTRellenarPalabras getDatosRellenar();
+        DTTraduccion getDatosTraduccion();
         Curso getCurso(string nombreCurso);
         //Setters
-        void setIdsEjercicio(int id);
+        void setIdEjercicio(int id);
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
-        void setDatoNombreDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
+        void setProfesor(Profesor profesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
-        void setDatosEjercicioTraduccion(DTTRADUCCION datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
+        void setDatosEjercicioTraduccion(DTTraduccion datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
         void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal);
         void agregarDatosTraduccion(DTTraduccion tradu);
 
@@ -74,7 +80,7 @@ class ControladorCurso: public IControladorCurso{
         //Operaciones para modificar el set de cursos
         bool altaCurso();
         void altaLeccion(string curso);
-        void altaEjercicio();
+        void altaEjercicio(Leccion* lec);
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
 
@@ -85,7 +91,8 @@ class ControladorCurso: public IControladorCurso{
         
 
         //Operaciones para obtener informacion
-        set<string> listarProfe();
+        void seleccionarProfesor(string nick);
+        void listarProfe();
         DTEstadisticaCurso estadisticasCurso(string curso);
         set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();

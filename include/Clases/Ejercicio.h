@@ -17,7 +17,7 @@ class Ejercicio{
         void setIdEjercicio(int idEjercicio);
         void setDescripcion(string descripcion);
         void setLetra(string letra);
-        void setLeccion(Leccion lec);
+        void setLeccion(Leccion* lec);
         //getters
         int getIdEjercicio();
         string getDescripcion();
@@ -25,9 +25,9 @@ class Ejercicio{
         Leccion getLeccion();
         //constructor y destructor
         ~Ejercicio();
-        Ejercicio();
         //operaciones
-        virtual bool esCorrecto(string solucion)=0;
+        virtual bool esCorrectoRellenarPal(list<string> solucion)=0;
+        virtual bool esCorrectoTraduccion(string solucion)=0;
         void aumentarProgreso(string estudiante);
 };
 

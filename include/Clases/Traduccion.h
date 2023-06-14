@@ -9,9 +9,10 @@ class Traduccion:public Ejercicio{
 
     public:
         string getSolucion();
-        bool esCorrecto(string solucion);
+        bool esCorrectoTraduccion(string solucion);
+        bool esCorrectoRellenarPal(list<string> solucion);
         void aumentarProgreso(string estudiante);
-        Traduccion(string solucion,int idEjercicio,string descripcion,string letra);
+        Traduccion(string solucion,int idEjercicio,string descripcion,string letra,Leccion* lec);
         ~Traduccion();
 };
 

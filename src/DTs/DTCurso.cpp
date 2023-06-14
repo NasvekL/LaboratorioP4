@@ -26,9 +26,10 @@ DTCurso :: DTCurso(){
 
 }
 
-DTCurso :: DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion){
+DTCurso :: DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion, set<string>* previas){
     this->nombre = nombre;
     this->habilitado = habilitado;
     this->nivel = nivel;
     this->descripcion = descripcion;
+    this->previas = previas;
 }
