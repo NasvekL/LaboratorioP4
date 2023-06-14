@@ -15,7 +15,6 @@ class IControladorCurso{
     private:
         
     public:
-        public:
         // Métodos públicos virtuales
         //virtual ~IControladorCurso()= 0;
         //virtual IControladorCurso * getInstancia()= 0;

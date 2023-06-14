@@ -16,7 +16,7 @@
 
 class ControladorUsuario : public IControladorUsuario{
     private:
-        map<string,Usuario>* usuarios;
+        map<string,Usuario*> usuarios;
         
         //Pseudoatributos...?
 

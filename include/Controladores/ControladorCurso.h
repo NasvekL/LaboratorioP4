@@ -42,7 +42,7 @@ class ControladorCurso: public IControladorCurso{
         static ControladorCurso& getInstancia();
         ~ControladorCurso();
 
-
+        
     
         //Getters
         Idioma getIdioma(string nombre);
@@ -68,6 +68,7 @@ class ControladorCurso: public IControladorCurso{
         //Operaciones para modificar el set de cursos
         bool altaCurso();
         void altaLeccion(string curso);
+        void altaEjercicio();
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
 

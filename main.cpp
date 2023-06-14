@@ -20,6 +20,7 @@ DTProfesor crearDTProfesor();
 DTRellenarPalabras crearDTRellenarPalabras();
 DTTraduccion crearDTTraduccion();
 //DTLeccion crearDTLeccion();
+//DTEjercicio crearDTEjercicio();
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -28,6 +29,7 @@ void presionaParaContinuar();
 void limpiarLog();
 void imprimir(string texto);
 void imprimir(string texto, string color);
+list<string> separarString(const string& str, char delimiter) ;
 
 
 //Desplegar menu por consola
@@ -80,6 +82,7 @@ int main(){
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
 
 
+
     int opcion = 1;
     while(opcion != 0){
         opcion = menuPrincipal();
@@ -127,6 +130,7 @@ int main(){
                         imprimir(dte.getNombre());
                         imprimir(dte.getDescripcion());
                         imprimir(dte.getPais());
+                        presionaParaContinuar();
                     } 
                     else{ 
                         contUsuario.seleccionarUsuario(nick);
@@ -139,6 +143,7 @@ int main(){
                         for (it = idi->begin(); it != idi->end(); ++it) {
                           imprimir(*it);
                         }
+                        presionaParaContinuar();
                     }        
                     break;
             }
@@ -155,18 +160,38 @@ int main(){
             }
             case 4:{
                     //Consultar idiomas
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
                     contUsuario.listarIdiomas();
                     presionaParaContinuar();
                     break;
             }
             case 5:{
-                    //Alta de curso
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
-                    ContCurso.listarProfe();
-                    esperar(7);
+                    //Alta de curso:
+
+                    //list<string> profes= contCurso.listarProfe();
+                    //for each profesor in profes
+                        //imprimir(profesor);
+                    //imprimir("Ingrese nickname de profesor que dictara el cursso:");
+                    //string nick = entradaString();
+                    //contCurso.seleccionarProfesor(nick);
+                    //Obtener datos del curso
+                    //contCurso.setDatosDeCurso(datos);
+                    //list<String> idiomasProfe = contCurso.listarIdiomasProfesor();
+                    //for each idioma in idiomasProfe
+                        //imprimir(idioma);
+                    //imprimir("Ingrese idioma del curso:");
+                    //string idioma = entradaString();
+                    //list<string> = contCurso.listarNombresDeCursosHabilitados();
+                    //for each curso in cursos
+                        //imprimir(curso);
+                    //imprimir("Para agregar una previa, ingrese el nombre del curso previo. Para dejar de agregar previas, ingrese 0");
+                    //string previa = entradaString();
+                    //while (previa != "0"){
+                        //contCurso.setPrevia(previa);
+                        //imprimir("Para agregar una previa, ingrese el nombre del curso previo. Para dejar de agregar previas, ingrese 0");
+                        //previa = entradaString();
+                    //Agregar lecciones
+                    //Agregar ejercicios
+                    //contCurso.altaCurso();
                     break;
             }
             case 6:{
@@ -225,19 +250,20 @@ int main(){
 
                     imprimir("Elija una lección:");
                     int lecSelec = entradaInt();    
-                    Leccion leccionSeleccionada; 
+                    Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
                         if (leccion.getNumero() == lecSelec) {
-                            leccionSeleccionada = leccion;
+                            leccionSeleccionada = &leccion;
                             break;
                         }
                     }
 
-                    imprimir("Ingrese el tipo de ejercicio (completar/traduccion):");
-                    string tipo = entradaString();
-
-
-
+                    if (leccionSeleccionada != nullptr) {
+                        DTEjercicio ejercicio = crearDTEjercicio();
+                        contCurso.altaEjercicio(ejercicio);
+                       
+                    
+                    }
 
                 }
 
@@ -419,6 +445,52 @@ DTLeccion crearDTLeccion(){
     int numLec = entradaInt();
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
+}
+/*
+DTEjercicio crearDTEjercicio(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    
+    imprimir("Ingrese la descripción ");
+    string descripcion = entradaString();            
+    imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+    string tipo = entradaString();         
+                        
+    if (tipo == "completar palabras") {
+        imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+        string frase = entradaString();                            
+        imprimir("Ingrese las soluciones separadas por comas");
+        string soluciones = entradaString();
+        list<string> solucionesList = separarString(soluciones, ',');                                                      
+        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo      
+        return ejer;           
+
+    else if (tipoEjercicio == "traduccion") {
+        imprimir("Ingrese la frase");
+        string fraseATraducir = entradaString();
+        imprimir("Ingrese la traducción");
+        string traduccion = entradaString();
+        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo  
+        return ejer;
+
+    } else {
+        imprimir("Tipo de ejercicio no válido");
+        return 
+    }
+                    
+
+}*/
+list<string> separarString(const string& str, char delimiter) {
+    list<string> palabras;
+    stringstream ss(str);
+    string unionDePal;
+
+    while (getline(ss, unionDePal, delimiter)) {
+        palabras.push_back(unionDePal);
+    }
+
+    return palabras;
+}
 }
 
 DTRellenarPalabras crearDTRellenarPalabras(){
