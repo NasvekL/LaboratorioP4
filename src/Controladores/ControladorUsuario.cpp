@@ -161,7 +161,6 @@ void ControladorUsuario::confirmarAltaUsuario() {
         set<Idioma*> Idiomas;
         set<string>* Sidiomas = datoProfesor->getIdiomas();
         auto it = Sidiomas->begin();
-        cout << *it << endl;
         for (it; it!=Sidiomas->end(); ++it){
             string current = *it;
             Idioma idiom = cc.getIdioma(current);
