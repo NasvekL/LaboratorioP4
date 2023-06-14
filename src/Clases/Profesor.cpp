@@ -27,6 +27,9 @@ list<DTNotificacion> Profesor::verNotificaciones() {
 
 DTProfesor Profesor::getDTProfesor() {
     set<string>* setIdi = new set<string>();
+    if(idiomas.size() > 0){
+        cout << "no ta vacio";
+    }
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it) {
         setIdi->insert((*it)->getNombreIdioma());
     }
