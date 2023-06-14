@@ -469,7 +469,9 @@ DTEjercicio crearDTEjercicio(){
     imprimir("Ingrese la descripción ");
     string descripcion = entradaString();            
     imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
-    string tipo = entradaString();         
+    string tipo = entradaString(); 
+    imprimir("Ingrese el id de ejercicio :");
+    int id = entradaInt();              
                         
     if (tipo == "completar palabras") {
         imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
@@ -477,7 +479,7 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese las soluciones separadas por comas");
         string solSinSep = entradaString();
         list<string> soluciones = separarString(solSinSep, ',');                                                      
-        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, int, idEjercicio, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
+        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
         return ejer;           
 
     else if (tipoEjercicio == "traduccion") {
@@ -485,7 +487,7 @@ DTEjercicio crearDTEjercicio(){
         string fraseATraducir = entradaString();
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
-        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, int idEjercicio, traduccion,tipo);
+        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
         return ejer;
 
     } else {
