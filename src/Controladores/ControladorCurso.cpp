@@ -17,6 +17,9 @@ ControladorCurso::ControladorCurso(){
     datosRellenar=NULL;
     datosTraducir=NULL;
     idEjercicio=0;
+    //datosTraduccion = NULL; ?????
+    //datosRellenarPalabras = NULL;
+
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
@@ -65,12 +68,12 @@ DTTraduccion ControladorCurso::getDatosTraduccion() {
     return *datosTraducir;
 }
 
-list<DTRellenarPalabras> ControladorCurso::getDatosRellenarPalabras();{
+list<DTRellenarPalabras> ControladorCurso::getDatosMuchasRellenarPalabras(){
     return datosRellenarPalabras;
 }
 
 
-list<DTTraduccion> ControladorCurso::getDatosTraduccion();{
+list<DTTraduccion> ControladorCurso::getDatosMuchasTraducciones(){
     return datosTraduccion;
 }
 
@@ -144,13 +147,26 @@ void ControladorCurso::altaLeccion(string curso){
     cur->agregarLeccion(nuevaLec);
     
 
+    //Asocio a sus ejercicios
+    for (int i = 1; i <= datosDeLeccion->getCantidadDeEjercicios(); i++){
+        if(datosRellenarPalabras != nullptr){
+            DTRellenarPalabras dt = datosRellenarPalabras.front();
+            datosRellenarPalabras.pop_front();
+            Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
+            nuevaLec->addEjercicio(ej);
+            ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
 
-
-
-
-    //Hacer un if list<DTCompPalabras> != NULL creo y asocio
-    //Analogo para list<DTTraducir>
+        }else{
+            DTTraduccion dt = datosTraduccion.front();
+            datosTraduccion.pop_front();
+            Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
+            nuevaLec->addEjercicio(ej);
+            ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+        }    
+    }
 }
+
+
 void ControladorCurso::altaEjercicio(Leccion* lec){
  if(datosRellenar!=NULL){
     DTRellenarPalabras dt = getDatosRellenar();
