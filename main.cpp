@@ -78,6 +78,7 @@ int main(){
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
 
 
+
     int opcion = 1;
     while(opcion != 0){
         opcion = menuPrincipal();
@@ -169,18 +170,19 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    /*imprimir("Cursos no habilitados disponibles:")
+                    imprimir("Cursos no habilitados disponibles:");
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
                     DTLeccion leccion = crearDTLeccion();
                     contCurso.setDatosDeLeccion(leccion);
+                    
 
                     //LOGICA PARA AGREGAR EJERCICIOS
                     
                     contCurso.altaLeccion();
 
-                */
+                
                 break;
             }
             case 7:{
@@ -207,19 +209,45 @@ int main(){
 
                     imprimir("Elija una lección:");
                     int lecSelec = entradaInt();    
-                    Leccion leccionSeleccionada; 
+                    Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
                         if (leccion.getNumero() == lecSelec) {
-                            leccionSeleccionada = leccion;
+                            leccionSeleccionada = &leccion;
                             break;
                         }
                     }
 
-                    imprimir("Ingrese el tipo de ejercicio (completar/traduccion):");
-                    string tipo = entradaString();
+                    if (leccionSeleccionada != nullptr) {
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+                        string tipo = entradaString();
+                        imprimir("Ingrese la descripción ");
+                        string descripcion = entradaString();
+                         
+                        if (tipo == "completar palabras") {
+                            imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+                            string frase = entradaString();                            
+                            imprimir("Ingrese las soluciones separadas por comas");
+                            string soluciones = entradaString();// esto esta mal, tengo que cortar el string cuando hayan comas y hacerlo eun set string                                                        
+                            RellenarPalabras* ejercicioCompleta = new RellenarPalabras(solucionesList, descripcion, tipo);                             
+                            ejercicioCompleta->setLeccion(*leccionSeleccionada);//mal
+                            contUsuario.altaEjercicio();// esta tendria que agregarla a la coleccion de ejercicion en leccion y hacer la de arriba
+                            
 
+                        else if (tipoEjercicio == "traduccion") {
+                            imprimir("Ingrese la frase");
+                            string fraseATraducir = entradaString();
+                            imprimir("Ingrese la traducción");
+                            string traduccion = entradaString();
+                            Traduccion* ejercicioTraduccion = new Traduccion(traduccion, descripcion, tipoEjercicio);
+                            ejercicioTraduccion->setLeccion(*leccionSeleccionada);
+                            contUsuario.altaEjercicio();
 
-
+                        } else {
+                            imprimir("Tipo de ejercicio no válido");
+     
+                        }
+                    
+                    }
 
                 }
 
@@ -382,7 +410,7 @@ DTProfesor crearDTProfesor(){
     return prof;
 }
 
-/*DTLeccion crearDTLeccion(){
+DTLeccion crearDTLeccion(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
@@ -392,12 +420,11 @@ DTProfesor crearDTProfesor(){
     string objetivo = entradaString();
     imprimir("Ingrese la cantidad de ejercicios que desea agregar:");
     int cantEjs = entradaInt();
-    
-
-
-
-
-}*/
+    imprimir("Ingrese el numero de la leccion:"); //Tenemos como precondicion que son ingresadas en orden correcto
+    int numLec = entradaInt();
+    DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
+    return lec;
+}
 
 bool quiereContinuar(){
     imprimir("1: Agregar otro idioma");

@@ -28,7 +28,7 @@ ControladorCurso::~ControladorCurso() {
 }
 //Getters
 Curso ControladorCurso::getCurso(string nick) {
-
+    //return cursos.find(nick);
 }
 Idioma ControladorCurso::getIdioma(string nombre){
     return idiomas[nombre];
@@ -99,6 +99,7 @@ void ControladorCurso::habilitarCurso(string nombreCurso) {
 
 
 
+
 //Operaciones para modificar el set de idiomas
 bool ControladorCurso::confirmarAltaIdioma(string idioma) {
     // Agregar elementos al mapa
@@ -117,7 +118,9 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 
 void ControladorCurso::altaLeccion(){
 }
+void AltaEjercicio(){
 
+}
 
 
 //Operaciones para modificar el set de ejercicios
