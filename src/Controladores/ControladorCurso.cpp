@@ -38,7 +38,7 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
-set<int> getIdsEjercicio (){
+int getIdsEjercicio (){
     return idsEjercicio;
 }
 DTCurso ControladorCurso::getDatosDeCurso() {
@@ -63,6 +63,9 @@ DTEjercicio ControladorCurso::getDatosEjercicio() {
 
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
+void ControladorCurso:: setIdsEjercicio(int id){
+    idsEjercicio = id;
+}
 void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     datosDeCurso = &datos;
 }

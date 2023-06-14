@@ -269,10 +269,18 @@ int main(){
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        DTEjercicio ejercicio = crearDTEjercicio();
-                        if(ejercicio.getTipo()=="traduccion")
-                        contCurso.setDatosEjercicioTraduccion(ejercicio);
-                        else contCurso.setDatosEjercicioCompletarPalabras(ejercicio);
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+                        string tipo = entradaString();
+                        if (tipo == "completar ") {
+                            DTRellenarPalabras rell = crearDTRellenarPalabras();
+                            contCurso.setDatosEjercicioCompletarPalabras(ejercicio);
+                        }else if (tipo == "traduccion") {                            
+                            DTTraduccion tradu = crearDTTraduccion();
+                            contCurso.setDatosEjercicioTraduccion(ejercicio);
+                        } else {
+                            imprimir("Tipo de ejercicio no válido");
+                        }
+                        
                         contCurso.altaEjercicio();
                     }
 
@@ -461,7 +469,7 @@ DTLeccion crearDTLeccion(){
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
 }
-
+/*
 DTEjercicio crearDTEjercicio(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
@@ -498,7 +506,7 @@ DTEjercicio crearDTEjercicio(){
         DTEjercicio ejer = crearDTEjercicio();
         return ejer;
     }   
-}
+}*/
 list<string> separarString(const string& str, char delimiter) {
     list<string> palabras;
     stringstream ss(str);
@@ -513,11 +521,40 @@ list<string> separarString(const string& str, char delimiter) {
 
 
 DTRellenarPalabras crearDTRellenarPalabras(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
+    imprimir("Ingrese la descripción ");
+    string descripcion = entradaString();            
+    string tipo = "completar";   
+    imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+    string frase = entradaString();                            
+    imprimir("Ingrese las soluciones separadas por comas");
+    string solSinSep = entradaString();
+    list<string> soluciones = separarString(solSinSep, ',');   
+    int id = contCurso.getIdsEjercicio() +1;
+    DTRellenarPalabras ejer =  DTRellenarPalabras( descripcion, frase, id, soluciones,tipo) ;     //el id me lo pasa? me aseguro que no exxista?
+    contCurso.setIdsEjercicio( id) ;
+    return ejer;           
+
 
 }
 
 DTTraduccion crearDTTraduccion(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    
+    imprimir("Ingrese la descripción ");
+    string descripcion = entradaString();            
+    string tipo = "traduccion";                             
+    imprimir("Ingrese la frase");
+    string fraseATraducir = entradaString();
+    imprimir("Ingrese la traducción");
+    string traduccion = entradaString();
+    int id = contCurso.getIdsEjercicio() +1;
+    DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, id, traduccion,tipo);
+    contCurso.setIdsEjercicio( id) ;
+    return ejer;
 
 }
 

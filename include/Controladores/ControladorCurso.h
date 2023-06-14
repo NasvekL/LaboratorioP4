@@ -21,7 +21,7 @@ class ControladorCurso: public IControladorCurso{
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
 
-        set<int> idsEjercicio;
+        int idsEjercicio;
 
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
@@ -47,7 +47,7 @@ class ControladorCurso: public IControladorCurso{
     
         //Getters
         
-        set<int> getIdsEjercicio ();
+        int getIdsEjercicio ();
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
@@ -57,6 +57,7 @@ class ControladorCurso: public IControladorCurso{
         DTEjercicio getDatosEjercicio();
         Curso getCurso(string nombreCurso);
         //Setters
+        void setIdsEjercicio(int id);
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         void setDatoNombreDeProfesor(string nombreProfesor); //void seleccionProfesor(string nick);
