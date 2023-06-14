@@ -15,13 +15,13 @@
 
 class ControladorCurso: public IControladorCurso{
     private:
-        map<string, Curso> cursos;
+        map<string, Curso*> cursos;
         map<string, Idioma*> idiomas;//Es extraño que el controlador de curso controle idiomas. Pero bueno
         
         //Pseudoatributos...?
         map<int, Ejercicio*> ejercicios;//el objeto estaria dentro de la leccion dentro del set de lecciones de cada curso
 
-        set<int> idsEjercicio;
+        int idEjercicio; // idEjercicioActual
 
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
@@ -46,8 +46,8 @@ class ControladorCurso: public IControladorCurso{
         
     
         //Getters
-        
-        set<int> getIdsEjercicio ();
+
+        int getIdEjercicio ();
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();

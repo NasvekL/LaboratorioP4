@@ -16,6 +16,7 @@ ControladorCurso::ControladorCurso(){
     datoIdioma=NULL;
     datosPrevias=NULL;
     datosEjercicio=NULL;
+    idEjercicio=0;
 }
 //Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
@@ -38,8 +39,8 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
-set<int> getIdsEjercicio (){
-    return idsEjercicio;
+int ControladorCurso::getIdEjercicio (){
+    return idEjercicio++;
 }
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
@@ -98,10 +99,7 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
     // Implementación pendiente
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
-     // Buscar el objeto con el nombre buscado
-
-    
-
+    cursos.find(nombreCurso)->second->setHabilitado(true);
 }
 
 

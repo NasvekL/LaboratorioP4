@@ -22,7 +22,7 @@ class IControladorCurso{
         //virtual IControladorCurso * getInstancia()= 0;
 
         //Getters virtuales
-        virtual set<int> getIdsEjercicio()=0;
+        virtual int getIdEjercicio()=0;
         virtual Idioma* getIdioma(string nombre)= 0;
         virtual DTCurso getDatosDeCurso()= 0;
         virtual DTLeccion getDatosDeLeccion()= 0;

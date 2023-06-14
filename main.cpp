@@ -281,6 +281,9 @@ int main(){
                 break;
             }
             case 8:{
+                contCurso.listarCursosNoHabilitados();
+                string curso = entradaString();
+                contCurso.habilitarCurso(curso);
                 //Habilitar curso
                 //interfazCurso->habilitarCurso();
                 break;
