@@ -300,6 +300,8 @@ int main(){
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
+                        imprimir("Ejercicio creado", VERDE);
+                        presionaParaContinuar();
                     }
 
                 }
