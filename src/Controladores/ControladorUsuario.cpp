@@ -66,7 +66,7 @@ void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
     datoEstudiante = new DTEstudiante(dato.getNickname(),dato.getContrasenia(),dato.getNombre(),dato.getDescripcion(),dato.getPais(),dato.getNacimiento()); // Asignar una copia del objeto al puntero}
 }
 void ControladorUsuario::setDatoProfesor(DTProfesor dato){
-    datoProfesor = new DTProfesor(dato); // Asignar una copia del objeto al puntero
+    datoProfesor = new DTProfesor(dato.getNickname(),dato.getContrasenia(),dato.getNombre(),dato.getDescripcion(),dato.getInstituto(),dato.getIdiomas()); // Asignar una copia del objeto al puntero
 }
 list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // Implementar la lógica para listar los profesores sin contraseña
@@ -154,6 +154,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
     if (datoEstudiante!=NULL){
         Estudiante *e = new Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         usuarios.insert(std::make_pair(e->getNick(), e));
+        delete datoEstudiante;
         datoEstudiante = NULL;
     }
     else if (datoProfesor!=NULL){
@@ -168,6 +169,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
         }
         Profesor* p = new Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         usuarios.insert(std::make_pair(p->getNick(), p));
+        delete datoProfesor;
         datoProfesor = NULL;
     }
     else{
