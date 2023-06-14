@@ -132,23 +132,23 @@ int main(){
                     if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                         contUsuario.seleccionarUsuario(nick);
                         DTEstudiante dte = contUsuario.getDatoEstudiante();
-                        imprimir("Nombre", AMARILLO);
-                        imprimir(dte.getNombre());
-                        imprimir("Descripcion", AMARILLO);
-                        imprimir(dte.getDescripcion());
-                        imprimir("Pais", AMARILLO);
-                        imprimir(dte.getPais());
+                        //imprimir("Nombre", AMARILLO);
+                        imprimir("Nombre", AMARILLO + dte.getNombre());
+                        //imprimir("Descripcion", AMARILLO);
+                        imprimir("Descripcion", AMARILLO + dte.getDescripcion());
+                        //imprimir("Pais", AMARILLO);
+                        imprimir("Pais", AMARILLO + dte.getPais());
                         presionaParaContinuar();
                     } 
                     else{ 
                         contUsuario.seleccionarUsuario(nick);
                         DTProfesor dtp = contUsuario.getDatoProfesor();
-                        imprimir("Nombre", AMARILLO);
-                        imprimir(dtp.getNombre());
-                        imprimir("Descripcion", AMARILLO);
-                        imprimir(dtp.getDescripcion());
-                        imprimir("Instituto", AMARILLO);
-                        imprimir(dtp.getInstituto());
+                        //imprimir("Nombre", AMARILLO);
+                        imprimir("Nombre", AMARILLO + dtp.getNombre());
+                        //imprimir("Descripcion", AMARILLO);
+                        imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
+                        //imprimir("Instituto", AMARILLO);
+                        imprimir("Instituto", AMARILLO + dtp.getInstituto());
                         imprimir("Idiomas", AMARILLO);
                         set<string>* idi = dtp.getIdiomas();
                         set<string>::iterator it;
@@ -161,10 +161,10 @@ int main(){
             }
             case 3:{
                     //Alta idioma
-                    imprimir("Ingrese idioma:");
+                    imprimir("Ingrese idioma:", AMARILLO);
                     string idioma = entradaString();
                     if(contCurso.confirmarAltaIdioma(idioma)==false)
-                        imprimir("Ya existe el idioma", AMARILLO);
+                        imprimir("Ya existe el idioma", ROJO);
                     else
                         imprimir("Idioma creado", VERDE);
                     presionaParaContinuar();
@@ -264,14 +264,14 @@ int main(){
                 //interfazCurso->agregarEjercicio();
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                imprimir ( "Cursos:" );
+                imprimir ( "Cursos:", AMARILLO );
                 contCurso.listarCursosNoHabilitados();
                 
-                imprimir("Elija un curso:");
+                imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
                 Curso cur = contCurso.getCurso(cursoSelec);
 
-                imprimir("Lecciones del curso:");
+                imprimir("Lecciones del curso:", AMARILLO);
                 list<Leccion*> lecciones = cur.getLecciones();
 
                 if (!lecciones.empty()) {
@@ -281,7 +281,7 @@ int main(){
                         i++;
                     }
 
-                    imprimir("Elija una lección:");
+                    imprimir("Elija una lección:", AMARILLO);
                     int lecSelec = entradaInt();    
                     Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
@@ -292,7 +292,7 @@ int main(){
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):, AMARILLO");
                         string tipo = entradaString();
                         if (tipo == "completar ") {
                             DTRellenarPalabras rell = crearDTRellenarPalabras();
@@ -301,7 +301,7 @@ int main(){
                             DTTraduccion tradu = crearDTTraduccion();
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
-                            imprimir("Tipo de ejercicio no válido");
+                            imprimir("Tipo de ejercicio no válido", ROJO);
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
@@ -322,6 +322,12 @@ int main(){
             }
             case 9:{
                 //Eliminar curso
+                imprimir("Cursos disponibles:", AMARILLO);
+                contCurso.listarCursos();
+                imprimir("Seleccione el curso que desea eliminar:");
+                string cursoSeleccionado = entradaString();
+
+
                 //interfazCurso->eliminarCurso();
                 break;
             }
@@ -595,12 +601,12 @@ DTRellenarPalabras crearDTRellenarPalabras(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
-    imprimir("Ingrese la descripción ");
+    imprimir("Ingrese la descripción ", AMARILLO);
     string descripcion = entradaString();            
     string tipo = "completar";   
-    imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+    imprimir("Ingrese la frase (utilice --- para los espacios a completar)", AMARILLO);
     string frase = entradaString();                            
-    imprimir("Ingrese las soluciones separadas por comas");
+    imprimir("Ingrese las soluciones separadas por comas", AMARILLO);
     string solSinSep = entradaString();
     list<string> soluciones = separarString(solSinSep, ',');   
     int id = contCurso.getIdEjercicio() +1;
@@ -615,12 +621,12 @@ DTTraduccion crearDTTraduccion(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
-    imprimir("Ingrese la descripción ");
+    imprimir("Ingrese la descripción ", AMARILLO);
     string descripcion = entradaString();            
     string tipo = "traduccion";                             
-    imprimir("Ingrese la frase");
+    imprimir("Ingrese la frase", AMARILLO);
     string fraseATraducir = entradaString();
-    imprimir("Ingrese la traducción");
+    imprimir("Ingrese la traducción", AMARILLO);
     string traduccion = entradaString();
     int id = contCurso.getIdEjercicio() +1;
     contCurso.setIdEjercicio(id);
