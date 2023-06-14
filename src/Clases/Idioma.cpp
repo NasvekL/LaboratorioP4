@@ -37,6 +37,5 @@ Idioma::~Idioma() {
 }
 
 Idioma::Idioma(string nombreIdioma) {
-    this->observers = NULL;
     this->nombreIdioma = nombreIdioma;
 }
