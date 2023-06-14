@@ -606,11 +606,6 @@ string entradaString(){
     return entrada;
 }
 
-
-
-
-
-
 //DATOS PRUEBA
 
 void ingresarIdiomas(){
