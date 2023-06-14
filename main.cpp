@@ -462,7 +462,7 @@ DTEjercicio crearDTEjercicio(){
         imprimir("Ingrese las soluciones separadas por comas");
         string solSinSep = entradaString();
         list<string> soluciones = separarString(solSinSep, ',');                                                      
-        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo      
+        DTRellenarPalabras ejer = DTRellenarPalabras( descripcion, frase, int idEjercicio, soluciones) ;     //el id me lo pasa? me aseguro que no exxista?
         return ejer;           
 
     else if (tipoEjercicio == "traduccion") {
@@ -470,7 +470,7 @@ DTEjercicio crearDTEjercicio(){
         string fraseATraducir = entradaString();
         imprimir("Ingrese la traducción");
         string traduccion = entradaString();
-        DTEjercicio ejer // tengo que crear el DTejer pero no entiendo  
+        DTTraduccion ejer = DTTraduccion( descripcion, fraseATraducir, int idEjercicio, traduccion);
         return ejer;
 
     } else {
