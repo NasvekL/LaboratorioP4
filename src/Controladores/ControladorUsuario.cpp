@@ -154,6 +154,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
     if (datoEstudiante!=NULL){
         Estudiante *e = new Estudiante(datoEstudiante->getNickname(),datoEstudiante->getContrasenia(), datoEstudiante->getNombre(),datoEstudiante->getDescripcion(),datoEstudiante->getPais(),datoEstudiante->getNacimiento());
         usuarios.insert(std::make_pair(e->getNick(), e));
+        delete datoEstudiante;
         datoEstudiante = NULL;
     }
     else if (datoProfesor!=NULL){
@@ -168,6 +169,7 @@ void ControladorUsuario::confirmarAltaUsuario() {
         }
         Profesor* p = new Profesor(datoProfesor->getNickname(),datoProfesor->getContrasenia(),datoProfesor->getNombre(), datoProfesor->getDescripcion(), datoProfesor->getInstituto(),Idiomas);
         usuarios.insert(std::make_pair(p->getNick(), p));
+        delete datoProfesor;
         datoProfesor = NULL;
     }
     else{
