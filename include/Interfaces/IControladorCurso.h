@@ -38,8 +38,8 @@ class IControladorCurso{
         virtual void setDatoNombreDeProfesor(string nombreProfesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
         virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
-        virtual void setDatosEjercicioCompletarPalabras(DTEjercicio datos)= 0;
-        virtual void setDatosEjercicioTraduccion(DTEjercicio datos)= 0;
+        virtual void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos)= 0;
+        virtual void setDatosEjercicioTraduccion(DTTraduccion datos)= 0;
         virtual void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal) = 0;
         virtual void agregarDatosTraduccion(DTTraduccion tradu) = 0;
 

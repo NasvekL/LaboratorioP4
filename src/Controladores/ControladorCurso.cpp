@@ -83,11 +83,11 @@ void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
     datosPrevias = &previas;
 }
 //Precondicion: solucion de traduccion viene como null
-void ControladorCurso::setDatosEjercicioCompletarPalabras(DTEjercicio datos) {
+void ControladorCurso::setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos) {
     datosEjercicio = &datos;
 }
 //Precondicion: solucion de compPal viene como null
-void ControladorCurso::setDatosEjercicioTraduccion(DTEjercicio datos) {
+void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
     datosEjercicio = &datos;
 }
 
