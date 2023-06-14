@@ -154,18 +154,38 @@ int main(){
             }
             case 4:{
                     //Consultar idiomas
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorUsuario& contUsuario = Fabrica.getIControladorUsuario();
                     contUsuario.listarIdiomas();
                     presionaParaContinuar();
                     break;
             }
             case 5:{
-                    //Alta de curso
-                    factoryController& Fabrica = factoryController::getInstancia();
-                    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
-                    ContCurso.listarProfe();
-                    esperar(7);
+                    //Alta de curso:
+
+                    //list<string> profes= contCurso.listarProfe();
+                    //for each profesor in profes
+                        //imprimir(profesor);
+                    //imprimir("Ingrese nickname de profesor que dictara el cursso:");
+                    //string nick = entradaString();
+                    //contCurso.seleccionarProfesor(nick);
+                    //Obtener datos del curso
+                    //contCurso.setDatosDeCurso(datos);
+                    //list<String> idiomasProfe = contCurso.listarIdiomasProfesor();
+                    //for each idioma in idiomasProfe
+                        //imprimir(idioma);
+                    //imprimir("Ingrese idioma del curso:");
+                    //string idioma = entradaString();
+                    //list<string> = contCurso.listarNombresDeCursosHabilitados();
+                    //for each curso in cursos
+                        //imprimir(curso);
+                    //imprimir("Para agregar una previa, ingrese el nombre del curso previo. Para dejar de agregar previas, ingrese 0");
+                    //string previa = entradaString();
+                    //while (previa != "0"){
+                        //contCurso.setPrevia(previa);
+                        //imprimir("Para agregar una previa, ingrese el nombre del curso previo. Para dejar de agregar previas, ingrese 0");
+                        //previa = entradaString();
+                    //Agregar lecciones
+                    //Agregar ejercicios
+                    //contCurso.altaCurso();
                     break;
             }
             case 6:{
