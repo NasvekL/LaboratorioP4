@@ -273,10 +273,10 @@ int main(){
                         string tipo = entradaString();
                         if (tipo == "completar ") {
                             DTRellenarPalabras rell = crearDTRellenarPalabras();
-                            contCurso.setDatosEjercicioCompletarPalabras(ejercicio);
+                            contCurso.setDatosEjercicioCompletarPalabras(rell);
                         }else if (tipo == "traduccion") {                            
                             DTTraduccion tradu = crearDTTraduccion();
-                            contCurso.setDatosEjercicioTraduccion(ejercicio);
+                            contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
                             imprimir("Tipo de ejercicio no válido");
                         }
