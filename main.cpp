@@ -229,7 +229,7 @@ int main(){
             }
             case 6:{
                     //Agregar leccion
-                    imprimir("Cursos no habilitados disponibles:")
+                    imprimir("Cursos no habilitados disponibles:");
                     contCurso.listarCursosNoHabilitados(); 
                     imprimir("Seleccionar Curso:");
                     string cursoSeleccionado = entradaString();
