@@ -8,9 +8,22 @@ Curso::Curso() {
     // Implementación del constructor vacio
 }
 //Hay que hacer un constructor para los casos en los que hay lecciones y otro para los que no?
-Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, list<Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta){
-    // Implementación del constructor
-    // Inicializar los pseudoatributos
+Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, map<string,Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta,list<DTRellenarPalabras> datosRellenarP,list<DTTraduccion> datosTraduccion,list<DTLeccion>lecciones){
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->nivelDeDif = nivel;
+    this->idiomaDelCurso = idioma;
+    this->profesorQueLoDicta = profesorQueLoDicta;
+    this->habilitado = false;
+    for(auto iter=previas.begin(); iter!=previas.end(); iter++){
+        Curso* cur = iter->second;
+        this->previas.push_back(cur);
+    }
+    for(auto iter = lecciones.begin(); iter!=lecciones.end(); iter++){
+        DTLeccion dtl = *iter;
+        Leccion* lec = new Leccion(dtl.getTema(),dtl.getObjetivoAprendizaje(),dtl.getCantidadDeEjercicios(),dtl.getNumero(),datosRellenarP,datosTraduccion);
+        this->lecciones.push_back(lec);
+    }
 }
 
 // GETTERS
@@ -73,9 +86,6 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 }
 
 // OPERACIONES
-DTEjercicio Curso::seleccionarEjercicio(int idEjercicio) {
-    // Implementación de la operación
-}
 
 int Curso::progresoPromedio() {
     // Implementación de la operación

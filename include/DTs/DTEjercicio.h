@@ -6,6 +6,7 @@ class DTEjercicio {
     private:
         string tipo;
         int idEjercicio;
+        int numLec;
         string letra;
         string descripcion;
         //si es traduccion
@@ -19,7 +20,7 @@ class DTEjercicio {
         string getLetra();
         string getTipo();
         ~DTEjercicio();
-        DTEjercicio(int idEjercicio, string letra, string descripcion,string tipo);
+        DTEjercicio(int idEjercicio, string letra, string descripcion,string tipo,int numLec);
 
 
 };

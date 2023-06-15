@@ -7,6 +7,7 @@
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Progreso;
+class Curso;
 
 class Inscripcion{
     private:

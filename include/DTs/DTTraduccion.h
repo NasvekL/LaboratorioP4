@@ -8,10 +8,12 @@ class DTTraduccion{
         string tipo;
         string descripcion;
         int idEjercicio;
+        int numLec;
         string letra;
         string solucion;
     public:
         //Getters
+        int getNumLec();
         string getTipo();
         string getDescripcion();
         string getLetra();
@@ -19,6 +21,6 @@ class DTTraduccion{
         string getSolucion();
         //Create y destroy
         ~DTTraduccion();
-        DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion, string tipo);
+        DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion, string tipo,int numLec);
 };
 #endif

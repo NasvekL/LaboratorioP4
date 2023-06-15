@@ -28,8 +28,8 @@ string Ejercicio:: getLetra(){
     return letra;
 }
 
-Leccion Ejercicio:: getLeccion(){
-    return *leccion;
+Leccion* Ejercicio:: getLeccion(){
+    return leccion;
 }
 
 Ejercicio:: ~Ejercicio(){

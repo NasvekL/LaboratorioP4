@@ -3,8 +3,13 @@
 #include "../Utils.h"
 #include "Ejercicio.h"
 #include "Estudiante.h"
+//#include "RellenarPalabras.h"  <---//ESTAS PORQUERIAS ME TUVIERON 2 HORAS
+//#include "Traduccion.h"        <---
 #include "../DTs/DTEjercicio.h"
-#include "../DTs/DTEjercicio.h"
+#include "../DTs/DTTraduccion.h"
+#include "../DTs/DTRellenarPalabras.h"
+class DTTraduccion;
+class DTRellenarPalabras;
 class Ejercicio;
 class Leccion{
     private:
@@ -29,7 +34,7 @@ class Leccion{
         map<int, Ejercicio*> getEjercicios();
         //Constructor Destructor
         ~Leccion();
-        Leccion(string tema,string objetivoAprendizaje,int cantidadDeEjercicios,int numero);
+        Leccion(string tema,string objetivoAprendizaje,int cantidadDeEjercicios,int numero,list<DTRellenarPalabras> listaRellenarPalabras,list<DTTraduccion> listaTraduccion);
         //operaciones
         DTEjercicio seleccionarEj(int idEjercicio);
         void aumentarProgreso(Estudiante e);

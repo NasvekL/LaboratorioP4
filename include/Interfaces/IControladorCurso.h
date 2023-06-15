@@ -24,23 +24,27 @@ class IControladorCurso{
         //Getters virtuales
         virtual int getIdEjercicio()=0;
         virtual Idioma* getIdioma(string nombre)= 0;
-        virtual DTCurso getDatosDeCurso()= 0;
+        virtual DTCurso getDatoDeCurso()= 0;
+        virtual list<DTLeccion> getDatosLecciones()=0;
         virtual DTLeccion getDatosDeLeccion()= 0;
         virtual Profesor* getProfesor()= 0;
         virtual string getDatoIdioma()= 0;
-        virtual map<string, DTCurso*>* getDatosPrevias()= 0;
+        virtual map<string, Curso*> getDatosPrevias()= 0;
         virtual Curso getCurso(string nombreCurso) = 0;
+        virtual map<string,Curso*> getCursos()= 0;
         virtual DTRellenarPalabras getDatosRellenar()= 0;
         virtual DTTraduccion getDatosTraduccion()= 0;
         virtual list<DTRellenarPalabras> getDatosMuchasRellenarPalabras() = 0;
         virtual list<DTTraduccion> getDatosMuchasTraducciones() = 0;
+        virtual int getNumeroDeLeccion(string cursoSeleccionado)=0;
         //Setters virtuales
+        virtual void setDatoDeLeccion(DTLeccion datos)= 0;
+        virtual void setDatoDeCurso(DTCurso datos)= 0;
         virtual void setIdEjercicio (int id)=0;
-        virtual void setDatosDeCurso(DTCurso datos)= 0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
         virtual void setProfesor(Profesor* profesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
-        virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
+        virtual void setDatosPrevias(set<Curso*> previas)= 0;
         virtual void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos)= 0;
         virtual void setDatosEjercicioTraduccion(DTTraduccion datos)= 0;
         virtual void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal) = 0;
@@ -76,7 +80,7 @@ class IControladorCurso{
         virtual set<DTCurso> listarDTCursos()= 0;
         virtual set<Idioma*> listarIdiomasProfesor()= 0;
         virtual void listarIdiomas()= 0;
-        virtual void listarCursosNoHabilitados() = 0;
+        virtual list<string> listarCursosNoHabilitados() = 0;
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;
         virtual bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio)= 0;
         virtual void seleccionarEjercicio(int idEjercicio)= 0;
@@ -94,7 +98,7 @@ class IControladorCurso{
         //Operaciones que creo que están mal
         virtual set<DTLeccion> ListarLecciones(string cursoLec)=0;
 
-        virtual set<string> cursosInscriptoSinAprobar(string nick)= 0;
+        virtual void cursosInscriptoSinAprobar(string nick)= 0;
 };
 
 

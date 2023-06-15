@@ -10,10 +10,9 @@ ControladorCurso& ControladorCurso::getInstancia() {
     return *instancia;
 }
 ControladorCurso::ControladorCurso(){
-    datosDeCurso=NULL;
+    datoDeCurso=NULL;
     datoDeLeccion=NULL;
     profesor = NULL;
-    datosPrevias=NULL;
     datosRellenar=NULL;
     datosTraducir=NULL;
     idEjercicio=0;
@@ -42,12 +41,18 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
+map<string,Curso*> ControladorCurso::getCursos(){
+    return cursos;
+}
 int ControladorCurso:: getIdEjercicio (){
     return idEjercicio;
 }
-DTCurso ControladorCurso::getDatosDeCurso() {
-    return *datosDeCurso;
+DTCurso ControladorCurso::getDatoDeCurso() {
+    return *datoDeCurso;
 }
+list<DTLeccion> ControladorCurso::getDatosLecciones() {
+    return datosLecciones;
+}   
 DTLeccion ControladorCurso::getDatosDeLeccion() {
     return *datoDeLeccion;
 }
@@ -58,7 +63,8 @@ Profesor* ControladorCurso::getProfesor(){
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
-map<string,DTCurso*>* ControladorCurso::getDatosPrevias() {
+map<string,Curso*> ControladorCurso::getDatosPrevias() {
+    return datosPrevias;
 }
 DTRellenarPalabras ControladorCurso::getDatosRellenar() {
     return *datosRellenar
@@ -71,23 +77,25 @@ DTTraduccion ControladorCurso::getDatosTraduccion() {
 list<DTRellenarPalabras> ControladorCurso::getDatosMuchasRellenarPalabras(){
     return datosRellenarPalabras;
 }
-
-
 list<DTTraduccion> ControladorCurso::getDatosMuchasTraducciones(){
     return datosTraduccion;
 }
-
+int ControladorCurso::getNumeroDeLeccion(string cursoSeleccionado){
+    return cursos.find(cursoSeleccionado)->second->getLecciones().size();
+}
 //Setters
+void ControladorCurso::setDatoDeLeccion(DTLeccion datos) {
+    datoDeLeccion = new DTLeccion(datos.getNumero(),datos.getCantidadDeEjercicios(),datos.getObjetivoAprendizaje(),datos.getTema());
+}
 //no se si funcionaran bien, pasa todo por referencia
 void ControladorCurso:: setIdEjercicio(int id){
     idEjercicio = id;
 }
-void ControladorCurso::setDatosDeCurso(DTCurso datos) {
-    datosDeCurso = &datos;
+void ControladorCurso::setDatoDeCurso(DTCurso datos) {
+    datoDeCurso = new DTCurso(datos.getNombre(),datos.getHabilitado(),datos.getNivel(),datos.getDescripcion(),datos.getPrevias());
 }
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
-    datoDeLeccion = &datos;
-    datosLecciones.insert(datos);
+    datosLecciones.push_back(datos);
 }
 void ControladorCurso::setProfesor(Profesor* profesor) {
     this->profesor = profesor;
@@ -95,7 +103,7 @@ void ControladorCurso::setProfesor(Profesor* profesor) {
 void ControladorCurso::setDatoIdioma(string idioma) {
     this->datoIdioma = idioma;
 }
-void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
+void ControladorCurso::setDatosPrevias(set<Curso*> previas) {
 
 }
 //Precondicion: solucion de traduccion viene como null
@@ -113,8 +121,30 @@ void ControladorCurso::seleccionIdioma(string idi){
 }
 //Operaciones para modificar el set de cursos
 bool ControladorCurso::altaCurso() {
-    // Implementación pendiente
-    return false;
+    auto it = idiomas.find(datoIdioma);
+    Idioma* idi = it->second;
+    Curso* cur =NULL;
+    if(!datosPrevias.empty())
+    for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
+        Curso* curso =cursos.find(*iter)->second;
+        datosPrevias.insert(std::make_pair(*iter,curso));
+    }
+    cur = new Curso(datoDeCurso->getNombre(),datoDeCurso->getDescripcion(),datoDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
+    cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
+    profesor->agregarCurso(cur);
+    for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
+        for(auto it = (*iter)->getEjercicios().begin(); it!=(*iter)->getEjercicios().end(); it++){
+            ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+        }
+    }
+    datosPrevias.clear();
+    datosRellenarPalabras.clear();
+    datosTraduccion.clear();
+    datosLecciones.clear();
+    delete datoDeCurso;
+    datoDeCurso = NULL;
+
+return cur!=NULL;
 }
 void ControladorCurso::eliminarCurso(string nombreCurso) {
     // Implementación pendiente
@@ -143,29 +173,14 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(string curso){
-    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
-    auto iterator = cursos.find(curso);
-    //Curso *cur = *iterador;
-    //cur->agregarLeccion(nuevaLec);
-    
-
-    //Asocio a sus ejercicios
-    for (int i = 1; i <= datoDeLeccion->getCantidadDeEjercicios(); i++){
-        /*if(datosRellenarPalabras != nullptr){
-            DTRellenarPalabras dt = datosRellenarPalabras.front();
-            datosRellenarPalabras.pop_front();
-            Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
-            nuevaLec->addEjercicio(ej);
-            ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-
-        }else{
-            DTTraduccion dt = datosTraduccion.front();
-            datosTraduccion.pop_front();
-            Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
-            nuevaLec->addEjercicio(ej);
-            ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-        }    */
-    }
+    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero(),datosRellenarPalabras,datosTraduccion);
+    auto iter = cursos.find(curso);
+    Curso *cur = iter->second;
+    cur->agregarLeccion(nuevaLec);
+    datosTraduccion.clear();
+    datosRellenarPalabras.clear();
+    delete datoDeLeccion;
+    datoDeLeccion = NULL;
 }
 
 
@@ -175,12 +190,16 @@ void ControladorCurso::altaEjercicio(Leccion* lec){
     Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
     ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    delete datosRellenar;
+    datosRellenar = NULL;
 }
 else{
     DTTraduccion dt = getDatosTraduccion();
     Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
     ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    delete datosTraducir;
+    datosTraducir = NULL;
 }
 }
 
@@ -212,8 +231,11 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     return DTEstadisticaCurso();
 }
 set<string> ControladorCurso::listarNombresDeCursos() {
-    // Implementación pendiente
-    return set<string>();
+    set<string> nombresDeCursos;
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        nombresDeCursos.insert(it->first);
+    }
+    return nombresDeCursos;
 }
 set<DTCurso> ControladorCurso::listarDTCursos() {
     // Implementación pendiente
@@ -275,7 +297,7 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     cursos.find(curso)->second->agregarInscripcion(inscri);
 }
 
-set<string> ControladorCurso::listarIdiomasProfesor() {
+set<Idioma*> ControladorCurso::listarIdiomasProfesor() {
     Profesor* p = getProfesor();
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     return cu.listarIdiomasProfesor(p);
@@ -289,16 +311,16 @@ void ControladorCurso::listarIdiomas(){
     }
 }
 
-void ControladorCurso::listarCursosNoHabilitados(){
-     int a=1;
+list<string> ControladorCurso::listarCursosNoHabilitados(){
+    int a=1;
+    list<string> cursosNoHabilitados;
     for (auto it = cursos.begin(); it != cursos.end(); ++it){
-        if(it->second->getHabilitado()){
+        if(!(it->second->getHabilitado())){
             string nombre = it->first;
-            cout << a <<  "- " << nombre <<'\n';
-            a++;
+            cursosNoHabilitados.push_back(nombre);
         }
-        
     }
+return cursosNoHabilitados;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
@@ -339,17 +361,14 @@ void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
 
 //Otras operaciones
 void ControladorCurso::limpiarDatos() {
-    if(datosDeCurso != nullptr){
-        delete datosDeCurso;
+    if(datoDeCurso != nullptr){
+        delete datoDeCurso;
     }
     if(datoDeLeccion != nullptr){
         delete datoDeLeccion;
     }
     if(profesor != nullptr){
         delete profesor;
-    }
-    if(datosPrevias != nullptr){
-        delete datosPrevias;
     }
     if(datosRellenar != nullptr){
         delete datosRellenar;
@@ -361,9 +380,10 @@ void ControladorCurso::limpiarDatos() {
 
 
 //Operacion rara
-set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
-    // Implementación pendiente
-    return set<string>();
+void ControladorCurso::cursosInscriptoSinAprobar(string nick) {
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    cu.cursosInscriptosSinAprobar(nick);
+    
 }
 
 set<DTLeccion> ControladorCurso:: ListarLecciones(string cursoLec){  //implementar

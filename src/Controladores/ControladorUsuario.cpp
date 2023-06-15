@@ -123,8 +123,8 @@ list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
     // Implementación de la función ejerciciosNoAprobados
 }
 
-list<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
-    // Implementación de la función cursosInscriptosSinAprobar
+void ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
+    
 }
 
 list<string> ControladorUsuario::listarProfe() {

@@ -18,8 +18,10 @@ string DTTraduccion :: getSolucion(){
 string DTTraduccion :: getLetra(){
     return letra;
 }
-
-DTTraduccion::DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion, string tipo){
+int DTTraduccion :: getNumLec(){
+    return numLec;
+}
+DTTraduccion::DTTraduccion(string descripcion, string letra, int idEjercicio, string solucion, string tipo,int numLec){
     this->tipo = tipo;
     this->idEjercicio = idEjercicio;
     this->letra = letra;
