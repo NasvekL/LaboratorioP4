@@ -346,9 +346,9 @@ int main(){
                 string nick = entradaString();
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                     contUsuario.seleccionarUsuario(nick);
-                    imprimir("Cursos disponibles para : " + nick);
+                    imprimir("Cursos disponibles para " + nick + ":");
 
-                    //CursosDisponibles(nick) :setString        FALTA
+                    //cursosDisponibles(nick) :setString        FALTA
                     //for each curso in CursosDisponibles       FALTA
                         //imprimir(nombreCurso);                FALTA
 

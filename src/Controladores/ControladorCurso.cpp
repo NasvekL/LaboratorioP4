@@ -219,6 +219,11 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
     return set<DTCurso>();
 }
 
+list<string> ControladorCurso::cursosDisponibles(string nick){
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    return cu.cursosDisponibles(nick);
+}
+
 set<string> ControladorCurso::listarIdiomasProfesor() {
     Profesor* p = getProfesor();
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
