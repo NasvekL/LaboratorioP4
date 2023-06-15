@@ -150,10 +150,15 @@ return cur!=NULL;
 void ControladorCurso::eliminarCurso(string nombreCurso) {
     Curso* cur = getCurso(nombreCurso);
     cursos.erase(nombreCurso);
+    list<Leccion*> lecsCur=cur->getLecciones();
+    for(auto iter=lecsCur.begin(); iter!=lecsCur.end(); iter++){
+        map<int,Ejercicio*> ejsLec = (*iter)->getEjercicios();
+        for(auto it = ejsLec.begin(); it!=ejsLec.end(); it++){
+            ejercicios.erase(it->second->getIdEjercicio());
+        }
+    }
+    
     delete cur;
-
-
-    // Implementación pendiente
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
     cursos.find(nombreCurso)->second->setHabilitado(true);
@@ -183,6 +188,9 @@ void ControladorCurso::altaLeccion(string curso){
     auto iter = cursos.find(curso);
     Curso *cur = iter->second;
     cur->agregarLeccion(nuevaLec);
+    for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
+        ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+    }
     datosTraduccion.clear();
     datosRellenarPalabras.clear();
     delete datoDeLeccion;
