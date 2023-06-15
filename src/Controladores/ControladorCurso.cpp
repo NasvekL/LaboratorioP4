@@ -309,13 +309,14 @@ void ControladorCurso::listarIdiomas(){
 
 list<string> ControladorCurso::listarCursosNoHabilitados(){
     int a=1;
+    list<string> cursosNoHabilitados;
     for (auto it = cursos.begin(); it != cursos.end(); ++it){
         if(!(it->second->getHabilitado())){
             string nombre = it->first;
-            cout << a <<  "- " << nombre <<'\n';
-            a++;
+            cursosNoHabilitados.push_back(nombre);
         }
     }
+return cursosNoHabilitados;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
