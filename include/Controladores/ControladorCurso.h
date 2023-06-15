@@ -28,7 +28,8 @@ class ControladorCurso: public IControladorCurso{
 
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
-        DTLeccion* datosDeLeccion;
+        DTLeccion* datoDeLeccion;
+        set<DTLeccion> datosLecciones;
         Profesor* profesor;
         string datoIdioma;
         map<string, DTCurso*>* datosPrevias;
@@ -50,7 +51,7 @@ class ControladorCurso: public IControladorCurso{
         
     
         //Getters
-        
+        //fdfd
         int getIdEjercicio ();
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
@@ -68,7 +69,8 @@ class ControladorCurso: public IControladorCurso{
         void setIdEjercicio(int id);
         void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
-        void setProfesor(Profesor profesor); //void seleccionProfesor(string nick);
+        //hace que el puntero profesor apunte al objeto profesor que se le pasa
+        void setProfesor(Profesor* profesor); //void seleccionProfesor(string nick);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<DTCurso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
@@ -91,12 +93,16 @@ class ControladorCurso: public IControladorCurso{
         
 
         //Operaciones para obtener informacion
+
+        //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
+        list<string> cursosDisponibles(string nick);
+        void seleccionIdioma(string idi);
         void seleccionarProfesor(string nick);
-        void listarProfe();
+        list<string> listarProfe();
         DTEstadisticaCurso estadisticasCurso(string curso);
         set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();
-        set<string> listarIdiomasProfesor();
+        set<Idioma*> listarIdiomasProfesor();
         void listarIdiomas();
         void listarCursosNoHabilitados();
         bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);

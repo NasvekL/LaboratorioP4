@@ -38,14 +38,14 @@ class IControladorCurso{
         virtual void setIdEjercicio (int id)=0;
         virtual void setDatosDeCurso(DTCurso datos)= 0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
-        virtual void setProfesor(Profesor profesor)= 0;
+        virtual void setProfesor(Profesor* profesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
         virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
         virtual void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos)= 0;
         virtual void setDatosEjercicioTraduccion(DTTraduccion datos)= 0;
         virtual void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal) = 0;
         virtual void agregarDatosTraduccion(DTTraduccion tradu) = 0;
-
+        virtual void seleccionIdioma(string idi)=0;
         //Operaciones virtuales para modificar el set de cursos
         virtual void altaEjercicio(Leccion* lec)= 0;
         virtual bool altaCurso() = 0;
@@ -60,12 +60,18 @@ class IControladorCurso{
         virtual void agregarEjercicio(DTEjercicio datos)= 0;
 
         //Operaciones virtuales para obtener información
+
+        //Primero, busca el profesor en la lista de usuarios, y devuelve una copia (o el profesor original, no se). Luego, ese Profesor se
+        //le pasa a setProfesor(p), que lo que hace es que el puntero profesor de contCurso apunte al objeto p Profesor que se le pasa.
+        //No esta claro si dicho objeto es una copia del profesor del contUsuario o si es el profesor original.
         virtual void seleccionarProfesor(string nick) = 0;
-        virtual void listarProfe()= 0;
+        virtual list<string> listarProfe()= 0;
         virtual DTEstadisticaCurso estadisticasCurso(string curso)= 0;
         virtual set<string> listarNombresDeCursos()= 0;
+        //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
+        virtual list<string> cursosDisponibles(string nick) = 0;
         virtual set<DTCurso> listarDTCursos()= 0;
-        virtual set<string> listarIdiomasProfesor()= 0;
+        virtual set<Idioma*> listarIdiomasProfesor()= 0;
         virtual void listarIdiomas()= 0;
         virtual void listarCursosNoHabilitados() = 0;
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;

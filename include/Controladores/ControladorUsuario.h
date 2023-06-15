@@ -65,9 +65,9 @@ class ControladorUsuario : public IControladorUsuario{
         //FALTA CLASIFICAR. DESPUES. EN ALGUN MOMENTO. A MEDIDA QUE LO VAYAMOS USANDO
         list<DTEjercicio> ejerciciosNoAprobados(string curso);
         list<string> cursosInscriptosSinAprobar(string nick);
-        void listarProfe();
-        void listarIdiomasProfesor(Profesor p);
-        Profesor encontrarProfesor(string nick);
+        list<string> listarProfe();
+        set<Idioma*> listarIdiomasProfesor(Profesor* p);
+        Profesor* encontrarProfesor(string nick);
         void confirmarAltaUsuario();
         void deleteDataIngresado();
 
@@ -80,7 +80,4 @@ class ControladorUsuario : public IControladorUsuario{
 
         list<string> consultarUsuario();
 };      
-
-
-
 #endif

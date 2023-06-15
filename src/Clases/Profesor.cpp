@@ -45,7 +45,7 @@ int Profesor::obtenerPromedio() {
     // ...
 }
 
-set<Idioma*> Profesor::Idiomas() {
+set<Idioma*> Profesor::getIdiomas() {
     return idiomas;
 }
 

@@ -19,7 +19,7 @@
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
-DTCurso crearDTCurso(int i);
+DTCurso crearDTCurso();
 DTLeccion crearDTLeccion();
 void esperar(double time);
 int entradaInt();
@@ -34,6 +34,7 @@ void ingresarUsuarios();
 void ingresarIdiomas();
 DTRellenarPalabras crearDTRellenarPalabras();
 DTTraduccion crearDTTraduccion();
+int seleccionTipoEjercicio();
 
 
 //Desplegar menu por consola
@@ -132,23 +133,23 @@ int main(){
                     if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                         contUsuario.seleccionarUsuario(nick);
                         DTEstudiante dte = contUsuario.getDatoEstudiante();
-                        imprimir("Nombre", AMARILLO);
-                        imprimir(dte.getNombre());
-                        imprimir("Descripcion", AMARILLO);
-                        imprimir(dte.getDescripcion());
-                        imprimir("Pais", AMARILLO);
-                        imprimir(dte.getPais());
+                        //imprimir("Nombre", AMARILLO);
+                        imprimir("Nombre", AMARILLO + dte.getNombre());
+                        //imprimir("Descripcion", AMARILLO);
+                        imprimir("Descripcion", AMARILLO + dte.getDescripcion());
+                        //imprimir("Pais", AMARILLO);
+                        imprimir("Pais", AMARILLO + dte.getPais());
                         presionaParaContinuar();
                     } 
                     else{ 
                         contUsuario.seleccionarUsuario(nick);
                         DTProfesor dtp = contUsuario.getDatoProfesor();
-                        imprimir("Nombre", AMARILLO);
-                        imprimir(dtp.getNombre());
-                        imprimir("Descripcion", AMARILLO);
-                        imprimir(dtp.getDescripcion());
-                        imprimir("Instituto", AMARILLO);
-                        imprimir(dtp.getInstituto());
+                        //imprimir("Nombre", AMARILLO);
+                        imprimir("Nombre", AMARILLO + dtp.getNombre());
+                        //imprimir("Descripcion", AMARILLO);
+                        imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
+                        //imprimir("Instituto", AMARILLO);
+                        imprimir("Instituto", AMARILLO + dtp.getInstituto());
                         imprimir("Idiomas", AMARILLO);
                         set<string>* idi = dtp.getIdiomas();
                         set<string>::iterator it;
@@ -161,10 +162,10 @@ int main(){
             }
             case 3:{
                     //Alta idioma
-                    imprimir("Ingrese idioma:");
+                    imprimir("Ingrese idioma:", AMARILLO);
                     string idioma = entradaString();
                     if(contCurso.confirmarAltaIdioma(idioma)==false)
-                        imprimir("Ya existe el idioma", AMARILLO);
+                        imprimir("Ya existe el idioma", ROJO);
                     else
                         imprimir("Idioma creado", VERDE);
                     presionaParaContinuar();
@@ -178,30 +179,55 @@ int main(){
             }
             case 5:{
                     //Alta de curso:
-                    contCurso.listarProfe();
-                    imprimir("Ingrese una profesor: ");
+                    //Elijo el profesor
+                    list<string> profes = contCurso.listarProfe();
+                    for (auto it = profes.begin(); it != profes.end(); ++it) {
+                         imprimir(*it);
+                    }
+                    imprimir("Ingrese el nickname del profesor que dictara el curso:");
                     string nick = entradaString();
                     contCurso.seleccionarProfesor(nick);
-                    imprimir("Tiene previas: ");
-                    imprimir("1: Si");
-                    imprimir("2: No");
-                    int opcion = entradaInt();
-                    DTCurso curso;
-                    if (opcion = 1){
-                    curso = crearDTCurso(1);
-                    }
-                    else if(opcion = 2){
-                    curso = crearDTCurso(2);
-                    }else{ 
-                    imprimir("Opcion invalida", AMARILLO);
-                    presionaParaContinuar();
-                    }
+                    //Defino el resto de datos del curso
+                    DTCurso curso = crearDTCurso();
+                    //Guardo el curso en un DT auxiliar en el controlador
                     contCurso.setDatosDeCurso(curso);
-                    contCurso.listarIdiomasProfesor();
 
+                    set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
+                    for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
+                        imprimir((*it)->getNombreIdioma());
+                    }
+                    imprimir("Elija el idioma del curso: ");
+                    string idioma = entradaString();
+                    contCurso.seleccionIdioma(idioma);
+                    imprimir("Agregar leccion S/N");
+                    string opcion = entradaString();
+                    while(opcion == "S"){
+                        DTLeccion leccion = crearDTLeccion();
+                        contCurso.setDatosDeLeccion(leccion);
+                        imprimir("Quiere agregar ejercicio S/N");
+                        string opcion2 = entradaString();
+                        while(opcion2=="S"){
+                            imprimir("Ingrese tipo de ejercicio");
+                            imprimir("Completar/Traduccion");
+                            string opcion3 = entradaString();
+                            if(opcion3=="Completar"){
+                                DTRellenarPalabras ejercicio = crearDTRellenarPalabras();
+                                contCurso.agregarDatosRellenarPalabras(ejercicio);
+                            }
+                            else{
+                                DTTraduccion ejercicio = crearDTTraduccion();
+                                contCurso.agregarDatosTraduccion(ejercicio);
+                            }
+                            if(!quiereContinuar("Agregar otro ejercicio"))
+                                opcion2 = "N";
+                        }
+                        if(!quiereContinuar("Agregar otra leccion"))
+                            opcion = "N";
+                    }
+                    contCurso.altaCurso();
                     //list<string> profes= contCurso.listarProfe();
                     //for each profesor in profes
-                        //imprimir(profesor);
+                    //    imprimir(profesor);
                     //imprimir("Ingrese nickname de profesor que dictara el cursso:");
                     //string nick = entradaString();
                     //contCurso.seleccionarProfesor(nick);
@@ -227,50 +253,48 @@ int main(){
                     break;
             }
             case 6:{
-                    //Agregar leccion
-                    imprimir("Cursos no habilitados disponibles:")
-                    contCurso.listarCursosNoHabilitados(); 
-                    imprimir("Seleccionar Curso:");
-                    string cursoSeleccionado = entradaString();
-                    DTLeccion leccion = crearDTLeccion();
-                    contCurso.setDatosDeLeccion(leccion);
-                    
-                    //LOGICA PARA AGREGAR EJERCICIOS
-                    int ejsPorAgregar = leccion.getCantidadDeEjercicios();
-                    for(int i = 1; i <= ejsPorAgregar; i++){
-                        int seleccion = seleccionTipoEjercicio();
-                        switch(seleccion){
-                            case 1:{
-                                DTTraduccion tradu = crearDTTraduccion();
-                                contCurso.agregarDatosTraduccion(tradu);
-                                break;
-                            }
-                            case 2:{
-                                DTRellenarPalabras rellpab = crearDTRellenarPalabras();
-                                contCurso.agregarDatosRellenarPalabras(rellpab);
-                                break;
-                            }
+                //Agregar leccion
+                imprimir("Cursos no habilitados disponibles:");;
+                contCurso.listarCursosNoHabilitados(); 
+                imprimir("Seleccionar Curso:");
+                string cursoSeleccionado = entradaString();
+                DTLeccion leccion = crearDTLeccion();
+                contCurso.setDatosDeLeccion(leccion);
+                
+                //LOGICA PARA AGREGAR EJERCICIOS
+                int ejsPorAgregar = leccion.getCantidadDeEjercicios();
+                for(int i = 1; i <= ejsPorAgregar; i++){
+                    int seleccion = seleccionTipoEjercicio();
+                    switch(seleccion){
+                        case 1:{
+                            DTTraduccion tradu = crearDTTraduccion();
+                            contCurso.agregarDatosTraduccion(tradu);
+                            break;
+                        }
+                        case 2:{
+                            DTRellenarPalabras rellpab = crearDTRellenarPalabras();
+                            contCurso.agregarDatosRellenarPalabras(rellpab);
+                            break;
                         }
                     }
-                    contCurso.altaLeccion(cursoSeleccionado);
-                    imprimir("Leccion creada", VERDE);
-                    presionaParaContinuar();
-                
+                }
+                contCurso.altaLeccion(cursoSeleccionado);
+                imprimir("Leccion creada", VERDE);
+                presionaParaContinuar();
+            
                 break;
             }
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
-                factoryController& fabrica = factoryController::getInstancia();
-                IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                imprimir ( "Cursos:" );
+                imprimir ( "Cursos:", AMARILLO );
                 contCurso.listarCursosNoHabilitados();
                 
-                imprimir("Elija un curso:");
+                imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
                 Curso cur = contCurso.getCurso(cursoSelec);
 
-                imprimir("Lecciones del curso:");
+                imprimir("Lecciones del curso:", AMARILLO);
                 list<Leccion*> lecciones = cur.getLecciones();
 
                 if (!lecciones.empty()) {
@@ -280,7 +304,7 @@ int main(){
                         i++;
                     }
 
-                    imprimir("Elija una lección:");
+                    imprimir("Elija una lección:", AMARILLO);
                     int lecSelec = entradaInt();    
                     Leccion* leccionSeleccionada = nullptr; 
                     for (const auto& leccion : lecciones) {
@@ -291,7 +315,7 @@ int main(){
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):");
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):, AMARILLO");
                         string tipo = entradaString();
                         if (tipo == "completar ") {
                             DTRellenarPalabras rell = crearDTRellenarPalabras();
@@ -300,10 +324,12 @@ int main(){
                             DTTraduccion tradu = crearDTTraduccion();
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
-                            imprimir("Tipo de ejercicio no válido");
+                            imprimir("Tipo de ejercicio no válido", ROJO);
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
+                        imprimir("Ejercicio creado", VERDE);
+                        presionaParaContinuar();
                     }
 
                 }
@@ -321,6 +347,12 @@ int main(){
             }
             case 9:{
                 //Eliminar curso
+               /* imprimir("Cursos disponibles:", AMARILLO);
+                //contCurso.listarCursos();
+                imprimir("Seleccione el curso que desea eliminar:");
+                string cursoSeleccionado = entradaString();
+*/
+
                 //interfazCurso->eliminarCurso();
                 break;
             }
@@ -346,18 +378,22 @@ int main(){
             case 11:{
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
-                contUsuario.seleccionarUsuario(nick);
-                //verificar si el usuario es un estudiante
-                //en caso de que si:
-                    imprimir("Cursos disponibles para : " + nick);
-                    //CursosDisponibles(nick) :setString
-                    //for each curso in CursosDisponibles
-                        //imprimir(nombreCurso);
-                    imprimir("Ingrese nombre de curso:");
+                if(contUsuario.getTipoUsuario(nick)=="estudiante"){
+                    contUsuario.seleccionarUsuario(nick);
+                    imprimir("Cursos disponibles para " + nick + ":");
+
+                    //cursosDisponibles(nick) :setString        FALTA
+                    //for each curso in CursosDisponibles       FALTA
+                        //imprimir(nombreCurso);                FALTA
+
+                    imprimir("Ingrese nombre de curso a inscribirse:");
                     string nombreCurso = entradaString();
-                    //inscribirEstudiante (nombrecurso)
-                //en caso de que no
-                    //imprimir("El usuario no es un estudiante, por lo cual no puede inscribirse a ningun curso");
+                    //inscribirEstudiante (nombrecurso)         FALTA
+
+                }else{
+                    imprimir("El usuario " + nick + " no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
+                    presionaParaContinuar();
+                }
                 break;
             }
             case 12:{
@@ -485,47 +521,60 @@ DTProfesor crearDTProfesor(){
     return prof;
 }
 
-DTCurso crearDTCurso(int i){
-        DTCurso c;
+DTCurso crearDTCurso(){
         imprimir("Ingrese nombre del curso:");
-        string nombreC = entradaString();
+        string nombre = entradaString();
+
+        imprimir("Ingrese descripcion del curso:");
+        string descripcion = entradaString();
+
         imprimir("Elija nivel de dificultad del curso:");
         imprimir("1 = Principiante");
-        imprimir("2 = Avanzado");
-        int d = entradaInt();
+        imprimir("2 = Medio");
+        imprimir("3 = Avanzado");
+        int dificultadEntrada = entradaInt();
         nivelDeDificultad dificultad;
-        if(d = 1){
-            dificultad = PRINCIPIANTE;
-        }else if(d = 2){
-            dificultad = AVANZADO;
-        }else{
-        imprimir("Opcion invalida", AMARILLO);
-        presionaParaContinuar();
+        switch(dificultadEntrada){
+            case 1:
+                dificultad = PRINCIPIANTE;
+                break;
+            case 2:
+                dificultad = MEDIO;
+                break;
+            case 3:
+                dificultad = AVANZADO;
+                break;
+            default:
+                imprimir("Opcion invalida", AMARILLO);
+                presionaParaContinuar();
+                break;
         }
-        imprimir("Ingrese descripcion del curso:");
-        string descripcionC = entradaString();
-        if(i = 1){
-        c = DTCurso(nombreC,false,dificultad,descripcionC, NULL);
-        }
-        else{
-            set<string>* previas;
+        
+
+
+        imprimir("Quiere agregar previas al curso? (S/N)");
+        string tienePrevias = entradaString();
+        set<string>* previas;
+        if(tienePrevias == "S" || tienePrevias == "s"){
             bool seguir = true;
             while(seguir){
-            imprimir("Ingrese nombre de previas del curso:");
-            string pre = entradaString();
-            factoryController& fabrica = factoryController::getInstancia();
-            IControladorCurso& contCurso = fabrica.getIControladorCurso();
-            map<string, DTCurso*>* p = contCurso.getDatosPrevias();
-            auto it = p->find(pre);
-            if (it != p->end()) {
-            previas->insert(pre);
-            } else {
-            imprimir("Curso no encontrado", ROJO);
+                imprimir("Ingrese nombre de previas del curso:");
+                string pre = entradaString();
+                factoryController& fabrica = factoryController::getInstancia();
+                IControladorCurso& contCurso = fabrica.getIControladorCurso();
+                map<string, DTCurso*>* p = contCurso.getDatosPrevias();
+                auto it = p->find(pre);
+                if (it != p->end()) {
+                    previas->insert(pre);
+                } else {
+                    imprimir("Curso no encontrado", ROJO);
+                }
+                seguir = quiereContinuar("Agregar otra previa");
             }
-            seguir = quiereContinuar("Agregar otra previa");
-            }
-        c = DTCurso(nombreC,false,dificultad,descripcionC, previas);
         }
+
+
+        DTCurso c = DTCurso(nombre,false,dificultad,descripcion, previas);
         return c;
     }    
 
@@ -599,12 +648,12 @@ DTRellenarPalabras crearDTRellenarPalabras(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
-    imprimir("Ingrese la descripción ");
+    imprimir("Ingrese la descripción ", AMARILLO);
     string descripcion = entradaString();            
     string tipo = "completar";   
-    imprimir("Ingrese la frase (utilice --- para los espacios a completar)");
+    imprimir("Ingrese la frase (utilice --- para los espacios a completar)", AMARILLO);
     string frase = entradaString();                            
-    imprimir("Ingrese las soluciones separadas por comas");
+    imprimir("Ingrese las soluciones separadas por comas", AMARILLO);
     string solSinSep = entradaString();
     list<string> soluciones = separarString(solSinSep, ',');   
     int id = contCurso.getIdEjercicio() +1;
@@ -619,12 +668,12 @@ DTTraduccion crearDTTraduccion(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
-    imprimir("Ingrese la descripción ");
+    imprimir("Ingrese la descripción ", AMARILLO);
     string descripcion = entradaString();            
     string tipo = "traduccion";                             
-    imprimir("Ingrese la frase");
+    imprimir("Ingrese la frase", AMARILLO);
     string fraseATraducir = entradaString();
-    imprimir("Ingrese la traducción");
+    imprimir("Ingrese la traducción", AMARILLO);
     string traduccion = entradaString();
     int id = contCurso.getIdEjercicio() +1;
     contCurso.setIdEjercicio(id);

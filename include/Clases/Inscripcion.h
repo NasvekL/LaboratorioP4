@@ -2,6 +2,8 @@
 #define INSCRIPCION
 #include "../Utils.h"
 #include "Curso.h"
+#include "Progreso.h"
+#include "Estudiante.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 
 class Progreso;
@@ -14,6 +16,8 @@ class Inscripcion{
         //Pseudoatributos
         Progreso* prog;
         Curso* inscriptoA;
+        Estudiante* estudiante;
+
     public:
         //Getters
         DTFecha getFecha();
