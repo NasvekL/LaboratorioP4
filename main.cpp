@@ -273,9 +273,13 @@ int main(){
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
-                imprimir ( "Cursos:", AMARILLO );
+                imprimir ( "Cursos no habilitados disponibles:", AMARILLO );
                 contCurso.listarCursosNoHabilitados();
-                
+                list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                int a=1;
+                for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
+                    imprimir(to_string(a)+" "+*it);
+                }
                 imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
                 Curso cur = contCurso.getCurso(cursoSelec);
