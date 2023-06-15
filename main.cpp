@@ -236,13 +236,18 @@ int main(){
             case 6:{
                 //Agregar leccion
                 imprimir("Cursos no habilitados disponibles:");;
-                contCurso.listarCursosNoHabilitados(); 
-                imprimir("Seleccionar Curso:");
+                list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                int a=1;
+                for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
+                    imprimir(to_string(a)+" "+*it);
+                }
+                imprimir("Escribe el nombre del Curso:");
                 string cursoSeleccionado = entradaString();
                 int numLec = contCurso.getNumeroDeLeccion(cursoSeleccionado);
                 numLec++;
                 DTLeccion leccion = crearDTLeccion(numLec);
                 contCurso.setDatosDeLeccion(leccion);
+                contCurso.setDatoDeLeccion(leccion);
                 //LOGICA PARA AGREGAR EJERCICIOS
                 int ejsPorAgregar = leccion.getCantidadDeEjercicios();
                 for(int i = 1; i <= ejsPorAgregar; i++){
@@ -338,21 +343,16 @@ int main(){
             }
             case 10:{
                 //Consultar curso
+                /*imprimir("Cursos Disponibles:");
+                set<string> nombreCursos = contCurso.listarNombresDeCursos();
+                for(auto it = nombreCursos.begin(); it != nombreCursos().end; it++){
+                    imprimir(*it);
+                }
+                imprimir("Seleccionar curso:");
+                string cursoSeleccionado = entradaString();
                 
-                
-                
-                
-                
-                //interfazCurso->consultarCurso();
 
-                /*factoryController& fabrica = factoryController::getInstancia();
-                IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                contCurso.listarNombresDeCursos();
-                cout << "Ingrese un curso" << endl;
-                string curs;
-                cin >> curs;*/
-
-
+                */
                 break;
             }
             case 11:{
