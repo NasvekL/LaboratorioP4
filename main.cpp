@@ -98,6 +98,7 @@ int main(){
                 break;
             }
             case 1:{
+                //Alta usuario
                 int seleccion = seleccionEstudianteOProfesor();
                 switch (seleccion){
                     case 1:{
@@ -692,9 +693,10 @@ bool quiereContinuar(string p){
 
 
 void presionaParaContinuar(){
-    cout << endl << "Presiona cualquier tecla para continuar...";
+    cout << "Presiona enter para continuar...";
     cin.ignore();
     cin.get();
+    cout << endl;
 }
 
 void limpiarLog(){
@@ -743,7 +745,7 @@ int entradaInt(){
             cin >> entradita;
             entrada = stoi(entradita);
         }catch(...){
-            cout << AMARILLO << "La entrada debe ser un entero positivo." << RESET;
+            cout << AMARILLO << "La entrada debe ser un entero positivo." << endl << RESET;
             cout << "Ingrese un entero positivo: ";
         }
     }
