@@ -258,7 +258,7 @@ int main(){
                 presionaParaContinuar();
                 break;
             }
-            case 7:{/*
+            case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 imprimir ( "Cursos:", AMARILLO );
@@ -291,11 +291,11 @@ int main(){
                     if (leccionSeleccionada != nullptr) {
                         imprimir("Ingrese el tipo de ejercicio (completar o traduccion):, AMARILLO");
                         string tipo = entradaString();
-                        if (tipo == "completar ") {
-                            DTRellenarPalabras rell = crearDTRellenarPalabras();
+                        if ((tipo == "completar ") || (tipo == "Completar")) {
+                            DTRellenarPalabras rell = crearDTRellenarPalabras(lecSelec);
                             contCurso.setDatosEjercicioCompletarPalabras(rell);
-                        }else if (tipo == "traduccion") {                            
-                            DTTraduccion tradu = crearDTTraduccion();
+                        }else if ((tipo == "traduccion") || (tipo == "Traduccion")){                            
+                            DTTraduccion tradu = crearDTTraduccion(lecSelec);
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
                             imprimir("Tipo de ejercicio no válido", ROJO);
@@ -307,7 +307,6 @@ int main(){
                     }
 
                 }
-*/
                 break;
             }
             case 8:{
@@ -629,8 +628,6 @@ DTRellenarPalabras crearDTRellenarPalabras(int numLec){
     contCurso.setIdEjercicio(id);
     DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo,numLec);     //el id me lo pasa? me aseguro que no exxista?
     return ejer;
-
-
 }
 
 DTTraduccion crearDTTraduccion(int numLec){

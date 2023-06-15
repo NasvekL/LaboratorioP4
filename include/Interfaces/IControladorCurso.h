@@ -30,6 +30,7 @@ class IControladorCurso{
         virtual Profesor* getProfesor()= 0;
         virtual string getDatoIdioma()= 0;
         virtual map<string, Curso*> getDatosPrevias()= 0;
+        virtual Curso getCurso(string nombreCurso) = 0;
         virtual map<string,Curso*> getCursos()= 0;
         virtual DTRellenarPalabras getDatosRellenar()= 0;
         virtual DTTraduccion getDatosTraduccion()= 0;

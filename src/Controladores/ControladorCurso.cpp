@@ -194,13 +194,19 @@ void ControladorCurso::altaEjercicio(Leccion* lec){
     DTRellenarPalabras dt = getDatosRellenar();
     Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
-    ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    //ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    ej->setLeccion(lec);
+    delete datosRellenar;
+    datosRellenar = NULL;
 }
 else{
     DTTraduccion dt = getDatosTraduccion();
     Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
-    ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    //ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    ej->setLeccion(lec);
+    delete datosTraducir;
+    datosTraducir = NULL;
 }
 }
 
