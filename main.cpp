@@ -387,7 +387,7 @@ int main(){
                     }
                     imprimir("Ingrese nombre de curso a inscribirse:");
                     string nombreCurso = entradaString();
-                    //inscribirEstudiante (nombrecurso)         FALTA
+                    contCurso.inscribirEstudianteACurso(nombreCurso, nick);
                     imprimir("Estudiante inscripto", VERDE);
                     presionaParaContinuar();
                 }else{
