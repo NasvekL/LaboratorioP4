@@ -191,11 +191,39 @@ int main(){
                     DTCurso curso = crearDTCurso();
                     //Guardo el curso en un DT auxiliar en el controlador
                     contCurso.setDatosDeCurso(curso);
-
-                    contCurso.listarIdiomasProfesor();
-                            imprimir("Elija el idioma del curso: ");
+                    set<Idioma*> idioms = contCurso.listarIdiomasProfesor();
+                    for (auto it = idioms.begin(); it != idioms.end(); ++it) {
+                            imprimir((*it)->getNombreIdioma());
+                    }   
+                    imprimir("Elija el idioma del curso: ");
                     string idioma = entradaString();
                     contCurso.seleccionIdioma(idioma);
+                    imprimir("Agregar leccion S/N");
+                    string opcion = entradaString();
+                    while(opcion == "S"){
+                        DTLeccion leccion = crearDTLeccion();
+                        contCurso.setDatosDeLeccion(leccion);
+                        imprimir("Quiere agregar ejercicio S/N");
+                        string opcion2 = entradaString();
+                        while(opcion2=="S"){
+                            imprimir("Ingrese tipo de ejercicio");
+                            imprimir("Completar/Traduccion");
+                            string opcion3 = entradaString();
+                            if(opcion3=="Completar"){
+                                DTRellenarPalabras ejercicio = crearDTRellenarPalabras();
+                                contCurso.agregarDatosRellenarPalabras(ejercicio);
+                            }
+                            else{
+                                DTTraduccion ejercicio = crearDTTraduccion();
+                                contCurso.agregarDatosTraduccion(ejercicio);
+                            }
+                            if(!quiereContinuar("Agregar otro ejercicio"))
+                                opcion2 = "N";
+                        }
+                        if(!quiereContinuar("Agregar otra leccion"))
+                            opcion = "N";
+                    }
+                    contCurso.altaCurso();
                     //list<string> profes= contCurso.listarProfe();
                     //for each profesor in profes
                     //    imprimir(profesor);
