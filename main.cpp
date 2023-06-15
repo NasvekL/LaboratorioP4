@@ -333,21 +333,16 @@ int main(){
             }
             case 10:{
                 //Consultar curso
+                /*imprimir("Cursos Disponibles:");
+                list<string> nombreCursos = contCurso.listarNombresDeCursos();
+                for(auto it = nombreCursos.begin(); it != nombreCursos().end; it++){
+                    imprimir(*it);
+                }
+                imprimir("Seleccionar curso:");
+                string cursoSeleccionado = entradaString();
                 
-                
-                
-                
-                
-                //interfazCurso->consultarCurso();
 
-                /*factoryController& fabrica = factoryController::getInstancia();
-                IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                contCurso.listarNombresDeCursos();
-                cout << "Ingrese un curso" << endl;
-                string curs;
-                cin >> curs;*/
-
-
+                */
                 break;
             }
             case 11:{
