@@ -192,7 +192,10 @@ int main(){
                     //Guardo el curso en un DT auxiliar en el controlador
                     contCurso.setDatosDeCurso(curso);
 
-                    contCurso.listarIdiomasProfesor();
+                    set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
+                    for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
+                        imprimir((*it)->getNombreIdioma());
+                    }
                     imprimir("Elija el idioma del curso: ");
                     string idioma = entradaString();
                     contCurso.seleccionIdioma(idioma);
