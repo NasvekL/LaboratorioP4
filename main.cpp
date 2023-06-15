@@ -33,7 +33,7 @@ void ingresarUsuarios();
 void ingresarIdiomas();
 DTRellenarPalabras crearDTRellenarPalabras(int numLec);
 DTTraduccion crearDTTraduccion(int numLec);
-void seleccionTipoEjercicio();
+int seleccionTipoEjercicio();
 
 
 //Desplegar menu por consola
@@ -233,21 +233,22 @@ int main(){
                 contCurso.listarCursosNoHabilitados(); 
                 imprimir("Seleccionar Curso:");
                 string cursoSeleccionado = entradaString();
-                DTLeccion leccion = crearDTLeccion();
+                int numLec = contCurso.getNumeroDeLeccion(cursoSeleccionado);
+                numLec++;
+                DTLeccion leccion = crearDTLeccion(numLec);
                 contCurso.setDatosDeLeccion(leccion);
-                
                 //LOGICA PARA AGREGAR EJERCICIOS
                 int ejsPorAgregar = leccion.getCantidadDeEjercicios();
                 for(int i = 1; i <= ejsPorAgregar; i++){
                     int seleccion = seleccionTipoEjercicio();
                     switch(seleccion){
                         case 1:{
-                            DTTraduccion tradu = crearDTTraduccion();
+                            DTTraduccion tradu = crearDTTraduccion(numLec);
                             contCurso.agregarDatosTraduccion(tradu);
                             break;
                         }
                         case 2:{
-                            DTRellenarPalabras rellpab = crearDTRellenarPalabras();
+                            DTRellenarPalabras rellpab = crearDTRellenarPalabras(numLec);
                             contCurso.agregarDatosRellenarPalabras(rellpab);
                             break;
                         }
@@ -258,7 +259,7 @@ int main(){
                 presionaParaContinuar();
                 break;
             }
-            case 7:{/*
+            case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 imprimir ( "Cursos:", AMARILLO );
@@ -419,9 +420,10 @@ int seleccionEstudianteOProfesor(){
     return opcion;
 };
 
-void seleccionTipoEjercicio(){
+int seleccionTipoEjercicio(){
     imprimir("1. Ingresar ejercicio de traduccion");
     imprimir("2. Ingresar ejercicio de rellenar palabras");
+    return entradaInt();
 }
 
 DTEstudiante crearDTEstudiante() {

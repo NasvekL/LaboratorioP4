@@ -77,12 +77,12 @@ DTTraduccion ControladorCurso::getDatosTraduccion() {
 list<DTRellenarPalabras> ControladorCurso::getDatosMuchasRellenarPalabras(){
     return datosRellenarPalabras;
 }
-
-
 list<DTTraduccion> ControladorCurso::getDatosMuchasTraducciones(){
     return datosTraduccion;
 }
-
+int ControladorCurso::getNumeroDeLeccion(string cursoSeleccionado){
+    return cursos.find(cursoSeleccionado)->second->getLecciones().size();
+}
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
 void ControladorCurso:: setIdEjercicio(int id){
