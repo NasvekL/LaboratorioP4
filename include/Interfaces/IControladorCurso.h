@@ -38,6 +38,7 @@ class IControladorCurso{
         virtual list<DTTraduccion> getDatosMuchasTraducciones() = 0;
         virtual int getNumeroDeLeccion(string cursoSeleccionado)=0;
         //Setters virtuales
+        virtual void setDatoDeLeccion(DTLeccion datos)= 0;
         virtual void setDatoDeCurso(DTCurso datos)= 0;
         virtual void setIdEjercicio (int id)=0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;

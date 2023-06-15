@@ -71,6 +71,7 @@ class ControladorCurso: public IControladorCurso{
         //Setters
         void setIdEjercicio(int id);
         void setDatoDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
+        void setDatoDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         //hace que el puntero profesor apunte al objeto profesor que se le pasa
         void setProfesor(Profesor* profesor); //void seleccionProfesor(string nick);
