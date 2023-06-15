@@ -14,6 +14,7 @@ Curso::~Curso() {
         est->eliminarInscripcion(ins);
         delete ins;
     }
+    aprobados.clear();
     inscripciones.clear();
     previas.clear();
 }
