@@ -63,7 +63,7 @@ class ControladorCurso: public IControladorCurso{
         string getDatoNombreDeProfesor();
         Profesor* getProfesor();
         string getDatoIdioma();
-        map<string ,Curso*>* getDatosPrevias();
+        map<string ,Curso*> getDatosPrevias();
         DTRellenarPalabras getDatosRellenar();
         DTTraduccion getDatosTraduccion();
         Curso getCurso(string nombreCurso);

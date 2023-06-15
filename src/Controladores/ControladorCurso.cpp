@@ -63,8 +63,8 @@ Profesor* ControladorCurso::getProfesor(){
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
-map<string,Curso*>* ControladorCurso::getDatosPrevias() {
-    return &datosPrevias;
+map<string,Curso*> ControladorCurso::getDatosPrevias() {
+    return datosPrevias;
 }
 DTRellenarPalabras ControladorCurso::getDatosRellenar() {
     return *datosRellenar
@@ -120,6 +120,8 @@ void ControladorCurso::seleccionIdioma(string idi){
 bool ControladorCurso::altaCurso() {
     auto it = idiomas.find(datoIdioma);
     Idioma* idi = it->second;
+ 
+    if(!datosPrevias.empty())
     for(auto iter=datosDeCurso->getPrevias()->begin(); iter!=datosDeCurso->getPrevias()->end(); iter++){
         Curso* curso =cursos.find(*iter)->second;
         datosPrevias.insert(std::make_pair(*iter,curso));
