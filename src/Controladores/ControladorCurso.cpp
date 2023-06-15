@@ -109,11 +109,11 @@ void ControladorCurso::setDatosPrevias(set<Curso*> previas) {
 }
 //Precondicion: solucion de traduccion viene como null
 void ControladorCurso::setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos) {
-    datosRellenar = &datos;
+    datosRellenar = new DTRellenarPalabras(datos.getDescripcion(),datos.getLetra(),datos.getIdEjercicio(),datos.getListaDePalabras(),datos.getTipo(),datos.getNumLec());
 }
 //Precondicion: solucion de compPal viene como null
 void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
-    datosTraducir = &datos;
+    datosTraducir = new DTTraduccion(datos.getDescripcion(),datos.getLetra(),datos.getIdEjercicio(),datos.getSolucion(),datos.getTipo(),datos.getNumLec());
 }
 
 
