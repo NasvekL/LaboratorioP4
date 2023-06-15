@@ -284,7 +284,6 @@ int main(){
                 imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
                 Curso* cur = contCurso.getCurso(cursoSelec);
-
                 imprimir("Lecciones del curso:", AMARILLO);
                 list<Leccion*> lecciones = cur->getLecciones();
 
@@ -308,7 +307,7 @@ int main(){
                     if (leccionSeleccionada != nullptr) {
                         imprimir("Ingrese el tipo de ejercicio (completar o traduccion):", AMARILLO);
                         string tipo = entradaString();
-                        if ((tipo == "completar ") || (tipo == "Completar")) {
+                        if ((tipo == "completar") || (tipo == "Completar")) {
                             DTRellenarPalabras rell = crearDTRellenarPalabras(lecSelec);
                             contCurso.setDatosEjercicioCompletarPalabras(rell);
                         }else if ((tipo == "traduccion") || (tipo == "Traduccion")){                            
@@ -316,6 +315,7 @@ int main(){
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
                             imprimir("Tipo de ejercicio no válido", ROJO);
+                            presionaParaContinuar();
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
@@ -755,17 +755,9 @@ int entradaInt(){
 
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
-/*bool esAlfanumerico(string entrada){
-    for(int i = 0; i < entrada.length(); i++){
-        if(!isalnum(entrada[i])){
-            return false;
-        }
-    }
-    return true;
-}*/
-bool esAlfanumerico(string entrada) {
+bool esAlfanumerico(string str) {
     regex pattern("[a-zA-Z0-9,_\\-]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
-    return regex_match(entrada, pattern);
+    return regex_match(str, pattern);
 }
 
 string entradaString(){
