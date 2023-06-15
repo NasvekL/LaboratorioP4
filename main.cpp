@@ -19,7 +19,7 @@
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
-DTCurso crearDTCurso(set<Idioma*> idiomas);
+DTCurso crearDTCurso();
 DTLeccion crearDTLeccion();
 void esperar(double time);
 int entradaInt();
@@ -187,17 +187,18 @@ int main(){
                     imprimir("Ingrese el nickname del profesor que dictara el curso:");
                     string nick = entradaString();
                     contCurso.seleccionarProfesor(nick);
-
                     //Defino el resto de datos del curso
-                    DTCurso curso = crearDTCurso(contCurso.getProfesor()->getIdiomas());
+                    DTCurso curso = crearDTCurso();
                     //Guardo el curso en un DT auxiliar en el controlador
                     contCurso.setDatosDeCurso(curso);
 
                     contCurso.listarIdiomasProfesor();
-
+                            imprimir("Elija el idioma del curso: ");
+                    string idioma = entradaString();
+                    contCurso.seleccionIdioma(idioma);
                     //list<string> profes= contCurso.listarProfe();
                     //for each profesor in profes
-                        //imprimir(profesor);
+                    //    imprimir(profesor);
                     //imprimir("Ingrese nickname de profesor que dictara el cursso:");
                     //string nick = entradaString();
                     //contCurso.seleccionarProfesor(nick);
@@ -300,6 +301,8 @@ int main(){
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
+                        imprimir("Ejercicio creado", VERDE);
+                        presionaParaContinuar();
                     }
 
                 }
@@ -482,7 +485,7 @@ DTProfesor crearDTProfesor(){
     return prof;
 }
 
-DTCurso crearDTCurso(set<Idioma*> idiomasDelProfesor){
+DTCurso crearDTCurso(){
         imprimir("Ingrese nombre del curso:");
         string nombre = entradaString();
 
@@ -511,11 +514,7 @@ DTCurso crearDTCurso(set<Idioma*> idiomasDelProfesor){
                 break;
         }
         
-        imprimir("Elija el idioma del curso: ");
-        for(auto it = idiomasDelProfesor.begin(); it != idiomasDelProfesor.end(); ++it) {
-            imprimir((*it)->getNombreIdioma());
-        }
-        string idioma = entradaString();
+
 
         imprimir("Quiere agregar previas al curso? (S/N)");
         string tienePrevias = entradaString();
