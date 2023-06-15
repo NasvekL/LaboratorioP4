@@ -59,6 +59,9 @@ class IControladorCurso{
         //Operaciones virtuales para modificar el set de ejercicios
         virtual void agregarEjercicio(DTEjercicio datos)= 0;
 
+
+        virtual void inscribirEstudianteACurso(string curso, string estudiante)= 0;
+
         //Operaciones virtuales para obtener información
 
         //Primero, busca el profesor en la lista de usuarios, y devuelve una copia (o el profesor original, no se). Luego, ese Profesor se

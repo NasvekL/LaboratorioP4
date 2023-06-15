@@ -23,6 +23,10 @@ class Inscripcion{
         DTFecha getFecha();
         bool getAprobado();
         int getLeccionActual();
+        Progreso* getProg();
+        Curso* getInscriptoA();
+        Estudiante* getEstudiante();
+
         //Create y destroy
         Inscripcion(DTFecha fecha,bool aprobado,int leccionActual,Progreso* prog);
         ~Inscripcion();

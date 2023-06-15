@@ -31,6 +31,9 @@ class Estudiante: public Usuario{
         set<int> obtenerProgreso();
         list<Inscripcion*>& Inscripciones();  //PseudoAtributo
         //Faltan los casos de uso que me permiten agregar y eliminar inscripciones
+
+        void agregarInscripcion(Inscripcion* insc);
+        void eliminarInscripcion(Inscripcion* insc);
 };
 
 
