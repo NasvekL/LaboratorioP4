@@ -98,6 +98,7 @@ int main(){
                 break;
             }
             case 1:{
+                //Alta usuario
                 int seleccion = seleccionEstudianteOProfesor();
                 switch (seleccion){
                     case 1:{
@@ -273,9 +274,13 @@ int main(){
             case 7:{
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
-                imprimir ( "Cursos:", AMARILLO );
+                imprimir ( "Cursos no habilitados disponibles:", AMARILLO );
                 contCurso.listarCursosNoHabilitados();
-                
+                list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                int a=1;
+                for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
+                    imprimir(to_string(a)+" "+*it);
+                }
                 imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
                 Curso* cur = contCurso.getCurso(cursoSelec);
@@ -688,9 +693,10 @@ bool quiereContinuar(string p){
 
 
 void presionaParaContinuar(){
-    cout << endl << "Presiona cualquier tecla para continuar...";
+    cout << "Presiona enter para continuar...";
     cin.ignore();
     cin.get();
+    cout << endl;
 }
 
 void limpiarLog(){
@@ -739,7 +745,7 @@ int entradaInt(){
             cin >> entradita;
             entrada = stoi(entradita);
         }catch(...){
-            cout << AMARILLO << "La entrada debe ser un entero positivo." << RESET;
+            cout << AMARILLO << "La entrada debe ser un entero positivo." << endl << RESET;
             cout << "Ingrese un entero positivo: ";
         }
     }
@@ -749,15 +755,18 @@ int entradaInt(){
 
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
-bool esAlfanumerico(string entrada){
+/*bool esAlfanumerico(string entrada){
     for(int i = 0; i < entrada.length(); i++){
         if(!isalnum(entrada[i])){
             return false;
         }
     }
     return true;
+}*/
+bool esAlfanumerico(string entrada) {
+    regex pattern("[a-zA-Z0-9,_\\-]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
+    return regex_match(entrada, pattern);
 }
-
 
 string entradaString(){
     bool alfanumerico = false;
