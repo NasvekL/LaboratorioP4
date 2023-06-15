@@ -77,12 +77,12 @@ DTTraduccion ControladorCurso::getDatosTraduccion() {
 list<DTRellenarPalabras> ControladorCurso::getDatosMuchasRellenarPalabras(){
     return datosRellenarPalabras;
 }
-
-
 list<DTTraduccion> ControladorCurso::getDatosMuchasTraducciones(){
     return datosTraduccion;
 }
-
+int ControladorCurso::getNumeroDeLeccion(string cursoSeleccionado){
+    return cursos.find(cursoSeleccionado)->second->getLecciones().size();
+}
 //Setters
 //no se si funcionaran bien, pasa todo por referencia
 void ControladorCurso:: setIdEjercicio(int id){
@@ -163,15 +163,15 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(string curso){
-/*    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
-    auto iterator = cursos.find(curso);
-    //Curso *cur = *iterador;
+    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero(),datosRellenarPalabras,datosTraduccion);
+    auto iter = cursos.find(curso);
+    Curso *cur = iter->second;
+    cur->agregarLeccion(nuevaLec);
+    //Curso *cur = *iterador; 
     //cur->agregarLeccion(nuevaLec);
-    
-
     //Asocio a sus ejercicios
-    for (int i = 1; i <= datoDeLeccion->getCantidadDeEjercicios(); i++){
-        /*if(datosRellenarPalabras != nullptr){
+    /*for (int i = 1; i <= datoDeLeccion->getCantidadDeEjercicios(); i++){
+        if(datosRellenarPalabras != nullptr){
             DTRellenarPalabras dt = datosRellenarPalabras.front();
             datosRellenarPalabras.pop_front();
             Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
