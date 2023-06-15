@@ -377,6 +377,7 @@ int main(){
             }
             case 11:{
                 ///FALTA QUE MUESTRE LA CANTIDAD DE LECCIONES Y EJERCICIOS DE CADA CURSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //Tamien falta crear el progreso, pero hay que enlazarlo con los ejercicios y yo que se
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
