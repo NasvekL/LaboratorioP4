@@ -338,7 +338,7 @@ int main(){
             case 10:{
                 //Consultar curso
                 /*imprimir("Cursos Disponibles:");
-                list<string> nombreCursos = contCurso.listarNombresDeCursos();
+                set<string> nombreCursos = contCurso.listarNombresDeCursos();
                 for(auto it = nombreCursos.begin(); it != nombreCursos().end; it++){
                     imprimir(*it);
                 }

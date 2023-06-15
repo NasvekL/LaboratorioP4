@@ -110,7 +110,7 @@ class ControladorCurso: public IControladorCurso{
         set<DTCurso> listarDTCursos();
         set<Idioma*> listarIdiomasProfesor();
         void listarIdiomas();
-        list<string> listarCursosNoHabilitados();
+        void listarCursosNoHabilitados();
         bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
         bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
         void seleccionarEjercicio(int idEjercicio);
