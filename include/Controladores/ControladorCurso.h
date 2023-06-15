@@ -27,7 +27,7 @@ class ControladorCurso: public IControladorCurso{
         int idEjercicio; // idEjercicioActual
 
         //Atributos auxiliares con punteros
-        DTCurso* datosDeCurso;
+        DTCurso* datoDeCurso;
         DTLeccion* datoDeLeccion;
         list<DTLeccion> datosLecciones;
         Profesor* profesor;
@@ -55,7 +55,7 @@ class ControladorCurso: public IControladorCurso{
         map<string,Curso*> getCursos();
         int getIdEjercicio ();
         Idioma* getIdioma(string nombre);
-        DTCurso getDatosDeCurso();
+        DTCurso getDatoDeCurso();
         DTLeccion getDatosDeLeccion();
         list<DTLeccion> getDatosLecciones();
         list<DTRellenarPalabras> getDatosMuchasRellenarPalabras();
@@ -70,7 +70,7 @@ class ControladorCurso: public IControladorCurso{
         int getNumeroDeLeccion(string cursoSeleccionado);
         //Setters
         void setIdEjercicio(int id);
-        void setDatosDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
+        void setDatoDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         //hace que el puntero profesor apunte al objeto profesor que se le pasa
         void setProfesor(Profesor* profesor); //void seleccionProfesor(string nick);
