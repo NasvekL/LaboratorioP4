@@ -142,7 +142,9 @@ void ControladorUsuario::listarIdiomasProfesor(Profesor p) {
 }
 
 Profesor ControladorUsuario::encontrarProfesor(string nick) {
-     auto it = usuarios.find(nick);
+    //Intenta encontrarlo
+    auto it = usuarios.find(nick);
+    //Si el iterador que lo busca no es vacio, osea llego al final...
     if (it != usuarios.end()) {
         Usuario* usuario = it->second;
         if (Profesor* profesor = dynamic_cast<Profesor*>(usuario)) {
