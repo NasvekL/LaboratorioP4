@@ -106,7 +106,7 @@ class ControladorCurso: public IControladorCurso{
         void seleccionarProfesor(string nick);
         list<string> listarProfe();
         DTEstadisticaCurso estadisticasCurso(string curso);
-        void listarNombresDeCursos();
+        set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();
         set<Idioma*> listarIdiomasProfesor();
         void listarIdiomas();
