@@ -747,15 +747,18 @@ int entradaInt(){
 
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
-bool esAlfanumerico(string entrada){
+/*bool esAlfanumerico(string entrada){
     for(int i = 0; i < entrada.length(); i++){
         if(!isalnum(entrada[i])){
             return false;
         }
     }
     return true;
+}*/
+bool esAlfanumerico(string str) {
+    regex pattern("[a-zA-Z0-9,_\\-]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
+    return regex_match(str, pattern);
 }
-
 
 string entradaString(){
     bool alfanumerico = false;
