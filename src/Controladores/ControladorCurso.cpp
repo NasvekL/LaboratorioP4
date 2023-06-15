@@ -10,7 +10,7 @@ ControladorCurso& ControladorCurso::getInstancia() {
     return *instancia;
 }
 ControladorCurso::ControladorCurso(){
-    datosDeCurso=NULL;
+    datoDeCurso=NULL;
     datoDeLeccion=NULL;
     profesor = NULL;
     datosRellenar=NULL;
@@ -47,8 +47,8 @@ map<string,Curso*> ControladorCurso::getCursos(){
 int ControladorCurso:: getIdEjercicio (){
     return idEjercicio;
 }
-DTCurso ControladorCurso::getDatosDeCurso() {
-    return *datosDeCurso;
+DTCurso ControladorCurso::getDatoDeCurso() {
+    return *datoDeCurso;
 }
 list<DTLeccion> ControladorCurso::getDatosLecciones() {
     return datosLecciones;
@@ -88,8 +88,8 @@ int ControladorCurso::getNumeroDeLeccion(string cursoSeleccionado){
 void ControladorCurso:: setIdEjercicio(int id){
     idEjercicio = id;
 }
-void ControladorCurso::setDatosDeCurso(DTCurso datos) {
-    datosDeCurso = &datos;
+void ControladorCurso::setDatoDeCurso(DTCurso datos) {
+    datoDeCurso = &datos;
 }
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
     datosLecciones.push_back(datos);
@@ -122,12 +122,12 @@ bool ControladorCurso::altaCurso() {
     Idioma* idi = it->second;
  
     if(!datosPrevias.empty())
-    for(auto iter=datosDeCurso->getPrevias()->begin(); iter!=datosDeCurso->getPrevias()->end(); iter++){
+    for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
         Curso* curso =cursos.find(*iter)->second;
         datosPrevias.insert(std::make_pair(*iter,curso));
     }
-    Curso * cur = new Curso(datosDeCurso->getNombre(),datosDeCurso->getDescripcion(),datosDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
-    cursos.insert(std::make_pair(datosDeCurso->getNombre(), cur));
+    Curso * cur = new Curso(datoDeCurso->getNombre(),datoDeCurso->getDescripcion(),datoDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
+    cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
     profesor->agregarCurso(cur);
     for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
         for(auto it = (*iter)->getEjercicios().begin(); it!=(*iter)->getEjercicios().end(); it++){
@@ -194,19 +194,13 @@ void ControladorCurso::altaEjercicio(Leccion* lec){
     DTRellenarPalabras dt = getDatosRellenar();
     Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
-    //ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-    ej->setLeccion(lec);
-    delete datosRellenar;
-    datosRellenar = NULL;
+    ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
 }
 else{
     DTTraduccion dt = getDatosTraduccion();
     Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
-    //ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-    ej->setLeccion(lec);
-    delete datosTraducir;
-    datosTraducir = NULL;
+    ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
 }
 }
 
@@ -365,8 +359,8 @@ void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
 
 //Otras operaciones
 void ControladorCurso::limpiarDatos() {
-    if(datosDeCurso != nullptr){
-        delete datosDeCurso;
+    if(datoDeCurso != nullptr){
+        delete datoDeCurso;
     }
     if(datoDeLeccion != nullptr){
         delete datoDeLeccion;

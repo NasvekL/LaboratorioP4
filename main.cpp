@@ -189,7 +189,7 @@ int main(){
                     //Defino el resto de datos del curso
                     DTCurso curso = crearDTCurso();
                     //Guardo el curso en un DT auxiliar en el controlador
-                    contCurso.setDatosDeCurso(curso);
+                    contCurso.setDatoDeCurso(curso);
 
                     set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
                     for(auto it = idiomass.begin(); it != idiomass.end(); ++it){

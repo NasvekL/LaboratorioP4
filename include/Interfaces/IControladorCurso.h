@@ -24,7 +24,7 @@ class IControladorCurso{
         //Getters virtuales
         virtual int getIdEjercicio()=0;
         virtual Idioma* getIdioma(string nombre)= 0;
-        virtual DTCurso getDatosDeCurso()= 0;
+        virtual DTCurso getDatoDeCurso()= 0;
         virtual list<DTLeccion> getDatosLecciones()=0;
         virtual DTLeccion getDatosDeLeccion()= 0;
         virtual Profesor* getProfesor()= 0;
@@ -38,8 +38,8 @@ class IControladorCurso{
         virtual list<DTTraduccion> getDatosMuchasTraducciones() = 0;
         virtual int getNumeroDeLeccion(string cursoSeleccionado)=0;
         //Setters virtuales
+        virtual void setDatoDeCurso(DTCurso datos)= 0;
         virtual void setIdEjercicio (int id)=0;
-        virtual void setDatosDeCurso(DTCurso datos)= 0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
         virtual void setProfesor(Profesor* profesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
