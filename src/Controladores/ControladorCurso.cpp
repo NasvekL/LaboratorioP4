@@ -162,7 +162,7 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(string curso){
-    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
+/*    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
     auto iterator = cursos.find(curso);
     //Curso *cur = *iterador;
     //cur->agregarLeccion(nuevaLec);
@@ -183,8 +183,8 @@ void ControladorCurso::altaLeccion(string curso){
             Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
             nuevaLec->addEjercicio(ej);
             ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-        }    */
-    }
+        }    
+    }*/
 }
 
 

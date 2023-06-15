@@ -2,7 +2,8 @@
 #define TRADUCCION
 #include "../Utils.h"
 #include "Ejercicio.h"
-
+#include "Leccion.h"
+class Leccion;
 class Traduccion:public Ejercicio{
     private:
         string solucion;

@@ -254,6 +254,7 @@ int main(){
                     break;
             }
             case 6:{
+                /*
                 //Agregar leccion
                 imprimir("Cursos no habilitados disponibles:");;
                 contCurso.listarCursosNoHabilitados(); 
@@ -282,10 +283,10 @@ int main(){
                 contCurso.altaLeccion(cursoSeleccionado);
                 imprimir("Leccion creada", VERDE);
                 presionaParaContinuar();
-            
+            */
                 break;
             }
-            case 7:{
+            case 7:{/*
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 imprimir ( "Cursos:", AMARILLO );
@@ -334,7 +335,7 @@ int main(){
                     }
 
                 }
-
+*/
                 break;
             }
             case 8:{

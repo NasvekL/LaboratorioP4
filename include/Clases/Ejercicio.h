@@ -22,7 +22,7 @@ class Ejercicio{
         int getIdEjercicio();
         string getDescripcion();
         string getLetra();
-        Leccion getLeccion();
+        Leccion* getLeccion();
         //constructor y destructor
         ~Ejercicio();
         //operaciones
