@@ -19,6 +19,18 @@ Inscripcion::Inscripcion(DTFecha fecha, bool aprobado, int leccionActual, Progre
     this->prog = prog;
 }
 
+
+
+Progreso* Inscripcion::getProg(){
+
+}
+Curso* Inscripcion::getInscriptoA(){
+
+}
+Estudiante* Inscripcion::getEstudiante(){
+
+}
+
 Inscripcion::~Inscripcion() {
     // Implementación del destructor si es necesario
 }

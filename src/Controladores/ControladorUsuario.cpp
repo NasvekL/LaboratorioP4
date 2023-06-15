@@ -142,6 +142,17 @@ set<Idioma*> ControladorUsuario::listarIdiomasProfesor(Profesor* p) {
     return SIdiomas;
 }
 
+
+void ControladorUsuario::agregarInscripcionAEstudiante(string estudiante, Inscripcion* inscri) {
+    encontrarEstudiante(estudiante)->agregarInscripcion(inscri);
+}
+
+Estudiante* ControladorUsuario::encontrarEstudiante(string nick) {
+    auto it = usuarios.find(nick);
+    Estudiante* e = dynamic_cast<Estudiante*>(it->second);
+    return e;  
+}
+
 Profesor* ControladorUsuario::encontrarProfesor(string nick) {
     auto it = usuarios.find(nick);
     Profesor* p = dynamic_cast<Profesor*>(it->second);

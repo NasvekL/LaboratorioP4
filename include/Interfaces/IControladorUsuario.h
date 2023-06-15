@@ -22,6 +22,9 @@ class IControladorUsuario{
     virtual void setDatoProfesor(DTProfesor dato) = 0;
     // Operaciones para modificar el set de usuarios
 
+    virtual void agregarInscripcionAEstudiante(string estudiante, Inscripcion* inscri);
+
+
     // Operaciones para obtener información
     virtual std::list<std::string> listarCursos() = 0;
     virtual DTEstadisticaProfesor estadisticasProfesor(std::string profesor) = 0;
@@ -41,6 +44,7 @@ class IControladorUsuario{
     virtual list<string> listarProfe() = 0;
     virtual set<Idioma*> listarIdiomasProfesor(Profesor* p) = 0;
     virtual Profesor* encontrarProfesor(std::string nick) = 0;
+    virtual Estudiante* encontrarEstudiante(std::string nick) = 0;
     virtual void confirmarAltaUsuario() = 0;
     virtual void deleteDataIngresado() = 0;
     virtual void listarIdiomas() = 0;

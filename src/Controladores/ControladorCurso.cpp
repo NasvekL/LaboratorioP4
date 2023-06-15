@@ -241,7 +241,57 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
 
 list<string> ControladorCurso::cursosDisponibles(string nick){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    return cu.cursosDisponibles(nick);
+    list<string> cursosDisponibles = list<string>();
+    //Recorro cada curso del controlador (it es un curso en cada iteracion)
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        bool cursoHabilitado;
+        bool estudianteYaEstaInscritoAlCurso = false;
+        bool estudianteAproboLasPrevias = true;
+
+        cursoHabilitado = it->second->getHabilitado();
+
+        for(auto it2 = it->second->getInscripciones().begin(); it2 != it->second->getInscripciones().end(); ++it2){
+            if((*it2)->getEstudiante()->getNick() == nick){
+                estudianteYaEstaInscritoAlCurso = true;
+            }
+        }
+
+        //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
+        for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
+            estudianteAproboLasPrevias = false;
+            //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
+            for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
+                if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
+                    if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
+                        estudianteAproboLasPrevias = true;
+                    }else{                      //Si el estudiante no aprobo la previa
+                        estudianteAproboLasPrevias = false;
+                    }
+                    break;//se encontro la inscripcion del estudiante, asi que dejo de buscar en las inscripciones de la previa
+                }
+            }
+            //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
+            //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.
+            if(!estudianteAproboLasPrevias){
+                break;
+            }
+        }
+
+        if(cursoHabilitado && !estudianteYaEstaInscritoAlCurso && estudianteAproboLasPrevias){
+            cursosDisponibles.push_back(it->first);
+        }
+    }
+    return cursosDisponibles;
+}
+
+void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante) {
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    
+    DTFecha* fecha = new  DTFecha(21,6,2023);
+    Inscripcion* inscri = new Inscripcion(*fecha, false, 0, nullptr);
+
+    cu.agregarInscripcionAEstudiante(estudiante, inscri);
+    cursos.find(curso)->second->agregarInscripcion(inscri);
 }
 
 set<Idioma*> ControladorCurso::listarIdiomasProfesor() {

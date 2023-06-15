@@ -38,6 +38,7 @@ class Curso{
         string getDescripcion();
         nivelDeDificultad getNivelDeDificultad();
         bool getHabilitado();
+        list<Curso*> getPrevias();
         //SETTERS
         void setHabilitado(bool habilitado);
 
@@ -50,7 +51,8 @@ class Curso{
         void setIdiomaDelCurso(Idioma* i);
         void setProfesorQueLoDicta(Profesor* p);
         void setLecciones(list<Leccion*> lecciones);
-        void setInscripciones(list<Inscripcion*> inscripciones);
+        //void setInscripciones(list<Inscripcion*> inscripciones);
+        void agregarInscripcion(Inscripcion* insc);
 
         //OPERACIONES
         DTEjercicio seleccionarEjercicio(int idEjercicio); //Esto iria en controladorCurso me parece

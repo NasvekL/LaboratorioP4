@@ -19,6 +19,13 @@ Estudiante::Estudiante(string nickname, string contrasenia, string nombre, strin
     this->setDescripcion(descripcion);
 }
 
+void Estudiante::agregarInscripcion(Inscripcion* insc) {
+    inscripciones.push_back(insc);
+}
+void Estudiante::eliminarInscripcion(Inscripcion* insc) {
+    inscripciones.remove(insc);
+}
+
 Estudiante::~Estudiante() {
     // Implementación del destructor si es necesario
 }

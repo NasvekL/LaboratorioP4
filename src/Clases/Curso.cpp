@@ -39,6 +39,10 @@ nivelDeDificultad Curso::getNivelDeDificultad() {
     return nivelDeDif;
 }
 
+list<Curso*> Curso::getPrevias() {
+    return previas;
+}
+
 bool Curso::getHabilitado() {
     return habilitado;
 }
@@ -77,9 +81,8 @@ void Curso::setProfesorQueLoDicta(Profesor* p) {
 void Curso::setLecciones(list<Leccion*> lecciones) {
     this->lecciones = lecciones;
 }
-
-void Curso::setInscripciones(list<Inscripcion*> inscripciones) {
-    this->inscripciones = inscripciones;
+void Curso::agregarInscripcion(Inscripcion* insc){
+    inscripciones.push_back(insc);
 }
 
 // OPERACIONES

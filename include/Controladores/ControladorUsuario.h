@@ -36,6 +36,9 @@ class ControladorUsuario : public IControladorUsuario{
         static ControladorUsuario& getInstancia();
         ~ControladorUsuario();
 
+
+        void agregarInscripcionAEstudiante(string estudiante, Inscripcion* inscri);
+
         //Getters
         DTEstudiante getDatoEstudiante();
         map<string,Usuario>* getUsuarios();
@@ -68,6 +71,7 @@ class ControladorUsuario : public IControladorUsuario{
         list<string> listarProfe();
         set<Idioma*> listarIdiomasProfesor(Profesor* p);
         Profesor* encontrarProfesor(string nick);
+        Estudiante* encontrarEstudiante(string nick);
         void confirmarAltaUsuario();
         void deleteDataIngresado();
 

@@ -359,6 +359,11 @@ int main(){
             }
             case 10:{
                 //Consultar curso
+                
+                
+                
+                
+                
                 //interfazCurso->consultarCurso();
 
                 /*factoryController& fabrica = factoryController::getInstancia();
@@ -372,20 +377,21 @@ int main(){
                 break;
             }
             case 11:{
+                ///FALTA QUE MUESTRE LA CANTIDAD DE LECCIONES Y EJERCICIOS DE CADA CURSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                     contUsuario.seleccionarUsuario(nick);
                     imprimir("Cursos disponibles para " + nick + ":");
-
-                    //cursosDisponibles(nick) :setString        FALTA
-                    //for each curso in CursosDisponibles       FALTA
-                        //imprimir(nombreCurso);                FALTA
-
+                    list<string> cursosDisp = contCurso.cursosDisponibles(nick);
+                    for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
+                        imprimir(*it);
+                    }
                     imprimir("Ingrese nombre de curso a inscribirse:");
                     string nombreCurso = entradaString();
-                    //inscribirEstudiante (nombrecurso)         FALTA
-
+                    contCurso.inscribirEstudianteACurso(nombreCurso, nick);
+                    imprimir("Estudiante inscripto", VERDE);
+                    presionaParaContinuar();
                 }else{
                     imprimir("El usuario " + nick + " no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
                     presionaParaContinuar();

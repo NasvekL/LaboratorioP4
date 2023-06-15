@@ -88,6 +88,8 @@ class ControladorCurso: public IControladorCurso{
         void eliminarCurso(string nombreCurso);
         void habilitarCurso(string nombreCurso);
 
+        void inscribirEstudianteACurso(string curso, string estudiante);
+
         //Operaciones para modificar el set de idiomas
         bool confirmarAltaIdioma(string idioma);
         //Operaciones para modificar el set de ejercicios
