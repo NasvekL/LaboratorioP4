@@ -275,7 +275,7 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     cursos.find(curso)->second->agregarInscripcion(inscri);
 }
 
-set<string> ControladorCurso::listarIdiomasProfesor() {
+set<Idioma*> ControladorCurso::listarIdiomasProfesor() {
     Profesor* p = getProfesor();
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     return cu.listarIdiomasProfesor(p);
@@ -361,9 +361,10 @@ void ControladorCurso::limpiarDatos() {
 
 
 //Operacion rara
-set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
-    // Implementación pendiente
-    return set<string>();
+void ControladorCurso::cursosInscriptoSinAprobar(string nick) {
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    cu.cursosInscriptosSinAprobar(nick);
+    
 }
 
 set<DTLeccion> ControladorCurso:: ListarLecciones(string cursoLec){  //implementar

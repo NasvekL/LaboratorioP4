@@ -397,8 +397,9 @@ int main(){
                 break;
             }
             case 12:{
-                //Realizar ejercicio
-                //interfazCurso->realizarEjercicio();
+                imprimir("Ingrese nick de estudiante: ");
+                string nick = entradaString();
+                contCurso.cursosInscriptoSinAprobar(nick);
                 break;
             }
             case 13:{
