@@ -127,7 +127,7 @@ int main(){
                     for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
                         imprimir(*it);
                     }
-                    cout << "Ingrese el nick deseado" << endl;
+                    imprimir("Ingrese el nick deseado", AMARILLO);
                     string nick;
                     nick = entradaString();
                     if(contUsuario.getTipoUsuario(nick)=="estudiante"){
@@ -184,7 +184,7 @@ int main(){
                     for (auto it = profes.begin(); it != profes.end(); ++it) {
                          imprimir(*it);
                     }
-                    imprimir("Ingrese el nickname del profesor que dictara el curso:");
+                    imprimir("Ingrese el nickname del profesor que dictara el curso:", AMARILLO);
                     string nick = entradaString();
                     contCurso.seleccionarProfesor(nick);
                     //Defino el resto de datos del curso
@@ -196,25 +196,25 @@ int main(){
                     for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
                         imprimir((*it)->getNombreIdioma());
                     }
-                    imprimir("Elija el idioma del curso: ");
+                    imprimir("Elija el idioma del curso: ", AMARILLO);
                     string idioma = entradaString();
                     contCurso.seleccionIdioma(idioma);
-                    imprimir("Agregar leccion S/N");
+                    imprimir("Agregar leccion S/N", AMARILLO);
                     string opcion = entradaString();
                     int numLec = 0;
                     while((opcion == "S") || (opcion == "s")){
                         DTLeccion leccion = crearDTLeccion2(numLec);
                         contCurso.setDatosDeLeccion(leccion);
-                        imprimir("Quiere agregar ejercicio S/N");
+                        imprimir("Quiere agregar ejercicio S/N", AMARILLO);
                         string opcion2 = entradaString();
                         if((opcion2=="S") || (opcion2=="s")){
-                            imprimir("Ingrese la cantidad de ejercicios que desea agregar:");
+                            imprimir("Ingrese la cantidad de ejercicios que desea agregar:", AMARILLO);
                             int cantEjs = entradaInt();
                             leccion.setCantEj(cantEjs);   
                         }
                         while((opcion2=="S") || (opcion2=="s")){
-                            imprimir("Ingrese tipo de ejercicio");
-                            imprimir("Completar/Traduccion");
+                            imprimir("Ingrese tipo de ejercicio", AMARILLO);
+                            imprimir("Completar/Traduccion", AMARILLO);
                             string opcion3 = entradaString();
                             if(opcion3=="Completar"){
                                 DTRellenarPalabras ejercicio = crearDTRellenarPalabras(numLec);
@@ -235,13 +235,13 @@ int main(){
             }
             case 6:{
                 //Agregar leccion
-                imprimir("Cursos no habilitados disponibles:");;
+                imprimir("Cursos no habilitados disponibles:", AMARILLO);;
                 list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
                 int a=1;
                 for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
                     imprimir(to_string(a)+" "+*it);
                 }
-                imprimir("Escribe el nombre del Curso:");
+                imprimir("Escribe el nombre del Curso:" , AMARILLO);
                 string cursoSeleccionado = entradaString();
                 int numLec = contCurso.getNumeroDeLeccion(cursoSeleccionado);
                 numLec++;
@@ -301,7 +301,7 @@ int main(){
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):, AMARILLO");
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):", AMARILLO);
                         string tipo = entradaString();
                         if ((tipo == "completar ") || (tipo == "Completar")) {
                             DTRellenarPalabras rell = crearDTRellenarPalabras(lecSelec);
