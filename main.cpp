@@ -193,7 +193,7 @@ int main(){
                     contCurso.setDatosDeCurso(curso);
 
                     contCurso.listarIdiomasProfesor();
-                            imprimir("Elija el idioma del curso: ");
+                    imprimir("Elija el idioma del curso: ");
                     string idioma = entradaString();
                     contCurso.seleccionIdioma(idioma);
                     imprimir("Agregar leccion S/N");
