@@ -18,7 +18,8 @@ string DTEjercicio :: getLetra(){
 DTEjercicio :: ~DTEjercicio(){
 }
 
-DTEjercicio :: DTEjercicio(int idEjercicio, string letra, string descripcion,string tipo){
+DTEjercicio :: DTEjercicio(int idEjercicio, string letra, string descripcion,string tipo,int numLec){
+    this->numLec = numLec;
     this->idEjercicio = idEjercicio;
     this->letra = letra;
     this->descripcion = descripcion;

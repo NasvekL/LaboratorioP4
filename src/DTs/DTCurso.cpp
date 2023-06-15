@@ -9,7 +9,9 @@ string DTCurso :: getNombre(){
 bool DTCurso :: getHabilitado(){
     return habilitado;
 }
-
+set<string>* DTCurso::getPrevias(){
+    return previas;
+}
 nivelDeDificultad DTCurso :: getNivel(){
     return nivel;
 }

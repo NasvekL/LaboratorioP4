@@ -28,7 +28,8 @@ class IControladorCurso{
         virtual DTLeccion getDatosDeLeccion()= 0;
         virtual Profesor* getProfesor()= 0;
         virtual string getDatoIdioma()= 0;
-        virtual map<string, DTCurso*>* getDatosPrevias()= 0;
+        virtual map<string, Curso*>* getDatosPrevias()= 0;
+        virtual map<string,Curso*> getCursos()= 0;
         virtual Curso getCurso(string nombreCurso) = 0;
         virtual DTRellenarPalabras getDatosRellenar()= 0;
         virtual DTTraduccion getDatosTraduccion()= 0;
@@ -40,7 +41,7 @@ class IControladorCurso{
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
         virtual void setProfesor(Profesor* profesor)= 0;
         virtual void setDatoIdioma(string idioma)= 0;
-        virtual void setDatosPrevias(set<DTCurso*> previas)= 0;
+        virtual void setDatosPrevias(set<Curso*> previas)= 0;
         virtual void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos)= 0;
         virtual void setDatosEjercicioTraduccion(DTTraduccion datos)= 0;
         virtual void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal) = 0;

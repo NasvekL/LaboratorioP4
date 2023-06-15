@@ -18,11 +18,14 @@ list<string> DTRellenarPalabras :: getListaDePalabras(){
 string DTRellenarPalabras :: getLetra(){
     return letra;
 }
-
-DTRellenarPalabras :: DTRellenarPalabras(string descripcion, string letra, int idEjercicio, list<string> listaDePalabras, string tipo){
+int DTRellenarPalabras :: getNumLec(){
+    return numLec;
+}
+DTRellenarPalabras :: DTRellenarPalabras(string descripcion, string letra, int idEjercicio, list<string> listaDePalabras, string tipo,int numLec){
     this->tipo = tipo;
     this->idEjercicio = idEjercicio;
     this->letra = letra;
     this->descripcion = descripcion;
     this->listaDePalabras = listaDePalabras;
+    this->numLec = numLec;
 }

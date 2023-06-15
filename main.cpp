@@ -20,7 +20,7 @@ int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 DTCurso crearDTCurso();
-DTLeccion crearDTLeccion();
+DTLeccion crearDTLeccion(int &numLec);
 void esperar(double time);
 int entradaInt();
 string entradaString();
@@ -32,8 +32,8 @@ void imprimir(string texto, string color);
 list<string> separarString(const string& str, char delimiter);
 void ingresarUsuarios();
 void ingresarIdiomas();
-DTRellenarPalabras crearDTRellenarPalabras();
-DTTraduccion crearDTTraduccion();
+DTRellenarPalabras crearDTRellenarPalabras(int numLec);
+DTTraduccion crearDTTraduccion(int numLec);
 int seleccionTipoEjercicio();
 
 
@@ -201,8 +201,9 @@ int main(){
                     contCurso.seleccionIdioma(idioma);
                     imprimir("Agregar leccion S/N");
                     string opcion = entradaString();
+                    int numLec = 0;
                     while(opcion == "S"){
-                        DTLeccion leccion = crearDTLeccion();
+                        DTLeccion leccion = crearDTLeccion(numLec);
                         contCurso.setDatosDeLeccion(leccion);
                         imprimir("Quiere agregar ejercicio S/N");
                         string opcion2 = entradaString();
@@ -211,11 +212,11 @@ int main(){
                             imprimir("Completar/Traduccion");
                             string opcion3 = entradaString();
                             if(opcion3=="Completar"){
-                                DTRellenarPalabras ejercicio = crearDTRellenarPalabras();
+                                DTRellenarPalabras ejercicio = crearDTRellenarPalabras(numLec);
                                 contCurso.agregarDatosRellenarPalabras(ejercicio);
                             }
                             else{
-                                DTTraduccion ejercicio = crearDTTraduccion();
+                                DTTraduccion ejercicio = crearDTTraduccion(numLec);
                                 contCurso.agregarDatosTraduccion(ejercicio);
                             }
                             if(!quiereContinuar("Agregar otro ejercicio"))
@@ -253,6 +254,7 @@ int main(){
                     break;
             }
             case 6:{
+                /*
                 //Agregar leccion
                 imprimir("Cursos no habilitados disponibles:");;
                 contCurso.listarCursosNoHabilitados(); 
@@ -281,10 +283,10 @@ int main(){
                 contCurso.altaLeccion(cursoSeleccionado);
                 imprimir("Leccion creada", VERDE);
                 presionaParaContinuar();
-            
+            */
                 break;
             }
-            case 7:{
+            case 7:{/*
                 //Agregar ejercicio
                 //interfazCurso->agregarEjercicio();
                 imprimir ( "Cursos:", AMARILLO );
@@ -333,7 +335,7 @@ int main(){
                     }
 
                 }
-
+*/
                 break;
             }
             case 8:{
@@ -376,6 +378,7 @@ int main(){
                 break;
             }
             case 11:{
+                ///FALTA QUE MUESTRE LA CANTIDAD DE LECCIONES Y EJERCICIOS DE CADA CURSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
@@ -387,7 +390,7 @@ int main(){
                     }
                     imprimir("Ingrese nombre de curso a inscribirse:");
                     string nombreCurso = entradaString();
-                    //inscribirEstudiante (nombrecurso)         FALTA
+                    contCurso.inscribirEstudianteACurso(nombreCurso, nick);
                     imprimir("Estudiante inscripto", VERDE);
                     presionaParaContinuar();
                 }else{
@@ -563,9 +566,9 @@ DTCurso crearDTCurso(){
                 string pre = entradaString();
                 factoryController& fabrica = factoryController::getInstancia();
                 IControladorCurso& contCurso = fabrica.getIControladorCurso();
-                map<string, DTCurso*>* p = contCurso.getDatosPrevias();
-                auto it = p->find(pre);
-                if (it != p->end()) {
+                map<string, Curso*> p = contCurso.getCursos();
+                auto it = p.find(pre);
+                if (it != p.end()) {
                     previas->insert(pre);
                 } else {
                     imprimir("Curso no encontrado", ROJO);
@@ -579,18 +582,16 @@ DTCurso crearDTCurso(){
         return c;
     }    
 
-DTLeccion crearDTLeccion(){
+DTLeccion crearDTLeccion(int &numLec){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
-    
     imprimir("Ingrese el tema de la Leccion:");
     string tema = entradaString();
     imprimir("Ingrese el objetivo de la Leccion:");
     string objetivo = entradaString();
     imprimir("Ingrese la cantidad de ejercicios que desea agregar:");
     int cantEjs = entradaInt();
-    imprimir("Ingrese el numero de la leccion:"); //Tenemos como precondicion que son ingresadas en orden correcto
-    int numLec = entradaInt();
+    numLec++;
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
 }
@@ -645,7 +646,7 @@ list<string> separarString(const string& str, char delimiter) {
 }
 
 
-DTRellenarPalabras crearDTRellenarPalabras(){
+DTRellenarPalabras crearDTRellenarPalabras(int numLec){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
@@ -659,13 +660,13 @@ DTRellenarPalabras crearDTRellenarPalabras(){
     list<string> soluciones = separarString(solSinSep, ',');   
     int id = contCurso.getIdEjercicio() +1;
     contCurso.setIdEjercicio(id);
-    DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo);     //el id me lo pasa? me aseguro que no exxista?
+    DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo,numLec);     //el id me lo pasa? me aseguro que no exxista?
     return ejer;
 
 
 }
 
-DTTraduccion crearDTTraduccion(){
+DTTraduccion crearDTTraduccion(int numLec){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
@@ -678,7 +679,7 @@ DTTraduccion crearDTTraduccion(){
     string traduccion = entradaString();
     int id = contCurso.getIdEjercicio() +1;
     contCurso.setIdEjercicio(id);
-    DTTraduccion ejer = DTTraduccion(descripcion, fraseATraducir, id, traduccion,tipo);
+    DTTraduccion ejer = DTTraduccion(descripcion, fraseATraducir, id, traduccion,tipo,numLec);
     return ejer;
 }
 

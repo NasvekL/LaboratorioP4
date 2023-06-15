@@ -27,7 +27,8 @@ class Profesor: public Usuario{
         int obtenerPromedio();
         //Obtener Pseudoatributos
         set<Idioma*> getIdiomas();
-        list<Curso*>* Cursos();
+        list<Curso*>* getCursos();
+        void agregarCurso(Curso* curso);
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
 

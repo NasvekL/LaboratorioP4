@@ -4,6 +4,9 @@
 #include "../DTs/DTCurso.h"
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTEstadisticaCurso.h"
+#include "../DTs/DTLeccion.h"
+#include "../DTs/DTRellenarPalabras.h"
+#include "../DTs/DTTraduccion.h"
 #include "Estudiante.h"
 class Idioma;
 class Inscripcion;
@@ -28,7 +31,7 @@ class Curso{
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
-        Curso(string nombre, string descripcion, nivelDeDificultad nivel, bool habilitado, list<Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta);
+        Curso(string nombre, string descripcion, nivelDeDificultad nivel, map<string,Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta,list<DTRellenarPalabras> datosRellenarP,list<DTTraduccion> datosTraduccion,set<DTLeccion>lecciones);
         Curso();
         //GETTERS
         string getNombreCurso() const; //se puede poner const para indicar que la funcion no modifica el objeto. Si no c++ se queja despues al buscar curso por nombre

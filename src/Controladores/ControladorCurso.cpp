@@ -13,7 +13,6 @@ ControladorCurso::ControladorCurso(){
     datosDeCurso=NULL;
     datoDeLeccion=NULL;
     profesor = NULL;
-    datosPrevias=NULL;
     datosRellenar=NULL;
     datosTraducir=NULL;
     idEjercicio=0;
@@ -42,12 +41,18 @@ Idioma* ControladorCurso::getIdioma(string nombre){
     }
     else return nullptr;
 }
+map<string,Curso*> ControladorCurso::getCursos(){
+    return cursos;
+}
 int ControladorCurso:: getIdEjercicio (){
     return idEjercicio;
 }
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
+set<DTLeccion> ControladorCurso::getDatosLecciones() {
+    return datosLecciones;
+}   
 DTLeccion ControladorCurso::getDatosDeLeccion() {
     return *datoDeLeccion;
 }
@@ -58,7 +63,8 @@ Profesor* ControladorCurso::getProfesor(){
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
-map<string,DTCurso*>* ControladorCurso::getDatosPrevias() {
+map<string,Curso*>* ControladorCurso::getDatosPrevias() {
+    return &datosPrevias;
 }
 DTRellenarPalabras ControladorCurso::getDatosRellenar() {
     return *datosRellenar
@@ -95,7 +101,7 @@ void ControladorCurso::setProfesor(Profesor* profesor) {
 void ControladorCurso::setDatoIdioma(string idioma) {
     this->datoIdioma = idioma;
 }
-void ControladorCurso::setDatosPrevias(set<DTCurso*> previas) {
+void ControladorCurso::setDatosPrevias(set<Curso*> previas) {
 
 }
 //Precondicion: solucion de traduccion viene como null
@@ -113,8 +119,21 @@ void ControladorCurso::seleccionIdioma(string idi){
 }
 //Operaciones para modificar el set de cursos
 bool ControladorCurso::altaCurso() {
-    // Implementación pendiente
-    return false;
+    auto it = idiomas.find(datoIdioma);
+    Idioma* idi = it->second;
+    for(auto iter=datosDeCurso->getPrevias()->begin(); iter!=datosDeCurso->getPrevias()->end(); iter++){
+        Curso* curso =cursos.find(*iter)->second;
+        datosPrevias.insert(std::make_pair(*iter,curso));
+    }
+    Curso * cur = new Curso(datosDeCurso->getNombre(),datosDeCurso->getDescripcion(),datosDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
+    cursos.insert(std::make_pair(datosDeCurso->getNombre(), cur));
+    profesor->agregarCurso(cur);
+    for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
+        for(auto it = (*iter)->getEjercicios().begin(); it!=(*iter)->getEjercicios().end(); it++){
+            ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+        }
+    }
+return true;
 }
 void ControladorCurso::eliminarCurso(string nombreCurso) {
     // Implementación pendiente
@@ -143,7 +162,7 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(string curso){
-    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
+/*    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
     auto iterator = cursos.find(curso);
     //Curso *cur = *iterador;
     //cur->agregarLeccion(nuevaLec);
@@ -164,8 +183,8 @@ void ControladorCurso::altaLeccion(string curso){
             Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
             nuevaLec->addEjercicio(ej);
             ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
-        }    */
-    }
+        }    
+    }*/
 }
 
 
@@ -347,9 +366,6 @@ void ControladorCurso::limpiarDatos() {
     }
     if(profesor != nullptr){
         delete profesor;
-    }
-    if(datosPrevias != nullptr){
-        delete datosPrevias;
     }
     if(datosRellenar != nullptr){
         delete datosRellenar;
