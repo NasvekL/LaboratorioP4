@@ -326,6 +326,11 @@ int main(){
             }
             case 10:{
                 //Consultar curso
+                
+                
+                
+                
+                
                 //interfazCurso->consultarCurso();
 
                 /*factoryController& fabrica = factoryController::getInstancia();
