@@ -46,11 +46,23 @@ Leccion::~Leccion() {
     // Implementación del destructor si es necesario
 }
 
-Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercicios, int numero) {
+Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercicios, int numero,list<DTRellenarPalabras> listaRellenarPalabras,list<DTTraduccion> listaTraduccion) {
     this->tema = tema;
     this->objetivoAprendizaje = objetivoAprendizaje;
     this->cantidadDeEjercicios = cantidadDeEjercicios;
     this->numero = numero;
+    for(auto iter=listaRellenarPalabras.begin();iter!=listaRellenarPalabras.end();iter++){
+        if(iter->getNumLec()==getNumero()){
+            Ejercicio *ej = new RellenarPalabras(iter->getListaDePalabras(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
+            ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
+        }
+    }
+    for(auto iter=listaTraduccion.begin();iter!=listaTraduccion.end();iter++){
+        if(iter->getNumLec()==getNumero()){
+            Ejercicio *ej = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
+            ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
+        }
+    }
 }
 
 DTEjercicio Leccion::seleccionarEj(int idEjercicio) {

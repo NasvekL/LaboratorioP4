@@ -11,7 +11,7 @@ class DTCurso{
     public:
         //getters
         string getNombre();
-        set<DTCurso> getPrevias();
+        set<string>* getPrevias();
         bool getHabilitado();
         nivelDeDificultad getNivel();
         string getDescripcion();

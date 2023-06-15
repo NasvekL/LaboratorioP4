@@ -49,9 +49,11 @@ set<Idioma*> Profesor::getIdiomas() {
     return idiomas;
 }
 
-list<Curso*>* Profesor::Cursos() {
+list<Curso*>* Profesor::getCursos() {
     return this->cursos;
 }
-
+void Profesor::agregarCurso(Curso* curso) {
+    this->cursos->push_back(curso);
+}
 // Implementar los métodos adicionales y las operaciones para agregar idiomas y cursos
 // según tus necesidades
