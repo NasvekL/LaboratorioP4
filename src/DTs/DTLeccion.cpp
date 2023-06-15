@@ -39,3 +39,7 @@ string DTLeccion::getTema() {
     // Implementación del getter
     // Puedes devolver el valor del atributo tema
 }
+
+void DTLeccion:: setCantEj(int cant){
+    this->cantidadDeEjercicios = cant;
+}

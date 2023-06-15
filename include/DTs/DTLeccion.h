@@ -13,6 +13,7 @@ class DTLeccion{
         int getCantidadDeEjercicios();
         string getObjetivoAprendizaje();
         string getTema();
+        void setCantEj(int cant);
         //constructor destructor
         ~DTLeccion();
         DTLeccion(int numero,int cantidadDeEjercicios,string objetivoAprendizaje,string tema);
