@@ -201,7 +201,7 @@ int main(){
                     imprimir("Agregar leccion S/N");
                     string opcion = entradaString();
                     int numLec = 0;
-                    while(opcion == "S"){
+                    while((opcion == "S") || (opcion == "s")){
                         DTLeccion leccion = crearDTLeccion(numLec);
                         contCurso.setDatosDeLeccion(leccion);
                         imprimir("Quiere agregar ejercicio S/N");
