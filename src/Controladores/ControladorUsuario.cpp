@@ -137,22 +137,17 @@ list<string> ControladorUsuario::listarProfe() {
     return listaProfes;
 }
 
-void ControladorUsuario::listarIdiomasProfesor(Profesor p) {
-    
+void ControladorUsuario::listarIdiomasProfesor(Profesor* p) {
+    set<Idioma*> SIdiomas = p->getIdiomas();
+    for(auto it = SIdiomas.begin();it!=SIdiomas.end();it++){
+        cout << (*it)->getNombreIdioma() << endl;
+    }
 }
 
-Profesor ControladorUsuario::encontrarProfesor(string nick) {
-     auto it = usuarios.find(nick);
-    if (it != usuarios.end()) {
-        Usuario* usuario = it->second;
-        if (Profesor* profesor = dynamic_cast<Profesor*>(usuario)) {
-            return *profesor;
-        } else {
-            throw std::invalid_argument("El usuario ingresado es estudiante");
-        }
-    } else {
-        throw std::invalid_argument("No existe el usuario");
-    }
+Profesor* ControladorUsuario::encontrarProfesor(string nick) {
+    auto it = usuarios.find(nick);
+    Profesor* p = dynamic_cast<Profesor*>(it->second);
+    return p;  
 }
 
 void ControladorUsuario::confirmarAltaUsuario() {

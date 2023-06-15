@@ -88,9 +88,8 @@ void ControladorCurso::setDatosDeCurso(DTCurso datos) {
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
     datosDeLeccion = &datos;
 }
-void ControladorCurso::setProfesor(Profesor profesor) {
-    Profesor* p = &profesor;
-    this->profesor = p;
+void ControladorCurso::setProfesor(Profesor* profesor) {
+    this->profesor = profesor;
 }
 void ControladorCurso::setDatoIdioma(string idioma) {
     this->datoIdioma = idioma;
@@ -108,7 +107,9 @@ void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
 }
 
 
+void ControladorCurso::seleccionIdioma(string idi){
 
+}
 //Operaciones para modificar el set de cursos
 bool ControladorCurso::altaCurso() {
     // Implementación pendiente
@@ -197,7 +198,7 @@ void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
 //Operaciones para obtener informacion
 void ControladorCurso::seleccionarProfesor(string nick){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    Profesor p = cu.encontrarProfesor(nick);
+    Profesor* p = cu.encontrarProfesor(nick);
     setProfesor(p);
 }
 
@@ -221,7 +222,7 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
 set<string> ControladorCurso::listarIdiomasProfesor() {
     Profesor* p = getProfesor();
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    cu.listarIdiomasProfesor(*p);
+    cu.listarIdiomasProfesor(p);
 }
 void ControladorCurso::listarIdiomas(){
     int a=1;
