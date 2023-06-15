@@ -237,6 +237,7 @@ int main(){
                 numLec++;
                 DTLeccion leccion = crearDTLeccion(numLec);
                 contCurso.setDatosDeLeccion(leccion);
+                contCurso.setDatoDeLeccion(leccion);
                 //LOGICA PARA AGREGAR EJERCICIOS
                 int ejsPorAgregar = leccion.getCantidadDeEjercicios();
                 for(int i = 1; i <= ejsPorAgregar; i++){
