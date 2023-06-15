@@ -226,6 +226,11 @@ int main(){
                             opcion = "N";
                     }
                     contCurso.altaCurso();
+
+
+
+
+
                     //list<string> profes= contCurso.listarProfe();
                     //for each profesor in profes
                     //    imprimir(profesor);

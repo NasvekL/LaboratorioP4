@@ -1,4 +1,6 @@
 #include "../../include/Clases/Leccion.h"
+#include "../../include/Clases/RellenarPalabras.h"
+#include "../../include/Clases/Traduccion.h"
 
 void Leccion::setTema(string tema) {
     this->tema = tema;

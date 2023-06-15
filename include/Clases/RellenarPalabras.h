@@ -1,7 +1,7 @@
 #ifndef RELLENARPALABRAS
 #define RELLENARPALABRAS
 #include "../Utils.h"
-#include "Ejercicio.h"
+#include "../Clases/Ejercicio.h"
 #include "Leccion.h"
 class Leccion;
 class Ejercicio;

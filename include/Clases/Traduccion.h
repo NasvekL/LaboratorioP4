@@ -1,9 +1,10 @@
 #ifndef TRADUCCION
 #define TRADUCCION
 #include "../Utils.h"
-#include "Ejercicio.h"
+#include "../Clases/Ejercicio.h"
 #include "Leccion.h"
 class Leccion;
+class Ejercicio;
 class Traduccion:public Ejercicio{
     private:
         string solucion;
@@ -14,7 +15,7 @@ class Traduccion:public Ejercicio{
         bool esCorrectoRellenarPal(list<string> solucion);
         void aumentarProgreso(string estudiante);
         Traduccion(string solucion,int idEjercicio,string descripcion,string letra,Leccion* lec);
-        ~Traduccion();
+        ~Traduccion() = default;
 };
 
 
