@@ -11,7 +11,7 @@ ControladorCurso& ControladorCurso::getInstancia() {
 }
 ControladorCurso::ControladorCurso(){
     datosDeCurso=NULL;
-    datosDeLeccion=NULL;
+    datoDeLeccion=NULL;
     profesor = NULL;
     datosPrevias=NULL;
     datosRellenar=NULL;
@@ -49,7 +49,7 @@ DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
 DTLeccion ControladorCurso::getDatosDeLeccion() {
-    return *datosDeLeccion;
+    return *datoDeLeccion;
 }
 Profesor* ControladorCurso::getProfesor(){
     return profesor;
@@ -86,7 +86,8 @@ void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     datosDeCurso = &datos;
 }
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
-    datosDeLeccion = &datos;
+    datoDeLeccion = &datos;
+    datosLecciones.insert(datos);
 }
 void ControladorCurso::setProfesor(Profesor* profesor) {
     this->profesor = profesor;
@@ -108,7 +109,7 @@ void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
 
 
 void ControladorCurso::seleccionIdioma(string idi){
-
+    datoIdioma = idi;
 }
 //Operaciones para modificar el set de cursos
 bool ControladorCurso::altaCurso() {
@@ -142,14 +143,14 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 }
 
 void ControladorCurso::altaLeccion(string curso){
-    Leccion *nuevaLec = new Leccion(datosDeLeccion->getTema(), datosDeLeccion->getObjetivoAprendizaje(), datosDeLeccion->getCantidadDeEjercicios(), datosDeLeccion->getNumero());
+    Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero());
     auto iterator = cursos.find(curso);
     //Curso *cur = *iterador;
     //cur->agregarLeccion(nuevaLec);
     
 
     //Asocio a sus ejercicios
-    for (int i = 1; i <= datosDeLeccion->getCantidadDeEjercicios(); i++){
+    for (int i = 1; i <= datoDeLeccion->getCantidadDeEjercicios(); i++){
         /*if(datosRellenarPalabras != nullptr){
             DTRellenarPalabras dt = datosRellenarPalabras.front();
             datosRellenarPalabras.pop_front();
@@ -277,7 +278,7 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
 set<string> ControladorCurso::listarIdiomasProfesor() {
     Profesor* p = getProfesor();
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    cu.listarIdiomasProfesor(p);
+    return cu.listarIdiomasProfesor(p);
 }
 void ControladorCurso::listarIdiomas(){
     int a=1;
@@ -341,8 +342,8 @@ void ControladorCurso::limpiarDatos() {
     if(datosDeCurso != nullptr){
         delete datosDeCurso;
     }
-    if(datosDeLeccion != nullptr){
-        delete datosDeLeccion;
+    if(datoDeLeccion != nullptr){
+        delete datoDeLeccion;
     }
     if(profesor != nullptr){
         delete profesor;

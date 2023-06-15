@@ -137,11 +137,9 @@ list<string> ControladorUsuario::listarProfe() {
     return listaProfes;
 }
 
-void ControladorUsuario::listarIdiomasProfesor(Profesor* p) {
+set<Idioma*> ControladorUsuario::listarIdiomasProfesor(Profesor* p) {
     set<Idioma*> SIdiomas = p->getIdiomas();
-    for(auto it = SIdiomas.begin();it!=SIdiomas.end();it++){
-        cout << (*it)->getNombreIdioma() << endl;
-    }
+    return SIdiomas;
 }
 
 

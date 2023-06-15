@@ -74,7 +74,7 @@ class IControladorCurso{
         //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
         virtual list<string> cursosDisponibles(string nick) = 0;
         virtual set<DTCurso> listarDTCursos()= 0;
-        virtual set<string> listarIdiomasProfesor()= 0;
+        virtual set<Idioma*> listarIdiomasProfesor()= 0;
         virtual void listarIdiomas()= 0;
         virtual void listarCursosNoHabilitados() = 0;
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;
