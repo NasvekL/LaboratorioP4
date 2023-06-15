@@ -45,6 +45,14 @@ map<int, Ejercicio*> Leccion::getEjercicios(){
 }
 
 Leccion::~Leccion() {
+    for(auto it=ejercicios.begin();it!=ejercicios.end();it++){
+        delete it->second;
+    }
+    ejercicios.clear();
+    for(auto iter = progresos.begin();iter!=progresos.end();iter++){
+        delete iter->second;
+    }
+    progresos.clear();
     // Implementación del destructor si es necesario
 }
 

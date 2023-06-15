@@ -18,7 +18,7 @@ class Leccion{
         int cantidadDeEjercicios;
         int numero;
         map<int, Ejercicio*> ejercicios;
-
+        map<string, Progreso*> progresos;//nombre de estudiante, progreso
     public:
         //setters
         void setTema(string tema);

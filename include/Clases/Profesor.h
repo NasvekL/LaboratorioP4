@@ -29,6 +29,7 @@ class Profesor: public Usuario{
         set<Idioma*> getIdiomas();
         list<Curso*> getCursos();
         void agregarCurso(Curso* curso);
+        void eliminarCurso(Curso* curso);
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
 

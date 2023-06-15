@@ -8,6 +8,7 @@
 #include "../DTs/DTRellenarPalabras.h"
 #include "../DTs/DTTraduccion.h"
 #include "Estudiante.h"
+#include "Profesor.h"
 class Idioma;
 class Inscripcion;
 class Leccion;
@@ -28,6 +29,7 @@ class Curso{
         Profesor* profesorQueLoDicta;
         list<Leccion*> lecciones;
         list<Inscripcion*> inscripciones;
+        list<Usuario*> aprobados;
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();

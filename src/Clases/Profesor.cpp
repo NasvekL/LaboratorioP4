@@ -54,5 +54,8 @@ list<Curso*> Profesor::getCursos() {
 void Profesor::agregarCurso(Curso* curso) {
     this->cursos.push_back(curso);
 }
+void Profesor::eliminarCurso(Curso* curso) {
+    this->cursos.remove(curso);
+}
 // Implementar los métodos adicionales y las operaciones para agregar idiomas y cursos
 // según tus necesidades

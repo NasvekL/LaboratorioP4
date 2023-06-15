@@ -2,7 +2,20 @@
 
 // CONSTRUCTOR Y DESTRUCTOR
 Curso::~Curso() {
-    // Implementación del destructor
+    profesorQueLoDicta->eliminarCurso(this);
+    for (auto iter=lecciones.begin(); iter!=lecciones.end(); iter++){
+        Leccion* lec = *iter;
+        delete lec;
+    }
+    lecciones.clear();
+    for(auto it = inscripciones.begin(); it!=inscripciones.end(); it++){
+        Inscripcion* ins = *it;
+        Estudiante* est = ins->getEstudiante();
+        est->eliminarInscripcion(ins);
+        delete ins;
+    }
+    inscripciones.clear();
+    previas.clear();
 }
 Curso::Curso() {
     // Implementación del constructor vacio
