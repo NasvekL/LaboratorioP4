@@ -21,6 +21,7 @@ DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 DTCurso crearDTCurso();
 DTLeccion crearDTLeccion(int &numLec);
+DTLeccion crearDTLeccion2(int &numLec);
 int entradaInt();
 string entradaString();
 bool quiereContinuar(string p);
@@ -202,11 +203,16 @@ int main(){
                     string opcion = entradaString();
                     int numLec = 0;
                     while((opcion == "S") || (opcion == "s")){
-                        DTLeccion leccion = crearDTLeccion(numLec);
+                        DTLeccion leccion = crearDTLeccion2(numLec);
                         contCurso.setDatosDeLeccion(leccion);
                         imprimir("Quiere agregar ejercicio S/N");
                         string opcion2 = entradaString();
-                        while(opcion2=="S"){
+                        if((opcion2=="S") || (opcion2=="s")){
+                            imprimir("Ingrese la cantidad de ejercicios que desea agregar:");
+                            int cantEjs = entradaInt();
+                            leccion.setCantEj(cantEjs);   
+                        }
+                        while((opcion2=="S") || (opcion2=="s")){
                             imprimir("Ingrese tipo de ejercicio");
                             imprimir("Completar/Traduccion");
                             string opcion3 = entradaString();
@@ -567,6 +573,18 @@ DTLeccion crearDTLeccion(int &numLec){
     int cantEjs = entradaInt();
     numLec++;
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
+    return lec;
+}
+
+DTLeccion crearDTLeccion2(int &numLec){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    imprimir("Ingrese el tema de la Leccion:");
+    string tema = entradaString();
+    imprimir("Ingrese el objetivo de la Leccion:");
+    string objetivo = entradaString();
+    numLec++;
+    DTLeccion lec = DTLeccion(numLec, 0, objetivo, tema);
     return lec;
 }
 /*
