@@ -66,7 +66,7 @@ class ControladorCurso: public IControladorCurso{
         map<string ,Curso*> getDatosPrevias();
         DTRellenarPalabras getDatosRellenar();
         DTTraduccion getDatosTraduccion();
-        Curso getCurso(string nombreCurso);
+        Curso* getCurso(string nombreCurso);
         int getNumeroDeLeccion(string cursoSeleccionado);
         //Setters
         void setIdEjercicio(int id);
