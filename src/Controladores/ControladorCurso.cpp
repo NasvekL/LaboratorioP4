@@ -307,7 +307,7 @@ void ControladorCurso::listarIdiomas(){
     }
 }
 
-void ControladorCurso::listarCursosNoHabilitados(){
+list<string> ControladorCurso::listarCursosNoHabilitados(){
     int a=1;
     for (auto it = cursos.begin(); it != cursos.end(); ++it){
         if(!(it->second->getHabilitado())){
