@@ -761,9 +761,9 @@ int entradaInt(){
     }
     return true;
 }*/
-bool esAlfanumerico(string str) {
+bool esAlfanumerico(string entrada) {
     regex pattern("[a-zA-Z0-9,_\\-]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
-    return regex_match(str, pattern);
+    return regex_match(entrada, pattern);
 }
 
 string entradaString(){
