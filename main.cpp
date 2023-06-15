@@ -230,8 +230,12 @@ int main(){
             case 6:{
                 //Agregar leccion
                 imprimir("Cursos no habilitados disponibles:");;
-                contCurso.listarCursosNoHabilitados(); 
-                imprimir("Seleccionar Curso:");
+                list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                int a=1;
+                for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
+                    imprimir(to_string(a)+" "+*it);
+                }
+                imprimir("Escribe el nombre del Curso:");
                 string cursoSeleccionado = entradaString();
                 int numLec = contCurso.getNumeroDeLeccion(cursoSeleccionado);
                 numLec++;
