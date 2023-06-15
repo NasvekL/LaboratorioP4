@@ -22,7 +22,7 @@ class IControladorUsuario{
     virtual void setDatoProfesor(DTProfesor dato) = 0;
     // Operaciones para modificar el set de usuarios
 
-    virtual void agregarInscripcionAEstudiante(string estudiante, Inscripcion* inscri);
+    virtual void agregarInscripcionAEstudiante(string estudiante, Inscripcion* inscri)=0;
 
 
     // Operaciones para obtener información

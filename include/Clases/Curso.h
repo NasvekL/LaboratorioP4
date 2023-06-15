@@ -31,7 +31,7 @@ class Curso{
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
-        Curso(string nombre, string descripcion, nivelDeDificultad nivel, map<string,Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta,list<DTRellenarPalabras> datosRellenarP,list<DTTraduccion> datosTraduccion,set<DTLeccion>lecciones);
+        Curso(string nombre, string descripcion, nivelDeDificultad nivel, map<string,Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta,list<DTRellenarPalabras> datosRellenarP,list<DTTraduccion> datosTraduccion,list<DTLeccion>lecciones);
         Curso();
         //GETTERS
         string getNombreCurso() const; //se puede poner const para indicar que la funcion no modifica el objeto. Si no c++ se queja despues al buscar curso por nombre
@@ -55,7 +55,6 @@ class Curso{
         void agregarInscripcion(Inscripcion* insc);
 
         //OPERACIONES
-        DTEjercicio seleccionarEjercicio(int idEjercicio); //Esto iria en controladorCurso me parece
         int progresoPromedio();
         int progresoDeEstudiante(Estudiante e);
         DTEstadisticaCurso estadisticasCurso();

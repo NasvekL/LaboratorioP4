@@ -21,7 +21,6 @@ DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 DTCurso crearDTCurso();
 DTLeccion crearDTLeccion(int &numLec);
-void esperar(double time);
 int entradaInt();
 string entradaString();
 bool quiereContinuar(string p);
@@ -34,7 +33,7 @@ void ingresarUsuarios();
 void ingresarIdiomas();
 DTRellenarPalabras crearDTRellenarPalabras(int numLec);
 DTTraduccion crearDTTraduccion(int numLec);
-int seleccionTipoEjercicio();
+void seleccionTipoEjercicio();
 
 
 //Desplegar menu por consola
@@ -445,11 +444,6 @@ int main(){
 
     return 0;
 }
-
-void esperar(double time){
-this_thread::sleep_for(chrono::duration<double>(time));
-}
-
 int seleccionEstudianteOProfesor(){
     imprimir("1. Ingresar Estudiante");
     imprimir("2. Ingresar Profesor");
@@ -457,7 +451,7 @@ int seleccionEstudianteOProfesor(){
     return opcion;
 };
 
-int seleccionTipoEjercicio(){
+void seleccionTipoEjercicio(){
     imprimir("1. Ingresar ejercicio de traduccion");
     imprimir("2. Ingresar ejercicio de rellenar palabras");
 }

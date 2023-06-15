@@ -19,6 +19,7 @@ DTLeccion::~DTLeccion() {
 
 // Getters
 int DTLeccion::getNumero() {
+    return numero;
     // Implementación del getter
     // Puedes devolver el valor del atributo numero
 }
@@ -28,11 +29,13 @@ int DTLeccion::getCantidadDeEjercicios() {
 }
 
 string DTLeccion::getObjetivoAprendizaje() {
+    return objetivoAprendizaje;
     // Implementación del getter
     // Puedes devolver el valor del atributo objetivoAprendizaje
 }
 
 string DTLeccion::getTema() {
+    return tema;
     // Implementación del getter
     // Puedes devolver el valor del atributo tema
 }

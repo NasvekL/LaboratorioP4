@@ -50,7 +50,7 @@ int ControladorCurso:: getIdEjercicio (){
 DTCurso ControladorCurso::getDatosDeCurso() {
     return *datosDeCurso;
 }
-set<DTLeccion> ControladorCurso::getDatosLecciones() {
+list<DTLeccion> ControladorCurso::getDatosLecciones() {
     return datosLecciones;
 }   
 DTLeccion ControladorCurso::getDatosDeLeccion() {
@@ -92,8 +92,7 @@ void ControladorCurso::setDatosDeCurso(DTCurso datos) {
     datosDeCurso = &datos;
 }
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
-    datoDeLeccion = &datos;
-    datosLecciones.insert(datos);
+    datosLecciones.push_back(datos);
 }
 void ControladorCurso::setProfesor(Profesor* profesor) {
     this->profesor = profesor;

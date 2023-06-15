@@ -29,7 +29,7 @@ class ControladorCurso: public IControladorCurso{
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
         DTLeccion* datoDeLeccion;
-        set<DTLeccion> datosLecciones;
+        list<DTLeccion> datosLecciones;
         Profesor* profesor;
         string datoIdioma;
         map<string, Curso*> datosPrevias;
@@ -57,7 +57,7 @@ class ControladorCurso: public IControladorCurso{
         Idioma* getIdioma(string nombre);
         DTCurso getDatosDeCurso();
         DTLeccion getDatosDeLeccion();
-        set<DTLeccion> getDatosLecciones();
+        list<DTLeccion> getDatosLecciones();
         list<DTRellenarPalabras> getDatosMuchasRellenarPalabras();
         list<DTTraduccion> getDatosMuchasTraducciones();
         string getDatoNombreDeProfesor();
