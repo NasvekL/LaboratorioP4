@@ -89,7 +89,7 @@ void ControladorCurso:: setIdEjercicio(int id){
     idEjercicio = id;
 }
 void ControladorCurso::setDatoDeCurso(DTCurso datos) {
-    datoDeCurso = &datos;
+    datoDeCurso = new DTCurso(datos.getNombre(),datos.getHabilitado(),datos.getNivel(),datos.getDescripcion(),datos.getPrevias());
 }
 void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
     datosLecciones.push_back(datos);
@@ -232,8 +232,11 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     return DTEstadisticaCurso();
 }
 set<string> ControladorCurso::listarNombresDeCursos() {
-    // Implementación pendiente
-    return set<string>();
+    set<string> nombresDeCursos;
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        nombresDeCursos.insert(it->first);
+    }
+    return nombresDeCursos;
 }
 set<DTCurso> ControladorCurso::listarDTCursos() {
     // Implementación pendiente
