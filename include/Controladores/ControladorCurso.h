@@ -28,7 +28,8 @@ class ControladorCurso: public IControladorCurso{
 
         //Atributos auxiliares con punteros
         DTCurso* datosDeCurso;
-        DTLeccion* datosDeLeccion;
+        DTLeccion* datoDeLeccion;
+        set<DTLeccion> datosLecciones;
         Profesor* profesor;
         string datoIdioma;
         map<string, DTCurso*>* datosPrevias;
@@ -98,7 +99,7 @@ class ControladorCurso: public IControladorCurso{
         DTEstadisticaCurso estadisticasCurso(string curso);
         set<string> listarNombresDeCursos();
         set<DTCurso> listarDTCursos();
-        set<string> listarIdiomasProfesor();
+        set<Idioma*> listarIdiomasProfesor();
         void listarIdiomas();
         void listarCursosNoHabilitados();
         bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
