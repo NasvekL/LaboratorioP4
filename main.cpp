@@ -272,10 +272,10 @@ int main(){
                 
                 imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
-                Curso cur = contCurso.getCurso(cursoSelec);
+                Curso* cur = contCurso.getCurso(cursoSelec);
 
                 imprimir("Lecciones del curso:", AMARILLO);
-                list<Leccion*> lecciones = cur.getLecciones();
+                list<Leccion*> lecciones = cur->getLecciones();
 
                 if (!lecciones.empty()) {
                     int i = 1;
@@ -325,14 +325,16 @@ int main(){
                 break;
             }
             case 9:{
-                //Eliminar curso
-               /* imprimir("Cursos disponibles:", AMARILLO);
-                //contCurso.listarCursos();
-                imprimir("Seleccione el curso que desea eliminar:");
-                string cursoSeleccionado = entradaString();
-*/
-
-                //interfazCurso->eliminarCurso();
+                set<string> cursos = contCurso.listarNombresDeCursos();
+                int a=1;
+                for(auto it = cursos.begin(); it != cursos.end(); ++it){
+                    imprimir(to_string(a) + " " + *it);
+                    a++;
+                }
+                imprimir("Escriba el nombre del curso que desea eliminar:");
+                string curso = entradaString();
+                contCurso.eliminarCurso(curso);
+                imprimir("Curso eliminado", VERDE);
                 break;
             }
             case 10:{

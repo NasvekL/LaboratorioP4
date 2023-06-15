@@ -30,8 +30,9 @@ ControladorCurso::~ControladorCurso() {
     }
 }
 //Getters
-Curso ControladorCurso::getCurso(string nick) {
-    //return cursos.find(nick);
+Curso* ControladorCurso::getCurso(string nick) {
+    auto iter = cursos.find(nick);
+    return iter->second;
 }
 Idioma* ControladorCurso::getIdioma(string nombre){
     string claveBuscada = nombre;
@@ -147,6 +148,11 @@ bool ControladorCurso::altaCurso() {
 return cur!=NULL;
 }
 void ControladorCurso::eliminarCurso(string nombreCurso) {
+    Curso* cur = getCurso(nombreCurso);
+    cursos.erase(nombreCurso);
+    delete cur;
+
+
     // Implementación pendiente
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
