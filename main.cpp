@@ -489,6 +489,8 @@ DTProfesor crearDTProfesor(){
 }
 
 DTCurso crearDTCurso(){
+        factoryController& fabrica = factoryController::getInstancia();
+        IControladorCurso& contCurso = fabrica.getIControladorCurso();
         imprimir("Ingrese nombre del curso:");
         string nombre = entradaString();
 
@@ -521,14 +523,18 @@ DTCurso crearDTCurso(){
 
         imprimir("Quiere agregar previas al curso? (S/N)");
         string tienePrevias = entradaString();
-        set<string>* previas;
+        set<string>* previas = new set<string>();
         if(tienePrevias == "S" || tienePrevias == "s"){
+            set<string> curs = contCurso.listarNombresDeCursos();
+            int i = 1;
+            for(auto it = curs.begin(); it != curs.end(); ++it){
+                imprimir(to_string(i) +" "+ *it);
+                i++;
+            }
             bool seguir = true;
             while(seguir){
                 imprimir("Ingrese nombre de previas del curso:");
                 string pre = entradaString();
-                factoryController& fabrica = factoryController::getInstancia();
-                IControladorCurso& contCurso = fabrica.getIControladorCurso();
                 map<string, Curso*> p = contCurso.getCursos();
                 auto it = p.find(pre);
                 if (it != p.end()) {
