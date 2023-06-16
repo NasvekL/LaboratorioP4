@@ -10,7 +10,7 @@ class DTEstadisticaEstudiante {
         map<string, int> estadoEstudiante(); //curso clave y valor progreso
         ~DTEstadisticaEstudiante();
         DTEstadisticaEstudiante();
-        DTEstadisticaEstudiante(string estudiante);
+        DTEstadisticaEstudiante(map<string, int> porcentajesCursos);
 };
 #endif
 

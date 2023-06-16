@@ -242,6 +242,17 @@ list<string> ControladorCurso::listarProfe() {
 }
 DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     // Implementación pendiente
+    Curso* curso = cursos.find(curso);
+    int promedio = 0;
+    int inscriptos
+    for (Inscripcion* inscripcion : curso->getInscripciones()) {
+        Progreso* progreso = inscripcion->getProg();
+        promedio = promedio + progreso->getPorcentaje();
+        insriptos++;
+    }
+    promedio = promedio / inscriptos;
+    DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, curso->getNickname());
+
     return DTEstadisticaCurso();
 }
 set<string> ControladorCurso::listarNombresDeCursos() {

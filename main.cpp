@@ -436,22 +436,47 @@ int main(){
                 int entrada = entradaInt();
 
                 if (entrada == 1){
-                    imprimir("ingrese el nombre del estudiante");
+                    imprimir("ingrese el nick del estudiante");
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    /*for (const string& estudiante : estudiantes) {
+                    for (const DTEstudianteSC& estudiante : estudiantes) {
                         imprimir( estudiante.getNickname());
-                    }*/
+                    }
                     string estu = entradaString();
                     DTEstadisticaEstudiante estadisticas = contUsuario.estadisticasEstudiante(estu);
-                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
 
-                    imprimir("Estadisticas del estudiante: " );
-                    for (const auto& curso : porcentajesCursos) {
-                        imprimir(curso.first + ": " + to_string(curso.second) + "%");
+                    imprimir("Estadisticas de "+ estu + ":" );
+                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
+                    for (const auto& estads : porcentajesCursos) {
+                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
                     }
 
-                    
+                }else if (entrada == 2) {
+                    imprimir("Ingrese el nick del profesor");
+                    list<string> profesores = contUsuario.listarProfe();
+                    for (const string& profesor : profesores) {
+                        imprimir(profesor);
+                    }
+                    string prof = entradaString();
 
+                    Profesor* profesor = contUsuario.encontrarProfesor(prof);
+                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(profesor);
+
+                    imprimir("Estadisticas de "+ prof + ":" );
+                    map<string, int> porcentajesCursos = estadisticas.getPromPorcetajesCursos()();
+                    for (const auto& estads : porcentajesCursos) {
+                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
+                    }
+                } else {
+                    imprimir("Ingrese el nombre del profesor");
+                    list<string> cursos = contCurso.listarNombresDeCursos();
+                    for (const string& curso : cursos){
+                        imprimir(curso);
+                    }
+                    string cur = entradaString();
+
+                    DTEstadisticaCurso estadisticas = contCurso.estadisticasCurso(cur);
+                    imprimir("Estadisticas de "+ cur + ":" );
+                    imprimir("Porcentaje:" + to_string(estadisticas.getpromedioCurso()) + "%");
 
 
                 }

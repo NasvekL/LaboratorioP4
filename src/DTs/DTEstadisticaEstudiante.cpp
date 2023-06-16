@@ -1,8 +1,9 @@
 #include "../../include/DTs/DTEstadisticaEstudiante.h"
 
 // Constructor
-DTEstadisticaEstudiante::DTEstadisticaEstudiante(string estudiante) {
+DTEstadisticaEstudiante::DTEstadisticaEstudiante(map<string, int> porcentajesCursos) {
     // Implementación del constructor
+    this->porcentajesCursos = porcentajesCursos;
     // Puedes inicializar el objeto según tus necesidades
 }
 DTEstadisticaEstudiante::DTEstadisticaEstudiante() {
