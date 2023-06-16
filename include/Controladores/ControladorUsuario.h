@@ -66,8 +66,8 @@ class ControladorUsuario : public IControladorUsuario{
 
         
         //FALTA CLASIFICAR. DESPUES. EN ALGUN MOMENTO. A MEDIDA QUE LO VAYAMOS USANDO
-        list<DTEjercicio> ejerciciosNoAprobados(string curso);
-        void cursosInscriptosSinAprobar(string nick);
+        set<DTEjercicio> ejerciciosNoAprobados(string curso);
+        set<string> cursosInscriptosSinAprobar(string nick);
         list<string> listarProfe();
         set<Idioma*> listarIdiomasProfesor(Profesor* p);
         Profesor* encontrarProfesor(string nick);
@@ -80,7 +80,7 @@ class ControladorUsuario : public IControladorUsuario{
         //Operacion que no tiene sentido que este aca (iria en controladorCurso)
         DTEstadisticaCurso estadisticaCurso(string curso);
         //Operacion dudosa
-        Curso obtenerCurso(string curso);
+        Curso* obtenerCurso(string curso);
 
         list<string> consultarUsuario();
 };      

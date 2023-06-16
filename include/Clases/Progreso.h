@@ -20,6 +20,7 @@ class Progreso{
         void setInscripcion(Inscripcion* insc);
         //getters
         int getPorcentaje();
+        list<Ejercicio*> getEjerciciosResueltos();
         //constructor destructor
         Progreso(Leccion* lec);
         ~Progreso();

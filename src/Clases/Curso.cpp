@@ -101,6 +101,19 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 
 // OPERACIONES
 
+set<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
+    list<Leccion*> lecc = getLecciones();
+    auto it = lecc.begin();
+    Leccion* l = NULL;
+    while(it!=lecc.end() && l==NULL){
+    if((*it)->getNumero() == lecActual){
+        l = *it;
+    }
+    it++;
+    }
+    return l->ejerciciosNoAprobados(nick);
+}
+
 int Curso::progresoPromedio() {
     // Implementación de la operación
 }

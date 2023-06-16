@@ -40,6 +40,19 @@ DTEstudiante Estudiante::getDTEstudiante() {
     return dt;
 }
 
+Curso* Estudiante :: buscarCurso(string nombreCurso){
+    list<Inscripcion*> ins = getInscripciones();
+    auto it = ins.begin();
+    Curso* c = NULL;
+    while(it!=ins.end() && c == NULL){
+        if((*it)->getInscriptoA()->getNombreCurso() == nombreCurso){
+            c = (*it)->getInscriptoA();
+        }
+        it++;
+    }
+    return c;
+}
+
 set<string> Estudiante::getCursosInscriptosSA() {
     list<Inscripcion*> inscripciones = getInscripciones();
     set<string> cursosInscriptos;
@@ -51,6 +64,20 @@ set<string> Estudiante::getCursosInscriptosSA() {
     return cursosInscriptos;
 }
 
+set<DTEjercicio> Estudiante :: ejerciciosNoAprobados(string curso){
+    list<Inscripcion*> ins = getInscripciones();
+    auto it = ins.begin();
+    Curso* c = NULL;
+    int ultimaLec = 1;
+    while(it!=ins.end() && c == NULL){
+        if((*it)->getInscriptoA()->getNombreCurso() == curso){
+            c = (*it)->getInscriptoA();
+            ultimaLec = (*it)->getLeccionActual();
+        }
+        it++;
+    }
+    return c->buscarEjNoAprobados(this->getNick(), ultimaLec);
+}
 
 set<DTCurso> Estudiante::obtenDTCurso() {
     // Implementación de obtenDTCurso

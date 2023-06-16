@@ -414,7 +414,11 @@ int main(){
                 imprimir("Ingrese nick de estudiante: ");
                 string nick = entradaString();
                 imprimir("Cursos:" , AMARILLO);
-                contCurso.cursosInscriptoSinAprobar(nick);
+                set<string> cursosISA = contCurso.cursosInscriptoSinAprobar(nick);
+                auto it = cursosISA.begin();
+                for(it; it != cursosISA.end(); it++){
+                    imprimir((*it));
+                }
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
                 contCurso.seleccionarEjerciciosDeCurso(curso);

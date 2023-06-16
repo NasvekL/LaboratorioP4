@@ -35,6 +35,7 @@ class Leccion{
         int getCantidadDeEjercicios();
         int getNumero();
         map<int, Ejercicio*> getEjercicios();
+        map<string, Progreso*> getProgresos();
         //Constructor Destructor
         ~Leccion();
         Leccion(string tema,string objetivoAprendizaje,int cantidadDeEjercicios,int numero,list<DTRellenarPalabras> listaRellenarPalabras,list<DTTraduccion> listaTraduccion);
