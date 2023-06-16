@@ -429,7 +429,6 @@ int main(){
             }
             case 13:{
                 //Consultar estadisticas
-                system("clear");
                 imprimir("Ingrese de quien quiere estadisticas:");
                 imprimir("1. De estudiantes");
                 imprimir("2. De profesores");
