@@ -50,7 +50,7 @@ class Curso{
         Idioma* getIdiomaDelCurso();
         Profesor* getProfesorQueLoDicta();
         list<Leccion*>& getLecciones(); 
-        list<Inscripcion*>& getInscripciones();
+        list<Inscripcion*> getInscripciones();
         //SETTERS DE PSEUDOATRIBUTOS
         void setIdiomaDelCurso(Idioma* i);
         void setProfesorQueLoDicta(Profesor* p);

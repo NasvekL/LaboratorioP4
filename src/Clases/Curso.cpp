@@ -79,7 +79,7 @@ list<Leccion*>& Curso::getLecciones() {
     return lecciones;
 }
 
-list<Inscripcion*>& Curso::getInscripciones() {
+list<Inscripcion*> Curso::getInscripciones() {
     return inscripciones;
 }
 

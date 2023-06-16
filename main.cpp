@@ -338,7 +338,13 @@ int main(){
             case 8:{
                 //Habilitar curso
                 system("clear");
-                contCurso.listarCursosNoHabilitados();
+                list<string> listaC = contCurso.listarCursosNoHabilitados();
+                int a=1;
+                for(auto it = listaC.begin(); it != listaC.end(); ++it){
+                    imprimir(to_string(a) + " " + *it);
+                    a++;
+                }
+                imprimir("Escriba el nombre del curso que desea habilitar:");
                 string curso = entradaString();
                 contCurso.habilitarCurso(curso);
                 imprimir("Curso habilitado", VERDE);
