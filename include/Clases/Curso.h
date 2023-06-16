@@ -50,7 +50,7 @@ class Curso{
         Idioma* getIdiomaDelCurso();
         Profesor* getProfesorQueLoDicta();
         list<Leccion*>& getLecciones(); 
-        list<Inscripcion*>& getInscripciones();
+        list<Inscripcion*> getInscripciones();
         //SETTERS DE PSEUDOATRIBUTOS
         void setIdiomaDelCurso(Idioma* i);
         void setProfesorQueLoDicta(Profesor* p);
@@ -61,7 +61,7 @@ class Curso{
         //OPERACIONES
         set<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
         int progresoPromedio();
-        int progresoDeEstudiante(Estudiante e);
+        int progresoDeEstudiante(Estudiante* e);
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
 
@@ -69,6 +69,7 @@ class Curso{
         int cantidadDeEjercicios();
         int cantidadDeLecciones();
 
+        void conseguirInfoCurso(list<string> infoCur);
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };

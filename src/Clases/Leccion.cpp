@@ -90,31 +90,6 @@ void Leccion::aumentarProgreso(Estudiante e) {
 }
 
 set<DTEjercicio> Leccion::ejerciciosNoAprobados(string nick) {
-    set<DTEjercicio> ejNoAprobados;
-    map<string, Progreso*> progs = this->progresos;
-    auto it = progs.find(nick);
-    Progreso* progresoEst = it->second;
-    list<Ejercicio*> ejResueltos = progresoEst->getEjerciciosResueltos();
-    map<int, Ejercicio*> ejercicios = this->getEjercicios();
-    auto it2 = ejercicios.begin();
-    for(it2; it2!=ejercicios.end(); it2++){
-        auto it3 = ejResueltos.begin();
-        for(it3; it3 != ejResueltos.end(); it3++){
-            if(it2->first == (*it3)->getIdEjercicio()){
-                string tipo;
-                Ejercicio* ejercicio = it2->second;
-                if (RellenarPalabras* rellenar = dynamic_cast<RellenarPalabras*>(ejercicio)) {
-                tipo = "completar";
-                } 
-                else{
-                tipo = "traduccion";
-                }
-                DTEjercicio ej = DTEjercicio((*it3)->getIdEjercicio(),(*it3)->getLetra(),(*it3)->getDescripcion(),tipo,this->getNumero());
-                ejNoAprobados.insert(ej);
-            }
-                
-            }
-        }
-        return ejNoAprobados;
-    }
-
+    // Implementación de ejerciciosNoAprobados
+    // Retorna un conjunto de DTEjercicio de los ejercicios no aprobados por el estudiante con el nickname proporcionado
+}

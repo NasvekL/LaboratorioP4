@@ -23,8 +23,10 @@ class Usuario:public IObserver{
         string getDescripcion();
         string getNick();
         string getNombre();
+        list<DTNotificacion> getNotificaciones();
+        void eliminarNotificaciones();
         //observer
-        void notificar();
+        void notificar(DTNotificacion noti);
         //NO ESTAMOS PONIENDO DESTRUCTOR EN VIRTUAL DE USUARIO, CAPAZ ESTA MAL
 };
 

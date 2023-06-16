@@ -17,6 +17,7 @@ Inscripcion::Inscripcion(DTFecha fecha, Progreso* prog) {
     this->aprobado = false;
     this->leccionActual = 1;
     this->prog = prog;
+    estudianteInscrito=NULL;
 }
 
 void Inscripcion::setEstudianteInscrito(Estudiante* est) {
@@ -38,5 +39,12 @@ Estudiante* Inscripcion::getEstudiante(){
 }
 
 Inscripcion::~Inscripcion() {
-    // Implementación del destructor si es necesario
+    delete this->prog;
+}
+
+void Inscripcion::conseguirInfoInscripcion(list<string> infoInsc){
+    /*
+    string datosInsc = estudiante->getNombre() + "\n" + "Fecha de inscripcion: " + fecha->to_string() + "\n" + "\n";
+    infoInsc.push_back(datosInsc);
+    */
 }

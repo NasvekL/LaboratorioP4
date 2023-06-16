@@ -5,7 +5,7 @@
 
 class DTEstadisticaCurso { 
     private:
-        DTCurso curso; 
+        string curso; 
         int promedioCurso;
 
     public:
@@ -18,7 +18,7 @@ class DTEstadisticaCurso {
 
         ~DTEstadisticaCurso();
         DTEstadisticaCurso();
-        DTEstadisticaCurso(list<int> promedioCurso, list<string> cursosPropuestos);
+        DTEstadisticaCurso(int promedioCurso, string curso);
 
 };
 #endif

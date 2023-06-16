@@ -20,6 +20,7 @@ class Inscripcion{
         Curso* inscripccionACurso;
         Estudiante* estudianteInscrito;
 
+
     public:
         //Getters
         DTFecha getFecha();
@@ -36,6 +37,8 @@ class Inscripcion{
         //Create y destroy
         Inscripcion(DTFecha fecha,Progreso* prog);
         ~Inscripcion();
+
+        void conseguirInfoInscripcion(list<string> infoInsc);
     
 };
 

@@ -35,3 +35,10 @@ Leccion* Ejercicio:: getLeccion(){
 Ejercicio:: ~Ejercicio(){
 
 }
+
+void Ejercicio:: conseguirInfoEjercicio(list<string> infoEjercicio){
+    /*
+    string datosDelEjercicio = "Descripcion del ejercicio: " + descripcion + "\n" + "Letra del ejercicio: " + letra + "\n" + "Id del ejercicio: " + to_string(idEjercicio) + "\n" + "\n";
+    infoEjercicio.push_back(datosDelEjercicio);
+    */
+}

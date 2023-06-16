@@ -35,7 +35,12 @@ string Usuario:: getContrasenia(){
 string Usuario:: getDescripcion(){
     return this->descripcion;
 };
-
-void Usuario:: notificar(){
-    
+list<DTNotificacion> Usuario:: getNotificaciones(){
+    return this->notificaciones;
+};
+void Usuario::eliminarNotificaciones(){
+this->notificaciones.clear();
+};
+void Usuario:: notificar(DTNotificacion noti){
+    notificaciones.push_back(noti);
 };

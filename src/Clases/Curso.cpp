@@ -79,7 +79,7 @@ list<Leccion*>& Curso::getLecciones() {
     return lecciones;
 }
 
-list<Inscripcion*>& Curso::getInscripciones() {
+list<Inscripcion*> Curso::getInscripciones() {
     return inscripciones;
 }
 
@@ -118,7 +118,7 @@ int Curso::progresoPromedio() {
     // Implementación de la operación
 }
 
-int Curso::progresoDeEstudiante(Estudiante e){
+int Curso::progresoDeEstudiante(Estudiante* e){
     // Implementación de la operación
 }
 
@@ -141,4 +141,39 @@ int Curso::cantidadDeEjercicios(){
         cant += lec->getCantidadDeEjercicios();
     }
     return cant;
+}
+
+void Curso::conseguirInfoCurso(list<string> infoCur){
+    
+    /*
+    string hab;
+    if (habilitado){
+        hab = "Habilitado";
+    } else {
+        hab = "No habilitado";
+    }
+    
+    string datosCurso = "Nombre del curso: " + nombre + "\n" + "Descripcion del curso: " + descripcion + "\n" + "Nivel de dificultad: " + to_string(nivelDeDif) + "\n" + "Idioma del curso: " + idiomaDelCurso->getNombreIdioma() + "\n" + "Profesor que lo dicta: " + profesorQueLoDicta->getNombre() + "\n" + hab + "\n" + "\n"; 
+    infoCur.push_back(datosCurso);      //Tengo toda la info del curso en el primer lugar de la lista
+    
+    
+
+    if (lecciones != nullptr){  //Si tiene lecciones
+        int a = 1;
+        for (auto it = lecciones.begin(); it != lecciones.end(); it++){
+            string aux = "Leccion" + to_string(a) + ":" + "\n";
+            infoCur.push_back(aux);
+            it->conseguirInfoLeccion(infoCur);
+            a++;
+        }
+    }
+
+    if(inscripciones != nullptr){     //Si tiene inscripciones
+        infoCur.push_back("Estudiantes Inscriptos: \n");      
+        for (auto iterador = inscripciones.begin(); iterador != inscripciones.end(); iterador++){
+            iterador->conseguirInfoInscripcion(infoCur);
+        }
+    }
+    */
+
 }

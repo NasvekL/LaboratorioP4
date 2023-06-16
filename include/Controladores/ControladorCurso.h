@@ -12,6 +12,7 @@
 #include "../DTs/DTProfesor.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+#include "../DTs/DTNotificacion.h"
 #include "../Interfaces/IControladorCurso.h"
 
 
@@ -104,6 +105,7 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones para obtener informacion
 
+
         //Devuelve una lista de triadas de cursos disponibles para un estudiante en particular.
         //Cada uno contiene, en orden, el nombre del curso, la cantidad de lecciones y la cantidad de ejercicios
         list<tuple<string, int, int>> cursosDisponibles(string nick);
@@ -120,10 +122,11 @@ class ControladorCurso: public IControladorCurso{
         bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
         void seleccionarEjercicio(int idEjercicio);
         set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso);//set<DTEjercicio> seleccionarCurso(string curso);
+        list<string> verCurso(string curso);
 
         //Operaciones de suscripciones
         set<string> consultarSuscripciones(string nick);
-        void suscribirUsuario(set<string> idiomas);
+        void suscribirUsuario(set<string> idiomas,string nick);
         set<string> listarIdiomasSuscrito(string nick);//no iria en controlador usuario??
         void eliminarSuscripciones(set<string> idiomas, string nick);//en el diagrama de clases falta el nick
 

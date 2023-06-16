@@ -17,9 +17,11 @@ class Idioma{
         string getNombreIdioma();
        //operaciones 
         string suscribir(string nick);
-        void agregar(Usuario u); //agregar sucriptor
-        void eliminar(Usuario u); //eliminar suscriptor
+        bool estaSuscrito(Usuario* usuario);
+        void agregar(Usuario* u); //agregar sucriptor
+        void eliminar(Usuario* u); //eliminar suscriptor
         set<string> suscripciones(string nick);
+        set<IObserver*> getObservers();
         //constructor y destructor
         Idioma(string nombreIdioma);
         ~Idioma();

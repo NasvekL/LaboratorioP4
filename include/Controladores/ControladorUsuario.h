@@ -44,10 +44,10 @@ class ControladorUsuario : public IControladorUsuario{
         map<string,Usuario>* getUsuarios();
         DTProfesor getDatoProfesor();
         string getTipoUsuario(string nick);
+        Usuario* getUsuario(string nick);
         //Setters
         void setDatoEstudiante(DTEstudiante dato); //void guardarDatosEstudiante(DTEstudiante data);
         void setDatoProfesor(DTProfesor dato);
-
         //Operaciones para modificar el set de usuarios
         
 
@@ -57,11 +57,12 @@ class ControladorUsuario : public IControladorUsuario{
         DTEstadisticaEstudiante estadisticasEstudiante(string estudiante);
         list<DTProfesorSC> listarProfesoresSinContra();
         list<DTEstudianteSC> listarEstudiantes();
+        list<string> listarUsuarios();
         bool existeUsuario(string nick);
 
         //Operaciones de suscripciones
-        Usuario obtenerSuscriptor(string user);
-        void eliminarNotificaciones();
+        Usuario* obtenerSuscriptor(string user);
+        void eliminarNotificaciones(string nick);
         list<DTNotificacion> consultarNotificaciones(string nick);
 
         

@@ -24,6 +24,7 @@ class Progreso{
         //constructor destructor
         Progreso(Leccion* lec);
         ~Progreso();
+        
 };
 
 

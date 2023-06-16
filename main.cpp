@@ -338,9 +338,16 @@ int main(){
             case 8:{
                 //Habilitar curso
                 system("clear");
-                contCurso.listarCursosNoHabilitados();
+                list<string> listaC = contCurso.listarCursosNoHabilitados();
+                int a=1;
+                for(auto it = listaC.begin(); it != listaC.end(); ++it){
+                    imprimir(to_string(a) + " " + *it);
+                    a++;
+                }
+                imprimir("Escriba el nombre del curso que desea habilitar:");
                 string curso = entradaString();
                 contCurso.habilitarCurso(curso);
+
                 imprimir("Curso habilitado", VERDE);
                 presionaParaContinuar();
                 break;
@@ -370,7 +377,11 @@ int main(){
                 }
                 imprimir("Seleccionar curso:");
                 string cursoSeleccionado = entradaString();
-                
+                list<string> infoCurso = contCurso.verCurso(cursoSeleccionado);
+
+                for (auto iterador = infoCurso.begin(); iterador != infoCurso.end(); iterador++){
+                    imprimir(*it);
+                }
 
                 */
                 break;
@@ -398,6 +409,7 @@ int main(){
                             contCurso.inscribirEstudianteACurso(nombreCurso, nick);
                             imprimir("Estudiante inscripto", VERDE);
                         }catch(invalid_argument& e){
+                            imprimir("Error al inscribir estudiante:", ROJO);
                             imprimir(e.what(), ROJO);
                         }
                             presionaParaContinuar();
@@ -426,7 +438,6 @@ int main(){
             }
             case 13:{
                 //Consultar estadisticas
-                system("clear");
                 imprimir("Ingrese de quien quiere estadisticas:");
                 imprimir("1. De estudiantes");
                 imprimir("2. De profesores");
@@ -434,22 +445,47 @@ int main(){
                 int entrada = entradaInt();
 
                 if (entrada == 1){
-                    imprimir("ingrese el nombre del estudiante");
+                    imprimir("ingrese el nick del estudiante");
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    /*for (const string& estudiante : estudiantes) {
+                    for ( DTEstudianteSC& estudiante : estudiantes) {
                         imprimir( estudiante.getNickname());
-                    }*/
+                    }
                     string estu = entradaString();
                     DTEstadisticaEstudiante estadisticas = contUsuario.estadisticasEstudiante(estu);
-                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
 
-                    imprimir("Estadisticas del estudiante: " );
-                    for (const auto& curso : porcentajesCursos) {
-                        imprimir(curso.first + ": " + to_string(curso.second) + "%");
+                    imprimir("Estadisticas de "+ estu + ":" );
+                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
+                    for (const auto& estads : porcentajesCursos) {
+                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
                     }
 
-                    
+                }else if (entrada == 2) {
+                    imprimir("Ingrese el nick del profesor");
+                    list<string> profesores = contUsuario.listarProfe();
+                    for (const string& profesor : profesores) {
+                        imprimir(profesor);
+                    }
+                    string prof = entradaString();
 
+                    //Profesor* profesor = contUsuario.encontrarProfesor(prof);
+                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
+
+                    imprimir("Estadisticas de "+ prof + ":" );
+                    map<string, int> porcentajesCursos = estadisticas.estadoCurso();
+                    for (const auto& estads : porcentajesCursos) {
+                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
+                    }
+                } else {
+                    imprimir("Ingrese el nombre del profesor");
+                    set<string> cursos = contCurso.listarNombresDeCursos();
+                    for (const string& curso : cursos){
+                        imprimir(curso);
+                    }
+                    string cur = entradaString();
+
+                    DTEstadisticaCurso estadisticas = contCurso.estadisticasCurso(cur);
+                    imprimir("Estadisticas de "+ cur + ":" );
+                    imprimir("Porcentaje:" + to_string(estadisticas.getpromedioCurso()) + "%");
 
 
                 }
@@ -459,14 +495,52 @@ int main(){
             case 14:{
                 //Suscribirse a notificaciones
                 system("clear");
-                //interfazCurso->suscribirseANotificaciones();
+                list<string> listaU = contUsuario.listarUsuarios();
+                int a=1;
+                for(auto it = listaU.begin(); it != listaU.end(); ++it){
+                    imprimir(to_string(a) + *it);
+                    a++;
+                }
+                imprimir("Escriba el nickname del usuario que desea suscribirse:");
+                string nick = entradaString();
+                set<string> subs = contCurso.consultarSuscripciones(nick);
+                int a=1;
+                for(auto it = subs.begin(); it != subs.end(); ++it){
+                    imprimir(to_string(a) + *it);
+                }
+                set<string> idiomas;
+                imprimir("Escriba el nombre del idioma al que desea suscribirse:");
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                while(quiereContinuar("agregar otro idioma")){
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                }
+                contCurso.suscribirUsuario(idiomas,nick);
+                imprimir("Usuario suscrito", VERDE);
                 break;
             }
             case 15:{
                 //Consulta de notificaciones
                 system("clear");
+                imprimir("Ingrese nick de usuario:");
+                string nick = entradaString();
+                if(!contUsuario.existeUsuario(nick)){
+                    imprimir("El usuario no existe", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
+                else{
+                list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
+                for(auto it = notis.begin(); it != notis.end(); ++it){
+                    DTNotificacion noti = *it;
+                    imprimir(noti.getCurso());
+                    imprimir(noti.getIdioma()->getNombreIdioma());
+                }
                 //interfazCurso->consultaNotificaciones();
                 break;
+                }
+                contUsuario.eliminarNotificaciones(nick);
             }
             case 16:{
                 //Eliminar suscripciones
