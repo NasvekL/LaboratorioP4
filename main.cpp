@@ -436,7 +436,17 @@ int main(){
                         imprimir( estudiante.getNickname());
                     }*/
                     string estu = entradaString();
+                    DTEstadisticaEstudiante estadisticas = contUsuario.estadisticasEstudiante(estu);
+                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
+
+                    imprimir("Estadisticas del estudiante: " );
+                    for (const auto& curso : porcentajesCursos) {
+                        imprimir(curso.first + ": " + to_string(curso.second) + "%");
+                    }
+
                     
+
+
 
                 }
                 //interfazCurso->consultarEstadisticas();
