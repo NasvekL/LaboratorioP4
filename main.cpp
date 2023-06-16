@@ -459,7 +459,7 @@ int main(){
                     string prof = entradaString();
 
                     Profesor* profesor = contUsuario.encontrarProfesor(prof);
-                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(profesor);
+                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
 
                     imprimir("Estadisticas de "+ prof + ":" );
                     map<string, int> porcentajesCursos = estadisticas.getPromPorcetajesCursos()();
