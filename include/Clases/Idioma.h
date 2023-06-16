@@ -21,6 +21,7 @@ class Idioma{
         void agregar(Usuario* u); //agregar sucriptor
         void eliminar(Usuario* u); //eliminar suscriptor
         set<string> suscripciones(string nick);
+        set<IObserver*> getObservers();
         //constructor y destructor
         Idioma(string nombreIdioma);
         ~Idioma();

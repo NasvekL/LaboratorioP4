@@ -347,6 +347,7 @@ int main(){
                 imprimir("Escriba el nombre del curso que desea habilitar:");
                 string curso = entradaString();
                 contCurso.habilitarCurso(curso);
+
                 imprimir("Curso habilitado", VERDE);
                 presionaParaContinuar();
                 break;
@@ -529,7 +530,7 @@ int main(){
                 list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
-                    imprimir(noti.getCurso().getNombre());
+                    imprimir(noti.getCurso());
                     imprimir(noti.getIdioma()->getNombreIdioma());
                 }
                 //interfazCurso->consultaNotificaciones();

@@ -35,7 +35,7 @@ class IControladorUsuario{
     virtual std::list<std::string> listarUsuarios() = 0;
     virtual string getTipoUsuario(string nick) = 0;
     // Operaciones de suscripciones
-    virtual Usuario obtenerSuscriptor(std::string user) = 0;
+    virtual Usuario* obtenerSuscriptor(std::string user) = 0;
     virtual void eliminarNotificaciones(string nick) = 0;
     virtual std::list<DTNotificacion> consultarNotificaciones(std::string nick) = 0;
 

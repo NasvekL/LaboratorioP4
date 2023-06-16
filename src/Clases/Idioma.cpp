@@ -12,7 +12,9 @@ void Idioma::setNombreIdioma(string nombreIdioma) {
 string Idioma::getNombreIdioma() {
     return nombreIdioma;
 }
-
+set<IObserver*> Idioma::getObservers(){
+    return observers;
+}
 string Idioma::suscribir(string nick) {
     // Implementación de suscribir
     // Retorna un string según el resultado de la suscripción

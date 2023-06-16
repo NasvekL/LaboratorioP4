@@ -61,7 +61,7 @@ class ControladorUsuario : public IControladorUsuario{
         bool existeUsuario(string nick);
 
         //Operaciones de suscripciones
-        Usuario obtenerSuscriptor(string user);
+        Usuario* obtenerSuscriptor(string user);
         void eliminarNotificaciones(string nick);
         list<DTNotificacion> consultarNotificaciones(string nick);
 

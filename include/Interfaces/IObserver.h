@@ -4,7 +4,7 @@
 
 class IObserver{
     public:
-        virtual void notificar() = 0;
+        virtual void notificar(DTNotificacion noti) = 0;
 };
 
 

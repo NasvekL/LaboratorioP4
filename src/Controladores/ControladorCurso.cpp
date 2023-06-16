@@ -161,7 +161,14 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
     delete cur;
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
-    cursos.find(nombreCurso)->second->setHabilitado(true);
+    Curso* cur = getCurso(nombreCurso);
+    cur->setHabilitado(true);
+    Idioma * idi = cur->getIdiomaDelCurso();
+    set<IObserver*> obs = idi->getObservers();
+    DTNotificacion noti = DTNotificacion(cur->getNombreCurso(),idi);
+    for(auto it = obs.begin(); it!=obs.end(); it++){
+        (*it)->notificar(noti);
+    }
 }
 
 

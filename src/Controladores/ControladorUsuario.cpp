@@ -135,10 +135,10 @@ list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
     return estudiantes;
 }
 
-Usuario ControladorUsuario::obtenerSuscriptor(string user) {
+Usuario* ControladorUsuario::obtenerSuscriptor(string user) {
     // Implementar la lógica para obtener el suscriptor
-    Usuario suscriptor;
-    // ...
+    Usuario* suscriptor;
+    // ..
     return suscriptor;
 }
 

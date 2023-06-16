@@ -105,7 +105,7 @@ int Curso::progresoPromedio() {
     // Implementación de la operación
 }
 
-int Curso::progresoDeEstudiante(Estudiante e){
+int Curso::progresoDeEstudiante(Estudiante* e){
     // Implementación de la operación
 }
 

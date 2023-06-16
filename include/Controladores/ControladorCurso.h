@@ -12,6 +12,7 @@
 #include "../DTs/DTProfesor.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+#include "../DTs/DTNotificacion.h"
 #include "../Interfaces/IControladorCurso.h"
 
 

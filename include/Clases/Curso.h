@@ -60,7 +60,7 @@ class Curso{
 
         //OPERACIONES
         int progresoPromedio();
-        int progresoDeEstudiante(Estudiante e);
+        int progresoDeEstudiante(Estudiante* e);
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
 
