@@ -251,7 +251,7 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
         inscriptos++;
     }
     promedio = promedio / inscriptos;
-    DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, cur->getNickname());
+    DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, cur->getNombreCurso());
 
     return DTEstadisticaCurso();
 }
