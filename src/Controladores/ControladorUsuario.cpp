@@ -56,7 +56,25 @@ list<string> ControladorUsuario::listarCursos() {
 
 DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) {
     // Implementar la lógica para obtener las estadísticas del profesor
-    DTEstadisticaProfesor estadisticas;
+    auto it = usuarios.find(profesor);
+    Profesor* profe = dynamic_cast<Profesor*>(it->second);
+    list<Curso*> cursos = profe->getCursos();
+    map<string, int> promPorcentajesCursos;
+    for (Curso* curso : cursos) {
+        int promedio = 0;
+        int inscriptos;
+        for (Inscripcion* inscripcion : curso->getInscripciones()) {
+            Progreso* progreso = inscripcion->getProg();
+            promedio = promedio + progreso->getPorcentaje();
+            inscriptos++;
+        }
+        promedio = promedio / inscriptos;
+        promPorcentajesCursos.insert(std::make_pair(curso->getNombreCurso(), promedio));
+    }
+
+
+
+    DTEstadisticaProfesor estadisticas = DTEstadisticaProfesor(promPorcentajesCursos);
     // ...
     return estadisticas;
 }
@@ -66,14 +84,15 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
     auto it = usuarios.find(estudiante);
     Estudiante* estu = dynamic_cast<Estudiante*>(it->second);
     list<Inscripcion*> inscripciones = estu->getInscripciones();
-    DTEstadisticaEstudiante estadisticas;
+    map<string, int> estad;
     for (Inscripcion* inscripcion : inscripciones) {
         Curso* curso = inscripcion->getInscriptoA();
         Progreso* prog = inscripcion->getProg();
         int porcentaje = prog->getPorcentaje();
-    
-
+        estad.insert(std::make_pair(curso->getNombreCurso(), porcentaje));
     }
+    DTEstadisticaEstudiante estadisticas = DTEstadisticaEstudiante(estad);
+
     
     // ...
     return estadisticas;

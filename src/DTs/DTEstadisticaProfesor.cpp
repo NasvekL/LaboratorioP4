@@ -2,7 +2,8 @@
 #include "../../include/DTs/DTCurso.h" // Asegúrate de incluir el archivo de encabezado correspondiente
 
 // Constructor
-DTEstadisticaProfesor::DTEstadisticaProfesor(string profesor) {
+DTEstadisticaProfesor::DTEstadisticaProfesor(map<string, int> promPorcenCur) {
+    this->promPorcetajesCursos =promPorcenCur;
     // Implementación del constructor
     // Puedes inicializar el objeto según tus necesidades
 }
