@@ -432,6 +432,8 @@ int main(){
                         imprimir( estudiante.getNickname());
                     }*/
                     string estu = entradaString();
+                    Estudiante* estudiante = contUsuario.encontrarEstudiante(estu);
+
                     
 
                 }

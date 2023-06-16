@@ -79,6 +79,15 @@ list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
 list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
     // Implementar la lógica para listar los estudiantes
     list<DTEstudianteSC> estudiantes;
+
+    for (const auto& usuario : usuarios) {
+        string tipoUsuario = getTipoUsuario(usuario.first);
+        if (tipoUsuario == "estudiante") {
+            Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario.second);
+            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNickname(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
+            estudiantes.push_back(estu);
+        }
+    }
     // ...
     return estudiantes;
 }
