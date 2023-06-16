@@ -61,7 +61,7 @@ DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) 
         for (Inscripcion* inscripcion : curso->getInscripciones()) {
             Progreso* progreso = inscripcion->getProg();
             promedio = promedio + progreso->getPorcentaje();
-            insriptos++;
+            inscriptos++;
         }
         promedio = promedio / inscriptos;
         promPorcentajesCursos.insert(std::make_pair(curso->getNombreCurso(), promedio));
