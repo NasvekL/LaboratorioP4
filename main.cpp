@@ -462,7 +462,7 @@ int main(){
                     DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
 
                     imprimir("Estadisticas de "+ prof + ":" );
-                    map<string, int> porcentajesCursos = estadisticas.estadoCurso()();
+                    map<string, int> porcentajesCursos = estadisticas.estadoCurso();
                     for (const auto& estads : porcentajesCursos) {
                         imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
                     }
