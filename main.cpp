@@ -432,14 +432,16 @@ int main(){
                         imprimir( estudiante.getNickname());
                     }*/
                     string estu = entradaString();
-                    Estudiante* estudiante = contUsuario.encontrarEstudiante(estu);
-                    set<DTCurso> cursosInscriptos = estudiante->obtenDTCurso();
-                    imprimir("Cursos inscriptos por el estudiante:");
-                    for (const DTCurso& curso : cursosInscriptos) {
-                        imprimir("Nombre: " + curso.getNombre());
-                        imprimir("Porcentaje:"); //agregar el porcentaje!!!!
-                        
+                    DTEstadisticaEstudiante estadisticas = contUsuario.estadisticasEstudiante(estu);
+                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
+
+                    imprimir("Estadisticas del estudiante: " );
+                    for (const auto& curso : porcentajesCursos) {
+                        imprimir(curso.first + ": " + to_string(curso.second) + "%");
                     }
+
+                    
+
 
 
                 }
