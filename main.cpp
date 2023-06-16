@@ -438,7 +438,7 @@ int main(){
                 if (entrada == 1){
                     imprimir("ingrese el nick del estudiante");
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    for (const DTEstudianteSC& estudiante : estudiantes) {
+                    for (const DTEstudianteSC estudiante : estudiantes) {
                         imprimir( estudiante.getNickname());
                     }
                     string estu = entradaString();
@@ -458,17 +458,17 @@ int main(){
                     }
                     string prof = entradaString();
 
-                    Profesor* profesor = contUsuario.encontrarProfesor(prof);
-                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(profesor);
+                    //Profesor* profesor = contUsuario.encontrarProfesor(prof);
+                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
 
                     imprimir("Estadisticas de "+ prof + ":" );
-                    map<string, int> porcentajesCursos = estadisticas.getPromPorcetajesCursos()();
+                    map<string, int> porcentajesCursos = estadisticas.getPromPorcetajesCursos();
                     for (const auto& estads : porcentajesCursos) {
                         imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
                     }
                 } else {
                     imprimir("Ingrese el nombre del profesor");
-                    list<string> cursos = contCurso.listarNombresDeCursos();
+                    set<string> cursos = contCurso.listarNombresDeCursos();
                     for (const string& curso : cursos){
                         imprimir(curso);
                     }
