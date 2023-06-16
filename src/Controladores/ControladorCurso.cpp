@@ -256,9 +256,11 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
     return set<DTCurso>();
 }
 
-list<string> ControladorCurso::cursosDisponibles(string nick){
+//Devuelve una lista de triadas de cursos disponibles, cada uno contiene, en orden, el nombre del curso,
+//la cantidad de lecciones y la cantidad de ejercicios
+list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    list<string> cursosDisponibles = list<string>();
+    list<tuple<string, int, int>> cursosDisponibles = list<tuple<string, int, int>>();
     //Recorro cada curso del controlador (it es un curso en cada iteracion)
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
         bool cursoHabilitado;
@@ -295,20 +297,43 @@ list<string> ControladorCurso::cursosDisponibles(string nick){
         }
 
         if(cursoHabilitado && !estudianteYaEstaInscritoAlCurso && estudianteAproboLasPrevias){
-            cursosDisponibles.push_back(it->first);
+            string nombreDelCursitoDisponible = it->first;
+            int cantidadDeLecciones = it->second->cantidadDeLecciones();
+            int cantidadDeEjercicios = it->second->cantidadDeEjercicios();
+            cursosDisponibles.push_back(make_tuple(nombreDelCursitoDisponible, cantidadDeLecciones, cantidadDeEjercicios));
         }
     }
     return cursosDisponibles;
 }
 
 void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante) {
+    //Obtengo el controlador de usuario
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    
-    DTFecha* fecha = new  DTFecha(21,6,2023);
-    Inscripcion* inscri = new Inscripcion(*fecha, false, 0, nullptr);
 
+    //Creo DTFecha de la inscripcion
+    DTFecha* fecha = new DTFecha(21,6,2023);
+
+    //Obtengo la primera leccion del curso
+    Curso refACurso = (*cursos.find(curso)->second);
+    list<Leccion*> lecciones = refACurso.getLecciones();
+    Leccion* primeraLeccion = lecciones.front();
+
+    //Creo el progreso con referencia a la leccion actual
+    Progreso* progresoDeInscripcion = new Progreso(primeraLeccion);
+
+    //Creo la inscripcion con referencia al progreso
+    Inscripcion* inscri = new Inscripcion(*fecha, progresoDeInscripcion);
+
+    //En el progreso pongo una referencia a la inscripcion
+    progresoDeInscripcion->setInscripcion(inscri);
+
+    //Agrego visibilidad entre inscripcion y estudiante
     cu.agregarInscripcionAEstudiante(estudiante, inscri);
+    inscri->setEstudianteInscrito(cu.encontrarEstudiante(estudiante));
+    
+    //Agrego visibilidad entre inscripcion y curso
     cursos.find(curso)->second->agregarInscripcion(inscri);
+    inscri->setInscripccionACurso(cursos.find(curso)->second);
 }
 
 set<Idioma*> ControladorCurso::listarIdiomasProfesor() {

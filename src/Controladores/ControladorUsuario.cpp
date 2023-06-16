@@ -36,6 +36,7 @@ bool ControladorUsuario::existeUsuario(string nick) {
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
     return *datoEstudiante;
 }
+
 DTProfesor ControladorUsuario::getDatoProfesor() {
     return *datoProfesor;
 }

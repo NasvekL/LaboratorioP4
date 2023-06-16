@@ -100,8 +100,9 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones para obtener informacion
 
-        //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
-        list<string> cursosDisponibles(string nick);
+        //Devuelve una lista de triadas de cursos disponibles para un estudiante en particular.
+        //Cada uno contiene, en orden, el nombre del curso, la cantidad de lecciones y la cantidad de ejercicios
+        list<tuple<string, int, int>> cursosDisponibles(string nick);
         void seleccionIdioma(string idi);
         void seleccionarProfesor(string nick);
         list<string> listarProfe();
