@@ -393,6 +393,22 @@ int main(){
             }
             case 13:{
                 //Consultar estadisticas
+                imprimir("Ingrese de quien quiere estadisticas:");
+                imprimir("1. De estudiantes");
+                imprimir("2. De profesores");
+                imprimir("3. De cursos");
+                int entrada = entradaInt();
+
+                if (entrada == 1){
+                    imprimir("ingrese el nombre del estudiante");
+                    list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
+                    for (const string& estudiante : estudiantes) {
+                        imprimir( estudiante.getNickname());
+                    }
+                    string estu = entradaString();
+                    
+
+                }
                 //interfazCurso->consultarEstadisticas();
                 break;
             }
