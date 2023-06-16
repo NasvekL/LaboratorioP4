@@ -59,7 +59,7 @@ class Curso{
         int progresoDeEstudiante(Estudiante e);
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
-
+        void conseguirInfoCurso(list<string> infoCur);
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };

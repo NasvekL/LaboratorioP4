@@ -177,6 +177,9 @@ void ControladorCurso::altaLeccion(string curso){
     auto iter = cursos.find(curso);
     Curso *cur = iter->second;
     cur->agregarLeccion(nuevaLec);
+    for(auto it = nuevaLec->getEjercicios.begin(); it != nuevaLec->getEjercicios.end(); it++){
+        ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+    }
     datosTraduccion.clear();
     datosRellenarPalabras.clear();
     delete datoDeLeccion;
@@ -353,6 +356,20 @@ void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
     // Implementación pendiente
 }
 
+
+list<string> ControladorCurso::verCurso(string curso){
+    
+    /*
+    list<string> datosCurso;
+    string cursoBuscado = curso;
+    auto it = cursos.find(cursoBuscado);
+    //Ver que hacer en caso de que me ingresen mal el curso
+    Curso *cur = it->second;
+    cur->conseguirInfoCurso(datosCurso); //Obtengo en la lista toda la info del curso
+    return datosCurso;
+    */
+    return list<string>();
+}
 
 
 //Otras operaciones

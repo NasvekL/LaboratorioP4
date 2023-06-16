@@ -337,14 +337,19 @@ int main(){
             }
             case 10:{
                 //Consultar curso
-                /*imprimir("Cursos Disponibles:");
+                /*
+                imprimir("Cursos Disponibles:");
                 set<string> nombreCursos = contCurso.listarNombresDeCursos();
                 for(auto it = nombreCursos.begin(); it != nombreCursos().end; it++){
                     imprimir(*it);
                 }
                 imprimir("Seleccionar curso:");
                 string cursoSeleccionado = entradaString();
-                
+                list<string> infoCurso = contCurso.verCurso(cursoSeleccionado);
+
+                for (auto iterador = infoCurso.begin(); iterador != infoCurso.end(); iterador++){
+                    imprimir(*it);
+                }
 
                 */
                 break;
@@ -394,6 +399,8 @@ int main(){
             }
             case 16:{
                 //Eliminar suscripciones
+                
+
                 //interfazCurso->eliminarSuscripciones();
                 break;
             }
