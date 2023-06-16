@@ -20,6 +20,7 @@ class Inscripcion{
         Curso* inscripccionACurso;
         Estudiante* estudianteInscrito;
 
+
     public:
         //Getters
         DTFecha getFecha();
