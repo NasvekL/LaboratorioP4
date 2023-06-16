@@ -89,7 +89,7 @@ class IControladorCurso{
 
         //Operaciones virtuales de suscripciones
         virtual set<string> consultarSuscripciones(string nick)= 0;
-        virtual void suscribirUsuario(set<string> idiomas)= 0;
+        virtual void suscribirUsuario(set<string> idiomas,string nick)= 0;
         virtual set<string> listarIdiomasSuscrito(string nick)= 0;
         virtual void eliminarSuscripciones(set<string> idiomas, string nick)= 0;
 

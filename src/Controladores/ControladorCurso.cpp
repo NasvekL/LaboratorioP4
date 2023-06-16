@@ -393,11 +393,22 @@ set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
 
 //Operaciones de suscripciones
 set<string> ControladorCurso::consultarSuscripciones(string nick) {
-    // Implementación pendiente
-    return set<string>();
+    set<string> idiomasNoSuscrito;
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario* user = cu.getUsuario(nick);
+    for(auto it = idiomas.begin(); it != idiomas.end(); ++it){
+        if(!it->second->estaSuscrito(user))
+            idiomasNoSuscrito.insert(it->first);
+    }
+    return idiomasNoSuscrito;
 }
-void ControladorCurso::suscribirUsuario(set<string> idiomas) {
-    // Implementación pendiente
+void ControladorCurso::suscribirUsuario(set<string> idiomas,string nick) {
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario* user = cu.getUsuario(nick);
+    for(auto it = idiomas.begin(); it != idiomas.end(); ++it){
+        Idioma* idioma = this->idiomas.find(*it)->second;
+        idioma->agregar(user);
+    }
 }
 set<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
     // Implementación pendiente
