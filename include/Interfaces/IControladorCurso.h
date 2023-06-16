@@ -30,7 +30,7 @@ class IControladorCurso{
         virtual Profesor* getProfesor()= 0;
         virtual string getDatoIdioma()= 0;
         virtual map<string, Curso*> getDatosPrevias()= 0;
-        virtual Curso getCurso(string nombreCurso) = 0;
+        virtual Curso* getCurso(string nombreCurso) = 0;
         virtual map<string,Curso*> getCursos()= 0;
         virtual DTRellenarPalabras getDatosRellenar()= 0;
         virtual DTTraduccion getDatosTraduccion()= 0;
@@ -75,8 +75,9 @@ class IControladorCurso{
         virtual list<string> listarProfe()= 0;
         virtual DTEstadisticaCurso estadisticasCurso(string curso)= 0;
         virtual set<string> listarNombresDeCursos()= 0;
-        //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
-        virtual list<string> cursosDisponibles(string nick) = 0;
+        //Devuelve una lista de triadas de cursos disponibles para un estudiante en particular.
+        //Cada uno contiene, en orden, el nombre del curso, la cantidad de lecciones y la cantidad de ejercicios
+        virtual list<tuple<string, int, int>> cursosDisponibles(string nick) = 0;
         virtual set<DTCurso> listarDTCursos()= 0;
         virtual set<Idioma*> listarIdiomasProfesor()= 0;
         virtual void listarIdiomas()= 0;
@@ -88,8 +89,9 @@ class IControladorCurso{
         virtual list<string> verCurso(string curso) = 0;
 
         //Operaciones virtuales de suscripciones
+        virtual list<DTNotificacion> consultarNotificaciones(string nick)= 0;
         virtual set<string> consultarSuscripciones(string nick)= 0;
-        virtual void suscribirUsuario(set<string> idiomas)= 0;
+        virtual void suscribirUsuario(set<string> idiomas,string nick)= 0;
         virtual set<string> listarIdiomasSuscrito(string nick)= 0;
         virtual void eliminarSuscripciones(set<string> idiomas, string nick)= 0;
 

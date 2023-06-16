@@ -30,8 +30,9 @@ ControladorCurso::~ControladorCurso() {
     }
 }
 //Getters
-Curso ControladorCurso::getCurso(string nick) {
-    //return cursos.find(nick);
+Curso* ControladorCurso::getCurso(string nick) {
+    auto iter = cursos.find(nick);
+    return iter->second;
 }
 Idioma* ControladorCurso::getIdioma(string nombre){
     string claveBuscada = nombre;
@@ -108,11 +109,11 @@ void ControladorCurso::setDatosPrevias(set<Curso*> previas) {
 }
 //Precondicion: solucion de traduccion viene como null
 void ControladorCurso::setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos) {
-    datosRellenar = &datos;
+    datosRellenar = new DTRellenarPalabras(datos.getDescripcion(),datos.getLetra(),datos.getIdEjercicio(),datos.getListaDePalabras(),datos.getTipo(),datos.getNumLec());
 }
 //Precondicion: solucion de compPal viene como null
 void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
-    datosTraducir = &datos;
+    datosTraducir = new DTTraduccion(datos.getDescripcion(),datos.getLetra(),datos.getIdEjercicio(),datos.getSolucion(),datos.getTipo(),datos.getNumLec());
 }
 
 
@@ -147,7 +148,17 @@ bool ControladorCurso::altaCurso() {
 return cur!=NULL;
 }
 void ControladorCurso::eliminarCurso(string nombreCurso) {
-    // Implementación pendiente
+    Curso* cur = getCurso(nombreCurso);
+    cursos.erase(nombreCurso);
+    list<Leccion*> lecsCur=cur->getLecciones();
+    for(auto iter=lecsCur.begin(); iter!=lecsCur.end(); iter++){
+        map<int,Ejercicio*> ejsLec = (*iter)->getEjercicios();
+        for(auto it = ejsLec.begin(); it!=ejsLec.end(); it++){
+            ejercicios.erase(it->second->getIdEjercicio());
+        }
+    }
+    
+    delete cur;
 }
 void ControladorCurso::habilitarCurso(string nombreCurso) {
     cursos.find(nombreCurso)->second->setHabilitado(true);
@@ -177,7 +188,7 @@ void ControladorCurso::altaLeccion(string curso){
     auto iter = cursos.find(curso);
     Curso *cur = iter->second;
     cur->agregarLeccion(nuevaLec);
-    for(auto it = nuevaLec->getEjercicios.begin(); it != nuevaLec->getEjercicios.end(); it++){
+    for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
         ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
     }
     datosTraduccion.clear();
@@ -193,12 +204,16 @@ void ControladorCurso::altaEjercicio(Leccion* lec){
     Ejercicio *ej = new RellenarPalabras(dt.getListaDePalabras(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
     ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    delete datosRellenar;
+    datosRellenar = NULL;
 }
 else{
     DTTraduccion dt = getDatosTraduccion();
     Ejercicio *ej = new Traduccion(dt.getSolucion(), dt.getIdEjercicio(), dt.getDescripcion(), dt.getLetra(),lec);
     lec->addEjercicio(ej);
     ejercicios.insert(std::make_pair(dt.getIdEjercicio(), ej));
+    delete datosTraducir;
+    datosTraducir = NULL;
 }
 }
 
@@ -227,6 +242,17 @@ list<string> ControladorCurso::listarProfe() {
 }
 DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     // Implementación pendiente
+    Curso* cur = cursos.find(curso)->second;
+    int promedio = 0;
+    int inscriptos;
+    for (Inscripcion* inscripcion : cur->getInscripciones()) {
+        Progreso* progreso = inscripcion->getProg();
+        promedio = promedio + progreso->getPorcentaje();
+        inscriptos++;
+    }
+    promedio = promedio / inscriptos;
+    DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, cur->getNombreCurso());
+
     return DTEstadisticaCurso();
 }
 set<string> ControladorCurso::listarNombresDeCursos() {
@@ -241,9 +267,12 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
     return set<DTCurso>();
 }
 
-list<string> ControladorCurso::cursosDisponibles(string nick){
+//Devuelve una lista de triadas de cursos disponibles, cada uno contiene, en orden, el nombre del curso,
+//la cantidad de lecciones y la cantidad de ejercicios
+list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    list<string> cursosDisponibles = list<string>();
+    list<tuple<string, int, int>> cursosDisponibles;
+    
     //Recorro cada curso del controlador (it es un curso en cada iteracion)
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
         bool cursoHabilitado;
@@ -252,48 +281,87 @@ list<string> ControladorCurso::cursosDisponibles(string nick){
 
         cursoHabilitado = it->second->getHabilitado();
 
-        for(auto it2 = it->second->getInscripciones().begin(); it2 != it->second->getInscripciones().end(); ++it2){
-            if((*it2)->getEstudiante()->getNick() == nick){
-                estudianteYaEstaInscritoAlCurso = true;
+        if(it->second->getInscripciones().size() == 0){
+            estudianteYaEstaInscritoAlCurso = false;
+        }
+        else{
+            for(auto it2 = it->second->getInscripciones().begin(); it2 != it->second->getInscripciones().end(); ++it2){
+                if((*it2)->getEstudiante()->getNick() == nick){
+                    estudianteYaEstaInscritoAlCurso = true;
+                }
             }
         }
 
         //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
-        for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
-            estudianteAproboLasPrevias = false;
-            //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
-            for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
-                if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
-                    if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
-                        estudianteAproboLasPrevias = true;
-                    }else{                      //Si el estudiante no aprobo la previa
-                        estudianteAproboLasPrevias = false;
-                    }
-                    break;//se encontro la inscripcion del estudiante, asi que dejo de buscar en las inscripciones de la previa
+        if(it->second->getPrevias().size() == 0){
+            estudianteAproboLasPrevias = true;
+        }
+        else{
+            for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
+                estudianteAproboLasPrevias = false;
+                //Si la previa no tiene inscripciones, significa que nadie la aprobo, asi que el estudiante no la aprobo
+                if((*it2)->getInscripciones().size() == 0){
+                    estudianteAproboLasPrevias = false;
                 }
-            }
-            //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
-            //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.
-            if(!estudianteAproboLasPrevias){
-                break;
+                else{
+                    //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
+                    for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
+                        if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
+                            if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
+                                estudianteAproboLasPrevias = true;
+                            }else{                      //Si el estudiante no aprobo la previa
+                                estudianteAproboLasPrevias = false;
+                            }
+                            break;//se encontro la inscripcion del estudiante, asi que dejo de buscar en las inscripciones de la previa
+                        }
+                    }
+                }
+                //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
+                //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.
+                if(!estudianteAproboLasPrevias){
+                    break;
+                }
             }
         }
 
         if(cursoHabilitado && !estudianteYaEstaInscritoAlCurso && estudianteAproboLasPrevias){
-            cursosDisponibles.push_back(it->first);
+            string nombreDelCursitoDisponible = it->first;
+            int cantidadDeLecciones = it->second->cantidadDeLecciones();
+            int cantidadDeEjercicios = it->second->cantidadDeEjercicios();
+            cursosDisponibles.push_back(make_tuple(nombreDelCursitoDisponible, cantidadDeLecciones, cantidadDeEjercicios));
         }
     }
     return cursosDisponibles;
 }
 
 void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante) {
+    //Obtengo el controlador de usuario
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    
-    DTFecha* fecha = new  DTFecha(21,6,2023);
-    Inscripcion* inscri = new Inscripcion(*fecha, false, 0, nullptr);
 
+    //Creo DTFecha de la inscripcion
+    DTFecha* fecha = new DTFecha(21,6,2023);
+
+    //Obtengo la primera leccion del curso
+    Curso refACurso = (*cursos.find(curso)->second);
+    list<Leccion*> lecciones = refACurso.getLecciones();
+    Leccion* primeraLeccion = lecciones.front();
+
+    //Creo el progreso con referencia a la leccion actual
+    Progreso* progresoDeInscripcion = new Progreso(primeraLeccion);
+
+    //Creo la inscripcion con referencia al progreso
+    Inscripcion* inscri = new Inscripcion(*fecha, progresoDeInscripcion);
+
+    //En el progreso pongo una referencia a la inscripcion
+    progresoDeInscripcion->setInscripcion(inscri);
+
+    //Agrego visibilidad entre inscripcion y estudiante
     cu.agregarInscripcionAEstudiante(estudiante, inscri);
+    inscri->setEstudianteInscrito(cu.encontrarEstudiante(estudiante));
+    
+    //Agrego visibilidad entre inscripcion y curso
     cursos.find(curso)->second->agregarInscripcion(inscri);
+    inscri->setInscripccionACurso(cursos.find(curso)->second);
 }
 
 set<Idioma*> ControladorCurso::listarIdiomasProfesor() {
@@ -334,19 +402,36 @@ void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
     // Implementación pendiente
 }
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
-    // Implementación pendiente
-    return set<DTEjercicio>();
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Curso c = cu.obtenerCurso(curso);
 }
 
 
 
 //Operaciones de suscripciones
-set<string> ControladorCurso::consultarSuscripciones(string nick) {
-    // Implementación pendiente
-    return set<string>();
+list<DTNotificacion> consultarNotificaciones(string nick){
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario* user = cu.getUsuario(nick);
+    list<DTNotificacion> notis = user->getNotificaciones();
+    return notis;
 }
-void ControladorCurso::suscribirUsuario(set<string> idiomas) {
-    // Implementación pendiente
+set<string> ControladorCurso::consultarSuscripciones(string nick) {
+    set<string> idiomasNoSuscrito;
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario* user = cu.getUsuario(nick);
+    for(auto it = idiomas.begin(); it != idiomas.end(); ++it){
+        if(!it->second->estaSuscrito(user))
+            idiomasNoSuscrito.insert(it->first);
+    }
+    return idiomasNoSuscrito;
+}
+void ControladorCurso::suscribirUsuario(set<string> idiomas,string nick) {
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario* user = cu.getUsuario(nick);
+    for(auto it = idiomas.begin(); it != idiomas.end(); ++it){
+        Idioma* idioma = this->idiomas.find(*it)->second;
+        idioma->agregar(user);
+    }
 }
 set<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
     // Implementación pendiente

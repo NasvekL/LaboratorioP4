@@ -2,17 +2,19 @@
 
 
 // Constructor
-DTEstadisticaCurso::DTEstadisticaCurso(list<int> promedioCurso, list<string> cursosPropuestos) {
+DTEstadisticaCurso::DTEstadisticaCurso(int promedioCurso, string curso) {
+    this->curso=curso;
+    this->promedioCurso=curso;
     // Implementación del constructor
     // Puedes asignar los valores de los parámetros a los atributos correspondientes
     // Aquí solo se muestra cómo iterar sobre las listas proporcionadas
-    for (auto it = promedioCurso.begin(); it != promedioCurso.end(); ++it) {
+    //for (auto it = promedioCurso.begin(); it != promedioCurso.end(); ++it) {
         // Hacer algo con cada valor en la lista promedioCurso
-    }
+    //}
 
-    for (auto it = cursosPropuestos.begin(); it != cursosPropuestos.end(); ++it) {
+   // for (auto it = cursosPropuestos.begin(); it != cursosPropuestos.end(); ++it) {
         // Hacer algo con cada valor en la lista cursosPropuestos
-    }
+   // }
 }
 
 // Destructor

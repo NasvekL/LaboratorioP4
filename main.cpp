@@ -21,6 +21,7 @@ DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
 DTCurso crearDTCurso();
 DTLeccion crearDTLeccion(int &numLec);
+DTLeccion crearDTLeccion2(int &numLec);
 int entradaInt();
 string entradaString();
 bool quiereContinuar(string p);
@@ -97,7 +98,10 @@ int main(){
                 break;
             }
             case 1:{
+                //Alta usuario
+                system("clear");
                 int seleccion = seleccionEstudianteOProfesor();
+                system("clear");
                 switch (seleccion){
                     case 1:{
                         DTEstudiante est = crearDTEstudiante();
@@ -120,122 +124,133 @@ int main(){
                 break;
             }
 
-            case 2:{//Consulta de Usuario
-                    list<string> listaUsuarios = contUsuario.consultarUsuario();
-                    std::list<string>::iterator it;
-                    for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
+            case 2:{
+                //Consulta de Usuario
+                system("clear");
+                list<string> listaUsuarios = contUsuario.consultarUsuario();
+                std::list<string>::iterator it;
+                for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
+                    imprimir(*it);
+                }
+                imprimir("Ingrese el nick deseado", AMARILLO);
+                string nick;
+                nick = entradaString();
+                if(contUsuario.getTipoUsuario(nick)=="estudiante"){
+                    contUsuario.seleccionarUsuario(nick);
+                    DTEstudiante dte = contUsuario.getDatoEstudiante();
+                    //imprimir("Nombre", AMARILLO);
+                    imprimir("Nombre", AMARILLO + dte.getNombre());
+                    //imprimir("Descripcion", AMARILLO);
+                    imprimir("Descripcion", AMARILLO + dte.getDescripcion());
+                    //imprimir("Pais", AMARILLO);
+                    imprimir("Pais", AMARILLO + dte.getPais());
+                    presionaParaContinuar();
+                } 
+                else{ 
+                    contUsuario.seleccionarUsuario(nick);
+                    DTProfesor dtp = contUsuario.getDatoProfesor();
+                    //imprimir("Nombre", AMARILLO);
+                    imprimir("Nombre", AMARILLO + dtp.getNombre());
+                    //imprimir("Descripcion", AMARILLO);
+                    imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
+                    //imprimir("Instituto", AMARILLO);
+                    imprimir("Instituto", AMARILLO + dtp.getInstituto());
+                    imprimir("Idiomas", AMARILLO);
+                    set<string>* idi = dtp.getIdiomas();
+                    set<string>::iterator it;
+                    for (it = idi->begin(); it != idi->end(); ++it) {
                         imprimir(*it);
                     }
-                    cout << "Ingrese el nick deseado" << endl;
-                    string nick;
-                    nick = entradaString();
-                    if(contUsuario.getTipoUsuario(nick)=="estudiante"){
-                        contUsuario.seleccionarUsuario(nick);
-                        DTEstudiante dte = contUsuario.getDatoEstudiante();
-                        //imprimir("Nombre", AMARILLO);
-                        imprimir("Nombre", AMARILLO + dte.getNombre());
-                        //imprimir("Descripcion", AMARILLO);
-                        imprimir("Descripcion", AMARILLO + dte.getDescripcion());
-                        //imprimir("Pais", AMARILLO);
-                        imprimir("Pais", AMARILLO + dte.getPais());
-                        presionaParaContinuar();
-                    } 
-                    else{ 
-                        contUsuario.seleccionarUsuario(nick);
-                        DTProfesor dtp = contUsuario.getDatoProfesor();
-                        //imprimir("Nombre", AMARILLO);
-                        imprimir("Nombre", AMARILLO + dtp.getNombre());
-                        //imprimir("Descripcion", AMARILLO);
-                        imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
-                        //imprimir("Instituto", AMARILLO);
-                        imprimir("Instituto", AMARILLO + dtp.getInstituto());
-                        imprimir("Idiomas", AMARILLO);
-                        set<string>* idi = dtp.getIdiomas();
-                        set<string>::iterator it;
-                        for (it = idi->begin(); it != idi->end(); ++it) {
-                          imprimir(*it);
-                        }
-                        presionaParaContinuar();
-                    }        
-                    break;
+                    presionaParaContinuar();
+                }        
+                break;
             }
             case 3:{
-                    //Alta idioma
-                    imprimir("Ingrese idioma:", AMARILLO);
-                    string idioma = entradaString();
-                    if(contCurso.confirmarAltaIdioma(idioma)==false)
-                        imprimir("Ya existe el idioma", ROJO);
-                    else
-                        imprimir("Idioma creado", VERDE);
-                    presionaParaContinuar();
-                    break;
+                //Alta idioma
+                system("clear");
+                imprimir("Ingrese idioma:", AMARILLO);
+                string idioma = entradaString();
+                if(contCurso.confirmarAltaIdioma(idioma)==false)
+                    imprimir("Ya existe el idioma", ROJO);
+                else
+                    imprimir("Idioma creado", VERDE);
+                presionaParaContinuar();
+                break;
             }
             case 4:{
-                    //Consultar idiomas
-                    contUsuario.listarIdiomas();
-                    presionaParaContinuar();
-                    break;
+                //Consultar idiomas
+                system("clear");
+                contUsuario.listarIdiomas();
+                presionaParaContinuar();
+                break;
             }
             case 5:{
-                    //Alta de curso:
-                    //Elijo el profesor
-                    list<string> profes = contCurso.listarProfe();
-                    for (auto it = profes.begin(); it != profes.end(); ++it) {
-                         imprimir(*it);
-                    }
-                    imprimir("Ingrese el nickname del profesor que dictara el curso:");
-                    string nick = entradaString();
-                    contCurso.seleccionarProfesor(nick);
-                    //Defino el resto de datos del curso
-                    DTCurso curso = crearDTCurso();
-                    //Guardo el curso en un DT auxiliar en el controlador
-                    contCurso.setDatoDeCurso(curso);
+                //Alta de curso:
+                system("clear");
+                //Elijo el profesor
+                list<string> profes = contCurso.listarProfe();
+                for (auto it = profes.begin(); it != profes.end(); ++it) {
+                        imprimir(*it);
+                }
+                imprimir("Ingrese el nickname del profesor que dictara el curso:", AMARILLO);
+                string nick = entradaString();
+                contCurso.seleccionarProfesor(nick);
+                //Defino el resto de datos del curso
+                DTCurso curso = crearDTCurso();
+                //Guardo el curso en un DT auxiliar en el controlador
+                contCurso.setDatoDeCurso(curso);
 
-                    set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
-                    for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
-                        imprimir((*it)->getNombreIdioma());
+                set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
+                for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
+                    imprimir((*it)->getNombreIdioma());
+                }
+                imprimir("Elija el idioma del curso: ", AMARILLO);
+                string idioma = entradaString();
+                contCurso.seleccionIdioma(idioma);
+                imprimir("Agregar leccion S/N", AMARILLO);
+                string opcion = entradaString();
+                int numLec = 0;
+                while((opcion == "S") || (opcion == "s")){
+                    DTLeccion leccion = crearDTLeccion2(numLec);
+                    contCurso.setDatosDeLeccion(leccion);
+                    imprimir("Quiere agregar ejercicio S/N", AMARILLO);
+                    string opcion2 = entradaString();
+                    if((opcion2=="S") || (opcion2=="s")){
+                        imprimir("Ingrese la cantidad de ejercicios que desea agregar:", AMARILLO);
+                        int cantEjs = entradaInt();
+                        leccion.setCantEj(cantEjs);   
                     }
-                    imprimir("Elija el idioma del curso: ");
-                    string idioma = entradaString();
-                    contCurso.seleccionIdioma(idioma);
-                    imprimir("Agregar leccion S/N");
-                    string opcion = entradaString();
-                    int numLec = 0;
-                    while((opcion == "S") || (opcion == "s")){
-                        DTLeccion leccion = crearDTLeccion(numLec);
-                        contCurso.setDatosDeLeccion(leccion);
-                        imprimir("Quiere agregar ejercicio S/N");
-                        string opcion2 = entradaString();
-                        while(opcion2=="S"){
-                            imprimir("Ingrese tipo de ejercicio");
-                            imprimir("Completar/Traduccion");
-                            string opcion3 = entradaString();
-                            if(opcion3=="Completar"){
-                                DTRellenarPalabras ejercicio = crearDTRellenarPalabras(numLec);
-                                contCurso.agregarDatosRellenarPalabras(ejercicio);
-                            }
-                            else{
-                                DTTraduccion ejercicio = crearDTTraduccion(numLec);
-                                contCurso.agregarDatosTraduccion(ejercicio);
-                            }
-                            if(!quiereContinuar("Agregar otro ejercicio"))
-                                opcion2 = "N";
+                    while((opcion2=="S") || (opcion2=="s")){
+                        imprimir("Ingrese tipo de ejercicio", AMARILLO);
+                        imprimir("Completar/Traduccion", AMARILLO);
+                        string opcion3 = entradaString();
+                        if(opcion3=="Completar"){
+                            DTRellenarPalabras ejercicio = crearDTRellenarPalabras(numLec);
+                            contCurso.agregarDatosRellenarPalabras(ejercicio);
                         }
-                        if(!quiereContinuar("Agregar otra leccion"))
-                            opcion = "N";
+                        else{
+                            DTTraduccion ejercicio = crearDTTraduccion(numLec);
+                            contCurso.agregarDatosTraduccion(ejercicio);
+                        }
+                        if(!quiereContinuar("Agregar otro ejercicio"))
+                            opcion2 = "N";
                     }
-                    contCurso.altaCurso();
-                    break;
+                    if(!quiereContinuar("Agregar otra leccion"))
+                        opcion = "N";
+                }
+                contCurso.altaCurso();
+                break;
             }
             case 6:{
                 //Agregar leccion
-                imprimir("Cursos no habilitados disponibles:");;
+                system("clear");
+                imprimir("Cursos no habilitados disponibles:", AMARILLO);;
                 list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
                 int a=1;
                 for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
                     imprimir(to_string(a)+" "+*it);
                 }
-                imprimir("Escribe el nombre del Curso:");
+                imprimir("Escribe el nombre del Curso:" , AMARILLO);
                 string cursoSeleccionado = entradaString();
                 int numLec = contCurso.getNumeroDeLeccion(cursoSeleccionado);
                 numLec++;
@@ -266,16 +281,20 @@ int main(){
             }
             case 7:{
                 //Agregar ejercicio
+                system("clear");
                 //interfazCurso->agregarEjercicio();
-                imprimir ( "Cursos:", AMARILLO );
+                imprimir ( "Cursos no habilitados disponibles:", AMARILLO );
                 contCurso.listarCursosNoHabilitados();
-                
+                list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                int a=1;
+                for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
+                    imprimir(to_string(a)+" "+*it);
+                }
                 imprimir("Elija un curso:", AMARILLO);
                 string cursoSelec = entradaString();
-                Curso cur = contCurso.getCurso(cursoSelec);
-
+                Curso* cur = contCurso.getCurso(cursoSelec);
                 imprimir("Lecciones del curso:", AMARILLO);
-                list<Leccion*> lecciones = cur.getLecciones();
+                list<Leccion*> lecciones = cur->getLecciones();
 
                 if (!lecciones.empty()) {
                     int i = 1;
@@ -295,9 +314,9 @@ int main(){
                     }
 
                     if (leccionSeleccionada != nullptr) {
-                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):, AMARILLO");
+                        imprimir("Ingrese el tipo de ejercicio (completar o traduccion):", AMARILLO);
                         string tipo = entradaString();
-                        if ((tipo == "completar ") || (tipo == "Completar")) {
+                        if ((tipo == "completar") || (tipo == "Completar")) {
                             DTRellenarPalabras rell = crearDTRellenarPalabras(lecSelec);
                             contCurso.setDatosEjercicioCompletarPalabras(rell);
                         }else if ((tipo == "traduccion") || (tipo == "Traduccion")){                            
@@ -305,6 +324,7 @@ int main(){
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
                             imprimir("Tipo de ejercicio no válido", ROJO);
+                            presionaParaContinuar();
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
@@ -316,29 +336,40 @@ int main(){
                 break;
             }
             case 8:{
-                contCurso.listarCursosNoHabilitados();
+                //Habilitar curso
+                system("clear");
+                list<string> listaC = contCurso.listarCursosNoHabilitados();
+                int a=1;
+                for(auto it = listaC.begin(); it != listaC.end(); ++it){
+                    imprimir(to_string(a) + " " + *it);
+                    a++;
+                }
+                imprimir("Escriba el nombre del curso que desea habilitar:");
                 string curso = entradaString();
                 contCurso.habilitarCurso(curso);
                 imprimir("Curso habilitado", VERDE);
-                //Habilitar curso
-                //interfazCurso->habilitarCurso();
+                presionaParaContinuar();
                 break;
             }
             case 9:{
                 //Eliminar curso
-               /* imprimir("Cursos disponibles:", AMARILLO);
-                //contCurso.listarCursos();
-                imprimir("Seleccione el curso que desea eliminar:");
-                string cursoSeleccionado = entradaString();
-*/
-
-                //interfazCurso->eliminarCurso();
+                system("clear");
+                set<string> cursos = contCurso.listarNombresDeCursos();
+                int a=1;
+                for(auto it = cursos.begin(); it != cursos.end(); ++it){
+                    imprimir(to_string(a) + " " + *it);
+                    a++;
+                }
+                imprimir("Escriba el nombre del curso que desea eliminar:");
+                string curso = entradaString();
+                contCurso.eliminarCurso(curso);
+                imprimir("Curso eliminado", VERDE);
                 break;
             }
             case 10:{
                 //Consultar curso
-                /*
-                imprimir("Cursos Disponibles:");
+                system("clear");
+                /*imprimir("Cursos Disponibles:");
                 set<string> nombreCursos = contCurso.listarNombresDeCursos();
                 for(auto it = nombreCursos.begin(); it != nombreCursos().end; it++){
                     imprimir(*it);
@@ -355,21 +386,33 @@ int main(){
                 break;
             }
             case 11:{
-                ///FALTA QUE MUESTRE LA CANTIDAD DE LECCIONES Y EJERCICIOS DE CADA CURSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //Inscribir estudiante a curso
+                system("clear");
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                     contUsuario.seleccionarUsuario(nick);
-                    imprimir("Cursos disponibles para " + nick + ":");
-                    list<string> cursosDisp = contCurso.cursosDisponibles(nick);
-                    for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
-                        imprimir(*it);
+                    list<tuple<string, int, int>> cursosDisp = contCurso.cursosDisponibles(nick);
+                    if(cursosDisp.empty()){
+                        imprimir("No existen cursos a los que " + nick + " pueda inscribirse.", AMARILLO);
+                        presionaParaContinuar();
+                        break;
+                    }else{
+                        imprimir("Cursos disponibles para " + nick + ":");
+                        for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
+                            imprimir(get<0>(*it) + ", Cantidad de lecciones: " + to_string(get<1>(*it)) + ", Cantidad de ejercicios: " + to_string(get<2>(*it)));
+                        }
+                        imprimir("Ingrese nombre de curso a inscribirse:");
+                        string nombreCurso = entradaString();
+                        try{
+                            contCurso.inscribirEstudianteACurso(nombreCurso, nick);
+                            imprimir("Estudiante inscripto", VERDE);
+                        }catch(invalid_argument& e){
+                            imprimir("Error al inscribir estudiante:", ROJO);
+                            imprimir(e.what(), ROJO);
+                        }
+                            presionaParaContinuar();
                     }
-                    imprimir("Ingrese nombre de curso a inscribirse:");
-                    string nombreCurso = entradaString();
-                    contCurso.inscribirEstudianteACurso(nombreCurso, nick);
-                    imprimir("Estudiante inscripto", VERDE);
-                    presionaParaContinuar();
                 }else{
                     imprimir("El usuario " + nick + " no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
                     presionaParaContinuar();
@@ -377,36 +420,133 @@ int main(){
                 break;
             }
             case 12:{
+                //Realizar Ejercicio
+                system("clear");
                 imprimir("Ingrese nick de estudiante: ");
                 string nick = entradaString();
+                imprimir("Cursos:" , AMARILLO);
                 contCurso.cursosInscriptoSinAprobar(nick);
+                imprimir("Ingrese curso:");
+                string curso = entradaString();
+                contCurso.seleccionarEjerciciosDeCurso(curso);
                 break;
             }
             case 13:{
                 //Consultar estadisticas
+                imprimir("Ingrese de quien quiere estadisticas:");
+                imprimir("1. De estudiantes");
+                imprimir("2. De profesores");
+                imprimir("3. De cursos");
+                int entrada = entradaInt();
+
+                if (entrada == 1){
+                    imprimir("ingrese el nick del estudiante");
+                    list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
+                    for ( DTEstudianteSC& estudiante : estudiantes) {
+                        imprimir( estudiante.getNickname());
+                    }
+                    string estu = entradaString();
+                    DTEstadisticaEstudiante estadisticas = contUsuario.estadisticasEstudiante(estu);
+
+                    imprimir("Estadisticas de "+ estu + ":" );
+                    map<string, int> porcentajesCursos = estadisticas.getPorcentajesCursos();
+                    for (const auto& estads : porcentajesCursos) {
+                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
+                    }
+
+                }else if (entrada == 2) {
+                    imprimir("Ingrese el nick del profesor");
+                    list<string> profesores = contUsuario.listarProfe();
+                    for (const string& profesor : profesores) {
+                        imprimir(profesor);
+                    }
+                    string prof = entradaString();
+
+                    //Profesor* profesor = contUsuario.encontrarProfesor(prof);
+                    DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
+
+                    imprimir("Estadisticas de "+ prof + ":" );
+                    map<string, int> porcentajesCursos = estadisticas.estadoCurso();
+                    for (const auto& estads : porcentajesCursos) {
+                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
+                    }
+                } else {
+                    imprimir("Ingrese el nombre del profesor");
+                    set<string> cursos = contCurso.listarNombresDeCursos();
+                    for (const string& curso : cursos){
+                        imprimir(curso);
+                    }
+                    string cur = entradaString();
+
+                    DTEstadisticaCurso estadisticas = contCurso.estadisticasCurso(cur);
+                    imprimir("Estadisticas de "+ cur + ":" );
+                    imprimir("Porcentaje:" + to_string(estadisticas.getpromedioCurso()) + "%");
+
+
+                }
                 //interfazCurso->consultarEstadisticas();
                 break;
             }
             case 14:{
                 //Suscribirse a notificaciones
-                //interfazCurso->suscribirseANotificaciones();
+                system("clear");
+                list<string> listaU = contUsuario.listarUsuarios();
+                int a=1;
+                for(auto it = listaU.begin(); it != listaU.end(); ++it){
+                    imprimir(to_string(a) + *it);
+                    a++;
+                }
+                imprimir("Escriba el nickname del usuario que desea suscribirse:");
+                string nick = entradaString();
+                set<string> subs = contCurso.consultarSuscripciones(nick);
+                int a=1;
+                for(auto it = subs.begin(); it != subs.end(); ++it){
+                    imprimir(to_string(a) + *it);
+                }
+                set<string> idiomas;
+                imprimir("Escriba el nombre del idioma al que desea suscribirse:");
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                while(quiereContinuar("agregar otro idioma")){
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                }
+                contCurso.suscribirUsuario(idiomas,nick);
+                imprimir("Usuario suscrito", VERDE);
                 break;
             }
             case 15:{
                 //Consulta de notificaciones
+                system("clear");
+                imprimir("Ingrese nick de usuario:");
+                string nick = entradaString();
+                if(!contUsuario.existeUsuario(nick)){
+                    imprimir("El usuario no existe", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
+                else{
+                list<DTNotificacion> notis = contCurso.consultarNotificaciones(nick);
+                for(auto it = notis.begin(); it != notis.end(); ++it){
+                    DTNotificacion noti = *it;
+                    imprimir(noti.getCurso().getNombre());
+                    imprimir(noti.getIdioma()->getNombreIdioma());
+                }
                 //interfazCurso->consultaNotificaciones();
                 break;
+                }
             }
             case 16:{
                 //Eliminar suscripciones
-                
-
+                system("clear");
                 //interfazCurso->eliminarSuscripciones();
                 break;
             }
             case 17:{
+                system("clear");
                 ingresarUsuarios();
                 imprimir("Usuarios creados", VERDE);
+                presionaParaContinuar();
                 break;
             }
             default:{
@@ -576,6 +716,18 @@ DTLeccion crearDTLeccion(int &numLec){
     DTLeccion lec = DTLeccion(numLec, cantEjs, objetivo, tema);
     return lec;
 }
+
+DTLeccion crearDTLeccion2(int &numLec){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    imprimir("Ingrese el tema de la Leccion:");
+    string tema = entradaString();
+    imprimir("Ingrese el objetivo de la Leccion:");
+    string objetivo = entradaString();
+    numLec++;
+    DTLeccion lec = DTLeccion(numLec, 0, objetivo, tema);
+    return lec;
+}
 /*
 DTEjercicio crearDTEjercicio(){
     factoryController& fabrica = factoryController::getInstancia();
@@ -674,9 +826,10 @@ bool quiereContinuar(string p){
 
 
 void presionaParaContinuar(){
-    cout << endl << "Presiona cualquier tecla para continuar...";
+    cout << "Presiona enter para continuar...";
     cin.ignore();
     cin.get();
+    cout << endl;
 }
 
 void limpiarLog(){
@@ -725,7 +878,7 @@ int entradaInt(){
             cin >> entradita;
             entrada = stoi(entradita);
         }catch(...){
-            cout << AMARILLO << "La entrada debe ser un entero positivo." << RESET;
+            cout << AMARILLO << "La entrada debe ser un entero positivo." << endl << RESET;
             cout << "Ingrese un entero positivo: ";
         }
     }
@@ -735,15 +888,10 @@ int entradaInt(){
 
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
-bool esAlfanumerico(string entrada){
-    for(int i = 0; i < entrada.length(); i++){
-        if(!isalnum(entrada[i])){
-            return false;
-        }
-    }
-    return true;
+bool esAlfanumerico(string str) {
+    regex pattern("[a-zA-Z0-9,_\\-]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
+    return regex_match(str, pattern);
 }
-
 
 string entradaString(){
     bool alfanumerico = false;
@@ -772,6 +920,8 @@ void ingresarUsuarios(){
     ingresarIdiomas();
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    
     //ESTUDIANTES
     contUsuario.setDatoEstudiante(DTEstudiante("jpidiom","asdfg123","Juan Perez","Soy un apasionado del aprendizaje de idiomas","Argentina",DTFecha(15,7,1995)));
     contUsuario.confirmarAltaUsuario();
@@ -780,6 +930,7 @@ void ingresarUsuarios(){
     contUsuario.setDatoEstudiante(DTEstudiante("pero12","789werty","Pedro Rodriguez","Soy un entuciaste del aprendizaje de idiomas","Peru",DTFecha(10,11,1994)));
     contUsuario.confirmarAltaUsuario();
     //Faltan mas...
+
     //PROFESORES
     set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
@@ -792,4 +943,5 @@ void ingresarUsuarios(){
     set<string>* i3 = new set<string>; i3->insert("Aleman");
     contUsuario.setDatoProfesor(DTProfesor("talkExpert","Secret1","Laura Perez", "Soy una profesora entusiasta del aprendizaje de idiomas","Instituto de Idiomas Vanguardia", i3));
     contUsuario.confirmarAltaUsuario(); delete i3;
+    //Faltan mas...
 }

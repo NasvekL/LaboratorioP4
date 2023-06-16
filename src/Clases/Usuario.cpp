@@ -35,7 +35,9 @@ string Usuario:: getContrasenia(){
 string Usuario:: getDescripcion(){
     return this->descripcion;
 };
-
+list<DTNotificacion> Usuario:: getNotificaciones(){
+    return this->notificaciones;
+};
 void Usuario:: notificar(){
     
 };

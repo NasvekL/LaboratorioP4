@@ -2,7 +2,21 @@
 
 // CONSTRUCTOR Y DESTRUCTOR
 Curso::~Curso() {
-    // Implementación del destructor
+    profesorQueLoDicta->eliminarCurso(this);
+    for (auto iter=lecciones.begin(); iter!=lecciones.end(); iter++){
+        Leccion* lec = *iter;
+        delete lec;
+    }
+    lecciones.clear();
+    for(auto it = inscripciones.begin(); it!=inscripciones.end(); it++){
+        Inscripcion* ins = *it;
+        Estudiante* est = ins->getEstudiante();
+        est->eliminarInscripcion(ins);
+        delete ins;
+    }
+    aprobados.clear();
+    inscripciones.clear();
+    previas.clear();
 }
 Curso::Curso() {
     // Implementación del constructor vacio
@@ -65,7 +79,7 @@ list<Leccion*>& Curso::getLecciones() {
     return lecciones;
 }
 
-list<Inscripcion*>& Curso::getInscripciones() {
+list<Inscripcion*> Curso::getInscripciones() {
     return inscripciones;
 }
 
@@ -101,6 +115,19 @@ DTEstadisticaCurso Curso::estadisticasCurso() {
 
 void Curso::agregarLeccion(Leccion *lec){
     lecciones.push_back(lec);
+}
+
+//Contar
+int Curso::cantidadDeLecciones(){
+    return lecciones.size();
+}
+int Curso::cantidadDeEjercicios(){
+    int cant = 0;
+    for(auto iter = lecciones.begin(); iter!=lecciones.end(); iter++){
+        Leccion* lec = *iter;
+        cant += lec->getCantidadDeEjercicios();
+    }
+    return cant;
 }
 
 void Curso::conseguirInfoCurso(list<string> infoCur){

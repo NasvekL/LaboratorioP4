@@ -8,6 +8,7 @@
 #include "../DTs/DTRellenarPalabras.h"
 #include "../DTs/DTTraduccion.h"
 #include "Estudiante.h"
+#include "Profesor.h"
 class Idioma;
 class Inscripcion;
 class Leccion;
@@ -15,6 +16,8 @@ class Profesor;
 class Estudiante;
 class Ejercicio;
 class DTestadisticaCurso;
+class DTRellenarPalabras;
+class DTTraduccion;
 
 class Curso{
     private:
@@ -28,6 +31,7 @@ class Curso{
         Profesor* profesorQueLoDicta;
         list<Leccion*> lecciones;
         list<Inscripcion*> inscripciones;
+        list<Usuario*> aprobados;
     public:
         //CONSTRUCTOR Y DESTRUCTOR
         ~Curso();
@@ -46,7 +50,7 @@ class Curso{
         Idioma* getIdiomaDelCurso();
         Profesor* getProfesorQueLoDicta();
         list<Leccion*>& getLecciones(); 
-        list<Inscripcion*>& getInscripciones();
+        list<Inscripcion*> getInscripciones();
         //SETTERS DE PSEUDOATRIBUTOS
         void setIdiomaDelCurso(Idioma* i);
         void setProfesorQueLoDicta(Profesor* p);
@@ -59,6 +63,11 @@ class Curso{
         int progresoDeEstudiante(Estudiante e);
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
+
+        //COntar cosas
+        int cantidadDeEjercicios();
+        int cantidadDeLecciones();
+
         void conseguirInfoCurso(list<string> infoCur);
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos

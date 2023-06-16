@@ -16,7 +16,7 @@ class DTEstadisticaProfesor {
 
         ~DTEstadisticaProfesor();
         DTEstadisticaProfesor();
-        DTEstadisticaProfesor(string profesor);
+        DTEstadisticaProfesor(map<string, int> promPorcenCur);
 
 };
 

@@ -4,24 +4,26 @@
 #include "Ejercicio.h"
 #include "Leccion.h"
 #include "Inscripcion.h"
-
+class Inscripcion;
 class Progreso{
     private:
         int porcentaje;
         //Pseudoatributos
-        Inscripcion* curso;
-        Leccion* leccion;
-        set<Ejercicio*> ejerciciosResueltos;
+        Inscripcion* inscripcion;
+        Leccion* leccionActual;
+        list<Ejercicio*> ejerciciosResueltos;
     public:
         virtual bool esCorrecto(string solucion);
         void aumentarProgreso(string estudiante);
         //setters
         void setPorcentaje(int porcentaje);
+        void setInscripcion(Inscripcion* insc);
         //getters
         int getPorcentaje();
         //constructor destructor
-        Progreso(int Porcentaje,Leccion* lec);
+        Progreso(Leccion* lec);
         ~Progreso();
+        
 };
 
 

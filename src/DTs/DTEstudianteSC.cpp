@@ -26,8 +26,7 @@ string DTEstudianteSC::getDescripcion() {
 }
 
 string DTEstudianteSC::getNickname() {
-    // Implementación del getter
-    // Puedes devolver el valor del atributo nickname
+    return this->nickname;
 }
 
 string DTEstudianteSC::getNombre() {

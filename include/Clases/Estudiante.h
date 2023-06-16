@@ -5,6 +5,7 @@
 #include "../DTs/DTEstudiante.h"
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTCurso.h"
+#include "../Clases/Inscripcion.h"
 
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 class Inscripcion;
@@ -29,7 +30,6 @@ class Estudiante: public Usuario{
         set<string> getCursosInscriptosSA();
         set<DTCurso> obtenDTCurso();
         set<int> obtenerProgreso();
-        list<Inscripcion*>& Inscripciones();  //PseudoAtributo
         //Faltan los casos de uso que me permiten agregar y eliminar inscripciones
 
         void agregarInscripcion(Inscripcion* insc);

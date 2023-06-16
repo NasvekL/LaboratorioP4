@@ -66,7 +66,7 @@ class ControladorCurso: public IControladorCurso{
         map<string ,Curso*> getDatosPrevias();
         DTRellenarPalabras getDatosRellenar();
         DTTraduccion getDatosTraduccion();
-        Curso getCurso(string nombreCurso);
+        Curso* getCurso(string nombreCurso);
         int getNumeroDeLeccion(string cursoSeleccionado);
         //Setters
         void setIdEjercicio(int id);
@@ -100,8 +100,10 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones para obtener informacion
 
-        //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
-        list<string> cursosDisponibles(string nick);
+
+        //Devuelve una lista de triadas de cursos disponibles para un estudiante en particular.
+        //Cada uno contiene, en orden, el nombre del curso, la cantidad de lecciones y la cantidad de ejercicios
+        list<tuple<string, int, int>> cursosDisponibles(string nick);
         void seleccionIdioma(string idi);
         void seleccionarProfesor(string nick);
         list<string> listarProfe();
@@ -110,7 +112,7 @@ class ControladorCurso: public IControladorCurso{
         set<DTCurso> listarDTCursos();
         set<Idioma*> listarIdiomasProfesor();
         void listarIdiomas();
-        void listarCursosNoHabilitados();
+        list<string> listarCursosNoHabilitados();
         bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio);
         bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
         void seleccionarEjercicio(int idEjercicio);
@@ -119,7 +121,8 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones de suscripciones
         set<string> consultarSuscripciones(string nick);
-        void suscribirUsuario(set<string> idiomas);
+        list<DTNotificacion> consultarNotificaciones(string nick);
+        void suscribirUsuario(set<string> idiomas,string nick);
         set<string> listarIdiomasSuscrito(string nick);//no iria en controlador usuario??
         void eliminarSuscripciones(set<string> idiomas, string nick);//en el diagrama de clases falta el nick
 

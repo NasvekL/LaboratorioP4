@@ -3,14 +3,17 @@
 #include "../Utils.h"
 #include "Ejercicio.h"
 #include "Estudiante.h"
+#include "Progreso.h"
 //#include "RellenarPalabras.h"  <---//ESTAS PORQUERIAS ME TUVIERON 2 HORAS
 //#include "Traduccion.h"        <---
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+class Progreso;
 class DTTraduccion;
 class DTRellenarPalabras;
 class Ejercicio;
+class Estudiante;
 class Leccion{
     private:
         string tema;
@@ -18,7 +21,7 @@ class Leccion{
         int cantidadDeEjercicios;
         int numero;
         map<int, Ejercicio*> ejercicios;
-
+        map<string, Progreso*> progresos;//nombre de estudiante, progreso
     public:
         //setters
         void setTema(string tema);

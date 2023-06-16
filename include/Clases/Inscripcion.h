@@ -8,6 +8,7 @@
 
 class Progreso;
 class Curso;
+class Estudiante;
 
 class Inscripcion{
     private:
@@ -16,8 +17,9 @@ class Inscripcion{
         int leccionActual;
         //Pseudoatributos
         Progreso* prog;
-        Curso* inscriptoA;
-        Estudiante* estudiante;
+        Curso* inscripccionACurso;
+        Estudiante* estudianteInscrito;
+
 
     public:
         //Getters
@@ -28,8 +30,12 @@ class Inscripcion{
         Curso* getInscriptoA();
         Estudiante* getEstudiante();
 
+        //Setter
+        void setEstudianteInscrito(Estudiante* est);
+        void setInscripccionACurso(Curso* curso);
+
         //Create y destroy
-        Inscripcion(DTFecha fecha,bool aprobado,int leccionActual,Progreso* prog);
+        Inscripcion(DTFecha fecha,Progreso* prog);
         ~Inscripcion();
 
         void conseguirInfoInscripcion(list<string> infoInsc);

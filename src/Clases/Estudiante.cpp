@@ -41,9 +41,16 @@ DTEstudiante Estudiante::getDTEstudiante() {
 }
 
 set<string> Estudiante::getCursosInscriptosSA() {
-    // Implementación de getCursosInscriptosSA
-    // Retorna un conjunto de strings
+    list<Inscripcion*> inscripciones = getInscripciones();
+    set<string> cursosInscriptos;
+    for (auto it = inscripciones.begin(); it != inscripciones.end(); it++) {
+        if ((*it)->getAprobado()) {
+            cursosInscriptos.insert((*it)->getInscriptoA()->getNombreCurso());
+        }   
+    }
+    return cursosInscriptos;
 }
+
 
 set<DTCurso> Estudiante::obtenDTCurso() {
     // Implementación de obtenDTCurso
