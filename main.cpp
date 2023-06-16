@@ -404,6 +404,7 @@ int main(){
                             contCurso.inscribirEstudianteACurso(nombreCurso, nick);
                             imprimir("Estudiante inscripto", VERDE);
                         }catch(invalid_argument& e){
+                            imprimir("Error al inscribir estudiante:", ROJO);
                             imprimir(e.what(), ROJO);
                         }
                             presionaParaContinuar();
