@@ -53,7 +53,7 @@ DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) 
     // Implementar la lógica para obtener las estadísticas del profesor
     auto it = usuarios.find(profesor);
     Profesor* profe = dynamic_cast<Profesor*>(it->second);
-    list<Curso*> cursos = profe.getCursos();
+    list<Curso*> cursos = profe->getCursos();
     map<string, int> promPorcentajesCursos;
     for (Curso* curso : cursos) {
         int promedio = 0;
