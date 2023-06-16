@@ -438,7 +438,7 @@ int main(){
                 if (entrada == 1){
                     imprimir("ingrese el nick del estudiante");
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    for (const DTEstudianteSC estudiante : estudiantes) {
+                    for (const &DTEstudianteSC estudiante : estudiantes) {
                         imprimir( estudiante.getNickname());
                     }
                     string estu = entradaString();
