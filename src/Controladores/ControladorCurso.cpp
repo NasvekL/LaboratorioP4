@@ -271,42 +271,53 @@ set<DTCurso> ControladorCurso::listarDTCursos() {
 //la cantidad de lecciones y la cantidad de ejercicios
 list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    list<tuple<string, int, int>> cursosDisponibles = list<tuple<string, int, int>>();
+    list<tuple<string, int, int>> cursosDisponibles;
     //Recorro cada curso del controlador (it es un curso en cada iteracion)
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
         bool cursoHabilitado;
         bool estudianteYaEstaInscritoAlCurso = false;
         bool estudianteAproboLasPrevias = true;
-
         cursoHabilitado = it->second->getHabilitado();
-
+        if(it->second->getInscripciones().size() == 0){
+            estudianteYaEstaInscritoAlCurso = false;
+        }
+        else{
         for(auto it2 = it->second->getInscripciones().begin(); it2 != it->second->getInscripciones().end(); ++it2){
             if((*it2)->getEstudiante()->getNick() == nick){
                 estudianteYaEstaInscritoAlCurso = true;
             }
         }
-
-        //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
-        for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
-            estudianteAproboLasPrevias = false;
-            //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
-            for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
-                if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
-                    if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
-                        estudianteAproboLasPrevias = true;
-                    }else{                      //Si el estudiante no aprobo la previa
-                        estudianteAproboLasPrevias = false;
-                    }
-                    break;//se encontro la inscripcion del estudiante, asi que dejo de buscar en las inscripciones de la previa
-                }
-            }
-            //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
-            //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.
-            if(!estudianteAproboLasPrevias){
-                break;
-            }
         }
-
+        //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
+        if(it->second->getPrevias().size() == 0){
+            estudianteAproboLasPrevias = true;
+        }
+        else{
+            for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
+                estudianteAproboLasPrevias = false;
+                //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
+                if((*it2)->getInscripciones().size() == 0){
+                    estudianteAproboLasPrevias = false;
+                }
+                else{
+                for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
+                    if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
+                        if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
+                            estudianteAproboLasPrevias = true;
+                        }else{                      //Si el estudiante no aprobo la previa
+                            estudianteAproboLasPrevias = false;
+                        }
+                        break;//se encontro la inscripcion del estudiante, asi que dejo de buscar en las inscripciones de la previa
+                    }
+                }
+                }
+                //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
+                //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.
+                if(!estudianteAproboLasPrevias){
+                    break;
+                }
+        }
+        }
         if(cursoHabilitado && !estudianteYaEstaInscritoAlCurso && estudianteAproboLasPrevias){
             string nombreDelCursitoDisponible = it->first;
             int cantidadDeLecciones = it->second->cantidadDeLecciones();
