@@ -117,6 +117,7 @@ class ControladorCurso: public IControladorCurso{
         bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio);
         void seleccionarEjercicio(int idEjercicio);
         set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso);//set<DTEjercicio> seleccionarCurso(string curso);
+        list<string> verCurso(string curso);
 
         //Operaciones de suscripciones
         set<string> consultarSuscripciones(string nick);

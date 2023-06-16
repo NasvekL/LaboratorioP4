@@ -29,6 +29,7 @@ class Ejercicio{
         virtual bool esCorrectoRellenarPal(list<string> solucion)=0;
         virtual bool esCorrectoTraduccion(string solucion)=0;
         void aumentarProgreso(string estudiante);
+        void conseguirInfoEjercicio(list<string> infoEjercicio);
 };
 
 

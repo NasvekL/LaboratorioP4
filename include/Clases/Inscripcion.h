@@ -37,6 +37,8 @@ class Inscripcion{
         //Create y destroy
         Inscripcion(DTFecha fecha,Progreso* prog);
         ~Inscripcion();
+
+        void conseguirInfoInscripcion(list<string> infoInsc);
     
 };
 

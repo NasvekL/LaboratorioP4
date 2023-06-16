@@ -41,3 +41,10 @@ Estudiante* Inscripcion::getEstudiante(){
 Inscripcion::~Inscripcion() {
     delete this->prog;
 }
+
+void Inscripcion::conseguirInfoInscripcion(list<string> infoInsc){
+    /*
+    string datosInsc = estudiante->getNombre() + "\n" + "Fecha de inscripcion: " + fecha->to_string() + "\n" + "\n";
+    infoInsc.push_back(datosInsc);
+    */
+}

@@ -376,7 +376,11 @@ int main(){
                 }
                 imprimir("Seleccionar curso:");
                 string cursoSeleccionado = entradaString();
-                
+                list<string> infoCurso = contCurso.verCurso(cursoSeleccionado);
+
+                for (auto iterador = infoCurso.begin(); iterador != infoCurso.end(); iterador++){
+                    imprimir(*it);
+                }
 
                 */
                 break;

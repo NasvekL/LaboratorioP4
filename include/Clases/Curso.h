@@ -68,6 +68,7 @@ class Curso{
         int cantidadDeEjercicios();
         int cantidadDeLecciones();
 
+        void conseguirInfoCurso(list<string> infoCur);
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };
