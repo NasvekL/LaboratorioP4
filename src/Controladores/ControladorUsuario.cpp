@@ -58,7 +58,18 @@ DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) 
 
 DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudiante) {
     // Implementar la lógica para obtener las estadísticas del estudiante
+    auto it = usuarios.find(estudiante);
+    Estudiante* estu = dynamic_cast<Estudiante*>(it->second);
+    list<Inscripcion*> inscripciones = estu->getInscripciones();
     DTEstadisticaEstudiante estadisticas;
+    for (Inscripcion* inscripcion : inscripciones) {
+        Curso* curso = inscripcion->getInscriptoA();
+        Progreso* prog = inscripcion.getProg();
+        int porcentaje = prog.getPorcentaje();
+    
+
+
+    
     // ...
     return estadisticas;
 }
@@ -84,7 +95,7 @@ list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
         string tipoUsuario = getTipoUsuario(usuario.first);
         if (tipoUsuario == "estudiante") {
             Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario.second);
-            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNick(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
+            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNickname(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
             estudiantes.push_back(estu);
         }
     }
@@ -134,15 +145,7 @@ list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
 }
 
 void ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
-    //Buscarlo
-    auto it = usuarios.find(nick);
-    Usuario* usuario = it->second;
-    //Setearlo
-    Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
-    DTEstudiante dt = estudiante->getDTEstudiante();
-    setDatoEstudiante(dt);
-    //Trabajo
-    estudiante->getCursosInscriptosSA();
+    
 }
 
 list<string> ControladorUsuario::listarProfe() {
@@ -219,9 +222,10 @@ string ControladorUsuario::getTipoUsuario(string nick) {
         } else {
             return "profesor";
         }
+    } else {
+        throw std::invalid_argument("No existe el usuario");
+    }
 }
-}
-
 list<string> ControladorUsuario::consultarUsuario(){
     list<string> us;
     if (!usuarios.empty()){
