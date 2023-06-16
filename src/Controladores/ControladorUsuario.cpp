@@ -68,12 +68,12 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
         int porcentaje = prog->getPorcentaje();
     
 
-
+    }
     
     // ...
     return estadisticas;
 }
-}
+
 void ControladorUsuario::setDatoEstudiante(DTEstudiante dato){
     datoEstudiante = new DTEstudiante(dato.getNickname(),dato.getContrasenia(),dato.getNombre(),dato.getDescripcion(),dato.getPais(),dato.getNacimiento()); // Asignar una copia del objeto al puntero}
 }
@@ -95,7 +95,7 @@ list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
         string tipoUsuario = getTipoUsuario(usuario.first);
         if (tipoUsuario == "estudiante") {
             Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario.second);
-            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNick(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
+            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNickname(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
             estudiantes.push_back(estu);
         }
     }
