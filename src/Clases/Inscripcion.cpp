@@ -39,5 +39,5 @@ Estudiante* Inscripcion::getEstudiante(){
 }
 
 Inscripcion::~Inscripcion() {
-    // Implementación del destructor si es necesario
+    delete this->prog;
 }
