@@ -458,7 +458,7 @@ int main(){
                     }
                     string prof = entradaString();
 
-                    Profesor* profesor = contUsuario.encontrarProfesor(prof);
+                    //Profesor* profesor = contUsuario.encontrarProfesor(prof);
                     DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
 
                     imprimir("Estadisticas de "+ prof + ":" );
@@ -468,7 +468,7 @@ int main(){
                     }
                 } else {
                     imprimir("Ingrese el nombre del profesor");
-                    list<string> cursos = contCurso.listarNombresDeCursos();
+                    set<string> cursos = contCurso.listarNombresDeCursos();
                     for (const string& curso : cursos){
                         imprimir(curso);
                     }
