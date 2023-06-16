@@ -142,16 +142,16 @@ Usuario ControladorUsuario::obtenerSuscriptor(string user) {
     return suscriptor;
 }
 
-void ControladorUsuario::eliminarNotificaciones() {
-    // Implementar la lógica para eliminar las notificaciones
-    // ...
-}
+void ControladorUsuario::eliminarNotificaciones(string nick) {
+    Usuario* user = getUsuario(nick);
+    user->eliminarNotificaciones();
+    }
 
 list<DTNotificacion> ControladorUsuario::consultarNotificaciones(string nick) {
     // Implementar la lógica para consultar las notificaciones de un usuario
-    list<DTNotificacion> notificaciones;
-    // ...
-    return notificaciones;
+    Usuario* user =getUsuario(nick);
+    list<DTNotificacion> notis = user->getNotificaciones();
+    return notis;    // ...
 }
 
 // Implementa el resto de las funciones de la clase ControladorUsuario según sea necesario

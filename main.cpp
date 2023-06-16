@@ -522,7 +522,7 @@ int main(){
                     break;
                 }
                 else{
-                list<DTNotificacion> notis = contCurso.consultarNotificaciones(nick);
+                list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
                     imprimir(noti.getCurso().getNombre());
@@ -531,6 +531,7 @@ int main(){
                 //interfazCurso->consultaNotificaciones();
                 break;
                 }
+                contUsuario.eliminarNotificaciones(nick);
             }
             case 16:{
                 //Eliminar suscripciones
