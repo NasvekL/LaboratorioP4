@@ -57,7 +57,7 @@ DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) 
     map<string, int> promPorcentajesCursos;
     for (Curso* curso : cursos) {
         int promedio = 0;
-        int inscriptos
+        int inscriptos;
         for (Inscripcion* inscripcion : curso->getInscripciones()) {
             Progreso* progreso = inscripcion->getProg();
             promedio = promedio + progreso->getPorcentaje();
