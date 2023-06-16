@@ -88,7 +88,6 @@ class IControladorCurso{
         virtual set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso)= 0;
 
         //Operaciones virtuales de suscripciones
-        virtual list<DTNotificacion> consultarNotificaciones(string nick)= 0;
         virtual set<string> consultarSuscripciones(string nick)= 0;
         virtual void suscribirUsuario(set<string> idiomas,string nick)= 0;
         virtual set<string> listarIdiomasSuscrito(string nick)= 0;

@@ -24,6 +24,7 @@ class Usuario:public IObserver{
         string getNick();
         string getNombre();
         list<DTNotificacion> getNotificaciones();
+        void eliminarNotificaciones();
         //observer
         void notificar();
         //NO ESTAMOS PONIENDO DESTRUCTOR EN VIRTUAL DE USUARIO, CAPAZ ESTA MAL

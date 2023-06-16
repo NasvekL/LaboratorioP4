@@ -409,12 +409,7 @@ set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
 
 
 //Operaciones de suscripciones
-list<DTNotificacion> consultarNotificaciones(string nick){
-    ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    Usuario* user = cu.getUsuario(nick);
-    list<DTNotificacion> notis = user->getNotificaciones();
-    return notis;
-}
+
 set<string> ControladorCurso::consultarSuscripciones(string nick) {
     set<string> idiomasNoSuscrito;
     ControladorUsuario& cu = ControladorUsuario::getInstancia();

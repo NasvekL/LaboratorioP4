@@ -38,6 +38,9 @@ string Usuario:: getDescripcion(){
 list<DTNotificacion> Usuario:: getNotificaciones(){
     return this->notificaciones;
 };
+void Usuario::eliminarNotificaciones(){
+this->notificaciones.clear();
+};
 void Usuario:: notificar(){
     
 };
