@@ -33,6 +33,11 @@ bool ControladorUsuario::existeUsuario(string nick) {
         }
 }
 
+Usuario* ControladorUsuario::getUsuario(string nick){
+    auto iter = usuarios.find(nick);
+    Usuario* user = iter->second; 
+    return user;
+}
 DTEstudiante ControladorUsuario::getDatoEstudiante() {
     return *datoEstudiante;
 }
@@ -105,7 +110,15 @@ list<DTProfesorSC> ControladorUsuario::listarProfesoresSinContra() {
     // ...
     return profesores;
 }
-
+list<string> ControladorUsuario::listarUsuarios() {
+    // Implementar la lógica para listar los usuarios
+    list<string> users;
+    for(auto iter=usuarios.begin(); iter!=usuarios.end(); iter++){
+        users.push_back(iter->first);
+    }
+    // ...
+    return users;
+}
 list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
     // Implementar la lógica para listar los estudiantes
     list<DTEstudianteSC> estudiantes;

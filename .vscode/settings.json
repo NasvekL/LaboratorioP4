@@ -55,7 +55,14 @@
     "stop_token": "cpp",
     "streambuf": "cpp",
     "thread": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "bitset": "cpp",
+    "condition_variable": "cpp",
+    "cstring": "cpp",
+    "optional": "cpp",
+    "regex": "cpp",
+    "shared_mutex": "cpp",
+    "cinttypes": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabled",
   "C_Cpp_Runner.msvcBatchPath": "",

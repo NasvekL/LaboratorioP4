@@ -17,6 +17,7 @@ class IControladorUsuario{
         // Getters
     virtual DTEstudiante getDatoEstudiante() = 0;
     virtual DTProfesor getDatoProfesor() = 0;
+    virtual Usuario* getUsuario(string nick)=0;
     // Setters
     virtual void setDatoEstudiante(DTEstudiante dato) = 0;
     virtual void setDatoProfesor(DTProfesor dato) = 0;
@@ -31,6 +32,7 @@ class IControladorUsuario{
     virtual DTEstadisticaEstudiante estadisticasEstudiante(std::string estudiante) = 0;
     virtual std::list<DTProfesorSC> listarProfesoresSinContra() = 0;
     virtual std::list<DTEstudianteSC> listarEstudiantes() = 0;
+    virtual std::list<std::string> listarUsuarios() = 0;
     virtual string getTipoUsuario(string nick) = 0;
     // Operaciones de suscripciones
     virtual Usuario obtenerSuscriptor(std::string user) = 0;

@@ -486,7 +486,29 @@ int main(){
             case 14:{
                 //Suscribirse a notificaciones
                 system("clear");
-                //interfazCurso->suscribirseANotificaciones();
+                list<string> listaU = contUsuario.listarUsuarios();
+                int a=1;
+                for(auto it = listaU.begin(); it != listaU.end(); ++it){
+                    imprimir(to_string(a) + *it);
+                    a++;
+                }
+                imprimir("Escriba el nickname del usuario que desea suscribirse:");
+                string nick = entradaString();
+                set<string> subs = contCurso.consultarSuscripciones(nick);
+                int a=1;
+                for(auto it = subs.begin(); it != subs.end(); ++it){
+                    imprimir(to_string(a) + *it);
+                }
+                set<string> idiomas;
+                imprimir("Escriba el nombre del idioma al que desea suscribirse:");
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                while(quiereContinuar("agregar otro idioma")){
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                }
+                contCurso.suscribirUsuario(idiomas,nick);
+                imprimir("Usuario suscrito", VERDE);
                 break;
             }
             case 15:{
