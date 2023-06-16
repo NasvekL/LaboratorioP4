@@ -75,8 +75,9 @@ class IControladorCurso{
         virtual list<string> listarProfe()= 0;
         virtual DTEstadisticaCurso estadisticasCurso(string curso)= 0;
         virtual set<string> listarNombresDeCursos()= 0;
-        //Devuelve los nombres de los cursos a los que el usuario se puede inscribir, teniendo en cuenta los cursos habilitados, las previas y eso
-        virtual list<string> cursosDisponibles(string nick) = 0;
+        //Devuelve una lista de triadas de cursos disponibles para un estudiante en particular.
+        //Cada uno contiene, en orden, el nombre del curso, la cantidad de lecciones y la cantidad de ejercicios
+        virtual list<tuple<string, int, int>> cursosDisponibles(string nick) = 0;
         virtual set<DTCurso> listarDTCursos()= 0;
         virtual set<Idioma*> listarIdiomasProfesor()= 0;
         virtual void listarIdiomas()= 0;

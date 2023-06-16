@@ -15,13 +15,19 @@ void Progreso::aumentarProgreso(string estudiante) {
 void Progreso::setPorcentaje(int porcentaje) {
     this->porcentaje = porcentaje;
 }
+void Progreso::setInscripcion(Inscripcion* insc) {
+    this->inscripcion = insc;
+}
 
 int Progreso::getPorcentaje() {
     return porcentaje;
 }
 
-Progreso::Progreso(int Porcentaje, Leccion* lec) : porcentaje(Porcentaje), leccion(lec) {
-    // Constructor de la clase Progreso
+Progreso::Progreso(Leccion* lecActual){
+    this->porcentaje = 0;
+    this->leccionActual = lecActual;
+    this->ejerciciosResueltos = list<Ejercicio*>();
+    this->inscripcion = nullptr;
 }
 
 Progreso::~Progreso() {

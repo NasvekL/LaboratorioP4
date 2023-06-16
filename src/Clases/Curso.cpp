@@ -116,3 +116,16 @@ DTEstadisticaCurso Curso::estadisticasCurso() {
 void Curso::agregarLeccion(Leccion *lec){
     lecciones.push_back(lec);
 }
+
+//Contar
+int Curso::cantidadDeLecciones(){
+    return lecciones.size();
+}
+int Curso::cantidadDeEjercicios(){
+    int cant = 0;
+    for(auto iter = lecciones.begin(); iter!=lecciones.end(); iter++){
+        Leccion* lec = *iter;
+        cant += lec->getCantidadDeEjercicios();
+    }
+    return cant;
+}

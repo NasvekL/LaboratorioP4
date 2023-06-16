@@ -62,6 +62,10 @@ class Curso{
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
 
+        //COntar cosas
+        int cantidadDeEjercicios();
+        int cantidadDeLecciones();
+
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };

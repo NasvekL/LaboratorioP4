@@ -9,10 +9,12 @@
 #include <string>
 using namespace std;
 #include "DTs/DTFecha.h"
+#include <stdexcept>
 #include <chrono>
 #include <sstream>
 #include <fstream>
 #include <regex>
+#include <tuple>
 
 enum nivelDeDificultad {PRINCIPIANTE, MEDIO, AVANZADO};
 

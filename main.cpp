@@ -363,22 +363,30 @@ int main(){
                 break;
             }
             case 11:{
-                ///FALTA QUE MUESTRE LA CANTIDAD DE LECCIONES Y EJERCICIOS DE CADA CURSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //Tamien falta crear el progreso, pero hay que enlazarlo con los ejercicios y yo que se
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                     contUsuario.seleccionarUsuario(nick);
-                    imprimir("Cursos disponibles para " + nick + ":");
-                    list<string> cursosDisp = contCurso.cursosDisponibles(nick);
-                    for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
-                        imprimir(*it);
+                    list<tuple<string, int, int>> cursosDisp = contCurso.cursosDisponibles(nick);
+                    if(cursosDisp.empty()){
+                        imprimir("No existen cursos a los que " + nick + " pueda inscribirse.", AMARILLO);
+                        presionaParaContinuar();
+                        break;
+                    }else{
+                        imprimir("Cursos disponibles para " + nick + ":");
+                        for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
+                            imprimir(get<0>(*it) + ", Cantidad de lecciones: " + to_string(get<1>(*it)) + ", Cantidad de ejercicios: " + to_string(get<2>(*it)));
+                        }
+                        imprimir("Ingrese nombre de curso a inscribirse:");
+                        string nombreCurso = entradaString();
+                        try{
+                            contCurso.inscribirEstudianteACurso(nombreCurso, nick);
+                            imprimir("Estudiante inscripto", VERDE);
+                        }catch(invalid_argument& e){
+                            imprimir('ERROR: No ha sido posible inscribir al estudiante: ' + e.what(), ROJO);
+                        }
+                            presionaParaContinuar();
                     }
-                    imprimir("Ingrese nombre de curso a inscribirse:");
-                    string nombreCurso = entradaString();
-                    contCurso.inscribirEstudianteACurso(nombreCurso, nick);
-                    imprimir("Estudiante inscripto", VERDE);
-                    presionaParaContinuar();
                 }else{
                     imprimir("El usuario " + nick + " no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
                     presionaParaContinuar();
@@ -402,9 +410,9 @@ int main(){
                 if (entrada == 1){
                     imprimir("ingrese el nombre del estudiante");
                     list<DTEstudianteSC> estudiantes = contUsuario.listarEstudiantes();
-                    for (const string& estudiante : estudiantes) {
+                    /*for (const string& estudiante : estudiantes) {
                         imprimir( estudiante.getNickname());
-                    }
+                    }*/
                     string estu = entradaString();
                     
 
