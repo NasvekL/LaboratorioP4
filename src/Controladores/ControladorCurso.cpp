@@ -251,7 +251,7 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
         insriptos++;
     }
     promedio = promedio / inscriptos;
-    DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, curso->getNickname());
+    DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, curso->getNick());
 
     return DTEstadisticaCurso();
 }
@@ -409,6 +409,12 @@ set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
 
 
 //Operaciones de suscripciones
+list<DTNotificacion> consultarNotificaciones(string nick){
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario* user = cu.getUsuario(nick);
+    list<DTNotificacion> notis = user->getNotificaciones();
+    return notis;
+}
 set<string> ControladorCurso::consultarSuscripciones(string nick) {
     set<string> idiomasNoSuscrito;
     ControladorUsuario& cu = ControladorUsuario::getInstancia();

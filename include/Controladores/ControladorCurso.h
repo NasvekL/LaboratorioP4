@@ -120,6 +120,7 @@ class ControladorCurso: public IControladorCurso{
 
         //Operaciones de suscripciones
         set<string> consultarSuscripciones(string nick);
+        list<DTNotificacion> consultarNotificaciones(string nick);
         void suscribirUsuario(set<string> idiomas,string nick);
         set<string> listarIdiomasSuscrito(string nick);//no iria en controlador usuario??
         void eliminarSuscripciones(set<string> idiomas, string nick);//en el diagrama de clases falta el nick

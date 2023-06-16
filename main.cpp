@@ -514,8 +514,23 @@ int main(){
             case 15:{
                 //Consulta de notificaciones
                 system("clear");
+                imprimir("Ingrese nick de usuario:");
+                string nick = entradaString();
+                if(!contUsuario.existeUsuario(nick)){
+                    imprimir("El usuario no existe", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
+                else{
+                list<DTNotificacion> notis = contCurso.consultarNotificaciones(nick);
+                for(auto it = notis.begin(); it != notis.end(); ++it){
+                    DTNotificacion noti = *it;
+                    imprimir(noti.getCurso().getNombre());
+                    imprimir(noti.getIdioma()->getNombreIdioma());
+                }
                 //interfazCurso->consultaNotificaciones();
                 break;
+                }
             }
             case 16:{
                 //Eliminar suscripciones
