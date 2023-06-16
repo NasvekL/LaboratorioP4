@@ -4,7 +4,7 @@
 #include "Ejercicio.h"
 #include "Leccion.h"
 #include "Inscripcion.h"
-
+class Inscripcion;
 class Progreso{
     private:
         int porcentaje;

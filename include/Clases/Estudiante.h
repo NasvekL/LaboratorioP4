@@ -5,6 +5,7 @@
 #include "../DTs/DTEstudiante.h"
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTCurso.h"
+#include "../Clases/Inscripcion.h"
 
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
 class Inscripcion;

@@ -16,6 +16,8 @@ class Profesor;
 class Estudiante;
 class Ejercicio;
 class DTestadisticaCurso;
+class DTRellenarPalabras;
+class DTTraduccion;
 
 class Curso{
     private:

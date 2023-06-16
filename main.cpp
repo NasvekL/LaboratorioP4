@@ -342,8 +342,7 @@ int main(){
                 string curso = entradaString();
                 contCurso.habilitarCurso(curso);
                 imprimir("Curso habilitado", VERDE);
-                //Habilitar curso
-                //interfazCurso->habilitarCurso();
+                presionaParaContinuar();
                 break;
             }
             case 9:{
@@ -410,10 +409,15 @@ int main(){
                 break;
             }
             case 12:{
+                //Realizar Ejercicio
                 system("clear");
                 imprimir("Ingrese nick de estudiante: ");
                 string nick = entradaString();
+                imprimir("Cursos:" , AMARILLO);
                 contCurso.cursosInscriptoSinAprobar(nick);
+                imprimir("Ingrese curso:");
+                string curso = entradaString();
+                contCurso.seleccionarEjerciciosDeCurso(curso);
                 break;
             }
             case 13:{
@@ -460,6 +464,7 @@ int main(){
                 system("clear");
                 ingresarUsuarios();
                 imprimir("Usuarios creados", VERDE);
+                presionaParaContinuar();
                 break;
             }
             default:{
@@ -833,6 +838,8 @@ void ingresarUsuarios(){
     ingresarIdiomas();
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    
     //ESTUDIANTES
     contUsuario.setDatoEstudiante(DTEstudiante("jpidiom","asdfg123","Juan Perez","Soy un apasionado del aprendizaje de idiomas","Argentina",DTFecha(15,7,1995)));
     contUsuario.confirmarAltaUsuario();
@@ -841,6 +848,7 @@ void ingresarUsuarios(){
     contUsuario.setDatoEstudiante(DTEstudiante("pero12","789werty","Pedro Rodriguez","Soy un entuciaste del aprendizaje de idiomas","Peru",DTFecha(10,11,1994)));
     contUsuario.confirmarAltaUsuario();
     //Faltan mas...
+
     //PROFESORES
     set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
@@ -853,4 +861,5 @@ void ingresarUsuarios(){
     set<string>* i3 = new set<string>; i3->insert("Aleman");
     contUsuario.setDatoProfesor(DTProfesor("talkExpert","Secret1","Laura Perez", "Soy una profesora entusiasta del aprendizaje de idiomas","Instituto de Idiomas Vanguardia", i3));
     contUsuario.confirmarAltaUsuario(); delete i3;
+    //Faltan mas...
 }

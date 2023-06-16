@@ -374,8 +374,8 @@ void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
     // Implementación pendiente
 }
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
-    // Implementación pendiente
-    return set<DTEjercicio>();
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Curso c = cu.obtenerCurso(curso);
 }
 
 

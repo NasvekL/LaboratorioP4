@@ -125,7 +125,15 @@ list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
 }
 
 void ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
-    
+    //Buscarlo
+    auto it = usuarios.find(nick);
+    Usuario* usuario = it->second;
+    //Setearlo
+    Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
+    DTEstudiante dt = estudiante->getDTEstudiante();
+    setDatoEstudiante(dt);
+    //Trabajo
+    estudiante->getCursosInscriptosSA();
 }
 
 list<string> ControladorUsuario::listarProfe() {
@@ -202,10 +210,9 @@ string ControladorUsuario::getTipoUsuario(string nick) {
         } else {
             return "profesor";
         }
-    } else {
-        throw std::invalid_argument("No existe el usuario");
-    }
 }
+}
+
 list<string> ControladorUsuario::consultarUsuario(){
     list<string> us;
     if (!usuarios.empty()){

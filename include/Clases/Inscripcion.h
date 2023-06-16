@@ -8,6 +8,7 @@
 
 class Progreso;
 class Curso;
+class Estudiante;
 
 class Inscripcion{
     private:

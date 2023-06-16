@@ -13,6 +13,7 @@ class Progreso;
 class DTTraduccion;
 class DTRellenarPalabras;
 class Ejercicio;
+class Estudiante;
 class Leccion{
     private:
         string tema;
