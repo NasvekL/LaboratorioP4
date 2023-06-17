@@ -11,7 +11,8 @@
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTProfesorSC.h"
 #include "../DTs/DTEstudianteSC.h"
-
+#include "../Clases/Idioma.h"
+#include "../Interfaces/IObserver.h"
 class IControladorUsuario{
     public:
         // Getters

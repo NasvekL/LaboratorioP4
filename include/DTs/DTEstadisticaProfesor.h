@@ -1,8 +1,7 @@
 #ifndef DTESTADISTICAPROFESOR
 #define DTESTADISTICAPROFESOR
 #include "../Utils.h"
-
-class DTCurso;
+#include "../DTs/DTCurso.h"
 
 class DTEstadisticaProfesor { 
     private:

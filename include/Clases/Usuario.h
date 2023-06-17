@@ -1,9 +1,8 @@
 #ifndef USUARIO
 #define USUARIO
-#include "../Utils.h"
 #include "../Interfaces/IObserver.h"
+#include "../Utils.h"
 #include "../DTs/DTNotificacion.h"
-class DTNotificacion;
 class Usuario:public IObserver{
     private:
         string nickname;

@@ -3,8 +3,7 @@
 #include "../Utils.h"
 #include "../Clases/Ejercicio.h"
 #include "Leccion.h"
-class Leccion;
-class Ejercicio;
+
 class Traduccion:public Ejercicio{
     private:
         string solucion;

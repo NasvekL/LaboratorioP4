@@ -1,9 +1,5 @@
 //hay que incluir la interfaz? o el controlador directo? en caso de que sea el controlador directo, la interfaz nunca se usa pa nada
 //pq la interfaz es abstracta, eentonces nunca se llega a crear una instancia creo...
-#include "include/Interfaces/IControladorCurso.h"
-#include "include/Interfaces/IControladorUsuario.h"
-#include "include/Controladores/ControladorCurso.h"
-#include "include/Controladores/ControladorUsuario.h"
 #include "include/FactoryController.h"
 //#include "include/DTs/DTRellenarPalabras.h"
 //#include "include/DTs/DTTraduccion.h"
@@ -500,9 +496,10 @@ int main(){
                 imprimir("Escriba el nickname del usuario que desea suscribirse:");
                 string nick = entradaString();
                 set<string> subs = contCurso.consultarSuscripciones(nick);
-                int a=1;
+                int b=1;
                 for(auto it = subs.begin(); it != subs.end(); ++it){
-                    imprimir(to_string(a) + *it);
+                    imprimir(to_string(b) + *it);
+                    b++;
                 }
                 set<string> idiomas;
                 imprimir("Escriba el nombre del idioma al que desea suscribirse:");

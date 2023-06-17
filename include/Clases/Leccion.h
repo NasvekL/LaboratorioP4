@@ -9,11 +9,10 @@
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+class Estudiante;
 class Progreso;
-class DTTraduccion;
 class DTRellenarPalabras;
 class Ejercicio;
-class Estudiante;
 class Leccion{
     private:
         string tema;
