@@ -449,6 +449,9 @@ int main(){
                 else{
                 string solTraduccion;
                 contCurso.solucionCorrectaTraduccion(solTraduccion,estudiante,idEj);
+                imprimir("Ingrese ID del ejercicio: ");
+                int id = entradaInt();
+                contCurso.seleccionarEjercicio(id);
                 break;
             }
             }

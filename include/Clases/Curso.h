@@ -59,6 +59,7 @@ class Curso{
         void agregarInscripcion(Inscripcion* insc);
 
         //OPERACIONES
+        Ejercicio* seleccionarEj(int id);
         set<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
         int progresoPromedio();
         int progresoDeEstudiante(Estudiante* e);
