@@ -8,7 +8,7 @@ class Usuario;
 class Idioma{
     private:
         string nombreIdioma;
-        void addIdioma(); //notificar observadores
+        void addIdioma(); //notificar observadores. por que la funcion que notifica a los observadores es privada y por que se llama addIdioma????
         set<IObserver*> observers;
     public:
        //setters
