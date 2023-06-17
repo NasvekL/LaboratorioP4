@@ -25,8 +25,11 @@ bool RellenarPalabras::esCorrectoRellenarPal(set<string> respuestas) {
     auto it2 = sol.begin();
     while(resp && it!= respuestas.end() && it2 != sol.end()){
         if((*it) != (*it2)){
-            resp = false;
+            return false;
         }
+
+        it++;
+        it2++;
     }
     if(it == respuestas.end() && it2 != sol.end()){
         resp = false;
