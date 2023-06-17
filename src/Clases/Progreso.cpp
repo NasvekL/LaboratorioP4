@@ -31,7 +31,9 @@ Inscripcion* Progreso::getInscripcion() {
 list<Ejercicio*> Progreso :: getEjerciciosResueltos(){
     return ejerciciosResueltos;
 }
-
+int Progreso ::getPorcentajeCurso(){
+    return porcentajeCurso;
+}
 Progreso::Progreso(Leccion* lecActual){
     this->porcentaje = 0;
     this->leccionActual = lecActual;
