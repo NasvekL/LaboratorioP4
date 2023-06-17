@@ -256,7 +256,6 @@ int main(){
                 imprimir("Escribe el nombre del Curso:" , AMARILLO);
                 string cursoSeleccionado = entradaString();
                 int numLec = contCurso.getNumeroDeLeccion(cursoSeleccionado);
-                numLec++;
                 DTLeccion leccion = crearDTLeccion(numLec);
                 contCurso.setDatosDeLeccion(leccion);
                 contCurso.setDatoDeLeccion(leccion);

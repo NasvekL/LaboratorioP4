@@ -221,10 +221,12 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 void ControladorCurso::altaLeccion(string curso){
     Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero(),datosRellenarPalabras,datosTraduccion);
     auto iter = cursos.find(curso);
-    Curso *cur = iter->second;
+    Curso* cur = iter->second;
     cur->agregarLeccion(nuevaLec);
-    for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
-        ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+    if(nuevaLec->getEjercicios().size() > 0){
+        for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
+            ejercicios[it->second->getIdEjercicio()] = it->second;
+        }
     }
     datosTraduccion.clear();
     datosRellenarPalabras.clear();
