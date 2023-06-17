@@ -45,7 +45,6 @@ class Curso{
         list<Curso*> getPrevias();
         //SETTERS
         void setHabilitado(bool habilitado);
-
         //GETTERS DE PSEUDOATRIBUTOS
         Idioma* getIdiomaDelCurso();
         Profesor* getProfesorQueLoDicta();
@@ -59,8 +58,10 @@ class Curso{
         void agregarInscripcion(Inscripcion* insc);
 
         //OPERACIONES
+        Ejercicio* seleccionarEj(int id);
+        set<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
         int progresoPromedio();
-        int progresoDeEstudiante(Estudiante e);
+        int progresoDeEstudiante(Estudiante* e);
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
 
@@ -68,7 +69,7 @@ class Curso{
         int cantidadDeEjercicios();
         int cantidadDeLecciones();
 
-        void conseguirInfoCurso(list<string> infoCur);
+        void conseguirInfoCurso(list<string> &infoCur);
         //Obtener Pseudoatributos
         //Faltan los casos de uso que nos den las operaciones de agregar idiomas y cursos
 };

@@ -41,7 +41,11 @@ int Leccion::getNumero() {
 }
 
 map<int, Ejercicio*> Leccion::getEjercicios(){
-    //return ejercicios;
+    return ejercicios;
+}
+
+map<string, Progreso*> Leccion :: getProgresos(){
+    return progresos;
 }
 
 Leccion::~Leccion() {
@@ -61,12 +65,15 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     this->objetivoAprendizaje = objetivoAprendizaje;
     this->cantidadDeEjercicios = cantidadDeEjercicios;
     this->numero = numero;
+    if(listaRellenarPalabras.size()>0){
     for(auto iter=listaRellenarPalabras.begin();iter!=listaRellenarPalabras.end();iter++){
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new RellenarPalabras(iter->getListaDePalabras(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
             ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
         }
     }
+    }
+    if(listaTraduccion.size()>0){
     for(auto iter=listaTraduccion.begin();iter!=listaTraduccion.end();iter++){
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
@@ -74,10 +81,13 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
         }
     }
 }
-
-DTEjercicio Leccion::seleccionarEj(int idEjercicio) {
-    // Implementación de seleccionarEj
-    // Retorna un objeto DTEjercicio según el idEjercicio proporcionado
+}
+Ejercicio* Leccion::seleccionarEj(int idEjercicio) {
+    map<int, Ejercicio*> ejercicios = this->getEjercicios();
+    auto it = ejercicios.find(idEjercicio);
+    if(it!=ejercicios.end()){
+        return it->second;
+    }else return NULL;
 }
 
 void Leccion::aumentarProgreso(Estudiante e) {
@@ -89,23 +99,14 @@ set<DTEjercicio> Leccion::ejerciciosNoAprobados(string nick) {
     // Implementación de ejerciciosNoAprobados
     // Retorna un conjunto de DTEjercicio de los ejercicios no aprobados por el estudiante con el nickname proporcionado
 }
-
-void Leccion::conseguirInfoLeccion(list<string> infoLeccion){
-    /*
-    string datosLeccion = "Tema de la leccion: " + tema + "\n" + "Objetivo de aprendizaje: " + objetivoAprendizaje + "\n" + "\n";
+void Leccion::conseguirInfoLeccion(list<string> &infoLeccion){
+    string datosLeccion;
+    datosLeccion = "Tema: " + tema + "\n" + "Objetivo de aprendizaje: " + objetivoAprendizaje + "\n";
     infoLeccion.push_back(datosLeccion);
-
-
-    if (ejercicios.size() != 0){    //Hay ejercicios
-        int b = 1;
-        for(auto it = ejercicios.begin(); it != ejercicios.end(); it++){
-            string aux = "Ejercicio" + to_string(b) + ":" + "\n";
-            infoCur.push_back(aux);
-            it->conseguirInfoEjercicio(infoLeccion);
-            b++;
+    if (ejercicios.size() > 0){
+        for(auto it=ejercicios.begin();it!=ejercicios.end();it++){
+            
+            it->second->conseguirInfoEjercicio(infoLeccion);
         }
     }
-    */
-
-
 }

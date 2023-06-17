@@ -12,19 +12,23 @@ void Idioma::setNombreIdioma(string nombreIdioma) {
 string Idioma::getNombreIdioma() {
     return nombreIdioma;
 }
-
+set<IObserver*> Idioma::getObservers(){
+    return observers;
+}
 string Idioma::suscribir(string nick) {
     // Implementación de suscribir
     // Retorna un string según el resultado de la suscripción
 }
 
 void Idioma::agregar(Usuario* u) {
-observers.insert(u);
+IObserver* obs = dynamic_cast<IObserver*>(u);
+observers.insert(obs);
     // Agregar un suscriptor a la lista de observers 
 }
 
 void Idioma::eliminar(Usuario* u) {
-    observers.erase(u);
+    IObserver* obs = dynamic_cast<IObserver*>(u);
+    observers.erase(obs);
 }
 bool Idioma::estaSuscrito(Usuario* usuario) {
     if(observers.size() == 0){

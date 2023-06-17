@@ -1,6 +1,8 @@
 #ifndef ICONTROLADORCURSO
 #define ICONTROLADORCURSO
 #include "../Utils.h"
+#include "../Interfaces/IObserver.h"
+#include "../Clases/Usuario.h"
 #include "../Clases/Curso.h"
 #include "../DTs/DTCurso.h"
 #include "../DTs/DTLeccion.h"
@@ -9,6 +11,9 @@
 #include "../DTs/DTProfesor.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+#include "../DTs/DTNotificacion.h"
+
+
 //#include "DTIdioma.h"??
 
 
@@ -22,12 +27,15 @@ class IControladorCurso{
         //virtual IControladorCurso * getInstancia()= 0;
 
         //Getters virtuales
+        virtual string getTipoEjercicio(int id) = 0;
         virtual int getIdEjercicio()=0;
         virtual Idioma* getIdioma(string nombre)= 0;
         virtual DTCurso getDatoDeCurso()= 0;
         virtual list<DTLeccion> getDatosLecciones()=0;
         virtual DTLeccion getDatosDeLeccion()= 0;
         virtual Profesor* getProfesor()= 0;
+        virtual Curso* getCursoEnMemoria() = 0;
+        virtual Ejercicio* getEjercicioEnMemoria() = 0;
         virtual string getDatoIdioma()= 0;
         virtual map<string, Curso*> getDatosPrevias()= 0;
         virtual Curso* getCurso(string nombreCurso) = 0;
@@ -44,6 +52,8 @@ class IControladorCurso{
         virtual void setIdEjercicio (int id)=0;
         virtual void setDatosDeLeccion(DTLeccion datos)= 0;
         virtual void setProfesor(Profesor* profesor)= 0;
+        virtual void setCursoEnMemoria(Curso* curso) = 0;
+        virtual void setEjercicioEnMemoria(Ejercicio* ejercicio) = 0;
         virtual void setDatoIdioma(string idioma)= 0;
         virtual void setDatosPrevias(set<Curso*> previas)= 0;
         virtual void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos)= 0;
@@ -57,7 +67,7 @@ class IControladorCurso{
         virtual bool altaCurso() = 0;
         virtual void altaLeccion(string curso) = 0;
         virtual void eliminarCurso(string nombreCurso)= 0;
-        virtual void habilitarCurso(string nombreCurso)= 0;
+        virtual bool habilitarCurso(string nombreCurso)= 0;
 
         //Operaciones virtuales para modificar el set de idiomas
         virtual bool confirmarAltaIdioma(string idioma)= 0;
@@ -103,7 +113,7 @@ class IControladorCurso{
         //Operaciones que creo que están mal
         virtual set<DTLeccion> ListarLecciones(string cursoLec)=0;
 
-        virtual void cursosInscriptoSinAprobar(string nick)= 0;
+        virtual set<string> cursosInscriptoSinAprobar(string nick)= 0;
 };
 
 

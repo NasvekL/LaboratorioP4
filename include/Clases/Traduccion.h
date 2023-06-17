@@ -3,8 +3,7 @@
 #include "../Utils.h"
 #include "../Clases/Ejercicio.h"
 #include "Leccion.h"
-class Leccion;
-class Ejercicio;
+
 class Traduccion:public Ejercicio{
     private:
         string solucion;
@@ -12,7 +11,7 @@ class Traduccion:public Ejercicio{
     public:
         string getSolucion();
         bool esCorrectoTraduccion(string solucion);
-        bool esCorrectoRellenarPal(list<string> solucion);
+        bool esCorrectoRellenarPal(set<string> solucion);
         void aumentarProgreso(string estudiante);
         Traduccion(string solucion,int idEjercicio,string descripcion,string letra,Leccion* lec);
         ~Traduccion() = default;

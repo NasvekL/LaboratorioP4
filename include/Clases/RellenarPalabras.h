@@ -4,13 +4,12 @@
 #include "../Clases/Ejercicio.h"
 #include "Leccion.h"
 class Leccion;
-class Ejercicio;
 class RellenarPalabras:public Ejercicio{
     private:
         list<string> listaDePalabras;
     public:
         list<string> getlista();
-        bool esCorrectoRellenarPal(list<string>);
+        bool esCorrectoRellenarPal(set<string>);
         bool esCorrectoTraduccion(string solucion);
         void aumentarProgreso(string estudiante);
         //constructor destructor

@@ -11,7 +11,8 @@
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTProfesorSC.h"
 #include "../DTs/DTEstudianteSC.h"
-
+#include "../Clases/Idioma.h"
+#include "../Interfaces/IObserver.h"
 class IControladorUsuario{
     public:
         // Getters
@@ -35,14 +36,14 @@ class IControladorUsuario{
     virtual std::list<std::string> listarUsuarios() = 0;
     virtual string getTipoUsuario(string nick) = 0;
     // Operaciones de suscripciones
-    virtual Usuario obtenerSuscriptor(std::string user) = 0;
+    virtual Usuario* obtenerSuscriptor(std::string user) = 0;
     virtual void eliminarNotificaciones(string nick) = 0;
     virtual std::list<DTNotificacion> consultarNotificaciones(std::string nick) = 0;
 
     // Métodos adicionales que faltan clasificar
     virtual void seleccionarUsuario(std::string nickname) = 0;
-    virtual std::list<DTEjercicio> ejerciciosNoAprobados(std::string curso) = 0;
-    virtual void cursosInscriptosSinAprobar(std::string nick) = 0;
+    virtual std::set<DTEjercicio> ejerciciosNoAprobados(std::string curso) = 0;
+    virtual set<string> cursosInscriptosSinAprobar(std::string nick) = 0;
     virtual list<string> listarProfe() = 0;
     virtual set<Idioma*> listarIdiomasProfesor(Profesor* p) = 0;
     virtual Profesor* encontrarProfesor(std::string nick) = 0;
@@ -53,7 +54,7 @@ class IControladorUsuario{
     virtual bool existeUsuario(string nickname) = 0;
     // Operaciones que no tienen sentido estar aquí
     virtual DTEstadisticaCurso estadisticaCurso(std::string curso) = 0;
-    virtual Curso obtenerCurso(std::string curso) = 0;
+    virtual Curso* obtenerCurso(std::string curso) = 0;
 
     virtual list<string> consultarUsuario() = 0;
 };

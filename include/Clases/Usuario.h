@@ -1,9 +1,8 @@
 #ifndef USUARIO
 #define USUARIO
-#include "../Utils.h"
 #include "../Interfaces/IObserver.h"
+#include "../Utils.h"
 #include "../DTs/DTNotificacion.h"
-class DTNotificacion;
 class Usuario:public IObserver{
     private:
         string nickname;
@@ -26,7 +25,7 @@ class Usuario:public IObserver{
         list<DTNotificacion> getNotificaciones();
         void eliminarNotificaciones();
         //observer
-        void notificar();
+        void notificar(DTNotificacion noti);
         //NO ESTAMOS PONIENDO DESTRUCTOR EN VIRTUAL DE USUARIO, CAPAZ ESTA MAL
 };
 

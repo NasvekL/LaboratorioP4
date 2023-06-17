@@ -15,9 +15,8 @@ int Inscripcion::getLeccionActual() {
 Inscripcion::Inscripcion(DTFecha fecha, Progreso* prog) {
     this->fecha = fecha;
     this->aprobado = false;
-    this->leccionActual = 0;
+    this->leccionActual = 1;
     this->prog = prog;
-    estudianteInscrito=NULL;
 }
 
 void Inscripcion::setEstudianteInscrito(Estudiante* est) {
@@ -26,7 +25,12 @@ void Inscripcion::setEstudianteInscrito(Estudiante* est) {
 void Inscripcion::setInscripccionACurso(Curso* curso) {
     this->inscripccionACurso = curso;
 }
-
+void Inscripcion::setAprobado() {
+    this->aprobado = true;
+}
+void Inscripcion::setLeccionActual(int leccion) {
+    this->leccionActual = leccion;
+}
 
 Progreso* Inscripcion::getProg(){
     return prog;
@@ -42,9 +46,14 @@ Inscripcion::~Inscripcion() {
     delete this->prog;
 }
 
-void Inscripcion::conseguirInfoInscripcion(list<string> infoInsc){
-    /*
-    string datosInsc = estudiante->getNombre() + "\n" + "Fecha de inscripcion: " + fecha->to_string() + "\n" + "\n";
+void Inscripcion::conseguirInfoInscripcion(list<string> &infoInsc){
+    string aprobadoString;
+    if(aprobado){
+        aprobadoString="si";
+    }
+    else{
+        aprobadoString="no";
+    }
+    string datosInsc = estudianteInscrito->getNombre() + "\n" + "Fecha de inscripcion: " + fecha.toString() + "\n" +"aprobado: "+ aprobadoString +  "\n";
     infoInsc.push_back(datosInsc);
-    */
 }

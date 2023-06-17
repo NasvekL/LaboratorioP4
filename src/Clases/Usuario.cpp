@@ -41,6 +41,6 @@ list<DTNotificacion> Usuario:: getNotificaciones(){
 void Usuario::eliminarNotificaciones(){
 this->notificaciones.clear();
 };
-void Usuario:: notificar(){
-    
+void Usuario:: notificar(DTNotificacion noti){
+    notificaciones.push_back(noti);
 };

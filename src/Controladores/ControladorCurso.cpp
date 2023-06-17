@@ -13,6 +13,7 @@ ControladorCurso::ControladorCurso(){
     datoDeCurso=NULL;
     datoDeLeccion=NULL;
     profesor = NULL;
+    curso = NULL;
     datosRellenar=NULL;
     datosTraducir=NULL;
     idEjercicio=0;
@@ -61,6 +62,14 @@ Profesor* ControladorCurso::getProfesor(){
     return profesor;
 }
 
+Curso* ControladorCurso::getCursoEnMemoria(){
+    return curso;
+}
+
+Ejercicio* ControladorCurso::getEjercicioEnMemoria(){
+    return ejercicio;
+}
+
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
@@ -105,6 +114,15 @@ void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
 void ControladorCurso::setProfesor(Profesor* profesor) {
     this->profesor = profesor;
 }
+
+void ControladorCurso::setCursoEnMemoria(Curso* curso) {
+    this->curso = curso;
+}
+
+void ControladorCurso::setEjercicioEnMemoria(Ejercicio* ejercicio) {
+    this->ejercicio = ejercicio;
+}
+
 void ControladorCurso::setDatoIdioma(string idioma) {
     this->datoIdioma = idioma;
 }
@@ -133,10 +151,11 @@ bool ControladorCurso::altaCurso() {
     auto it = idiomas.find(datoIdioma);
     Idioma* idi = it->second;
     Curso* cur =NULL;
-    if(!datosPrevias.empty())
-    for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
-        Curso* curso =cursos.find(*iter)->second;
-        datosPrevias.insert(std::make_pair(*iter,curso));
+    if(!datosPrevias.empty()){
+        for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
+            Curso* curso =cursos.find(*iter)->second;
+            datosPrevias.insert(std::make_pair(*iter,curso));
+        }
     }
     cur = new Curso(datoDeCurso->getNombre(),datoDeCurso->getDescripcion(),datoDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
     cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
@@ -168,8 +187,24 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
     
     delete cur;
 }
-void ControladorCurso::habilitarCurso(string nombreCurso) {
-    cursos.find(nombreCurso)->second->setHabilitado(true);
+bool ControladorCurso::habilitarCurso(string nombreCurso) {
+    Curso* cur = getCurso(nombreCurso);
+    if(cur->getLecciones().empty()){
+    return false;
+    }
+    for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
+        if((*iter)->getEjercicios().empty()){
+            return false;
+        }
+    }
+    cur->setHabilitado(true);
+    Idioma * idi = cur->getIdiomaDelCurso();
+    set<IObserver*> obs = idi->getObservers();
+    DTNotificacion noti = DTNotificacion(cur->getNombreCurso(),idi);
+    for(auto it = obs.begin(); it!=obs.end(); it++){
+        (*it)->notificar(noti);
+    }
+    return true;
 }
 
 
@@ -194,10 +229,13 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 void ControladorCurso::altaLeccion(string curso){
     Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero(),datosRellenarPalabras,datosTraduccion);
     auto iter = cursos.find(curso);
-    Curso *cur = iter->second;
+    Curso* cur = iter->second;
     cur->agregarLeccion(nuevaLec);
-    for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
-        ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+    if(!nuevaLec->getEjercicios().empty()){
+        map<int, Ejercicio*> lista = nuevaLec->getEjercicios();
+        for(auto it = lista.begin(); it != lista.end(); it++){
+            ejercicios[it->second->getIdEjercicio()] =  it->second;
+        }
     }
     datosTraduccion.clear();
     datosRellenarPalabras.clear();
@@ -231,9 +269,11 @@ void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
 }
 
 void ControladorCurso::agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal){
+    
     datosRellenarPalabras.push_back(ejRellPal);
 };
 void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
+    
     datosTraduccion.push_back(tradu);
 };
 
@@ -255,7 +295,7 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     int inscriptos;
     for (Inscripcion* inscripcion : cur->getInscripciones()) {
         Progreso* progreso = inscripcion->getProg();
-        promedio = promedio + progreso->getPorcentaje();
+        promedio = promedio + progreso->getPorcentajeCurso();
         inscriptos++;
     }
     promedio = promedio / inscriptos;
@@ -399,19 +439,112 @@ return cursosNoHabilitados;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
-    // Implementación pendiente
+    Ejercicio* ej = getEjercicioEnMemoria();
+    bool esCorrecta = ej->esCorrectoRellenarPal(solucion);
+    Ejercicio* e = getEjercicioEnMemoria();
+    Curso* cur = getCursoEnMemoria();                       //obtengo curso
+    int cantidadDeLecciones = cur->getLecciones().size();   //obtengo cantidad de lecciones
+    if(esCorrecta){                                       //si es correcta
+        Leccion* lec = e->getLeccion();           //obtengo leccion
+        int lecActual= lec->getNumero();      //obtengo numero de leccion
+        Progreso* prog = lec->getProgresos().find(estudiante)->second;   //obtengo progreso
+        int cant = lec->getCantidadDeEjercicios();   //obtengo cantidad de ejercicios
+        prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
+        int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
+        if(cant == ejResueltos){
+            Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
+            if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
+                prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
+                ins->setAprobado();             //seteo inscripcion a aprobado
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+            }       
+            else{       
+                Leccion* lecSig;        //obtengo leccion siguiente
+                ins->setLeccionActual(lecActual+1);         //seteo leccion actual
+                for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){      //recorro lecciones
+                    if((*it)->getNumero() == lecActual+1){      //si es la leccion siguiente
+                        lecSig = (*it);     //guardo leccion siguiente
+                    }
+                break;
+                }
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+                prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
+                prog->setLeccionActual(lecSig);     //seteo leccion actual
+            }    
+        prog->setPorcentaje(0);     //seteo porcentaje de leccion
+        }
+        else{
+            prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+            prog->aumentarProgreso(estudiante);     //aumento progreso
+        }
+    ejercicio=NULL;     //seteo ejercicio a NULL
+    curso=NULL;     //seteo curso a NULL
+    return true;        //retorno true
+    }
+    else{
+    ejercicio=NULL;     //seteo ejercicio a NULL
+    curso=NULL;         
     return false;
+    } 
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
-    // Implementación pendiente
+    Ejercicio* e = getEjercicioEnMemoria();
+    Curso* cur = getCursoEnMemoria();                       //obtengo curso
+    int cantidadDeLecciones = cur->getLecciones().size();   //obtengo cantidad de lecciones
+    bool esCorrecta = e->esCorrectoTraduccion(solucion);    //verifico si la solucion es correcta
+    if(esCorrecta){                                       //si es correcta
+        Leccion* lec = e->getLeccion();           //obtengo leccion
+        int lecActual= lec->getNumero();      //obtengo numero de leccion
+        Progreso* prog = lec->getProgresos().find(estudiante)->second;   //obtengo progreso
+        int cant = lec->getCantidadDeEjercicios();   //obtengo cantidad de ejercicios
+        prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
+        int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
+        if(cant == ejResueltos){
+            Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
+            if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
+                prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
+                ins->setAprobado();             //seteo inscripcion a aprobado
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+            }       
+            else{       
+                Leccion* lecSig;        //obtengo leccion siguiente
+                ins->setLeccionActual(lecActual+1);         //seteo leccion actual
+                for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){      //recorro lecciones
+                    if((*it)->getNumero() == lecActual+1){      //si es la leccion siguiente
+                        lecSig = (*it);     //guardo leccion siguiente
+                    }
+                break;
+                }
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+                prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
+                prog->setLeccionActual(lecSig);     //seteo leccion actual
+            }    
+        prog->setPorcentaje(0);     //seteo porcentaje de leccion
+        }
+        else{
+            prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+            prog->aumentarProgreso(estudiante);     //aumento progreso
+        }
+    ejercicio=NULL;     //seteo ejercicio a NULL
+    curso=NULL;     //seteo curso a NULL
+    return true;        //retorno true
+    }
+    else{
+    ejercicio=NULL;     //seteo ejercicio a NULL
+    curso=NULL;         
     return false;
+    }
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
-    // Implementación pendiente
+    Curso* c = getCursoEnMemoria();
+    Ejercicio* ej = c->seleccionarEj(idEjercicio);
+    setEjercicioEnMemoria(ej);
 }
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    Curso c = cu.obtenerCurso(curso);
+    Curso* c = cu.obtenerCurso(curso);
+    setCursoEnMemoria(c);
+    return cu.ejerciciosNoAprobados(curso);
 }
 
 
@@ -462,19 +595,25 @@ void ControladorCurso::eliminarSuscripciones(set<string> idi) {
     }
 }
 
+string ControladorCurso::getTipoEjercicio(int id) {
+    auto it = ejercicios.find(id);
+    if (it != ejercicios.end()) {
+        Ejercicio* ejercicio = it->second;
+        if (RellenarPalabras* rellenar = dynamic_cast<RellenarPalabras*>(ejercicio)) {
+            return "completar";
+        } else {
+            return "traduccion";
+        }
+}
+}
 
 list<string> ControladorCurso::verCurso(string curso){
-    
-    /*
     list<string> datosCurso;
     string cursoBuscado = curso;
     auto it = cursos.find(cursoBuscado);
-    //Ver que hacer en caso de que me ingresen mal el curso
     Curso *cur = it->second;
     cur->conseguirInfoCurso(datosCurso); //Obtengo en la lista toda la info del curso
     return datosCurso;
-    */
-    return list<string>();
 }
 
 
@@ -497,9 +636,7 @@ void ControladorCurso::limpiarDatos() {
     }
 }
 
-
-//Operacion rara
-void ControladorCurso::cursosInscriptoSinAprobar(string nick) {
+set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     cu.cursosInscriptosSinAprobar(nick);
     

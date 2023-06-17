@@ -4,7 +4,6 @@
 #include "Progreso.h"
 #include "Leccion.h"
 #include "../DTs/DTEjercicio.h"
-class Leccion;
 
 class Ejercicio{
     private:
@@ -26,10 +25,11 @@ class Ejercicio{
         //constructor y destructor
         ~Ejercicio();
         //operaciones
-        virtual bool esCorrectoRellenarPal(list<string> solucion)=0;
+        void mostrarEjercicio();
+        virtual bool esCorrectoRellenarPal(set<string> respuestas)=0;
         virtual bool esCorrectoTraduccion(string solucion)=0;
         void aumentarProgreso(string estudiante);
-        void conseguirInfoEjercicio(list<string> infoEjercicio);
+        void conseguirInfoEjercicio(list<string> &infoEjercicio);
 };
 
 

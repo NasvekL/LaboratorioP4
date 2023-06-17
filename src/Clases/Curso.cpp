@@ -78,7 +78,6 @@ Profesor* Curso::getProfesorQueLoDicta() {
 list<Leccion*>& Curso::getLecciones() {
     return lecciones;
 }
-
 list<Inscripcion*> Curso::getInscripciones() {
     return inscripciones;
 }
@@ -101,11 +100,34 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 
 // OPERACIONES
 
+Ejercicio* Curso :: seleccionarEj(int id){
+    list<Leccion*> lecc = this->getLecciones();
+    auto it = lecc.begin();
+    Ejercicio* ejer = NULL;
+    while (ejer == NULL){
+        ejer = (*it)->seleccionarEj(id);
+    }
+    return ejer;
+}
+
+set<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
+    list<Leccion*> lecc = getLecciones();
+    auto it = lecc.begin();
+    Leccion* l = NULL;
+    while(it!=lecc.end() && l==NULL){
+    if((*it)->getNumero() == lecActual){
+        l = *it;
+    }
+    it++;
+    }
+    return l->ejerciciosNoAprobados(nick);
+}
+
 int Curso::progresoPromedio() {
     // Implementación de la operación
 }
 
-int Curso::progresoDeEstudiante(Estudiante e){
+int Curso::progresoDeEstudiante(Estudiante* e){
     // Implementación de la operación
 }
 
@@ -130,9 +152,9 @@ int Curso::cantidadDeEjercicios(){
     return cant;
 }
 
-void Curso::conseguirInfoCurso(list<string> infoCur){
+void Curso::conseguirInfoCurso(list<string> &infoCur){
     
-    /*
+    
     string hab;
     if (habilitado){
         hab = "Habilitado";
@@ -145,22 +167,20 @@ void Curso::conseguirInfoCurso(list<string> infoCur){
     
     
 
-    if (lecciones != nullptr){  //Si tiene lecciones
+    if (lecciones.size()!=0){  //Si tiene lecciones
         int a = 1;
         for (auto it = lecciones.begin(); it != lecciones.end(); it++){
             string aux = "Leccion" + to_string(a) + ":" + "\n";
             infoCur.push_back(aux);
-            it->conseguirInfoLeccion(infoCur);
+            (*it)->conseguirInfoLeccion(infoCur);
             a++;
         }
     }
 
-    if(inscripciones != nullptr){     //Si tiene inscripciones
+    if(inscripciones.size()!=0){     //Si tiene inscripciones
         infoCur.push_back("Estudiantes Inscriptos: \n");      
         for (auto iterador = inscripciones.begin(); iterador != inscripciones.end(); iterador++){
-            iterador->conseguirInfoInscripcion(infoCur);
+            (*iterador)->conseguirInfoInscripcion(infoCur);
         }
     }
-    */
-
 }

@@ -9,11 +9,10 @@
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+class Estudiante;
 class Progreso;
-class DTTraduccion;
 class DTRellenarPalabras;
 class Ejercicio;
-class Estudiante;
 class Leccion{
     private:
         string tema;
@@ -35,13 +34,14 @@ class Leccion{
         int getCantidadDeEjercicios();
         int getNumero();
         map<int, Ejercicio*> getEjercicios();
+        map<string, Progreso*> getProgresos();
         //Constructor Destructor
         ~Leccion();
         Leccion(string tema,string objetivoAprendizaje,int cantidadDeEjercicios,int numero,list<DTRellenarPalabras> listaRellenarPalabras,list<DTTraduccion> listaTraduccion);
         //operaciones
-        DTEjercicio seleccionarEj(int idEjercicio);
+        Ejercicio* seleccionarEj(int idEjercicio);
         void aumentarProgreso(Estudiante e);
         set<DTEjercicio> ejerciciosNoAprobados(string nick);
-        void conseguirInfoLeccion(list<string> infoLeccion);
+        void conseguirInfoLeccion(list<string> &infoLeccion);
 };
 #endif

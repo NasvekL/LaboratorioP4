@@ -1,6 +1,6 @@
 #include "../../include/Clases/Traduccion.h"
 
-Traduccion::Traduccion(string solucion, int idEjercicio, string descripcion, string letra,Leccion* lec) : Ejercicio(), solucion(solucion) {
+Traduccion::Traduccion(string solucion, int idEjercicio, string descripcion, string letra,Leccion* lec)  {
     this->solucion = solucion;
     this->setIdEjercicio(idEjercicio);
     this->setDescripcion(descripcion);
@@ -17,7 +17,7 @@ bool Traduccion::esCorrectoTraduccion(string solucion) {
     // Implementar la lógica para verificar si la solución es correcta
     return (this->solucion == solucion);
 }
-bool Traduccion::esCorrectoRellenarPal(list<string> solucion) {
+bool Traduccion::esCorrectoRellenarPal(set<string> solucion) {
     return false;
     // Implementar la lógica para verificar si la solución es correcta
     // ...

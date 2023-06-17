@@ -65,7 +65,7 @@ DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) 
         int inscriptos;
         for (Inscripcion* inscripcion : curso->getInscripciones()) {
             Progreso* progreso = inscripcion->getProg();
-            promedio = promedio + progreso->getPorcentaje();
+            promedio = promedio + progreso->getPorcentajeCurso();
             inscriptos++;
         }
         promedio = promedio / inscriptos;
@@ -88,7 +88,7 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
     for (Inscripcion* inscripcion : inscripciones) {
         Curso* curso = inscripcion->getInscriptoA();
         Progreso* prog = inscripcion->getProg();
-        int porcentaje = prog->getPorcentaje();
+        int porcentaje = prog->getPorcentajeCurso();
         estad.insert(std::make_pair(curso->getNombreCurso(), porcentaje));
     }
     DTEstadisticaEstudiante estadisticas = DTEstadisticaEstudiante(estad);
@@ -135,10 +135,10 @@ list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
     return estudiantes;
 }
 
-Usuario ControladorUsuario::obtenerSuscriptor(string user) {
+Usuario* ControladorUsuario::obtenerSuscriptor(string user) {
     // Implementar la lógica para obtener el suscriptor
-    Usuario suscriptor;
-    // ...
+    Usuario* suscriptor;
+    // ..
     return suscriptor;
 }
 
@@ -163,21 +163,45 @@ DTEstadisticaCurso ControladorUsuario::estadisticaCurso(string curso) {
     return estadisticas;
 }
 
-Curso ControladorUsuario::obtenerCurso(string curso) {
-    // Implementar la lógica para obtener el curso
-    Curso cursoObtenido;
-    // ...
-    return cursoObtenido;
+Curso* ControladorUsuario::obtenerCurso(string curso) {
+    DTEstudiante est = getDatoEstudiante();
+    string nick = est.getNickname();
+    auto it = usuarios.begin();
+    Estudiante* estudiante = NULL;
+    for(it; it!=usuarios.end(); it++){
+        if(it->first == nick){
+            estudiante = dynamic_cast<Estudiante*>(it->second);
+        }
+    }
+    return estudiante->buscarCurso(curso);
 }
+
 void ControladorUsuario::deleteDataIngresado()
 {
 }
-list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
-    // Implementación de la función ejerciciosNoAprobados
+set<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
+    DTEstudiante est = getDatoEstudiante();
+    string nick = est.getNickname();
+    auto it = usuarios.begin();
+    Estudiante* estudiante = NULL;
+    for(it; it!=usuarios.end(); it++){
+        if(it->first == nick){
+            estudiante = dynamic_cast<Estudiante*>(it->second);
+        }
+    }
+    return estudiante->ejerciciosNoAprobados(curso);
 }
 
-void ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
-    
+set<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
+    //Buscarlo
+    auto it = usuarios.find(nick);
+    Usuario* usuario = it->second;
+    //Setearlo
+    Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
+    DTEstudiante dt = estudiante->getDTEstudiante();
+    setDatoEstudiante(dt);
+    //Trabajo
+    return estudiante->getCursosInscriptosSA();
 }
 
 list<string> ControladorUsuario::listarProfe() {

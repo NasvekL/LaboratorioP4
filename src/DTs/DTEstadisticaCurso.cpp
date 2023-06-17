@@ -4,7 +4,7 @@
 // Constructor
 DTEstadisticaCurso::DTEstadisticaCurso(int promedioCurso, string curso) {
     this->curso=curso;
-    this->promedioCurso=curso;
+    this->promedioCurso=promedioCurso;
     // Implementación del constructor
     // Puedes asignar los valores de los parámetros a los atributos correspondientes
     // Aquí solo se muestra cómo iterar sobre las listas proporcionadas
@@ -31,7 +31,7 @@ DTEstadisticaCurso::DTEstadisticaCurso() {
 string DTEstadisticaCurso::getCurso() {
     // Implementación del getter
     // Puedes devolver el nombre del curso, por ejemplo
-    return curso.getNombre();
+    return curso;
 }
 
 // Getter de promedioCurso
@@ -45,7 +45,7 @@ int DTEstadisticaCurso::getpromedioCurso() {
 DTCurso DTEstadisticaCurso::infoCurso() {
     // Implementación de la función
     // Puedes devolver el objeto DTCurso completo
-    return curso;
+    //return curso;
 }
 
 // Función para obtener el grado de avance del curso
