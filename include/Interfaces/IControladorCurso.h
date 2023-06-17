@@ -97,7 +97,7 @@ class IControladorCurso{
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;
         virtual bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio)= 0;
         virtual void seleccionarEjercicio(int idEjercicio)= 0;
-        virtual set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso)= 0;
+        virtual list<DTEjercicio> seleccionarEjerciciosDeCurso(string curso)= 0;
         virtual list<string> verCurso(string curso) = 0;
         virtual list<string> listarNicks() = 0;
 

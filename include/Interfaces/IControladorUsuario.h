@@ -42,7 +42,7 @@ class IControladorUsuario{
 
     // Métodos adicionales que faltan clasificar
     virtual void seleccionarUsuario(std::string nickname) = 0;
-    virtual std::set<DTEjercicio> ejerciciosNoAprobados(std::string curso) = 0;
+    virtual list<DTEjercicio> ejerciciosNoAprobados(std::string curso) = 0;
     virtual set<string> cursosInscriptosSinAprobar(std::string nick) = 0;
     virtual list<string> listarProfe() = 0;
     virtual set<Idioma*> listarIdiomasProfesor(Profesor* p) = 0;
