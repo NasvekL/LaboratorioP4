@@ -273,7 +273,7 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
     int inscriptos;
     for (Inscripcion* inscripcion : cur->getInscripciones()) {
         Progreso* progreso = inscripcion->getProg();
-        promedio = promedio + progreso->getPorcentaje();
+        promedio = promedio + progreso->getPorcentajeCurso();
         inscriptos++;
     }
     promedio = promedio / inscriptos;
