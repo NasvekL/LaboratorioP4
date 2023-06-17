@@ -42,5 +42,5 @@ void Ejercicio:: conseguirInfoEjercicio(list<string> &infoEjercicio){
 }
 
 void Ejercicio:: mostrarEjercicio(){
-    string datosDelEjercicio = "Descripcion del ejercicio: " + descripcion + "\n" + "Letra del ejercicio: " + letra + "\n" + "Id del ejercicio: ";
+    string datosDelEjercicio = "Descripcion del ejercicio: " + descripcion + "\n" + "Letra del ejercicio: " + letra + "\n";
 }
