@@ -449,10 +449,10 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
                     }
                 break;
                 }
+                prog->setPorcentajeCurso((1/cur->cantidadDeEjercicios())*100);
             prog->setLeccionActual(lecSig);
-            }
+            }    
         }
-        prog->aumentarProgreso(estudiante);
     }
     return false;
 }
