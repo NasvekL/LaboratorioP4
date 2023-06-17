@@ -110,7 +110,7 @@ Ejercicio* Curso :: seleccionarEj(int id){
     return ejer;
 }
 
-set<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
+list<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
     list<Leccion*> lecc = getLecciones();
     auto it = lecc.begin();
     Leccion* l = NULL;

@@ -59,7 +59,7 @@ class Curso{
 
         //OPERACIONES
         Ejercicio* seleccionarEj(int id);
-        set<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
+        list<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
         int progresoPromedio();
         int progresoDeEstudiante(Estudiante* e);
         DTEstadisticaCurso estadisticasCurso();

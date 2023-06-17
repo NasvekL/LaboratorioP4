@@ -179,7 +179,7 @@ Curso* ControladorUsuario::obtenerCurso(string curso) {
 void ControladorUsuario::deleteDataIngresado()
 {
 }
-set<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
+list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
     DTEstudiante est = getDatoEstudiante();
     string nick = est.getNickname();
     auto it = usuarios.begin();

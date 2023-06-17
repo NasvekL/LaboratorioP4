@@ -64,7 +64,7 @@ set<string> Estudiante::getCursosInscriptosSA() {
     return cursosInscriptos;
 }
 
-set<DTEjercicio> Estudiante :: ejerciciosNoAprobados(string curso){
+list<DTEjercicio> Estudiante :: ejerciciosNoAprobados(string curso){
     list<Inscripcion*> ins = getInscripciones();
     auto it = ins.begin();
     Curso* c = NULL;

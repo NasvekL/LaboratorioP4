@@ -543,7 +543,7 @@ void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
     Ejercicio* ej = c->seleccionarEj(idEjercicio);
     setEjercicioEnMemoria(ej);
 }
-set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
+list<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     Curso* c = cu.obtenerCurso(curso);
     setCursoEnMemoria(c);

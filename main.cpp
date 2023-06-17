@@ -441,7 +441,7 @@ int main(){
                 }
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
-                set<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
+                list<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
                 auto it2 = ejerciciosSinHacer.begin();
                 for(it2; it2!=ejerciciosSinHacer.end(); it2++){
                     DTEjercicio ejercicio = (*it2);
