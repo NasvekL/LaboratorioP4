@@ -1,6 +1,8 @@
 #ifndef ICONTROLADORCURSO
 #define ICONTROLADORCURSO
 #include "../Utils.h"
+#include "../Interfaces/IObserver.h"
+#include "../Clases/Usuario.h"
 #include "../Clases/Curso.h"
 #include "../DTs/DTCurso.h"
 #include "../DTs/DTLeccion.h"
@@ -9,6 +11,9 @@
 #include "../DTs/DTProfesor.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"
+#include "../DTs/DTNotificacion.h"
+
+
 //#include "DTIdioma.h"??
 
 

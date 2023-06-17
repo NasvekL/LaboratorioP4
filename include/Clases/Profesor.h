@@ -2,12 +2,11 @@
 #define PROFESOR
 #include "../Utils.h"
 #include "Usuario.h"
+#include "Idioma.h"
 #include "../DTs/DTNotificacion.h"
 #include "../DTs/DTProfesor.h"
 
 class Curso;
-class Idioma;
-
 class Profesor: public Usuario{
     private:
         string instituto;

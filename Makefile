@@ -23,6 +23,8 @@ $(BIN_DIR)/Ejercicio.o: src/Clases/Ejercicio.cpp $(INC)
 $(BIN_DIR)/Estudiante.o: src/Clases/Estudiante.cpp $(INC)
 	$(CC-) src/Clases/Estudiante.cpp -o $(BIN_DIR)/Estudiante.o
 
+$(BIN_DIR)/Usuario.o: src/Clases/Usuario.cpp $(INC)
+	$(CC-) src/Clases/Usuario.cpp -o $(BIN_DIR)/Usuario.o
 $(BIN_DIR)/Idioma.o: src/Clases/Idioma.cpp $(INC)
 	$(CC-) src/Clases/Idioma.cpp -o $(BIN_DIR)/Idioma.o
 
@@ -44,7 +46,7 @@ $(BIN_DIR)/RellenarPalabras.o: src/Clases/RellenarPalabras.cpp $(INC)
 $(BIN_DIR)/Traduccion.o: src/Clases/Traduccion.cpp $(INC)
 	$(CC-) src/Clases/Traduccion.cpp -o $(BIN_DIR)/Traduccion.o
 
-$(BIN_DIR)/Usuario.o: src/Clases/Usuario.cpp $(INC)
+
 	$(CC-) src/Clases/Usuario.cpp -o $(BIN_DIR)/Usuario.o
 
 $(BIN_DIR)/ControladorCurso.o: src/Controladores/ControladorCurso.cpp $(INC)

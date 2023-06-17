@@ -4,7 +4,6 @@
 #include "Progreso.h"
 #include "Leccion.h"
 #include "../DTs/DTEjercicio.h"
-class Leccion;
 
 class Ejercicio{
     private:

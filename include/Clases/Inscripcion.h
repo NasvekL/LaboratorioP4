@@ -5,11 +5,9 @@
 #include "Progreso.h"
 #include "Estudiante.h"
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
-
-class Progreso;
-class Curso;
 class Estudiante;
-
+class Curso;
+class Progreso;
 class Inscripcion{
     private:
         DTFecha fecha;

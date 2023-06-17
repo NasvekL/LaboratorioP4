@@ -1,10 +1,9 @@
 #ifndef IDIOMA
 #define IDIOMA
 #include "../Utils.h"
-#include "../Clases/Usuario.h"
 #include "../Interfaces/IObserver.h"
-
-class Usuario;
+#include "../Clases/Usuario.h"
+#include "../DTs/DTNotificacion.h"
 class Idioma{
     private:
         string nombreIdioma;

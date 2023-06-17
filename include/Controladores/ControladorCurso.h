@@ -1,6 +1,7 @@
 #ifndef CONTROLADORCURSO
 #define CONTROLADORCURSO
 #include "../Utils.h"
+#include "../Clases/Usuario.h"
 #include "../Clases/Curso.h"
 #include "../Clases/RellenarPalabras.h"
 #include "../Clases/Traduccion.h"
@@ -14,6 +15,7 @@
 #include "../DTs/DTRellenarPalabras.h"
 #include "../DTs/DTNotificacion.h"
 #include "../Interfaces/IControladorCurso.h"
+
 
 
 

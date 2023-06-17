@@ -8,6 +8,8 @@
 #include "../Clases/Inscripcion.h"
 
     //CAMBIAR TODOS LOS SET POR EL SET QUE USEMOS
+class Curso;
+class Leccion;
 class Inscripcion;
 
 class Estudiante: public Usuario{
