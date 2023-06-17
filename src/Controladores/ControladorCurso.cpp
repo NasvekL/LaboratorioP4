@@ -224,7 +224,8 @@ void ControladorCurso::altaLeccion(string curso){
     Curso* cur = iter->second;
     cur->agregarLeccion(nuevaLec);
     if(!nuevaLec->getEjercicios().empty()){
-        for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
+        map<int, Ejercicio*> lista = nuevaLec->getEjercicios();
+        for(auto it = lista.begin(); it != lista.end(); it++){
             ejercicios[it->second->getIdEjercicio()] =  it->second;
         }
     }
