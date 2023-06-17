@@ -31,7 +31,9 @@ class Estudiante: public Usuario{
         DTEstudiante getDTEstudiante();
         set<string> getCursosInscriptosSA();
         set<DTCurso> obtenDTCurso();
+        Curso* buscarCurso(string nombreCurso);
         set<int> obtenerProgreso();
+        set<DTEjercicio> ejerciciosNoAprobados(string curso);
         //Faltan los casos de uso que me permiten agregar y eliminar inscripciones
 
         void agregarInscripcion(Inscripcion* insc);

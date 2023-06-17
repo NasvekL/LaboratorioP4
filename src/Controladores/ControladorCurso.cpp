@@ -13,6 +13,7 @@ ControladorCurso::ControladorCurso(){
     datoDeCurso=NULL;
     datoDeLeccion=NULL;
     profesor = NULL;
+    curso = NULL;
     datosRellenar=NULL;
     datosTraducir=NULL;
     idEjercicio=0;
@@ -61,6 +62,10 @@ Profesor* ControladorCurso::getProfesor(){
     return profesor;
 }
 
+Curso* ControladorCurso::getCursoEnMemoria(){
+    return curso;
+}
+
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
@@ -101,6 +106,11 @@ void ControladorCurso::setDatosDeLeccion(DTLeccion datos) {
 void ControladorCurso::setProfesor(Profesor* profesor) {
     this->profesor = profesor;
 }
+
+void ControladorCurso::setCursoEnMemoria(Curso* curso) {
+    this->curso = curso;
+}
+
 void ControladorCurso::setDatoIdioma(string idioma) {
     this->datoIdioma = idioma;
 }
@@ -410,7 +420,9 @@ void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
 }
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    Curso c = cu.obtenerCurso(curso);
+    Curso* c = cu.obtenerCurso(curso);
+    setCursoEnMemoria(c);
+    return cu.ejerciciosNoAprobados(curso);
 }
 
 
@@ -443,6 +455,17 @@ void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
     // Implementación pendiente
 }
 
+string ControladorCurso::getTipoEjercicio(int id) {
+    auto it = ejercicios.find(id);
+    if (it != ejercicios.end()) {
+        Ejercicio* ejercicio = it->second;
+        if (RellenarPalabras* rellenar = dynamic_cast<RellenarPalabras*>(ejercicio)) {
+            return "completar";
+        } else {
+            return "traduccion";
+        }
+}
+}
 
 list<string> ControladorCurso::verCurso(string curso){
     
@@ -478,9 +501,7 @@ void ControladorCurso::limpiarDatos() {
     }
 }
 
-
-//Operacion rara
-void ControladorCurso::cursosInscriptoSinAprobar(string nick) {
+set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     cu.cursosInscriptosSinAprobar(nick);
     

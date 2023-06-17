@@ -15,7 +15,7 @@ int Inscripcion::getLeccionActual() {
 Inscripcion::Inscripcion(DTFecha fecha, Progreso* prog) {
     this->fecha = fecha;
     this->aprobado = false;
-    this->leccionActual = 0;
+    this->leccionActual = 1;
     this->prog = prog;
     estudianteInscrito=NULL;
 }

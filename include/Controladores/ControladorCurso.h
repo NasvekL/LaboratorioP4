@@ -34,6 +34,7 @@ class ControladorCurso: public IControladorCurso{
         DTLeccion* datoDeLeccion;
         list<DTLeccion> datosLecciones;
         Profesor* profesor;
+        Curso* curso;
         string datoIdioma;
         map<string, Curso*> datosPrevias;
         DTRellenarPalabras* datosRellenar;
@@ -55,6 +56,7 @@ class ControladorCurso: public IControladorCurso{
     
         //Getters
         //fdfd
+        string getTipoEjercicio(int id);
         map<string,Curso*> getCursos();
         int getIdEjercicio ();
         Idioma* getIdioma(string nombre);
@@ -65,6 +67,7 @@ class ControladorCurso: public IControladorCurso{
         list<DTTraduccion> getDatosMuchasTraducciones();
         string getDatoNombreDeProfesor();
         Profesor* getProfesor();
+        Curso* getCursoEnMemoria();
         string getDatoIdioma();
         map<string ,Curso*> getDatosPrevias();
         DTRellenarPalabras getDatosRellenar();
@@ -78,6 +81,7 @@ class ControladorCurso: public IControladorCurso{
         void setDatosDeLeccion(DTLeccion datos);        //void IngresaLeccion(DTLeccion lec);
         //hace que el puntero profesor apunte al objeto profesor que se le pasa
         void setProfesor(Profesor* profesor); //void seleccionProfesor(string nick);
+        void setCursoEnMemoria(Curso* curso);
         void setDatoIdioma(string idioma);              //void seleccionIdioma(string idioma);
         void setDatosPrevias(set<Curso*> previas);    //void seleccionPrevias(set<string> previas);
         void setDatosEjercicioCompletarPalabras(DTRellenarPalabras datos);      //void agregarCompPal(string descripcion, string fraseCompleta, set<string> solucion);
@@ -134,7 +138,7 @@ class ControladorCurso: public IControladorCurso{
 
 
         //Operacion que solo llama a otra opperacion en controladorUsuario
-        void cursosInscriptoSinAprobar(string nick);
+        set<string> cursosInscriptoSinAprobar(string nick);
 
         set<DTLeccion> ListarLecciones(string cursoLec);
 

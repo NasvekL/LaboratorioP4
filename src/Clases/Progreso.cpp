@@ -23,6 +23,10 @@ int Progreso::getPorcentaje() {
     return porcentaje;
 }
 
+list<Ejercicio*> Progreso :: getEjerciciosResueltos(){
+    return ejerciciosResueltos;
+}
+
 Progreso::Progreso(Leccion* lecActual){
     this->porcentaje = 0;
     this->leccionActual = lecActual;

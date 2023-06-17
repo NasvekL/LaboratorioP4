@@ -128,6 +128,7 @@ list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
         if (tipoUsuario == "estudiante") {
             Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario.second);
             DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNick(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
+            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNick(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
             estudiantes.push_back(estu);
         }
     }
@@ -163,21 +164,45 @@ DTEstadisticaCurso ControladorUsuario::estadisticaCurso(string curso) {
     return estadisticas;
 }
 
-Curso ControladorUsuario::obtenerCurso(string curso) {
-    // Implementar la lógica para obtener el curso
-    Curso cursoObtenido;
-    // ...
-    return cursoObtenido;
+Curso* ControladorUsuario::obtenerCurso(string curso) {
+    DTEstudiante est = getDatoEstudiante();
+    string nick = est.getNickname();
+    auto it = usuarios.begin();
+    Estudiante* estudiante = NULL;
+    for(it; it!=usuarios.end(); it++){
+        if(it->first == nick){
+            estudiante = dynamic_cast<Estudiante*>(it->second);
+        }
+    }
+    return estudiante->buscarCurso(curso);
 }
+
 void ControladorUsuario::deleteDataIngresado()
 {
 }
-list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
-    // Implementación de la función ejerciciosNoAprobados
+set<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
+    DTEstudiante est = getDatoEstudiante();
+    string nick = est.getNickname();
+    auto it = usuarios.begin();
+    Estudiante* estudiante = NULL;
+    for(it; it!=usuarios.end(); it++){
+        if(it->first == nick){
+            estudiante = dynamic_cast<Estudiante*>(it->second);
+        }
+    }
+    return estudiante->ejerciciosNoAprobados(curso);
 }
 
-void ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
-    
+set<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
+    //Buscarlo
+    auto it = usuarios.find(nick);
+    Usuario* usuario = it->second;
+    //Setearlo
+    Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
+    DTEstudiante dt = estudiante->getDTEstudiante();
+    setDatoEstudiante(dt);
+    //Trabajo
+    return estudiante->getCursosInscriptosSA();
 }
 
 list<string> ControladorUsuario::listarProfe() {

@@ -44,6 +44,10 @@ map<int, Ejercicio*> Leccion::getEjercicios(){
     //return ejercicios;
 }
 
+map<string, Progreso*> Leccion :: getProgresos(){
+    return progresos;
+}
+
 Leccion::~Leccion() {
     for(auto it=ejercicios.begin();it!=ejercicios.end();it++){
         delete it->second;
@@ -88,24 +92,4 @@ void Leccion::aumentarProgreso(Estudiante e) {
 set<DTEjercicio> Leccion::ejerciciosNoAprobados(string nick) {
     // Implementación de ejerciciosNoAprobados
     // Retorna un conjunto de DTEjercicio de los ejercicios no aprobados por el estudiante con el nickname proporcionado
-}
-
-void Leccion::conseguirInfoLeccion(list<string> infoLeccion){
-    /*
-    string datosLeccion = "Tema de la leccion: " + tema + "\n" + "Objetivo de aprendizaje: " + objetivoAprendizaje + "\n" + "\n";
-    infoLeccion.push_back(datosLeccion);
-
-
-    if (ejercicios.size() != 0){    //Hay ejercicios
-        int b = 1;
-        for(auto it = ejercicios.begin(); it != ejercicios.end(); it++){
-            string aux = "Ejercicio" + to_string(b) + ":" + "\n";
-            infoCur.push_back(aux);
-            it->conseguirInfoEjercicio(infoLeccion);
-            b++;
-        }
-    }
-    */
-
-
 }
