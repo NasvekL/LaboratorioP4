@@ -223,8 +223,10 @@ void ControladorCurso::altaLeccion(string curso){
     auto iter = cursos.find(curso);
     Curso *cur = iter->second;
     cur->agregarLeccion(nuevaLec);
+    if(!nuevaLec->getEjercicios().empty()){
     for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
         ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+    }
     }
     datosTraduccion.clear();
     datosRellenarPalabras.clear();
