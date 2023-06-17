@@ -104,8 +104,11 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 Ejercicio* Curso :: seleccionarEj(int id){
     list<Leccion*> lecc = this->getLecciones();
     auto it = lecc.begin();
-    Ejercicio* cur
-    it; it!= lecc.end(); it++
+    Ejercicio* ejer = NULL;
+    while (ejer == NULL){
+        ejer = (*it)->seleccionarEj(id);
+    }
+    return ejer;
 }
 
 set<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){

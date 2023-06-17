@@ -79,9 +79,12 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     }
 }
 
-DTEjercicio Leccion::seleccionarEj(int idEjercicio) {
-    // Implementación de seleccionarEj
-    // Retorna un objeto DTEjercicio según el idEjercicio proporcionado
+Ejercicio* Leccion::seleccionarEj(int idEjercicio) {
+    map<int, Ejercicio*> ejercicios = this->getEjercicios();
+    auto it = ejercicios.find(idEjercicio);
+    if(it!=ejercicios.end()){
+        return it->second;
+    }else return NULL;
 }
 
 void Leccion::aumentarProgreso(Estudiante e) {

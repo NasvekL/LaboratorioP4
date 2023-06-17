@@ -443,10 +443,12 @@ int main(){
                 imprimir("Ingrese ID del ejercicio: ");
                 int id = entradaInt();
                 contCurso.seleccionarEjercicio(id);
-                string estudiante;
-                set<string> solucion;
+                Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
+                ejer->mostrarEjercicio();
+                string estudiante = nick;
                 int idEj;
                 if(contCurso.getTipoEjercicio(idEj) == "completar"){
+                    solucion;
                     contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
                 }
                 else{

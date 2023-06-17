@@ -39,7 +39,7 @@ class Leccion{
         ~Leccion();
         Leccion(string tema,string objetivoAprendizaje,int cantidadDeEjercicios,int numero,list<DTRellenarPalabras> listaRellenarPalabras,list<DTTraduccion> listaTraduccion);
         //operaciones
-        DTEjercicio seleccionarEj(int idEjercicio);
+        Ejercicio* seleccionarEj(int idEjercicio);
         void aumentarProgreso(Estudiante e);
         set<DTEjercicio> ejerciciosNoAprobados(string nick);
         void conseguirInfoLeccion(list<string> &infoLeccion);

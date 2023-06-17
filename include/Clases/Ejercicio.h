@@ -25,6 +25,7 @@ class Ejercicio{
         //constructor y destructor
         ~Ejercicio();
         //operaciones
+        void mostrarEjercicio();
         virtual bool esCorrectoRellenarPal(list<string> solucion)=0;
         virtual bool esCorrectoTraduccion(string solucion)=0;
         void aumentarProgreso(string estudiante);

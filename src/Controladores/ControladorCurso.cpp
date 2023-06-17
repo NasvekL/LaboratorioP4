@@ -417,8 +417,8 @@ return cursosNoHabilitados;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
-    Ejercicio* e = getEjercicioEnMemoria(IdEjercicio);
-
+    Ejercicio* e = getEjercicioEnMemoria();
+    
     return false;
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
@@ -427,7 +427,8 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
     Curso* c = getCursoEnMemoria();
-    c->
+    Ejercicio* ej = c->seleccionarEj(idEjercicio);
+    setEjercicioEnMemoria(ej);
 }
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
