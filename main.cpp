@@ -459,10 +459,12 @@ int main(){
                     contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
                 }
                 else{
-                string solTraduccion;
-                contCurso.solucionCorrectaTraduccion(solTraduccion,estudiante,idEj);
-                break;
-            }
+                    string solTraduccion;
+                    imprimir("Ingrese la traduccion correcta");
+                    solTraduccion = entradaString();
+                    contCurso.solucionCorrectaTraduccion(solTraduccion,estudiante,idEj);
+                }
+            break;
             }
             case 13:{
                 //Consultar estadisticas
