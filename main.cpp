@@ -437,9 +437,20 @@ int main(){
                 set<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
                 auto it2 = ejerciciosSinHacer.begin();
                 for(it2; it2!=ejerciciosSinHacer.end(); it2++){
-                    imprimir(to_string(it2->getIdEjercicio()));
+                    DTEjercicio ejercicio = (*it2);
+                    imprimir(to_string(ejercicio.getIdEjercicio()));
                 }
+                string estudiante;
+                set<string> solucion;
+                int idEj;
+                if(contCurso.getTipoEjercicio(idEj) == "completar"){
+                    contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
+                }
+                else{
+                string solTraduccion;
+                contCurso.solucionCorrectaTraduccion(solTraduccion,estudiante,idEj);
                 break;
+            }
             }
             case 13:{
                 //Consultar estadisticas
