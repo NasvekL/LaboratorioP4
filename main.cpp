@@ -28,6 +28,7 @@ void imprimir(string texto, string color);
 list<string> separarString(const string& str, char delimiter);
 void ingresarUsuarios();
 void ingresarIdiomas();
+void ingresarCursos();
 DTRellenarPalabras crearDTRellenarPalabras(int numLec);
 DTTraduccion crearDTTraduccion(int numLec);
 int seleccionTipoEjercicio();
@@ -964,10 +965,6 @@ void ingresarUsuarios(){
     contUsuario.confirmarAltaUsuario();
 
     //PROFESORES
-    set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Portugues");
-    contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
-    contUsuario.confirmarAltaUsuario(); delete i1;
-
     set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
     contUsuario.confirmarAltaUsuario(); delete i1;
