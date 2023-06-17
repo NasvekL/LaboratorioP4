@@ -66,18 +66,14 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     this->cantidadDeEjercicios = cantidadDeEjercicios;
     this->numero = numero;
     for(auto iter=listaRellenarPalabras.begin();iter!=listaRellenarPalabras.end();iter++){
-        cout << "Numero rellenar palabras " << to_string(iter->getNumLec()) << endl;
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new RellenarPalabras(iter->getListaDePalabras(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
-            cout << "Se agrego un ejercicio con id" << to_string(iter->getIdEjercicio()) << endl;
             ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
         }
     }
     for(auto iter=listaTraduccion.begin();iter!=listaTraduccion.end();iter++){
-        cout << "Numero traduccion " << to_string(iter->getNumLec()) << endl;
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
-            cout << "Se agrego un ejercicio con id" << to_string(iter->getIdEjercicio()) << endl;
             ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
         }
     }
