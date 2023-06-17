@@ -577,7 +577,7 @@ int main(){
             case 16:{
                 //Eliminar suscripciones
                 system("clear");
-                contCurso.eliminarSuscripciones();
+                //contCurso.eliminarSuscripciones();
                 break;
             }
             case 17:{
@@ -921,7 +921,7 @@ int entradaInt(){
         try{
             string entradita;
             cout << AZUL;
-            cin >> entradita;
+            getline(cin, entradita);
             cout << RESET;
             entrada = stoi(entradita);
         }catch(...){
@@ -949,7 +949,7 @@ string entradaString(){
     while(!esAlfanumerico(entrada)){
         cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET;
         cout << "Ingrese nuevamente:" << endl;
-        cin >> entrada;
+        getline(cin, entrada);
     }
     escribirEnLog("U: " + entrada);
     return entrada;
