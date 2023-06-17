@@ -422,7 +422,37 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
     return false;
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
-    // Implementación pendiente
+    Ejercicio* e = getEjercicioEnMemoria();
+    Curso* cur = getCursoEnMemoria();
+    int cantidadDeLecciones = cur->getLecciones().size();
+    bool esCorrecta = e->esCorrectoTraduccion(solucion);
+    if(esCorrecta){
+        Leccion* lec = e->getLeccion();        
+        int lecActual= lec->getNumero();
+        Progreso* prog = lec->getProgresos().find(estudiante)->second;
+        int cant = lec->getCantidadDeEjercicios();
+        prog->getEjerciciosResueltos().push_back(e);
+        int ejResueltos = prog->getEjerciciosResueltos().size();
+        if(cant == ejResueltos){
+            Inscripcion* ins = prog->getInscripcion();
+            if(cantidadDeLecciones==lec->getNumero()){
+                prog->setLeccionActual(NULL);
+                ins->setAprobado();
+            }
+            else{
+                Leccion* lecSig;
+                ins->setLeccionActual(lecActual+1);  
+                for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){
+                    if((*it)->getNumero() == lecActual+1){
+                        lecSig = (*it);
+                    }
+                break;
+                }
+            prog->setLeccionActual(lecSig);
+            }
+        }
+        prog->aumentarProgreso(estudiante);
+    }
     return false;
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
