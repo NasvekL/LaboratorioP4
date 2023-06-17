@@ -48,7 +48,8 @@ bool Idioma::estaSuscrito(Usuario* usuario) {
 set<string> Idioma::suscripciones() {
     set<string> usuariosSuscritos;
     for(auto it = observers.begin(); it != observers.end(); it++){
-        usuariosSuscritos.insert(it->getNick());
+        Usuario* obs = dynamic_cast<Usuario*>(*it);
+        usuariosSuscritos.insert(obs->getNick());
     }
     return usuariosSuscritos;
 }

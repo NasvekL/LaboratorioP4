@@ -584,7 +584,7 @@ int main(){
                 //Eliminar suscripciones
                 system("clear");
                 list<string> nicksUsuarios = contCurso.listarNicks();
-                for (auto it = nickUsuarios.begin(); it != nickUsuarios.end(); it++){
+                for (auto it = nicksUsuarios.begin(); it != nicksUsuarios.end(); it++){
                     imprimir(*it);
                 }
                 imprimir("Ingrese el nick del usuario que desea eliminar una/s suscripcion/es: ");
@@ -595,10 +595,9 @@ int main(){
                 for (auto iterador = idiomasSuscrito.begin(); iterador != idiomasSuscrito.end(); iterador++){
                     imprimir(*iterador);
                 }
-                
-                 
                 imprimir("Ingrese el nombre del idioma al cual desea eliminar su suscripcion: ");
-                set<string> suscAEliminar.insert(entradaString());
+                set<string> suscAEliminar;
+                suscAEliminar.insert(entradaString());
                 while (quiereContinuar("Eliminar otra suscripcion")){
                     suscAEliminar.insert(entradaString());
                 }

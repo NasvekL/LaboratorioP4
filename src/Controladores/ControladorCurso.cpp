@@ -575,7 +575,8 @@ list<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
     list<string> idiomasSuscrito;
     set<string> usuariosSuscritos;
     for (auto it = idiomas.begin(); it != idiomas.end(); it++){
-        usuariosSuscritos = it->second.suscripciones();
+        Idioma* idioma = it->second;
+        usuariosSuscritos = idioma->suscripciones();
         if(usuariosSuscritos.find(nick) != usuariosSuscritos.end()){
             idiomasSuscrito.push_back(it->first);
         }
@@ -586,9 +587,7 @@ list<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
 void ControladorCurso::eliminarSuscripciones(set<string> idi) {
     string nick = nickUsuario;
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-
     Usuario *user = cu.getUsuario(nick);
-
     for(auto it = idi.begin(); it != idi.end(); it++){
         Idioma *idiomaAEliminar = idiomas.find(*it)->second;
         idiomaAEliminar->eliminar(user);
