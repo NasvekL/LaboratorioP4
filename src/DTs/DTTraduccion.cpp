@@ -27,7 +27,7 @@ DTTraduccion::DTTraduccion(string descripcion, string letra, int idEjercicio, st
     this->letra = letra;
     this->descripcion = descripcion;
     this->solucion = solucion;
-    this -> numLec = numLec;
+    this->numLec = numLec;
 }
 
 DTTraduccion::~DTTraduccion(){
