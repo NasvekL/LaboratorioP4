@@ -67,21 +67,17 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     this->numero = numero;
     if(listaRellenarPalabras.size()>0){
     for(auto iter=listaRellenarPalabras.begin();iter!=listaRellenarPalabras.end();iter++){
-        cout << "Numero rellenar palabras " << to_string(iter->getNumLec()) << endl;
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new RellenarPalabras(iter->getListaDePalabras(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
-            cout << "Se agrego un ejercicio con id" << to_string(iter->getIdEjercicio()) << endl;
             ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
         }
     }
     }
     if(listaTraduccion.size()>0){
     for(auto iter=listaTraduccion.begin();iter!=listaTraduccion.end();iter++){
-        cout << "Numero traduccion " << to_string(iter->getNumLec()) << endl;
         if(iter->getNumLec()==getNumero()){
-            Ejercicio *ej2 = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
-            cout << "Se agrego un ejercicio con id" << to_string(iter->getIdEjercicio()) << endl;
-            ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej2));
+            Ejercicio *ej = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
+            ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
         }
     }
 }
