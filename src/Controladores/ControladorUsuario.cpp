@@ -114,7 +114,7 @@ list<string> ControladorUsuario::listarUsuarios() {
     // Implementar la lógica para listar los usuarios
     list<string> users;
     for(auto iter=usuarios.begin(); iter!=usuarios.end(); iter++){
-        users.push_back(iter->first);
+        users.push_back(iter->second->getNick());
     }
     // ...
     return users;

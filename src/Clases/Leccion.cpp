@@ -65,12 +65,15 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     this->objetivoAprendizaje = objetivoAprendizaje;
     this->cantidadDeEjercicios = cantidadDeEjercicios;
     this->numero = numero;
+    if(listaRellenarPalabras.size()>0){
     for(auto iter=listaRellenarPalabras.begin();iter!=listaRellenarPalabras.end();iter++){
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new RellenarPalabras(iter->getListaDePalabras(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
             ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
         }
     }
+    }
+    if(listaTraduccion.size()>0){
     for(auto iter=listaTraduccion.begin();iter!=listaTraduccion.end();iter++){
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
@@ -78,7 +81,7 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
         }
     }
 }
-
+}
 Ejercicio* Leccion::seleccionarEj(int idEjercicio) {
     map<int, Ejercicio*> ejercicios = this->getEjercicios();
     auto it = ejercicios.find(idEjercicio);

@@ -45,6 +45,7 @@ class IControladorCurso{
         virtual list<DTRellenarPalabras> getDatosMuchasRellenarPalabras() = 0;
         virtual list<DTTraduccion> getDatosMuchasTraducciones() = 0;
         virtual int getNumeroDeLeccion(string cursoSeleccionado)=0;
+        virtual string getNickUsuario() = 0;
         //Setters virtuales
         virtual void setDatoDeLeccion(DTLeccion datos)= 0;
         virtual void setDatoDeCurso(DTCurso datos)= 0;
@@ -60,6 +61,7 @@ class IControladorCurso{
         virtual void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal) = 0;
         virtual void agregarDatosTraduccion(DTTraduccion tradu) = 0;
         virtual void seleccionIdioma(string idi)=0;
+        virtual void setNickUsuario(string nick) = 0;
         //Operaciones virtuales para modificar el set de cursos
         virtual void altaEjercicio(Leccion* lec)= 0;
         virtual bool altaCurso() = 0;
@@ -97,12 +99,13 @@ class IControladorCurso{
         virtual void seleccionarEjercicio(int idEjercicio)= 0;
         virtual set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso)= 0;
         virtual list<string> verCurso(string curso) = 0;
+        virtual list<string> listarNicks() = 0;
 
         //Operaciones virtuales de suscripciones
         virtual set<string> consultarSuscripciones(string nick)= 0;
         virtual void suscribirUsuario(set<string> idiomas,string nick)= 0;
-        virtual set<string> listarIdiomasSuscrito(string nick)= 0;
-        virtual void eliminarSuscripciones(set<string> idiomas, string nick)= 0;
+        virtual list<string> listarIdiomasSuscrito(string nick)= 0;
+        virtual void eliminarSuscripciones(set<string> idi)= 0;
 
         //Otras operaciones virtuales
         virtual void limpiarDatos()= 0;

@@ -45,9 +45,13 @@ bool Idioma::estaSuscrito(Usuario* usuario) {
     // Implementación de estaSuscrito
     // Retorna true si el usuario está suscrito al idioma
 }
-set<string> Idioma::suscripciones(string nick) {
-    // Implementación de suscripciones
-    // Retorna un conjunto de strings con las suscripciones del usuario dado
+set<string> Idioma::suscripciones() {
+    set<string> usuariosSuscritos;
+    for(auto it = observers.begin(); it != observers.end(); it++){
+        Usuario* obs = dynamic_cast<Usuario*>(*it);
+        usuariosSuscritos.insert(obs->getNick());
+    }
+    return usuariosSuscritos;
 }
 
 Idioma::~Idioma() {

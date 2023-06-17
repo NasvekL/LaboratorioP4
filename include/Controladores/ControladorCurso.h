@@ -42,7 +42,7 @@ class ControladorCurso: public IControladorCurso{
         DTTraduccion* datosTraducir;
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
-        
+        string nickUsuario;        
         //Variable estática para almacenar la instancia única del controlador
         static ControladorCurso* instancia;
         //Constructor privado para evitar la creación de instancias desde fuera de la clase
@@ -76,6 +76,7 @@ class ControladorCurso: public IControladorCurso{
         DTTraduccion getDatosTraduccion();
         Curso* getCurso(string nombreCurso);
         int getNumeroDeLeccion(string cursoSeleccionado);
+        string getNickUsuario();
         //Setters
         void setIdEjercicio(int id);
         void setDatoDeCurso(DTCurso datos);            //void DatosCurso(DTCurso data)
@@ -91,6 +92,7 @@ class ControladorCurso: public IControladorCurso{
         void setDatosEjercicioTraduccion(DTTraduccion datos);             //void agregarTradu(string descripcion, string fraseATraducir, string traduccion);
         void agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal);
         void agregarDatosTraduccion(DTTraduccion tradu);
+        void setNickUsuario(string nick);
 
 
         //Operaciones para modificar el set de cursos
@@ -128,12 +130,13 @@ class ControladorCurso: public IControladorCurso{
         void seleccionarEjercicio(int idEjercicio);
         set<DTEjercicio> seleccionarEjerciciosDeCurso(string curso);//set<DTEjercicio> seleccionarCurso(string curso);
         list<string> verCurso(string curso);
+        list<string> listarNicks();
 
         //Operaciones de suscripciones
         set<string> consultarSuscripciones(string nick);
         void suscribirUsuario(set<string> idiomas,string nick);
-        set<string> listarIdiomasSuscrito(string nick);//no iria en controlador usuario??
-        void eliminarSuscripciones(set<string> idiomas, string nick);//en el diagrama de clases falta el nick
+        list<string> listarIdiomasSuscrito(string nick);//no iria en controlador usuario??
+        void eliminarSuscripciones(set<string> idi);//en el diagrama de clases falta el nick
 
         //Otras operaciones
         void limpiarDatos(); //borra todos los datos de los atributos auxiliares

@@ -582,9 +582,31 @@ int main(){
             }
             case 16:{
                 //Eliminar suscripciones
-                /*system("clear");
-                contCurso.eliminarSuscripciones();
-                break;*/
+                system("clear");
+                list<string> nicksUsuarios = contCurso.listarNicks();
+                for (auto it = nicksUsuarios.begin(); it != nicksUsuarios.end(); it++){
+                    imprimir(*it);
+                }
+                imprimir("Ingrese el nick del usuario que desea eliminar una/s suscripcion/es: ");
+                string nick = entradaString();
+                contCurso.setNickUsuario(nick);
+
+                list<string> idiomasSuscrito = contCurso.listarIdiomasSuscrito(nick);
+                for (auto iterador = idiomasSuscrito.begin(); iterador != idiomasSuscrito.end(); iterador++){
+                    imprimir(*iterador);
+                }
+                imprimir("Ingrese el nombre del idioma al cual desea eliminar su suscripcion: ");
+                set<string> suscAEliminar;
+                suscAEliminar.insert(entradaString());
+                while (quiereContinuar("Eliminar otra suscripcion")){
+                    suscAEliminar.insert(entradaString());
+                }
+
+                contCurso.eliminarSuscripciones(suscAEliminar);
+                imprimir("Suscripciones eliminadas", VERDE);
+
+                    
+                break;
             }
             case 17:{
                 system("clear");

@@ -93,6 +93,10 @@ list<DTTraduccion> ControladorCurso::getDatosMuchasTraducciones(){
 int ControladorCurso::getNumeroDeLeccion(string cursoSeleccionado){
     return cursos.find(cursoSeleccionado)->second->getLecciones().size();
 }
+
+string ControladorCurso::getNickUsuario(){
+    return nickUsuario;
+}
 //Setters
 void ControladorCurso::setDatoDeLeccion(DTLeccion datos) {
     datoDeLeccion = new DTLeccion(datos.getNumero(),datos.getCantidadDeEjercicios(),datos.getObjetivoAprendizaje(),datos.getTema());
@@ -137,6 +141,10 @@ void ControladorCurso::setDatosEjercicioTraduccion(DTTraduccion datos) {
 
 void ControladorCurso::seleccionIdioma(string idi){
     datoIdioma = idi;
+}
+
+void ControladorCurso::setNickUsuario(string nick){
+    this->nickUsuario = nick;
 }
 //Operaciones para modificar el set de cursos
 bool ControladorCurso::altaCurso() {
@@ -261,9 +269,11 @@ void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
 }
 
 void ControladorCurso::agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal){
+    
     datosRellenarPalabras.push_back(ejRellPal);
 };
 void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
+    
     datosTraduccion.push_back(tradu);
 };
 
@@ -559,12 +569,29 @@ void ControladorCurso::suscribirUsuario(set<string> idiomas,string nick) {
         idioma->agregar(user);
     }
 }
-set<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
-    // Implementación pendiente
-    return set<string>();
+list<string> ControladorCurso::listarIdiomasSuscrito(string nick) {
+    //ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    //Usuario* user = cu.getUsuario(nick);
+    list<string> idiomasSuscrito;
+    set<string> usuariosSuscritos;
+    for (auto it = idiomas.begin(); it != idiomas.end(); it++){
+        Idioma* idioma = it->second;
+        usuariosSuscritos = idioma->suscripciones();
+        if(usuariosSuscritos.find(nick) != usuariosSuscritos.end()){
+            idiomasSuscrito.push_back(it->first);
+        }
+    }
+
+    return idiomasSuscrito;
 }
-void ControladorCurso::eliminarSuscripciones(set<string> idiomas, string nick) {
-    // Implementación pendiente
+void ControladorCurso::eliminarSuscripciones(set<string> idi) {
+    string nick = nickUsuario;
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    Usuario *user = cu.getUsuario(nick);
+    for(auto it = idi.begin(); it != idi.end(); it++){
+        Idioma *idiomaAEliminar = idiomas.find(*it)->second;
+        idiomaAEliminar->eliminar(user);
+    }
 }
 
 string ControladorCurso::getTipoEjercicio(int id) {
@@ -616,4 +643,9 @@ set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
 
 set<DTLeccion> ControladorCurso:: ListarLecciones(string cursoLec){  //implementar
     //return set<DTLeccion>
+}
+
+list<string> ControladorCurso:: listarNicks(){
+    ControladorUsuario& cu = ControladorUsuario::getInstancia();
+    return cu.listarUsuarios();
 }
