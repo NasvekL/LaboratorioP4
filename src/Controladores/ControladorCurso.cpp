@@ -418,9 +418,52 @@ return cursosNoHabilitados;
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
     Ejercicio* ej = getEjercicioEnMemoria();
-    if(ej->esCorrectoRellenarPal(solucion)){
-        ej->aumentarProgreso(estudiante);
+    bool esCorrecta = ej->esCorrectoRellenarPal(solucion);
+    Ejercicio* e = getEjercicioEnMemoria();
+    Curso* cur = getCursoEnMemoria();                       //obtengo curso
+    int cantidadDeLecciones = cur->getLecciones().size();   //obtengo cantidad de lecciones
+    if(esCorrecta){                                       //si es correcta
+        Leccion* lec = e->getLeccion();           //obtengo leccion
+        int lecActual= lec->getNumero();      //obtengo numero de leccion
+        Progreso* prog = lec->getProgresos().find(estudiante)->second;   //obtengo progreso
+        int cant = lec->getCantidadDeEjercicios();   //obtengo cantidad de ejercicios
+        prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
+        int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
+        if(cant == ejResueltos){
+            Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
+            if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
+                prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
+                ins->setAprobado();             //seteo inscripcion a aprobado
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+            }       
+            else{       
+                Leccion* lecSig;        //obtengo leccion siguiente
+                ins->setLeccionActual(lecActual+1);         //seteo leccion actual
+                for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){      //recorro lecciones
+                    if((*it)->getNumero() == lecActual+1){      //si es la leccion siguiente
+                        lecSig = (*it);     //guardo leccion siguiente
+                    }
+                break;
+                }
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+                prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
+                prog->setLeccionActual(lecSig);     //seteo leccion actual
+            }    
+        prog->setPorcentaje(0);     //seteo porcentaje de leccion
+        }
+        else{
+            prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+            prog->aumentarProgreso(estudiante);     //aumento progreso
+        }
+    ejercicio=NULL;     //seteo ejercicio a NULL
+    curso=NULL;     //seteo curso a NULL
+    return true;        //retorno true
     }
+    else{
+    ejercicio=NULL;     //seteo ejercicio a NULL
+    curso=NULL;         
+    return false;
+    } 
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
     Ejercicio* e = getEjercicioEnMemoria();
@@ -466,7 +509,7 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
     }
     else{
     ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;         //seteo curso a NULL
+    curso=NULL;         
     return false;
     }
 }
