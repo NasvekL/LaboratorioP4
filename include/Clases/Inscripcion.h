@@ -36,7 +36,7 @@ class Inscripcion{
         Inscripcion(DTFecha fecha,Progreso* prog);
         ~Inscripcion();
 
-        void conseguirInfoInscripcion(list<string> infoInsc);
+        void conseguirInfoInscripcion(list<string> &infoInsc);
     
 };
 

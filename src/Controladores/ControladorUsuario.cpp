@@ -128,7 +128,6 @@ list<DTEstudianteSC> ControladorUsuario::listarEstudiantes() {
         if (tipoUsuario == "estudiante") {
             Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario.second);
             DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNick(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
-            DTEstudianteSC estu =  DTEstudianteSC(estudiante->getNick(), estudiante->getNombre(), estudiante->getDescripcion(), estudiante->getPais() , estudiante->getNacimiento());
             estudiantes.push_back(estu);
         }
     }

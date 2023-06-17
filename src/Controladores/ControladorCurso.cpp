@@ -468,17 +468,12 @@ string ControladorCurso::getTipoEjercicio(int id) {
 }
 
 list<string> ControladorCurso::verCurso(string curso){
-    
-    /*
     list<string> datosCurso;
     string cursoBuscado = curso;
     auto it = cursos.find(cursoBuscado);
-    //Ver que hacer en caso de que me ingresen mal el curso
     Curso *cur = it->second;
     cur->conseguirInfoCurso(datosCurso); //Obtengo en la lista toda la info del curso
     return datosCurso;
-    */
-    return list<string>();
 }
 
 

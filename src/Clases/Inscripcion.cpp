@@ -42,9 +42,14 @@ Inscripcion::~Inscripcion() {
     delete this->prog;
 }
 
-void Inscripcion::conseguirInfoInscripcion(list<string> infoInsc){
-    /*
-    string datosInsc = estudiante->getNombre() + "\n" + "Fecha de inscripcion: " + fecha->to_string() + "\n" + "\n";
+void Inscripcion::conseguirInfoInscripcion(list<string> &infoInsc){
+    string aprobadoString;
+    if(aprobado){
+        aprobadoString="si";
+    }
+    else{
+        aprobadoString="no";
+    }
+    string datosInsc = estudianteInscrito->getNombre() + "\n" + "Fecha de inscripcion: " + fecha.toString() + "\n" +"aprobado: "+ aprobadoString +  "\n";
     infoInsc.push_back(datosInsc);
-    */
 }

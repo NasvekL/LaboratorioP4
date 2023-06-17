@@ -143,9 +143,9 @@ int Curso::cantidadDeEjercicios(){
     return cant;
 }
 
-void Curso::conseguirInfoCurso(list<string> infoCur){
+void Curso::conseguirInfoCurso(list<string> &infoCur){
     
-    /*
+    
     string hab;
     if (habilitado){
         hab = "Habilitado";
@@ -158,22 +158,20 @@ void Curso::conseguirInfoCurso(list<string> infoCur){
     
     
 
-    if (lecciones != nullptr){  //Si tiene lecciones
+    if (lecciones.size()!=0){  //Si tiene lecciones
         int a = 1;
         for (auto it = lecciones.begin(); it != lecciones.end(); it++){
             string aux = "Leccion" + to_string(a) + ":" + "\n";
             infoCur.push_back(aux);
-            it->conseguirInfoLeccion(infoCur);
+            (*it)->conseguirInfoLeccion(infoCur);
             a++;
         }
     }
 
-    if(inscripciones != nullptr){     //Si tiene inscripciones
+    if(inscripciones.size()!=0){     //Si tiene inscripciones
         infoCur.push_back("Estudiantes Inscriptos: \n");      
         for (auto iterador = inscripciones.begin(); iterador != inscripciones.end(); iterador++){
-            iterador->conseguirInfoInscripcion(infoCur);
+            (*iterador)->conseguirInfoInscripcion(infoCur);
         }
     }
-    */
-
 }

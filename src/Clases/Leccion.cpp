@@ -93,3 +93,6 @@ set<DTEjercicio> Leccion::ejerciciosNoAprobados(string nick) {
     // Implementación de ejerciciosNoAprobados
     // Retorna un conjunto de DTEjercicio de los ejercicios no aprobados por el estudiante con el nickname proporcionado
 }
+void Leccion::conseguirInfoLeccion(list<string> &infoLeccion){
+
+}

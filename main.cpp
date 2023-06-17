@@ -234,7 +234,11 @@ int main(){
                     if(!quiereContinuar("Agregar otra leccion"))
                         opcion = "N";
                 }
-                contCurso.altaCurso();
+                if(contCurso.altaCurso())
+                imprimir("Curso creado", VERDE);
+                else
+                imprimir("Curso no creado", ROJO); 
+                presionaParaContinuar();
                 break;
             }
             case 6:{
@@ -366,9 +370,9 @@ int main(){
             case 10:{
                 //Consultar curso
                 system("clear");
-                /*imprimir("Cursos Disponibles:");
+                imprimir("Cursos Disponibles:");
                 set<string> nombreCursos = contCurso.listarNombresDeCursos();
-                for(auto it = nombreCursos.begin(); it != nombreCursos().end; it++){
+                for(auto it = nombreCursos.begin(); it != nombreCursos.end(); it++){
                     imprimir(*it);
                 }
                 imprimir("Seleccionar curso:");
@@ -376,10 +380,9 @@ int main(){
                 list<string> infoCurso = contCurso.verCurso(cursoSeleccionado);
 
                 for (auto iterador = infoCurso.begin(); iterador != infoCurso.end(); iterador++){
-                    imprimir(*it);
+                    imprimir(*iterador);
                 }
-
-                */
+                presionaParaContinuar();
                 break;
             }
             case 11:{
