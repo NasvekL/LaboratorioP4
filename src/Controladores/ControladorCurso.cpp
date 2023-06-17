@@ -225,7 +225,7 @@ void ControladorCurso::altaLeccion(string curso){
     cur->agregarLeccion(nuevaLec);
     if(!nuevaLec->getEjercicios().empty()){
     for(auto it = nuevaLec->getEjercicios().begin(); it != nuevaLec->getEjercicios().end(); it++){
-        ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+        ejercicios.insert(std::make_pair(it->first, it->second));
     }
     }
     datosTraduccion.clear();
@@ -260,9 +260,11 @@ void ControladorCurso::agregarEjercicio(DTEjercicio datos) {
 }
 
 void ControladorCurso::agregarDatosRellenarPalabras(DTRellenarPalabras ejRellPal){
+    
     datosRellenarPalabras.push_back(ejRellPal);
 };
 void ControladorCurso::agregarDatosTraduccion(DTTraduccion tradu){
+    
     datosTraduccion.push_back(tradu);
 };
 
