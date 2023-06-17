@@ -434,7 +434,11 @@ int main(){
                 }
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
-                contCurso.seleccionarEjerciciosDeCurso(curso);
+                set<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
+                auto it2 = ejerciciosSinHacer.begin();
+                for(it2; it2!=ejerciciosSinHacer.end(); it2++){
+                    imprimir(to_string(it2->getIdEjercicio()));
+                }
                 break;
             }
             case 13:{
