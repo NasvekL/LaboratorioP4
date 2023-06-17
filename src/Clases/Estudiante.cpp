@@ -57,7 +57,7 @@ set<string> Estudiante::getCursosInscriptosSA() {
     list<Inscripcion*> inscripciones = getInscripciones();
     set<string> cursosInscriptos;
     for (auto it = inscripciones.begin(); it != inscripciones.end(); it++) {
-        if ((*it)->getAprobado()) {
+        if (!(*it)->getAprobado()) {
             cursosInscriptos.insert((*it)->getInscriptoA()->getNombreCurso());
         }   
     }

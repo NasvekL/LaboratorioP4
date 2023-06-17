@@ -137,11 +137,11 @@ int main(){
                     contUsuario.seleccionarUsuario(nick);
                     DTEstudiante dte = contUsuario.getDatoEstudiante();
                     //imprimir("Nombre", AMARILLO);
-                    imprimir("Nombre", AMARILLO + dte.getNombre());
+                    imprimir("Nombre: " + dte.getNombre());
                     //imprimir("Descripcion", AMARILLO);
-                    imprimir("Descripcion", AMARILLO + dte.getDescripcion());
+                    imprimir("Descripcion: "+ dte.getDescripcion());
                     //imprimir("Pais", AMARILLO);
-                    imprimir("Pais", AMARILLO + dte.getPais());
+                    imprimir("Pais: " + dte.getPais());
                     presionaParaContinuar();
                 } 
                 else{ 
@@ -436,7 +436,8 @@ int main(){
                 set<string> cursosISA = contCurso.cursosInscriptoSinAprobar(nick);
                 auto it = cursosISA.begin();
                 for(it; it != cursosISA.end(); it++){
-                    imprimir((*it));
+                    string curso = (*it);
+                    imprimir(curso);
                 }
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
@@ -535,7 +536,7 @@ int main(){
                 list<string> listaU = contUsuario.listarUsuarios();
                 int a=1;
                 for(auto it = listaU.begin(); it != listaU.end(); ++it){
-                    imprimir(to_string(a) + *it);
+                    imprimir(to_string(a) +" "+ *it);
                     a++;
                 }
                 imprimir("Escriba el nickname del usuario que desea suscribirse:");
@@ -556,6 +557,7 @@ int main(){
                 }
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
+                presionaParaContinuar();
                 break;
             }
             case 15:{
@@ -575,10 +577,10 @@ int main(){
                     imprimir(noti.getCurso());
                     imprimir(noti.getIdioma()->getNombreIdioma());
                 }
-                //interfazCurso->consultaNotificaciones();
-                break;
+                presionaParaContinuar();
                 }
                 contUsuario.eliminarNotificaciones(nick);
+                break;
             }
             case 16:{
                 //Eliminar suscripciones

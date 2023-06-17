@@ -17,7 +17,9 @@ void Leccion::setCantidadEjercicios(int cantidadDeEjercicios) {
 void Leccion::setNumero(int numero) {
     this->numero = numero;
 }
-
+void Leccion::eliminarProgreso(string nick){
+    progresos.erase(nick);
+}
 string Leccion::getTema() {
     return tema;
 }
@@ -96,8 +98,30 @@ void Leccion::aumentarProgreso(Estudiante e) {
 }
 
 set<DTEjercicio> Leccion::ejerciciosNoAprobados(string nick) {
-    // Implementación de ejerciciosNoAprobados
-    // Retorna un conjunto de DTEjercicio de los ejercicios no aprobados por el estudiante con el nickname proporcionado
+    set<DTEjercicio> ejerciciosNoAprobados;
+    Progreso* prog = progresos.find(nick)->second;
+    list<Ejercicio*> ejerciciosAprobados = prog->getEjerciciosResueltos();
+    for(auto it = ejercicios.begin();it!=ejercicios.end();it++){
+        bool esta = false;
+        for(auto iter = ejerciciosAprobados.begin();iter!=ejerciciosAprobados.end();iter++){
+            if(it->second->getIdEjercicio()==(*iter)->getIdEjercicio()){
+                esta = true;
+                break;
+            }
+        }
+        if(!esta){
+            Ejercicio* ej = it->second;
+            if(ej=dynamic_cast<RellenarPalabras*>(ej)){
+                DTEjercicio* dt = new DTEjercicio(it->second->getIdEjercicio(),it->second->getDescripcion(),it->second->getLetra(),"RellenarPalabras",this->numero);
+                ejerciciosNoAprobados.insert(*dt);
+            }
+            else{
+                DTEjercicio* dt= new DTEjercicio(it->second->getIdEjercicio(),it->second->getDescripcion(),it->second->getLetra(),"Traduccion",numero);
+                ejerciciosNoAprobados.insert(*dt);
+            }
+        }
+    }
+    return ejerciciosNoAprobados;
 }
 void Leccion::conseguirInfoLeccion(list<string> &infoLeccion){
     string datosLeccion;

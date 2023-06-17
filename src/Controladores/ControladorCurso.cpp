@@ -452,6 +452,7 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
         prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
         int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
         if(cant == ejResueltos){
+            lec->eliminarProgreso(estudiante);      //elimino progreso
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
@@ -461,7 +462,8 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
             else{       
                 Leccion* lecSig;        //obtengo leccion siguiente
                 ins->setLeccionActual(lecActual+1);         //seteo leccion actual
-                for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){      //recorro lecciones
+                list<Leccion*> lecciones = cur->getLecciones();     //obtengo lecciones
+                for(auto it = lecciones.begin(); it != lecciones.end(); ++it){      //recorro lecciones
                     if((*it)->getNumero() == lecActual+1){      //si es la leccion siguiente
                         lecSig = (*it);     //guardo leccion siguiente
                     }
@@ -472,6 +474,7 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
                 prog->setLeccionActual(lecSig);     //seteo leccion actual
             }    
         prog->setPorcentaje(0);     //seteo porcentaje de leccion
+
         }
         else{
             prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
@@ -637,8 +640,7 @@ void ControladorCurso::limpiarDatos() {
 
 set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    cu.cursosInscriptosSinAprobar(nick);
-    
+    return cu.cursosInscriptosSinAprobar(nick);
 }
 
 set<DTLeccion> ControladorCurso:: ListarLecciones(string cursoLec){  //implementar

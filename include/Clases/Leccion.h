@@ -41,6 +41,7 @@ class Leccion{
         //operaciones
         Ejercicio* seleccionarEj(int idEjercicio);
         void aumentarProgreso(Estudiante e);
+        void eliminarProgreso(string nick);
         set<DTEjercicio> ejerciciosNoAprobados(string nick);
         void conseguirInfoLeccion(list<string> &infoLeccion);
 };

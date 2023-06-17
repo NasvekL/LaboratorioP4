@@ -194,10 +194,9 @@ set<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
 
 set<string> ControladorUsuario::cursosInscriptosSinAprobar(string nick) {
     //Buscarlo
-    auto it = usuarios.find(nick);
-    Usuario* usuario = it->second;
+
     //Setearlo
-    Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario);
+    Estudiante* estudiante = encontrarEstudiante(nick);
     DTEstudiante dt = estudiante->getDTEstudiante();
     setDatoEstudiante(dt);
     //Trabajo
