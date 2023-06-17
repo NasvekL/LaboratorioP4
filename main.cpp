@@ -944,14 +944,12 @@ string entradaString(){
     bool alfanumerico = false;
     string entrada;
     cout << AZUL;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(cin, entrada);
+    getline(cin >> ws, entrada);
     cout << RESET;
     while(!esAlfanumerico(entrada)){
-        cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET;
+        cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET << endl;
         cout << "Ingrese nuevamente:" << endl;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        getline(cin, entrada);
+        getline(cin >> ws, entrada);
     }
     escribirEnLog("U: " + entrada);
     return entrada;
