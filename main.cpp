@@ -439,6 +439,9 @@ int main(){
                 for(it2; it2!=ejerciciosSinHacer.end(); it2++){
                     imprimir(to_string(it2->getIdEjercicio()));
                 }
+                imprimir("Ingrese ID del ejercicio: ");
+                int id = entradaInt();
+                contCurso.seleccionarEjercicio(id);
                 break;
             }
             case 13:{

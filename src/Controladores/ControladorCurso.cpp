@@ -66,6 +66,10 @@ Curso* ControladorCurso::getCursoEnMemoria(){
     return curso;
 }
 
+Ejercicio* ControladorCurso::getEjercicioEnMemoria(){
+    return ejercicio;
+}
+
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
@@ -109,6 +113,10 @@ void ControladorCurso::setProfesor(Profesor* profesor) {
 
 void ControladorCurso::setCursoEnMemoria(Curso* curso) {
     this->curso = curso;
+}
+
+void ControladorCurso::setEjercicioEnMemoria(Ejercicio* ejercicio) {
+    this->ejercicio = ejercicio;
 }
 
 void ControladorCurso::setDatoIdioma(string idioma) {
@@ -417,7 +425,8 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
     return false;
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
-    // Implementación pendiente
+    Curso* c = getCursoEnMemoria();
+    c->
 }
 set<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
