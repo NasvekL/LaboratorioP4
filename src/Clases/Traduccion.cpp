@@ -1,6 +1,6 @@
 #include "../../include/Clases/Traduccion.h"
 
-Traduccion::Traduccion(string solucion, int idEjercicio, string descripcion, string letra,Leccion* lec) : Ejercicio(), solucion(solucion) {
+Traduccion::Traduccion(string solucion, int idEjercicio, string descripcion, string letra,Leccion* lec)  {
     this->solucion = solucion;
     this->setIdEjercicio(idEjercicio);
     this->setDescripcion(descripcion);

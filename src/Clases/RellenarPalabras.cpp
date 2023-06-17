@@ -1,6 +1,6 @@
 #include "../../include/Clases/RellenarPalabras.h"
 
-RellenarPalabras::RellenarPalabras(list<string> listaDePalabras, int idEjercicio, string descripcion, string letra, Leccion* Lec): Ejercicio(), listaDePalabras(listaDePalabras) {
+RellenarPalabras::RellenarPalabras(list<string> listaDePalabras, int idEjercicio, string descripcion, string letra, Leccion* Lec) {
     this->listaDePalabras = listaDePalabras;
     this->setIdEjercicio(idEjercicio);
     this->setDescripcion(descripcion);
