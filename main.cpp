@@ -921,7 +921,7 @@ int entradaInt(){
         try{
             string entradita;
             cout << AZUL;
-            getline(cin, entradita);
+            cin >> entradita;
             cout << RESET;
             entrada = stoi(entradita);
         }catch(...){
