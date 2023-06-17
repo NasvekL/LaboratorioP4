@@ -135,10 +135,11 @@ bool ControladorCurso::altaCurso() {
     auto it = idiomas.find(datoIdioma);
     Idioma* idi = it->second;
     Curso* cur =NULL;
-    if(!datosPrevias.empty())
-    for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
-        Curso* curso =cursos.find(*iter)->second;
-        datosPrevias.insert(std::make_pair(*iter,curso));
+    if(!datosPrevias.empty()){
+        for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
+            Curso* curso =cursos.find(*iter)->second;
+            datosPrevias.insert(std::make_pair(*iter,curso));
+        }
     }
     cur = new Curso(datoDeCurso->getNombre(),datoDeCurso->getDescripcion(),datoDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
     cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
