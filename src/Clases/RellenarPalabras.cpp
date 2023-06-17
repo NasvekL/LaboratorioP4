@@ -18,11 +18,20 @@ bool RellenarPalabras::esCorrectoTraduccion(string respuestas) {
     // Comparar las respuestas con la lista de palabras esperadas
     // ...
 }
-bool RellenarPalabras::esCorrectoRellenarPal(list<string> respuestas) {
-    return false;
-    // Implementar la lógica para verificar si las respuestas son correctas
-    // Comparar las respuestas con la lista de palabras esperadas
-    // ...
+bool RellenarPalabras::esCorrectoRellenarPal(set<string> respuestas) {
+    bool resp = true;
+    auto it = respuestas.begin();
+    list<string> sol = getlista();
+    auto it2 = sol.begin();
+    while(resp && it!= respuestas.end() && it2 != sol.end()){
+        if((*it) != (*it2)){
+            resp = false;
+        }
+    }
+    if(it == respuestas.end() && it2 != sol.end()){
+        resp = false;
+    }
+    return resp;
 }
 
 void RellenarPalabras::aumentarProgreso(string estudiante) {

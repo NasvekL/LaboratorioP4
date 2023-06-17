@@ -417,9 +417,10 @@ return cursosNoHabilitados;
 }
 
 bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
-    Ejercicio* e = getEjercicioEnMemoria();
-    
-    return false;
+    Ejercicio* ej = getEjercicioEnMemoria();
+    if(ej->esCorrectoRellenarPal(solucion)){
+        ej->aumentarProgreso(estudiante);
+    }
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
     // Implementación pendiente
