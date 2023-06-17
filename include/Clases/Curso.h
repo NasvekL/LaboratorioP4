@@ -26,7 +26,6 @@ class Curso{
         nivelDeDificultad nivelDeDif;
         bool habilitado;
         list<Curso*> previas; 
-        int cantidadDeEjercicios;
         //Pseudoatributos
         Idioma* idiomaDelCurso;
         Profesor* profesorQueLoDicta;

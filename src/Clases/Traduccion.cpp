@@ -17,7 +17,7 @@ bool Traduccion::esCorrectoTraduccion(string solucion) {
     // Implementar la lógica para verificar si la solución es correcta
     return (this->solucion == solucion);
 }
-bool Traduccion::esCorrectoRellenarPal(list<string> solucion) {
+bool Traduccion::esCorrectoRellenarPal(set<string> solucion) {
     return false;
     // Implementar la lógica para verificar si la solución es correcta
     // ...

@@ -439,6 +439,7 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
             if(cantidadDeLecciones==lec->getNumero()){
                 prog->setLeccionActual(NULL);
                 ins->setAprobado();
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));
             }
             else{
                 Leccion* lecSig;
@@ -449,11 +450,18 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
                     }
                 break;
                 }
-                prog->setPorcentajeCurso((1/cur->cantidadDeEjercicios())*100);
-            prog->setLeccionActual(lecSig);
+                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));
+                prog->limpiarEjerciciosResueltos();
+                prog->setLeccionActual(lecSig);
             }    
+        prog->setPorcentaje(0);
+        }
+        else{
+            prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));
+            prog->aumentarProgreso(estudiante);
         }
     }
+    else
     return false;
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
