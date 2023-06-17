@@ -448,13 +448,14 @@ int main(){
                 string estudiante = nick;
                 int idEj;
                 if(contCurso.getTipoEjercicio(idEj) == "completar"){
-                    contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
-                    while(palabra != "0"){
+                    imprimir("Ingrese las palabras que faltan separado por coma");
+                    string palabra = entradaString();
+                    list<string> palabras = separarString(palabra,',');
+                    set<string> solucion;
+                    for(auto it = palabras.begin(); it != palabras.end(); it++){
                         solucion.insert(palabra);
                         palabra = entradaString();
                     }
-
-                    set<string> solucion;
                     contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
                 }
                 else{
