@@ -448,7 +448,13 @@ int main(){
                 string estudiante = nick;
                 int idEj;
                 if(contCurso.getTipoEjercicio(idEj) == "completar"){
-                    solucion;
+                    contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
+                    while(palabra != "0"){
+                        solucion.insert(palabra);
+                        palabra = entradaString();
+                    }
+
+                    set<string> solucion;
                     contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
                 }
                 else{
