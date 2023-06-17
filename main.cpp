@@ -444,9 +444,22 @@ int main(){
                 int id = entradaInt();
                 contCurso.seleccionarEjercicio(id);
                 string estudiante;
-                set<string> solucion;
                 int idEj;
                 if(contCurso.getTipoEjercicio(idEj) == "completar"){
+                    set<string> solucion;
+                    imprimir("Ingrese la solucion del ejercicio separada por coma: ");
+                    string palabra = entradaString();
+                    list <string> soluciones = separarString(palabra,',');
+                    for(auto it = soluciones.begin(); it != soluciones.end(); it++){
+                        solucion.insert(*it);
+                    }
+                    contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
+                    while(palabra != "0"){
+                        solucion.insert(palabra);
+                        palabra = entradaString();
+                    }
+
+                    set<string> solucion;
                     contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
                 }
                 else{
