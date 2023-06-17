@@ -220,6 +220,7 @@ bool ControladorCurso::confirmarAltaIdioma(string idioma) {
 
 void ControladorCurso::altaLeccion(string curso){
     Leccion *nuevaLec = new Leccion(datoDeLeccion->getTema(), datoDeLeccion->getObjetivoAprendizaje(), datoDeLeccion->getCantidadDeEjercicios(), datoDeLeccion->getNumero(),datosRellenarPalabras,datosTraduccion);
+    cout << "Leccion creada" << endl;
     auto iter = cursos.find(curso);
     Curso *cur = iter->second;
     cur->agregarLeccion(nuevaLec);

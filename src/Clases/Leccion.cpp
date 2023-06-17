@@ -41,7 +41,7 @@ int Leccion::getNumero() {
 }
 
 map<int, Ejercicio*> Leccion::getEjercicios(){
-    //return ejercicios;
+    return ejercicios;
 }
 
 map<string, Progreso*> Leccion :: getProgresos(){
