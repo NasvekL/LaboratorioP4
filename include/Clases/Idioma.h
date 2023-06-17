@@ -20,7 +20,7 @@ class Idioma{
         bool estaSuscrito(Usuario* usuario);
         void agregar(Usuario* u); //agregar sucriptor
         void eliminar(Usuario* u); //eliminar suscriptor
-        set<string> suscripciones(string nick);
+        set<string> suscripciones();
         //constructor y destructor
         Idioma(string nombreIdioma);
         ~Idioma();
