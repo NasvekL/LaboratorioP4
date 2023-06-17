@@ -577,7 +577,7 @@ int main(){
             case 16:{
                 //Eliminar suscripciones
                 system("clear");
-                contCurso.eliminarSuscripciones();
+                //contCurso.eliminarSuscripciones();
                 break;
             }
             case 17:{
