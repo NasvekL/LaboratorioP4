@@ -8,6 +8,7 @@ class Inscripcion;
 class Progreso{
     private:
         int porcentaje;
+        int porcentajeCurso;
         //Pseudoatributos
         Inscripcion* inscripcion;
         Leccion* leccionActual;
@@ -16,6 +17,7 @@ class Progreso{
         virtual bool esCorrecto(string solucion);
         void aumentarProgreso(string estudiante);
         //setters
+        void setPorcentajrCurso(int porcen);
         void setPorcentaje(int porcentaje);
         void setInscripcion(Inscripcion* insc);
         void setLeccionActual(Leccion* lec);
@@ -23,6 +25,7 @@ class Progreso{
         int getPorcentaje();
         Inscripcion* getInscripcion();
         list<Ejercicio*> getEjerciciosResueltos();
+        int getPorcentajeCurso();
         //constructor destructor
         Progreso(Leccion* lec);
         ~Progreso();
