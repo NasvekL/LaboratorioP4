@@ -7,12 +7,13 @@ bool Progreso::esCorrecto(string solucion) {
 }
 
 void Progreso::aumentarProgreso(string estudiante) {
-    // Implementar la lógica para aumentar el progreso del estudiante
-    // según la resolución exitosa de un ejercicio o lección
-    // ...
+    int aumento = ejerciciosResueltos.size()/leccionActual->getCantidadDeEjercicios();
 }
 void Progreso::setLeccionActual(Leccion* lec) {
     this->leccionActual = lec;
+}
+void Progreso::setPorcentajeCurso(int porcentaje) {
+    porcentajeCurso += porcentaje;
 }
 void Progreso::setPorcentaje(int porcentaje) {
     this->porcentaje = porcentaje;

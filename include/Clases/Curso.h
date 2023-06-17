@@ -26,6 +26,7 @@ class Curso{
         nivelDeDificultad nivelDeDif;
         bool habilitado;
         list<Curso*> previas; 
+        int cantidadDeEjercicios;
         //Pseudoatributos
         Idioma* idiomaDelCurso;
         Profesor* profesorQueLoDicta;
@@ -45,7 +46,6 @@ class Curso{
         list<Curso*> getPrevias();
         //SETTERS
         void setHabilitado(bool habilitado);
-
         //GETTERS DE PSEUDOATRIBUTOS
         Idioma* getIdiomaDelCurso();
         Profesor* getProfesorQueLoDicta();
