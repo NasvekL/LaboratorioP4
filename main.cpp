@@ -12,6 +12,7 @@
 #define VERDE    "\x1b[38;5;10m"
 #define AMARILLO "\x1b[38;5;11m"
 #define AZUL     "\x1b[38;5;45m"
+bool seAgregaronLosDatos = false;
 
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
@@ -56,7 +57,8 @@ int menuPrincipal(){
     imprimir("14. Suscribirse a notificaciones");
     imprimir("15. Consulta de notificaciones");
     imprimir("16. Eliminar suscripciones");
-    imprimir("17. Agregar datos", VERDE);
+    if (!seAgregaronLosDatos)
+        imprimir("17. Agregar datos", VERDE);
     imprimir("Ingrese una opcion: ");
     int opcion = entradaInt();
     return opcion;
@@ -611,16 +613,21 @@ int main(){
                 break;
             }
             case 17:{
-                system("clear");
-                ingresarIdiomas();
-                imprimir("Datos de prueba agregados (idiomas).", VERDE);
-                ingresarUsuarios();
-                imprimir("Datos de prueba agregados (usuarios).", VERDE);
-                ingresarCursos();
-                imprimir("Datos de prueba agregados (cursos).", VERDE);
-                imprimir("Faltan datos de prueba (inscripciones)", ROJO);
-                imprimir("Faltan datos de prueba (lecciones)", ROJO);
-                imprimir("Faltan datos de prueba (ejercicios)", ROJO);
+                if(!seAgregaronLosDatos){
+                    system("clear");
+                    ingresarIdiomas();
+                    imprimir("Datos de prueba agregados (idiomas).", VERDE);
+                    ingresarUsuarios();
+                    imprimir("Datos de prueba agregados (usuarios).", VERDE);
+                    ingresarCursos();
+                    imprimir("Datos de prueba agregados (cursos).", VERDE);
+                    imprimir("Faltan datos de prueba (inscripciones)", ROJO);
+                    imprimir("Faltan datos de prueba (lecciones)", ROJO);
+                    imprimir("Faltan datos de prueba (ejercicios)", ROJO);
+                    seAgregaronLosDatos = true;
+                }else{
+                    imprimir("Los datos ya fueron agregados", AMARILLO);
+                }
                 presionaParaContinuar();
                 break;
             }
