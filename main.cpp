@@ -936,7 +936,7 @@ int entradaInt(){
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
 bool esAlfanumerico(string str) {
-    regex pattern("[a-zA-Z0-9,_\\-]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
+    regex pattern("[a-zA-Z0-9,_\\- ]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
     return regex_match(str, pattern);
 }
 
@@ -944,11 +944,13 @@ string entradaString(){
     bool alfanumerico = false;
     string entrada;
     cout << AZUL;
-    cin >> entrada;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, entrada);
     cout << RESET;
     while(!esAlfanumerico(entrada)){
         cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET;
         cout << "Ingrese nuevamente:" << endl;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         getline(cin, entrada);
     }
     escribirEnLog("U: " + entrada);
