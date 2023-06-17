@@ -25,7 +25,12 @@ void Inscripcion::setEstudianteInscrito(Estudiante* est) {
 void Inscripcion::setInscripccionACurso(Curso* curso) {
     this->inscripccionACurso = curso;
 }
-
+void Inscripcion::setAprobado() {
+    this->aprobado = true;
+}
+void Inscripcion::setLeccionActual(int leccion) {
+    this->leccionActual = leccion;
+}
 
 Progreso* Inscripcion::getProg(){
     return prog;

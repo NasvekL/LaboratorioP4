@@ -11,7 +11,9 @@ void Progreso::aumentarProgreso(string estudiante) {
     // según la resolución exitosa de un ejercicio o lección
     // ...
 }
-
+void Progreso::setLeccionActual(Leccion* lec) {
+    this->leccionActual = lec;
+}
 void Progreso::setPorcentaje(int porcentaje) {
     this->porcentaje = porcentaje;
 }
@@ -22,7 +24,9 @@ void Progreso::setInscripcion(Inscripcion* insc) {
 int Progreso::getPorcentaje() {
     return porcentaje;
 }
-
+Inscripcion* Progreso::getInscripcion() {
+    return inscripcion;
+}
 list<Ejercicio*> Progreso :: getEjerciciosResueltos(){
     return ejerciciosResueltos;
 }

@@ -31,7 +31,8 @@ class Inscripcion{
         //Setter
         void setEstudianteInscrito(Estudiante* est);
         void setInscripccionACurso(Curso* curso);
-
+        void setAprobado();
+        void setLeccionActual(int leccion);
         //Create y destroy
         Inscripcion(DTFecha fecha,Progreso* prog);
         ~Inscripcion();
