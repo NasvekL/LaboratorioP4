@@ -878,7 +878,7 @@ bool quiereContinuar(string p){
 
 void presionaParaContinuar(){
     cout << "Presiona enter para continuar...";
-    cin.ignore();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     cin.get();
     cout << endl;
 }
