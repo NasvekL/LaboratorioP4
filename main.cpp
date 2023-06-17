@@ -251,6 +251,7 @@ int main(){
                 int a=1;
                 for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
                     imprimir(to_string(a)+" "+*it);
+                    a++;
                 }
                 imprimir("Escribe el nombre del Curso:" , AMARILLO);
                 string cursoSeleccionado = entradaString();
