@@ -65,7 +65,7 @@ DTEstadisticaProfesor ControladorUsuario::estadisticasProfesor(string profesor) 
         int inscriptos;
         for (Inscripcion* inscripcion : curso->getInscripciones()) {
             Progreso* progreso = inscripcion->getProg();
-            promedio = promedio + progreso->getPorcentaje();
+            promedio = promedio + progreso->getPorcentajeCurso();
             inscriptos++;
         }
         promedio = promedio / inscriptos;
@@ -88,7 +88,7 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
     for (Inscripcion* inscripcion : inscripciones) {
         Curso* curso = inscripcion->getInscriptoA();
         Progreso* prog = inscripcion->getProg();
-        int porcentaje = prog->getPorcentaje();
+        int porcentaje = prog->getPorcentajeCurso();
         estad.insert(std::make_pair(curso->getNombreCurso(), porcentaje));
     }
     DTEstadisticaEstudiante estadisticas = DTEstadisticaEstudiante(estad);
