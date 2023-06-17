@@ -179,8 +179,16 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
     
     delete cur;
 }
-void ControladorCurso::habilitarCurso(string nombreCurso) {
+bool ControladorCurso::habilitarCurso(string nombreCurso) {
     Curso* cur = getCurso(nombreCurso);
+    if(cur->getLecciones().empty()){
+    return false;
+    }
+    for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
+        if((*iter)->getEjercicios().empty()){
+            return false;
+        }
+    }
     cur->setHabilitado(true);
     Idioma * idi = cur->getIdiomaDelCurso();
     set<IObserver*> obs = idi->getObservers();
@@ -188,6 +196,7 @@ void ControladorCurso::habilitarCurso(string nombreCurso) {
     for(auto it = obs.begin(); it!=obs.end(); it++){
         (*it)->notificar(noti);
     }
+    return true;
 }
 
 

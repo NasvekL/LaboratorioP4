@@ -98,7 +98,7 @@ class ControladorCurso: public IControladorCurso{
         void altaLeccion(string curso);
         void altaEjercicio(Leccion* lec);
         void eliminarCurso(string nombreCurso);
-        void habilitarCurso(string nombreCurso);
+        bool habilitarCurso(string nombreCurso);
 
         void inscribirEstudianteACurso(string curso, string estudiante);
 

@@ -335,6 +335,8 @@ int main(){
                     }
 
                 }
+            else imprimir("No hay lecciones en el curso", ROJO);
+            presionaParaContinuar();
                 break;
             }
             case 8:{
@@ -348,9 +350,13 @@ int main(){
                 }
                 imprimir("Escriba el nombre del curso que desea habilitar:");
                 string curso = entradaString();
-                contCurso.habilitarCurso(curso);
-
+                bool habilito = contCurso.habilitarCurso(curso);
+                if(habilito){
                 imprimir("Curso habilitado", VERDE);
+                }
+                else{
+                    imprimir("Curso no habilitado", ROJO);
+                }
                 presionaParaContinuar();
                 break;
             }
