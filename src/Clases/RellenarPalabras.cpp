@@ -13,10 +13,8 @@ list<string> RellenarPalabras::getlista() {
     return listaDePalabras;
 }
 bool RellenarPalabras::esCorrectoTraduccion(string respuestas) {
+    cout << "Falta implementar escorrectotraduccion en rellenarpalabras, siempre devuelve false" << endl;
     return false;
-    // Implementar la lógica para verificar si las respuestas son correctas
-    // Comparar las respuestas con la lista de palabras esperadas
-    // ...
 }
 bool RellenarPalabras::esCorrectoRellenarPal(set<string> respuestas) {
     bool resp = true;
