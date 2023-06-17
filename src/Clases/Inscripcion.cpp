@@ -17,7 +17,6 @@ Inscripcion::Inscripcion(DTFecha fecha, Progreso* prog) {
     this->aprobado = false;
     this->leccionActual = 1;
     this->prog = prog;
-    estudianteInscrito=NULL;
 }
 
 void Inscripcion::setEstudianteInscrito(Estudiante* est) {
