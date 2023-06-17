@@ -112,12 +112,12 @@ set<DTEjercicio> Leccion::ejerciciosNoAprobados(string nick) {
         if(!esta){
             Ejercicio* ej = it->second;
             if(ej=dynamic_cast<RellenarPalabras*>(ej)){
-                DTEjercicio* dt = new DTEjercicio(it->second->getIdEjercicio(),it->second->getDescripcion(),it->second->getLetra(),"RellenarPalabras",this->numero);
-                ejerciciosNoAprobados.insert(*dt);
+                DTEjercicio dt = DTEjercicio(it->second->getIdEjercicio(),it->second->getDescripcion(),it->second->getLetra(),"RellenarPalabras",this->numero);
+                ejerciciosNoAprobados.insert(dt);
             }
             else{
-                DTEjercicio* dt= new DTEjercicio(it->second->getIdEjercicio(),it->second->getDescripcion(),it->second->getLetra(),"Traduccion",numero);
-                ejerciciosNoAprobados.insert(*dt);
+                DTEjercicio dt=DTEjercicio(it->second->getIdEjercicio(),it->second->getDescripcion(),it->second->getLetra(),"Traduccion",numero);
+                ejerciciosNoAprobados.insert(dt);
             }
         }
     }
