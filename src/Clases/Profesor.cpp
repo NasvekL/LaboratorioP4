@@ -25,9 +25,9 @@ list<DTNotificacion> Profesor::verNotificaciones() {
 }
 
 DTProfesor Profesor::getDTProfesor() {
-    set<string>* setIdi = new set<string>();
+    set<string> setIdi;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it) {
-        setIdi->insert((*it)->getNombreIdioma());
+        setIdi.insert((*it)->getNombreIdioma());
     }
     DTProfesor dt = DTProfesor(this->getNick(), this->getContrasenia(), this->getNombre(), this->getDescripcion(), this->getInstituto(),setIdi);
     return dt;

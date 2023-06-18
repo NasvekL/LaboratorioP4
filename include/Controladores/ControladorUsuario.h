@@ -84,5 +84,6 @@ class ControladorUsuario : public IControladorUsuario{
         Curso* obtenerCurso(string curso);
 
         list<string> consultarUsuario();
+        void limpiarDatos();
 };      
 #endif

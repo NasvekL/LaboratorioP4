@@ -1,6 +1,6 @@
 #include "../../include/DTs/DTProfesor.h"
 // Constructor
-DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, set<string>* idiomas) {
+DTProfesor::DTProfesor(string nickname, string contrasenia, string nombre, string descripcion, string instituto, set<string> idiomas) {
     // Implementación del constructor
     // Puedes asignar los valores de los parámetros a los atributos correspondientes
     this->nickname = nickname;
@@ -41,7 +41,7 @@ string DTProfesor::getNickname() {
     return nickname;// Implementación del getter
     // Puedes devolver el valor del atributo nickname
 }
-set<string>* DTProfesor::getIdiomas() {
+set<string> DTProfesor::getIdiomas() {
     return idiomas;
     // Implementación del getter
     // Puedes devolver el valor del atributo idiomas
