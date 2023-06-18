@@ -1174,12 +1174,12 @@ void ingresarLecciones(){
     contCurso.setDatoDeLeccion(leccion);
     rellpab = DTRellenarPalabras("Actividades diarias", "Wake ---", 5, {"up"}, "completar", 1);
     contCurso.agregarDatosRellenarPalabras(rellpab);
-    contCurso.altaLeccion("Ingles intermedio");
+    contCurso.altaLeccion("Curso de ingles basico");
 
     //L4
     leccion = DTLeccion(2, 0, "Aprender el uso del presente simple", "Presente Simple");
     contCurso.setDatoDeLeccion(leccion);
-    contCurso.altaLeccion("Ingles intermedio");
+    contCurso.altaLeccion("Curso de ingles basico");
 
     //L5
     leccion = DTLeccion(1, 1, "Aprender a hacer preguntas y respuestas en situaciones comunes", "Conversaciones cotidianas");
