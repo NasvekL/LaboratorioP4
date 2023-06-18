@@ -293,7 +293,7 @@ list<string> ControladorUsuario::consultarUsuario(){
     }
     return us;
 }
-
+/*
 void ControladorUsuario::seleccionarUsuario(string nick){
    auto it = usuarios.find(nick);
    Usuario* usuario = it->second;
@@ -307,4 +307,15 @@ void ControladorUsuario::seleccionarUsuario(string nick){
        DTProfesor dt = profesor->getDTProfesor();
        setDatoProfesor(dt);
        }
+}*/
+void ControladorUsuario::seleccionarUsuario(string nick) {
+    auto it = usuarios.find(nick);
+    Usuario* usuario = it->second;
+    if (Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario)) {
+        DTEstudiante dt = estudiante->getDTEstudiante();
+        setDatoEstudiante(dt);
+    } else if (Profesor* profesor = dynamic_cast<Profesor*>(usuario)) {
+        DTProfesor dt = profesor->getDTProfesor();
+        setDatoProfesor(dt);
+    }
 }
