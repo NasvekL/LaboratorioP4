@@ -14,7 +14,7 @@ void Progreso::setLeccionActual(Leccion* lec) {
     this->leccionActual = lec;
 }
 void Progreso::setPorcentajeCurso(float porce) {
-    porcentajeCurso = porcentajeCurso + porce;
+    porcentajeCurso = porcentajeCurso + static_cast<int>(round(porce));
 }
 void Progreso::setPorcentaje(float porcentaje) {
     this->porcentaje = porcentaje;
@@ -28,7 +28,7 @@ void Progreso::agregarEjercicioResuelto(Ejercicio* e) {
 void Progreso::limpiarEjerciciosResueltos() {
     ejerciciosResueltos.clear();
 }
-float Progreso::getPorcentaje() {
+int Progreso::getPorcentaje() {
     return porcentaje;
 }
 Inscripcion* Progreso::getInscripcion() {
@@ -37,7 +37,7 @@ Inscripcion* Progreso::getInscripcion() {
 list<Ejercicio*> Progreso :: getEjerciciosResueltos(){
     return ejerciciosResueltos;
 }
-float Progreso ::getPorcentajeCurso(){
+int Progreso ::getPorcentajeCurso(){
     return porcentajeCurso;
 }
 Progreso::Progreso(Leccion* lecActual): ejerciciosResueltos(){

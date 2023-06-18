@@ -4,12 +4,12 @@
 
 class DTEstadisticaEstudiante { 
     private:
-        map<string,float> porcentajesCursos;
+        map<string,int> porcentajesCursos;
     public:
-        map<string,float> getPorcentajesCursos();
-        map<string, float> estadoEstudiante(); //curso clave y valor progreso
+        map<string,int> getPorcentajesCursos();
+        map<string, int> estadoEstudiante(); //curso clave y valor progreso
         ~DTEstadisticaEstudiante();
-        DTEstadisticaEstudiante(map<string, float> porcentajesCursos);
+        DTEstadisticaEstudiante(map<string, int> porcentajesCursos);
 };
 #endif
 

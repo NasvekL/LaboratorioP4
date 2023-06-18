@@ -84,11 +84,11 @@ DTEstadisticaEstudiante ControladorUsuario::estadisticasEstudiante(string estudi
     auto it = usuarios.find(estudiante);
     Estudiante* estu = dynamic_cast<Estudiante*>(it->second);
     list<Inscripcion*> inscripciones = estu->getInscripciones();
-    map<string, float> estad;
+    map<string, int> estad;
     for (Inscripcion* inscripcion : inscripciones) {
         Curso* curso = inscripcion->getInscriptoA();
         Progreso* prog = inscripcion->getProg();
-        float porcentaje = prog->getPorcentajeCurso();
+        int porcentaje = prog->getPorcentajeCurso();
         estad[curso->getNombreCurso()] = porcentaje;
     }
     DTEstadisticaEstudiante estadisticas = DTEstadisticaEstudiante(estad);

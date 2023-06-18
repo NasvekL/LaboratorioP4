@@ -1,7 +1,7 @@
 #include "../../include/DTs/DTEstadisticaEstudiante.h"
 
 // Constructor
-DTEstadisticaEstudiante::DTEstadisticaEstudiante(map<string, float> porcentajesCursos) {
+DTEstadisticaEstudiante::DTEstadisticaEstudiante(map<string, int> porcentajesCursos) {
     // Implementación del constructor
     this->porcentajesCursos = porcentajesCursos;
     // Puedes inicializar el objeto según tus necesidades
@@ -14,12 +14,12 @@ DTEstadisticaEstudiante::~DTEstadisticaEstudiante() {
 }
 
 // Getter para porcentajesCursos
-map<string, float> DTEstadisticaEstudiante::getPorcentajesCursos() {
+map<string, int> DTEstadisticaEstudiante::getPorcentajesCursos() {
     return porcentajesCursos;
 }
 
 // Función para obtener el estado del estudiante en cada curso
-map<string, float> DTEstadisticaEstudiante::estadoEstudiante() {
+map<string, int> DTEstadisticaEstudiante::estadoEstudiante() {
     // Implementación de la función
     // Puedes calcular y devolver el estado del estudiante en cada curso
 }
