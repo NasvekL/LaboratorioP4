@@ -1220,7 +1220,11 @@ void ingresarLecciones(){
     contCurso.altaLeccion("Portugues intermedio");
 
 
-    
+    /*Origen;Previa
+    C3;C1
+    C4;C1
+    C4;C3
+    C6;C5*/
 }
 
 void ingresarHabilitarCursos(){
