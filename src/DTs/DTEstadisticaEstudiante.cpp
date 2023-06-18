@@ -6,10 +6,6 @@ DTEstadisticaEstudiante::DTEstadisticaEstudiante(map<string, int> porcentajesCur
     this->porcentajesCursos = porcentajesCursos;
     // Puedes inicializar el objeto según tus necesidades
 }
-DTEstadisticaEstudiante::DTEstadisticaEstudiante() {
-    // Implementación del constructor
-    // Puedes inicializar el objeto según tus necesidades
-}
 
 // Destructor
 DTEstadisticaEstudiante::~DTEstadisticaEstudiante() {

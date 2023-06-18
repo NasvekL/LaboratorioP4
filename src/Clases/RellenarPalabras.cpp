@@ -21,16 +21,14 @@ bool RellenarPalabras::esCorrectoRellenarPal(set<string> respuestas) {
     auto it = respuestas.begin();
     list<string> sol = getlista();
     auto it2 = sol.begin();
-    while(resp && it!= respuestas.end() && it2 != sol.end()){
+    if(respuestas.size()!= sol.size())
+        return false;
+    while(it!= respuestas.end() && it2 != sol.end()){
         if((*it) != (*it2)){
             return false;
         }
-
         it++;
         it2++;
-    }
-    if(it == respuestas.end() && it2 != sol.end()){
-        resp = false;
     }
     return resp;
 }
