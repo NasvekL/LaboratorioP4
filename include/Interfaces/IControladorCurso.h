@@ -76,7 +76,7 @@ class IControladorCurso{
         virtual void agregarEjercicio(DTEjercicio datos)= 0;
 
 
-        virtual void inscribirEstudianteACurso(string curso, string estudiante)= 0;
+        virtual void inscribirEstudianteACurso(string curso, string estudiante, int dia, int mes, int anio)= 0;
 
         //Operaciones virtuales para obtener información
 
