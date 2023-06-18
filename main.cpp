@@ -1039,7 +1039,6 @@ void ingresarIdiomas(){
 void ingresarUsuarios(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
-    IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
     //ESTUDIANTES
     contUsuario.setDatoEstudiante(DTEstudiante("jpidiom","asdfg123","Juan Perez","Soy un apasionado del aprendizaje de idiomas","Argentina",DTFecha(15,7,1995)));
@@ -1143,7 +1142,6 @@ void ingresarCursos(){
 
 void ingresarLecciones(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     /*
     Ref;Nombre;Descripcion;Dificultad;Profesor;Idioma;Habilitado
@@ -1237,7 +1235,6 @@ void ingresarLecciones(){
 
 void ingresarHabilitarCursos(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
 
     contCurso.habilitarCurso("Ingles para principiantes");
@@ -1247,7 +1244,6 @@ void ingresarHabilitarCursos(){
 }
 void ingresarPrevias(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     /*
     C1;Ingles para principiantes
