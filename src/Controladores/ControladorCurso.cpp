@@ -407,6 +407,9 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     cu.agregarInscripcionAEstudiante(estudiante, inscri);
     inscri->setEstudianteInscrito(cu.encontrarEstudiante(estudiante));
     
+    //Agrego visibilidad entre inscripcion y leccion
+    primeraLeccion->agregarProgreso(progresoDeInscripcion);
+
     //Agrego visibilidad entre inscripcion y curso
     cursos.find(curso)->second->agregarInscripcion(inscri);
     inscri->setInscripccionACurso(cursos.find(curso)->second);

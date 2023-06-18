@@ -27,6 +27,7 @@ class Leccion{
         void setObjetivoAprendizaje(string objetivoAprendizaje);
         void setCantidadEjercicios(int cantidadDeEjercicios);
         void setNumero(int numero);
+        void agregarProgreso(Progreso* progreso);
         void addEjercicio(Ejercicio* ej);
         //getters
         string getTema();

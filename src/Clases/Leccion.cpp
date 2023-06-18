@@ -24,6 +24,11 @@ string Leccion::getTema() {
     return tema;
 }
 
+void Leccion::agregarProgreso(Progreso* progreso){
+    this->progresos.insert(pair<string, Progreso*>(progreso->getInscripcion()->getEstudiante()->getNick(), progreso));
+}
+
+
 void Leccion::addEjercicio(Ejercicio* ej) {
     ejercicios.insert(pair<int, Ejercicio*>(ej->getIdEjercicio(), ej));
     setCantidadEjercicios(getCantidadDeEjercicios() + 1);
