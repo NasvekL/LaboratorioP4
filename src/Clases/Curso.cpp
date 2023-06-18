@@ -75,7 +75,7 @@ Profesor* Curso::getProfesorQueLoDicta() {
     return profesorQueLoDicta;
 }
 
-list<Leccion*> Curso::getLecciones() {
+list<Leccion*>& Curso::getLecciones() {
     return lecciones;
 }
 list<Inscripcion*> Curso::getInscripciones() {
