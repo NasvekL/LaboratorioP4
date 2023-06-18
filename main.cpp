@@ -14,6 +14,7 @@
 #define AZUL     "\x1b[38;5;45m"
 bool seAgregaronLosDatos = false;
 
+void ingresarPrevias();
 void ingresarLecciones();
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
@@ -645,9 +646,10 @@ int main(){
                     imprimir("Datos de prueba agregados (cursos).", VERDE);
                     ingresarLecciones();
                     imprimir("Datos de prueba agregados (lecciones y ejercicios)", VERDE);
+                    ingresarPrevias();
+                    imprimir("Datos de prueba agregados (previas)", VERDE);
                     ingresarHabilitarCursos();
                     imprimir("Datos de prueba agregados (cursos habilitados)", VERDE);
-                    imprimir("Faltan datos de prueba (previas)", ROJO);
                     imprimir("Faltan datos de prueba (inscripciones)", ROJO);
                     imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", ROJO);
                     seAgregaronLosDatos = true;
@@ -1219,23 +1221,11 @@ void ingresarLecciones(){
     contCurso.agregarDatosTraduccion(tradu);
     contCurso.altaLeccion("Portugues intermedio");
 
-    /*
-    C1;Ingles para principiantes;Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.;Principiante;U11;I1;Si
-    C2;Curso de ingles basico;Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.;Principiante;U11;I1;No
-    C3;Ingles intermedio: mejora tu nivel;Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.;Medio;U12;I1;Si
-    C4;Curso avanzado de ingles;Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.;Avanzado;U12;I1;Si
-    C5;Portugues intermedio;Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.;Medio;U12;I3;Si
-    C6;Portugues avanzado;Curso avanzado
-    Origen;Previa
-    C3;C1
-    C4;C1
-    C4;C3
-    C6;C5*/
+ 
 }
 
 void ingresarHabilitarCursos(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
 
     contCurso.habilitarCurso("Ingles para principiantes");
@@ -1245,7 +1235,23 @@ void ingresarHabilitarCursos(){
 }
 void ingresarPrevias(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    /*
+    C1;Ingles para principiantes
+    C2;Curso de ingles basico
+    C3;Ingles intermedio: mejora tu nivel
+    C4;Curso avanzado de ingles
+    C5;Portugues intermedio
+    C6;Portugues avanzado
+    Origen;Previa
+    C3;C1
+    C4;C1
+    C4;C3
+    C6;C5*/
+
+    contCurso.agregarPrevia("Ingles intermedio: mejora tu nivel", "Ingles para principiantes");
+    contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles para principiantes");
+    contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles intermedio: mejora tu nivel");
+    contCurso.agregarPrevia("Portugues avanzado", "Portugues intermedio");
 
 }

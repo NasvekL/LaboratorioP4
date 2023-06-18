@@ -64,7 +64,7 @@ class Curso{
         int progresoDeEstudiante(Estudiante* e);
         DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
-
+        void agregarPrevia(Curso* previa);
         //COntar cosas
         int cantidadDeEjercicios();
         int cantidadDeLecciones();

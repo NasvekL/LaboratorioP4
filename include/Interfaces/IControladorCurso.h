@@ -100,6 +100,7 @@ class IControladorCurso{
         virtual list<DTEjercicio> seleccionarEjerciciosDeCurso(string curso)= 0;
         virtual list<string> verCurso(string curso) = 0;
         virtual list<string> listarNicks() = 0;
+        virtual void agregarPrevia(string curso, string previa) = 0;
 
         //Operaciones virtuales de suscripciones
         virtual set<string> consultarSuscripciones(string nick)= 0;

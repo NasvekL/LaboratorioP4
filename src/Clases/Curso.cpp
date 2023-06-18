@@ -110,6 +110,10 @@ Ejercicio* Curso :: seleccionarEj(int id){
     return ejer;
 }
 
+void Curso :: agregarPrevia(Curso* previa){
+    previas.push_back(previa);
+}
+
 list<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
     if(lecciones.size() > 0){
         for(auto it = lecciones.begin(); it!=lecciones.end(); it++){

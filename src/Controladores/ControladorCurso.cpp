@@ -341,6 +341,9 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
             }
         }
 
+
+        
+
         //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
         if(it->second->getPrevias().size() == 0){
             estudianteAproboLasPrevias = true;
@@ -383,6 +386,10 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
         }
     }
     return cursosDisponibles;
+}
+
+void ControladorCurso::agregarPrevia(string curso, string previa){
+    cursos.find(curso)->second->agregarPrevia(cursos.find(previa)->second);
 }
 
 void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante) {
