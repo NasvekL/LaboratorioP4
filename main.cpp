@@ -1020,7 +1020,7 @@ string entradaString(){
     cout << RESET;
     while(!esAlfanumerico(entrada)){
         cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET << endl;
-        cout << "Ingrese nuevamente: " << endl;
+        cout << "Ingrese nuevamente:" << endl;
         getline(cin >> ws, entrada);
     }
     escribirEnLog("U: " + entrada);
