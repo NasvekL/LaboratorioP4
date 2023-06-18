@@ -93,7 +93,8 @@ Ejercicio* Leccion::seleccionarEj(int idEjercicio) {
     auto it = ejercicios.find(idEjercicio);
     if(it!=ejercicios.end()){
         return it->second;
-    }else return NULL;
+    }
+    else return NULL;
 }
 
 void Leccion::aumentarProgreso(Estudiante e) {

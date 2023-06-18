@@ -101,11 +101,14 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 // OPERACIONES
 
 Ejercicio* Curso :: seleccionarEj(int id){
-    auto it = lecciones.begin();
     Ejercicio* ejer = NULL;
-    ejer = (*it)->seleccionarEj(id);
+    for(auto it = lecciones.begin(); it!=lecciones.end(); it++){
+        ejer = (*it)->seleccionarEj(id);
+        if (ejer!=NULL)
+        break;
+    }
     return ejer;
-}
+    }
 
 void Curso :: agregarPrevia(Curso* previa){
     previas.push_back(previa);
