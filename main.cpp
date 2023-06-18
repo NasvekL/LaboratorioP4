@@ -173,7 +173,7 @@ int main(){
             case 3:{
                 //Alta idioma
                 system("clear");
-                imprimir("Ingrese idioma:");
+                imprimir("Ingrese el nombre idioma:");
                 string idioma = entradaString();
                 if(contCurso.confirmarAltaIdioma(idioma)==false)
                     imprimir("Ya existe el idioma", AMARILLO);
@@ -753,14 +753,22 @@ DTProfesor crearDTProfesor(){
     string instituto = entradaString();
     bool seguir = true;
     imprimir("Idiomas disponibles:");
-    contCurso.listarIdiomas();
-    string idiom;
+    list<string> listita = contCurso.listarIdiomas();
+    for(auto it = listita.begin(); it != listita.end(); ++it){
+        imprimir(*it);
+    }
+    imprimir("Ingrese un idioma en el que se especializa:");
+    string idiom = entradaString();
     set<string>* setIdi = new set<string>();
-    imprimir("Ingrese el nombre del idioma en el que se especializa:");
-    while (seguir) {
+    setIdi->insert(idiom);
+    imprimir("Desea agregar mas idiomas?(S/N)");
+    string masIdiomas = entradaString();
+    while (masIdiomas == "S" || masIdiomas == "s") {
+        imprimir("Ingrese otro idioma:");
         idiom = entradaString();
         setIdi->insert(idiom);
-        seguir = quiereContinuar("Agregar otro idioma");
+        imprimir("Quiere agregar mas idiomas?(S/N)");
+        masIdiomas = entradaString();
     }
 
     DTProfesor prof = DTProfesor(nick, contrasenia, nombre, descripcion, instituto, setIdi);

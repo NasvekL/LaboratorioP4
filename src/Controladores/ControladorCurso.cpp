@@ -442,13 +442,12 @@ set<Idioma*> ControladorCurso::listarIdiomasProfesor() {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
     return cu.listarIdiomasProfesor(p);
 }
-void ControladorCurso::listarIdiomas(){
-    int a=1;
+list<string> ControladorCurso::listarIdiomas(){
+    list<string> listita;
     for (auto it = idiomas.begin(); it != idiomas.end(); ++it){
-        string nombre = it->first;
-        cout << a <<  "- " << nombre <<'\n';
-        a++;
+        listita.push_back(it->first);
     }
+    return listita;
 }
 
 list<string> ControladorCurso::listarCursosNoHabilitados(){
