@@ -7,7 +7,7 @@ bool Progreso::esCorrecto(string solucion) {
 }
 
 void Progreso::aumentarProgreso(string estudiante) {
-    int aumento = ejerciciosResueltos.size()/leccionActual->getCantidadDeEjercicios();
+    int aumento = ejerciciosResueltos.size() / leccionActual->getCantidadDeEjercicios();
 }
 void Progreso::setLeccionActual(Leccion* lec) {
     this->leccionActual = lec;
