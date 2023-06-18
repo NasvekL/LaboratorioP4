@@ -461,10 +461,9 @@ int main(){
                 int id = entradaInt();
                 contCurso.seleccionarEjercicio(id);
                 Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
-                ejer->mostrarEjercicio();
+                imprimir(ejer->mostrarEjercicio());
                 string estudiante = nick;
-                int idEj;
-                if(contCurso.getTipoEjercicio(idEj) == "completar"){
+                if(contCurso.getTipoEjercicio(id) == "completar"){
                     imprimir("Ingrese las palabras que faltan separado por coma");
                     string palabra = entradaString();
                     list<string> palabras = separarString(palabra,',');
@@ -473,13 +472,23 @@ int main(){
                         solucion.insert(palabra);
                         palabra = entradaString();
                     }
-                    contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,idEj);
+                    if(contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,id)){
+                        imprimir("Respuesta correcta", VERDE);
+                    }else{
+                        imprimir("Respuesta incorrecta", AMARILLO);
+                    }
+                    presionaParaContinuar();
                 }
                 else{
                     string solTraduccion;
                     imprimir("Ingrese la traduccion correcta");
                     solTraduccion = entradaString();
-                    contCurso.solucionCorrectaTraduccion(solTraduccion,estudiante,idEj);
+                    if(contCurso.solucionCorrectaTraduccion(solTraduccion,estudiante,id)){
+                        imprimir("Respuesta correcta", VERDE);
+                    }else{
+                        imprimir("Respuesta incorrecta", AMARILLO);
+                    }
+                    presionaParaContinuar();
                 }
             break;
             }

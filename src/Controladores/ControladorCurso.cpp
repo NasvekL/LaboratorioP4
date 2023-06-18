@@ -531,14 +531,14 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
             prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
             prog->aumentarProgreso(estudiante);     //aumento progreso
         }
-    ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;     //seteo curso a NULL
-    return true;        //retorno true
+        ejercicio=NULL;     //seteo ejercicio a NULL
+        curso=NULL;     //seteo curso a NULL
+        return true;        //retorno true
     }
     else{
-    ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;         
-    return false;
+        ejercicio=NULL;     //seteo ejercicio a NULL
+        curso=NULL;         
+        return false;
     }
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
