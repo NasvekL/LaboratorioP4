@@ -592,8 +592,9 @@ int main(){
                 string idioma = entradaString();
                 idiomas.insert(idioma);
                 while(quiereContinuar("agregar otro idioma")){
-                string idioma = entradaString();
-                idiomas.insert(idioma);
+                    imrp
+                    string idioma = entradaString();
+                    idiomas.insert(idioma);
                 }
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
