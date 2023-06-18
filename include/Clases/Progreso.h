@@ -17,8 +17,8 @@ class Progreso{
         virtual bool esCorrecto(string solucion);
         void aumentarProgreso(string estudiante);
         //setters
-        void setPorcentajeCurso(int porcen);
-        void setPorcentaje(int porcentaje);
+        void setPorcentajeCurso(float porcen);
+        void setPorcentaje(float porcentaje);
         void setInscripcion(Inscripcion* insc);
         void setLeccionActual(Leccion* lec);
         void limpiarEjerciciosResueltos();

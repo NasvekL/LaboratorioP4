@@ -7,16 +7,16 @@ bool Progreso::esCorrecto(string solucion) {
 }
 
 void Progreso::aumentarProgreso(string estudiante) {
-    int aumento = 1 / leccionActual->getCantidadDeEjercicios();
+    float aumento = 1 / leccionActual->getCantidadDeEjercicios();
     porcentaje=porcentaje+aumento;
 }
 void Progreso::setLeccionActual(Leccion* lec) {
     this->leccionActual = lec;
 }
-void Progreso::setPorcentajeCurso(int porcentaje) {
-    porcentajeCurso = porcentajeCurso + porcentaje;
+void Progreso::setPorcentajeCurso(float porce) {
+    porcentajeCurso = porcentajeCurso + porce;
 }
-void Progreso::setPorcentaje(int porcentaje) {
+void Progreso::setPorcentaje(float porcentaje) {
     this->porcentaje = porcentaje;
 }
 void Progreso::setInscripcion(Inscripcion* insc) {

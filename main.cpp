@@ -71,6 +71,7 @@ int menuPrincipal(){
 
 int main(){
     limpiarLog();
+    cout.precision(0);
     //Tiene alguna clase de sentido la interfaz? En teoria es para que si el dia de mañana
     //se quiere agregar o cambiar el controlador, no haya que cambiar nada en el main
     //pero en el main se esta trabajando de forma directa con el controlador porque
