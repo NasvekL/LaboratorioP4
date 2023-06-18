@@ -14,7 +14,7 @@ void Progreso::setLeccionActual(Leccion* lec) {
     this->leccionActual = lec;
 }
 void Progreso::setPorcentajeCurso(int porcentaje) {
-    porcentajeCurso += porcentaje;
+    porcentajeCurso = porcentajeCurso + porcentaje;
 }
 void Progreso::setPorcentaje(int porcentaje) {
     this->porcentaje = porcentaje;
