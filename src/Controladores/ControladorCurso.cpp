@@ -407,7 +407,7 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     //Obtengo la primera leccion del curso
     Curso* refACurso = cursos.find(curso)->second;
     list<Leccion*> lecciones = refACurso->getLecciones();
-    Leccion* primeraLeccion = lecciones.back();
+    Leccion* primeraLeccion = lecciones.front();
 
     //Creo el progreso con referencia a la leccion actual
     Progreso* progresoDeInscripcion = new Progreso(primeraLeccion);
@@ -491,6 +491,7 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
                     }
                 break;
                 }
+                lecSig->agregarProgreso(prog);
                 prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
                 prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
                 prog->setLeccionActual(lecSig);     //seteo leccion actual
@@ -525,6 +526,7 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
         prog->agregarEjercicioResuelto(e);                                //agrego ejercicio a ejercicios resueltos
         int ejResueltos = prog->getEjerciciosResueltos().size();                    //obtengo cantidad de ejercicios resueltos
         if(cant == ejResueltos){
+            lec->eliminarProgreso(estudiante);      //elimino progreso
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
@@ -540,6 +542,7 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
                     }
                 break;
                 }
+                lecSig->agregarProgreso(prog);
                 prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
                 prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
                 prog->setLeccionActual(lecSig);     //seteo leccion actual

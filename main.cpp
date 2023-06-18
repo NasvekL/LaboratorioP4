@@ -473,6 +473,7 @@ int main(){
                 //seleccionarEjercicio(id);
                 //Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
                 Ejercicio* ejer = contCurso.getEjercicioPorIdDesdeMapa(id);
+                contCurso.setEjercicioEnMemoria(ejer);
                 string ej = ejer->mostrarEjercicio();
                 imprimir(ej);
                 string estudiante = nick;
@@ -482,7 +483,7 @@ int main(){
                     list<string> palabras = separarString(palabra,',');
                     set<string> solucion;
                     for(auto it = palabras.begin(); it != palabras.end(); it++){
-                        solucion.insert(palabra);
+                        solucion.insert(*it);
                     }
                     if(contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,id)){
                         imprimir("Respuesta correcta", VERDE);
