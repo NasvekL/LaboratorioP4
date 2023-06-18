@@ -25,7 +25,7 @@ string Leccion::getTema() {
 }
 
 void Leccion::agregarProgreso(Progreso* progreso){
-    this->progresos.insert(pair<string, Progreso*>(progreso->getInscripcion()->getEstudiante()->getNick(), progreso));
+    this->progresos[progreso->getInscripcion()->getEstudiante()->getNick()]=  progreso;
 }
 
 
