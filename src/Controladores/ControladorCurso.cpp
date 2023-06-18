@@ -545,7 +545,7 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
         else{
             prog->aumentarProgreso(estudiante);     //aumento progreso
         }
-        prog->setPorcentajeCurso(1/cant*100);      //seteo porcentaje de curso
+        prog->setPorcentajeCurso(1/cur->cantidadDeEjercicios()*100);      //seteo porcentaje de curso
         ejercicio=NULL;     //seteo ejercicio a NULL
         curso=NULL;     //seteo curso a NULL
         return true;        //retorno true

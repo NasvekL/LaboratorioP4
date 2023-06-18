@@ -65,7 +65,6 @@ bool Curso::getHabilitado() {
 void Curso::setHabilitado(bool habilitado) {
     this->habilitado = habilitado;
 }
-
 // GETTERS DE PSEUDOATRIBUTOS
 Idioma* Curso::getIdiomaDelCurso() {
     return idiomaDelCurso;

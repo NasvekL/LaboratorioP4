@@ -56,7 +56,6 @@ class Curso{
         void setLecciones(list<Leccion*> lecciones);
         //void setInscripciones(list<Inscripcion*> inscripciones);
         void agregarInscripcion(Inscripcion* insc);
-
         //OPERACIONES
         Ejercicio* seleccionarEj(int id);
         list<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
