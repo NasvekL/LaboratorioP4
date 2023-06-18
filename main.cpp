@@ -661,7 +661,7 @@ int main(){
                     ingresarHabilitarCursos();
                     imprimir("Datos de prueba agregados (cursos habilitados)", VERDE);
                     inscribirUsuarios();
-                    imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", VERDE);
+                    imprimir("Datos de prueba agregados (usuarios inscritos y ejercicios completados de cada usuario)", VERDE);
                     seAgregaronLosDatos = true;
                 }else{
                     imprimir("Los datos ya fueron agregados", AMARILLO);
