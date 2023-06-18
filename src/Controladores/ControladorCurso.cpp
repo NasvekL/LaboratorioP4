@@ -545,7 +545,7 @@ void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
 }
 list<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    Curso* c = cu.obtenerCurso(curso);
+    Curso* c = getCurso(curso);
     setCursoEnMemoria(c);
     return cu.ejerciciosNoAprobados(curso);
 }

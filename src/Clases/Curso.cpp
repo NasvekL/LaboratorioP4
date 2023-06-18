@@ -75,7 +75,7 @@ Profesor* Curso::getProfesorQueLoDicta() {
     return profesorQueLoDicta;
 }
 
-list<Leccion*>& Curso::getLecciones() {
+list<Leccion*> Curso::getLecciones() {
     return lecciones;
 }
 list<Inscripcion*> Curso::getInscripciones() {
@@ -113,13 +113,13 @@ Ejercicio* Curso :: seleccionarEj(int id){
 list<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
     list<Leccion*> lecc = getLecciones();
     auto it = lecc.begin();
-    Leccion* l = NULL;
-    for(auto it = lecc.begin(); it!=lecc.end(); it++){
-    if((*it)->getNumero() == lecActual){
-        l = *it;
+    if(lecc.size() > 0){
+        for(auto it = lecc.begin(); it!=lecc.end(); it++){
+            if((*it)->getNumero() == lecActual){
+                return (*it)->ejerciciosNoAprobados(nick);
+            }
+        }
     }
-    }
-    return l->ejerciciosNoAprobados(nick);
 }
 
 int Curso::progresoPromedio() {
