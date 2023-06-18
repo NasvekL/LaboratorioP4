@@ -333,7 +333,8 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
             estudianteYaEstaInscritoAlCurso = false;
         }
         else{
-            for(auto it2 = it->second->getInscripciones().begin(); it2 != it->second->getInscripciones().end(); ++it2){
+            list<Inscripcion*> inscripcionesitass = it->second->getInscripciones();
+            for(auto it2 = inscripcionesitass.begin(); it2 != inscripcionesitass.end(); ++it2){
                 if((*it2)->getEstudiante()->getNick() == nick){
                     estudianteYaEstaInscritoAlCurso = true;
                 }
