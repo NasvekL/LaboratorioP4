@@ -66,6 +66,7 @@ class IControladorCurso{
         virtual void altaEjercicio(Leccion* lec)= 0;
         virtual bool altaCurso() = 0;
         virtual void altaLeccion(string curso) = 0;
+        virtual void eliminarDePrevias(Curso* curso)=0;
         virtual void eliminarCurso(string nombreCurso)= 0;
         virtual bool habilitarCurso(string nombreCurso)= 0;
 

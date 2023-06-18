@@ -96,6 +96,14 @@ void Curso::setLecciones(list<Leccion*> lecciones) {
 void Curso::agregarInscripcion(Inscripcion* insc){
     inscripciones.push_back(insc);
 }
+void Curso::eliminarPrevia(Curso* previa){
+    for(auto it = previas.begin(); it!=previas.end(); it++){
+        if((*it) == previa){
+            previas.erase(it);
+            break;
+        }
+    }
+}
 
 // OPERACIONES
 

@@ -103,6 +103,11 @@ string ControladorCurso::getNickUsuario(){
     return nickUsuario;
 }
 //Setters
+void ControladorCurso:: eliminarDePrevias(Curso* curso){
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        it->second->eliminarPrevia(curso);
+    }
+}
 void ControladorCurso::setDatoDeLeccion(DTLeccion datos) {
     datoDeLeccion = new DTLeccion(datos.getNumero(),datos.getCantidadDeEjercicios(),datos.getObjetivoAprendizaje(),datos.getTema());
 }
@@ -186,13 +191,13 @@ void ControladorCurso::eliminarCurso(string nombreCurso) {
     Curso* cur = getCurso(nombreCurso);
     cursos.erase(nombreCurso);
     list<Leccion*> lecsCur=cur->getLecciones();
+    eliminarDePrevias(cur);
     for(auto iter=lecsCur.begin(); iter!=lecsCur.end(); iter++){
         map<int,Ejercicio*> ejsLec = (*iter)->getEjercicios();
         for(auto it = ejsLec.begin(); it!=ejsLec.end(); it++){
             ejercicios.erase(it->second->getIdEjercicio());
         }
     }
-    
     delete cur;
 }
 bool ControladorCurso::habilitarCurso(string nombreCurso) {

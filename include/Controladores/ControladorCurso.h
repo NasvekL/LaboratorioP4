@@ -100,6 +100,7 @@ class ControladorCurso: public IControladorCurso{
         void altaLeccion(string curso);
         void altaEjercicio(Leccion* lec);
         void eliminarCurso(string nombreCurso);
+        void eliminarDePrevias(Curso* curso);
         bool habilitarCurso(string nombreCurso);
 
         void inscribirEstudianteACurso(string curso, string estudiante, int dia, int mes, int anio);
