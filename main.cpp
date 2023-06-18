@@ -105,6 +105,8 @@ int main(){
             case 1:{
                 //Alta usuario
                 system("clear");
+                contUsuario.deleteDataIngresado();//Abrimos paraguas por las dudas
+                
                 int seleccion = seleccionEstudianteOProfesor();
                 system("clear");
                 switch (seleccion){
@@ -117,6 +119,7 @@ int main(){
                         break;
                     }
                     case 2:{
+                        //
                         DTProfesor prof = crearDTProfesor();
                         contUsuario.setDatoProfesor(prof);
                         contUsuario.confirmarAltaUsuario();

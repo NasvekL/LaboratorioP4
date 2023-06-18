@@ -177,8 +177,15 @@ Curso* ControladorUsuario::obtenerCurso(string curso) {
     return estudiante->buscarCurso(curso);
 }
 
-void ControladorUsuario::deleteDataIngresado()
-{
+void ControladorUsuario::deleteDataIngresado(){
+    if (datoEstudiante!=NULL){
+        delete datoEstudiante;
+        datoEstudiante = NULL;
+    }
+    else if (datoProfesor!=NULL){
+        delete datoProfesor;
+        datoProfesor = NULL;
+    }
 }
 list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
     DTEstudiante est = getDatoEstudiante();
@@ -231,6 +238,9 @@ Profesor* ControladorUsuario::encontrarProfesor(string nick) {
     Profesor* p = dynamic_cast<Profesor*>(it->second);
     return p;  
 }
+
+
+
 
 void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
