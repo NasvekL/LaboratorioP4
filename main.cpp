@@ -14,6 +14,7 @@
 #define AZUL     "\x1b[38;5;45m"
 bool seAgregaronLosDatos = false;
 
+void ingresarLecciones();
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
@@ -400,33 +401,39 @@ int main(){
                 system("clear");
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
-                if(contUsuario.getTipoUsuario(nick)=="estudiante"){
-                    contUsuario.seleccionarUsuario(nick);
-                    list<tuple<string, int, int>> cursosDisp = contCurso.cursosDisponibles(nick);
-                    if(cursosDisp.empty()){
-                        imprimir("No existen cursos a los que " + nick + " pueda inscribirse.", AMARILLO);
-                        presionaParaContinuar();
-                        break;
-                    }else{
-                        imprimir("Cursos disponibles para " + nick + ":");
-                        for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
-                            imprimir(get<0>(*it) + ", Cantidad de lecciones: " + to_string(get<1>(*it)) + ", Cantidad de ejercicios: " + to_string(get<2>(*it)));
-                        }
-                        imprimir("Ingrese nombre de curso a inscribirse:");
-                        string nombreCurso = entradaString();
-                        try{
-                            contCurso.inscribirEstudianteACurso(nombreCurso, nick);
-                            imprimir("Estudiante inscripto", VERDE);
-                        }catch(invalid_argument& e){
-                            imprimir("Error al inscribir estudiante:", ROJO);
-                            imprimir(e.what(), ROJO);
-                        }
+                try{
+                    if(contUsuario.getTipoUsuario(nick)=="estudiante"){
+                        contUsuario.seleccionarUsuario(nick);
+                        list<tuple<string, int, int>> cursosDisp = contCurso.cursosDisponibles(nick);
+                        if(cursosDisp.empty()){
+                            imprimir("No existen cursos a los que " + nick + " pueda inscribirse.", AMARILLO);
                             presionaParaContinuar();
+                            break;
+                        }else{
+                            imprimir("Cursos disponibles para " + nick + ":");
+                            for (auto it = cursosDisp.begin(); it != cursosDisp.end(); ++it) {
+                                imprimir(get<0>(*it) + ", Cantidad de lecciones: " + to_string(get<1>(*it)) + ", Cantidad de ejercicios: " + to_string(get<2>(*it)));
+                            }
+                            imprimir("Ingrese nombre de curso a inscribirse:");
+                            string nombreCurso = entradaString();
+                            try{
+                                contCurso.inscribirEstudianteACurso(nombreCurso, nick);
+                                imprimir("Estudiante inscripto", VERDE);
+                            }catch(invalid_argument& e){
+                                imprimir("Error al inscribir estudiante:", ROJO);
+                                imprimir(e.what(), ROJO);
+                            }
+                                presionaParaContinuar();
+                        }
+                    }else{
+                        imprimir("El usuario " + nick + " no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
+                        presionaParaContinuar();
                     }
-                }else{
-                    imprimir("El usuario " + nick + " no es un estudiante, por lo cual no puede inscribirse a ningun curso", AMARILLO);
+                }catch(invalid_argument& e){
+                    imprimir("El usuario " + nick + " no existe", ROJO);
                     presionaParaContinuar();
                 }
+                
                 break;
             }
             case 12:{
@@ -621,9 +628,11 @@ int main(){
                     imprimir("Datos de prueba agregados (usuarios).", VERDE);
                     ingresarCursos();
                     imprimir("Datos de prueba agregados (cursos).", VERDE);
+                    imprimir("Agregar lecciones y ejercicios da error, seguramente porque en los datos de prueba se ingresan lecciones sin ejercicios.", AMARILLO);
+                    ingresarLecciones();
+                    imprimir("Faltan datos de prueba (previas)", ROJO);
                     imprimir("Faltan datos de prueba (inscripciones)", ROJO);
-                    imprimir("Faltan datos de prueba (lecciones)", ROJO);
-                    imprimir("Faltan datos de prueba (ejercicios)", ROJO);
+                    imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", ROJO);
                     seAgregaronLosDatos = true;
                 }else{
                     imprimir("Los datos ya fueron agregados", AMARILLO);
@@ -1062,7 +1071,6 @@ void ingresarUsuarios(){
 
 void ingresarCursos(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     
     // Curso 1: Ingles para principiantes
@@ -1106,6 +1114,98 @@ void ingresarCursos(){
     DTCurso c6 = DTCurso("Portugues avanzado", false, AVANZADO, "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", nullptr);
     contCurso.setDatoDeCurso(c6);
     contCurso.altaCurso();
+}
 
+void ingresarLecciones(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    /*
+    Ref;Nombre;Descripcion;Dificultad;Profesor;Idioma;Habilitado
+    C1;Ingles para principiantes;Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.;Principiante;U11;I1;Si
+    C2;Curso de ingles basico;Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.;Principiante;U11;I1;No
+    C3;Ingles intermedio: mejora tu nivel;Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.;Medio;U12;I1;Si
+    C4;Curso avanzado de ingles;Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.;Avanzado;U12;I1;Si
+    C5;Portugues intermedio;Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.;Medio;U12;I3;Si
+    C6;Portugues avanzado;Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.;Avanzado;U14;I3;No
+
+    Ref; Curso; Tema; Objetivo
+    L1;C1;Saludos y Presentaciones; Aprender a saludar y despedirse
+    L2;C1;Artículos y Plurales; Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos
+    L3;C2;Actividades Cotidianas; Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos
+    L4;C2;Presente Simple; Aprender el uso del presente simple
+    L5;C3;Conversaciones cotidianas;Aprender a hacer preguntas y respuestas en situaciones comunes
+    L6;C4;Uso de modales avanzados;Explorar el uso de los modales complejos
+    L7;C5;Lectura y comprension de textos; Analizar el contenido, vocabulario y estructuras gramaticales utilizadas
     
+    Ref; Leccion; Tipo; Descripcion; Problema; Solucion
+    E1;L1;T;Presentaciones;Mucho gusto en conocerte;Nice to meet you
+    E2;L1;R;Presentaciones formales;Please --- me to introduce ---;allow, myself
+    E3;L2;T;Plurales regulares;I have two brothers and three sisters;Tengo dos hermanos y tres hermanas
+    E4;L2;R;Sustantivos contables en plural;Can I have --- water, please?;some
+    E5;L3;R;Actividades diarias;Wake ---;up
+    E6;L5;R;Consultas de la hora;Q: Do you --- the time?, A: Yes, it is half --- 4;have, past
+    E7;L6;T;Dar consejos o expresar obligacion; You should visit that museum;Deberias visitar ese museo
+    E8;L7;T;Imperativo;Fale comigo;Habla conmigo
+    
+    
+    */
+    
+    //L1
+    DTLeccion leccion = DTLeccion(1, 2, "Aprender a saludar y despedirse", "Saludos y Presentaciones");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    DTTraduccion tradu = DTTraduccion("Presentaciones", "Mucho gusto en conocerte", 1, "Nice to meet you", "traduccion", 1);
+    contCurso.agregarDatosTraduccion(tradu);
+    DTRellenarPalabras rellpab = DTRellenarPalabras("Presentaciones formales", "Please --- me to introduce ---", 2, {"allow", "myself"}, "completar", 1);
+    contCurso.agregarDatosRellenarPalabras(rellpab);
+    contCurso.altaLeccion("Ingles para principiantes");
+
+    //L2
+    leccion = DTLeccion(2, 2, "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", "Artículos y Plurales");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    tradu = DTTraduccion("Plurales regulares", "I have two brothers and three sisters", 3, "Tengo dos hermanos y tres hermanas", "traduccion", 2);
+    contCurso.agregarDatosTraduccion(tradu);
+    rellpab = DTRellenarPalabras("Sustantivos contables en plural", "Can I have --- water, please?", 4, {"some"}, "completar", 2);
+    contCurso.agregarDatosRellenarPalabras(rellpab);
+    contCurso.altaLeccion("Ingles para principiantes");
+
+    //L3
+    leccion = DTLeccion(1, 1, "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", "Actividades Cotidianas");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    rellpab = DTRellenarPalabras("Actividades diarias", "Wake ---", 5, {"up"}, "completar", 1);
+    contCurso.agregarDatosRellenarPalabras(rellpab);
+    contCurso.altaLeccion("Ingles intermedio");
+
+    //L4
+    leccion = DTLeccion(2, 0, "Aprender el uso del presente simple", "Presente Simple");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    contCurso.altaLeccion("Ingles intermedio");
+
+    //L5
+    leccion = DTLeccion(1, 1, "Aprender a hacer preguntas y respuestas en situaciones comunes", "Conversaciones cotidianas");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    rellpab = DTRellenarPalabras("Consultas de la hora", "Q: Do you --- the time?, A: Yes, it is half --- 4", 6, {"have", "past"}, "completar", 1);
+    contCurso.agregarDatosRellenarPalabras(rellpab);
+    contCurso.altaLeccion("Ingles intermedio: mejora tu nivel");
+
+    //L6
+    leccion = DTLeccion(1, 1, "Explorar el uso de los modales complejos", "Uso de modales avanzados");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    tradu = DTTraduccion("Dar consejos o expresar obligacion", "You should visit that museum", 7, "Deberias visitar ese museo", "traduccion", 1);
+    contCurso.agregarDatosTraduccion(tradu);
+    contCurso.altaLeccion("Curso avanzado de ingles");
+
+    //L7
+    leccion = DTLeccion(1, 1, "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas", "Lectura y comprension de textos");
+    contCurso.setDatosDeLeccion(leccion);
+    contCurso.setDatoDeLeccion(leccion);
+    tradu = DTTraduccion("Imperativo", "Fale comigo", 8, "Habla conmigo", "traduccion", 1);
+    contCurso.agregarDatosTraduccion(tradu);
+    contCurso.altaLeccion("Portugues intermedio");
 }
