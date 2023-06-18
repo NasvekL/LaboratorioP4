@@ -397,12 +397,12 @@ void ControladorCurso::agregarPrevia(string curso, string previa){
     cursos.find(curso)->second->agregarPrevia(cursos.find(previa)->second);
 }
 
-void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante) {
+void ControladorCurso:: inscribirEstudianteACurso(string curso, string estudiante, int dia, int mes, int anio) {
     //Obtengo el controlador de usuario
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
 
     //Creo DTFecha de la inscripcion
-    DTFecha* fecha = new DTFecha(21,6,2023);
+    DTFecha* fecha = new DTFecha(dia,mes,anio);
 
     //Obtengo la primera leccion del curso
     Curso* refACurso = cursos.find(curso)->second;

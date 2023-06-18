@@ -16,6 +16,7 @@ bool seAgregaronLosDatos = false;
 
 void ingresarPrevias();
 void ingresarLecciones();
+void inscribirUsuarios();
 int seleccionEstudianteOProfesor();
 DTEstudiante crearDTEstudiante();
 DTProfesor crearDTProfesor();
@@ -419,7 +420,7 @@ int main(){
                             imprimir("Ingrese nombre de curso a inscribirse:");
                             string nombreCurso = entradaString();
                             try{
-                                contCurso.inscribirEstudianteACurso(nombreCurso, nick);
+                                contCurso.inscribirEstudianteACurso(nombreCurso, nick, 21, 6,2023);
                                 imprimir("Estudiante inscripto", VERDE);
                             }catch(invalid_argument& e){
                                 imprimir("Error al inscribir estudiante:", ROJO);
@@ -657,7 +658,8 @@ int main(){
                     imprimir("Datos de prueba agregados (previas)", VERDE);
                     ingresarHabilitarCursos();
                     imprimir("Datos de prueba agregados (cursos habilitados)", VERDE);
-                    imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", ROJO);
+                    inscribirUsuarios();
+                    imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", VERDE);
                     seAgregaronLosDatos = true;
                 }else{
                     imprimir("Los datos ya fueron agregados", AMARILLO);
@@ -1138,6 +1140,96 @@ void ingresarCursos(){
     DTCurso c6 = DTCurso("Portugues avanzado", false, AVANZADO, "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", nullptr);
     contCurso.setDatoDeCurso(c6);
     contCurso.altaCurso();
+}
+
+void inscribirUsuarios(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    
+    contUsuario.seleccionarUsuario("jpidiom");
+    contCurso.inscribirEstudianteACurso("Ingles para principiantes","jpidiom",1,1,2022);
+
+    contUsuario.seleccionarUsuario("jpidiom");
+    contCurso.inscribirEstudianteACurso("Ingles intermedio: mejora tu nivel","jpidiom",12,6,2022);
+
+    contUsuario.seleccionarUsuario("jpidiom");
+    contCurso.inscribirEstudianteACurso("Curso avanzado de ingles","jpidiom",2,3,2023);
+
+    contUsuario.seleccionarUsuario("marsilva");
+    contCurso.inscribirEstudianteACurso("Ingles para principiantes","marsilva",2,1,2022);
+
+    contUsuario.seleccionarUsuario("pero12");
+    contCurso.inscribirEstudianteACurso("Ingles para principiantes","pero12",2,1,2022);
+
+    contUsuario.seleccionarUsuario("laugu");
+    contCurso.inscribirEstudianteACurso("Ingles para principiantes","laugu",3,1,2023);
+
+    contUsuario.seleccionarUsuario("laugu");
+    contCurso.inscribirEstudianteACurso("Portugues intermedio","laugu",3,1,2023);  
+
+    contUsuario.seleccionarUsuario("carlo22");
+    contCurso.inscribirEstudianteACurso("Portugues intermedio","carlo22",5,1,2023);          
+
+    contCurso.cursosInscriptoSinAprobar("jpidiom");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer = contCurso.getEjercicioPorIdDesdeMapa(1);
+    contCurso.setEjercicioEnMemoria(ejer);
+    contCurso.solucionCorrectaTraduccion("Nice to meet you","jpidiom",1);
+
+    contCurso.cursosInscriptoSinAprobar("jpidiom");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer1 = contCurso.getEjercicioPorIdDesdeMapa(2);
+    contCurso.setEjercicioEnMemoria(ejer1);
+    contCurso.solucionCorrectaCompletarPalabras({"allow", "myself"},"jpidiom",2);
+
+    contCurso.cursosInscriptoSinAprobar("jpidiom");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer2 = contCurso.getEjercicioPorIdDesdeMapa(3);
+    contCurso.setEjercicioEnMemoria(ejer2);
+    contCurso.solucionCorrectaTraduccion("Tengo dos hermanos y tres hermanas","jpidiom",3);
+
+    contCurso.cursosInscriptoSinAprobar("jpidiom");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer3 = contCurso.getEjercicioPorIdDesdeMapa(4);
+    contCurso.setEjercicioEnMemoria(ejer3);
+    contCurso.solucionCorrectaCompletarPalabras({"some"},"jpidiom",4);
+
+    contCurso.cursosInscriptoSinAprobar("jpidiom");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles intermedio: mejora tu nivel");
+    Ejercicio* ejer4 = contCurso.getEjercicioPorIdDesdeMapa(6);
+    contCurso.setEjercicioEnMemoria(ejer4);
+    contCurso.solucionCorrectaCompletarPalabras({"have", "past"},"jpidiom",6);
+
+    contCurso.cursosInscriptoSinAprobar("marsilva");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer5 = contCurso.getEjercicioPorIdDesdeMapa(1);
+    contCurso.setEjercicioEnMemoria(ejer5);
+    contCurso.solucionCorrectaTraduccion("Nice to meet you","marsilva",1);
+
+    contCurso.cursosInscriptoSinAprobar("marsilva");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer6 = contCurso.getEjercicioPorIdDesdeMapa(2);
+    contCurso.setEjercicioEnMemoria(ejer6);
+    contCurso.solucionCorrectaCompletarPalabras({"allow", "myself"},"marsilva",2);
+
+    contCurso.cursosInscriptoSinAprobar("pero12");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer7 = contCurso.getEjercicioPorIdDesdeMapa(1);
+    contCurso.setEjercicioEnMemoria(ejer7);
+    contCurso.solucionCorrectaTraduccion("Nice to meet you","pero12",1);
+
+    contCurso.cursosInscriptoSinAprobar("pero12");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer8 = contCurso.getEjercicioPorIdDesdeMapa(2);
+    contCurso.setEjercicioEnMemoria(ejer8);
+    contCurso.solucionCorrectaCompletarPalabras({"allow", "myself"},"pero12",2);
+
+    contCurso.cursosInscriptoSinAprobar("pero12");
+    contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
+    Ejercicio* ejer9 = contCurso.getEjercicioPorIdDesdeMapa(4);
+    contCurso.setEjercicioEnMemoria(ejer9);
+    contCurso.solucionCorrectaCompletarPalabras({"some"},"pero12",4);                                
 }
 
 void ingresarLecciones(){

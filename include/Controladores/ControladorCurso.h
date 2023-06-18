@@ -102,7 +102,7 @@ class ControladorCurso: public IControladorCurso{
         void eliminarCurso(string nombreCurso);
         bool habilitarCurso(string nombreCurso);
 
-        void inscribirEstudianteACurso(string curso, string estudiante);
+        void inscribirEstudianteACurso(string curso, string estudiante, int dia, int mes, int anio);
 
         //Operaciones para modificar el set de idiomas
         bool confirmarAltaIdioma(string idioma);
