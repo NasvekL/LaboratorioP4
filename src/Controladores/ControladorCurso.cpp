@@ -470,13 +470,9 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
         prog->agregarEjercicioResuelto(e);                                //agrego ejercicio a ejercicios resueltos
         int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
         if(cant == ejResueltos){
-            lec->eliminarProgreso(estudiante);      //elimino progreso
+            lec->eliminarProgreso(estudiante);              //elimino progreso
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
-                cout << "entro al if magico";
-                cin.ignore();
-                cin.get();
-                cin.ignore();
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
                 ins->setAprobado();             //seteo inscripcion a aprobado
                 prog->setPorcentajeCurso((1/(cur->cantidadDeEjercicios())*100));      //seteo porcentaje de curso
@@ -486,10 +482,9 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
                 ins->setLeccionActual(lecActual+1);         //seteo leccion actual
                 list<Leccion*> lecciones = cur->getLecciones();     //obtengo lecciones
                 for(auto it = lecciones.begin(); it != lecciones.end(); ++it){      //recorro lecciones
-                    if((*it)->getNumero() == lecActual+1){      //si es la leccion siguiente
+                    if((*it)->getNumero() == ins->getLeccionActual()){      //si es la leccion siguiente
                         lecSig = (*it);     //guardo leccion siguiente
                     }
-                break;
                 }
                 lecSig->agregarProgreso(prog);
                 prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
@@ -537,10 +532,9 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
                 Leccion* lecSig;        //obtengo leccion siguiente
                 ins->setLeccionActual(lecActual+1);         //seteo leccion actual
                 for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){      //recorro lecciones
-                    if((*it)->getNumero() == lecActual+1){      //si es la leccion siguiente
+                    if((*it)->getNumero() == ins->getLeccionActual()){      //si es la leccion siguiente
                         lecSig = (*it);     //guardo leccion siguiente
                     }
-                break;
                 }
                 lecSig->agregarProgreso(prog);
                 prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
