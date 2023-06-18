@@ -352,10 +352,6 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                 }
             }
         }
-
-
-        
-
         //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
         if(it->second->getPrevias().size() == 0){
             estudianteAproboLasPrevias = true;

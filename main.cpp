@@ -161,9 +161,9 @@ int main(){
                     //imprimir("Instituto", AMARILLO);
                     imprimir("Instituto", AMARILLO + dtp.getInstituto());
                     imprimir("Idiomas", AMARILLO);
-                    set<string>* idi = dtp.getIdiomas();
+                    set<string> idi = dtp.getIdiomas();
                     set<string>::iterator it;
-                    for (it = idi->begin(); it != idi->end(); ++it) {
+                    for (it = idi.begin(); it != idi.end(); ++it) {
                         imprimir(*it);
                     }
                     presionaParaContinuar();
@@ -750,11 +750,11 @@ DTProfesor crearDTProfesor(){
     imprimir("Idiomas disponibles:");
     contCurso.listarIdiomas();
     string idiom;
-    set<string>* setIdi = new set<string>();
+    set<string> setIdi;
     imprimir("Ingrese el nombre del idioma en el que se especializa:");
     while (seguir) {
         idiom = entradaString();
-        setIdi->insert(idiom);
+        setIdi.insert(idiom);
         seguir = quiereContinuar("Agregar otro idioma");
     }
 
@@ -1078,26 +1078,26 @@ void ingresarUsuarios(){
     contUsuario.confirmarAltaUsuario();
 
     //PROFESORES
-    set<string>* i1 = new set<string>; i1->insert("Ingles"); i1->insert("Portugues");
+    set<string> i1; i1.insert("Ingles"); i1.insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
-    contUsuario.confirmarAltaUsuario(); delete i1;
+    contUsuario.confirmarAltaUsuario();
 
-    set<string>* i2 = new set<string>; i2->insert("Español"); i2->insert("Frances"); i2->insert("Italiano");
+    set<string> i2; i2.insert("Español"); i2.insert("Frances"); i2.insert("Italiano");
     contUsuario.setDatoProfesor(DTProfesor("linguaPro","Pess23","Carlos Petro","Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas","Centro Global", i2));
-    contUsuario.confirmarAltaUsuario(); delete i2;
+    contUsuario.confirmarAltaUsuario();
 
-    set<string>* i3 = new set<string>; i3->insert("Ingles"); i3->insert("Aleman");
+    set<string> i3; i3.insert("Ingles"); i3.insert("Aleman");
     contUsuario.setDatoProfesor(DTProfesor("talkExpert","Secret1","Laura Perez","Soy una profesora entusiasta del aprendizaje de idiomas","Instituto de Idiomas Vanguardia", i3));
-    contUsuario.confirmarAltaUsuario(); delete i3;
+    contUsuario.confirmarAltaUsuario();
 
-    set<string>* i4 = new set<string>; i4->insert("Frances");
+    set<string> i4; i4.insert("Frances");
     contUsuario.setDatoProfesor(DTProfesor("lingoSensei","Secure2","Franco Lopez","Apasionada en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos","Centro de Idiomas", i4));
-    contUsuario.confirmarAltaUsuario(); delete i4;
+    contUsuario.confirmarAltaUsuario();
 
-    set<string>* i5 = new set<string>; i5->insert("Ingles"); i5->insert("Español"); i5->insert("Portugues");
+    set<string> i5; i5.insert("Ingles"); i5.insert("Español"); i5.insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("wordMaestro","Passw0","Ana Morales","Soy una profesora comprometida en desarrollo de habilidades idiomaticas","Instituto de Idiomas Progreso", i5));
-    contUsuario.confirmarAltaUsuario(); delete i5;
-}
+    contUsuario.confirmarAltaUsuario();
+    }
 
 void ingresarCursos(){
     factoryController& fabrica = factoryController::getInstancia();

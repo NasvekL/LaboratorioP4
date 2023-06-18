@@ -55,7 +55,7 @@ class IControladorUsuario{
     // Operaciones que no tienen sentido estar aquí
     virtual DTEstadisticaCurso estadisticaCurso(std::string curso) = 0;
     virtual Curso* obtenerCurso(std::string curso) = 0;
-
+    virtual void limpiarDatos()=0;
     virtual list<string> consultarUsuario() = 0;
 };
     

@@ -241,9 +241,9 @@ void ControladorUsuario::confirmarAltaUsuario() {
     }
     else if (datoProfesor!=NULL){
         set<Idioma*> Idiomas;
-        set<string>* Sidiomas = datoProfesor->getIdiomas();
-        auto it = Sidiomas->begin();
-        for (it; it!=Sidiomas->end(); ++it){
+        set<string> Sidiomas = datoProfesor->getIdiomas();
+        auto it = Sidiomas.begin();
+        for (it; it!=Sidiomas.end(); ++it){
             string current = *it;
             Idioma* idiom = cc.getIdioma(current);
             Idiomas.insert(idiom);
@@ -302,4 +302,14 @@ void ControladorUsuario::seleccionarUsuario(string nick){
        DTProfesor dt = profesor->getDTProfesor();
        setDatoProfesor(dt);
        }
+}
+void ControladorUsuario::limpiarDatos(){
+    if(datoEstudiante!=NULL){
+        delete datoEstudiante;
+        datoEstudiante = NULL;
+    }
+    else if(datoProfesor!=NULL){
+        delete datoProfesor;
+        datoProfesor = NULL;
+    }
 }
