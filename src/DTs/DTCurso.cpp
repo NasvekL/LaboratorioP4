@@ -9,7 +9,7 @@ string DTCurso :: getNombre(){
 bool DTCurso :: getHabilitado(){
     return habilitado;
 }
-set<string>* DTCurso::getPrevias(){
+set<string> DTCurso::getPrevias(){
     return previas;
 }
 nivelDeDificultad DTCurso :: getNivel(){
@@ -28,7 +28,7 @@ DTCurso :: DTCurso(){
 
 }
 
-DTCurso :: DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion, set<string>* previas){
+DTCurso :: DTCurso(string nombre,bool habilitado,nivelDeDificultad nivel,string descripcion, set<string> previas){
     this->nombre = nombre;
     this->habilitado = habilitado;
     this->nivel = nivel;

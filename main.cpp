@@ -791,7 +791,7 @@ DTCurso crearDTCurso(){
 
         imprimir("Quiere agregar previas al curso? (S/N)");
         string tienePrevias = entradaString();
-        set<string>* previas = new set<string>();
+        set<string> previas;
         if(tienePrevias == "S" || tienePrevias == "s"){
             set<string> curs = contCurso.listarNombresDeCursos();
             int i = 1;
@@ -806,7 +806,7 @@ DTCurso crearDTCurso(){
                 map<string, Curso*> p = contCurso.getCursos();
                 auto it = p.find(pre);
                 if (it != p.end()) {
-                    previas->insert(pre);
+                    previas.insert(pre);
                 } else {
                     imprimir("Curso no encontrado", ROJO);
                 }
@@ -1100,42 +1100,48 @@ void ingresarCursos(){
     // Curso 1: Ingles para principiantes
     contCurso.seleccionarProfesor("langMaster");
     contCurso.seleccionIdioma("Ingles");
-    DTCurso c1 = DTCurso("Ingles para principiantes", true, PRINCIPIANTE, "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", nullptr);
+    set<string> previas1;
+    DTCurso c1 = DTCurso("Ingles para principiantes", true, PRINCIPIANTE, "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", previas1);
     contCurso.setDatoDeCurso(c1);
     contCurso.altaCurso();
 
     // Curso 2: Curso de ingles basico
     contCurso.seleccionarProfesor("langMaster");
     contCurso.seleccionIdioma("Ingles");
-    DTCurso c2 = DTCurso("Curso de ingles basico", false, PRINCIPIANTE, "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", nullptr);
+    set<string> previas2;
+    DTCurso c2 = DTCurso("Curso de ingles basico", false, PRINCIPIANTE, "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", previas2);
     contCurso.setDatoDeCurso(c2);
     contCurso.altaCurso();
 
     // Curso 3: Ingles intermedio: mejora tu nivel
     contCurso.seleccionarProfesor("linguaPro");
     contCurso.seleccionIdioma("Ingles");
-    DTCurso c3 = DTCurso("Ingles intermedio: mejora tu nivel", true, MEDIO, "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", nullptr);
+    set<string> previas3;   
+    DTCurso c3 = DTCurso("Ingles intermedio: mejora tu nivel", true, MEDIO, "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", previas3);
     contCurso.setDatoDeCurso(c3);
     contCurso.altaCurso();
 
     // Curso 4: Curso avanzado de ingles
     contCurso.seleccionarProfesor("linguaPro");
     contCurso.seleccionIdioma("Ingles");
-    DTCurso c4 = DTCurso("Curso avanzado de ingles", true, AVANZADO, "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", nullptr);
+    set<string> previas4;
+    DTCurso c4 = DTCurso("Curso avanzado de ingles", true, AVANZADO, "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", previas4);
     contCurso.setDatoDeCurso(c4);
     contCurso.altaCurso();
 
     // Curso 5: Portugues intermedio
     contCurso.seleccionarProfesor("linguaPro");
     contCurso.seleccionIdioma("Portugues");
-    DTCurso c5 = DTCurso("Portugues intermedio", true, MEDIO, "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", nullptr);
+    set<string> previas5;
+    DTCurso c5 = DTCurso("Portugues intermedio", true, MEDIO, "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", previas5);
     contCurso.setDatoDeCurso(c5);
     contCurso.altaCurso();
 
     // Curso 6: Portugues avanzado
     contCurso.seleccionarProfesor("lingoSensei");
     contCurso.seleccionIdioma("Portugues");
-    DTCurso c6 = DTCurso("Portugues avanzado", false, AVANZADO, "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", nullptr);
+    set<string> previas6;
+    DTCurso c6 = DTCurso("Portugues avanzado", false, AVANZADO, "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", previas6);
     contCurso.setDatoDeCurso(c6);
     contCurso.altaCurso();
 }

@@ -157,7 +157,8 @@ bool ControladorCurso::altaCurso() {
     Idioma* idi = it->second;
     Curso* cur =NULL;
     if(!datosPrevias.empty()){
-        for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
+        set<string> previas = datoDeCurso->getPrevias();
+        for(auto iter=previas.begin(); iter!=previas.end(); iter++){
             Curso* curso =cursos.find(*iter)->second;
             datosPrevias.insert(std::make_pair(*iter,curso));
         }
@@ -165,8 +166,10 @@ bool ControladorCurso::altaCurso() {
     cur = new Curso(datoDeCurso->getNombre(),datoDeCurso->getDescripcion(),datoDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
     cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
     profesor->agregarCurso(cur);
-    for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
-        for(auto it = (*iter)->getEjercicios().begin(); it!=(*iter)->getEjercicios().end(); it++){
+    list<Leccion*> lecs = cur->getLecciones();
+    for(auto iter=lecs.begin(); iter!=lecs.end(); iter++){
+        map<int,Ejercicio*> ejs = (*iter)->getEjercicios();
+        for(auto it = ejs.begin(); it!=ejs.end(); it++){
             ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
         }
     }
