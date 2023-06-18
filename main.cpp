@@ -1153,7 +1153,6 @@ void ingresarLecciones(){
     
     //L1
     DTLeccion leccion = DTLeccion(1, 2, "Aprender a saludar y despedirse", "Saludos y Presentaciones");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     DTTraduccion tradu = DTTraduccion("Presentaciones", "Mucho gusto en conocerte", 1, "Nice to meet you", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
@@ -1163,7 +1162,6 @@ void ingresarLecciones(){
 
     //L2
     leccion = DTLeccion(2, 2, "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", "Artículos y Plurales");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     tradu = DTTraduccion("Plurales regulares", "I have two brothers and three sisters", 3, "Tengo dos hermanos y tres hermanas", "traduccion", 2);
     contCurso.agregarDatosTraduccion(tradu);
@@ -1173,7 +1171,6 @@ void ingresarLecciones(){
 
     //L3
     leccion = DTLeccion(1, 1, "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", "Actividades Cotidianas");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     rellpab = DTRellenarPalabras("Actividades diarias", "Wake ---", 5, {"up"}, "completar", 1);
     contCurso.agregarDatosRellenarPalabras(rellpab);
@@ -1181,13 +1178,11 @@ void ingresarLecciones(){
 
     //L4
     leccion = DTLeccion(2, 0, "Aprender el uso del presente simple", "Presente Simple");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     contCurso.altaLeccion("Ingles intermedio");
 
     //L5
     leccion = DTLeccion(1, 1, "Aprender a hacer preguntas y respuestas en situaciones comunes", "Conversaciones cotidianas");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     rellpab = DTRellenarPalabras("Consultas de la hora", "Q: Do you --- the time?, A: Yes, it is half --- 4", 6, {"have", "past"}, "completar", 1);
     contCurso.agregarDatosRellenarPalabras(rellpab);
@@ -1195,7 +1190,6 @@ void ingresarLecciones(){
 
     //L6
     leccion = DTLeccion(1, 1, "Explorar el uso de los modales complejos", "Uso de modales avanzados");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     tradu = DTTraduccion("Dar consejos o expresar obligacion", "You should visit that museum", 7, "Deberias visitar ese museo", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
@@ -1203,7 +1197,6 @@ void ingresarLecciones(){
 
     //L7
     leccion = DTLeccion(1, 1, "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas", "Lectura y comprension de textos");
-    contCurso.setDatosDeLeccion(leccion);
     contCurso.setDatoDeLeccion(leccion);
     tradu = DTTraduccion("Imperativo", "Fale comigo", 8, "Habla conmigo", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
