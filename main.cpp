@@ -1228,3 +1228,9 @@ void ingresarHabilitarCursos(){
     contCurso.habilitarCurso("Curso avanzado de ingles");
     contCurso.habilitarCurso("Portugues intermedio");
 }
+void ingresarPrevias(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+
+}
