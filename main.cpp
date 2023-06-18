@@ -458,6 +458,11 @@ int main(){
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
                 list<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
+                if(ejerciciosSinHacer.empty()){
+                    imprimir("No hay ejercicios para realizar", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 auto it2 = ejerciciosSinHacer.begin();
                 for(it2; it2!=ejerciciosSinHacer.end(); it2++){
                     DTEjercicio ejercicio = (*it2);
@@ -467,7 +472,8 @@ int main(){
                 int id = entradaInt();
                 contCurso.seleccionarEjercicio(id);
                 Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
-                imprimir(ejer->mostrarEjercicio());
+                string ej = ejer->mostrarEjercicio();
+                imprimir(ej);
                 string estudiante = nick;
                 if(contCurso.getTipoEjercicio(id) == "completar"){
                     imprimir("Ingrese las palabras que faltan separado por coma");
@@ -650,7 +656,6 @@ int main(){
                     imprimir("Datos de prueba agregados (previas)", VERDE);
                     ingresarHabilitarCursos();
                     imprimir("Datos de prueba agregados (cursos habilitados)", VERDE);
-                    imprimir("Faltan datos de prueba (inscripciones)", ROJO);
                     imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", ROJO);
                     seAgregaronLosDatos = true;
                 }else{
@@ -1221,11 +1226,17 @@ void ingresarLecciones(){
     contCurso.agregarDatosTraduccion(tradu);
     contCurso.altaLeccion("Portugues intermedio");
 
- 
+
+    /*Origen;Previa
+    C3;C1
+    C4;C1
+    C4;C3
+    C6;C5*/
 }
 
 void ingresarHabilitarCursos(){
     factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
 
     contCurso.habilitarCurso("Ingles para principiantes");
@@ -1235,6 +1246,7 @@ void ingresarHabilitarCursos(){
 }
 void ingresarPrevias(){
     factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     /*
     C1;Ingles para principiantes
@@ -1253,5 +1265,5 @@ void ingresarPrevias(){
     contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles para principiantes");
     contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles intermedio: mejora tu nivel");
     contCurso.agregarPrevia("Portugues avanzado", "Portugues intermedio");
-
+    
 }
