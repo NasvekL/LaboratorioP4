@@ -223,7 +223,7 @@ int main(){
                         int cantEjs = entradaInt();
                         leccion.setCantEj(cantEjs);   
                     }
-                    while((opcion2=="S") || (opcion2=="s")){
+                    for(int i = 1; i <= cantEjs; i++){
                         imprimir("Ingrese tipo de ejercicio", AMARILLO);
                         imprimir("Completar/Traduccion", AMARILLO);
                         string opcion3 = entradaString();
@@ -235,8 +235,7 @@ int main(){
                             DTTraduccion ejercicio = crearDTTraduccion(numLec);
                             contCurso.agregarDatosTraduccion(ejercicio);
                         }
-                        if(!quiereContinuar("Agregar otro ejercicio"))
-                            opcion2 = "N";
+                        
                     }
                     if(!quiereContinuar("Agregar otra leccion"))
                         opcion = "N";
