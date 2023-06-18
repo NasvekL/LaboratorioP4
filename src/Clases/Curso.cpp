@@ -111,10 +111,8 @@ Ejercicio* Curso :: seleccionarEj(int id){
 }
 
 list<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
-    list<Leccion*> lecc = getLecciones();
-    auto it = lecc.begin();
-    if(lecc.size() > 0){
-        for(auto it = lecc.begin(); it!=lecc.end(); it++){
+    if(lecciones.size() > 0){
+        for(auto it = lecciones.begin(); it!=lecciones.end(); it++){
             if((*it)->getNumero() == lecActual){
                 return (*it)->ejerciciosNoAprobados(nick);
             }
