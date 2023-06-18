@@ -545,8 +545,8 @@ int main(){
 
                     imprimir("Estadisticas de "+ prof + ":" );
                     map<string, int> porcentajesCursos = estadisticas.estadoCurso();
-                    for (const auto& estads : porcentajesCursos) {
-                        imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
+                    for (auto it = porcentajesCursos.begin(); it != porcentajesCursos.end(); it++) {
+                        imprimir("Curso: " + it->first + ", Porcentaje: " + to_string(it->second) + "%");
                     }
                 } else {
                     imprimir("Ingrese el nombre del profesor");
