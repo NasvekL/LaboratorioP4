@@ -465,8 +465,9 @@ int main(){
                 }
                 imprimir("Ingrese ID del ejercicio: ");
                 int id = entradaInt();
-                contCurso.seleccionarEjercicio(id);
-                Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
+                //seleccionarEjercicio(id);
+                //Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
+                Ejercicio* ejer = contCurso.getEjercicioPorIdDesdeMapa(id);
                 imprimir(ejer->mostrarEjercicio());
                 string estudiante = nick;
                 if(contCurso.getTipoEjercicio(id) == "completar"){

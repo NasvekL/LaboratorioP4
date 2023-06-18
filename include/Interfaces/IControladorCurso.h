@@ -108,6 +108,8 @@ class IControladorCurso{
         virtual list<string> listarIdiomasSuscrito(string nick)= 0;
         virtual void eliminarSuscripciones(set<string> idi)= 0;
 
+
+        virtual Ejercicio* getEjercicioPorIdDesdeMapa(int id) = 0;
         //Otras operaciones virtuales
         virtual void limpiarDatos()= 0;
 
