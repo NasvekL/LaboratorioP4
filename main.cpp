@@ -663,7 +663,7 @@ int main(){
                     ingresarHabilitarCursos();
                     imprimir("Datos de prueba agregados (cursos habilitados)", VERDE);
                     inscribirUsuarios();
-                    imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", VERDE);
+                    imprimir("Datos de prueba agregados (usuarios inscritos y ejercicios completados de cada usuario)", VERDE);
                     seAgregaronLosDatos = true;
                 }else{
                     imprimir("Los datos ya fueron agregados", AMARILLO);
@@ -1012,10 +1012,10 @@ int entradaInt(){
 
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
-bool esAlfanumerico(string str) {
+/*bool esAlfanumerico(string str) {
     regex pattern("[a-zA-Z0-9,_\\-: ]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
     return regex_match(str, pattern);
-}
+}*/
 
 string entradaString(){
     bool alfanumerico = false;
@@ -1023,8 +1023,8 @@ string entradaString(){
     cout << AZUL;
     getline(cin >> ws, entrada);
     cout << RESET;
-    while(!esAlfanumerico(entrada)){
-        cout << AMARILLO << "La entrada debe ser alfanumerica." << RESET << endl;
+    while(entrada == ""){
+        cout << AMARILLO << "La entrada no puede ser vacia." << RESET << endl;
         cout << "Ingrese nuevamente:" << endl;
         getline(cin >> ws, entrada);
     }
