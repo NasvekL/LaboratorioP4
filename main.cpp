@@ -445,6 +445,11 @@ int main(){
                 string nick = entradaString();
                 imprimir("Cursos:" , AMARILLO);
                 set<string> cursosISA = contCurso.cursosInscriptoSinAprobar(nick);
+                if(cursosISA.empty()){
+                    imprimir("No hay ejercicios para realizar", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 auto it = cursosISA.begin();
                 for(it; it != cursosISA.end(); it++){
                     string curso = (*it);
@@ -453,11 +458,6 @@ int main(){
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
                 list<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
-                if(ejerciciosSinHacer.empty()){
-                    imprimir("No hay ejercicios para realizar", AMARILLO);
-                    presionaParaContinuar();
-                    break;
-                }
                 auto it2 = ejerciciosSinHacer.begin();
                 for(it2; it2!=ejerciciosSinHacer.end(); it2++){
                     DTEjercicio ejercicio = (*it2);

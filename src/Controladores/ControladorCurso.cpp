@@ -361,7 +361,7 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                     list<Inscripcion*> inscripcionesitass = (*it2)->getInscripciones();
                     for(auto it3 = inscripcionesitass.begin(); it3 != inscripcionesitass.end(); ++it3){
                         if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
-                            if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
+                            if((*it3)->getAprobado()){ //Si el estudiante aprobo la previa
                                 estudianteAproboLasPrevias = true;
                             }else{                      //Si el estudiante no aprobo la previa
                                 estudianteAproboLasPrevias = false;
@@ -468,9 +468,13 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
             lec->eliminarProgreso(estudiante);      //elimino progreso
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
+                cout << "entro al if magico";
+                cin.ignore();
+                cin.get();
+                cin.ignore();
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
                 ins->setAprobado();             //seteo inscripcion a aprobado
-                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+                prog->setPorcentajeCurso((1/(cur->cantidadDeEjercicios())*100));      //seteo porcentaje de curso
             }       
             else{       
                 Leccion* lecSig;        //obtengo leccion siguiente
