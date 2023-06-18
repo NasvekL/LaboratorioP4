@@ -498,16 +498,16 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
     Ejercicio* e = getEjercicioEnMemoria();
-    Curso* cur = getCursoEnMemoria();                       //obtengo curso
-    int cantidadDeLecciones = cur->getLecciones().size();   //obtengo cantidad de lecciones
-    bool esCorrecta = e->esCorrectoTraduccion(solucion);    //verifico si la solucion es correcta
-    if(esCorrecta){                                       //si es correcta
-        Leccion* lec = e->getLeccion();           //obtengo leccion
-        int lecActual= lec->getNumero();      //obtengo numero de leccion
-        Progreso* prog = lec->getProgresos().find(estudiante)->second;   //obtengo progreso
-        int cant = lec->getCantidadDeEjercicios();   //obtengo cantidad de ejercicios
-        prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
-        int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
+    Curso* cur = getCursoEnMemoria();                                               //obtengo curso
+    int cantidadDeLecciones = cur->getLecciones().size();                           //obtengo cantidad de lecciones
+    bool esCorrecta = e->esCorrectoTraduccion(solucion);                            //verifico si la solucion es correcta
+    if(esCorrecta){                                                                 //si es correcta
+        Leccion* lec = e->getLeccion();                                             //obtengo leccion
+        int lecActual= lec->getNumero();                                            //obtengo numero de leccion
+        Progreso* prog = lec->getProgresos().find(estudiante)->second;              //obtengo progreso
+        int cant = lec->getCantidadDeEjercicios();                                  //obtengo cantidad de ejercicios
+        prog->agregarEjercicioResuelto(e);                                //agrego ejercicio a ejercicios resueltos
+        int ejResueltos = prog->getEjerciciosResueltos().size();                    //obtengo cantidad de ejercicios resueltos
         if(cant == ejResueltos){
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion

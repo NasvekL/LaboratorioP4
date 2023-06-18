@@ -21,6 +21,9 @@ void Progreso::setPorcentaje(int porcentaje) {
 void Progreso::setInscripcion(Inscripcion* insc) {
     this->inscripcion = insc;
 }
+void Progreso::agregarEjercicioResuelto(Ejercicio* e) {
+    ejerciciosResueltos.push_back(e);
+}
 void Progreso::limpiarEjerciciosResueltos() {
     ejerciciosResueltos.clear();
 }

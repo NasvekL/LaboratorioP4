@@ -22,6 +22,7 @@ class Progreso{
         void setInscripcion(Inscripcion* insc);
         void setLeccionActual(Leccion* lec);
         void limpiarEjerciciosResueltos();
+        void agregarEjercicioResuelto(Ejercicio* e);
         //getters
         int getPorcentaje();
         Inscripcion* getInscripcion();
@@ -30,7 +31,6 @@ class Progreso{
         //constructor destructor
         Progreso(Leccion* lec);
         ~Progreso();
-        
 };
 
 
