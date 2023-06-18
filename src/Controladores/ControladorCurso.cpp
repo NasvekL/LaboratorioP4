@@ -390,8 +390,8 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     DTFecha* fecha = new DTFecha(21,6,2023);
 
     //Obtengo la primera leccion del curso
-    Curso refACurso = (*cursos.find(curso)->second);
-    list<Leccion*> lecciones = refACurso.getLecciones();
+    Curso* refACurso = cursos.find(curso)->second;
+    list<Leccion*> lecciones = refACurso->getLecciones();
     Leccion* primeraLeccion = lecciones.front();
 
     //Creo el progreso con referencia a la leccion actual
@@ -609,7 +609,7 @@ string ControladorCurso::getTipoEjercicio(int id) {
         } else {
             return "traduccion";
         }
-}
+    }
 }
 
 list<string> ControladorCurso::verCurso(string curso){
