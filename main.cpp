@@ -631,6 +631,11 @@ int main(){
                 contCurso.setNickUsuario(nick);
 
                 list<string> idiomasSuscrito = contCurso.listarIdiomasSuscrito(nick);
+                if (idiomasSuscrito.size() == 0){
+                    imprimir("El usuario no esta suscrito a ningun idioma", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for (auto iterador = idiomasSuscrito.begin(); iterador != idiomasSuscrito.end(); iterador++){
                     imprimir(*iterador);
                 }
