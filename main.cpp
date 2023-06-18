@@ -32,6 +32,7 @@ list<string> separarString(const string& str, char delimiter);
 void ingresarUsuarios();
 void ingresarIdiomas();
 void ingresarCursos();
+void ingresarHabilitarCursos();
 DTRellenarPalabras crearDTRellenarPalabras(int numLec);
 DTTraduccion crearDTTraduccion(int numLec);
 int seleccionTipoEjercicio();
@@ -630,6 +631,8 @@ int main(){
                     imprimir("Datos de prueba agregados (cursos).", VERDE);
                     ingresarLecciones();
                     imprimir("Datos de prueba agregados (lecciones y ejercicios)", VERDE);
+                    ingresarHabilitarCursos();
+                    imprimir("Datos de prueba agregados (cursos habilitados)", VERDE);
                     imprimir("Faltan datos de prueba (previas)", ROJO);
                     imprimir("Faltan datos de prueba (inscripciones)", ROJO);
                     imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", ROJO);
@@ -1079,7 +1082,6 @@ void ingresarCursos(){
     DTCurso c1 = DTCurso("Ingles para principiantes", true, PRINCIPIANTE, "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", nullptr);
     contCurso.setDatoDeCurso(c1);
     contCurso.altaCurso();
-    contCurso.habilitarCurso("Ingles para principiantes");
 
     // Curso 2: Curso de ingles basico
     contCurso.seleccionarProfesor("langMaster");
@@ -1094,7 +1096,6 @@ void ingresarCursos(){
     DTCurso c3 = DTCurso("Ingles intermedio: mejora tu nivel", true, MEDIO, "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", nullptr);
     contCurso.setDatoDeCurso(c3);
     contCurso.altaCurso();
-    contCurso.habilitarCurso("Ingles intermedio: mejora tu nivel");
 
     // Curso 4: Curso avanzado de ingles
     contCurso.seleccionarProfesor("linguaPro");
@@ -1102,7 +1103,6 @@ void ingresarCursos(){
     DTCurso c4 = DTCurso("Curso avanzado de ingles", true, AVANZADO, "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", nullptr);
     contCurso.setDatoDeCurso(c4);
     contCurso.altaCurso();
-    contCurso.habilitarCurso("Curso avanzado de ingles");
 
     // Curso 5: Portugues intermedio
     contCurso.seleccionarProfesor("linguaPro");
@@ -1110,7 +1110,6 @@ void ingresarCursos(){
     DTCurso c5 = DTCurso("Portugues intermedio", true, MEDIO, "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", nullptr);
     contCurso.setDatoDeCurso(c5);
     contCurso.altaCurso();
-    contCurso.habilitarCurso("Portugues intermedio");
 
     // Curso 6: Portugues avanzado
     contCurso.seleccionarProfesor("lingoSensei");
@@ -1205,4 +1204,18 @@ void ingresarLecciones(){
     tradu = DTTraduccion("Imperativo", "Fale comigo", 8, "Habla conmigo", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
     contCurso.altaLeccion("Portugues intermedio");
+
+
+    
+}
+
+void ingresarHabilitarCursos(){
+    factoryController& fabrica = factoryController::getInstancia();
+    IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+
+    contCurso.habilitarCurso("Ingles para principiantes");
+    contCurso.habilitarCurso("Ingles intermedio: mejora tu nivel");
+    contCurso.habilitarCurso("Curso avanzado de ingles");
+    contCurso.habilitarCurso("Portugues intermedio");
 }
