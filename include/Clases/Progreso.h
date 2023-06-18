@@ -7,8 +7,8 @@
 class Inscripcion;
 class Progreso{
     private:
-        int porcentaje;
-        int porcentajeCurso;
+        float porcentaje;
+        float porcentajeCurso;
         //Pseudoatributos
         Inscripcion* inscripcion;
         Leccion* leccionActual;
@@ -24,10 +24,10 @@ class Progreso{
         void limpiarEjerciciosResueltos();
         void agregarEjercicioResuelto(Ejercicio* e);
         //getters
-        int getPorcentaje();
+        float getPorcentaje();
         Inscripcion* getInscripcion();
         list<Ejercicio*> getEjerciciosResueltos();
-        int getPorcentajeCurso();
+        float getPorcentajeCurso();
         //constructor destructor
         Progreso(Leccion* lec);
         ~Progreso();

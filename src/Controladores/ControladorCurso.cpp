@@ -157,7 +157,8 @@ bool ControladorCurso::altaCurso() {
     Idioma* idi = it->second;
     Curso* cur =NULL;
     if(!datosPrevias.empty()){
-        for(auto iter=datoDeCurso->getPrevias()->begin(); iter!=datoDeCurso->getPrevias()->end(); iter++){
+        set<string> previas = datoDeCurso->getPrevias();
+        for(auto iter=previas.begin(); iter!=previas.end(); iter++){
             Curso* curso =cursos.find(*iter)->second;
             datosPrevias.insert(std::make_pair(*iter,curso));
         }
@@ -165,8 +166,10 @@ bool ControladorCurso::altaCurso() {
     cur = new Curso(datoDeCurso->getNombre(),datoDeCurso->getDescripcion(),datoDeCurso->getNivel(),datosPrevias,idi,profesor,datosRellenarPalabras,datosTraduccion,datosLecciones);
     cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
     profesor->agregarCurso(cur);
-    for(auto iter=cur->getLecciones().begin(); iter!=cur->getLecciones().end(); iter++){
-        for(auto it = (*iter)->getEjercicios().begin(); it!=(*iter)->getEjercicios().end(); it++){
+    list<Leccion*> lecs = cur->getLecciones();
+    for(auto iter=lecs.begin(); iter!=lecs.end(); iter++){
+        map<int,Ejercicio*> ejs = (*iter)->getEjercicios();
+        for(auto it = ejs.begin(); it!=ejs.end(); it++){
             ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
         }
     }
@@ -475,7 +478,6 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
                 ins->setAprobado();             //seteo inscripcion a aprobado
-                prog->setPorcentajeCurso((1/(cur->cantidadDeEjercicios())*100));      //seteo porcentaje de curso
             }       
             else{       
                 Leccion* lecSig;        //obtengo leccion siguiente
@@ -487,7 +489,6 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
                     }
                 }
                 lecSig->agregarProgreso(prog);
-                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
                 prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
                 prog->setLeccionActual(lecSig);     //seteo leccion actual
             }    
@@ -495,17 +496,17 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
 
         }
         else{
-            prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
             prog->aumentarProgreso(estudiante);     //aumento progreso
         }
-    ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;     //seteo curso a NULL
-    return true;        //retorno true
+        prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+        ejercicio=NULL;     //seteo ejercicio a NULL
+        curso=NULL;     //seteo curso a NULL
+        return true;        //retorno true
     }
     else{
-    ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;         
-    return false;
+        ejercicio=NULL;     //seteo ejercicio a NULL
+        curso=NULL;         
+        return false;
     } 
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
@@ -526,7 +527,6 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
                 ins->setAprobado();             //seteo inscripcion a aprobado
-                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
             }       
             else{       
                 Leccion* lecSig;        //obtengo leccion siguiente
@@ -537,16 +537,15 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
                     }
                 }
                 lecSig->agregarProgreso(prog);
-                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
                 prog->limpiarEjerciciosResueltos();     //limpio ejercicios resueltos
                 prog->setLeccionActual(lecSig);     //seteo leccion actual
             }    
         prog->setPorcentaje(0);     //seteo porcentaje de leccion
         }
         else{
-            prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
             prog->aumentarProgreso(estudiante);     //aumento progreso
         }
+        prog->setPorcentajeCurso(1/cur->cantidadDeEjercicios()*100);      //seteo porcentaje de curso
         ejercicio=NULL;     //seteo ejercicio a NULL
         curso=NULL;     //seteo curso a NULL
         return true;        //retorno true
