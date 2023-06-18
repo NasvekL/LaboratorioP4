@@ -54,7 +54,7 @@ class ControladorCurso: public IControladorCurso{
         ~ControladorCurso();
 
         void agregarPrevia(string curso, string previa);
-    
+        Ejercicio* getEjercicioPorIdDesdeMapa(int id);
         //Getters
         //fdfd
         string getTipoEjercicio(int id);

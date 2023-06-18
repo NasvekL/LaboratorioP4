@@ -70,6 +70,11 @@ Ejercicio* ControladorCurso::getEjercicioEnMemoria(){
     return ejercicio;
 }
 
+Ejercicio* ControladorCurso::getEjercicioPorIdDesdeMapa(int id){
+    return ejercicios[id];
+}
+
+
 string ControladorCurso::getDatoIdioma() {
     return datoIdioma;
 }
