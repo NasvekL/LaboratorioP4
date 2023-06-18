@@ -24,6 +24,11 @@ string Leccion::getTema() {
     return tema;
 }
 
+void Leccion::agregarProgreso(Progreso* progreso){
+    this->progresos[progreso->getInscripcion()->getEstudiante()->getNick()]=  progreso;
+}
+
+
 void Leccion::addEjercicio(Ejercicio* ej) {
     ejercicios.insert(pair<int, Ejercicio*>(ej->getIdEjercicio(), ej));
     setCantidadEjercicios(getCantidadDeEjercicios() + 1);
@@ -71,7 +76,7 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     for(auto iter=listaRellenarPalabras.begin();iter!=listaRellenarPalabras.end();iter++){
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new RellenarPalabras(iter->getListaDePalabras(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
-            ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
+            ejercicios[iter->getIdEjercicio()] = ej;
         }
     }
     }
@@ -79,17 +84,17 @@ Leccion::Leccion(string tema, string objetivoAprendizaje, int cantidadDeEjercici
     for(auto iter=listaTraduccion.begin();iter!=listaTraduccion.end();iter++){
         if(iter->getNumLec()==getNumero()){
             Ejercicio *ej = new Traduccion(iter->getSolucion(), iter->getIdEjercicio(), iter->getDescripcion(), iter->getLetra(),this);
-            ejercicios.insert(std::make_pair(iter->getIdEjercicio(), ej));
+            ejercicios[iter->getIdEjercicio()] =ej;
         }
     }
 }
 }
 Ejercicio* Leccion::seleccionarEj(int idEjercicio) {
-    map<int, Ejercicio*> ejercicios = this->getEjercicios();
     auto it = ejercicios.find(idEjercicio);
     if(it!=ejercicios.end()){
         return it->second;
-    }else return NULL;
+    }
+    else return NULL;
 }
 
 void Leccion::aumentarProgreso(Estudiante e) {

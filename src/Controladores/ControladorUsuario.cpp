@@ -171,7 +171,7 @@ Curso* ControladorUsuario::obtenerCurso(string curso) {
     for(it; it!=usuarios.end(); it++){
         if(it->first == nick){
             estudiante = dynamic_cast<Estudiante*>(it->second);
-        }
+        } 
     }
     return estudiante->buscarCurso(curso);
 }
@@ -182,13 +182,7 @@ void ControladorUsuario::deleteDataIngresado()
 list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
     DTEstudiante est = getDatoEstudiante();
     string nick = est.getNickname();
-    auto it = usuarios.begin();
-    Estudiante* estudiante = NULL;
-    for(it; it!=usuarios.end(); it++){
-        if(it->first == nick){
-            estudiante = dynamic_cast<Estudiante*>(it->second);
-        }
-    }
+    Estudiante* estudiante = encontrarEstudiante(nick);
     return estudiante->ejerciciosNoAprobados(curso);
 }
 

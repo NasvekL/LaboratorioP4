@@ -41,6 +41,7 @@ void Ejercicio:: conseguirInfoEjercicio(list<string> &infoEjercicio){
     infoEjercicio.push_back(datosDelEjercicio);
 }
 
-void Ejercicio:: mostrarEjercicio(){
+string Ejercicio:: mostrarEjercicio(){
     string datosDelEjercicio = "Descripcion del ejercicio: " + descripcion + "\n" + "Letra del ejercicio: " + letra + "\n";
+    return datosDelEjercicio;
 }

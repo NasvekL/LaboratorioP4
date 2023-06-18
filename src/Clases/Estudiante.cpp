@@ -66,17 +66,14 @@ set<string> Estudiante::getCursosInscriptosSA() {
 
 list<DTEjercicio> Estudiante :: ejerciciosNoAprobados(string curso){
     list<Inscripcion*> ins = getInscripciones();
-    auto it = ins.begin();
     Curso* c = NULL;
-    int ultimaLec = 1;
-    while(it!=ins.end() && c == NULL){
+    for(auto it = ins.begin(); it!=ins.end(); it++){
         if((*it)->getInscriptoA()->getNombreCurso() == curso){
             c = (*it)->getInscriptoA();
-            ultimaLec = (*it)->getLeccionActual();
         }
-        it++;
     }
-    return c->buscarEjNoAprobados(this->getNick(), ultimaLec);
+    int ultimaLec = c->getLecciones().size();
+    return c->buscarEjNoAprobados(getNick(), ultimaLec);
 }
 
 set<DTCurso> Estudiante::obtenDTCurso() {

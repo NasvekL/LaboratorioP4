@@ -7,7 +7,7 @@ bool Progreso::esCorrecto(string solucion) {
 }
 
 void Progreso::aumentarProgreso(string estudiante) {
-    int aumento = ejerciciosResueltos.size()/leccionActual->getCantidadDeEjercicios();
+    int aumento = ejerciciosResueltos.size() / leccionActual->getCantidadDeEjercicios();
 }
 void Progreso::setLeccionActual(Leccion* lec) {
     this->leccionActual = lec;
@@ -20,6 +20,9 @@ void Progreso::setPorcentaje(int porcentaje) {
 }
 void Progreso::setInscripcion(Inscripcion* insc) {
     this->inscripcion = insc;
+}
+void Progreso::agregarEjercicioResuelto(Ejercicio* e) {
+    ejerciciosResueltos.push_back(e);
 }
 void Progreso::limpiarEjerciciosResueltos() {
     ejerciciosResueltos.clear();
@@ -36,11 +39,11 @@ list<Ejercicio*> Progreso :: getEjerciciosResueltos(){
 int Progreso ::getPorcentajeCurso(){
     return porcentajeCurso;
 }
-Progreso::Progreso(Leccion* lecActual){
+Progreso::Progreso(Leccion* lecActual): ejerciciosResueltos(){
     this->porcentajeCurso = 0;
     this->porcentaje = 0;
     this->leccionActual = lecActual;
-    this->ejerciciosResueltos = list<Ejercicio*>();
+    //this->ejerciciosResueltos = list<Ejercicio*>();
     this->inscripcion = nullptr;
 }
 

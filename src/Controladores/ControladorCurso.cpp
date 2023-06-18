@@ -333,19 +333,24 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
             estudianteYaEstaInscritoAlCurso = false;
         }
         else{
-            for(auto it2 = it->second->getInscripciones().begin(); it2 != it->second->getInscripciones().end(); ++it2){
+            list<Inscripcion*> inscripcionesitass = it->second->getInscripciones();
+            for(auto it2 = inscripcionesitass.begin(); it2 != inscripcionesitass.end(); ++it2){
                 if((*it2)->getEstudiante()->getNick() == nick){
                     estudianteYaEstaInscritoAlCurso = true;
                 }
             }
         }
 
+
+        
+
         //Recorro las previas de cada curso (it2 es una previa en cada iteracion)
         if(it->second->getPrevias().size() == 0){
             estudianteAproboLasPrevias = true;
         }
         else{
-            for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
+            list <Curso*> previasitass = it->second->getPrevias();
+            for(auto it2 = previasitass.begin(); it2 != previasitass.end(); ++it2){
                 estudianteAproboLasPrevias = false;
                 //Si la previa no tiene inscripciones, significa que nadie la aprobo, asi que el estudiante no la aprobo
                 if((*it2)->getInscripciones().size() == 0){
@@ -353,9 +358,10 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                 }
                 else{
                     //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
-                    for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
+                    list<Inscripcion*> inscripcionesitass = (*it2)->getInscripciones();
+                    for(auto it3 = inscripcionesitass.begin(); it3 != inscripcionesitass.end(); ++it3){
                         if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
-                            if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
+                            if((*it3)->getAprobado()){ //Si el estudiante aprobo la previa
                                 estudianteAproboLasPrevias = true;
                             }else{                      //Si el estudiante no aprobo la previa
                                 estudianteAproboLasPrevias = false;
@@ -382,6 +388,10 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
     return cursosDisponibles;
 }
 
+void ControladorCurso::agregarPrevia(string curso, string previa){
+    cursos.find(curso)->second->agregarPrevia(cursos.find(previa)->second);
+}
+
 void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante) {
     //Obtengo el controlador de usuario
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
@@ -390,9 +400,9 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     DTFecha* fecha = new DTFecha(21,6,2023);
 
     //Obtengo la primera leccion del curso
-    Curso refACurso = (*cursos.find(curso)->second);
-    list<Leccion*> lecciones = refACurso.getLecciones();
-    Leccion* primeraLeccion = lecciones.front();
+    Curso* refACurso = cursos.find(curso)->second;
+    list<Leccion*> lecciones = refACurso->getLecciones();
+    Leccion* primeraLeccion = lecciones.back();
 
     //Creo el progreso con referencia a la leccion actual
     Progreso* progresoDeInscripcion = new Progreso(primeraLeccion);
@@ -407,6 +417,9 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     cu.agregarInscripcionAEstudiante(estudiante, inscri);
     inscri->setEstudianteInscrito(cu.encontrarEstudiante(estudiante));
     
+    //Agrego visibilidad entre inscripcion y leccion
+    primeraLeccion->agregarProgreso(progresoDeInscripcion);
+
     //Agrego visibilidad entre inscripcion y curso
     cursos.find(curso)->second->agregarInscripcion(inscri);
     inscri->setInscripccionACurso(cursos.find(curso)->second);
@@ -455,9 +468,13 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
             lec->eliminarProgreso(estudiante);      //elimino progreso
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
+                cout << "entro al if magico";
+                cin.ignore();
+                cin.get();
+                cin.ignore();
                 prog->setLeccionActual(NULL);        //seteo leccion actual a NULL
                 ins->setAprobado();             //seteo inscripcion a aprobado
-                prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
+                prog->setPorcentajeCurso((1/(cur->cantidadDeEjercicios())*100));      //seteo porcentaje de curso
             }       
             else{       
                 Leccion* lecSig;        //obtengo leccion siguiente
@@ -492,16 +509,16 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
 }
 bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio) {
     Ejercicio* e = getEjercicioEnMemoria();
-    Curso* cur = getCursoEnMemoria();                       //obtengo curso
-    int cantidadDeLecciones = cur->getLecciones().size();   //obtengo cantidad de lecciones
-    bool esCorrecta = e->esCorrectoTraduccion(solucion);    //verifico si la solucion es correcta
-    if(esCorrecta){                                       //si es correcta
-        Leccion* lec = e->getLeccion();           //obtengo leccion
-        int lecActual= lec->getNumero();      //obtengo numero de leccion
-        Progreso* prog = lec->getProgresos().find(estudiante)->second;   //obtengo progreso
-        int cant = lec->getCantidadDeEjercicios();   //obtengo cantidad de ejercicios
-        prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
-        int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
+    Curso* cur = getCursoEnMemoria();                                               //obtengo curso
+    int cantidadDeLecciones = cur->getLecciones().size();                           //obtengo cantidad de lecciones
+    bool esCorrecta = e->esCorrectoTraduccion(solucion);                            //verifico si la solucion es correcta
+    if(esCorrecta){                                                                 //si es correcta
+        Leccion* lec = e->getLeccion();                                             //obtengo leccion
+        int lecActual= lec->getNumero();                                            //obtengo numero de leccion
+        Progreso* prog = lec->getProgresos().find(estudiante)->second;              //obtengo progreso
+        int cant = lec->getCantidadDeEjercicios();                                  //obtengo cantidad de ejercicios
+        prog->agregarEjercicioResuelto(e);                                //agrego ejercicio a ejercicios resueltos
+        int ejResueltos = prog->getEjerciciosResueltos().size();                    //obtengo cantidad de ejercicios resueltos
         if(cant == ejResueltos){
             Inscripcion* ins = prog->getInscripcion();      //obtengo inscripcion
             if(cantidadDeLecciones==lec->getNumero()){      //si es la ultima leccion
@@ -528,14 +545,14 @@ bool ControladorCurso::solucionCorrectaTraduccion(string solucion, string estudi
             prog->setPorcentajeCurso(((1/(cur->cantidadDeEjercicios()))*100));      //seteo porcentaje de curso
             prog->aumentarProgreso(estudiante);     //aumento progreso
         }
-    ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;     //seteo curso a NULL
-    return true;        //retorno true
+        ejercicio=NULL;     //seteo ejercicio a NULL
+        curso=NULL;     //seteo curso a NULL
+        return true;        //retorno true
     }
     else{
-    ejercicio=NULL;     //seteo ejercicio a NULL
-    curso=NULL;         
-    return false;
+        ejercicio=NULL;     //seteo ejercicio a NULL
+        curso=NULL;         
+        return false;
     }
 }
 void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
@@ -545,7 +562,7 @@ void ControladorCurso::seleccionarEjercicio(int idEjercicio) {
 }
 list<DTEjercicio> ControladorCurso::seleccionarEjerciciosDeCurso(string curso) {
     ControladorUsuario& cu = ControladorUsuario::getInstancia();
-    Curso* c = cu.obtenerCurso(curso);
+    Curso* c = getCurso(curso);
     setCursoEnMemoria(c);
     return cu.ejerciciosNoAprobados(curso);
 }
@@ -606,7 +623,7 @@ string ControladorCurso::getTipoEjercicio(int id) {
         } else {
             return "traduccion";
         }
-}
+    }
 }
 
 list<string> ControladorCurso::verCurso(string curso){

@@ -101,25 +101,27 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 // OPERACIONES
 
 Ejercicio* Curso :: seleccionarEj(int id){
-    list<Leccion*> lecc = this->getLecciones();
-    auto it = lecc.begin();
     Ejercicio* ejer = NULL;
-    while (ejer == NULL){
+    for(auto it = lecciones.begin(); it!=lecciones.end(); it++){
         ejer = (*it)->seleccionarEj(id);
+        if (ejer!=NULL)
+        break;
     }
     return ejer;
+    }
+
+void Curso :: agregarPrevia(Curso* previa){
+    previas.push_back(previa);
 }
 
 list<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
-    list<Leccion*> lecc = getLecciones();
-    auto it = lecc.begin();
-    Leccion* l = NULL;
-    for(auto it = lecc.begin(); it!=lecc.end(); it++){
-    if((*it)->getNumero() == lecActual){
-        l = *it;
+    if(lecciones.size() > 0){
+        for(auto it = lecciones.begin(); it!=lecciones.end(); it++){
+            if((*it)->getNumero() == lecActual){
+                return (*it)->ejerciciosNoAprobados(nick);
+            }
+        }
     }
-    }
-    return l->ejerciciosNoAprobados(nick);
 }
 
 int Curso::progresoPromedio() {
@@ -134,7 +136,7 @@ DTEstadisticaCurso Curso::estadisticasCurso() {
     // Implementación de la operación
 }
 
-void Curso::agregarLeccion(Leccion *lec){
+void Curso::agregarLeccion(Leccion* lec){
     lecciones.push_back(lec);
 }
 

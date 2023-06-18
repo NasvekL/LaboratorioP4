@@ -53,7 +53,7 @@ class ControladorCurso: public IControladorCurso{
         static ControladorCurso& getInstancia();
         ~ControladorCurso();
 
-        
+        void agregarPrevia(string curso, string previa);
     
         //Getters
         //fdfd
