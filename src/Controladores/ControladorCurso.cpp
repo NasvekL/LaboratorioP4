@@ -346,7 +346,8 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
             estudianteAproboLasPrevias = true;
         }
         else{
-            for(auto it2 = it->second->getPrevias().begin(); it2 != it->second->getPrevias().end(); ++it2){
+            list <Curso*> previasitass = it->second->getPrevias();
+            for(auto it2 = previasitass.begin(); it2 != previasitass.end(); ++it2){
                 estudianteAproboLasPrevias = false;
                 //Si la previa no tiene inscripciones, significa que nadie la aprobo, asi que el estudiante no la aprobo
                 if((*it2)->getInscripciones().size() == 0){
@@ -354,7 +355,8 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                 }
                 else{
                     //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
-                    for(auto it3 = (*it2)->getInscripciones().begin(); it3 != (*it2)->getInscripciones().end(); ++it3){
+                    list<Inscripcion*> inscripcionesitass = (*it2)->getInscripciones();
+                    for(auto it3 = inscripcionesitass.begin(); it3 != inscripcionesitass.end(); ++it3){
                         if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
                             if(!(*it3)->getAprobado()){ //Si el estudiante aprobo la previa
                                 estudianteAproboLasPrevias = true;
