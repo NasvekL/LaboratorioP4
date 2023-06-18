@@ -452,6 +452,11 @@ int main(){
                 imprimir("Ingrese curso:");
                 string curso = entradaString();
                 list<DTEjercicio> ejerciciosSinHacer = contCurso.seleccionarEjerciciosDeCurso(curso);
+                if(ejerciciosSinHacer.empty()){
+                    imprimir("No hay ejercicios para realizar", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 auto it2 = ejerciciosSinHacer.begin();
                 for(it2; it2!=ejerciciosSinHacer.end(); it2++){
                     DTEjercicio ejercicio = (*it2);
@@ -994,7 +999,7 @@ int entradaInt(){
 
 //Funcion para verificar que el string no contenga simbolos, solo letras y numeros
 bool esAlfanumerico(string str) {
-    regex pattern("[a-zA-Z0-9,_\\- ]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
+    regex pattern("[a-zA-Z0-9,_\\-: ]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
     return regex_match(str, pattern);
 }
 
