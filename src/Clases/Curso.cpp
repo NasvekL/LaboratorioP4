@@ -101,12 +101,9 @@ void Curso::agregarInscripcion(Inscripcion* insc){
 // OPERACIONES
 
 Ejercicio* Curso :: seleccionarEj(int id){
-    list<Leccion*> lecc = this->getLecciones();
-    auto it = lecc.begin();
+    auto it = lecciones.begin();
     Ejercicio* ejer = NULL;
-    while (ejer == NULL){
-        ejer = (*it)->seleccionarEj(id);
-    }
+    ejer = (*it)->seleccionarEj(id);
     return ejer;
 }
 

@@ -402,7 +402,7 @@ void ControladorCurso::inscribirEstudianteACurso(string curso, string estudiante
     //Obtengo la primera leccion del curso
     Curso* refACurso = cursos.find(curso)->second;
     list<Leccion*> lecciones = refACurso->getLecciones();
-    Leccion* primeraLeccion = lecciones.front();
+    Leccion* primeraLeccion = lecciones.back();
 
     //Creo el progreso con referencia a la leccion actual
     Progreso* progresoDeInscripcion = new Progreso(primeraLeccion);

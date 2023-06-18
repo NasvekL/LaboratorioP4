@@ -182,7 +182,6 @@ void ControladorUsuario::deleteDataIngresado()
 list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
     DTEstudiante est = getDatoEstudiante();
     string nick = est.getNickname();
-    auto it = usuarios.begin();
     Estudiante* estudiante = encontrarEstudiante(nick);
     return estudiante->ejerciciosNoAprobados(curso);
 }
