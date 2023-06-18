@@ -482,7 +482,6 @@ int main(){
                     set<string> solucion;
                     for(auto it = palabras.begin(); it != palabras.end(); it++){
                         solucion.insert(palabra);
-                        palabra = entradaString();
                     }
                     if(contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,id)){
                         imprimir("Respuesta correcta", VERDE);

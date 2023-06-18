@@ -462,7 +462,7 @@ bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, s
         int lecActual= lec->getNumero();      //obtengo numero de leccion
         Progreso* prog = lec->getProgresos().find(estudiante)->second;   //obtengo progreso
         int cant = lec->getCantidadDeEjercicios();   //obtengo cantidad de ejercicios
-        prog->getEjerciciosResueltos().push_back(e);  //agrego ejercicio a ejercicios resueltos
+        prog->agregarEjercicioResuelto(e);                                //agrego ejercicio a ejercicios resueltos
         int ejResueltos = prog->getEjerciciosResueltos().size();  //obtengo cantidad de ejercicios resueltos
         if(cant == ejResueltos){
             lec->eliminarProgreso(estudiante);      //elimino progreso
