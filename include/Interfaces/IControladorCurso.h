@@ -93,7 +93,7 @@ class IControladorCurso{
         virtual list<tuple<string, int, int>> cursosDisponibles(string nick) = 0;
         virtual set<DTCurso> listarDTCursos()= 0;
         virtual set<Idioma*> listarIdiomasProfesor()= 0;
-        virtual void listarIdiomas()= 0;
+        virtual list<string> listarIdiomas()= 0;
         virtual list<string> listarCursosNoHabilitados() = 0;
         virtual bool solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio)= 0;
         virtual bool solucionCorrectaTraduccion(string solucion, string estudiante, int IdEjercicio)= 0;

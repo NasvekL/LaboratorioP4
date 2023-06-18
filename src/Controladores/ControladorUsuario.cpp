@@ -177,8 +177,15 @@ Curso* ControladorUsuario::obtenerCurso(string curso) {
     return estudiante->buscarCurso(curso);
 }
 
-void ControladorUsuario::deleteDataIngresado()
-{
+void ControladorUsuario::deleteDataIngresado(){
+    if (datoEstudiante!=NULL){
+        delete datoEstudiante;
+        datoEstudiante = NULL;
+    }
+    else if (datoProfesor!=NULL){
+        delete datoProfesor;
+        datoProfesor = NULL;
+    }
 }
 list<DTEjercicio> ControladorUsuario::ejerciciosNoAprobados(string curso) {
     DTEstudiante est = getDatoEstudiante();
@@ -203,6 +210,8 @@ list<string> ControladorUsuario::listarProfe() {
     for (auto it = usuarios.begin(); it != usuarios.end(); it++) {
         if (getTipoUsuario(it->first) == "profesor") {
             listaProfes.push_back(it->second->getNick());
+        }else{
+            cout << it->first << " es " << getTipoUsuario(it->first) << endl;
         }
     }
     return listaProfes;
@@ -229,6 +238,9 @@ Profesor* ControladorUsuario::encontrarProfesor(string nick) {
     Profesor* p = dynamic_cast<Profesor*>(it->second);
     return p;  
 }
+
+
+
 
 void ControladorUsuario::confirmarAltaUsuario() {
     // Implementación de la función confirmarAltaUsuario
@@ -269,7 +281,9 @@ string ControladorUsuario::getTipoUsuario(string nick) {
         Usuario* usuario = it->second;
         if (Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario)) {
             return "estudiante";
+            cout << it->second->getNick() << " es estudiante" << endl;
         } else {
+            cout << it->second->getNick() << " es profesor" << endl;
             return "profesor";
         }
     } else {
