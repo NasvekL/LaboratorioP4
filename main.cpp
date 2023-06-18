@@ -627,10 +627,9 @@ int main(){
                     ingresarUsuarios();
                     imprimir("Datos de prueba agregados (usuarios).", VERDE);
                     ingresarCursos();
-                    ingresarLecciones();
                     imprimir("Datos de prueba agregados (cursos).", VERDE);
-                    imprimir("Faltan datos de prueba (lecciones)", ROJO);
-                    imprimir("Faltan datos de prueba (ejercicios)", ROJO);
+                    imprimir("Agregar lecciones y ejercicios da error, seguramente porque en los datos de prueba se ingresan lecciones sin ejercicios.", AMARILLO);
+                    ingresarLecciones();
                     imprimir("Faltan datos de prueba (previas)", ROJO);
                     imprimir("Faltan datos de prueba (inscripciones)", ROJO);
                     imprimir("Faltan datos de prueba (ejercicios completados de cada usuario)", ROJO);
