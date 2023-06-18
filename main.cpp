@@ -531,7 +531,6 @@ int main(){
                     for (const auto& estads : porcentajesCursos) {
                         imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
                     }
-                    presionaParaContinuar();
                 }else if (entrada == 2) {
                     imprimir("Ingrese el nick del profesor");
                     list<string> profesores = contUsuario.listarProfe();
@@ -542,11 +541,12 @@ int main(){
 
                     //Profesor* profesor = contUsuario.encontrarProfesor(prof);
                     DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
-
                     imprimir("Estadisticas de "+ prof + ":" );
-                    map<string, int> porcentajesCursos = estadisticas.estadoCurso();
+                    map<string, int> porcentajesCursos = estadisticas.getPromPorcetajesCursos();
                     for (auto it = porcentajesCursos.begin(); it != porcentajesCursos.end(); it++) {
-                        imprimir("Curso: " + it->first + ", Porcentaje: " + to_string(it->second) + "%");
+                        int porcentaje = it->second;
+                        string nom = it->first;
+                        imprimir("Curso: " + nom + ", Porcentaje: " + to_string(porcentaje) + "%");
                     }
                 } else {
                     imprimir("Ingrese el nombre del profesor");
@@ -558,10 +558,12 @@ int main(){
 
                     DTEstadisticaCurso estadisticas = contCurso.estadisticasCurso(cur);
                     imprimir("Estadisticas de "+ cur + ":" );
-                    imprimir("Porcentaje:" + to_string(estadisticas.getpromedioCurso()) + "%");
+                    int porcentaje = estadisticas.getpromedioCurso();
+                    imprimir("Porcentaje:" + to_string(porcentaje) + "%");
 
 
                 }
+                presionaParaContinuar();
                 //interfazCurso->consultarEstadisticas();
                 break;
             }

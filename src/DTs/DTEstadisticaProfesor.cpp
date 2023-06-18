@@ -25,13 +25,12 @@ DTCurso DTEstadisticaProfesor::getCurso() {
 }
 
 // Getter para obtener el promedio de porcentajes de cursos
-int DTEstadisticaProfesor::getPromPorcetajesCursos() {
-    // Implementación del getter
-    // Puedes calcular y devolver el promedio de los porcentajes de cursos
+map<string,int> DTEstadisticaProfesor::getPromPorcetajesCursos() {
+return promPorcetajesCursos;
 }
 
 // Función para obtener el estado del curso
-map<string, int> DTEstadisticaProfesor::estadoCurso() {
+int DTEstadisticaProfesor::estadoCurso(string curso) {
     // Implementación de la función
     // Puedes calcular y devolver el estado del curso
 }

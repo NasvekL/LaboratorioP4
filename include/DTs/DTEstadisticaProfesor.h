@@ -9,9 +9,9 @@ class DTEstadisticaProfesor {
     public:
 
         DTCurso getCurso();
-        int getPromPorcetajesCursos(); //Este es un atributo calculado
-
-        map<string, int> estadoCurso(); //CursoClave y valor progreso promedio
+        map<string,int> getPromPorcetajesCursos(); //Este es un atributo calculado
+        
+        int estadoCurso(string curso); //CursoClave y valor progreso promedio
 
         ~DTEstadisticaProfesor();
         DTEstadisticaProfesor();
