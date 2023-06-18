@@ -529,7 +529,7 @@ int main(){
                     for (const auto& estads : porcentajesCursos) {
                         imprimir("Curso: " + estads.first + ", Porcentaje: " + to_string(estads.second) + "%");
                     }
-
+                    presionaParaContinuar();
                 }else if (entrada == 2) {
                     imprimir("Ingrese el nick del profesor");
                     list<string> profesores = contUsuario.listarProfe();
