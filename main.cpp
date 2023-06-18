@@ -358,7 +358,7 @@ int main(){
                 imprimir("Curso habilitado", VERDE);
                 }
                 else{
-                    imprimir("Curso no habilitado", ROJO);
+                    imprimir("Curso no contiene todas las lecciones con al menos un ejercicio", ROJO);
                 }
                 presionaParaContinuar();
                 break;
