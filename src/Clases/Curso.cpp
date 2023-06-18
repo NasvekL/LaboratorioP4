@@ -104,9 +104,11 @@ Ejercicio* Curso :: seleccionarEj(int id){
     Ejercicio* ejer = NULL;
     for(auto it = lecciones.begin(); it!=lecciones.end(); it++){
         ejer = (*it)->seleccionarEj(id);
+        if (ejer!=NULL)
+        break;
+    }
     return ejer;
     }
-}
 
 void Curso :: agregarPrevia(Curso* previa){
     previas.push_back(previa);
