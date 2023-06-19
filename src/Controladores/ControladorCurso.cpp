@@ -164,7 +164,7 @@ bool ControladorCurso::altaCurso() {
     auto it = idiomas.find(datoIdioma);
     Idioma* idi = it->second;
     Curso* cur =NULL;
-    if(!datosPrevias.empty()){
+    if(!datoDeCurso->getPrevias().empty()){
         set<string> previas = datoDeCurso->getPrevias();
         for(auto iter=previas.begin(); iter!=previas.end(); iter++){
             Curso* curso =cursos.find(*iter)->second;
@@ -175,15 +175,13 @@ bool ControladorCurso::altaCurso() {
     cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
     profesor->agregarCurso(cur);
     list<Leccion*> lecs = cur->getLecciones();
-    int cantEjs = 0;
     for(auto iter=lecs.begin(); iter!=lecs.end(); iter++){
         map<int,Ejercicio*> ejs = (*iter)->getEjercicios();
         for(auto it = ejs.begin(); it!=ejs.end(); it++){
             ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
-            cantEjs++;
         }
-        (*iter)->setCantidadEjercicios(cantEjs);
-        cantEjs = 0;
+        int tamanio = ejs.size();
+        (*iter)->setCantidadEjercicios(tamanio);
     }
     datosPrevias.clear();
     datosRellenarPalabras.clear();
@@ -344,6 +342,7 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
     
     //Recorro cada curso del controlador (it es un curso en cada iteracion)
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        cout << "chequeando si puede inscribirse a " << it->first << endl;
         bool cursoHabilitado;
         bool estudianteYaEstaInscritoAlCurso = false;
         bool estudianteAproboLasPrevias = true;
@@ -372,6 +371,7 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                 //Si la previa no tiene inscripciones, significa que nadie la aprobo, asi que el estudiante no la aprobo
                 if((*it2)->getInscripciones().size() == 0){
                     estudianteAproboLasPrevias = false;
+                    break;
                 }
                 else{
                     Inscripcion* inscripcio = nullptr;
@@ -395,16 +395,8 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                             break;//Dejo de buscar en las previas del curso
                         }
                     }
-                        //si esta inscrito, busco si aprobo la previa
-                            //si aprobo, la aprobo
-
-                }
-                //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
-                //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.
-                if(!estudianteAproboLasPrevias){
-                    break;
-                }
-            }
+                }//fin if inscripciones previas size
+            }//dejo de buscar en previas
         }
 
         if(cursoHabilitado && !estudianteYaEstaInscritoAlCurso && estudianteAproboLasPrevias){

@@ -242,7 +242,6 @@ int main(){
                         else{
                             DTTraduccion ejercicio = crearDTTraduccion(numLec);
                             contCurso.agregarDatosTraduccion(ejercicio);
-                        
                         }                            
                             
                         }
@@ -252,9 +251,9 @@ int main(){
                         opcion = "N";
                 }
                 if(contCurso.altaCurso())
-                imprimir("Curso creado", VERDE);
+                    imprimir("Curso creado", VERDE);
                 else
-                imprimir("Curso no creado", ROJO); 
+                    imprimir("Curso no creado", ROJO); 
                 presionaParaContinuar();
                 break;
             }
@@ -823,7 +822,7 @@ DTCurso crearDTCurso(){
 
         imprimir("Quiere agregar previas al curso? (S/N)");
         string tienePrevias = entradaString();
-        set<string> previas;
+        set<string>* previas = new set<string>();
         if(tienePrevias == "S" || tienePrevias == "s"){
             set<string> curs = contCurso.listarNombresDeCursos();
             int i = 1;
@@ -838,7 +837,7 @@ DTCurso crearDTCurso(){
                 map<string, Curso*> p = contCurso.getCursos();
                 auto it = p.find(pre);
                 if (it != p.end()) {
-                    previas.insert(pre);
+                    previas->insert(pre);
                 } else {
                     imprimir("Curso no encontrado", ROJO);
                 }
@@ -847,7 +846,7 @@ DTCurso crearDTCurso(){
         }
 
 
-        DTCurso c = DTCurso(nombre,false,dificultad,descripcion, previas);
+        DTCurso c = DTCurso(nombre,false,dificultad,descripcion, *previas);
         return c;
     }    
 
