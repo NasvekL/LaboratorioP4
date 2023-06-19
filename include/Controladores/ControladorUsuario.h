@@ -76,7 +76,7 @@ class ControladorUsuario : public IControladorUsuario{
         void confirmarAltaUsuario();
         void deleteDataIngresado();
 
-        void listarIdiomas();
+        list<string> listarIdiomas();
         void seleccionarUsuario(string nick);
         //Operacion que no tiene sentido que este aca (iria en controladorCurso)
         DTEstadisticaCurso estadisticaCurso(string curso);

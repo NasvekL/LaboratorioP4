@@ -342,7 +342,6 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
     
     //Recorro cada curso del controlador (it es un curso en cada iteracion)
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
-        cout << "chequeando si puede inscribirse a " << it->first << endl;
         bool cursoHabilitado;
         bool estudianteYaEstaInscritoAlCurso = false;
         bool estudianteAproboLasPrevias = true;

@@ -50,7 +50,7 @@ class IControladorUsuario{
     virtual Estudiante* encontrarEstudiante(std::string nick) = 0;
     virtual void confirmarAltaUsuario() = 0;
     virtual void deleteDataIngresado() = 0;
-    virtual void listarIdiomas() = 0;
+    virtual list<string> listarIdiomas() = 0;
     virtual bool existeUsuario(string nickname) = 0;
     // Operaciones que no tienen sentido estar aquí
     virtual DTEstadisticaCurso estadisticaCurso(std::string curso) = 0;
