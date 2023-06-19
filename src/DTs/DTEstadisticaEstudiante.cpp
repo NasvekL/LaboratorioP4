@@ -17,9 +17,3 @@ DTEstadisticaEstudiante::~DTEstadisticaEstudiante() {
 map<string, int> DTEstadisticaEstudiante::getPorcentajesCursos() {
     return porcentajesCursos;
 }
-
-// Función para obtener el estado del estudiante en cada curso
-map<string, int> DTEstadisticaEstudiante::estadoEstudiante() {
-    // Implementación de la función
-    // Puedes calcular y devolver el estado del estudiante en cada curso
-}

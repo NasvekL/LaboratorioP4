@@ -27,12 +27,9 @@ class Estudiante: public Usuario{
         ~Estudiante();
         Estudiante(string nickname, string contrasenia, string nombre, string descripcion, string pais, DTFecha nacimiento);
         //Otras operaciones
-        list<DTNotificacion> verNotificaciones();
         DTEstudiante getDTEstudiante();
         set<string> getCursosInscriptosSA();
-        set<DTCurso> obtenDTCurso();
         Curso* buscarCurso(string nombreCurso);
-        set<int> obtenerProgreso();
         list<DTEjercicio> ejerciciosNoAprobados(string curso);
         //Faltan los casos de uso que me permiten agregar y eliminar inscripciones
 

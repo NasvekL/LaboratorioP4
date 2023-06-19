@@ -16,9 +16,6 @@ void Usuario:: setDescripcion(string descripcion){
     this->descripcion = descripcion;
 };
 
-list<DTNotificacion> Usuario:: verNotificaciones(){
-
-};
 
 string Usuario:: getNick(){
     return this->nickname;

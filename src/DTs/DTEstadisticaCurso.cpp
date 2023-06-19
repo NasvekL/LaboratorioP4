@@ -23,10 +23,9 @@ DTEstadisticaCurso::~DTEstadisticaCurso() {
     // Puedes realizar cualquier limpieza necesaria
 }
 DTEstadisticaCurso::DTEstadisticaCurso() {
-    // Implementación del destructor
-    // Puedes realizar cualquier limpieza necesaria
+    // Implementación del constructor
+    // Puedes inicializar el objeto según tus necesidades
 }
-
 // Getter de curso
 string DTEstadisticaCurso::getCurso() {
     // Implementación del getter
@@ -41,15 +40,3 @@ int DTEstadisticaCurso::getpromedioCurso() {
     return promedioCurso;
 }
 
-// Función para obtener la información del curso
-DTCurso DTEstadisticaCurso::infoCurso() {
-    // Implementación de la función
-    // Puedes devolver el objeto DTCurso completo
-    //return curso;
-}
-
-// Función para obtener el grado de avance del curso
-int DTEstadisticaCurso::gradoAvance() {
-    // Implementación de la función
-    // Puedes calcular y devolver el grado de avance del curso
-}

@@ -9,16 +9,10 @@ class DTEstadisticaCurso {
         int promedioCurso;
 
     public:
-
         string getCurso();
         int getpromedioCurso();
-        
-        DTCurso infoCurso();
-        int gradoAvance();
-
         ~DTEstadisticaCurso();
-        DTEstadisticaCurso();
         DTEstadisticaCurso(int promedioCurso, string curso);
-
+        DTEstadisticaCurso();
 };
 #endif

@@ -4,8 +4,6 @@
 #include "Ejercicio.h"
 #include "Estudiante.h"
 #include "Progreso.h"
-//#include "RellenarPalabras.h"  <---//ESTAS PORQUERIAS ME TUVIERON 2 HORAS
-//#include "Traduccion.h"        <---
 #include "../DTs/DTEjercicio.h"
 #include "../DTs/DTTraduccion.h"
 #include "../DTs/DTRellenarPalabras.h"

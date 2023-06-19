@@ -143,12 +143,8 @@ class ControladorCurso: public IControladorCurso{
         //Otras operaciones
         void limpiarDatos(); //borra todos los datos de los atributos auxiliares
 
-
-
         //Operacion que solo llama a otra opperacion en controladorUsuario
         set<string> cursosInscriptoSinAprobar(string nick);
-
-        set<DTLeccion> ListarLecciones(string cursoLec);
 
 };
 

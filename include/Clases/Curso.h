@@ -60,9 +60,6 @@ class Curso{
         //OPERACIONES
         Ejercicio* seleccionarEj(int id);
         list<DTEjercicio> buscarEjNoAprobados(string nick,int lecActual);
-        int progresoPromedio();
-        int progresoDeEstudiante(Estudiante* e);
-        DTEstadisticaCurso estadisticasCurso();
         void agregarLeccion(Leccion* lec);
         void agregarPrevia(Curso* previa);
         //COntar cosas

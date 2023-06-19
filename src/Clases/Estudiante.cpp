@@ -30,10 +30,6 @@ Estudiante::~Estudiante() {
     // Implementación del destructor si es necesario
 }
 
-list<DTNotificacion> Estudiante::verNotificaciones() {
-    // Implementación de verNotificaciones
-    // Retorna una lista de DTNotificacion
-}
 
 DTEstudiante Estudiante::getDTEstudiante() {
     DTEstudiante dt = DTEstudiante(this->getNick(), this->getContrasenia(), this->getNombre(), this->getDescripcion(), this->getPais(), this->getNacimiento());    
@@ -76,15 +72,6 @@ list<DTEjercicio> Estudiante :: ejerciciosNoAprobados(string curso){
     return c->buscarEjNoAprobados(getNick(), ultimaLec);
 }
 
-set<DTCurso> Estudiante::obtenDTCurso() {
-    // Implementación de obtenDTCurso
-    // Retorna un conjunto de DTCurso
-}
-
-set<int> Estudiante::obtenerProgreso() {
-    // Implementación de obtenerProgreso
-    // Retorna un conjunto de enteros
-}
 
 list<Inscripcion*> Estudiante::getInscripciones() {
     return inscripciones;

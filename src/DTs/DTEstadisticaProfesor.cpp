@@ -18,19 +18,8 @@ DTEstadisticaProfesor::~DTEstadisticaProfesor() {
     // Puedes liberar recursos si es necesario
 }
 
-// Getter para obtener el curso
-DTCurso DTEstadisticaProfesor::getCurso() {
-    // Implementación del getter
-    // Puedes devolver el curso correspondiente
-}
 
 // Getter para obtener el promedio de porcentajes de cursos
 map<string,int> DTEstadisticaProfesor::getPromPorcetajesCursos() {
 return promPorcetajesCursos;
-}
-
-// Función para obtener el estado del curso
-int DTEstadisticaProfesor::estadoCurso(string curso) {
-    // Implementación de la función
-    // Puedes calcular y devolver el estado del curso
 }
