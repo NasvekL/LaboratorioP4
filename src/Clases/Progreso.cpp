@@ -44,7 +44,5 @@ Progreso::Progreso(Leccion* lecActual): ejerciciosResueltos(){
 }
 
 Progreso::~Progreso() {
-    // Destructor de la clase Progreso
-    // Realizar cualquier limpieza de memoria u otras tareas necesarias
-    // ...
+   
 }
