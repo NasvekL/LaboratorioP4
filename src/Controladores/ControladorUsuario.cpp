@@ -269,9 +269,9 @@ void ControladorUsuario::confirmarAltaUsuario() {
 }
 
 
-void ControladorUsuario::listarIdiomas() {
+list<string> ControladorUsuario::listarIdiomas() {
  ControladorCurso& cc = ControladorCurso::getInstancia();
- cc.listarIdiomas();
+ return cc.listarIdiomas();
 }
 string ControladorUsuario::getTipoUsuario(string nick) {
     auto it = usuarios.find(nick);
