@@ -169,8 +169,14 @@ void Curso::conseguirInfoCurso(list<string> &infoCur){
     } else {
         hab = "No habilitado";
     }
-    
-    string datosCurso = "Nombre del curso: " + nombre + "\n" + "Descripcion del curso: " + descripcion + "\n" + "Nivel de dificultad: " + to_string(nivelDeDif) + "\n" + "Idioma del curso: " + idiomaDelCurso->getNombreIdioma() + "\n" + "Profesor que lo dicta: " + profesorQueLoDicta->getNombre() + "\n" + hab + "\n" + "\n"; 
+    string dificultad;
+    if(nivelDeDif==1)
+        dificultad = "Principiante";
+    else if(nivelDeDif==2)
+        dificultad = "Medio";
+    else
+        dificultad = "Avanzado";
+    string datosCurso = "Nombre del curso: " + nombre + "\n" + "Descripcion del curso: " + descripcion + "\n" + "Nivel de dificultad: " + dificultad + "\n" + "Idioma del curso: " + idiomaDelCurso->getNombreIdioma() + "\n" + "Profesor que lo dicta: " + profesorQueLoDicta->getNombre() + "\n" + hab + "\n" + "\n"; 
     infoCur.push_back(datosCurso);      //Tengo toda la info del curso en el primer lugar de la lista
     
     

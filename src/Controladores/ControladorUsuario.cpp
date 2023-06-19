@@ -279,9 +279,7 @@ string ControladorUsuario::getTipoUsuario(string nick) {
         Usuario* usuario = it->second;
         if (Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario)) {
             return "estudiante";
-            cout << it->second->getNick() << " es estudiante" << endl;
         } else {
-            cout << it->second->getNick() << " es profesor" << endl;
             return "profesor";
         }
     } else {
