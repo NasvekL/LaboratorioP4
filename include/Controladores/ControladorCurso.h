@@ -30,20 +30,20 @@ class ControladorCurso: public IControladorCurso{
         int idEjercicio; // idEjercicioActual
 
         //Atributos auxiliares con punteros
-        DTCurso* datoDeCurso;
-        DTLeccion* datoDeLeccion;
-        list<DTLeccion> datosLecciones;
         Profesor* profesor;
         Curso* curso;
         Ejercicio* ejercicio;
-        string datoIdioma;
         map<string, Curso*> datosPrevias;
+        DTCurso* datoDeCurso;
+        DTLeccion* datoDeLeccion;
+        list<DTLeccion> datosLecciones;
+        string datoIdioma;
         DTRellenarPalabras* datosRellenar;
         DTTraduccion* datosTraducir;
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
         string nickUsuario;        
-        
+
         //Variable estática para almacenar la instancia única del controlador
         static ControladorCurso* instancia;
         //Constructor privado para evitar la creación de instancias desde fuera de la clase

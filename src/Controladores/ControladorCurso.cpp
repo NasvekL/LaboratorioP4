@@ -9,7 +9,7 @@ ControladorCurso& ControladorCurso::getInstancia() {
     }
     return *instancia;
 }
-ControladorCurso::ControladorCurso(){
+ControladorCurso::ControladorCurso() : datosPrevias(), datosLecciones(), datosRellenarPalabras(), datosTraduccion(){
     datoDeCurso=NULL;
     datoDeLeccion=NULL;
     profesor = NULL;
@@ -17,6 +17,9 @@ ControladorCurso::ControladorCurso(){
     datosRellenar=NULL;
     datosTraducir=NULL;
     idEjercicio=0;
+    ejercicio=NULL;
+    datoIdioma="";
+    nickUsuario="";
     //datosTraduccion = NULL; ?????
     //datosRellenarPalabras = NULL;
 
@@ -642,6 +645,8 @@ list<string> ControladorCurso::verCurso(string curso){
 
 //Otras operaciones
 void ControladorCurso::limpiarDatos() {
+    datoIdioma="";
+    nickUsuario="";
     if(datoDeCurso != nullptr){
         delete datoDeCurso;
         datoDeCurso = NULL;
@@ -649,10 +654,6 @@ void ControladorCurso::limpiarDatos() {
     if(datoDeLeccion != nullptr){
         delete datoDeLeccion;
         datoDeLeccion = NULL;
-    }
-    if(profesor != nullptr){
-        delete profesor;
-        profesor = NULL;
     }
     if(datosRellenar != nullptr){
         delete datosRellenar;
@@ -662,20 +663,14 @@ void ControladorCurso::limpiarDatos() {
         delete datosTraducir;
         datosTraducir = NULL;
     }
-    if(curso != nullptr){
-        delete curso;
-        curso = NULL;
-    }
-    if(ejercicio != nullptr){
-        delete ejercicio;
-        ejercicio = NULL;
-    }
+    curso = NULL;
+    profesor = NULL;
+    ejercicio = NULL;
     //deletear 
     datosRellenarPalabras.clear();
     datosTraduccion.clear();
     datosLecciones.clear();
     datosPrevias.clear();
-    
 
 }
 

@@ -1062,10 +1062,14 @@ string entradaString(){
 
 void ingresarIdiomas(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorCurso& contCurso = fabrica.getIControladorCurso();contCurso.limpiarDatos();
-    contCurso.confirmarAltaIdioma("Ingles");contCurso.limpiarDatos();
-    contCurso.confirmarAltaIdioma("Aleman");contCurso.limpiarDatos();
-    contCurso.confirmarAltaIdioma("Portugues");contCurso.limpiarDatos();
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();
+    contCurso.limpiarDatos();
+    contCurso.confirmarAltaIdioma("Ingles");
+    contCurso.limpiarDatos();
+    contCurso.confirmarAltaIdioma("Aleman");
+    contCurso.limpiarDatos();
+    contCurso.confirmarAltaIdioma("Portugues");
+    contCurso.limpiarDatos();
 }
 
 void ingresarUsuarios(){
