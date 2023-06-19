@@ -38,7 +38,7 @@ VAR -> 'x1' | 'x2' | 'x3' | 'x4' | 'x5' | 'x6' | 'x7' | 'x8' | 'x9' | 'x10' | 'x
 
 
 
-BOOL -> '('BOOL')' | BOOL OPLOG BOOL | NOT BOOL | TRUEFALSE | COMP | VAR | CONST
+BOOL -> '('BOOL')' | BOOL OPLOG BOOL | NOT BOOL | TRUEFALSE | COMP | VAR | CONST | LLAMADA_FUNCION
 OPLOG -> 'and' | 'or'
 NOT -> 'not'
 COMP -> EXP OP EXP
