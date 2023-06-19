@@ -589,12 +589,14 @@ int main(){
                 }
                 set<string> idiomas;
                 imprimir("Escriba el nombre del idioma al que desea suscribirse:");
-                string idioma = entradaString();
-                idiomas.insert(idioma);
-                while(quiereContinuar("agregar otro idioma")){
-                string idioma = entradaString();
-                idiomas.insert(idioma);
+                string idiomaASuscribir = entradaString();
+                idiomas.insert(idiomaASuscribir);
+                while(quiereContinuar("Agregar otro idioma")){
+                    imprimir("Escriba el nombre de siguiente idioma al que desea suscribirse:");
+                    idiomaASuscribir = entradaString();
+                    idiomas.insert(idiomaASuscribir);
                 }
+                imprimir("agueira");
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
                 presionaParaContinuar();
@@ -612,6 +614,11 @@ int main(){
                 }
                 else{
                 list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
+                if (notis.size() == 0){
+                    imprimir("El usuario no tiene notificaciones", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
                     imprimir(noti.getCurso());
@@ -646,12 +653,13 @@ int main(){
                 set<string> suscAEliminar;
                 suscAEliminar.insert(entradaString());
                 while (quiereContinuar("Eliminar otra suscripcion")){
+                    imprimir("Ingrese otro idioma:");
                     suscAEliminar.insert(entradaString());
                 }
 
                 contCurso.eliminarSuscripciones(suscAEliminar);
                 imprimir("Suscripciones eliminadas", VERDE);
-
+                presionaParaContinuar();
                     
                 break;
             }
