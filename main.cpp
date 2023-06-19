@@ -589,14 +589,12 @@ int main(){
                 }
                 set<string> idiomas;
                 imprimir("Escriba el nombre del idioma al que desea suscribirse:");
-                string idiomaASuscribir = entradaString();
-                idiomas.insert(idiomaASuscribir);
+                string idiomaAEliminar = entradaString();
+                idiomas.insert(idiomaAEliminar);
                 while(quiereContinuar("Agregar otro idioma")){
-                    imprimir("Escriba el nombre de siguiente idioma al que desea suscribirse:");
-                    idiomaASuscribir = entradaString();
-                    idiomas.insert(idiomaASuscribir);
+                idiomaAEliminar = entradaString();
+                idiomas.insert(idiomaAEliminar);
                 }
-                imprimir("agueira");
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
                 presionaParaContinuar();
