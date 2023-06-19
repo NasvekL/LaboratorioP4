@@ -471,7 +471,7 @@ list<string> ControladorCurso::listarCursosNoHabilitados(){
 return cursosNoHabilitados;
 }
 
-bool ControladorCurso::solucionCorrectaCompletarPalabras(set<string> solucion, string estudiante, int IdEjercicio) {
+bool ControladorCurso::solucionCorrectaCompletarPalabras(list<string> solucion, string estudiante, int IdEjercicio) {
     Ejercicio* ej = getEjercicioEnMemoria();
     bool esCorrecta = ej->esCorrectoRellenarPal(solucion);
     Ejercicio* e = getEjercicioEnMemoria();
