@@ -158,11 +158,11 @@ int main(){
                     contUsuario.seleccionarUsuario(nick);
                     DTProfesor dtp = contUsuario.getDatoProfesor();
                     //imprimir("Nombre", AMARILLO);
-                    imprimir("Nombre", AMARILLO + dtp.getNombre());
+                    imprimir("Nombre" + dtp.getNombre(), AMARILLO);
                     //imprimir("Descripcion", AMARILLO);
-                    imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
+                    imprimir("Descripcion " + dtp.getDescripcion(), AMARILLO);
                     //imprimir("Instituto", AMARILLO);
-                    imprimir("Instituto", AMARILLO + dtp.getInstituto());
+                    imprimir("Instituto "+ dtp.getInstituto(), AMARILLO);
                     imprimir("Idiomas", AMARILLO);
                     set<string> idi = dtp.getIdiomas();
                     set<string>::iterator it;
@@ -210,7 +210,8 @@ int main(){
 
                 set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
                 for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
-                    imprimir((*it)->getNombreIdioma());
+                    string nom = (*it)->getNombreIdioma();
+                    imprimir(nom);
                 }
                 imprimir("Elija el idioma del curso: ", AMARILLO);
                 string idioma = entradaString();
