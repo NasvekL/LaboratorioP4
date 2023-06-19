@@ -128,6 +128,11 @@ int main(){
                         // TO DO: realizar acciones para el profesor
                         break;
                     }
+                    default:{
+                        imprimir("Opcion invalida", AMARILLO);
+                        presionaParaContinuar();
+                        break;
+                    }
                 }
                 break;
             }
@@ -158,11 +163,11 @@ int main(){
                     contUsuario.seleccionarUsuario(nick);
                     DTProfesor dtp = contUsuario.getDatoProfesor();
                     //imprimir("Nombre", AMARILLO);
-                    imprimir("Nombre" + dtp.getNombre(), AMARILLO);
+                    imprimir("Nombre", AMARILLO + dtp.getNombre());
                     //imprimir("Descripcion", AMARILLO);
-                    imprimir("Descripcion " + dtp.getDescripcion(), AMARILLO);
+                    imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
                     //imprimir("Instituto", AMARILLO);
-                    imprimir("Instituto "+ dtp.getInstituto(), AMARILLO);
+                    imprimir("Instituto", AMARILLO + dtp.getInstituto());
                     imprimir("Idiomas", AMARILLO);
                     set<string> idi = dtp.getIdiomas();
                     set<string>::iterator it;
@@ -209,8 +214,7 @@ int main(){
                 contCurso.setDatoDeCurso(curso);
                 set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
                 for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
-                    string nom = (*it)->getNombreIdioma();
-                    imprimir(nom);
+                    imprimir((*it)->getNombreIdioma());
                 }
                 imprimir("Elija el idioma del curso: ", AMARILLO);
                 string idioma = entradaString();
@@ -592,8 +596,7 @@ int main(){
                 string idioma = entradaString();
                 idiomas.insert(idioma);
                 while(quiereContinuar("agregar otro idioma")){
-                imprimir("Ingresar otro idioma:");
-                idioma = entradaString();
+                string idioma = entradaString();
                 idiomas.insert(idioma);
                 }
                 contCurso.suscribirUsuario(idiomas,nick);
@@ -1104,7 +1107,7 @@ void ingresarUsuarios(){
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
     contUsuario.confirmarAltaUsuario();
 
-    set<string> i2; i2.insert("Español"); i2.insert("Frances"); i2.insert("Italiano");
+    set<string> i2; i2.insert("Ingles"); i2.insert("Portugues"); i2.insert("Aleman");
     contUsuario.setDatoProfesor(DTProfesor("linguaPro","Pess23","Carlos Petro","Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas","Centro Global", i2));
     contUsuario.confirmarAltaUsuario();
 
@@ -1112,11 +1115,11 @@ void ingresarUsuarios(){
     contUsuario.setDatoProfesor(DTProfesor("talkExpert","Secret1","Laura Perez","Soy una profesora entusiasta del aprendizaje de idiomas","Instituto de Idiomas Vanguardia", i3));
     contUsuario.confirmarAltaUsuario();
 
-    set<string> i4; i4.insert("Frances");
+    set<string> i4; i4.insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("lingoSensei","Secure2","Franco Lopez","Apasionada en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos","Centro de Idiomas", i4));
     contUsuario.confirmarAltaUsuario();
 
-    set<string> i5; i5.insert("Ingles"); i5.insert("Español"); i5.insert("Portugues");
+    set<string> i5; i5.insert("Ingles");
     contUsuario.setDatoProfesor(DTProfesor("wordMaestro","Passw0","Ana Morales","Soy una profesora comprometida en desarrollo de habilidades idiomaticas","Instituto de Idiomas Progreso", i5));
     contUsuario.confirmarAltaUsuario();
     }
