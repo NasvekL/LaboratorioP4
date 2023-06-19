@@ -612,6 +612,11 @@ int main(){
                 }
                 else{
                 list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
+                if (notis.size() == 0){
+                    imprimir("El usuario no tiene notificaciones", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
                     imprimir(noti.getCurso());
@@ -646,6 +651,7 @@ int main(){
                 set<string> suscAEliminar;
                 suscAEliminar.insert(entradaString());
                 while (quiereContinuar("Eliminar otra suscripcion")){
+                    imprimir("Ingrese otro idioma:");
                     suscAEliminar.insert(entradaString());
                 }
 
