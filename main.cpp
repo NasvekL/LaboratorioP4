@@ -596,8 +596,9 @@ int main(){
                 string idioma = entradaString();
                 idiomas.insert(idioma);
                 while(quiereContinuar("agregar otro idioma")){
-                string idioma = entradaString();
-                idiomas.insert(idioma);
+                    imprimir("Ingresar otro idioma:");
+                    string idioma = entradaString();
+                    idiomas.insert(idioma);
                 }
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
@@ -655,11 +656,13 @@ int main(){
                 set<string> suscAEliminar;
                 suscAEliminar.insert(entradaString());
                 while (quiereContinuar("Eliminar otra suscripcion")){
+                    imprimir("Ingrese otro idioma:");
                     suscAEliminar.insert(entradaString());
                 }
 
                 contCurso.eliminarSuscripciones(suscAEliminar);
                 imprimir("Suscripciones eliminadas", VERDE);
+                presionaParaContinuar();
 
                     
                 break;
