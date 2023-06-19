@@ -128,6 +128,11 @@ int main(){
                         // TO DO: realizar acciones para el profesor
                         break;
                     }
+                    default:{
+                        imprimir("Opcion invalida", AMARILLO);
+                        presionaParaContinuar();
+                        break;
+                    }
                 }
                 break;
             }
