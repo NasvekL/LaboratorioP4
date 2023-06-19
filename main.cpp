@@ -1065,9 +1065,6 @@ void ingresarIdiomas(){
     contCurso.confirmarAltaIdioma("Ingles");
     contCurso.confirmarAltaIdioma("Aleman");
     contCurso.confirmarAltaIdioma("Portugues");
-    contCurso.confirmarAltaIdioma("Español");
-    contCurso.confirmarAltaIdioma("Frances");
-    contCurso.confirmarAltaIdioma("Italiano");  
 }
 
 void ingresarUsuarios(){
@@ -1110,7 +1107,7 @@ void ingresarUsuarios(){
     contUsuario.setDatoProfesor(DTProfesor("langMaster","P4s512","Marta Grecia", "Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno", i1));
     contUsuario.confirmarAltaUsuario();
 
-    set<string> i2; i2.insert("Español"); i2.insert("Frances"); i2.insert("Italiano");
+    set<string> i2; i2.insert("Ingles"); i2.insert("Portugues"); i2.insert("Aleman");
     contUsuario.setDatoProfesor(DTProfesor("linguaPro","Pess23","Carlos Petro","Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas","Centro Global", i2));
     contUsuario.confirmarAltaUsuario();
 
@@ -1118,11 +1115,11 @@ void ingresarUsuarios(){
     contUsuario.setDatoProfesor(DTProfesor("talkExpert","Secret1","Laura Perez","Soy una profesora entusiasta del aprendizaje de idiomas","Instituto de Idiomas Vanguardia", i3));
     contUsuario.confirmarAltaUsuario();
 
-    set<string> i4; i4.insert("Frances");
+    set<string> i4; i4.insert("Portugues");
     contUsuario.setDatoProfesor(DTProfesor("lingoSensei","Secure2","Franco Lopez","Apasionada en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos","Centro de Idiomas", i4));
     contUsuario.confirmarAltaUsuario();
 
-    set<string> i5; i5.insert("Ingles"); i5.insert("Español"); i5.insert("Portugues");
+    set<string> i5; i5.insert("Ingles");
     contUsuario.setDatoProfesor(DTProfesor("wordMaestro","Passw0","Ana Morales","Soy una profesora comprometida en desarrollo de habilidades idiomaticas","Instituto de Idiomas Progreso", i5));
     contUsuario.confirmarAltaUsuario();
     }
