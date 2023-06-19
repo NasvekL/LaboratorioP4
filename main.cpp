@@ -1062,9 +1062,6 @@ void ingresarIdiomas(){
     contCurso.confirmarAltaIdioma("Ingles");
     contCurso.confirmarAltaIdioma("Aleman");
     contCurso.confirmarAltaIdioma("Portugues");
-    contCurso.confirmarAltaIdioma("Español");
-    contCurso.confirmarAltaIdioma("Frances");
-    contCurso.confirmarAltaIdioma("Italiano");  
 }
 
 void ingresarUsuarios(){
