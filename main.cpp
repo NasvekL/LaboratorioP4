@@ -818,9 +818,6 @@ DTCurso crearDTCurso(){
                 presionaParaContinuar();
                 break;
         }
-        
-
-
         imprimir("Quiere agregar previas al curso? (S/N)");
         string tienePrevias = entradaString();
         set<string> previas;
@@ -845,8 +842,6 @@ DTCurso crearDTCurso(){
                 seguir = quiereContinuar("Agregar otra previa");
             }
         }
-
-
         DTCurso c = DTCurso(nombre,false,dificultad,descripcion, previas);
         return c;
     }    
