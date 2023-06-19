@@ -7,8 +7,7 @@ import nltk
 
 # grammar definition
 grammar = """
-S -> '('S')' | S OPLOG S | NOT S | BOOL
-BOOL -> TRUEFALSE | COMP | S
+S -> '('S')' | S OPLOG S | NOT S | BOOL | TRUEFALSE | COMP
 OPLOG -> 'and' | 'or'  
 NOT -> 'not'
 COMP -> EXP OP EXP
