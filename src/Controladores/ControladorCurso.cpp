@@ -20,11 +20,8 @@ ControladorCurso::ControladorCurso() : datosPrevias(), datosLecciones(), datosRe
     ejercicio=NULL;
     datoIdioma="";
     nickUsuario="";
-    //datosTraduccion = NULL; ?????
-    //datosRellenarPalabras = NULL;
 
 }
-//Creo que no es necesario borrar los sets atributos ya que no son punteros, con lo cual deberian borrarse solos
 ControladorCurso::~ControladorCurso() {
     //Borra todos los DTs temporales
     limpiarDatos();
@@ -317,6 +314,7 @@ DTEstadisticaCurso ControladorCurso::estadisticasCurso(string curso) {
         promedio = promedio + progreso->getPorcentajeCurso();
         inscriptos++;
     }
+    if(inscriptos!=0)
     promedio = promedio / inscriptos;
     DTEstadisticaCurso estadisticas = DTEstadisticaCurso(promedio, cur->getNombreCurso());
 
@@ -638,6 +636,7 @@ string ControladorCurso::getTipoEjercicio(int id) {
             return "traduccion";
         }
     }
+    return "probar devuelta";
 }
 
 list<string> ControladorCurso::verCurso(string curso){
@@ -686,9 +685,6 @@ set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {
     return cu.cursosInscriptosSinAprobar(nick);
 }
 
-set<DTLeccion> ControladorCurso:: ListarLecciones(string cursoLec){  //implementar
-    //return set<DTLeccion>
-}
 
 list<string> ControladorCurso:: listarNicks(){
     ControladorUsuario& cu = ControladorUsuario::getInstancia();

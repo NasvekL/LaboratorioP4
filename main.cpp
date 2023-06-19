@@ -1,5 +1,3 @@
-//hay que incluir la interfaz? o el controlador directo? en caso de que sea el controlador directo, la interfaz nunca se usa pa nada
-//pq la interfaz es abstracta, eentonces nunca se llega a crear una instancia creo...
 #include "include/FactoryController.h"
 //#include "include/DTs/DTRellenarPalabras.h"
 //#include "include/DTs/DTTraduccion.h"
@@ -73,18 +71,8 @@ int menuPrincipal(){
 int main(){
     limpiarLog();
     cout.precision(0);
-    //Tiene alguna clase de sentido la interfaz? En teoria es para que si el dia de mañana
-    //se quiere agregar o cambiar el controlador, no haya que cambiar nada en el main
-    //pero en el main se esta trabajando de forma directa con el controlador porque
-    //la interfaz es abstracta, entonces no se puede crear una instancia de la interfaz
-    //Ergo utilidadInterfaz = 0?
-    //La gracia es que cambias el controlador y no la interfaz, no tiene que ver lo que toques en el main
-    
     /*
                     ------PARA UTILIZAR DENTRO DE CADA CASO------
-    factoryController& Fabrica = factoryController::getInstancia();
-    IControladorCurso& ContCurso = Fabrica.getIControladorCurso();
-    IControladorUsuario& ContUsuario = Fabrica.getIControladorUsuario();
                     copiar siempre la fabrica y luego el controlaror
                             que vayamos a usar.
     */
@@ -99,7 +87,7 @@ int main(){
         opcion = menuPrincipal();
         switch (opcion){
             case 0:{
-                imprimir("chau bo");
+                imprimir("Saliendo...");
                 break;
             }
             case 1:{
@@ -114,7 +102,7 @@ int main(){
                         DTEstudiante est = crearDTEstudiante();
                         contUsuario.setDatoEstudiante(est);
                         contUsuario.confirmarAltaUsuario();
-                        imprimir("Estudiante creado", VERDE); //no habria que hacer un if aca para ver si crearlo dependiendo si el nick ya existe? Si
+                        imprimir("Estudiante creado", VERDE);
                         presionaParaContinuar();
                         break;
                     }
@@ -125,7 +113,6 @@ int main(){
                         contUsuario.confirmarAltaUsuario();
                         imprimir("Profesor creado", VERDE);
                         presionaParaContinuar();
-                        // TO DO: realizar acciones para el profesor
                         break;
                     }
                     default:{
@@ -136,7 +123,6 @@ int main(){
                 }
                 break;
             }
-
             case 2:{
                 //Consulta de Usuario
                 system("clear");
@@ -151,22 +137,16 @@ int main(){
                 if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                     contUsuario.seleccionarUsuario(nick);
                     DTEstudiante dte = contUsuario.getDatoEstudiante();
-                    //imprimir("Nombre", AMARILLO);
                     imprimir("Nombre: " + dte.getNombre());
-                    //imprimir("Descripcion", AMARILLO);
                     imprimir("Descripcion: "+ dte.getDescripcion());
-                    //imprimir("Pais", AMARILLO);
                     imprimir("Pais: " + dte.getPais());
                     presionaParaContinuar();
                 } 
                 else{ 
                     contUsuario.seleccionarUsuario(nick);
                     DTProfesor dtp = contUsuario.getDatoProfesor();
-                    //imprimir("Nombre", AMARILLO);
                     imprimir("Nombre", AMARILLO + dtp.getNombre());
-                    //imprimir("Descripcion", AMARILLO);
                     imprimir("Descripcion", AMARILLO + dtp.getDescripcion());
-                    //imprimir("Instituto", AMARILLO);
                     imprimir("Instituto", AMARILLO + dtp.getInstituto());
                     imprimir("Idiomas", AMARILLO);
                     set<string> idi = dtp.getIdiomas();
@@ -493,8 +473,6 @@ int main(){
                 }
                 imprimir("Ingrese ID del ejercicio: ");
                 int id = entradaInt();
-                //seleccionarEjercicio(id);
-                //Ejercicio* ejer = contCurso.getEjercicioEnMemoria();
                 Ejercicio* ejer = contCurso.getEjercicioPorIdDesdeMapa(id);
                 contCurso.setEjercicioEnMemoria(ejer);
                 string ej = ejer->mostrarEjercicio();
@@ -554,8 +532,6 @@ int main(){
                         imprimir(profesor);
                     }
                     string prof = entradaString();
-
-                    //Profesor* profesor = contUsuario.encontrarProfesor(prof);
                     DTEstadisticaProfesor estadisticas = contUsuario.estadisticasProfesor(prof);
                     imprimir("Estadisticas de "+ prof + ":" );
                     map<string, int> porcentajesCursos = estadisticas.getPromPorcetajesCursos();
@@ -580,7 +556,6 @@ int main(){
 
                 }
                 presionaParaContinuar();
-                //interfazCurso->consultarEstadisticas();
                 break;
             }
             case 14:{
@@ -597,7 +572,7 @@ int main(){
                 set<string> subs = contCurso.consultarSuscripciones(nick);
                 int b=1;
                 for(auto it = subs.begin(); it != subs.end(); ++it){
-                    imprimir(to_string(b) + *it);
+                    imprimir(to_string(b) +" "+ *it);
                     b++;
                 }
                 set<string> idiomas;
@@ -908,7 +883,7 @@ DTRellenarPalabras crearDTRellenarPalabras(int numLec){
     list<string> soluciones = separarString(solSinSep, ',');   
     int id = contCurso.getIdEjercicio() +1;
     contCurso.setIdEjercicio(id);
-    DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo,numLec);     //el id me lo pasa? me aseguro que no exxista?
+    DTRellenarPalabras ejer =  DTRellenarPalabras(descripcion, frase, id, soluciones,tipo,numLec);
     return ejer;
 }
 
@@ -1002,14 +977,6 @@ int entradaInt(){
     escribirEnLog("U: " + to_string(entrada));
     return entrada;
 }
-
-
-//Funcion para verificar que el string no contenga simbolos, solo letras y numeros
-/*bool esAlfanumerico(string str) {
-    regex pattern("[a-zA-Z0-9,_\\-: ]+");  // Expresión regular que permite letras, números, ",", "-" y "_"
-    return regex_match(str, pattern);
-}*/
-
 string entradaString(){
     bool alfanumerico = false;
     string entrada;

@@ -128,18 +128,8 @@ list<DTEjercicio> Curso::buscarEjNoAprobados(string nick, int lecActual){
             }
         }
     }
-}
-
-int Curso::progresoPromedio() {
-    // Implementación de la operación
-}
-
-int Curso::progresoDeEstudiante(Estudiante* e){
-    // Implementación de la operación
-}
-
-DTEstadisticaCurso Curso::estadisticasCurso() {
-    // Implementación de la operación
+    list<DTEjercicio> vacia;
+    return vacia;
 }
 
 void Curso::agregarLeccion(Leccion* lec){

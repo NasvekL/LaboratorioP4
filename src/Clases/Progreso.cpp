@@ -1,10 +1,5 @@
 #include "../../include/Clases/Progreso.h"
 
-bool Progreso::esCorrecto(string solucion) {
-    // Implementar la lógica para verificar si la solución es correcta
-    // según el progreso actual y el ejercicio correspondiente
-    // ...
-}
 
 void Progreso::aumentarProgreso(string estudiante) {
     float aumento = 1 / leccionActual->getCantidadDeEjercicios();

@@ -15,7 +15,6 @@ class Idioma{
        //getters
         string getNombreIdioma();
        //operaciones 
-        string suscribir(string nick);
         bool estaSuscrito(Usuario* usuario);
         void agregar(Usuario* u); //agregar sucriptor
         void eliminar(Usuario* u); //eliminar suscriptor
@@ -24,9 +23,6 @@ class Idioma{
         //constructor y destructor
         Idioma(string nombreIdioma);
         ~Idioma();
-        //falta set de suscriptores
-        // falta set de profesores
-        //falta set de cursos
 };
 
 

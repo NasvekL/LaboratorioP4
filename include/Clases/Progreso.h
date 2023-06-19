@@ -14,7 +14,6 @@ class Progreso{
         Leccion* leccionActual;
         list<Ejercicio*> ejerciciosResueltos;
     public:
-        virtual bool esCorrecto(string solucion);
         void aumentarProgreso(string estudiante);
         //setters
         void setPorcentajeCurso(float porcen);

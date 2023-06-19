@@ -15,10 +15,6 @@ string Idioma::getNombreIdioma() {
 set<IObserver*> Idioma::getObservers(){
     return observers;
 }
-string Idioma::suscribir(string nick) {
-    // Implementación de suscribir
-    // Retorna un string según el resultado de la suscripción
-}
 
 void Idioma::agregar(Usuario* u) {
 IObserver* obs = dynamic_cast<IObserver*>(u);

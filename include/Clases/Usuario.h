@@ -16,7 +16,6 @@ class Usuario:public IObserver{
         void setNombre(string nombre);
         void setContrasenia(string contra);
         void setDescripcion(string descripcion);
-        virtual list<DTNotificacion> verNotificaciones();
         //getters
         string getContrasenia();
         string getDescripcion();
@@ -26,7 +25,6 @@ class Usuario:public IObserver{
         void eliminarNotificaciones();
         //observer
         void notificar(DTNotificacion noti);
-        //NO ESTAMOS PONIENDO DESTRUCTOR EN VIRTUAL DE USUARIO, CAPAZ ESTA MAL
 };
 
 

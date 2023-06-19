@@ -10,12 +10,7 @@ class DTEstudianteSC {
         string pais;
         DTFecha nacimiento;
     public:
-        string getDescripcion();
         string getNickname();
-        string getNombre();
-        string getPais();
-        DTFecha getNacimineto();
-
         ~DTEstudianteSC();
         DTEstudianteSC(string nickname, string nombre, string descripcion, string pais, DTFecha nacimiento);
 
