@@ -207,7 +207,6 @@ int main(){
                 DTCurso curso = crearDTCurso();
                 //Guardo el curso en un DT auxiliar en el controlador
                 contCurso.setDatoDeCurso(curso);
-
                 set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
                 for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
                     imprimir((*it)->getNombreIdioma());
@@ -612,6 +611,11 @@ int main(){
                 }
                 else{
                 list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
+                if(notis.size() == 0){
+                    imprimir("No hay notificaciones", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
                     imprimir(noti.getCurso());
@@ -1056,6 +1060,9 @@ void ingresarIdiomas(){
     contCurso.confirmarAltaIdioma("Ingles");
     contCurso.confirmarAltaIdioma("Aleman");
     contCurso.confirmarAltaIdioma("Portugues");
+    contCurso.confirmarAltaIdioma("Español");
+    contCurso.confirmarAltaIdioma("Frances");
+    contCurso.confirmarAltaIdioma("Italiano");  
 }
 
 void ingresarUsuarios(){
