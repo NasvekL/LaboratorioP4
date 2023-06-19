@@ -106,7 +106,6 @@ void Curso::eliminarPrevia(Curso* previa){
 }
 
 // OPERACIONES
-
 Ejercicio* Curso :: seleccionarEj(int id){
     Ejercicio* ejer = NULL;
     for(auto it = lecciones.begin(); it!=lecciones.end(); it++){

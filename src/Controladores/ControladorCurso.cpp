@@ -175,11 +175,15 @@ bool ControladorCurso::altaCurso() {
     cursos.insert(std::make_pair(datoDeCurso->getNombre(), cur));
     profesor->agregarCurso(cur);
     list<Leccion*> lecs = cur->getLecciones();
+    int cantEjs = 0;
     for(auto iter=lecs.begin(); iter!=lecs.end(); iter++){
         map<int,Ejercicio*> ejs = (*iter)->getEjercicios();
         for(auto it = ejs.begin(); it!=ejs.end(); it++){
             ejercicios.insert(std::make_pair(it->second->getIdEjercicio(), it->second));
+            cantEjs++;
         }
+        (*iter)->setCantidadEjercicios(cantEjs);
+        cantEjs = 0;
     }
     datosPrevias.clear();
     datosRellenarPalabras.clear();
