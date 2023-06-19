@@ -23,12 +23,12 @@ FOR -> 'for' VAR 'in' LLAMADA_FUNCION ':' INSTRUCCION
 WHILE -> 'while' BOOL ':' INSTRUCCION
 
 
-IF -> 'if' BOOL 'then'':' INSTRUCCION | 'if' BOOL 'then'':' INSTRUCCION 'else'':' INSTRUCCION
+IF -> 'if' BOOL ':' INSTRUCCION | 'if' BOOL ':' INSTRUCCION 'else'':' INSTRUCCION
 
 SLICE -> '[' EXP ']' | '[' EXP ':'']' | '['':' EXP ']' | '[' EXP ':' EXP ']' | '[' EXP ':' EXP ':' EXP ']'
 
 ASIGNACION -> VAR '=' VALOR ';'
-VALOR -> VAR | LLAMADA_FUNCION | BOOL | NUM | CONST | EXP
+VALOR -> VAR | LLAMADA_FUNCION | BOOL | NUM | CONST | EXP | '(' VALOR ')'
 LLAMADA_FUNCION -> NOMBRE_FUNC '(' PARAMS_INGRESADOS ')'
 PARAMS_INGRESADOS -> VALOR | VALOR ',' PARAMS_INGRESADOS
 NOMBRE_FUNC -> 'f1' | 'f2' | 'f3' | 'f4' | 'f5' | 'f6' | 'f7' | 'f8' | 'f9' | 'f10' | 'len' | 'range'
