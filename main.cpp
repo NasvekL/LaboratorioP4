@@ -235,7 +235,7 @@ int main(){
                         imprimir("Ingrese tipo de ejercicio", AMARILLO);
                         imprimir("Completar/Traduccion", AMARILLO);
                         string opcion3 = entradaString();
-                        if(opcion3=="Completar"){
+                        if(opcion3=="Completar" || opcion3=="completar"){
                             DTRellenarPalabras ejercicio = crearDTRellenarPalabras(numLec);
                             contCurso.agregarDatosRellenarPalabras(ejercicio);
                         }
@@ -341,12 +341,12 @@ int main(){
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
                             imprimir("Tipo de ejercicio no válido", ROJO);
-                            presionaParaContinuar();
+                            
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
                         imprimir("Ejercicio creado", VERDE);
-                        presionaParaContinuar();
+                        
                     }
 
                 }

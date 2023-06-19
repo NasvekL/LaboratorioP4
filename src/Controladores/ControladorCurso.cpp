@@ -374,18 +374,30 @@ list<tuple<string, int, int>> ControladorCurso::cursosDisponibles(string nick){
                     estudianteAproboLasPrevias = false;
                 }
                 else{
-                    //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion)
+                    Inscripcion* inscripcio = nullptr;
+                    //primero busco la inscripcion del estudiante en la previa
+                    //Recorro las inscripciones de cada previa (it3 es una inscripcion en cada iteracion) y busco si el estudiante esta inscrito
                     list<Inscripcion*> inscripcionesitass = (*it2)->getInscripciones();
                     for(auto it3 = inscripcionesitass.begin(); it3 != inscripcionesitass.end(); ++it3){
                         if((*it3)->getEstudiante()->getNick() == nick){ //Si se encontro una inscripcion del estudiante en la previa
-                            if((*it3)->getAprobado()){ //Si el estudiante aprobo la previa
-                                estudianteAproboLasPrevias = true;
-                            }else{                      //Si el estudiante no aprobo la previa
-                                estudianteAproboLasPrevias = false;
-                            }
+                            inscripcio = (*it3);
                             break;//se encontro la inscripcion del estudiante, asi que dejo de buscar en las inscripciones de la previa
                         }
                     }
+                    if(inscripcio == nullptr){
+                        estudianteAproboLasPrevias = false; //Si el estudiante no esta inscrito en la previa, no la aprobo
+                        break; //Dejo de buscar en las previas del curso
+                    }else{
+                        if(inscripcio->getAprobado()){ //Si el estudiante aprobo la previa
+                            estudianteAproboLasPrevias = true;
+                        }else{                      //Si el estudiante no aprobo la previa
+                            estudianteAproboLasPrevias = false;
+                            break;//Dejo de buscar en las previas del curso
+                        }
+                    }
+                        //si esta inscrito, busco si aprobo la previa
+                            //si aprobo, la aprobo
+
                 }
                 //Termine de recorrer las inscripciones de la previa. Si estudianteAproboLasPrevias sigue siendo false, significa que el estudiante
                 //tiene una previa sin aprobar, asi que dejo de mirar, salgo del for de previas.

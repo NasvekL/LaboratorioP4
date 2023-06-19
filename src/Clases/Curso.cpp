@@ -22,7 +22,7 @@ Curso::Curso() {
     // Implementación del constructor vacio
 }
 //Hay que hacer un constructor para los casos en los que hay lecciones y otro para los que no?
-Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, map<string,Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta,list<DTRellenarPalabras> datosRellenarP,list<DTTraduccion> datosTraduccion,list<DTLeccion>lecciones){
+Curso::Curso(string nombre, string descripcion, nivelDeDificultad nivel, map<string,Curso*> previas, Idioma* idioma, Profesor* profesorQueLoDicta,list<DTRellenarPalabras> datosRellenarP,list<DTTraduccion> datosTraduccion,list<DTLeccion>lecciones): previas(){
     this->nombre = nombre;
     this->descripcion = descripcion;
     this->nivelDeDif = nivel;
