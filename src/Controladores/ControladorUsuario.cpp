@@ -210,8 +210,6 @@ list<string> ControladorUsuario::listarProfe() {
     for (auto it = usuarios.begin(); it != usuarios.end(); it++) {
         if (getTipoUsuario(it->first) == "profesor") {
             listaProfes.push_back(it->second->getNick());
-        }else{
-            cout << it->first << " es " << getTipoUsuario(it->first) << endl;
         }
     }
     return listaProfes;
@@ -281,9 +279,7 @@ string ControladorUsuario::getTipoUsuario(string nick) {
         Usuario* usuario = it->second;
         if (Estudiante* estudiante = dynamic_cast<Estudiante*>(usuario)) {
             return "estudiante";
-            cout << it->second->getNick() << " es estudiante" << endl;
         } else {
-            cout << it->second->getNick() << " es profesor" << endl;
             return "profesor";
         }
     } else {

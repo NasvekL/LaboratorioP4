@@ -212,7 +212,6 @@ int main(){
                 DTCurso curso = crearDTCurso();
                 //Guardo el curso en un DT auxiliar en el controlador
                 contCurso.setDatoDeCurso(curso);
-
                 set<Idioma*> idiomass = contCurso.listarIdiomasProfesor();
                 for(auto it = idiomass.begin(); it != idiomass.end(); ++it){
                     imprimir((*it)->getNombreIdioma());
@@ -594,12 +593,11 @@ int main(){
                 }
                 set<string> idiomas;
                 imprimir("Escriba el nombre del idioma al que desea suscribirse:");
-                string idiomaASuscribir = entradaString();
-                idiomas.insert(idiomaASuscribir);
-                while(quiereContinuar("Agregar otro idioma")){
-                    imprimir("Escriba el nombre de siguiente idioma al que desea suscribirse:");
-                    idiomaASuscribir = entradaString();
-                    idiomas.insert(idiomaASuscribir);
+                string idioma = entradaString();
+                idiomas.insert(idioma);
+                while(quiereContinuar("agregar otro idioma")){
+                string idioma = entradaString();
+                idiomas.insert(idioma);
                 }
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
@@ -618,6 +616,11 @@ int main(){
                 }
                 else{
                 list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
+                if(notis.size() == 0){
+                    imprimir("No hay notificaciones", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
                     imprimir(noti.getCurso());
@@ -657,7 +660,7 @@ int main(){
 
                 contCurso.eliminarSuscripciones(suscAEliminar);
                 imprimir("Suscripciones eliminadas", VERDE);
-                presionaParaContinuar();
+
                     
                 break;
             }
@@ -1062,6 +1065,9 @@ void ingresarIdiomas(){
     contCurso.confirmarAltaIdioma("Ingles");
     contCurso.confirmarAltaIdioma("Aleman");
     contCurso.confirmarAltaIdioma("Portugues");
+    contCurso.confirmarAltaIdioma("Español");
+    contCurso.confirmarAltaIdioma("Frances");
+    contCurso.confirmarAltaIdioma("Italiano");  
 }
 
 void ingresarUsuarios(){
