@@ -1357,7 +1357,10 @@ contCurso.limpiarDatos();
     tradu = DTTraduccion("Imperativo", "Fale comigo", 8, "Habla conmigo", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
     contCurso.altaLeccion("Portugues intermedio");
-contCurso.limpiarDatos();
+    contCurso.limpiarDatos();
+
+
+    contCurso.setIdEjercicio(8);
 
     /*Origen;Previa
     C3;C1
