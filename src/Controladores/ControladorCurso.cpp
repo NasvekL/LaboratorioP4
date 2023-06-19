@@ -257,6 +257,8 @@ void ControladorCurso::altaLeccion(string curso){
 }
 
 
+
+
 void ControladorCurso::altaEjercicio(Leccion* lec){
  if(datosRellenar!=NULL){
     DTRellenarPalabras dt = getDatosRellenar();
@@ -642,19 +644,39 @@ list<string> ControladorCurso::verCurso(string curso){
 void ControladorCurso::limpiarDatos() {
     if(datoDeCurso != nullptr){
         delete datoDeCurso;
+        datoDeCurso = NULL;
     }
     if(datoDeLeccion != nullptr){
         delete datoDeLeccion;
+        datoDeLeccion = NULL;
     }
     if(profesor != nullptr){
         delete profesor;
+        profesor = NULL;
     }
     if(datosRellenar != nullptr){
         delete datosRellenar;
+        datosRellenar = NULL;
     }
     if(datosTraducir!= nullptr){
         delete datosTraducir;
+        datosTraducir = NULL;
     }
+    if(curso != nullptr){
+        delete curso;
+        curso = NULL;
+    }
+    if(ejercicio != nullptr){
+        delete ejercicio;
+        ejercicio = NULL;
+    }
+    //deletear 
+    datosRellenarPalabras.clear();
+    datosTraduccion.clear();
+    datosLecciones.clear();
+    datosPrevias.clear();
+    
+
 }
 
 set<string> ControladorCurso::cursosInscriptoSinAprobar(string nick) {

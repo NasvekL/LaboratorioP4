@@ -694,6 +694,7 @@ int main(){
                 break;
             }
         }
+        contCurso.limpiarDatos();
     }
 
     return 0;
@@ -1061,10 +1062,10 @@ string entradaString(){
 
 void ingresarIdiomas(){
     factoryController& fabrica = factoryController::getInstancia();
-    IControladorCurso& contCurso = fabrica.getIControladorCurso();
-    contCurso.confirmarAltaIdioma("Ingles");
-    contCurso.confirmarAltaIdioma("Aleman");
-    contCurso.confirmarAltaIdioma("Portugues");
+    IControladorCurso& contCurso = fabrica.getIControladorCurso();contCurso.limpiarDatos();
+    contCurso.confirmarAltaIdioma("Ingles");contCurso.limpiarDatos();
+    contCurso.confirmarAltaIdioma("Aleman");contCurso.limpiarDatos();
+    contCurso.confirmarAltaIdioma("Portugues");contCurso.limpiarDatos();
 }
 
 void ingresarUsuarios(){
@@ -1127,7 +1128,7 @@ void ingresarUsuarios(){
 void ingresarCursos(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
-    
+    contCurso.limpiarDatos();
     // Curso 1: Ingles para principiantes
     contCurso.seleccionarProfesor("langMaster");
     contCurso.seleccionIdioma("Ingles");
@@ -1135,7 +1136,7 @@ void ingresarCursos(){
     DTCurso c1 = DTCurso("Ingles para principiantes", true, PRINCIPIANTE, "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", previas1);
     contCurso.setDatoDeCurso(c1);
     contCurso.altaCurso();
-
+contCurso.limpiarDatos();
     // Curso 2: Curso de ingles basico
     contCurso.seleccionarProfesor("langMaster");
     contCurso.seleccionIdioma("Ingles");
@@ -1143,7 +1144,7 @@ void ingresarCursos(){
     DTCurso c2 = DTCurso("Curso de ingles basico", false, PRINCIPIANTE, "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", previas2);
     contCurso.setDatoDeCurso(c2);
     contCurso.altaCurso();
-
+contCurso.limpiarDatos();
     // Curso 3: Ingles intermedio: mejora tu nivel
     contCurso.seleccionarProfesor("linguaPro");
     contCurso.seleccionIdioma("Ingles");
@@ -1151,7 +1152,7 @@ void ingresarCursos(){
     DTCurso c3 = DTCurso("Ingles intermedio: mejora tu nivel", true, MEDIO, "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", previas3);
     contCurso.setDatoDeCurso(c3);
     contCurso.altaCurso();
-
+contCurso.limpiarDatos();
     // Curso 4: Curso avanzado de ingles
     contCurso.seleccionarProfesor("linguaPro");
     contCurso.seleccionIdioma("Ingles");
@@ -1159,7 +1160,7 @@ void ingresarCursos(){
     DTCurso c4 = DTCurso("Curso avanzado de ingles", true, AVANZADO, "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", previas4);
     contCurso.setDatoDeCurso(c4);
     contCurso.altaCurso();
-
+contCurso.limpiarDatos();
     // Curso 5: Portugues intermedio
     contCurso.seleccionarProfesor("linguaPro");
     contCurso.seleccionIdioma("Portugues");
@@ -1167,7 +1168,7 @@ void ingresarCursos(){
     DTCurso c5 = DTCurso("Portugues intermedio", true, MEDIO, "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", previas5);
     contCurso.setDatoDeCurso(c5);
     contCurso.altaCurso();
-
+contCurso.limpiarDatos();
     // Curso 6: Portugues avanzado
     contCurso.seleccionarProfesor("lingoSensei");
     contCurso.seleccionIdioma("Portugues");
@@ -1175,96 +1176,97 @@ void ingresarCursos(){
     DTCurso c6 = DTCurso("Portugues avanzado", false, AVANZADO, "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", previas6);
     contCurso.setDatoDeCurso(c6);
     contCurso.altaCurso();
+    contCurso.limpiarDatos();
 }
 
 void inscribirUsuarios(){
     factoryController& fabrica = factoryController::getInstancia();
     IControladorCurso& contCurso = fabrica.getIControladorCurso();
     IControladorUsuario& contUsuario = fabrica.getIControladorUsuario();
-    
+    contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("jpidiom");
     contCurso.inscribirEstudianteACurso("Ingles para principiantes","jpidiom",1,1,2022);
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("jpidiom");
     contCurso.inscribirEstudianteACurso("Ingles intermedio: mejora tu nivel","jpidiom",12,6,2022);
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("jpidiom");
     contCurso.inscribirEstudianteACurso("Curso avanzado de ingles","jpidiom",2,3,2023);
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("marsilva");
     contCurso.inscribirEstudianteACurso("Ingles para principiantes","marsilva",2,1,2022);
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("pero12");
     contCurso.inscribirEstudianteACurso("Ingles para principiantes","pero12",2,1,2022);
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("laugu");
     contCurso.inscribirEstudianteACurso("Ingles para principiantes","laugu",3,1,2023);
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("laugu");
     contCurso.inscribirEstudianteACurso("Portugues intermedio","laugu",3,1,2023);  
-
+contCurso.limpiarDatos();
     contUsuario.seleccionarUsuario("carlo22");
     contCurso.inscribirEstudianteACurso("Portugues intermedio","carlo22",5,1,2023);          
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("jpidiom");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer = contCurso.getEjercicioPorIdDesdeMapa(1);
     contCurso.setEjercicioEnMemoria(ejer);
     contCurso.solucionCorrectaTraduccion("Nice to meet you","jpidiom",1);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("jpidiom");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer1 = contCurso.getEjercicioPorIdDesdeMapa(2);
     contCurso.setEjercicioEnMemoria(ejer1);
     contCurso.solucionCorrectaCompletarPalabras({"allow", "myself"},"jpidiom",2);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("jpidiom");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer2 = contCurso.getEjercicioPorIdDesdeMapa(3);
     contCurso.setEjercicioEnMemoria(ejer2);
     contCurso.solucionCorrectaTraduccion("Tengo dos hermanos y tres hermanas","jpidiom",3);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("jpidiom");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer3 = contCurso.getEjercicioPorIdDesdeMapa(4);
     contCurso.setEjercicioEnMemoria(ejer3);
     contCurso.solucionCorrectaCompletarPalabras({"some"},"jpidiom",4);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("jpidiom");
     contCurso.seleccionarEjerciciosDeCurso("Ingles intermedio: mejora tu nivel");
     Ejercicio* ejer4 = contCurso.getEjercicioPorIdDesdeMapa(6);
     contCurso.setEjercicioEnMemoria(ejer4);
     contCurso.solucionCorrectaCompletarPalabras({"have", "past"},"jpidiom",6);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("marsilva");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer5 = contCurso.getEjercicioPorIdDesdeMapa(1);
     contCurso.setEjercicioEnMemoria(ejer5);
     contCurso.solucionCorrectaTraduccion("Nice to meet you","marsilva",1);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("marsilva");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer6 = contCurso.getEjercicioPorIdDesdeMapa(2);
     contCurso.setEjercicioEnMemoria(ejer6);
     contCurso.solucionCorrectaCompletarPalabras({"allow", "myself"},"marsilva",2);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("pero12");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer7 = contCurso.getEjercicioPorIdDesdeMapa(1);
     contCurso.setEjercicioEnMemoria(ejer7);
     contCurso.solucionCorrectaTraduccion("Nice to meet you","pero12",1);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("pero12");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer8 = contCurso.getEjercicioPorIdDesdeMapa(2);
     contCurso.setEjercicioEnMemoria(ejer8);
     contCurso.solucionCorrectaCompletarPalabras({"allow", "myself"},"pero12",2);
-
+contCurso.limpiarDatos();
     contCurso.cursosInscriptoSinAprobar("pero12");
     contCurso.seleccionarEjerciciosDeCurso("Ingles para principiantes");
     Ejercicio* ejer9 = contCurso.getEjercicioPorIdDesdeMapa(4);
     contCurso.setEjercicioEnMemoria(ejer9);
-    contCurso.solucionCorrectaCompletarPalabras({"some"},"pero12",4);                                
+    contCurso.solucionCorrectaCompletarPalabras({"some"},"pero12",4);       contCurso.limpiarDatos();                         
 }
 
 void ingresarLecciones(){
@@ -1300,7 +1302,7 @@ void ingresarLecciones(){
     
     
     */
-    
+    contCurso.limpiarDatos();
     //L1
     DTLeccion leccion = DTLeccion(1, 2, "Aprender a saludar y despedirse", "Saludos y Presentaciones");
     contCurso.setDatoDeLeccion(leccion);
@@ -1309,7 +1311,7 @@ void ingresarLecciones(){
     DTRellenarPalabras rellpab = DTRellenarPalabras("Presentaciones formales", "Please --- me to introduce ---", 2, {"allow", "myself"}, "completar", 1);
     contCurso.agregarDatosRellenarPalabras(rellpab);
     contCurso.altaLeccion("Ingles para principiantes");
-
+contCurso.limpiarDatos();
     //L2
     leccion = DTLeccion(2, 2, "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", "Artículos y Plurales");
     contCurso.setDatoDeLeccion(leccion);
@@ -1318,40 +1320,40 @@ void ingresarLecciones(){
     rellpab = DTRellenarPalabras("Sustantivos contables en plural", "Can I have --- water, please?", 4, {"some"}, "completar", 2);
     contCurso.agregarDatosRellenarPalabras(rellpab);
     contCurso.altaLeccion("Ingles para principiantes");
-
+contCurso.limpiarDatos();
     //L3
     leccion = DTLeccion(1, 1, "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", "Actividades Cotidianas");
     contCurso.setDatoDeLeccion(leccion);
     rellpab = DTRellenarPalabras("Actividades diarias", "Wake ---", 5, {"up"}, "completar", 1);
     contCurso.agregarDatosRellenarPalabras(rellpab);
     contCurso.altaLeccion("Curso de ingles basico");
-
+contCurso.limpiarDatos();
     //L4
     leccion = DTLeccion(2, 0, "Aprender el uso del presente simple", "Presente Simple");
     contCurso.setDatoDeLeccion(leccion);
     contCurso.altaLeccion("Curso de ingles basico");
-
+contCurso.limpiarDatos();
     //L5
     leccion = DTLeccion(1, 1, "Aprender a hacer preguntas y respuestas en situaciones comunes", "Conversaciones cotidianas");
     contCurso.setDatoDeLeccion(leccion);
     rellpab = DTRellenarPalabras("Consultas de la hora", "Q: Do you --- the time?, A: Yes, it is half --- 4", 6, {"have", "past"}, "completar", 1);
     contCurso.agregarDatosRellenarPalabras(rellpab);
     contCurso.altaLeccion("Ingles intermedio: mejora tu nivel");
-
+contCurso.limpiarDatos();
     //L6
     leccion = DTLeccion(1, 1, "Explorar el uso de los modales complejos", "Uso de modales avanzados");
     contCurso.setDatoDeLeccion(leccion);
     tradu = DTTraduccion("Dar consejos o expresar obligacion", "You should visit that museum", 7, "Deberias visitar ese museo", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
     contCurso.altaLeccion("Curso avanzado de ingles");
-
+contCurso.limpiarDatos();
     //L7
     leccion = DTLeccion(1, 1, "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas", "Lectura y comprension de textos");
     contCurso.setDatoDeLeccion(leccion);
     tradu = DTTraduccion("Imperativo", "Fale comigo", 8, "Habla conmigo", "traduccion", 1);
     contCurso.agregarDatosTraduccion(tradu);
     contCurso.altaLeccion("Portugues intermedio");
-
+contCurso.limpiarDatos();
 
     /*Origen;Previa
     C3;C1
@@ -1385,9 +1387,9 @@ void ingresarPrevias(){
     C4;C3
     C6;C5*/
 
-    contCurso.agregarPrevia("Ingles intermedio: mejora tu nivel", "Ingles para principiantes");
-    contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles para principiantes");
-    contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles intermedio: mejora tu nivel");
-    contCurso.agregarPrevia("Portugues avanzado", "Portugues intermedio");
+    contCurso.agregarPrevia("Ingles intermedio: mejora tu nivel", "Ingles para principiantes");contCurso.limpiarDatos();
+    contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles para principiantes");contCurso.limpiarDatos();
+    contCurso.agregarPrevia("Curso avanzado de ingles", "Ingles intermedio: mejora tu nivel");contCurso.limpiarDatos();
+    contCurso.agregarPrevia("Portugues avanzado", "Portugues intermedio");contCurso.limpiarDatos();
     
 }

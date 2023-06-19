@@ -43,6 +43,7 @@ class ControladorCurso: public IControladorCurso{
         list<DTRellenarPalabras> datosRellenarPalabras;
         list<DTTraduccion> datosTraduccion;
         string nickUsuario;        
+        
         //Variable estática para almacenar la instancia única del controlador
         static ControladorCurso* instancia;
         //Constructor privado para evitar la creación de instancias desde fuera de la clase
