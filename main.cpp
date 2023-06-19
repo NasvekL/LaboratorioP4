@@ -341,12 +341,12 @@ int main(){
                             contCurso.setDatosEjercicioTraduccion(tradu);
                         } else {
                             imprimir("Tipo de ejercicio no válido", ROJO);
-                            presionaParaContinuar();
+                            
                         }
                         
                         contCurso.altaEjercicio(leccionSeleccionada);
                         imprimir("Ejercicio creado", VERDE);
-                        presionaParaContinuar();
+                        
                     }
 
                 }
