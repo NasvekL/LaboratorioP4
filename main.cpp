@@ -561,7 +561,7 @@ int main(){
                         imprimir("Curso: " + nom + ", Porcentaje: " + to_string(porcentaje) + "%");
                     }
                 } else {
-                    imprimir("Ingrese el nombre del profesor");
+                    imprimir("Ingrese el nombre del curso");
                     set<string> cursos = contCurso.listarNombresDeCursos();
                     for (const string& curso : cursos){
                         imprimir(curso);
