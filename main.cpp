@@ -499,11 +499,7 @@ int main(){
                 if(contCurso.getTipoEjercicio(id) == "completar"){
                     imprimir("Ingrese las palabras que faltan separado por coma");
                     string palabra = entradaString();
-                    list<string> palabras = separarString(palabra,',');
-                    set<string> solucion;
-                    for(auto it = palabras.begin(); it != palabras.end(); it++){
-                        solucion.insert(*it);
-                    }
+                    list<string> solucion = separarString(palabra,',');
                     if(contCurso.solucionCorrectaCompletarPalabras(solucion,estudiante,id)){
                         imprimir("Respuesta correcta", VERDE);
                     }else{

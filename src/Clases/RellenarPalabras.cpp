@@ -16,14 +16,14 @@ bool RellenarPalabras::esCorrectoTraduccion(string respuestas) {
     cout << "Falta implementar escorrectotraduccion en rellenarpalabras, siempre devuelve false" << endl;
     return false;
 }
-bool RellenarPalabras::esCorrectoRellenarPal(set<string> respuestas) {
+bool RellenarPalabras::esCorrectoRellenarPal(list<string> respuestas) {
+
     bool resp = true;
     auto it = respuestas.begin();
-    list<string> sol = getlista();
-    auto it2 = sol.begin();
-    if(respuestas.size()!= sol.size())
+    auto it2 = listaDePalabras.begin();
+    if(respuestas.size()!= listaDePalabras.size())
         return false;
-    while(it!= respuestas.end() && it2 != sol.end()){
+    while(it!= respuestas.end() && it2 != listaDePalabras.end()){
         if((*it) != (*it2)){
             return false;
         }

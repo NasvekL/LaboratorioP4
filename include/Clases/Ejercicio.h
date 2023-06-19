@@ -26,7 +26,7 @@ class Ejercicio{
         ~Ejercicio();
         //operaciones
         string mostrarEjercicio();
-        virtual bool esCorrectoRellenarPal(set<string> respuestas)=0;
+        virtual bool esCorrectoRellenarPal(list<string> respuestas)=0;
         virtual bool esCorrectoTraduccion(string solucion)=0;
         void aumentarProgreso(string estudiante);
         void conseguirInfoEjercicio(list<string> &infoEjercicio);
