@@ -595,6 +595,7 @@ int main(){
                 string idioma = entradaString();
                 idiomas.insert(idioma);
                 }
+                imprimir("agueira");
                 contCurso.suscribirUsuario(idiomas,nick);
                 imprimir("Usuario suscrito", VERDE);
                 presionaParaContinuar();
