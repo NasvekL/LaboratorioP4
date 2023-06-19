@@ -613,6 +613,11 @@ int main(){
                 }
                 else{
                 list<DTNotificacion> notis = contUsuario.consultarNotificaciones(nick);
+                if(notis.size() == 0){
+                    imprimir("No hay notificaciones", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for(auto it = notis.begin(); it != notis.end(); ++it){
                     DTNotificacion noti = *it;
                     imprimir(noti.getCurso());
