@@ -8,7 +8,7 @@ import nltk
 # grammar definition
 grammar = """
 S -> FUNC | FUNC S
-FUNC -> 'def'':' NOMBRE_FUNC '(' PARAMS '):' BLOQUE
+FUNC -> 'def' NOMBRE_FUNC '(' PARAMS ')'':' BLOQUE
 PARAMS -> VAR | VAR ',' PARAMS
 BLOQUE -> '{' LINEAS '}'
 
@@ -16,7 +16,7 @@ BLOQUE -> '{' LINEAS '}'
 INSTRUCCION -> BLOQUE | LINEA
 LINEAS -> LINEA | LINEA LINEAS
 LINEA -> ASIGNACION | FOR | WHILE | IF | RETURN
-RETURN -> VALOR ';'
+RETURN -> 'return' VALOR ';'
 
 FOR -> 'for' VAR 'in' LLAMADA_FUNCION ':' INSTRUCCION
 
