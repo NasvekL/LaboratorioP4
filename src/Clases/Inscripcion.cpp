@@ -43,7 +43,8 @@ Estudiante* Inscripcion::getEstudiante(){
 }
 
 Inscripcion::~Inscripcion() {
-    delete this->prog;
+    if (prog != nullptr)
+        delete this->prog;
 }
 
 void Inscripcion::conseguirInfoInscripcion(list<string> &infoInsc){
