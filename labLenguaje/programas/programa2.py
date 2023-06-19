@@ -12,7 +12,7 @@ OPLOG -> 'and' | 'or'
 NOT -> 'not'
 COMP -> EXP OP EXP
 OP -> '==' | '<''=' | '>''=' | '!''=' | '>' | '<'
-TRUEFALSE -> 'True' | 'False' | V
+TRUEFALSE -> 'True' | 'False' | X | K
 EXP -> '('EXP')'| EXP O EXP | V
 O -> '-' | '+' | '*' | '/' | '%' | '*''*' | '//'
 V -> N | K | X

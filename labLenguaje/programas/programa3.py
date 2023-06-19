@@ -28,7 +28,7 @@ IF -> 'if' BOOL ':' INSTRUCCION | 'if' BOOL ':' INSTRUCCION 'else'':' INSTRUCCIO
 SLICE -> '[' EXP ']' | '[' EXP ':'']' | '['':' EXP ']' | '[' EXP ':' EXP ']' | '[' EXP ':' EXP ':' EXP ']'
 
 ASIGNACION -> VAR '=' VALOR ';'
-VALOR ->  LLAMADA_FUNCION | NUM | CONST | EXP | BOOL
+VALOR ->  BOOL | EXP 
 LLAMADA_FUNCION -> NOMBRE_FUNC '(' PARAMS_INGRESADOS ')'
 PARAMS_INGRESADOS -> VALOR | VALOR ',' PARAMS_INGRESADOS
 NOMBRE_FUNC -> 'f1' | 'f2' | 'f3' | 'f4' | 'f5' | 'f6' | 'f7' | 'f8' | 'f9' | 'f10' | 'len' | 'range'
@@ -38,7 +38,7 @@ VAR -> 'x1' | 'x2' | 'x3' | 'x4' | 'x5' | 'x6' | 'x7' | 'x8' | 'x9' | 'x10' | 'x
 
 
 
-BOOL -> '('BOOL')' | BOOL OPLOG BOOL | NOT BOOL | TRUEFALSE | COMP | VAR
+BOOL -> '('BOOL')' | BOOL OPLOG BOOL | NOT BOOL | TRUEFALSE | COMP | VAR | CONST
 OPLOG -> 'and' | 'or'
 NOT -> 'not'
 COMP -> EXP OP EXP
