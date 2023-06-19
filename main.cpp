@@ -413,6 +413,11 @@ int main(){
                 system("clear");
                 imprimir("Ingrese nickname de estudiante:");
                 string nick = entradaString();
+                if(!contUsuario.existeUsuario(nick)){
+                    imprimir("El usuario " + nick + " no existe", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 try{
                     if(contUsuario.getTipoUsuario(nick)=="estudiante"){
                         contUsuario.seleccionarUsuario(nick);
@@ -453,6 +458,11 @@ int main(){
                 system("clear");
                 imprimir("Ingrese nick de estudiante: ");
                 string nick = entradaString();
+                if(!contUsuario.existeUsuario(nick)){
+                    imprimir("El usuario " + nick + " no existe", ROJO);
+                    presionaParaContinuar();
+                    break;
+                }
                 imprimir("Cursos:" , AMARILLO);
                 set<string> cursosISA = contCurso.cursosInscriptoSinAprobar(nick);
                 if(cursosISA.empty()){
