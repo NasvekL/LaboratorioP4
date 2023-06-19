@@ -193,7 +193,10 @@ int main(){
             case 4:{
                 //Consultar idiomas
                 system("clear");
-                contUsuario.listarIdiomas();
+                list<string> listaId = contUsuario.listarIdiomas();
+                for(auto it = listaId.begin(); it != listaId.end(); ++it){
+                    imprimir(*it);
+                }
                 presionaParaContinuar();
                 break;
             }
@@ -387,6 +390,7 @@ int main(){
                 string curso = entradaString();
                 contCurso.eliminarCurso(curso);
                 imprimir("Curso eliminado", VERDE);
+                presionaParaContinuar();
                 break;
             }
             case 10:{
