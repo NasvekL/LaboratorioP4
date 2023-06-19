@@ -15,7 +15,7 @@ BLOQUE -> '{' LINEAS '}'
 
 INSTRUCCION -> BLOQUE | LINEA
 LINEAS -> LINEA | LINEA LINEAS
-LINEA -> ASIGNACION | FOR | WHILE | IF | RETURN
+LINEA -> ASIGNACION | FOR | WHILE | IF | RETURN | LLAMADA_FUNCION ';'
 RETURN -> 'return' VALOR ';'
 
 FOR -> 'for' VAR 'in' LLAMADA_FUNCION ':' INSTRUCCION
@@ -28,7 +28,7 @@ IF -> 'if' BOOL ':' INSTRUCCION | 'if' BOOL ':' INSTRUCCION 'else'':' INSTRUCCIO
 SLICE -> '[' EXP ']' | '[' EXP ':'']' | '['':' EXP ']' | '[' EXP ':' EXP ']' | '[' EXP ':' EXP ':' EXP ']'
 
 ASIGNACION -> VAR '=' VALOR ';'
-VALOR -> VAR | LLAMADA_FUNCION | BOOL | NUM | CONST | EXP | '(' VALOR ')'
+VALOR -> VAR | LLAMADA_FUNCION | BOOL | NUM | CONST | EXP
 LLAMADA_FUNCION -> NOMBRE_FUNC '(' PARAMS_INGRESADOS ')'
 PARAMS_INGRESADOS -> VALOR | VALOR ',' PARAMS_INGRESADOS
 NOMBRE_FUNC -> 'f1' | 'f2' | 'f3' | 'f4' | 'f5' | 'f6' | 'f7' | 'f8' | 'f9' | 'f10' | 'len' | 'range'
@@ -43,7 +43,7 @@ OPLOG -> 'and' | 'or'
 NOT -> 'not'
 COMP -> EXP OP EXP
 OP -> '==' | '<''=' | '>''=' | '!''=' | '>' | '<'
-TRUEFALSE -> 'True' | 'False' | VAR | LLAMADA_FUNCION
+TRUEFALSE -> 'True' | 'False'
 
 
 EXP -> '('EXP')'| EXP O EXP | VAR | LLAMADA_FUNCION | NUM | CONST
