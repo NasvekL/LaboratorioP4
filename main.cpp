@@ -251,7 +251,7 @@ int main(){
                 imprimir("Cursos no habilitados disponibles:", AMARILLO);;
                 list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
                 if(cursosNH.empty()){
-                    imprimir("No hay cursos no habilitados", AMARILLO);
+                    imprimir("No hay cursos ingresados al sistema, por lo que no es posible agregar una leccion", AMARILLO);
                     presionaParaContinuar();
                     break;
                 }
