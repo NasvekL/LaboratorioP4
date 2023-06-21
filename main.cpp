@@ -283,8 +283,12 @@ int main(){
                 system("clear");
                 //interfazCurso->agregarEjercicio();
                 imprimir ( "Cursos no habilitados disponibles:", AMARILLO );
-                contCurso.listarCursosNoHabilitados();
                 list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                if (cursosNH.empty()) {
+                    imprimir("No hay cursos disponibles", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 int a=1;
                 for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
                     imprimir(to_string(a)+" "+*it);
