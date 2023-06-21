@@ -344,6 +344,11 @@ int main(){
                 //Habilitar curso
                 system("clear");
                 list<string> listaC = contCurso.listarCursosNoHabilitados();
+                if(listaC.empty()){
+                    imprimir("No hay cursos no habilitadps", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 int a=1;
                 for(auto it = listaC.begin(); it != listaC.end(); ++it){
                     imprimir(to_string(a) + " " + *it);
