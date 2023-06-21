@@ -380,6 +380,11 @@ int main(){
                 //Eliminar curso
                 system("clear");
                 set<string> cursos = contCurso.listarNombresDeCursos();
+                if(cursos.empty()){
+                    imprimir("No existe ningun curso en el sistema", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 int a=1;
                 for(auto it = cursos.begin(); it != cursos.end(); ++it){
                     imprimir(to_string(a) + " " + *it);
