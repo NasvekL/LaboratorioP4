@@ -713,8 +713,17 @@ DTEstudiante crearDTEstudiante() {
 
     imprimir("Ingrese nombre de estudiante:");
     string nombre = entradaString();
+
+
     imprimir("Ingrese contrasenia de estudiante:");
     string contrasenia = entradaString();
+    //si el largo de la contrasenia es menor a 6, se pide que se ingrese de nuevo
+    while (contrasenia.length() < 6) {
+        imprimir("La contrasenia debe tener al menos 6 caracteres, ingrese otra:", AMARILLO);
+        contrasenia = entradaString();
+    }
+
+
     imprimir("Ingrese descripcion de estudiante:");
     string descripcion = entradaString();
     imprimir("Ingrese pais de estudiante:");
@@ -745,8 +754,17 @@ DTProfesor crearDTProfesor(){
 
     imprimir("Ingrese nombre de profesor:");
     string nombre = entradaString();
+
+
     imprimir("Ingrese contrasenia de profesor:");
     string contrasenia = entradaString();
+    //si el largo de la contrasenia es menor a 8, se pide que se ingrese de nuevo
+    while (contrasenia.length() < 6) {
+        imprimir("La contrasenia debe tener al menos 6 caracteres, ingrese otra:", AMARILLO);
+        contrasenia = entradaString();
+    }
+
+
     imprimir("Ingrese descripcion de profesor:");
     string descripcion = entradaString();
     imprimir("Ingrese instituto de profesor:");
