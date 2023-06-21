@@ -250,6 +250,11 @@ int main(){
                 system("clear");
                 imprimir("Cursos no habilitados disponibles:", AMARILLO);;
                 list<string> cursosNH = contCurso.listarCursosNoHabilitados(); 
+                if(cursosNH.empty()){
+                    imprimir("No hay cursos no habilitados", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 int a=1;
                 for(auto it = cursosNH.begin(); it != cursosNH.end(); ++it){
                     imprimir(to_string(a)+" "+*it);
