@@ -127,6 +127,11 @@ int main(){
                 //Consulta de Usuario
                 system("clear");
                 list<string> listaUsuarios = contUsuario.consultarUsuario();
+                if(listaUsuarios.empty()){
+                    imprimir("No hay usuarios", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 std::list<string>::iterator it;
                 for (it = listaUsuarios.begin(); it != listaUsuarios.end(); ++it) {
                     imprimir(*it);
