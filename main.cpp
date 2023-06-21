@@ -382,6 +382,11 @@ int main(){
                 system("clear");
                 imprimir("Cursos Disponibles:");
                 set<string> nombreCursos = contCurso.listarNombresDeCursos();
+                if(nombreCursos.empty()){
+                    imprimir("No hay cursos disponibles", AMARILLO);
+                    presionaParaContinuar();
+                    break;
+                }
                 for(auto it = nombreCursos.begin(); it != nombreCursos.end(); it++){
                     imprimir(*it);
                 }
